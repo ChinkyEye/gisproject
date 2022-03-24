@@ -4,6 +4,10 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Menu;
+use Auth;
+use Response;
+
 
 class MenuController extends Controller
 {
@@ -14,7 +18,10 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return view('superadmin.menu.index');
+        $menus  = Menu::orderBy('id','DESC')
+                        ->where('created_by',Auth::user()->id)
+                        ->get();
+        return view('superadmin.menu.index', compact('menus'));
     }
 
     /**
@@ -24,7 +31,7 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+        return view('superadmin.menu.create');
     }
 
     /**
@@ -35,7 +42,18 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $this->validate($request, [
+            'name' => 'required',
+        ]);
+        $menu = Menu::create([
+            'name' => $request['name'],
+            'is_active' => '1',
+            'date' => date("Y-m-d"),
+            'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+            'time' => date("H:i:s"),
+            'created_by' => Auth::user()->id,
+        ]);
+        return redirect()->route('superadmin.menu.index');
     }
 
     /**
@@ -80,6 +98,45 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $menus = Menu::find($id);
+        if($menus->delete()){
+            $notification = array(
+              'message' => $menus->name.' is deleted successfully!',
+              'status' => 'success'
+          );
+        }else{
+            $notification = array(
+              'message' => $menus->name.' could not be deleted!',
+              'status' => 'error'
+          );
+        }
+        return Response::json($notification);
+    }
+
+    public function isActive(Request $request,$id)
+    {
+        $get_is_active = Menu::where('id',$id)->value('is_active');
+        $isactive = Menu::find($id);
+        if($get_is_active == 0){
+        $isactive->is_active = 1;
+        $notification = array(
+          'message' => $isactive->name.' is Active!',
+          'alert-type' => 'success'
+        );
+        }
+        else {
+        $isactive->is_active = 0;
+        $notification = array(
+          'message' => $isactive->name.' is inactive!',
+          'alert-type' => 'error'
+        );
+        }
+        if(!($isactive->update())){
+        $notification = array(
+          'message' => $isactive->name.' could not be changed!',
+          'alert-type' => 'error'
+        );
+        }
+        return back()->with($notification)->withInput();
     }
 }
