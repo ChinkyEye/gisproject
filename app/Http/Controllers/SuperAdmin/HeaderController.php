@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Header;
 use File;
 use Auth;
+use Response;
 
 class HeaderController extends Controller
 {
@@ -49,7 +50,6 @@ class HeaderController extends Controller
         $uppdf = $request->file('image');
         if($uppdf != ""){
             $destinationPath = 'images/logo/';
-            // $destinationPath = 'images/slider/'.$request->name;
             $extension = $uppdf->getClientOriginalExtension();
             $fileName = md5(mt_rand()).'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
@@ -72,7 +72,7 @@ class HeaderController extends Controller
           'message' => 'Data added successfully!',
           'alert-type' => 'success'
         );
-        return redirect()->route('superadmin.header.index')->with($pass)->withInput();  
+        return redirect()->route('superadmin.header.index')->with('success', 'header updated successfully.');
     }
 
   
@@ -96,7 +96,8 @@ class HeaderController extends Controller
      */
     public function edit($id)
     {
-        //
+      $headers = Header::find($id);
+      return view('superadmin.header.edit', compact('headers'));
     }
 
     /**
@@ -106,9 +107,37 @@ class HeaderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Header $header)
     {
-        //
+        $this->validate($request, [
+          'name' => 'required',
+          'slogan' => 'required',
+
+        ]);
+        $all_data = $request->all();
+        $uppdf = $request->file('image');
+        if($uppdf != ""){
+          $this->validate($request, [
+            'image' => 'required|mimes:jpeg,jpg|max:1024',
+          ]);
+         
+          $destinationPath = 'images/logo/';
+          $oldFilename = $destinationPath.'/'.$header->image;
+
+          $extension = $uppdf->getClientOriginalExtension();
+          $fileName = md5(mt_rand()).'.'.$extension;
+          $uppdf->move($destinationPath, $fileName);
+          $file_path = $destinationPath.'/'.$fileName;
+          $all_data['image'] = $fileName;
+          if(File::exists($oldFilename)) {
+            File::delete($oldFilename);
+          }
+        }
+        $all_data['updated_by'] = Auth::user()->id;
+        $header->update($all_data);
+        $header->update();
+       
+        return redirect()->route('superadmin.header.index')->with('success', 'header updated successfully.');
     }
 
     /**
@@ -119,6 +148,52 @@ class HeaderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $headers = Header::find($id);
+        $destinationPath = 'images/logo/';
+        $oldFilename = $destinationPath.'/'.$headers->image;
+
+        if($headers->delete()){
+            if(File::exists($oldFilename)) {
+                File::delete($oldFilename);
+                // File::deleteDirectory($destinationPath);
+            }
+            $notification = array(
+              'message' => $headers->name.' is deleted successfully!',
+              'status' => 'success'
+          );
+        }else{
+            $notification = array(
+              'message' => $headers->name.' could not be deleted!',
+              'status' => 'error'
+          );
+        }
+        return Response::json($notification);
+    }
+   
+     public function isActive(Request $request,$id)
+    {
+        $get_is_active = Header::where('id',$id)->value('is_active');
+        $isactive = Header::find($id);
+        if($get_is_active == 0){
+        $isactive->is_active = 1;
+        $notification = array(
+          'message' => $isactive->name.' is Active!',
+          'alert-type' => 'success'
+        );
+        }
+        else {
+        $isactive->is_active = 0;
+        $notification = array(
+          'message' => $isactive->name.' is inactive!',
+          'alert-type' => 'error'
+        );
+        }
+        if(!($isactive->update())){
+        $notification = array(
+          'message' => $isactive->name.' could not be changed!',
+          'alert-type' => 'error'
+        );
+        }
+        return back()->with($notification)->withInput();
     }
 }
