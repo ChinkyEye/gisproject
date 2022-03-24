@@ -20,7 +20,7 @@ class MenuController extends Controller
     {
         $menus  = Menu::orderBy('id','DESC')
                         ->where('created_by',Auth::user()->id)
-                        ->get();
+                        ->paginate(10);
         return view('superadmin.menu.index', compact('menus'));
     }
 
@@ -42,7 +42,7 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-         $this->validate($request, [
+        $this->validate($request, [
             'name' => 'required',
         ]);
         $menu = Menu::create([
@@ -75,7 +75,8 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $menus = Menu::find($id);
+        return view('superadmin.menu.edit', compact('menus'));
     }
 
     /**
@@ -87,7 +88,11 @@ class MenuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $menus = Menu::find($id);
+        $all_data = $request->all();
+        $all_data['updated_by'] = Auth::user()->id;
+        $menus->update($all_data);
+        return redirect()->route('superadmin.menu.index');
     }
 
     /**

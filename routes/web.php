@@ -26,11 +26,21 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('/header','HeaderController');
     Route::get('header/active/{id}', 'HeaderController@isActive')->name('header.active');
+
     Route::resource('/menu','MenuController');
     Route::get('menu/active/{id}', 'MenuController@isActive')->name('menu.active');
 
     Route::resource('/menuhasdropdown','MenuHasDropdownController');
+    Route::get('/menuhasdropdown/active/{id}', 'MenuHasDropdownController@isActive')->name('menuhasdropdown.active');
     Route::get('/menu/menuhasdropdown/{id}','MenuHasDropdownController@index')->name('menuhasdropdown.index');
+    Route::get('/menu/menuhasdropdown/create/{id}','MenuHasDropdownController@create')->name('menuhasdropdown.create');
+
+    //ofices or agency
+    Route::resource('/agency','AgencyController');
+    Route::get('/agency/active/{id}', 'AgencyController@isActive')->name('agency.active');
+
+
+
 
 });
 
