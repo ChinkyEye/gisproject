@@ -23,21 +23,22 @@
     </div>
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
-        {{-- <li class="nav-item">
-          <a href="{{ route('admin.manager.index')}}" class="nav-link {{ (request()->is('home/manager*')) ? 'active' : '' }}">
+        <li class="nav-item">
+          <a href="{{ route('superadmin.header.index')}}" class="nav-link {{ (request()->is('home/header*')) ? 'active' : '' }}">
             <i class="nav-icon fas fa-calendar-alt"></i>
             <p>
-              Manager
-            </p>
-          </a>
-        </li> --}}
-          <li class="nav-item">
-          <a href="{{ route('superadmin.header.index')}}" class="nav-link {{ (request()->is('home/header*')) ? 'active' : '' }}">
-            <i class="nav-icon fa-solid fa-heading"></i>
+             Header
+           </p>
+         </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('superadmin.menu.index')}}" class="nav-link {{ (request()->is('home/menu*')) ? 'active' : '' }}">
+            <i class="nav-icon fas fa-calendar-alt"></i>
             <p>
-           Header
+              Menu
             </p>
           </a>
+        </li>
       </ul>
     </nav>
   </div>
