@@ -10,26 +10,24 @@
         <thead class="bg-dark">
           <tr class="text-center">
             <th width="10">SN</th>
-            <th class="text-left">Name</th>
+            <th width="10">Name</th>
             <th width="10">Image</th>
             <th width="150">Slogan</th>
             <th width="100">Status</th>
           </tr>
         </thead> 
         <tbody>
-
+          @foreach($headers as  $key => $header)
           <tr class="text-center">
-            <td></td>
-            <td class="text-left"></td>
-            <td>
-
-            </td>
-            <td></td>
+            <td>{{$key + 1}}</td>
+            <td class="text-left">{{$header->name}}</td>
+            <td><img src="{{ asset('images/logo') . '/' . $header->image }}" alt="" class="responsive" width="50" height="50"></td>
+            <td>{{$header->slogan}}</td>
             <td>
 
             </td>
           </tr>
-
+          @endforeach
         </tbody>             
       </table>
     </div>

@@ -30,7 +30,16 @@
           </span>
           @enderror
         </div>
-       
+
+        <div class="form-group">
+          <label for="slogan">Slogan<span class="text-danger">*</span></label>
+         <textarea  type="text"  class="form-control max" id="slogan" placeholder="Enter slogan" name="slogan" autocomplete="off" autofocus value="{{ old('slogan') }}"></textarea>
+          @error('slogan')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
         <div class="form-group">
           <label for="image">Logo<span class="text-danger">*</span></label>
           <div class="input-group">
@@ -44,15 +53,6 @@
           </div>
         </div>
 
-         <div class="form-group">
-          <label for="slogan">Slogan<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="slogan" placeholder="Enter slogan" name="name" autocomplete="off" autofocus value="{{ old('slogan') }}">
-          @error('slogan')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div>
         
       </div>
       <div class="card-footer justify-content-between">
@@ -63,6 +63,19 @@
 </section>
 @endsection
 @push('javascript')
-
-
+<script type="text/javascript">
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#profile-img-tag').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#image").change(function(){
+    // alert("milan");
+    readURL(this);
+  });
+</script>
 @endpush
