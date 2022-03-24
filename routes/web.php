@@ -25,6 +25,7 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
 
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('/header','HeaderController');
+    Route::get('header/active/{id}', 'HeaderController@isActive')->name('header.active');
     Route::resource('/menu','MenuController');
 });
 
