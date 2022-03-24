@@ -21,4 +21,9 @@ Auth::routes(['reset' => false,
             'register' => false
             ]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(['superadmin','auth'])->group(function(){
+
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::resource('/header','HeaderController');
+});
+

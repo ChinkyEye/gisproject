@@ -86,6 +86,23 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./node_modules/admin-lte/dist/js/adminlte.min.js":
+/*!********************************************************!*\
+  !*** ./node_modules/admin-lte/dist/js/adminlte.min.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*!
+ * AdminLTE v3.2.0 (https://adminlte.io)
+ * Copyright 2014-2022 Colorlib <https://colorlib.com>
+ * Licensed under MIT (https://github.com/ColorlibHQ/AdminLTE/blob/master/LICENSE)
+ */
+!function(e,t){ true?t(exports,__webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")):undefined}(this,(function(e,t){"use strict";function a(e){return e&&"object"==typeof e&&"default"in e?e:{default:e}}var n=a(t),i="CardRefresh",o="lte.cardrefresh",l=n.default.fn[i],s="card",r='[data-card-widget="card-refresh"]',d={source:"",sourceSelector:"",params:{},trigger:r,content:".card-body",loadInContent:!0,loadOnInit:!0,loadErrorTemplate:!0,responseType:"",overlayTemplate:'<div class="overlay"><i class="fas fa-2x fa-sync-alt fa-spin"></i></div>',errorTemplate:'<span class="text-danger"></span>',onLoadStart:function(){},onLoadDone:function(e){return e},onLoadFail:function(e,t,a){}},f=function(){function e(e,t){if(this._element=e,this._parent=e.parents(".card").first(),this._settings=n.default.extend({},d,t),this._overlay=n.default(this._settings.overlayTemplate),e.hasClass(s)&&(this._parent=e),""===this._settings.source)throw new Error("Source url was not defined. Please specify a url in your CardRefresh source option.")}var t=e.prototype;return t.load=function(){var e=this;this._addOverlay(),this._settings.onLoadStart.call(n.default(this)),n.default.get(this._settings.source,this._settings.params,(function(t){e._settings.loadInContent&&(""!==e._settings.sourceSelector&&(t=n.default(t).find(e._settings.sourceSelector).html()),e._parent.find(e._settings.content).html(t)),e._settings.onLoadDone.call(n.default(e),t),e._removeOverlay()}),""!==this._settings.responseType&&this._settings.responseType).fail((function(t,a,i){if(e._removeOverlay(),e._settings.loadErrorTemplate){var o=n.default(e._settings.errorTemplate).text(i);e._parent.find(e._settings.content).empty().append(o)}e._settings.onLoadFail.call(n.default(e),t,a,i)})),n.default(this._element).trigger(n.default.Event("loaded.lte.cardrefresh"))},t._addOverlay=function(){this._parent.append(this._overlay),n.default(this._element).trigger(n.default.Event("overlay.added.lte.cardrefresh"))},t._removeOverlay=function(){this._parent.find(this._overlay).remove(),n.default(this._element).trigger(n.default.Event("overlay.removed.lte.cardrefresh"))},t._init=function(){var e=this;n.default(this).find(this._settings.trigger).on("click",(function(){e.load()})),this._settings.loadOnInit&&this.load()},e._jQueryInterface=function(t){var a=n.default(this).data(o),i=n.default.extend({},d,n.default(this).data());a||(a=new e(n.default(this),i),n.default(this).data(o,"string"==typeof t?a:t)),"string"==typeof t&&/load/.test(t)?a[t]():a._init(n.default(this))},e}();n.default(document).on("click",r,(function(e){e&&e.preventDefault(),f._jQueryInterface.call(n.default(this),"load")})),n.default((function(){n.default(r).each((function(){f._jQueryInterface.call(n.default(this))}))})),n.default.fn[i]=f._jQueryInterface,n.default.fn[i].Constructor=f,n.default.fn[i].noConflict=function(){return n.default.fn[i]=l,f._jQueryInterface};var u="CardWidget",c="lte.cardwidget",h=n.default.fn[u],g="card",p="collapsed-card",m="collapsing-card",v="expanding-card",_="was-collapsed",b="maximized-card",y='[data-card-widget="remove"]',C='[data-card-widget="collapse"]',w='[data-card-widget="maximize"]',x={animationSpeed:"normal",collapseTrigger:C,removeTrigger:y,maximizeTrigger:w,collapseIcon:"fa-minus",expandIcon:"fa-plus",maximizeIcon:"fa-expand",minimizeIcon:"fa-compress"},I=function(){function e(e,t){this._element=e,this._parent=e.parents(".card").first(),e.hasClass(g)&&(this._parent=e),this._settings=n.default.extend({},x,t)}var t=e.prototype;return t.collapse=function(){var e=this;this._parent.addClass(m).children(".card-body, .card-footer").slideUp(this._settings.animationSpeed,(function(){e._parent.addClass(p).removeClass(m)})),this._parent.find("> .card-header "+this._settings.collapseTrigger+" ."+this._settings.collapseIcon).addClass(this._settings.expandIcon).removeClass(this._settings.collapseIcon),this._element.trigger(n.default.Event("collapsed.lte.cardwidget"),this._parent)},t.expand=function(){var e=this;this._parent.addClass(v).children(".card-body, .card-footer").slideDown(this._settings.animationSpeed,(function(){e._parent.removeClass(p).removeClass(v)})),this._parent.find("> .card-header "+this._settings.collapseTrigger+" ."+this._settings.expandIcon).addClass(this._settings.collapseIcon).removeClass(this._settings.expandIcon),this._element.trigger(n.default.Event("expanded.lte.cardwidget"),this._parent)},t.remove=function(){this._parent.slideUp(),this._element.trigger(n.default.Event("removed.lte.cardwidget"),this._parent)},t.toggle=function(){this._parent.hasClass(p)?this.expand():this.collapse()},t.maximize=function(){this._parent.find(this._settings.maximizeTrigger+" ."+this._settings.maximizeIcon).addClass(this._settings.minimizeIcon).removeClass(this._settings.maximizeIcon),this._parent.css({height:this._parent.height(),width:this._parent.width(),transition:"all .15s"}).delay(150).queue((function(){var e=n.default(this);e.addClass(b),n.default("html").addClass(b),e.hasClass(p)&&e.addClass(_),e.dequeue()})),this._element.trigger(n.default.Event("maximized.lte.cardwidget"),this._parent)},t.minimize=function(){this._parent.find(this._settings.maximizeTrigger+" ."+this._settings.minimizeIcon).addClass(this._settings.maximizeIcon).removeClass(this._settings.minimizeIcon),this._parent.css("cssText","height: "+this._parent[0].style.height+" !important; width: "+this._parent[0].style.width+" !important; transition: all .15s;").delay(10).queue((function(){var e=n.default(this);e.removeClass(b),n.default("html").removeClass(b),e.css({height:"inherit",width:"inherit"}),e.hasClass(_)&&e.removeClass(_),e.dequeue()})),this._element.trigger(n.default.Event("minimized.lte.cardwidget"),this._parent)},t.toggleMaximize=function(){this._parent.hasClass(b)?this.minimize():this.maximize()},t._init=function(e){var t=this;this._parent=e,n.default(this).find(this._settings.collapseTrigger).click((function(){t.toggle()})),n.default(this).find(this._settings.maximizeTrigger).click((function(){t.toggleMaximize()})),n.default(this).find(this._settings.removeTrigger).click((function(){t.remove()}))},e._jQueryInterface=function(t){var a=n.default(this).data(c),i=n.default.extend({},x,n.default(this).data());a||(a=new e(n.default(this),i),n.default(this).data(c,"string"==typeof t?a:t)),"string"==typeof t&&/collapse|expand|remove|toggle|maximize|minimize|toggleMaximize/.test(t)?a[t]():"object"==typeof t&&a._init(n.default(this))},e}();n.default(document).on("click",C,(function(e){e&&e.preventDefault(),I._jQueryInterface.call(n.default(this),"toggle")})),n.default(document).on("click",y,(function(e){e&&e.preventDefault(),I._jQueryInterface.call(n.default(this),"remove")})),n.default(document).on("click",w,(function(e){e&&e.preventDefault(),I._jQueryInterface.call(n.default(this),"toggleMaximize")})),n.default.fn[u]=I._jQueryInterface,n.default.fn[u].Constructor=I,n.default.fn[u].noConflict=function(){return n.default.fn[u]=h,I._jQueryInterface};var T="ControlSidebar",S="lte.controlsidebar",j=n.default.fn[T],k=".control-sidebar",Q=".control-sidebar-content",H='[data-widget="control-sidebar"]',z=".main-header",F=".main-footer",E="control-sidebar-animate",L="control-sidebar-open",D="control-sidebar-slide-open",R="layout-fixed",A={controlsidebarSlide:!0,scrollbarTheme:"os-theme-light",scrollbarAutoHide:"l",target:k,animationSpeed:300},M=function(){function e(e,t){this._element=e,this._config=t}var t=e.prototype;return t.collapse=function(){var e=this,t=n.default("body"),a=n.default("html");this._config.controlsidebarSlide?(a.addClass(E),t.removeClass(D).delay(300).queue((function(){n.default(k).hide(),a.removeClass(E),n.default(this).dequeue()}))):t.removeClass(L),n.default(this._element).trigger(n.default.Event("collapsed.lte.controlsidebar")),setTimeout((function(){n.default(e._element).trigger(n.default.Event("collapsed-done.lte.controlsidebar"))}),this._config.animationSpeed)},t.show=function(e){void 0===e&&(e=!1);var t=n.default("body"),a=n.default("html");e&&n.default(k).hide(),this._config.controlsidebarSlide?(a.addClass(E),n.default(this._config.target).show().delay(10).queue((function(){t.addClass(D).delay(300).queue((function(){a.removeClass(E),n.default(this).dequeue()})),n.default(this).dequeue()}))):t.addClass(L),this._fixHeight(),this._fixScrollHeight(),n.default(this._element).trigger(n.default.Event("expanded.lte.controlsidebar"))},t.toggle=function(){var e=n.default("body"),t=this._config.target,a=!n.default(t).is(":visible"),i=e.hasClass(L)||e.hasClass(D),o=a&&(e.hasClass(L)||e.hasClass(D));a||o?this.show(a):i&&this.collapse()},t._init=function(){var e=this,t=n.default("body");t.hasClass(L)||t.hasClass(D)?(n.default(k).not(this._config.target).hide(),n.default(this._config.target).css("display","block")):n.default(k).hide(),this._fixHeight(),this._fixScrollHeight(),n.default(window).resize((function(){e._fixHeight(),e._fixScrollHeight()})),n.default(window).scroll((function(){var t=n.default("body");(t.hasClass(L)||t.hasClass(D))&&e._fixScrollHeight()}))},t._isNavbarFixed=function(){var e=n.default("body");return e.hasClass("layout-navbar-fixed")||e.hasClass("layout-sm-navbar-fixed")||e.hasClass("layout-md-navbar-fixed")||e.hasClass("layout-lg-navbar-fixed")||e.hasClass("layout-xl-navbar-fixed")},t._isFooterFixed=function(){var e=n.default("body");return e.hasClass("layout-footer-fixed")||e.hasClass("layout-sm-footer-fixed")||e.hasClass("layout-md-footer-fixed")||e.hasClass("layout-lg-footer-fixed")||e.hasClass("layout-xl-footer-fixed")},t._fixScrollHeight=function(){var e=n.default("body"),t=n.default(this._config.target);if(e.hasClass(R)){var a={scroll:n.default(document).height(),window:n.default(window).height(),header:n.default(z).outerHeight(),footer:n.default(F).outerHeight()},i=Math.abs(a.window+n.default(window).scrollTop()-a.scroll),o=n.default(window).scrollTop(),l=this._isNavbarFixed()&&"fixed"===n.default(z).css("position"),s=this._isFooterFixed()&&"fixed"===n.default(F).css("position"),r=n.default(this._config.target+", "+this._config.target+" "+Q);if(0===o&&0===i)t.css({bottom:a.footer,top:a.header}),r.css("height",a.window-(a.header+a.footer));else if(i<=a.footer)if(!1===s){var d=a.header-o;t.css("bottom",a.footer-i).css("top",d>=0?d:0),r.css("height",a.window-(a.footer-i))}else t.css("bottom",a.footer);else o<=a.header?!1===l?(t.css("top",a.header-o),r.css("height",a.window-(a.header-o))):t.css("top",a.header):!1===l?(t.css("top",0),r.css("height",a.window)):t.css("top",a.header);s&&l?(r.css("height","100%"),t.css("height","")):(s||l)&&(r.css("height","100%"),r.css("height",""))}},t._fixHeight=function(){var e=n.default("body"),t=n.default(this._config.target+" "+Q);if(e.hasClass(R)){var a=n.default(window).height(),i=n.default(z).outerHeight(),o=n.default(F).outerHeight(),l=a-i;this._isFooterFixed()&&"fixed"===n.default(F).css("position")&&(l=a-i-o),t.css("height",l),"undefined"!=typeof n.default.fn.overlayScrollbars&&t.overlayScrollbars({className:this._config.scrollbarTheme,sizeAutoCapable:!0,scrollbars:{autoHide:this._config.scrollbarAutoHide,clickScrolling:!0}})}else t.attr("style","")},e._jQueryInterface=function(t){return this.each((function(){var a=n.default(this).data(S),i=n.default.extend({},A,n.default(this).data());if(a||(a=new e(this,i),n.default(this).data(S,a)),"undefined"===a[t])throw new Error(t+" is not a function");a[t]()}))},e}();n.default(document).on("click",H,(function(e){e.preventDefault(),M._jQueryInterface.call(n.default(this),"toggle")})),n.default(document).ready((function(){M._jQueryInterface.call(n.default(H),"_init")})),n.default.fn[T]=M._jQueryInterface,n.default.fn[T].Constructor=M,n.default.fn[T].noConflict=function(){return n.default.fn[T]=j,M._jQueryInterface};var q="DirectChat",O="lte.directchat",N=n.default.fn[q],P=function(){function e(e){this._element=e}return e.prototype.toggle=function(){n.default(this._element).parents(".direct-chat").first().toggleClass("direct-chat-contacts-open"),n.default(this._element).trigger(n.default.Event("toggled.lte.directchat"))},e._jQueryInterface=function(t){return this.each((function(){var a=n.default(this).data(O);a||(a=new e(n.default(this)),n.default(this).data(O,a)),a[t]()}))},e}();n.default(document).on("click",'[data-widget="chat-pane-toggle"]',(function(e){e&&e.preventDefault(),P._jQueryInterface.call(n.default(this),"toggle")})),n.default.fn[q]=P._jQueryInterface,n.default.fn[q].Constructor=P,n.default.fn[q].noConflict=function(){return n.default.fn[q]=N,P._jQueryInterface};var U="Dropdown",B="lte.dropdown",$=n.default.fn[U],J=".dropdown-menu",W={},V=function(){function e(e,t){this._config=t,this._element=e}var t=e.prototype;return t.toggleSubmenu=function(){this._element.siblings().show().toggleClass("show"),this._element.next().hasClass("show")||this._element.parents(J).first().find(".show").removeClass("show").hide(),this._element.parents("li.nav-item.dropdown.show").on("hidden.bs.dropdown",(function(){n.default(".dropdown-submenu .show").removeClass("show").hide()}))},t.fixPosition=function(){var e=n.default(".dropdown-menu.show");if(0!==e.length){e.hasClass("dropdown-menu-right")?e.css({left:"inherit",right:0}):e.css({left:0,right:"inherit"});var t=e.offset(),a=e.width(),i=n.default(window).width()-t.left;t.left<0?e.css({left:"inherit",right:t.left-5}):i<a&&e.css({left:"inherit",right:0})}},e._jQueryInterface=function(t){return this.each((function(){var a=n.default(this).data(B),i=n.default.extend({},W,n.default(this).data());a||(a=new e(n.default(this),i),n.default(this).data(B,a)),"toggleSubmenu"!==t&&"fixPosition"!==t||a[t]()}))},e}();n.default('.dropdown-menu [data-toggle="dropdown"]').on("click",(function(e){e.preventDefault(),e.stopPropagation(),V._jQueryInterface.call(n.default(this),"toggleSubmenu")})),n.default('.navbar [data-toggle="dropdown"]').on("click",(function(e){e.preventDefault(),n.default(e.target).parent().hasClass("dropdown-submenu")||setTimeout((function(){V._jQueryInterface.call(n.default(this),"fixPosition")}),1)})),n.default.fn[U]=V._jQueryInterface,n.default.fn[U].Constructor=V,n.default.fn[U].noConflict=function(){return n.default.fn[U]=$,V._jQueryInterface};var G="ExpandableTable",K="lte.expandableTable",X=n.default.fn[G],Y=".expandable-body",Z='[data-widget="expandable-table"]',ee="aria-expanded",te=function(){function e(e,t){this._options=t,this._element=e}var t=e.prototype;return t.init=function(){n.default(Z).each((function(e,t){var a=n.default(t).attr(ee),i=n.default(t).next(Y).children().first().children();"true"===a?i.show():"false"===a&&(i.hide(),i.parent().parent().addClass("d-none"))}))},t.toggleRow=function(){var e=this._element;"TR"!==e[0].nodeName&&"TR"!==(e=e.parent())[0].nodeName&&(e=e.parent());var t=e.attr(ee),a=e.next(Y).children().first().children();a.stop(),"true"===t?(a.slideUp(500,(function(){e.next(Y).addClass("d-none")})),e.attr(ee,"false"),e.trigger(n.default.Event("collapsed.lte.expandableTable"))):"false"===t&&(e.next(Y).removeClass("d-none"),a.slideDown(500),e.attr(ee,"true"),e.trigger(n.default.Event("expanded.lte.expandableTable")))},e._jQueryInterface=function(t){return this.each((function(){var a=n.default(this).data(K);a||(a=new e(n.default(this)),n.default(this).data(K,a)),"string"==typeof t&&/init|toggleRow/.test(t)&&a[t]()}))},e}();n.default(".expandable-table").ready((function(){te._jQueryInterface.call(n.default(this),"init")})),n.default(document).on("click",Z,(function(){te._jQueryInterface.call(n.default(this),"toggleRow")})),n.default.fn[G]=te._jQueryInterface,n.default.fn[G].Constructor=te,n.default.fn[G].noConflict=function(){return n.default.fn[G]=X,te._jQueryInterface};var ae="Fullscreen",ne="lte.fullscreen",ie=n.default.fn[ae],oe='[data-widget="fullscreen"]',le=oe+" i",se={minimizeIcon:"fa-compress-arrows-alt",maximizeIcon:"fa-expand-arrows-alt"},re=function(){function e(e,t){this.element=e,this.options=n.default.extend({},se,t)}var t=e.prototype;return t.toggle=function(){document.fullscreenElement||document.mozFullScreenElement||document.webkitFullscreenElement||document.msFullscreenElement?this.windowed():this.fullscreen()},t.toggleIcon=function(){document.fullscreenElement||document.mozFullScreenElement||document.webkitFullscreenElement||document.msFullscreenElement?n.default(le).removeClass(this.options.maximizeIcon).addClass(this.options.minimizeIcon):n.default(le).removeClass(this.options.minimizeIcon).addClass(this.options.maximizeIcon)},t.fullscreen=function(){document.documentElement.requestFullscreen?document.documentElement.requestFullscreen():document.documentElement.webkitRequestFullscreen?document.documentElement.webkitRequestFullscreen():document.documentElement.msRequestFullscreen&&document.documentElement.msRequestFullscreen()},t.windowed=function(){document.exitFullscreen?document.exitFullscreen():document.webkitExitFullscreen?document.webkitExitFullscreen():document.msExitFullscreen&&document.msExitFullscreen()},e._jQueryInterface=function(t){var a=n.default(this).data(ne);a||(a=n.default(this).data());var i=n.default.extend({},se,"object"==typeof t?t:a),o=new e(n.default(this),i);n.default(this).data(ne,"object"==typeof t?t:a),"string"==typeof t&&/toggle|toggleIcon|fullscreen|windowed/.test(t)?o[t]():o.init()},e}();n.default(document).on("click",oe,(function(){re._jQueryInterface.call(n.default(this),"toggle")})),n.default(document).on("webkitfullscreenchange mozfullscreenchange fullscreenchange MSFullscreenChange",(function(){re._jQueryInterface.call(n.default(oe),"toggleIcon")})),n.default.fn[ae]=re._jQueryInterface,n.default.fn[ae].Constructor=re,n.default.fn[ae].noConflict=function(){return n.default.fn[ae]=ie,re._jQueryInterface};var de="lte.iframe",fe=n.default.fn.IFrame,ue='[data-widget="iframe"]',ce='[data-widget="iframe-fullscreen"]',he=".content-wrapper",ge=".content-wrapper iframe",pe=".content-wrapper.iframe-mode .nav",me=".content-wrapper.iframe-mode .navbar-nav",ve=me+" .nav-item",_e=me+" .nav-link",be=".content-wrapper.iframe-mode .tab-content",ye=be+" .tab-empty",Ce=be+" .tab-loading",we=be+" .tab-pane",xe=".main-sidebar .nav-item > a.nav-link",Ie=".main-header .nav-item a.nav-link",Te=".main-header a.dropdown-item",Se="iframe-mode",je="iframe-mode-fullscreen",ke={onTabClick:function(e){return e},onTabChanged:function(e){return e},onTabCreated:function(e){return e},autoIframeMode:!0,autoItemActive:!0,autoShowNewTab:!0,autoDarkMode:!1,allowDuplicates:!1,allowReload:!0,loadingScreen:!0,useNavbarItems:!0,scrollOffset:40,scrollBehaviorSwap:!1,iconMaximize:"fa-expand",iconMinimize:"fa-compress"},Qe=function(){function e(e,t){this._config=t,this._element=e,this._init()}var t=e.prototype;return t.onTabClick=function(e){this._config.onTabClick(e)},t.onTabChanged=function(e){this._config.onTabChanged(e)},t.onTabCreated=function(e){this._config.onTabCreated(e)},t.createTab=function(e,t,a,i){var o=this,l="panel-"+a,s="tab-"+a;this._config.allowDuplicates&&(l+="-"+Math.floor(1e3*Math.random()),s+="-"+Math.floor(1e3*Math.random()));var r='<li class="nav-item" role="presentation"><a href="#" class="btn-iframe-close" data-widget="iframe-close" data-type="only-this"><i class="fas fa-times"></i></a><a class="nav-link" data-toggle="row" id="'+s+'" href="#'+l+'" role="tab" aria-controls="'+l+'" aria-selected="false">'+e+"</a></li>";n.default(me).append(unescape(escape(r)));var d='<div class="tab-pane fade" id="'+l+'" role="tabpanel" aria-labelledby="'+s+'"><iframe src="'+t+'"></iframe></div>';if(n.default(be).append(unescape(escape(d))),i)if(this._config.loadingScreen){var f=n.default(Ce);f.fadeIn(),n.default(l+" iframe").ready((function(){"number"==typeof o._config.loadingScreen?(o.switchTab("#"+s),setTimeout((function(){f.fadeOut()}),o._config.loadingScreen)):(o.switchTab("#"+s),f.fadeOut())}))}else this.switchTab("#"+s);this.onTabCreated(n.default("#"+s))},t.openTabSidebar=function(e,t){void 0===t&&(t=this._config.autoShowNewTab);var a=n.default(e).clone();void 0===a.attr("href")&&(a=n.default(e).parent("a").clone()),a.find(".right, .search-path").remove();var i=a.find("p").text();""===i&&(i=a.text());var o=a.attr("href");if("#"!==o&&""!==o&&void 0!==o){var l=unescape(o).replace("./","").replace(/["#&'./:=?[\]]/gi,"-").replace(/(--)/gi,""),s="tab-"+l;if(!this._config.allowDuplicates&&n.default("#"+s).length>0)return this.switchTab("#"+s,this._config.allowReload);(!this._config.allowDuplicates&&0===n.default("#"+s).length||this._config.allowDuplicates)&&this.createTab(i,o,l,t)}},t.switchTab=function(e,t){var a=this;void 0===t&&(t=!1);var i=n.default(e),o=i.attr("href");if(n.default(ye).hide(),t){var l=n.default(Ce);this._config.loadingScreen?l.show(0,(function(){n.default(o+" iframe").attr("src",n.default(o+" iframe").attr("src")).ready((function(){a._config.loadingScreen&&("number"==typeof a._config.loadingScreen?setTimeout((function(){l.fadeOut()}),a._config.loadingScreen):l.fadeOut())}))})):n.default(o+" iframe").attr("src",n.default(o+" iframe").attr("src"))}n.default(me+" .active").tab("dispose").removeClass("active"),this._fixHeight(),i.tab("show"),i.parents("li").addClass("active"),this.onTabChanged(i),this._config.autoItemActive&&this._setItemActive(n.default(o+" iframe").attr("src"))},t.removeActiveTab=function(e,t){if("all"==e)n.default(ve).remove(),n.default(we).remove(),n.default(ye).show();else if("all-other"==e)n.default(ve+":not(.active)").remove(),n.default(we+":not(.active)").remove();else if("only-this"==e){var a=n.default(t),i=a.parent(".nav-item"),o=i.parent(),l=i.index(),s=a.siblings(".nav-link").attr("aria-controls");if(i.remove(),n.default("#"+s).remove(),n.default(be).children().length==n.default(ye+", "+Ce).length)n.default(ye).show();else{var r=l-1;this.switchTab(o.children().eq(r).find("a.nav-link"))}}else{var d=n.default(ve+".active"),f=d.parent(),u=d.index();if(d.remove(),n.default(we+".active").remove(),n.default(be).children().length==n.default(ye+", "+Ce).length)n.default(ye).show();else{var c=u-1;this.switchTab(f.children().eq(c).find("a.nav-link"))}}},t.toggleFullscreen=function(){n.default("body").hasClass(je)?(n.default(ce+" i").removeClass(this._config.iconMinimize).addClass(this._config.iconMaximize),n.default("body").removeClass(je),n.default(ye+", "+Ce).height("100%"),n.default(he).height("100%"),n.default(ge).height("100%")):(n.default(ce+" i").removeClass(this._config.iconMaximize).addClass(this._config.iconMinimize),n.default("body").addClass(je)),n.default(window).trigger("resize"),this._fixHeight(!0)},t._init=function(){var e=n.default(be).children().length>2;if(this._setupListeners(),this._fixHeight(!0),e){var t=n.default(""+we).first();console.log(t);var a="#tab-"+t.attr("id").replace("panel-","");this.switchTab(a,!0)}},t._initFrameElement=function(){if(window.frameElement&&this._config.autoIframeMode){var e=n.default("body");e.addClass(Se),this._config.autoDarkMode&&e.addClass("dark-mode")}},t._navScroll=function(e){var t=n.default(me).scrollLeft();n.default(me).animate({scrollLeft:t+e},250,"linear")},t._setupListeners=function(){var e=this;n.default(window).on("resize",(function(){setTimeout((function(){e._fixHeight()}),1)})),n.default(he).hasClass(Se)&&(n.default(document).on("click",xe+", .sidebar-search-results .list-group-item",(function(t){t.preventDefault(),e.openTabSidebar(t.target)})),this._config.useNavbarItems&&n.default(document).on("click",Ie+", "+Te,(function(t){t.preventDefault(),e.openTabSidebar(t.target)}))),n.default(document).on("click",_e,(function(t){t.preventDefault(),e.onTabClick(t.target),e.switchTab(t.target)})),n.default(document).on("click",_e,(function(t){t.preventDefault(),e.onTabClick(t.target),e.switchTab(t.target)})),n.default(document).on("click",'[data-widget="iframe-close"]',(function(t){t.preventDefault();var a=t.target;"I"==a.nodeName&&(a=t.target.offsetParent),e.removeActiveTab(a.attributes["data-type"]?a.attributes["data-type"].nodeValue:null,a)})),n.default(document).on("click",ce,(function(t){t.preventDefault(),e.toggleFullscreen()}));var t=!1,a=null;n.default(document).on("mousedown",'[data-widget="iframe-scrollleft"]',(function(n){n.preventDefault(),clearInterval(a);var i=e._config.scrollOffset;e._config.scrollBehaviorSwap||(i=-i),t=!0,e._navScroll(i),a=setInterval((function(){e._navScroll(i)}),250)})),n.default(document).on("mousedown",'[data-widget="iframe-scrollright"]',(function(n){n.preventDefault(),clearInterval(a);var i=e._config.scrollOffset;e._config.scrollBehaviorSwap&&(i=-i),t=!0,e._navScroll(i),a=setInterval((function(){e._navScroll(i)}),250)})),n.default(document).on("mouseup",(function(){t&&(t=!1,clearInterval(a),a=null)}))},t._setItemActive=function(e){n.default(xe+", "+Te).removeClass("active"),n.default(Ie).parent().removeClass("active");var t=n.default(Ie+'[href$="'+e+'"]'),a=n.default('.main-header a.dropdown-item[href$="'+e+'"]'),i=n.default(xe+'[href$="'+e+'"]');t.each((function(e,t){n.default(t).parent().addClass("active")})),a.each((function(e,t){n.default(t).addClass("active")})),i.each((function(e,t){n.default(t).addClass("active"),n.default(t).parents(".nav-treeview").prevAll(".nav-link").addClass("active")}))},t._fixHeight=function(e){if(void 0===e&&(e=!1),n.default("body").hasClass(je)){var t=n.default(window).height(),a=n.default(pe).outerHeight();n.default(ye+", "+Ce+", "+ge).height(t-a),n.default(he).height(t)}else{var i=parseFloat(n.default(he).css("height")),o=n.default(pe).outerHeight();1==e?setTimeout((function(){n.default(ye+", "+Ce).height(i-o)}),50):n.default(ge).height(i-o)}},e._jQueryInterface=function(t){if(n.default(ue).length>0){var a=n.default(this).data(de);a||(a=n.default(this).data());var i=n.default.extend({},ke,"object"==typeof t?t:a);localStorage.setItem("AdminLTE:IFrame:Options",JSON.stringify(i));var o=new e(n.default(this),i);n.default(this).data(de,"object"==typeof t?t:a),"string"==typeof t&&/createTab|openTabSidebar|switchTab|removeActiveTab/.test(t)&&o[t]()}else new e(n.default(this),JSON.parse(localStorage.getItem("AdminLTE:IFrame:Options")))._initFrameElement()},e}();n.default(window).on("load",(function(){Qe._jQueryInterface.call(n.default(ue))})),n.default.fn.IFrame=Qe._jQueryInterface,n.default.fn.IFrame.Constructor=Qe,n.default.fn.IFrame.noConflict=function(){return n.default.fn.IFrame=fe,Qe._jQueryInterface};var He="lte.layout",ze=n.default.fn.Layout,Fe=".main-header",Ee=".main-sidebar",Le=".main-sidebar .sidebar",De=".main-footer",Re="sidebar-focused",Ae={scrollbarTheme:"os-theme-light",scrollbarAutoHide:"l",panelAutoHeight:!0,panelAutoHeightMode:"min-height",preloadDuration:200,loginRegisterAutoHeight:!0},Me=function(){function e(e,t){this._config=t,this._element=e}var t=e.prototype;return t.fixLayoutHeight=function(e){void 0===e&&(e=null);var t=n.default("body"),a=0;(t.hasClass("control-sidebar-slide-open")||t.hasClass("control-sidebar-open")||"control_sidebar"===e)&&(a=n.default(".control-sidebar-content").outerHeight());var i={window:n.default(window).height(),header:n.default(Fe).length>0?n.default(Fe).outerHeight():0,footer:n.default(De).length>0?n.default(De).outerHeight():0,sidebar:n.default(Le).length>0?n.default(Le).height():0,controlSidebar:a},o=this._max(i),l=this._config.panelAutoHeight;!0===l&&(l=0);var s=n.default(".content-wrapper");!1!==l&&(o===i.controlSidebar?s.css(this._config.panelAutoHeightMode,o+l):o===i.window?s.css(this._config.panelAutoHeightMode,o+l-i.header-i.footer):s.css(this._config.panelAutoHeightMode,o+l-i.header),this._isFooterFixed()&&s.css(this._config.panelAutoHeightMode,parseFloat(s.css(this._config.panelAutoHeightMode))+i.footer)),t.hasClass("layout-fixed")&&("undefined"!=typeof n.default.fn.overlayScrollbars?n.default(Le).overlayScrollbars({className:this._config.scrollbarTheme,sizeAutoCapable:!0,scrollbars:{autoHide:this._config.scrollbarAutoHide,clickScrolling:!0}}):n.default(Le).css("overflow-y","auto"))},t.fixLoginRegisterHeight=function(){var e=n.default("body"),t=n.default(".login-box, .register-box");if(e.hasClass("iframe-mode"))e.css("height","100%"),n.default(".wrapper").css("height","100%"),n.default("html").css("height","100%");else if(0===t.length)e.css("height","auto"),n.default("html").css("height","auto");else{var a=t.height();e.css(this._config.panelAutoHeightMode)!==a&&e.css(this._config.panelAutoHeightMode,a)}},t._init=function(){var e=this;this.fixLayoutHeight(),!0===this._config.loginRegisterAutoHeight?this.fixLoginRegisterHeight():this._config.loginRegisterAutoHeight===parseInt(this._config.loginRegisterAutoHeight,10)&&setInterval(this.fixLoginRegisterHeight,this._config.loginRegisterAutoHeight),n.default(Le).on("collapsed.lte.treeview expanded.lte.treeview",(function(){e.fixLayoutHeight()})),n.default(Ee).on("mouseenter mouseleave",(function(){n.default("body").hasClass("sidebar-collapse")&&e.fixLayoutHeight()})),n.default('[data-widget="pushmenu"]').on("collapsed.lte.pushmenu shown.lte.pushmenu",(function(){setTimeout((function(){e.fixLayoutHeight()}),300)})),n.default('[data-widget="control-sidebar"]').on("collapsed.lte.controlsidebar",(function(){e.fixLayoutHeight()})).on("expanded.lte.controlsidebar",(function(){e.fixLayoutHeight("control_sidebar")})),n.default(window).resize((function(){e.fixLayoutHeight()})),setTimeout((function(){n.default("body.hold-transition").removeClass("hold-transition")}),50),setTimeout((function(){var e=n.default(".preloader");e&&(e.css("height",0),setTimeout((function(){e.children().hide()}),200))}),this._config.preloadDuration)},t._max=function(e){var t=0;return Object.keys(e).forEach((function(a){e[a]>t&&(t=e[a])})),t},t._isFooterFixed=function(){return"fixed"===n.default(De).css("position")},e._jQueryInterface=function(t){return void 0===t&&(t=""),this.each((function(){var a=n.default(this).data(He),i=n.default.extend({},Ae,n.default(this).data());a||(a=new e(n.default(this),i),n.default(this).data(He,a)),"init"===t||""===t?a._init():"fixLayoutHeight"!==t&&"fixLoginRegisterHeight"!==t||a[t]()}))},e}();n.default(window).on("load",(function(){Me._jQueryInterface.call(n.default("body"))})),n.default(Le+" a").on("focusin",(function(){n.default(Ee).addClass(Re)})).on("focusout",(function(){n.default(Ee).removeClass(Re)})),n.default.fn.Layout=Me._jQueryInterface,n.default.fn.Layout.Constructor=Me,n.default.fn.Layout.noConflict=function(){return n.default.fn.Layout=ze,Me._jQueryInterface};var qe="PushMenu",Oe="lte.pushmenu",Ne="."+Oe,Pe=n.default.fn[qe],Ue='[data-widget="pushmenu"]',Be="body",$e="sidebar-collapse",Je="sidebar-open",We="sidebar-is-opening",Ve="sidebar-closed",Ge={autoCollapseSize:992,enableRemember:!1,noTransitionAfterReload:!0,animationSpeed:300},Ke=function(){function e(e,t){this._element=e,this._options=n.default.extend({},Ge,t),0===n.default("#sidebar-overlay").length&&this._addOverlay(),this._init()}var t=e.prototype;return t.expand=function(){var e=n.default(Be);this._options.autoCollapseSize&&n.default(window).width()<=this._options.autoCollapseSize&&e.addClass(Je),e.addClass(We).removeClass("sidebar-collapse sidebar-closed").delay(50).queue((function(){e.removeClass(We),n.default(this).dequeue()})),this._options.enableRemember&&localStorage.setItem("remember"+Ne,Je),n.default(this._element).trigger(n.default.Event("shown.lte.pushmenu"))},t.collapse=function(){var e=this,t=n.default(Be);this._options.autoCollapseSize&&n.default(window).width()<=this._options.autoCollapseSize&&t.removeClass(Je).addClass(Ve),t.addClass($e),this._options.enableRemember&&localStorage.setItem("remember"+Ne,$e),n.default(this._element).trigger(n.default.Event("collapsed.lte.pushmenu")),setTimeout((function(){n.default(e._element).trigger(n.default.Event("collapsed-done.lte.pushmenu"))}),this._options.animationSpeed)},t.toggle=function(){n.default(Be).hasClass($e)?this.expand():this.collapse()},t.autoCollapse=function(e){if(void 0===e&&(e=!1),this._options.autoCollapseSize){var t=n.default(Be);n.default(window).width()<=this._options.autoCollapseSize?t.hasClass(Je)||this.collapse():!0===e&&(t.hasClass(Je)?t.removeClass(Je):t.hasClass(Ve)&&this.expand())}},t.remember=function(){if(this._options.enableRemember){var e=n.default("body");localStorage.getItem("remember"+Ne)===$e?this._options.noTransitionAfterReload?e.addClass("hold-transition").addClass($e).delay(50).queue((function(){n.default(this).removeClass("hold-transition"),n.default(this).dequeue()})):e.addClass($e):this._options.noTransitionAfterReload?e.addClass("hold-transition").removeClass($e).delay(50).queue((function(){n.default(this).removeClass("hold-transition"),n.default(this).dequeue()})):e.removeClass($e)}},t._init=function(){var e=this;this.remember(),this.autoCollapse(),n.default(window).resize((function(){e.autoCollapse(!0)}))},t._addOverlay=function(){var e=this,t=n.default("<div />",{id:"sidebar-overlay"});t.on("click",(function(){e.collapse()})),n.default(".wrapper").append(t)},e._jQueryInterface=function(t){return this.each((function(){var a=n.default(this).data(Oe),i=n.default.extend({},Ge,n.default(this).data());a||(a=new e(this,i),n.default(this).data(Oe,a)),"string"==typeof t&&/collapse|expand|toggle/.test(t)&&a[t]()}))},e}();n.default(document).on("click",Ue,(function(e){e.preventDefault();var t=e.currentTarget;"pushmenu"!==n.default(t).data("widget")&&(t=n.default(t).closest(Ue)),Ke._jQueryInterface.call(n.default(t),"toggle")})),n.default(window).on("load",(function(){Ke._jQueryInterface.call(n.default(Ue))})),n.default.fn[qe]=Ke._jQueryInterface,n.default.fn[qe].Constructor=Ke,n.default.fn[qe].noConflict=function(){return n.default.fn[qe]=Pe,Ke._jQueryInterface};var Xe="SidebarSearch",Ye="lte.sidebar-search",Ze=n.default.fn[Xe],et="sidebar-search-open",tt="fa-search",at="fa-times",nt="sidebar-search-results",it="list-group",ot='[data-widget="sidebar-search"]',lt=ot+" .form-control",st=ot+" .btn",rt=st+" i",dt=".sidebar-search-results",ft=".sidebar-search-results .list-group",ut={arrowSign:"->",minLength:3,maxResults:7,highlightName:!0,highlightPath:!1,highlightClass:"text-light",notFoundText:"No element found!"},ct=[],ht=function(){function e(e,t){this.element=e,this.options=n.default.extend({},ut,t),this.items=[]}var a=e.prototype;return a.init=function(){var e=this;0!==n.default(ot).length&&(0===n.default(ot).next(dt).length&&n.default(ot).after(n.default("<div />",{class:nt})),0===n.default(dt).children(".list-group").length&&n.default(dt).append(n.default("<div />",{class:it})),this._addNotFound(),n.default(".main-sidebar .nav-sidebar").children().each((function(t,a){e._parseItem(a)})))},a.search=function(){var e=this,t=n.default(lt).val().toLowerCase();if(t.length<this.options.minLength)return n.default(ft).empty(),this._addNotFound(),void this.close();var a=ct.filter((function(e){return e.name.toLowerCase().includes(t)})),i=n.default(a.slice(0,this.options.maxResults));n.default(ft).empty(),0===i.length?this._addNotFound():i.each((function(t,a){n.default(ft).append(e._renderItem(escape(a.name),encodeURI(a.link),a.path))})),this.open()},a.open=function(){n.default(ot).parent().addClass(et),n.default(rt).removeClass(tt).addClass(at)},a.close=function(){n.default(ot).parent().removeClass(et),n.default(rt).removeClass(at).addClass(tt)},a.toggle=function(){n.default(ot).parent().hasClass(et)?this.close():this.open()},a._parseItem=function(e,t){var a=this;if(void 0===t&&(t=[]),!n.default(e).hasClass("nav-header")){var i={},o=n.default(e).clone().find("> .nav-link"),l=n.default(e).clone().find("> .nav-treeview"),s=o.attr("href"),r=o.find("p").children().remove().end().text();if(i.name=this._trimText(r),i.link=s,i.path=t,0===l.length)ct.push(i);else{var d=i.path.concat([i.name]);l.children().each((function(e,t){a._parseItem(t,d)}))}}},a._trimText=function(e){return t.trim(e.replace(/(\r\n|\n|\r)/gm," "))},a._renderItem=function(e,t,a){var i=this;if(a=a.join(" "+this.options.arrowSign+" "),e=unescape(e),t=decodeURI(t),this.options.highlightName||this.options.highlightPath){var o=n.default(lt).val().toLowerCase(),l=new RegExp(o,"gi");this.options.highlightName&&(e=e.replace(l,(function(e){return'<strong class="'+i.options.highlightClass+'">'+e+"</strong>"}))),this.options.highlightPath&&(a=a.replace(l,(function(e){return'<strong class="'+i.options.highlightClass+'">'+e+"</strong>"})))}var s=n.default("<a/>",{href:decodeURIComponent(t),class:"list-group-item"}),r=n.default("<div/>",{class:"search-title"}).html(e),d=n.default("<div/>",{class:"search-path"}).html(a);return s.append(r).append(d),s},a._addNotFound=function(){n.default(ft).append(this._renderItem(this.options.notFoundText,"#",[]))},e._jQueryInterface=function(t){var a=n.default(this).data(Ye);a||(a=n.default(this).data());var i=n.default.extend({},ut,"object"==typeof t?t:a),o=new e(n.default(this),i);n.default(this).data(Ye,"object"==typeof t?t:a),"string"==typeof t&&/init|toggle|close|open|search/.test(t)?o[t]():o.init()},e}();n.default(document).on("click",st,(function(e){e.preventDefault(),ht._jQueryInterface.call(n.default(ot),"toggle")})),n.default(document).on("keyup",lt,(function(e){return 38==e.keyCode?(e.preventDefault(),void n.default(ft).children().last().focus()):40==e.keyCode?(e.preventDefault(),void n.default(ft).children().first().focus()):void setTimeout((function(){ht._jQueryInterface.call(n.default(ot),"search")}),100)})),n.default(document).on("keydown",ft,(function(e){var t=n.default(":focus");38==e.keyCode&&(e.preventDefault(),t.is(":first-child")?t.siblings().last().focus():t.prev().focus()),40==e.keyCode&&(e.preventDefault(),t.is(":last-child")?t.siblings().first().focus():t.next().focus())})),n.default(window).on("load",(function(){ht._jQueryInterface.call(n.default(ot),"init")})),n.default.fn[Xe]=ht._jQueryInterface,n.default.fn[Xe].Constructor=ht,n.default.fn[Xe].noConflict=function(){return n.default.fn[Xe]=Ze,ht._jQueryInterface};var gt="NavbarSearch",pt="lte.navbar-search",mt=n.default.fn[gt],vt='[data-widget="navbar-search"]',_t=".form-control",bt="navbar-search-open",yt={resetOnClose:!0,target:".navbar-search-block"},Ct=function(){function e(e,t){this._element=e,this._config=n.default.extend({},yt,t)}var t=e.prototype;return t.open=function(){n.default(this._config.target).css("display","flex").hide().fadeIn().addClass(bt),n.default(this._config.target+" "+_t).focus()},t.close=function(){n.default(this._config.target).fadeOut().removeClass(bt),this._config.resetOnClose&&n.default(this._config.target+" "+_t).val("")},t.toggle=function(){n.default(this._config.target).hasClass(bt)?this.close():this.open()},e._jQueryInterface=function(t){return this.each((function(){var a=n.default(this).data(pt),i=n.default.extend({},yt,n.default(this).data());if(a||(a=new e(this,i),n.default(this).data(pt,a)),!/toggle|close|open/.test(t))throw new Error("Undefined method "+t);a[t]()}))},e}();n.default(document).on("click",vt,(function(e){e.preventDefault();var t=n.default(e.currentTarget);"navbar-search"!==t.data("widget")&&(t=t.closest(vt)),Ct._jQueryInterface.call(t,"toggle")})),n.default.fn[gt]=Ct._jQueryInterface,n.default.fn[gt].Constructor=Ct,n.default.fn[gt].noConflict=function(){return n.default.fn[gt]=mt,Ct._jQueryInterface};var wt=n.default.fn.Toasts,xt="topRight",It="topLeft",Tt="bottomRight",St="bottomLeft",jt={position:xt,fixed:!0,autohide:!1,autoremove:!0,delay:1e3,fade:!0,icon:null,image:null,imageAlt:null,imageHeight:"25px",title:null,subtitle:null,close:!0,body:null,class:null},kt=function(){function e(e,t){this._config=t,this._prepareContainer(),n.default("body").trigger(n.default.Event("init.lte.toasts"))}var t=e.prototype;return t.create=function(){var e=n.default('<div class="toast" role="alert" aria-live="assertive" aria-atomic="true"/>');e.data("autohide",this._config.autohide),e.data("animation",this._config.fade),this._config.class&&e.addClass(this._config.class),this._config.delay&&500!=this._config.delay&&e.data("delay",this._config.delay);var t=n.default('<div class="toast-header">');if(null!=this._config.image){var a=n.default("<img />").addClass("rounded mr-2").attr("src",this._config.image).attr("alt",this._config.imageAlt);null!=this._config.imageHeight&&a.height(this._config.imageHeight).width("auto"),t.append(a)}if(null!=this._config.icon&&t.append(n.default("<i />").addClass("mr-2").addClass(this._config.icon)),null!=this._config.title&&t.append(n.default("<strong />").addClass("mr-auto").html(this._config.title)),null!=this._config.subtitle&&t.append(n.default("<small />").html(this._config.subtitle)),1==this._config.close){var i=n.default('<button data-dismiss="toast" />').attr("type","button").addClass("ml-2 mb-1 close").attr("aria-label","Close").append('<span aria-hidden="true">&times;</span>');null==this._config.title&&i.toggleClass("ml-2 ml-auto"),t.append(i)}e.append(t),null!=this._config.body&&e.append(n.default('<div class="toast-body" />').html(this._config.body)),n.default(this._getContainerId()).prepend(e);var o=n.default("body");o.trigger(n.default.Event("created.lte.toasts")),e.toast("show"),this._config.autoremove&&e.on("hidden.bs.toast",(function(){n.default(this).delay(200).remove(),o.trigger(n.default.Event("removed.lte.toasts"))}))},t._getContainerId=function(){return this._config.position==xt?"#toastsContainerTopRight":this._config.position==It?"#toastsContainerTopLeft":this._config.position==Tt?"#toastsContainerBottomRight":this._config.position==St?"#toastsContainerBottomLeft":void 0},t._prepareContainer=function(){if(0===n.default(this._getContainerId()).length){var e=n.default("<div />").attr("id",this._getContainerId().replace("#",""));this._config.position==xt?e.addClass("toasts-top-right"):this._config.position==It?e.addClass("toasts-top-left"):this._config.position==Tt?e.addClass("toasts-bottom-right"):this._config.position==St&&e.addClass("toasts-bottom-left"),n.default("body").append(e)}this._config.fixed?n.default(this._getContainerId()).addClass("fixed"):n.default(this._getContainerId()).removeClass("fixed")},e._jQueryInterface=function(t,a){return this.each((function(){var i=n.default.extend({},jt,a),o=new e(n.default(this),i);"create"===t&&o[t]()}))},e}();n.default.fn.Toasts=kt._jQueryInterface,n.default.fn.Toasts.Constructor=kt,n.default.fn.Toasts.noConflict=function(){return n.default.fn.Toasts=wt,kt._jQueryInterface};var Qt="TodoList",Ht="lte.todolist",zt=n.default.fn[Qt],Ft="done",Et={onCheck:function(e){return e},onUnCheck:function(e){return e}},Lt=function(){function e(e,t){this._config=t,this._element=e,this._init()}var t=e.prototype;return t.toggle=function(e){e.parents("li").toggleClass(Ft),n.default(e).prop("checked")?this.check(e):this.unCheck(n.default(e))},t.check=function(e){this._config.onCheck.call(e)},t.unCheck=function(e){this._config.onUnCheck.call(e)},t._init=function(){var e=this,t=this._element;t.find("input:checkbox:checked").parents("li").toggleClass(Ft),t.on("change","input:checkbox",(function(t){e.toggle(n.default(t.target))}))},e._jQueryInterface=function(t){return this.each((function(){var a=n.default(this).data(Ht);a||(a=n.default(this).data());var i=n.default.extend({},Et,"object"==typeof t?t:a),o=new e(n.default(this),i);n.default(this).data(Ht,"object"==typeof t?t:a),"init"===t&&o[t]()}))},e}();n.default(window).on("load",(function(){Lt._jQueryInterface.call(n.default('[data-widget="todo-list"]'))})),n.default.fn[Qt]=Lt._jQueryInterface,n.default.fn[Qt].Constructor=Lt,n.default.fn[Qt].noConflict=function(){return n.default.fn[Qt]=zt,Lt._jQueryInterface};var Dt="Treeview",Rt="lte.treeview",At=n.default.fn[Dt],Mt=".nav-item",qt=".nav-treeview",Ot=".menu-open",Nt='[data-widget="treeview"]',Pt="menu-open",Ut="menu-is-opening",Bt={trigger:Nt+" .nav-link",animationSpeed:300,accordion:!0,expandSidebar:!1,sidebarButtonSelector:'[data-widget="pushmenu"]'},$t=function(){function e(e,t){this._config=t,this._element=e}var t=e.prototype;return t.init=function(){n.default(".nav-item.menu-open .nav-treeview.menu-open").css("display","block"),this._setupListeners()},t.expand=function(e,t){var a=this,i=n.default.Event("expanded.lte.treeview");if(this._config.accordion){var o=t.siblings(Ot).first(),l=o.find(qt).first();this.collapse(l,o)}t.addClass(Ut),e.stop().slideDown(this._config.animationSpeed,(function(){t.addClass(Pt),n.default(a._element).trigger(i)})),this._config.expandSidebar&&this._expandSidebar()},t.collapse=function(e,t){var a=this,i=n.default.Event("collapsed.lte.treeview");t.removeClass("menu-is-opening menu-open"),e.stop().slideUp(this._config.animationSpeed,(function(){n.default(a._element).trigger(i),e.find(".menu-open > .nav-treeview").slideUp(),e.find(Ot).removeClass("menu-is-opening menu-open")}))},t.toggle=function(e){var t=n.default(e.currentTarget),a=t.parent(),i=a.find("> .nav-treeview");if(i.is(qt)||(a.is(Mt)||(i=a.parent().find("> .nav-treeview")),i.is(qt))){e.preventDefault();var o=t.parents(Mt).first();o.hasClass(Pt)?this.collapse(n.default(i),o):this.expand(n.default(i),o)}},t._setupListeners=function(){var e=this,t=void 0!==this._element.attr("id")?"#"+this._element.attr("id"):"";n.default(document).on("click",""+t+this._config.trigger,(function(t){e.toggle(t)}))},t._expandSidebar=function(){n.default("body").hasClass("sidebar-collapse")&&n.default(this._config.sidebarButtonSelector).PushMenu("expand")},e._jQueryInterface=function(t){return this.each((function(){var a=n.default(this).data(Rt),i=n.default.extend({},Bt,n.default(this).data());a||(a=new e(n.default(this),i),n.default(this).data(Rt,a)),"init"===t&&a[t]()}))},e}();n.default(window).on("load.lte.treeview",(function(){n.default(Nt).each((function(){$t._jQueryInterface.call(n.default(this),"init")}))})),n.default.fn[Dt]=$t._jQueryInterface,n.default.fn[Dt].Constructor=$t,n.default.fn[Dt].noConflict=function(){return n.default.fn[Dt]=At,$t._jQueryInterface},e.CardRefresh=f,e.CardWidget=I,e.ControlSidebar=M,e.DirectChat=P,e.Dropdown=V,e.ExpandableTable=te,e.Fullscreen=re,e.IFrame=Qe,e.Layout=Me,e.NavbarSearch=Ct,e.PushMenu=Ke,e.SidebarSearch=ht,e.Toasts=kt,e.TodoList=Lt,e.Treeview=$t,Object.defineProperty(e,"__esModule",{value:!0})}));
+//# sourceMappingURL=adminlte.min.js.map
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -109,16 +126,30 @@ module.exports = __webpack_require__(/*! ./lib/axios */ "./node_modules/axios/li
 
 var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/utils.js");
 var settle = __webpack_require__(/*! ./../core/settle */ "./node_modules/axios/lib/core/settle.js");
+var cookies = __webpack_require__(/*! ./../helpers/cookies */ "./node_modules/axios/lib/helpers/cookies.js");
 var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ "./node_modules/axios/lib/helpers/buildURL.js");
 var buildFullPath = __webpack_require__(/*! ../core/buildFullPath */ "./node_modules/axios/lib/core/buildFullPath.js");
 var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ "./node_modules/axios/lib/helpers/parseHeaders.js");
 var isURLSameOrigin = __webpack_require__(/*! ./../helpers/isURLSameOrigin */ "./node_modules/axios/lib/helpers/isURLSameOrigin.js");
 var createError = __webpack_require__(/*! ../core/createError */ "./node_modules/axios/lib/core/createError.js");
+var transitionalDefaults = __webpack_require__(/*! ../defaults/transitional */ "./node_modules/axios/lib/defaults/transitional.js");
+var Cancel = __webpack_require__(/*! ../cancel/Cancel */ "./node_modules/axios/lib/cancel/Cancel.js");
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
     var requestData = config.data;
     var requestHeaders = config.headers;
+    var responseType = config.responseType;
+    var onCanceled;
+    function done() {
+      if (config.cancelToken) {
+        config.cancelToken.unsubscribe(onCanceled);
+      }
+
+      if (config.signal) {
+        config.signal.removeEventListener('abort', onCanceled);
+      }
+    }
 
     if (utils.isFormData(requestData)) {
       delete requestHeaders['Content-Type']; // Let the browser set it
@@ -129,7 +160,7 @@ module.exports = function xhrAdapter(config) {
     // HTTP basic authentication
     if (config.auth) {
       var username = config.auth.username || '';
-      var password = config.auth.password || '';
+      var password = config.auth.password ? unescape(encodeURIComponent(config.auth.password)) : '';
       requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
     }
 
@@ -139,23 +170,14 @@ module.exports = function xhrAdapter(config) {
     // Set the request timeout in MS
     request.timeout = config.timeout;
 
-    // Listen for ready state
-    request.onreadystatechange = function handleLoad() {
-      if (!request || request.readyState !== 4) {
+    function onloadend() {
+      if (!request) {
         return;
       }
-
-      // The request errored out and we didn't get a response, this will be
-      // handled by onerror instead
-      // With one exception: request that using file: protocol, most browsers
-      // will return status as 0 even though it's a successful request
-      if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf('file:') === 0)) {
-        return;
-      }
-
       // Prepare the response
       var responseHeaders = 'getAllResponseHeaders' in request ? parseHeaders(request.getAllResponseHeaders()) : null;
-      var responseData = !config.responseType || config.responseType === 'text' ? request.responseText : request.response;
+      var responseData = !responseType || responseType === 'text' ||  responseType === 'json' ?
+        request.responseText : request.response;
       var response = {
         data: responseData,
         status: request.status,
@@ -165,11 +187,40 @@ module.exports = function xhrAdapter(config) {
         request: request
       };
 
-      settle(resolve, reject, response);
+      settle(function _resolve(value) {
+        resolve(value);
+        done();
+      }, function _reject(err) {
+        reject(err);
+        done();
+      }, response);
 
       // Clean up request
       request = null;
-    };
+    }
+
+    if ('onloadend' in request) {
+      // Use onloadend if available
+      request.onloadend = onloadend;
+    } else {
+      // Listen for ready state to emulate onloadend
+      request.onreadystatechange = function handleLoad() {
+        if (!request || request.readyState !== 4) {
+          return;
+        }
+
+        // The request errored out and we didn't get a response, this will be
+        // handled by onerror instead
+        // With one exception: request that using file: protocol, most browsers
+        // will return status as 0 even though it's a successful request
+        if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf('file:') === 0)) {
+          return;
+        }
+        // readystate handler is calling before onerror or ontimeout handlers,
+        // so we should call onloadend on the next 'tick'
+        setTimeout(onloadend);
+      };
+    }
 
     // Handle browser request cancellation (as opposed to a manual cancellation)
     request.onabort = function handleAbort() {
@@ -195,11 +246,15 @@ module.exports = function xhrAdapter(config) {
 
     // Handle timeout
     request.ontimeout = function handleTimeout() {
-      var timeoutErrorMessage = 'timeout of ' + config.timeout + 'ms exceeded';
+      var timeoutErrorMessage = config.timeout ? 'timeout of ' + config.timeout + 'ms exceeded' : 'timeout exceeded';
+      var transitional = config.transitional || transitionalDefaults;
       if (config.timeoutErrorMessage) {
         timeoutErrorMessage = config.timeoutErrorMessage;
       }
-      reject(createError(timeoutErrorMessage, config, 'ECONNABORTED',
+      reject(createError(
+        timeoutErrorMessage,
+        config,
+        transitional.clarifyTimeoutError ? 'ETIMEDOUT' : 'ECONNABORTED',
         request));
 
       // Clean up request
@@ -210,8 +265,6 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(/*! ./../helpers/cookies */ "./node_modules/axios/lib/helpers/cookies.js");
-
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(fullPath)) && config.xsrfCookieName ?
         cookies.read(config.xsrfCookieName) :
@@ -241,16 +294,8 @@ module.exports = function xhrAdapter(config) {
     }
 
     // Add responseType to request if needed
-    if (config.responseType) {
-      try {
-        request.responseType = config.responseType;
-      } catch (e) {
-        // Expected DOMException thrown by browsers not compatible XMLHttpRequest Level 2.
-        // But, this can be suppressed for 'json' type as it can be parsed by default 'transformResponse' function.
-        if (config.responseType !== 'json') {
-          throw e;
-        }
-      }
+    if (responseType && responseType !== 'json') {
+      request.responseType = config.responseType;
     }
 
     // Handle progress if needed
@@ -263,21 +308,25 @@ module.exports = function xhrAdapter(config) {
       request.upload.addEventListener('progress', config.onUploadProgress);
     }
 
-    if (config.cancelToken) {
+    if (config.cancelToken || config.signal) {
       // Handle cancellation
-      config.cancelToken.promise.then(function onCanceled(cancel) {
+      // eslint-disable-next-line func-names
+      onCanceled = function(cancel) {
         if (!request) {
           return;
         }
-
+        reject(!cancel || (cancel && cancel.type) ? new Cancel('canceled') : cancel);
         request.abort();
-        reject(cancel);
-        // Clean up request
         request = null;
-      });
+      };
+
+      config.cancelToken && config.cancelToken.subscribe(onCanceled);
+      if (config.signal) {
+        config.signal.aborted ? onCanceled() : config.signal.addEventListener('abort', onCanceled);
+      }
     }
 
-    if (requestData === undefined) {
+    if (!requestData) {
       requestData = null;
     }
 
@@ -303,7 +352,7 @@ var utils = __webpack_require__(/*! ./utils */ "./node_modules/axios/lib/utils.j
 var bind = __webpack_require__(/*! ./helpers/bind */ "./node_modules/axios/lib/helpers/bind.js");
 var Axios = __webpack_require__(/*! ./core/Axios */ "./node_modules/axios/lib/core/Axios.js");
 var mergeConfig = __webpack_require__(/*! ./core/mergeConfig */ "./node_modules/axios/lib/core/mergeConfig.js");
-var defaults = __webpack_require__(/*! ./defaults */ "./node_modules/axios/lib/defaults.js");
+var defaults = __webpack_require__(/*! ./defaults */ "./node_modules/axios/lib/defaults/index.js");
 
 /**
  * Create an instance of Axios
@@ -321,6 +370,11 @@ function createInstance(defaultConfig) {
   // Copy context to instance
   utils.extend(instance, context);
 
+  // Factory for creating new instances
+  instance.create = function create(instanceConfig) {
+    return createInstance(mergeConfig(defaultConfig, instanceConfig));
+  };
+
   return instance;
 }
 
@@ -330,21 +384,20 @@ var axios = createInstance(defaults);
 // Expose Axios class to allow class inheritance
 axios.Axios = Axios;
 
-// Factory for creating new instances
-axios.create = function create(instanceConfig) {
-  return createInstance(mergeConfig(axios.defaults, instanceConfig));
-};
-
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(/*! ./cancel/Cancel */ "./node_modules/axios/lib/cancel/Cancel.js");
 axios.CancelToken = __webpack_require__(/*! ./cancel/CancelToken */ "./node_modules/axios/lib/cancel/CancelToken.js");
 axios.isCancel = __webpack_require__(/*! ./cancel/isCancel */ "./node_modules/axios/lib/cancel/isCancel.js");
+axios.VERSION = __webpack_require__(/*! ./env/data */ "./node_modules/axios/lib/env/data.js").version;
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
 axios.spread = __webpack_require__(/*! ./helpers/spread */ "./node_modules/axios/lib/helpers/spread.js");
+
+// Expose isAxiosError
+axios.isAxiosError = __webpack_require__(/*! ./helpers/isAxiosError */ "./node_modules/axios/lib/helpers/isAxiosError.js");
 
 module.exports = axios;
 
@@ -409,11 +462,42 @@ function CancelToken(executor) {
   }
 
   var resolvePromise;
+
   this.promise = new Promise(function promiseExecutor(resolve) {
     resolvePromise = resolve;
   });
 
   var token = this;
+
+  // eslint-disable-next-line func-names
+  this.promise.then(function(cancel) {
+    if (!token._listeners) return;
+
+    var i;
+    var l = token._listeners.length;
+
+    for (i = 0; i < l; i++) {
+      token._listeners[i](cancel);
+    }
+    token._listeners = null;
+  });
+
+  // eslint-disable-next-line func-names
+  this.promise.then = function(onfulfilled) {
+    var _resolve;
+    // eslint-disable-next-line func-names
+    var promise = new Promise(function(resolve) {
+      token.subscribe(resolve);
+      _resolve = resolve;
+    }).then(onfulfilled);
+
+    promise.cancel = function reject() {
+      token.unsubscribe(_resolve);
+    };
+
+    return promise;
+  };
+
   executor(function cancel(message) {
     if (token.reason) {
       // Cancellation has already been requested
@@ -431,6 +515,37 @@ function CancelToken(executor) {
 CancelToken.prototype.throwIfRequested = function throwIfRequested() {
   if (this.reason) {
     throw this.reason;
+  }
+};
+
+/**
+ * Subscribe to the cancel signal
+ */
+
+CancelToken.prototype.subscribe = function subscribe(listener) {
+  if (this.reason) {
+    listener(this.reason);
+    return;
+  }
+
+  if (this._listeners) {
+    this._listeners.push(listener);
+  } else {
+    this._listeners = [listener];
+  }
+};
+
+/**
+ * Unsubscribe from the cancel signal
+ */
+
+CancelToken.prototype.unsubscribe = function unsubscribe(listener) {
+  if (!this._listeners) {
+    return;
+  }
+  var index = this._listeners.indexOf(listener);
+  if (index !== -1) {
+    this._listeners.splice(index, 1);
   }
 };
 
@@ -486,7 +601,9 @@ var buildURL = __webpack_require__(/*! ../helpers/buildURL */ "./node_modules/ax
 var InterceptorManager = __webpack_require__(/*! ./InterceptorManager */ "./node_modules/axios/lib/core/InterceptorManager.js");
 var dispatchRequest = __webpack_require__(/*! ./dispatchRequest */ "./node_modules/axios/lib/core/dispatchRequest.js");
 var mergeConfig = __webpack_require__(/*! ./mergeConfig */ "./node_modules/axios/lib/core/mergeConfig.js");
+var validator = __webpack_require__(/*! ../helpers/validator */ "./node_modules/axios/lib/helpers/validator.js");
 
+var validators = validator.validators;
 /**
  * Create a new instance of Axios
  *
@@ -505,14 +622,14 @@ function Axios(instanceConfig) {
  *
  * @param {Object} config The config specific for this request (merged with this.defaults)
  */
-Axios.prototype.request = function request(config) {
+Axios.prototype.request = function request(configOrUrl, config) {
   /*eslint no-param-reassign:0*/
   // Allow for axios('example/url'[, config]) a la fetch API
-  if (typeof config === 'string') {
-    config = arguments[1] || {};
-    config.url = arguments[0];
-  } else {
+  if (typeof configOrUrl === 'string') {
     config = config || {};
+    config.url = configOrUrl;
+  } else {
+    config = configOrUrl || {};
   }
 
   config = mergeConfig(this.defaults, config);
@@ -526,20 +643,71 @@ Axios.prototype.request = function request(config) {
     config.method = 'get';
   }
 
-  // Hook up interceptors middleware
-  var chain = [dispatchRequest, undefined];
-  var promise = Promise.resolve(config);
+  var transitional = config.transitional;
 
+  if (transitional !== undefined) {
+    validator.assertOptions(transitional, {
+      silentJSONParsing: validators.transitional(validators.boolean),
+      forcedJSONParsing: validators.transitional(validators.boolean),
+      clarifyTimeoutError: validators.transitional(validators.boolean)
+    }, false);
+  }
+
+  // filter out skipped interceptors
+  var requestInterceptorChain = [];
+  var synchronousRequestInterceptors = true;
   this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
-    chain.unshift(interceptor.fulfilled, interceptor.rejected);
+    if (typeof interceptor.runWhen === 'function' && interceptor.runWhen(config) === false) {
+      return;
+    }
+
+    synchronousRequestInterceptors = synchronousRequestInterceptors && interceptor.synchronous;
+
+    requestInterceptorChain.unshift(interceptor.fulfilled, interceptor.rejected);
   });
 
+  var responseInterceptorChain = [];
   this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
-    chain.push(interceptor.fulfilled, interceptor.rejected);
+    responseInterceptorChain.push(interceptor.fulfilled, interceptor.rejected);
   });
 
-  while (chain.length) {
-    promise = promise.then(chain.shift(), chain.shift());
+  var promise;
+
+  if (!synchronousRequestInterceptors) {
+    var chain = [dispatchRequest, undefined];
+
+    Array.prototype.unshift.apply(chain, requestInterceptorChain);
+    chain = chain.concat(responseInterceptorChain);
+
+    promise = Promise.resolve(config);
+    while (chain.length) {
+      promise = promise.then(chain.shift(), chain.shift());
+    }
+
+    return promise;
+  }
+
+
+  var newConfig = config;
+  while (requestInterceptorChain.length) {
+    var onFulfilled = requestInterceptorChain.shift();
+    var onRejected = requestInterceptorChain.shift();
+    try {
+      newConfig = onFulfilled(newConfig);
+    } catch (error) {
+      onRejected(error);
+      break;
+    }
+  }
+
+  try {
+    promise = dispatchRequest(newConfig);
+  } catch (error) {
+    return Promise.reject(error);
+  }
+
+  while (responseInterceptorChain.length) {
+    promise = promise.then(responseInterceptorChain.shift(), responseInterceptorChain.shift());
   }
 
   return promise;
@@ -554,9 +722,10 @@ Axios.prototype.getUri = function getUri(config) {
 utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {
   /*eslint func-names:0*/
   Axios.prototype[method] = function(url, config) {
-    return this.request(utils.merge(config || {}, {
+    return this.request(mergeConfig(config || {}, {
       method: method,
-      url: url
+      url: url,
+      data: (config || {}).data
     }));
   };
 });
@@ -564,7 +733,7 @@ utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData
 utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
   /*eslint func-names:0*/
   Axios.prototype[method] = function(url, data, config) {
-    return this.request(utils.merge(config || {}, {
+    return this.request(mergeConfig(config || {}, {
       method: method,
       url: url,
       data: data
@@ -601,10 +770,12 @@ function InterceptorManager() {
  *
  * @return {Number} An ID used to remove interceptor later
  */
-InterceptorManager.prototype.use = function use(fulfilled, rejected) {
+InterceptorManager.prototype.use = function use(fulfilled, rejected, options) {
   this.handlers.push({
     fulfilled: fulfilled,
-    rejected: rejected
+    rejected: rejected,
+    synchronous: options ? options.synchronous : false,
+    runWhen: options ? options.runWhen : null
   });
   return this.handlers.length - 1;
 };
@@ -716,7 +887,8 @@ module.exports = function createError(message, config, code, request, response) 
 var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/utils.js");
 var transformData = __webpack_require__(/*! ./transformData */ "./node_modules/axios/lib/core/transformData.js");
 var isCancel = __webpack_require__(/*! ../cancel/isCancel */ "./node_modules/axios/lib/cancel/isCancel.js");
-var defaults = __webpack_require__(/*! ../defaults */ "./node_modules/axios/lib/defaults.js");
+var defaults = __webpack_require__(/*! ../defaults */ "./node_modules/axios/lib/defaults/index.js");
+var Cancel = __webpack_require__(/*! ../cancel/Cancel */ "./node_modules/axios/lib/cancel/Cancel.js");
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -724,6 +896,10 @@ var defaults = __webpack_require__(/*! ../defaults */ "./node_modules/axios/lib/
 function throwIfCancellationRequested(config) {
   if (config.cancelToken) {
     config.cancelToken.throwIfRequested();
+  }
+
+  if (config.signal && config.signal.aborted) {
+    throw new Cancel('canceled');
   }
 }
 
@@ -740,7 +916,8 @@ module.exports = function dispatchRequest(config) {
   config.headers = config.headers || {};
 
   // Transform request data
-  config.data = transformData(
+  config.data = transformData.call(
+    config,
     config.data,
     config.headers,
     config.transformRequest
@@ -766,7 +943,8 @@ module.exports = function dispatchRequest(config) {
     throwIfCancellationRequested(config);
 
     // Transform response data
-    response.data = transformData(
+    response.data = transformData.call(
+      config,
       response.data,
       response.headers,
       config.transformResponse
@@ -779,7 +957,8 @@ module.exports = function dispatchRequest(config) {
 
       // Transform response data
       if (reason && reason.response) {
-        reason.response.data = transformData(
+        reason.response.data = transformData.call(
+          config,
           reason.response.data,
           reason.response.headers,
           config.transformResponse
@@ -824,7 +1003,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
   error.response = response;
   error.isAxiosError = true;
 
-  error.toJSON = function() {
+  error.toJSON = function toJSON() {
     return {
       // Standard
       message: this.message,
@@ -839,7 +1018,8 @@ module.exports = function enhanceError(error, config, code, request, response) {
       stack: this.stack,
       // Axios
       config: this.config,
-      code: this.code
+      code: this.code,
+      status: this.response && this.response.status ? this.response.status : null
     };
   };
   return error;
@@ -873,58 +1053,84 @@ module.exports = function mergeConfig(config1, config2) {
   config2 = config2 || {};
   var config = {};
 
-  var valueFromConfig2Keys = ['url', 'method', 'params', 'data'];
-  var mergeDeepPropertiesKeys = ['headers', 'auth', 'proxy'];
-  var defaultToConfig2Keys = [
-    'baseURL', 'url', 'transformRequest', 'transformResponse', 'paramsSerializer',
-    'timeout', 'withCredentials', 'adapter', 'responseType', 'xsrfCookieName',
-    'xsrfHeaderName', 'onUploadProgress', 'onDownloadProgress',
-    'maxContentLength', 'validateStatus', 'maxRedirects', 'httpAgent',
-    'httpsAgent', 'cancelToken', 'socketPath'
-  ];
-
-  utils.forEach(valueFromConfig2Keys, function valueFromConfig2(prop) {
-    if (typeof config2[prop] !== 'undefined') {
-      config[prop] = config2[prop];
+  function getMergedValue(target, source) {
+    if (utils.isPlainObject(target) && utils.isPlainObject(source)) {
+      return utils.merge(target, source);
+    } else if (utils.isPlainObject(source)) {
+      return utils.merge({}, source);
+    } else if (utils.isArray(source)) {
+      return source.slice();
     }
-  });
+    return source;
+  }
 
-  utils.forEach(mergeDeepPropertiesKeys, function mergeDeepProperties(prop) {
-    if (utils.isObject(config2[prop])) {
-      config[prop] = utils.deepMerge(config1[prop], config2[prop]);
-    } else if (typeof config2[prop] !== 'undefined') {
-      config[prop] = config2[prop];
-    } else if (utils.isObject(config1[prop])) {
-      config[prop] = utils.deepMerge(config1[prop]);
-    } else if (typeof config1[prop] !== 'undefined') {
-      config[prop] = config1[prop];
+  // eslint-disable-next-line consistent-return
+  function mergeDeepProperties(prop) {
+    if (!utils.isUndefined(config2[prop])) {
+      return getMergedValue(config1[prop], config2[prop]);
+    } else if (!utils.isUndefined(config1[prop])) {
+      return getMergedValue(undefined, config1[prop]);
     }
-  });
+  }
 
-  utils.forEach(defaultToConfig2Keys, function defaultToConfig2(prop) {
-    if (typeof config2[prop] !== 'undefined') {
-      config[prop] = config2[prop];
-    } else if (typeof config1[prop] !== 'undefined') {
-      config[prop] = config1[prop];
+  // eslint-disable-next-line consistent-return
+  function valueFromConfig2(prop) {
+    if (!utils.isUndefined(config2[prop])) {
+      return getMergedValue(undefined, config2[prop]);
     }
-  });
+  }
 
-  var axiosKeys = valueFromConfig2Keys
-    .concat(mergeDeepPropertiesKeys)
-    .concat(defaultToConfig2Keys);
-
-  var otherKeys = Object
-    .keys(config2)
-    .filter(function filterAxiosKeys(key) {
-      return axiosKeys.indexOf(key) === -1;
-    });
-
-  utils.forEach(otherKeys, function otherKeysDefaultToConfig2(prop) {
-    if (typeof config2[prop] !== 'undefined') {
-      config[prop] = config2[prop];
-    } else if (typeof config1[prop] !== 'undefined') {
-      config[prop] = config1[prop];
+  // eslint-disable-next-line consistent-return
+  function defaultToConfig2(prop) {
+    if (!utils.isUndefined(config2[prop])) {
+      return getMergedValue(undefined, config2[prop]);
+    } else if (!utils.isUndefined(config1[prop])) {
+      return getMergedValue(undefined, config1[prop]);
     }
+  }
+
+  // eslint-disable-next-line consistent-return
+  function mergeDirectKeys(prop) {
+    if (prop in config2) {
+      return getMergedValue(config1[prop], config2[prop]);
+    } else if (prop in config1) {
+      return getMergedValue(undefined, config1[prop]);
+    }
+  }
+
+  var mergeMap = {
+    'url': valueFromConfig2,
+    'method': valueFromConfig2,
+    'data': valueFromConfig2,
+    'baseURL': defaultToConfig2,
+    'transformRequest': defaultToConfig2,
+    'transformResponse': defaultToConfig2,
+    'paramsSerializer': defaultToConfig2,
+    'timeout': defaultToConfig2,
+    'timeoutMessage': defaultToConfig2,
+    'withCredentials': defaultToConfig2,
+    'adapter': defaultToConfig2,
+    'responseType': defaultToConfig2,
+    'xsrfCookieName': defaultToConfig2,
+    'xsrfHeaderName': defaultToConfig2,
+    'onUploadProgress': defaultToConfig2,
+    'onDownloadProgress': defaultToConfig2,
+    'decompress': defaultToConfig2,
+    'maxContentLength': defaultToConfig2,
+    'maxBodyLength': defaultToConfig2,
+    'transport': defaultToConfig2,
+    'httpAgent': defaultToConfig2,
+    'httpsAgent': defaultToConfig2,
+    'cancelToken': defaultToConfig2,
+    'socketPath': defaultToConfig2,
+    'responseEncoding': defaultToConfig2,
+    'validateStatus': mergeDirectKeys
+  };
+
+  utils.forEach(Object.keys(config1).concat(Object.keys(config2)), function computeConfigValue(prop) {
+    var merge = mergeMap[prop] || mergeDeepProperties;
+    var configValue = merge(prop);
+    (utils.isUndefined(configValue) && merge !== mergeDirectKeys) || (config[prop] = configValue);
   });
 
   return config;
@@ -954,7 +1160,7 @@ var createError = __webpack_require__(/*! ./createError */ "./node_modules/axios
  */
 module.exports = function settle(resolve, reject, response) {
   var validateStatus = response.config.validateStatus;
-  if (!validateStatus || validateStatus(response.status)) {
+  if (!response.status || !validateStatus || validateStatus(response.status)) {
     resolve(response);
   } else {
     reject(createError(
@@ -981,6 +1187,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/utils.js");
+var defaults = __webpack_require__(/*! ../defaults */ "./node_modules/axios/lib/defaults/index.js");
 
 /**
  * Transform the data for a request or a response
@@ -991,9 +1198,10 @@ var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/util
  * @returns {*} The resulting transformed data
  */
 module.exports = function transformData(data, headers, fns) {
+  var context = this || defaults;
   /*eslint no-param-reassign:0*/
   utils.forEach(fns, function transform(fn) {
-    data = fn(data, headers);
+    data = fn.call(context, data, headers);
   });
 
   return data;
@@ -1002,18 +1210,20 @@ module.exports = function transformData(data, headers, fns) {
 
 /***/ }),
 
-/***/ "./node_modules/axios/lib/defaults.js":
-/*!********************************************!*\
-  !*** ./node_modules/axios/lib/defaults.js ***!
-  \********************************************/
+/***/ "./node_modules/axios/lib/defaults/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/axios/lib/defaults/index.js ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
-var utils = __webpack_require__(/*! ./utils */ "./node_modules/axios/lib/utils.js");
-var normalizeHeaderName = __webpack_require__(/*! ./helpers/normalizeHeaderName */ "./node_modules/axios/lib/helpers/normalizeHeaderName.js");
+var utils = __webpack_require__(/*! ../utils */ "./node_modules/axios/lib/utils.js");
+var normalizeHeaderName = __webpack_require__(/*! ../helpers/normalizeHeaderName */ "./node_modules/axios/lib/helpers/normalizeHeaderName.js");
+var enhanceError = __webpack_require__(/*! ../core/enhanceError */ "./node_modules/axios/lib/core/enhanceError.js");
+var transitionalDefaults = __webpack_require__(/*! ./transitional */ "./node_modules/axios/lib/defaults/transitional.js");
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -1029,20 +1239,39 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(/*! ./adapters/xhr */ "./node_modules/axios/lib/adapters/xhr.js");
+    adapter = __webpack_require__(/*! ../adapters/xhr */ "./node_modules/axios/lib/adapters/xhr.js");
   } else if (typeof process !== 'undefined' && Object.prototype.toString.call(process) === '[object process]') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(/*! ./adapters/http */ "./node_modules/axios/lib/adapters/xhr.js");
+    adapter = __webpack_require__(/*! ../adapters/http */ "./node_modules/axios/lib/adapters/xhr.js");
   }
   return adapter;
 }
 
+function stringifySafely(rawValue, parser, encoder) {
+  if (utils.isString(rawValue)) {
+    try {
+      (parser || JSON.parse)(rawValue);
+      return utils.trim(rawValue);
+    } catch (e) {
+      if (e.name !== 'SyntaxError') {
+        throw e;
+      }
+    }
+  }
+
+  return (encoder || JSON.stringify)(rawValue);
+}
+
 var defaults = {
+
+  transitional: transitionalDefaults,
+
   adapter: getDefaultAdapter(),
 
   transformRequest: [function transformRequest(data, headers) {
     normalizeHeaderName(headers, 'Accept');
     normalizeHeaderName(headers, 'Content-Type');
+
     if (utils.isFormData(data) ||
       utils.isArrayBuffer(data) ||
       utils.isBuffer(data) ||
@@ -1059,20 +1288,32 @@ var defaults = {
       setContentTypeIfUnset(headers, 'application/x-www-form-urlencoded;charset=utf-8');
       return data.toString();
     }
-    if (utils.isObject(data)) {
-      setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
-      return JSON.stringify(data);
+    if (utils.isObject(data) || (headers && headers['Content-Type'] === 'application/json')) {
+      setContentTypeIfUnset(headers, 'application/json');
+      return stringifySafely(data);
     }
     return data;
   }],
 
   transformResponse: [function transformResponse(data) {
-    /*eslint no-param-reassign:0*/
-    if (typeof data === 'string') {
+    var transitional = this.transitional || defaults.transitional;
+    var silentJSONParsing = transitional && transitional.silentJSONParsing;
+    var forcedJSONParsing = transitional && transitional.forcedJSONParsing;
+    var strictJSONParsing = !silentJSONParsing && this.responseType === 'json';
+
+    if (strictJSONParsing || (forcedJSONParsing && utils.isString(data) && data.length)) {
       try {
-        data = JSON.parse(data);
-      } catch (e) { /* Ignore */ }
+        return JSON.parse(data);
+      } catch (e) {
+        if (strictJSONParsing) {
+          if (e.name === 'SyntaxError') {
+            throw enhanceError(e, this, 'E_JSON_PARSE');
+          }
+          throw e;
+        }
+      }
     }
+
     return data;
   }],
 
@@ -1086,15 +1327,16 @@ var defaults = {
   xsrfHeaderName: 'X-XSRF-TOKEN',
 
   maxContentLength: -1,
+  maxBodyLength: -1,
 
   validateStatus: function validateStatus(status) {
     return status >= 200 && status < 300;
-  }
-};
+  },
 
-defaults.headers = {
-  common: {
-    'Accept': 'application/json, text/plain, */*'
+  headers: {
+    common: {
+      'Accept': 'application/json, text/plain, */*'
+    }
   }
 };
 
@@ -1108,7 +1350,39 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../process/browser.js */ "./node_modules/process/browser.js")))
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/defaults/transitional.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/axios/lib/defaults/transitional.js ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = {
+  silentJSONParsing: true,
+  forcedJSONParsing: true,
+  clarifyTimeoutError: false
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/env/data.js":
+/*!********************************************!*\
+  !*** ./node_modules/axios/lib/env/data.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "version": "0.26.1"
+};
 
 /***/ }),
 
@@ -1149,7 +1423,6 @@ var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/util
 
 function encode(val) {
   return encodeURIComponent(val).
-    replace(/%40/gi, '@').
     replace(/%3A/gi, ':').
     replace(/%24/g, '$').
     replace(/%2C/gi, ',').
@@ -1329,7 +1602,32 @@ module.exports = function isAbsoluteURL(url) {
   // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
   // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
   // by any combination of letters, digits, plus, period, or hyphen.
-  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
+  return /^([a-z][a-z\d+\-.]*:)?\/\//i.test(url);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/isAxiosError.js":
+/*!********************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/isAxiosError.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/utils.js");
+
+/**
+ * Determines whether the payload is an error thrown by Axios
+ *
+ * @param {*} payload The value to test
+ * @returns {boolean} True if the payload is an error thrown by Axios, otherwise false
+ */
+module.exports = function isAxiosError(payload) {
+  return utils.isObject(payload) && (payload.isAxiosError === true);
 };
 
 
@@ -1543,6 +1841,100 @@ module.exports = function spread(callback) {
 
 /***/ }),
 
+/***/ "./node_modules/axios/lib/helpers/validator.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/validator.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var VERSION = __webpack_require__(/*! ../env/data */ "./node_modules/axios/lib/env/data.js").version;
+
+var validators = {};
+
+// eslint-disable-next-line func-names
+['object', 'boolean', 'number', 'function', 'string', 'symbol'].forEach(function(type, i) {
+  validators[type] = function validator(thing) {
+    return typeof thing === type || 'a' + (i < 1 ? 'n ' : ' ') + type;
+  };
+});
+
+var deprecatedWarnings = {};
+
+/**
+ * Transitional option validator
+ * @param {function|boolean?} validator - set to false if the transitional option has been removed
+ * @param {string?} version - deprecated version / removed since version
+ * @param {string?} message - some message with additional info
+ * @returns {function}
+ */
+validators.transitional = function transitional(validator, version, message) {
+  function formatMessage(opt, desc) {
+    return '[Axios v' + VERSION + '] Transitional option \'' + opt + '\'' + desc + (message ? '. ' + message : '');
+  }
+
+  // eslint-disable-next-line func-names
+  return function(value, opt, opts) {
+    if (validator === false) {
+      throw new Error(formatMessage(opt, ' has been removed' + (version ? ' in ' + version : '')));
+    }
+
+    if (version && !deprecatedWarnings[opt]) {
+      deprecatedWarnings[opt] = true;
+      // eslint-disable-next-line no-console
+      console.warn(
+        formatMessage(
+          opt,
+          ' has been deprecated since v' + version + ' and will be removed in the near future'
+        )
+      );
+    }
+
+    return validator ? validator(value, opt, opts) : true;
+  };
+};
+
+/**
+ * Assert object's properties type
+ * @param {object} options
+ * @param {object} schema
+ * @param {boolean?} allowUnknown
+ */
+
+function assertOptions(options, schema, allowUnknown) {
+  if (typeof options !== 'object') {
+    throw new TypeError('options must be an object');
+  }
+  var keys = Object.keys(options);
+  var i = keys.length;
+  while (i-- > 0) {
+    var opt = keys[i];
+    var validator = schema[opt];
+    if (validator) {
+      var value = options[opt];
+      var result = value === undefined || validator(value, opt, options);
+      if (result !== true) {
+        throw new TypeError('option ' + opt + ' must be ' + result);
+      }
+      continue;
+    }
+    if (allowUnknown !== true) {
+      throw Error('Unknown option ' + opt);
+    }
+  }
+}
+
+module.exports = {
+  assertOptions: assertOptions,
+  validators: validators
+};
+
+
+/***/ }),
+
 /***/ "./node_modules/axios/lib/utils.js":
 /*!*****************************************!*\
   !*** ./node_modules/axios/lib/utils.js ***!
@@ -1555,8 +1947,6 @@ module.exports = function spread(callback) {
 
 var bind = __webpack_require__(/*! ./helpers/bind */ "./node_modules/axios/lib/helpers/bind.js");
 
-/*global toString:true*/
-
 // utils is a library of generic helper functions non-specific to axios
 
 var toString = Object.prototype.toString;
@@ -1568,7 +1958,7 @@ var toString = Object.prototype.toString;
  * @returns {boolean} True if value is an Array, otherwise false
  */
 function isArray(val) {
-  return toString.call(val) === '[object Array]';
+  return Array.isArray(val);
 }
 
 /**
@@ -1609,7 +1999,7 @@ function isArrayBuffer(val) {
  * @returns {boolean} True if value is an FormData, otherwise false
  */
 function isFormData(val) {
-  return (typeof FormData !== 'undefined') && (val instanceof FormData);
+  return toString.call(val) === '[object FormData]';
 }
 
 /**
@@ -1623,7 +2013,7 @@ function isArrayBufferView(val) {
   if ((typeof ArrayBuffer !== 'undefined') && (ArrayBuffer.isView)) {
     result = ArrayBuffer.isView(val);
   } else {
-    result = (val) && (val.buffer) && (val.buffer instanceof ArrayBuffer);
+    result = (val) && (val.buffer) && (isArrayBuffer(val.buffer));
   }
   return result;
 }
@@ -1656,6 +2046,21 @@ function isNumber(val) {
  */
 function isObject(val) {
   return val !== null && typeof val === 'object';
+}
+
+/**
+ * Determine if a value is a plain Object
+ *
+ * @param {Object} val The value to test
+ * @return {boolean} True if value is a plain Object, otherwise false
+ */
+function isPlainObject(val) {
+  if (toString.call(val) !== '[object Object]') {
+    return false;
+  }
+
+  var prototype = Object.getPrototypeOf(val);
+  return prototype === null || prototype === Object.prototype;
 }
 
 /**
@@ -1715,7 +2120,7 @@ function isStream(val) {
  * @returns {boolean} True if value is a URLSearchParams object, otherwise false
  */
 function isURLSearchParams(val) {
-  return typeof URLSearchParams !== 'undefined' && val instanceof URLSearchParams;
+  return toString.call(val) === '[object URLSearchParams]';
 }
 
 /**
@@ -1725,7 +2130,7 @@ function isURLSearchParams(val) {
  * @returns {String} The String freed of excess whitespace
  */
 function trim(str) {
-  return str.replace(/^\s*/, '').replace(/\s*$/, '');
+  return str.trim ? str.trim() : str.replace(/^\s+|\s+$/g, '');
 }
 
 /**
@@ -1814,34 +2219,12 @@ function forEach(obj, fn) {
 function merge(/* obj1, obj2, obj3, ... */) {
   var result = {};
   function assignValue(val, key) {
-    if (typeof result[key] === 'object' && typeof val === 'object') {
+    if (isPlainObject(result[key]) && isPlainObject(val)) {
       result[key] = merge(result[key], val);
-    } else {
-      result[key] = val;
-    }
-  }
-
-  for (var i = 0, l = arguments.length; i < l; i++) {
-    forEach(arguments[i], assignValue);
-  }
-  return result;
-}
-
-/**
- * Function equal to merge with the difference being that no reference
- * to original objects is kept.
- *
- * @see merge
- * @param {Object} obj1 Object to merge
- * @returns {Object} Result of all merge properties
- */
-function deepMerge(/* obj1, obj2, obj3, ... */) {
-  var result = {};
-  function assignValue(val, key) {
-    if (typeof result[key] === 'object' && typeof val === 'object') {
-      result[key] = deepMerge(result[key], val);
-    } else if (typeof val === 'object') {
-      result[key] = deepMerge({}, val);
+    } else if (isPlainObject(val)) {
+      result[key] = merge({}, val);
+    } else if (isArray(val)) {
+      result[key] = val.slice();
     } else {
       result[key] = val;
     }
@@ -1872,6 +2255,19 @@ function extend(a, b, thisArg) {
   return a;
 }
 
+/**
+ * Remove byte order marker. This catches EF BB BF (the UTF-8 BOM)
+ *
+ * @param {string} content with BOM
+ * @return {string} content value without BOM
+ */
+function stripBOM(content) {
+  if (content.charCodeAt(0) === 0xFEFF) {
+    content = content.slice(1);
+  }
+  return content;
+}
+
 module.exports = {
   isArray: isArray,
   isArrayBuffer: isArrayBuffer,
@@ -1881,6 +2277,7 @@ module.exports = {
   isString: isString,
   isNumber: isNumber,
   isObject: isObject,
+  isPlainObject: isPlainObject,
   isUndefined: isUndefined,
   isDate: isDate,
   isFile: isFile,
@@ -1891,9 +2288,9 @@ module.exports = {
   isStandardBrowserEnv: isStandardBrowserEnv,
   forEach: forEach,
   merge: merge,
-  deepMerge: deepMerge,
   extend: extend,
-  trim: trim
+  trim: trim,
+  stripBOM: stripBOM
 };
 
 
@@ -37291,6 +37688,8 @@ try {
   window.$ = window.jQuery = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 
   __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
+
+  __webpack_require__(/*! admin-lte */ "./node_modules/admin-lte/dist/js/adminlte.min.js");
 } catch (e) {}
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>DDDS</title>
+    <title>Digital Database System</title>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="keywords" content="">
