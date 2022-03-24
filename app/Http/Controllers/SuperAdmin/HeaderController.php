@@ -4,6 +4,7 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Header;
 
 class HeaderController extends Controller
 {
@@ -14,7 +15,8 @@ class HeaderController extends Controller
      */
     public function index()
     {
-        //
+         $headers = Header::orderBy('id', 'DESC')->get();
+      return view('superadmin.header.index', compact('headers'));
     }
 
     /**
@@ -24,7 +26,7 @@ class HeaderController extends Controller
      */
     public function create()
     {
-        //
+        return view('superadmin.header.create');
     }
 
     /**
