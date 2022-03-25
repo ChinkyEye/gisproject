@@ -39,8 +39,14 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('/agency','AgencyController');
     Route::get('/agency/active/{id}', 'AgencyController@isActive')->name('agency.active');
 
-
-
+    //for user
+    Route::resource('/user', 'UserController');
+        Route::get('/user/active/{id}', 'UserController@isActive')->name('user.active');
 
 });
 
+
+Route::namespace('User')->prefix('user')->name('user.')->middleware(['user','auth'])->group(function(){
+    Route::get('/', 'HomeController@index')->name('home');
+
+});

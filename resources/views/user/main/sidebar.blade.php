@@ -3,10 +3,10 @@
     <img src="{{URL::to('/')}}/image/logo.png" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
     @php preg_match_all('/(?<=\s|^)[a-z]/i', Auth::user()->getSchool->school_name, $schools); @endphp
     <span class="brand-text font-weight-light">{{strtoupper(implode('', $schools[0]))}} 
-    @if(Auth::user()->getBatch)
+      @if(Auth::user()->getBatch)
       ({{Auth::user()->getBatch->name}})
-    @endif
-  </span>
+      @endif
+    </span>
   </a> --}}
   <div class="sidebar">
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
@@ -24,38 +24,13 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <a href="{{ route('superadmin.header.index')}}" class="nav-link {{ (request()->is('home/header*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-calendar-alt"></i>
-            <p>
-             Header
-           </p>
-         </a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ route('superadmin.menu.index')}}" class="nav-link {{ (request()->is('home/menu*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-calendar-alt"></i>
-            <p>
-              Menu
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ route('superadmin.agency.index')}}" class="nav-link {{ (request()->is('home/agency*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-calendar-alt"></i>
-            <p>
-              Agency
-            </p>
-          </a>
-        </li>  
-         <li class="nav-item">
-          <a href="{{ route('superadmin.user.index')}}" class="nav-link {{ (request()->is('home/user*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-calendar-alt"></i>
-            <p>
-             User
-            </p>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+
+       </li>
+       <li class="nav-item">
+      
+      </li>
+
+    </ul>
+  </nav>
+</div>
 </aside>
