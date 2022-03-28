@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">
-            <p class="text-danger m-0">Agency / Office List</p>
+            <p class="text-danger m-0">Agency List</p>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
