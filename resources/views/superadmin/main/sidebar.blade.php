@@ -31,6 +31,14 @@
            </p>
          </a>
         </li>
+         <li class="nav-item">
+          <a href="{{ route('superadmin.slider.index')}}" class="nav-link {{ (request()->is('home/slider*')) ? 'active' : '' }}">
+            <i class="nav-icon fas fa-calendar-alt"></i>
+            <p>
+            Slider
+            </p>
+          </a>
+        </li>
         <li class="nav-item">
           <a href="{{ route('superadmin.menu.index')}}" class="nav-link {{ (request()->is('home/menu*')) ? 'active' : '' }}">
             <i class="nav-icon fas fa-calendar-alt"></i>
@@ -54,7 +62,7 @@
              User
             </p>
           </a>
-        </li>
+        </li> 
       </ul>
     </nav>
   </div>

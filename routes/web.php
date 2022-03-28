@@ -43,6 +43,8 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('/user', 'UserController');
         Route::get('/user/active/{id}', 'UserController@isActive')->name('user.active');
 
+    Route::resource('/slider', 'SliderController');
+        Route::get('/slider/active/{id}', 'SliderController@isActive')->name('slider.active');
 });
 
 

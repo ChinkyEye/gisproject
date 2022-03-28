@@ -4,12 +4,12 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Header;
-use File;
+use App\Slider;
 use Auth;
+use File;
 use Response;
 
-class HeaderController extends Controller
+class SliderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,8 @@ class HeaderController extends Controller
      */
     public function index()
     {
-         $headers = Header::orderBy('id', 'DESC')->get();
-      return view('superadmin.header.index', compact('headers'));
+        $sliders = Slider::orderBy('id', 'DESC')->get();
+       return view('superadmin.slider.index', compact('sliders'));
     }
 
     /**
@@ -29,7 +29,7 @@ class HeaderController extends Controller
      */
     public function create()
     {
-        return view('superadmin.header.create');
+        return view('superadmin.slider.create');
     }
 
     /**
@@ -40,16 +40,15 @@ class HeaderController extends Controller
      */
     public function store(Request $request)
     {
-        
-      $this->validate($request, [
+         $this->validate($request, [
             'name' => 'required',
-            'image' => 'required',
-            'slogan' => 'required',
+            'image' => 'required'
              ]);
          
         $uppdf = $request->file('image');
         if($uppdf != ""){
-            $destinationPath = 'images/logo/';
+            $destinationPath = 'images/slider/';
+            // $destinationPath = 'images/slider/'.$request->name;
             $extension = $uppdf->getClientOriginalExtension();
             $fileName = md5(mt_rand()).'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
@@ -58,10 +57,9 @@ class HeaderController extends Controller
         }else{
             $fileName = Null;
         }
-       $headers = Header::create([
+       $sliders = Slider::create([
             'name' => $request['name'],
             'image'=> $fileName,
-            'slogan' => $request['slogan'],
             'is_active' => '1',
             'date' => date("Y-m-d"),
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
@@ -72,10 +70,8 @@ class HeaderController extends Controller
           'message' => 'Data added successfully!',
           'alert-type' => 'success'
         );
-        return redirect()->route('superadmin.header.index')->with('Success', 'header updated successfully.');
+        return redirect()->route('superadmin.slider.index')->with('success', 'Slider added successfully');  
     }
-
-  
 
     /**
      * Display the specified resource.
@@ -96,8 +92,8 @@ class HeaderController extends Controller
      */
     public function edit($id)
     {
-      $headers = Header::find($id);
-      return view('superadmin.header.edit', compact('headers'));
+        $sliders = Slider::find($id);
+        return view('superadmin.slider.edit',compact('sliders'));
     }
 
     /**
@@ -107,12 +103,11 @@ class HeaderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Header $header)
-    {
-        $this->validate($request, [
+    public function update(Request $request,Slider $slider)
+        
+        {
+            $this->validate($request, [
           'name' => 'required',
-          'slogan' => 'required',
-
         ]);
         $all_data = $request->all();
         $uppdf = $request->file('image');
@@ -120,9 +115,9 @@ class HeaderController extends Controller
           $this->validate($request, [
             'image' => 'required|mimes:jpeg,jpg|max:1024',
           ]);
-         
-          $destinationPath = 'images/logo/';
-          $oldFilename = $destinationPath.'/'.$header->image;
+          // $destinationPath = 'images/slider/'.$slider->name;
+          $destinationPath = 'images/slider/';
+          $oldFilename = $destinationPath.'/'.$slider->image;
 
           $extension = $uppdf->getClientOriginalExtension();
           $fileName = md5(mt_rand()).'.'.$extension;
@@ -134,10 +129,13 @@ class HeaderController extends Controller
           }
         }
         $all_data['updated_by'] = Auth::user()->id;
-        $header->update($all_data);
-        $header->update();
-       
-        return redirect()->route('superadmin.header.index')->with('success', 'header updated successfully.');
+        $slider->update($all_data);
+        $slider->update();
+        $pass = array(
+            'message' => 'Data updated successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('superadmin.slider.index')->with($pass);
     }
 
     /**
@@ -148,32 +146,32 @@ class HeaderController extends Controller
      */
     public function destroy($id)
     {
-        $headers = Header::find($id);
-        $destinationPath = 'images/logo/';
-        $oldFilename = $destinationPath.'/'.$headers->image;
+        $sliders = Slider::find($id);
 
-        if($headers->delete()){
+        $destinationPath = 'images/slider/';
+        $oldFilename = $destinationPath.'/'.$sliders->image;
+
+        if($sliders->delete()){
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
                 // File::deleteDirectory($destinationPath);
             }
             $notification = array(
-              'message' => $headers->name.' is deleted successfully!',
+              'message' => $sliders->name.' is deleted successfully!',
               'status' => 'success'
           );
         }else{
             $notification = array(
-              'message' => $headers->name.' could not be deleted!',
+              'message' => $sliders->name.' could not be deleted!',
               'status' => 'error'
           );
         }
         return Response::json($notification);
     }
-   
-     public function isActive(Request $request,$id)
+    public function isActive(Request $request,$id)
     {
-        $get_is_active = Header::where('id',$id)->value('is_active');
-        $isactive = Header::find($id);
+        $get_is_active = Slider::where('id',$id)->value('is_active');
+        $isactive = Slider::find($id);
         if($get_is_active == 0){
         $isactive->is_active = 1;
         $notification = array(
