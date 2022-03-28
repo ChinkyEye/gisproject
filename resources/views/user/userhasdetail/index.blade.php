@@ -1,19 +1,18 @@
-@extends('superadmin.main.app')
+@extends('user.main.app')
 @push('style')
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet"/>
 @endpush
 @section('content')
-<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('superadmin.','',Route::currentRouteName()), ".")); ?>
 <div>
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-6">
-            <p class="text-danger m-0">User List</p>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-6">
+          <p class="text-danger m-0">User Detail</p>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
     <!-- /.content-header -->
     <!-- Main content -->
     <section class="content">
@@ -26,46 +25,45 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-md-2">
-                    <a href="{{route('superadmin.user.create')}}" class="btn btn-flat btn-danger btn-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></a>
+                    <a href="{{route('superadmin.menu.create')}}" class="btn btn-flat btn-danger btn-block text-capitalize" style="color:#fff">Add Detail <i class="fas fa-plus fa-fw"></i></a>
                   </div>
                   <div class="col-md-10">
+                    {{-- <input type="text" class="form-control" placeholder="Search by name"> --}}
                   </div>
                 </div>
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table table-sm table-bordered table-hover">
-                    <thead class="bg-dark">
-                      <tr class="text-center">
-                        <th width="10">SN</th>
-                        <th width="150">Name</th>
-                        <th width="150">Created By</th>
-                        <th width="10">Status</th>
-                        <th width="100">Action</th>
+                    <thead class="thead-dark">                  
+                      <tr>
+                        <th>SN</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Action</th>
                       </tr>
-                    </thead> 
+                    </thead>
                     <tbody>
-                      @foreach($users as $key => $user)
-                      <tr class="text-center">
+                      {{-- @foreach($menus as $key => $menu)
+                      <tr class="{{$menu->is_active == 1 ? '' : 'table-danger'}}">
                         <td>{{$key + 1}}</td>
-                        <td>{{$user->name}}</td>
-                        <td>{{$user->getUser->name}}</td>
+                        <td>{{$menu->name}}</td>
                         <td>
-
-                          <a href="{{ route('superadmin.user.active',$user->id) }}" data-placement="top" title="{{ $user->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
-                            <i class="nav-icon fas {{ $user->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
+                          <a href="{{ route('superadmin.menu.active',$menu->id) }}" data-placement="top" title="{{ $menu->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
+                            <i class="nav-icon fas {{ $menu->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
                           </a>
                         </td>
                         <td>
-                          <a href="{{ route('superadmin.user.edit',$user->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
-                          <form action='javascript:void(0)' data_url="{{route('superadmin.user.destroy',$user->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
+                          <a href="{{ route('superadmin.menu.edit',$menu->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
+                          <a href="{{ route('superadmin.menuhasdropdown.index',$menu->id) }}" class="btn btn-xs btn-outline-info" title="Add menu Schedule"><i class="fas fa-plus"></i></a>
+                          <form action='javascript:void(0)' data_url="{{route('superadmin.menu.destroy',$menu->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
                             <input type='hidden' name='_token' value='".csrf_token()."'>
                             <input name='_method' type='hidden' value='DELETE'>
                             <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
                           </form>
                         </td>
                       </tr>
-                      @endforeach
+                      @endforeach --}}
                     </tbody>
                   </table>
                 </div>
@@ -83,9 +81,9 @@
   </div>
 @endsection
 @push('javascript')
-  <script>
-    function myFunction(el) {
-      const url = $(el).attr('data_url');
+<script>
+  function myFunction(el) {
+    const url = $(el).attr('data_url');
       var token = $('meta[name="csrf-token"]').attr('content');
       swal({
         title: 'Are you sure?',
@@ -135,7 +133,3 @@
   }
 </script>
 @endpush
-
-
-
-

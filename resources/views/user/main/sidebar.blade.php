@@ -18,7 +18,7 @@
         <span class="border border-light rounded-circle py-1 {{count($matches[0]) == 1 ? 'px-2' : 'px-'.(3-count($matches[0]))}} bg-success text-light text-capitalize elevation-3">{{strtoupper(implode('', $matches[0]))}}</span>
       </div>
       <div class="info">
-        <a href="#" class="d-block">{{Auth::user()->name}}</a>
+        <a href="{{ route('user.home')}}" class="d-block">{{Auth::user()->name}}</a>
       </div>
     </div>
     <nav class="mt-2">
