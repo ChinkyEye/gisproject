@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('superadmin.main.app');
+        return view('superadmin.main.home');
     }
 
     /**
