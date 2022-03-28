@@ -18,6 +18,7 @@ class CreateAgenciesTable extends Migration
             $table->string('contact_no',10);
             $table->text('website_link')->nullable();
             $table->string('image');
+            $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);
             $table->string('date',10);
