@@ -83,9 +83,9 @@
   </div>
 @endsection
 @push('javascript')
-<script>
-  function myFunction(el) {
-    const url = $(el).attr('data_url');
+  <script>
+    function myFunction(el) {
+      const url = $(el).attr('data_url');
       var token = $('meta[name="csrf-token"]').attr('content');
       swal({
         title: 'Are you sure?',
