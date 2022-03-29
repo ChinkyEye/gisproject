@@ -135,7 +135,7 @@ class SliderController extends Controller
             'message' => 'Data updated successfully!',
             'alert-type' => 'success'
         );
-        return redirect()->route('superadmin.slider.index')->with($pass);
+        return redirect()->route('superadmin.slider.index')->with('success','Slider updated successfully');
     }
 
     /**

@@ -7,6 +7,11 @@
 <div>
   <div class="content-header">
     <div class="container-fluid">
+      @if(session()->has('success'))
+      <div class="alert alert-success">
+        {{ session()->get('success') }}
+      </div>
+      @endif
       <div class="row">
         <div class="col-sm-6">
           <p class="text-danger m-0">Slider List</p>
@@ -36,16 +41,16 @@
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-sm table-bordered table-hover">
-                  <thead class="thead-dark">                  
+                  <thead class="thead-dark" style="text-align: center">                  
                     <tr>
-                      <th>SN</th>
+                      <th >SN</th>
                       <th>Name</th>
                       <th>Image</th>
                       <th>Status</th>
                       <th>Action</th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody style="text-align: center">
                     @foreach($sliders as $key => $slider)
                     <tr class="{{$slider->is_active == 1 ? '' : 'table-danger'}}">
                       <td>{{$key + 1}}</td>
