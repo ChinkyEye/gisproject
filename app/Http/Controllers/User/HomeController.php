@@ -4,6 +4,9 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\User;
+use Auth;
+
 
 class HomeController extends Controller
 {
@@ -14,7 +17,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('user.main.app');
+        $datas = User::where('id', Auth::user()->id)
+                        ->where('user_type',2)
+                        ->with('getUserDetail')
+                        ->first();
+                        // dd($datas);
+        return view('user.main.home', compact('datas'));
     }
 
     /**

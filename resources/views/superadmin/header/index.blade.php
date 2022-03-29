@@ -1,5 +1,4 @@
 @extends('superadmin.main.app')
-
 @push('style')
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet"/>
 @endpush

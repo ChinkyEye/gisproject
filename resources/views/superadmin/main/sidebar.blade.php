@@ -41,7 +41,7 @@
         </li>
         <li class="nav-item">
           <a href="{{ route('superadmin.menu.index')}}" class="nav-link {{ (request()->is('home/menu*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-calendar-alt"></i>
+            <i class="nav-icon fas fa-list"></i>
             <p>
               Menu
             </p>
@@ -57,9 +57,18 @@
         </li>  
          <li class="nav-item">
           <a href="{{ route('superadmin.user.index')}}" class="nav-link {{ (request()->is('home/user*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-calendar-alt"></i>
+            <i class="nav-icon fas fa-user"></i>
             <p>
              User
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('superadmin.sidemenu.index')}}" class="nav-link {{ (request()->is('home/sidemenu*')) ? 'active' : '' }}">
+            <i class="nav-icon fas fa-bars"></i>
+            {{-- <i class="nav-icon fas fa-calendar-alt"></i> --}}
+            <p>
+             Side Menu
             </p>
           </a>
         </li> 

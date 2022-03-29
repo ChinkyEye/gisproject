@@ -22,7 +22,7 @@
       <div class="card-body">
         @csrf
         <div class="form-group">
-          <label for="name">Name</label>
+          <label for="name">Name<span class="text-danger">*</span></label>
           <input type="text"  class="form-control max" id="name" placeholder="Enter name" name="name" autocomplete="off" autofocus value="{{ old('name') }}">
           @error('name')
           <span class="text-danger font-italic" role="alert">
@@ -30,42 +30,46 @@
           </span>
           @enderror
         </div>
-        <div class="form-group">
-          <label for="name">Address</label>
-          <input type="text"  class="form-control max" id="address" placeholder="Enter address" name="address" autocomplete="off" autofocus value="{{ old('address') }}">
-          @error('address')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
+        <div class="row">
+          <div class="form-group col-md">
+            <label for="name">Address<span class="text-danger">*</span></label>
+            <input type="text"  class="form-control max" id="address" placeholder="Enter address" name="address" autocomplete="off" autofocus value="{{ old('address') }}">
+            @error('address')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+          <div class="form-group col-md">
+            <label for="phone">Phone<span class="text-danger">*</span></label>
+            <input type="text"  class="form-control max" id="phone" placeholder="Enter phone" name="phone" autocomplete="off" autofocus value="{{ old('phone') }}">
+            @error('phone')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
         </div>
-        <div class="form-group">
-          <label for="phone">Phone</label>
-          <input type="text"  class="form-control max" id="phone" placeholder="Enter phone" name="phone" autocomplete="off" autofocus value="{{ old('phone') }}">
-          @error('phone')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
+        <div class="row">
+          <div class="form-group col-md">
+            <label for="email">Email<span class="text-danger">*</span></label>
+            <input type="text"  class="form-control max" id="email" placeholder="Enter email" name="email" autocomplete="off" autofocus value="{{ old('email') }}">
+            @error('email')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+          <div class="form-group col-md">
+            <label for="password">Password<span class="text-danger">*</span></label>
+            <input type="text"  class="form-control max" id="password" placeholder="Enter password" name="password" autocomplete="off" autofocus value="{{ old('email') }}">
+            @error('password')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>      
         </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="text"  class="form-control max" id="email" placeholder="Enter email" name="email" autocomplete="off" autofocus value="{{ old('email') }}">
-          @error('email')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="text"  class="form-control max" id="password" placeholder="Enter password" name="password" autocomplete="off" autofocus value="{{ old('email') }}">
-          @error('password')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div>      
       </div>
       <div class="card-footer justify-content-between">
         <button type="submit" class="btn btn-info text-capitalize">Save</button>
