@@ -71,45 +71,6 @@
                 </div>
                 {{-- {!! $menus->links() !!} --}}
               </div>
-<<<<<<< HEAD
-            </div><!-- /.card-header -->
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-sm table-bordered table-hover">
-                  <thead class="thead-dark" style="text-align: center">                  
-                    <tr>
-                      <th>SN</th>
-                      <th>Name</th>
-                      <th>Status</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody style="text-align: center">
-                    @foreach($users as $key => $user)
-                    <tr class="{{$user->is_active == 1 ? '' : 'table-danger'}}">
-                      <td>{{$key + 1}}</td>
-                      <td>{{$user->name}}</td>
-                      <td>
-                        <a href="{{ route('superadmin.user.active',$user->id) }}" data-placement="top" title="{{ $user->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
-                          <i class="nav-icon fas {{ $user->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
-                        </a>
-                      </td>
-                      <td>
-                        <a href="{{ route('superadmin.user.edit',$user->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
-                        <form action='javascript:void(0)' data_url="{{route('superadmin.user.destroy',$user->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
-                          <input type='hidden' name='_token' value='".csrf_token()."'>
-                          <input name='_method' type='hidden' value='DELETE'>
-                          <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
-                        </form>
-                      </td>
-                    </tr>
-                    @endforeach
-                  </tbody>
-                </table>
-              </div>
-              
-=======
->>>>>>> origin/master
             </div>
             <!-- /.card -->
           </section>
