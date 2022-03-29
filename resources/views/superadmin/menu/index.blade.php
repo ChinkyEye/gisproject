@@ -36,7 +36,7 @@
               <div class="card-body">
                 <div class="table-responsive">
                   <table class="table table-sm table-bordered table-hover">
-                    <thead class="thead-dark">                  
+                    <thead class="thead-dark" style="text-align: center">                  
                       <tr>
                         <th>SN</th>
                         <th>Name</th>
@@ -44,7 +44,7 @@
                         <th>Action</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="text-align: center">
                       @foreach($menus as $key => $menu)
                       <tr class="{{$menu->is_active == 1 ? '' : 'table-danger'}}">
                         <td>{{$key + 1}}</td>
