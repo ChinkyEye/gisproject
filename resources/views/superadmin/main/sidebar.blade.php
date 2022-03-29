@@ -40,6 +40,14 @@
           </a>
         </li>
         <li class="nav-item">
+          <a href="{{ route('superadmin.sidemenu.index')}}" class="nav-link {{ (request()->is('home/sidemenu*')) ? 'active' : '' }}">
+            <i class="nav-icon fas fa-bars"></i>
+            <p>
+             Side Menu
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
           <a href="{{ route('superadmin.menu.index')}}" class="nav-link {{ (request()->is('home/menu*')) ? 'active' : '' }}">
             <i class="nav-icon fas fa-list"></i>
             <p>
@@ -64,14 +72,22 @@
           </a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('superadmin.sidemenu.index')}}" class="nav-link {{ (request()->is('home/sidemenu*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-bars"></i>
-            {{-- <i class="nav-icon fas fa-calendar-alt"></i> --}}
+          <a href="{{ route('superadmin.coreperson.index')}}" class="nav-link {{ (request()->is('home/coreperson*')) ? 'active' : '' }}">
+            <i class="nav-icon fas fa-users"></i>
             <p>
-             Side Menu
+             Core Person
             </p>
           </a>
-        </li> 
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('superadmin.employee.index')}}" class="nav-link {{ (request()->is('home/employee*')) ? 'active' : '' }}">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+             Employee
+            </p>
+          </a>
+        </li>
+
       </ul>
     </nav>
   </div>

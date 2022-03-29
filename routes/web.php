@@ -49,6 +49,13 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('/sidemenu', 'SideMenuController');
     Route::get('/sidemenu/active/{id}', 'SideMenuController@isActive')->name('sidemenu.active');
 
+    Route::resource('/coreperson','CorePersonController'); 
+    Route::get('/coreperson/active/{id}', 'CorePersonController@isActive')->name('coreperson.active');
+
+    Route::resource('/employee','EmployeeController');
+    Route::get('/employee/active/{id}', 'EmployeeController@isActive')->name('employee.active');
+
+
 
 });
 
