@@ -78,7 +78,6 @@
              Core Person
             </p>
           </a>
-<<<<<<< HEAD
         </li>  
          <li class="nav-item">
           <a href="{{ route('superadmin.mission.index')}}" class="nav-link {{ (request()->is('home/mission*')) ? 'active' : '' }}">
@@ -98,7 +97,6 @@
             </p>
           </a>
         </li> 
-=======
         </li>
         <li class="nav-item">
           <a href="{{ route('superadmin.employee.index')}}" class="nav-link {{ (request()->is('home/employee*')) ? 'active' : '' }}">
@@ -108,8 +106,6 @@
             </p>
           </a>
         </li>
-
->>>>>>> origin/master
       </ul>
     </nav>
   </div>
