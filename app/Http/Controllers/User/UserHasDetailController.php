@@ -117,4 +117,5 @@ class UserHasDetailController extends Controller
     {
         //
     }
+    
 }

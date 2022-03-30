@@ -19,7 +19,7 @@ class SliderController extends Controller
     public function index()
     {
         $sliders = Slider::orderBy('id', 'DESC')->get();
-       return view('superadmin.slider.index', compact('sliders'));
+        return view('superadmin.slider.index', compact('sliders'));
     }
 
     /**
@@ -40,38 +40,38 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-         $this->validate($request, [
-            'name' => 'required',
-            'image' => 'required'
-             ]);
-         
-        $uppdf = $request->file('image');
-        if($uppdf != ""){
-            $destinationPath = 'images/slider/';
+     $this->validate($request, [
+        'name' => 'required',
+        'image' => 'required'
+    ]);
+     
+     $uppdf = $request->file('image');
+     if($uppdf != ""){
+        $destinationPath = 'images/slider/';
             // $destinationPath = 'images/slider/'.$request->name;
-            $extension = $uppdf->getClientOriginalExtension();
-            $fileName = md5(mt_rand()).'.'.$extension;
-            $uppdf->move($destinationPath, $fileName);
-            $file_path = $destinationPath.'/'.$fileName;
+        $extension = $uppdf->getClientOriginalExtension();
+        $fileName = md5(mt_rand()).'.'.$extension;
+        $uppdf->move($destinationPath, $fileName);
+        $file_path = $destinationPath.'/'.$fileName;
 
-        }else{
-            $fileName = Null;
-        }
-       $sliders = Slider::create([
-            'name' => $request['name'],
-            'image'=> $fileName,
-            'is_active' => '1',
-            'date' => date("Y-m-d"),
-            'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
-            'time' => date("H:i:s"),
-            'created_by' => Auth::user()->id,
-        ]);
-        $pass = array(
-          'message' => 'Data added successfully!',
-          'alert-type' => 'success'
-        );
-        return redirect()->route('superadmin.slider.index')->with('success', 'Slider added successfully');  
+    }else{
+        $fileName = Null;
     }
+    $sliders = Slider::create([
+        'name' => $request['name'],
+        'image'=> $fileName,
+        'is_active' => '1',
+        'date' => date("Y-m-d"),
+        'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+        'time' => date("H:i:s"),
+        'created_by' => Auth::user()->id,
+    ]);
+    $pass = array(
+      'message' => 'Data added successfully!',
+      'alert-type' => 'success'
+  );
+    return redirect()->route('superadmin.slider.index')->with('success', 'Slider added successfully');  
+}
 
     /**
      * Display the specified resource.
@@ -104,17 +104,17 @@ class SliderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,Slider $slider)
-        
-        {
-            $this->validate($request, [
+    
+    {
+        $this->validate($request, [
           'name' => 'required',
-        ]);
+      ]);
         $all_data = $request->all();
         $uppdf = $request->file('image');
         if($uppdf != ""){
           $this->validate($request, [
             'image' => 'required|mimes:jpeg,jpg|max:1024',
-          ]);
+        ]);
           // $destinationPath = 'images/slider/'.$slider->name;
           $destinationPath = 'images/slider/';
           $oldFilename = $destinationPath.'/'.$slider->image;
@@ -126,17 +126,17 @@ class SliderController extends Controller
           $all_data['image'] = $fileName;
           if(File::exists($oldFilename)) {
             File::delete($oldFilename);
-          }
         }
-        $all_data['updated_by'] = Auth::user()->id;
-        $slider->update($all_data);
-        $slider->update();
-        $pass = array(
-            'message' => 'Data updated successfully!',
-            'alert-type' => 'success'
-        );
-        return redirect()->route('superadmin.slider.index')->with('success','Slider updated successfully');
     }
+    $all_data['updated_by'] = Auth::user()->id;
+    $slider->update($all_data);
+    $slider->update();
+    $pass = array(
+        'message' => 'Data updated successfully!',
+        'alert-type' => 'success'
+    );
+    return redirect()->route('superadmin.slider.index')->with('success','Slider updated successfully');
+}
 
     /**
      * Remove the specified resource from storage.
@@ -173,24 +173,24 @@ class SliderController extends Controller
         $get_is_active = Slider::where('id',$id)->value('is_active');
         $isactive = Slider::find($id);
         if($get_is_active == 0){
-        $isactive->is_active = 1;
-        $notification = array(
-          'message' => $isactive->name.' is Active!',
-          'alert-type' => 'success'
-        );
+            $isactive->is_active = 1;
+            $notification = array(
+              'message' => $isactive->name.' is Active!',
+              'alert-type' => 'success'
+          );
         }
         else {
-        $isactive->is_active = 0;
-        $notification = array(
-          'message' => $isactive->name.' is inactive!',
-          'alert-type' => 'error'
-        );
+            $isactive->is_active = 0;
+            $notification = array(
+              'message' => $isactive->name.' is inactive!',
+              'alert-type' => 'error'
+          );
         }
         if(!($isactive->update())){
-        $notification = array(
-          'message' => $isactive->name.' could not be changed!',
-          'alert-type' => 'error'
-        );
+            $notification = array(
+              'message' => $isactive->name.' could not be changed!',
+              'alert-type' => 'error'
+          );
         }
         return back()->with($notification)->withInput();
     }

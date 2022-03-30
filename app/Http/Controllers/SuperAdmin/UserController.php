@@ -45,7 +45,7 @@ class UserController extends Controller
             'name' => 'required',
             'address' => 'required|unique:users',
             'email' => 'required|unique:users',
-            'phone' => 'required',
+            'phone' => 'required|unique:users',
             'password' => 'required',
             'address' => 'required',
             'photo' => 'mimes:jpg,jpeg,png|max:1024',
@@ -117,7 +117,8 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
          $this->validate($request, [
-          'name' => 'required',
+            'name' => 'required',
+                    
         ]);
         $users= User::find($id);
 

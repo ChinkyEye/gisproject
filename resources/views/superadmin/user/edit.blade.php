@@ -23,7 +23,7 @@
         @method('PATCH')
         @csrf
         <div class="form-group">
-          <label for="name">Name</label>
+          <label for="name">Name<span class="text-danger">*</span></label>
           <input type="text"  class="form-control max" id="name" placeholder="Enter name" name="name" autocomplete="off" autofocus value="{{$users->name}}">
           @error('name')
           <span class="text-danger font-italic" role="alert">
@@ -32,7 +32,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="name">Address</label>
+          <label for="name">Address<span class="text-danger">*</span></label>
           <input type="text"  class="form-control max" id="address" placeholder="Enter address" name="address" autocomplete="off" autofocus value="{{$users->address}}">
           @error('address')
           <span class="text-danger font-italic" role="alert">
@@ -41,7 +41,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="phone">Phone</label>
+          <label for="phone">Phone<span class="text-danger">*</span></label>
           <input type="text"  class="form-control max" id="phone" placeholder="Enter phone" name="phone" autocomplete="off" autofocus value="{{$users->phone}}">
           @error('phone')
           <span class="text-danger font-italic" role="alert">
@@ -50,7 +50,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
+          <label for="email">Email<span class="text-danger">*</span></label>
           <input type="text"  class="form-control max" id="email" placeholder="Enter email" name="email" autocomplete="off" autofocus value="{{$users->email}}">
           @error('email')
           <span class="text-danger font-italic" role="alert">

@@ -71,6 +71,24 @@
              Side Menu
             </p>
           </a>
+        </li>  
+         <li class="nav-item">
+          <a href="{{ route('superadmin.mission.index')}}" class="nav-link {{ (request()->is('home/mission*')) ? 'active' : '' }}">
+            <i class="nav-icon fas fa-bars"></i>
+     
+            <p>
+             Mission
+            </p>
+          </a>
+        </li>  
+         <li class="nav-item">
+          <a href="{{ route('superadmin.vision.index')}}" class="nav-link {{ (request()->is('home/vision*')) ? 'active' : '' }}">
+            <i class="nav-icon fas fa-bars"></i>
+            {{-- <i class="nav-icon fas fa-calendar-alt"></i> --}}
+            <p>
+            Vision
+            </p>
+          </a>
         </li> 
       </ul>
     </nav>

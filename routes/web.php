@@ -44,10 +44,16 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
         Route::get('/user/active/{id}', 'UserController@isActive')->name('user.active');
 
     Route::resource('/slider', 'SliderController');
-    Route::get('/slider/active/{id}', 'SliderController@isActive')->name('slider.active');
+        Route::get('/slider/active/{id}', 'SliderController@isActive')->name('slider.active');
 
     Route::resource('/sidemenu', 'SideMenuController');
-    Route::get('/sidemenu/active/{id}', 'SideMenuController@isActive')->name('sidemenu.active');
+        Route::get('/sidemenu/active/{id}', 'SideMenuController@isActive')->name('sidemenu.active');
+
+    Route::resource('/mission', 'MissionController');
+        Route::get('/mission/active/{id}', 'MissionController@isActive')->name('mission.active');
+
+    Route::resource('/vision', 'VisionController');
+        Route::get('/vision/active/{id}', 'VisionController@isActive')->name('vision.active');
 
 
 });

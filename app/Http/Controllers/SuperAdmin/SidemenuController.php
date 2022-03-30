@@ -87,6 +87,9 @@ class SidemenuController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
         $sidemenus = Sidemenu::find($id);
         $all_data = $request->all();
         $all_data['updated_by'] = Auth::user()->id;
