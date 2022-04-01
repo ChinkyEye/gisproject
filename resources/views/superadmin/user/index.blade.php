@@ -63,13 +63,13 @@
                             <input name='_method' type='hidden' value='DELETE'>
                             <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
                           </form>
+                            <a href="{{route('superadmin.user.changepassword',$user->id)}}" class="btn btn-xs btn-outline-info" title="Update">Change password</a>
                         </td>
                       </tr>
                       @endforeach
                     </tbody>
                   </table>
                 </div>
-                {{-- {!! $menus->links() !!} --}}
               </div>
             </div>
             <!-- /.card -->

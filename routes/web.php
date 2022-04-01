@@ -42,6 +42,8 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     //for user
     Route::resource('/user', 'UserController');
         Route::get('/user/active/{id}', 'UserController@isActive')->name('user.active');
+    Route::get('/user/changepassword/{id}', 'UserController@PasswordForm')->name('user.changepassword');
+    Route::post('/user/changepassword/store/{id}', 'UserController@changePassword')->name('changepassword');
 
     Route::resource('/slider', 'SliderController');
         Route::get('/slider/active/{id}', 'SliderController@isActive')->name('slider.active');
