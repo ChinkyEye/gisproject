@@ -115,21 +115,22 @@ class VisionController extends Controller
     public function destroy($id)
     {
         
-     $visions = Misvision::find($id);
+        $visions = Misvision::find($id);
         if($visions->delete()){
             $notification = array(
-              'message' => $visions->name.' is deleted successfully!',
-              'status' => 'success'
-          );
+                'message' => $visions->name.' is deleted successfully!',
+                'status' => 'success'
+            );
         }else{
             $notification = array(
-              'message' => $mission->name.' could not be deleted!',
-              'status' => 'error'
-          );
+                'message' => $mission->name.' could not be deleted!',
+                'status' => 'error'
+            );
         }
         return Response::json($notification);
     }
-     public function isActive(Request $request,$id)
+     
+    public function isActive(Request $request,$id)
     {
         $get_is_active = Misvision::where('id',$id)->value('is_active');
         $isactive = Misvision::find($id);

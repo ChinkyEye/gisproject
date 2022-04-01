@@ -61,6 +61,11 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('/employee','EmployeeController');
     Route::get('/employee/active/{id}', 'EmployeeController@isActive')->name('employee.active');
 
+    Route::resource('/niti','NitiController');
+    Route::get('/niti/active/{id}', 'NitiController@isActive')->name('niti.active');
+    Route::get('/niti/download/{file}','NitiController@downloadfile')->name('niti.downloadfile');
+
+    Route::resource('/notice','NoticeController');
 
 
 });

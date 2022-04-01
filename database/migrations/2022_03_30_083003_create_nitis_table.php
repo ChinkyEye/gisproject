@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMisvisionsTable extends Migration
+class CreateNitisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateMisvisionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('misvisions', function (Blueprint $table) {
+        Schema::create('nitis', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('title');
+            $table->string('document')->nullable();
+            $table->string('description')->nullable();
             $table->integer('type');
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);
@@ -35,6 +37,6 @@ class CreateMisvisionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('misvisions');
+        Schema::dropIfExists('nitis');
     }
 }

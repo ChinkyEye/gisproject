@@ -106,6 +106,22 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{ route('superadmin.niti.index')}}" class="nav-link {{ (request()->is('home/niti*')) ? 'active' : '' }}">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+             Niti
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('superadmin.notice.index')}}" class="nav-link {{ (request()->is('home/notice*')) ? 'active' : '' }}">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+             Notice
+            </p>
+          </a>
+        </li>
       </ul>
     </nav>
   </div>
