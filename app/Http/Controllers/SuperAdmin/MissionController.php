@@ -21,7 +21,7 @@ class MissionController extends Controller
         $missions = Misvision::orderBy('id','DESC')
                             ->where('type','1')
                             ->paginate(10);
-       return view('superadmin.mission.index', compact('missions'));
+        return view('superadmin.mission.index', compact('missions'));
     }
 
     /**
@@ -47,7 +47,7 @@ class MissionController extends Controller
             'name' => 'required',
           
         ]);
-            $missions = Misvision::create([
+        $missions = Misvision::create([
             'name' => $request['name'],
             'is_active' => '1',
             'type' => '1',
@@ -56,11 +56,7 @@ class MissionController extends Controller
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        $pass = array(
-          'message' => 'Data added successfully!',
-          'alert-type' => 'success'
-        );
-        return redirect()->route('superadmin.mission.index')->with($pass)->withInput();
+        return redirect()->route('superadmin.mission.index')->with('alert-success', 'data created succesffully!!!');;
     }
 
     /**
@@ -95,7 +91,7 @@ class MissionController extends Controller
      */
     public function update(Request $request, $id)
     {
-         $this->validate($request, [
+        $this->validate($request, [
             'name' => 'required',
           
         ]);

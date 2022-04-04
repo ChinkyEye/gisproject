@@ -78,7 +78,9 @@ class NitiController extends Controller
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        return redirect()->route('superadmin.niti.index');
+        // session()->flash('alert-success', 'Post successfully updated.');
+        return redirect()->route('superadmin.niti.index')->with('alert-success', 'niti created succesffully!!!!');
+
     }
 
     /**
@@ -114,16 +116,16 @@ class NitiController extends Controller
     public function update(Request $request,Niti $niti)
     {
         // dd($request);
-        // $this->validate($request, [
-        //     'title' => 'required',
-        //     'type' => 'required',
-        //     'description' => 'required',
-        // ]);
-        // if(!$request->document){
-        //     $this->validate($request, [
-        //         'document' => 'required|mimes:pdf',               
-        //     ]);
-        // }
+        $this->validate($request, [
+            'title' => 'required',
+            'type' => 'required',
+            'description' => 'required',
+        ]);
+        if($request->document){
+            $this->validate($request, [
+                'document' => 'required|mimes:pdf',               
+            ]);
+        }
         $all_data = $request->all();
         $uppdf = $request->file('document');
         if($uppdf != ""){
@@ -141,8 +143,10 @@ class NitiController extends Controller
             }
         }
         $all_data['updated_by'] = Auth::user()->id;
-        $niti->update($all_data);
-        return redirect()->route('superadmin.niti.index');
+        if($niti->update($all_data))
+        {
+            return redirect()->route('superadmin.niti.index')->with('alert-success', 'data updated succesffully');;
+        };
     }
 
     /**

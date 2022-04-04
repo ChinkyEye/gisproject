@@ -23,13 +23,13 @@
      @csrf
      <div class="modal-body" >
       <div class="form-group">
-        <label for="name">Title<span class="text-danger">*</span></label>
-        @error('name')
+        <label for="title">Title<span class="text-danger">*</span></label>
+        @error('title')
         <span class="text-danger font-italic" role="alert">
           <strong>{{ $message }}</strong>
         </span>
         @enderror
-        <input type="text"  class="form-control max" id="name" placeholder="Enter Insurance Id" name="name"  autocomplete="off" value="{{ $nitis->title }}">
+        <input type="text"  class="form-control max" id="title" placeholder="Enter Insurance Id" name="title"  autocomplete="off" value="{{ $nitis->title }}">
       </div>
       <div class="form-group">
         <label for="description">Description <span class="text-danger">*</span></label>
@@ -124,6 +124,14 @@
     CKEDITOR.config.removeButtons = 'Anchor';
     CKEDITOR.config.removePlugins = 'stylescombo,link,sourcearea,maximize,image,about,tabletools,scayt';
   });
+</script>
+<script type="text/javascript">
+  function onlyOne(checkbox) {
+    var checkboxes = document.getElementsByName('type')
+    checkboxes.forEach((item) => {
+      if (item !== checkbox) item.checked = false
+    })
+  }
 </script>
 <script type="text/javascript">
   function readURL(input) {

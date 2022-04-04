@@ -41,7 +41,7 @@ class AgencyController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'contact_no' => 'required',
+            'contact_no' => 'required|digits_between:6,10',
             'website_link' => 'required',
             'image' => 'required',
         ]);

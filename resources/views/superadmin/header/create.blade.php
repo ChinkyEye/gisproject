@@ -33,7 +33,7 @@
 
         <div class="form-group">
           <label for="slogan">Slogan<span class="text-danger">*</span></label>
-         <textarea  type="text"  class="form-control max" id="slogan" placeholder="Enter slogan" name="slogan" autocomplete="off" autofocus value="{{ old('slogan') }}"></textarea>
+         <textarea  type="text"  class="form-control max" id="slogan" placeholder="Enter slogan" name="slogan" autocomplete="off" autofocus>{{ old('slogan')}}</textarea>
           @error('slogan')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>

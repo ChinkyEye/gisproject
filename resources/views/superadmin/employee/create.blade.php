@@ -33,7 +33,7 @@
         <div class="row">
           <div class="form-group col-md">
             <label for="email">Email<span class="text-danger">*</span></label>
-            <input type="text"  class="form-control max" id="email" placeholder="Enter email" name="email" autocomplete="off" autofocus value="{{ old('email') }}">
+            <input type="email"  class="form-control max" id="email" placeholder="Enter email" name="email" autocomplete="off" autofocus value="{{ old('email') }}">
             @error('email')
             <span class="text-danger font-italic" role="alert">
               <strong>{{ $message }}</strong>
@@ -59,7 +59,7 @@
   </div>
 </section>
 @endsection
-@push('style')
+@push('javascript')
 <script type="text/javascript">
   function myFunction(e){
     var keyCode = e.which ? e.which : e.keyCode
