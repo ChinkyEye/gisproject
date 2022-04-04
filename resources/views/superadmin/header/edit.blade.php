@@ -29,7 +29,7 @@
           <strong>{{ $message }}</strong>
         </span>
         @enderror
-        <input type="text"  class="form-control max" id="name" placeholder="Enter Insurance Id" name="name"  autocomplete="off" value="{{ $headers->name }}">
+        <input type="text"  class="form-control max" id="name" placeholder="Enter name" name="name"  autocomplete="off" value="{{ $headers->name }}">
       </div>
       <div class="form-group">
         <label for="slogan">Slogan <span class="text-danger">*</span></label> 

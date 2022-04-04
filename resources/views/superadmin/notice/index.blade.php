@@ -45,6 +45,7 @@
                     <tr>
                       <th >SN</th>
                       <th>Title</th>
+                      <th>Download</th>
                       <th>Status</th>
                       <th>Created At</th>
                       <th>Created By</th>
@@ -52,25 +53,33 @@
                     </tr>
                   </thead>
                   <tbody style="text-align: center">
-                    {{-- @foreach($missions as $key => $mission)
-                    <tr class="{{$mission->is_active == 1 ? '' : 'table-danger'}}">
+                    @foreach($notices as $key => $notice)
+                    <tr class="{{$notice->is_active == 1 ? '' : 'table-danger'}}">
                       <td>{{$key + 1}}</td>
-                      <td>{{$mission->name}}</td>
+                      <td>{{$notice->title}}</td>
+                      <td><a href="{{ route('superadmin.notice.downloadfile',$notice->document)}}"><i class="fas fa-file-pdf"></i></a></td>
                       <td>
-                        <a href="{{ route('superadmin.mission.active',$mission->id) }}" data-placement="top" title="{{ $mission->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
-                          <i class="nav-icon fas {{ $mission->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
+                        <a href="{{ route('superadmin.notice.active',$notice->id) }}" data-placement="top" title="{{ $notice->is_active == '1' ? 'Click to deactivatenotice' : 'Click to activate' }}">
+                          <i class="nav-icon fas {{ $notice->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
                         </a>
                       </td>
                       <td>
-                        <a href="{{ route('superadmin.mission.edit',$mission->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
-                        <form action='javascript:void(0)' data_url="{{route('superadmin.mission.destroy',$mission->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
+                        {{$notice->date_np}}
+                      </td>
+                      <td>
+                        {{$notice->getUser->name}}
+                      </td>
+                      <td>
+                        <a href="{{ route('superadmin.notice.edit',$notice->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
+                        
+                        <form action='javascript:void(0)' data_url="{{route('superadmin.notice.destroy',$notice->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
                           <input type='hidden' name='_token' value='".csrf_token()."'>
                           <input name='_method' type='hidden' value='DELETE'>
                           <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
                         </form>
                       </td>
                     </tr>
-                    @endforeach --}}
+                    @endforeach
                   </tbody>
                 </table>
               </div>

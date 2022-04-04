@@ -1,6 +1,6 @@
 @extends('superadmin.main.app')
 @section('content')
-<?php $page = substr((Route::currentRouteName()), 8, strpos(str_replace('manager.','',Route::currentRouteName()), ".")); ?>
+<?php $page = substr((Route::currentRouteName()), 8, strpos(str_replace('superadmin.','',Route::currentRouteName()), ".")); ?>
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
@@ -24,7 +24,7 @@
         @method('PATCH')
         <div class="form-group">
           <label for="name">Name:<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="name" placeholder="Enter Insurance Id" name="name"  autocomplete="off" value="{{ $menus->name }}">
+          <input type="text"  class="form-control max" id="name" placeholder="Enter menu" name="name"  autocomplete="off" value="{{ $menus->name }}">
         </div>
       </div>
       <div class="card-footer justify-content-between">

@@ -68,6 +68,8 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::get('/niti/download/{file}','NitiController@downloadfile')->name('niti.downloadfile');
 
     Route::resource('/notice','NoticeController');
+     Route::get('/notice/active/{id}', 'NoticeController@isActive')->name('notice.active');
+    Route::get('/notice/download/{file}','NoticeController@downloadfile')->name('notice.downloadfile');
 
 
 });

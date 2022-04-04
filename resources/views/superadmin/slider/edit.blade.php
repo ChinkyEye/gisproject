@@ -1,6 +1,6 @@
 @extends('superadmin.main.app')
 @section('content')
-<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('manager.','',Route::currentRouteName()), ".")); ?>
+<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('superadmin.','',Route::currentRouteName()), ".")); ?>
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
