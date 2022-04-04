@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Notice extends Model
 {
    protected $fillable = [
-        'title','type','document','description','is_active','date_np','date','time','created_by','updated_by'
+         'title','scroll','type','document','description','is_active','date_np','date','time','created_by','updated_by'
     ];
     
     public function getUser()

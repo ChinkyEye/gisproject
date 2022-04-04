@@ -49,6 +49,7 @@ class NoticeController extends Controller
             'type' => 'required',
             'description' => 'required',
             'document' => 'required',
+            'scroll' => 'required',
         ]);
         if(!$request->document){
             $this->validate($request, [
@@ -74,6 +75,7 @@ class NoticeController extends Controller
             'title' => $request['title'],
             'description' => $request['description'],
             'type'=> $request['type'],
+            'scroll'=> $request['scroll'],
             'document'=> $fileName,
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
             'date' => date("Y-m-d"),

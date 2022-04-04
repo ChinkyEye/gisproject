@@ -18,6 +18,7 @@ class CreateNoticesTable extends Migration
             $table->string('title');
             $table->string('document')->nullable();
             $table->string('description')->nullable();
+            $table->integer('scroll');
             $table->integer('type');
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);

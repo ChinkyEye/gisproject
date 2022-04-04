@@ -39,73 +39,83 @@
           </span>
           @enderror
         </div>
-        {{-- <div class="form-group">
-          <label for="description">Description<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="description" placeholder="Enter comment" name="description" autocomplete="off" autofocus value="{{ old('description') }}">
-          @error('description')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div> --}}
         <div class="form-group">
-          <label for="type">Type:<span class="text-danger">*</span></label>
-          <div class="row col-md-12">
+          <label for="scroll">Scroll Notice<span class="text-danger">*</span></label>
+          <div class="row col-md-5">
             <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="type1" value="1" {{ old('type') == '1' ? 'checked' : ''}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="type1">
-           Type1
+              <input class="form-check-input" type="radio" name="scroll" id="yes" value="1" {{ old('scroll') == '1' ? 'checked' : ''}} >
+              <label class="form-check-label" for="scroll">
+                Yes
               </label>
             </div>
             <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="type2" value="2" {{ old('type') == '2' ? 'checked' : ''}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="type2">
-          Type2
+              <input class="form-check-input" type="radio" name="scroll" id="no" value="2" {{ old('scroll') == '2' ? 'checked' : ''}}>
+              <label class="form-check-label" for="scroll">
+                No
               </label>
             </div>
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="type3" value="3" {{ old('type') == '3' ? 'checked' : ''}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="type3">
-                type3
-              </label>
-            </div>
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="type4" value="4" {{ old('type') == '4' ? 'checked' : ''}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="type4">
-                type4
-              </label>
-            </div>
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="type5" value="5" {{ old('type') == '5' ? 'checked' : ''}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="type5">
-                type5
-              </label>
-            </div>
+
           </div>
-          @error('type')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
         </div>
-        <div class="form-group">
-          <label for="document">Document<span class="text-danger">*</span></label>
-          <div class="input-group">
-            <input type='file' id="document" name="document" onchange="fileType(event)"/>
-          </div>
-           <span class="error mt-2" style="color: red; display: none">* Input pdf file type</span>
-          @error('document')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
+
+     <div class="form-group">
+      <label for="type">Type:<span class="text-danger">*</span></label>
+      <div class="row col-md-12">
+        <div class="form-check-inline col-md">
+          <input class="form-check-input" type="checkbox" name="type" id="type1" value="1" {{ old('type') == '1' ? 'checked' : ''}} onclick="onlyOne(this)">
+          <label class="form-check-label" for="type1">
+           Type1
+         </label>
        </div>
+       <div class="form-check-inline col-md">
+        <input class="form-check-input" type="checkbox" name="type" id="type2" value="2" {{ old('type') == '2' ? 'checked' : ''}} onclick="onlyOne(this)">
+        <label class="form-check-label" for="type2">
+          Type2
+        </label>
       </div>
-      <div class="card-footer justify-content-between">
-        <button type="submit" class="btn btn-info text-capitalize">Save</button>
+      <div class="form-check-inline col-md">
+        <input class="form-check-input" type="checkbox" name="type" id="type3" value="3" {{ old('type') == '3' ? 'checked' : ''}} onclick="onlyOne(this)">
+        <label class="form-check-label" for="type3">
+          type3
+        </label>
       </div>
-    </form>
+      <div class="form-check-inline col-md">
+        <input class="form-check-input" type="checkbox" name="type" id="type4" value="4" {{ old('type') == '4' ? 'checked' : ''}} onclick="onlyOne(this)">
+        <label class="form-check-label" for="type4">
+          type4
+        </label>
+      </div>
+      <div class="form-check-inline col-md">
+        <input class="form-check-input" type="checkbox" name="type" id="type5" value="5" {{ old('type') == '5' ? 'checked' : ''}} onclick="onlyOne(this)">
+        <label class="form-check-label" for="type5">
+          type5
+        </label>
+      </div>
+    </div>
+    @error('type')
+    <span class="text-danger font-italic" role="alert">
+      <strong>{{ $message }}</strong>
+    </span>
+    @enderror
   </div>
+  <div class="form-group">
+    <label for="document">Document<span class="text-danger">*</span></label>
+    <div class="input-group">
+      <input type='file' id="document" name="document" onchange="fileType(event)"/>
+    </div>
+    <span class="error mt-2" style="color: red; display: none">* Input pdf file type</span>
+    @error('document')
+    <span class="text-danger font-italic" role="alert">
+      <strong>{{ $message }}</strong>
+    </span>
+    @enderror
+  </div>
+</div>
+<div class="card-footer justify-content-between">
+  <button type="submit" class="btn btn-info text-capitalize">Save</button>
+</div>
+</form>
+</div>
 </section>
 @endsection
 @push('javascript')
@@ -126,40 +136,40 @@
   }
 </script>
 <script>
-    /* this function will call when page loaded successfully */
-    $(document).ready(function(){
- 
-        /* this function will call when onchange event fired */
-        $("#document").on("change",function(){
-             
-            /* current this object refer to input element */
-            var $input = $(this);
+  /* this function will call when page loaded successfully */
+  $(document).ready(function(){
 
-            /* collect list of files choosen */
-            var files = $input[0].files;
- 
-            var filename = files[0].name;
+    /* this function will call when onchange event fired */
+    $("#document").on("change",function(){
+
+      /* current this object refer to input element */
+      var $input = $(this);
+
+      /* collect list of files choosen */
+      var files = $input[0].files;
+
+      var filename = files[0].name;
       
-            /* getting file extenstion eg- .jpg,.png, etc */
-            var extension = filename.substr(filename.lastIndexOf("."));
- 
-            /* define allowed file types */
-            var allowedExtensionsRegx = /(\.pdf)$/i;
+      /* getting file extenstion eg- .jpg,.png, etc */
+      var extension = filename.substr(filename.lastIndexOf("."));
+
+      /* define allowed file types */
+      var allowedExtensionsRegx = /(\.pdf)$/i;
             // var allowedExtensionsRegx = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
- 
+
             /* testing extension with regular expression */
             var isAllowed = allowedExtensionsRegx.test(extension);
- 
+
             if(isAllowed){
               $(".error").css("display", "none");
                 // alert("File type is valid for the upload");
                 /* file upload logic goes here... */
-            }else{
+              }else{
                $(".error").css("display", "inline");
                 // alert("Invalid File Type.");
                 return false;
-            }
-        });    
-    });
+              }
+            });    
+  });
 </script>
 @endpush
