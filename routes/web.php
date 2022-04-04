@@ -13,8 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest'])->group(function(){
+    // home
+    Route::get('/', 'HomeController@index')->name('home');
+    
 });
 
 Auth::routes(['reset' => false,

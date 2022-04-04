@@ -104,18 +104,24 @@ class MenuController extends Controller
     public function destroy($id)
     {
         $menus = Menu::find($id);
-        if($menus->delete()){
-            $notification = array(
-              'message' => $menus->name.' is deleted successfully!',
-              'status' => 'success'
-          );
-        }else{
-            $notification = array(
-              'message' => $menus->name.' could not be deleted!',
-              'status' => 'error'
-          );
-        }
-        return Response::json($notification);
+        $menus->delete();
+        return response()->json([
+            'success' => 'Record has been deleted successfully!'
+        ]);
+
+        // $menus = Menu::find($id);
+        // if($menus->delete()){
+        //     $notification = array(
+        //       'message' => $menus->name.' is deleted successfully!',
+        //       'status' => 'success'
+        //   );
+        // }else{
+        //     $notification = array(
+        //       'message' => $menus->name.' could not be deleted!',
+        //       'status' => 'error'
+        //   );
+        // }
+        // return Response::json($notification);
     }
 
     public function isActive(Request $request,$id)

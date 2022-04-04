@@ -43,9 +43,8 @@ class EmployeeController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required',
-            'phone' => 'required',
+            'phone' => 'required|digits_between:6,10',
         ]);
-         
        $employees = Employee::create([
             'name' => $request['name'],
             'email'=> $request['email'],
@@ -55,7 +54,7 @@ class EmployeeController extends Controller
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        return redirect()->route('superadmin.employee.index');
+        return redirect()->route('superadmin.employee.index')->with('alert-success', 'Employee created succesffully!!!!');;
     }
 
     /**
@@ -77,7 +76,8 @@ class EmployeeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $employees = Employee::find($id);
+        return view('superadmin.employee.edit', compact('employees')); 
     }
 
     /**
@@ -89,7 +89,18 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required|digits_between:6,10',
+        ]);
+        $employees = Employee::find($id);
+        $all_data = $request->all();
+        $all_data['updated_by'] = Auth::user()->id;
+        if($employees->update($all_data))
+        {
+            return redirect()->route('superadmin.employee.index')->with('alert-success', 'data updated succesffully');;
+        };
     }
 
     /**

@@ -41,11 +41,11 @@ class HeaderController extends Controller
     public function store(Request $request)
     {
         
-      $this->validate($request, [
+        $this->validate($request, [
             'name' => 'required',
-            'image' => 'required',
+            'image' => 'required|mimes:jpeg,jpg',
             'slogan' => 'required',
-             ]);
+        ]);
          
         $uppdf = $request->file('image');
         if($uppdf != ""){

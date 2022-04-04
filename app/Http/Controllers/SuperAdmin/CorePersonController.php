@@ -42,8 +42,8 @@ class CorePersonController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'address' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required|digits_between:6,10',
             'type' => 'required',
         ]);
          
@@ -59,7 +59,7 @@ class CorePersonController extends Controller
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        return redirect()->route('superadmin.coreperson.index');
+        return redirect()->route('superadmin.coreperson.index')->with('alert-success', 'data created succesffully!!!');;
     }
 
     /**
@@ -81,7 +81,8 @@ class CorePersonController extends Controller
      */
     public function edit($id)
     {
-        //
+        $corepersons = CorePerson::find($id);
+        return view('superadmin.coreperson.edit', compact('corepersons'));
     }
 
     /**
@@ -91,9 +92,19 @@ class CorePersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, CorePerson $coreperson)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'address' => 'required',
+            'email' => 'required|email',
+        ]);
+        $all_data = $request->all();
+        $all_data['updated_by'] = Auth::user()->id;
+        if($coreperson->update($all_data))
+        {
+            return redirect()->route('superadmin.coreperson.index')->with('alert-success', 'Data updated succesffully!!!');;
+        };
     }
 
     /**
@@ -104,7 +115,12 @@ class CorePersonController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $corepersons = CorePerson::find($id);
+        $corepersons->delete();
+        return response()->json([
+            'success' => 'Record has been deleted successfully!'
+        ]);
+
     }
 
     public function isActive(Request $request,$id)

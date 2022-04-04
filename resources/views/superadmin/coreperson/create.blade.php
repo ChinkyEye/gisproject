@@ -115,7 +115,7 @@
   </div>
 </section>
 @endsection
-@push('style')
+@push('javascript')
 <script type="text/javascript">
   function myFunction(e){
     var keyCode = e.which ? e.which : e.keyCode

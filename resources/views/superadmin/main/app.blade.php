@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Digital Database System | Super Admin</title>
+  <title>Pradesh-1 | Super Admin</title>
+  {{-- <title>Digital Database System | Super Admin</title> --}}
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -20,6 +21,30 @@
     @include('superadmin.main.header')
     @include('superadmin.main.sidebar')
     <div class="content-wrapper">
+      {{-- @if (Session::has('success'))
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert">
+            <i class="fa fa-times"></i>
+          </button>
+          <strong>Success !</strong> {{ session('success') }}
+        </div>
+        @endif
+
+        @if (Session::has('error'))
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert">
+            <i class="fa fa-times"></i>
+          </button>
+          <strong>Error !</strong> {{ session('error') }}
+        </div>
+        @endif --}}
+        <div class="flash-message">
+               @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+               @if(Session::has('alert-' . $msg))
+               <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+               @endif
+               @endforeach
+        </div>
       @yield('content')
     </div>
     @include('superadmin.main.footer')
