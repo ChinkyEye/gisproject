@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNoticesTable extends Migration
+class CreateEservicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateNoticesTable extends Migration
      */
     public function up()
     {
-        Schema::create('notices', function (Blueprint $table) {
-        $table->id();
-            $table->string('title');
-            $table->string('document')->nullable();
-            $table->string('description')->nullable();
-            $table->integer('scroll');
-            $table->integer('type');
+        Schema::create('eservices', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('thumbnail');        
+            $table->string('karyalaya');
+            $table->string('logo');
+            $table->string('contact');
+            $table->text('website_link')->nullable();         
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);
             $table->string('date',10);
@@ -38,6 +39,6 @@ class CreateNoticesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notices');
+        Schema::dropIfExists('eservices');
     }
 }

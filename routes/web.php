@@ -81,6 +81,8 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::get('/pradeshsabhasadasya/active/{id}', 'PradeshSabhaSadasya\PradeshSabhaSadasyaController@isActive')->name('pradeshsabhasadasya.active');
 
 
+    Route::resource('/eservice','Eservice\EserviceController');
+    Route::get('/eservice/active/{id}', 'Eservice\EserviceController@isActive')->name('eservice.active');
 
 
 });
