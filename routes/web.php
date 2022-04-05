@@ -77,6 +77,9 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
      Route::get('/notice/active/{id}', 'NoticeController@isActive')->name('notice.active');
     Route::get('/notice/download/{file}','NoticeController@downloadfile')->name('notice.downloadfile');
 
+    Route::resource('/eservice','Eservice\EserviceController');
+     Route::get('/eservice/active/{id}', 'Eservice\EserviceController@isActive')->name('eservice.active');
+
 
 });
 
