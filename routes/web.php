@@ -77,6 +77,11 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
      Route::get('/notice/active/{id}', 'NoticeController@isActive')->name('notice.active');
     Route::get('/notice/download/{file}','NoticeController@downloadfile')->name('notice.downloadfile');
 
+    Route::resource('/pradeshsabhasadasya','PradeshSabhaSadasya\PradeshSabhaSadasyaController');
+    Route::get('/pradeshsabhasadasya/active/{id}', 'PradeshSabhaSadasya\PradeshSabhaSadasyaController@isActive')->name('pradeshsabhasadasya.active');
+
+
+
 
 });
 

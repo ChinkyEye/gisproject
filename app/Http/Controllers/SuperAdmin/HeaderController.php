@@ -40,10 +40,11 @@ class HeaderController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         
         $this->validate($request, [
             'name' => 'required',
-            'image' => 'required|mimes:jpeg,jpg',
+            'image' => 'required|mimes:jpeg,jpg,png|max:1024',
             'slogan' => 'required',
         ]);
          

@@ -122,6 +122,14 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{ route('superadmin.pradeshsabhasadasya.index')}}" class="nav-link {{ (request()->is('home/pradeshsabhasadasya*')) ? 'active' : '' }}">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+             Pradesh Sabha Sadasya
+            </p>
+          </a>
+        </li>
       </ul>
     </nav>
   </div>
