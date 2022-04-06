@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\SuperAdmin\PradeshSabhaSadasya;
+namespace App\Http\Controllers\SuperAdmin\HelloCM;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\PradeshSabhaSadasya;
+use App\HelloCM;
 use Auth;
 use File;
 
-class PradeshSabhaSadasyaController extends Controller
+class HelloCMController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +17,10 @@ class PradeshSabhaSadasyaController extends Controller
      */
     public function index()
     {
-        $datas = PradeshSabhaSadasya::orderBy('id','DESC')
-                                    ->where('created_by', Auth::user()->id)
-                                    ->paginate(20);
-        return view('superadmin.pradeshsabhasadasya.index', compact('datas'));
+        $datas = HelloCM::orderBy('id','DESC')
+                        ->where('created_by', Auth::user()->id)
+                        ->paginate(10);
+        return view('superadmin.hellocm.index', compact('datas'));
     }
 
     /**
@@ -30,7 +30,7 @@ class PradeshSabhaSadasyaController extends Controller
      */
     public function create()
     {
-        return view('superadmin.pradeshsabhasadasya.create');
+        return view('superadmin.hellocm.create');
     }
 
     /**
@@ -42,19 +42,15 @@ class PradeshSabhaSadasyaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'district' => 'required',
-            'gender' => 'required',
-            'dala' => 'required',
-            'nirvachit_kshetra_no' => 'required',
-            'phone' => 'required|digits_between:6,10',
+            'email' => 'required',
+            'link' => 'required',
         ]);
         $uppdf = $request->file('image');
         if($uppdf != ""){
             $this->validate($request, [
                 'image' => 'required|mimes:jpg,jpeg|max:1024',
             ]);
-            $destinationPath = 'images/pradeshsabhasadasya/';
+            $destinationPath = 'images/hellocm/';
             $extension = $uppdf->getClientOriginalExtension();
             $fileName = md5(mt_rand()).'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
@@ -63,20 +59,17 @@ class PradeshSabhaSadasyaController extends Controller
         }else{
             $fileName = Null;
         }
-       $datas = PradeshSabhaSadasya::create([
-            'name' => $request['name'],
-            'district' => $request['district'],
-            'gender' => $request['gender'],
-            'dala' => $request['dala'],
-            'nirvachit_kshetra_no' => $request['nirvachit_kshetra_no'],
-            'phone' => $request['phone'],
-            'image'=> $fileName,
+       $datas = HelloCM::create([
+            'email' => $request['email'],
+            'description' => $request['description'],
+            'thumbnail'=> $fileName,
+            'link' => $request['link'],
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
             'date' => date("Y-m-d"),
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        return redirect()->route('superadmin.pradeshsabhasadasya.index')->with('alert-success', 'Data created succesffully!!!!');
+        return redirect()->route('superadmin.hellocm.index')->with('alert-success', 'Data created succesffully!!!!');
     }
 
     /**
@@ -98,8 +91,8 @@ class PradeshSabhaSadasyaController extends Controller
      */
     public function edit($id)
     {
-        $datas = PradeshSabhaSadasya::find($id);
-        return view('superadmin.pradeshsabhasadasya.edit', compact('datas'));
+        $datas = HelloCM::find($id);
+        return view('superadmin.hellocm.edit', compact('datas'));
     }
 
     /**
@@ -109,42 +102,37 @@ class PradeshSabhaSadasyaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PradeshSabhaSadasya $pradeshsabhasadasya)
+    public function update(Request $request, HelloCM $hellocm)
     {
         $this->validate($request, [
-            'name' => 'required',
-            'district' => 'required',
-            'gender' => 'required',
-            'dala' => 'required',
-            'nirvachit_kshetra_no' => 'required',
-            'phone' => 'required|digits_between:6,10',
+            'email' => 'required',
+            'link' => 'required',
         ]);
         $all_data = $request->all();
         $uppdf = $request->file('image');
+        // dd($uppdf);
         if($uppdf != ""){
             $this->validate($request, [
                 'image' => 'required|mimes:jpg,jpeg|max:1024',
             ]);
-            $destinationPath = 'images/pradeshsabhasadasya/';
-            $oldFilename = $destinationPath.'/'.$pradeshsabhasadasya->image;
+            $destinationPath = 'images/hellocm/';
+            $oldFilename = $destinationPath.'/'.$hellocm->image;
 
             $extension = $uppdf->getClientOriginalExtension();
             $name = $uppdf->getClientOriginalName();
             $fileName = $name.'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
-            $all_data['image'] = $fileName;
+            $all_data['thumbnail'] = $fileName;
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
             }
         }
         $all_data['updated_by'] = Auth::user()->id;
-        if($pradeshsabhasadasya->update($all_data))
+        if($hellocm->update($all_data))
         {
-            return redirect()->route('superadmin.pradeshsabhasadasya.index')->with('alert-success', 'Data updated succesffully!!!!');;
+            return redirect()->route('superadmin.hellocm.index')->with('alert-success', 'Data updated succesffully!!!!');;
         };
-
-
     }
 
     /**
@@ -155,9 +143,9 @@ class PradeshSabhaSadasyaController extends Controller
      */
     public function destroy($id)
     {
-        $datas = PradeshSabhaSadasya::find($id);
-        $destinationPath = 'images/pradeshsabhasadasya/';
-        $oldFilename = $destinationPath.'/'.$datas->image;
+        $datas = HelloCM::find($id);
+        $destinationPath = 'images/hellocm/';
+        $oldFilename = $destinationPath.'/'.$datas->thumbnail;
         if($datas->delete()){
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
@@ -170,27 +158,26 @@ class PradeshSabhaSadasyaController extends Controller
 
     public function isActive(Request $request,$id)
     {
-        $get_is_active = PradeshSabhaSadasya::where('id',$id)->value('is_active');
-        $isactive = PradeshSabhaSadasya::find($id);
+        $get_is_active = HelloCM::where('id',$id)->value('is_active');
+        $isactive = HelloCM::find($id);
         if($get_is_active == 0){
             $isactive->is_active = 1;
-            $notification = array(
-                'alert-success' => $isactive->name.' is Active!',
-            );
+            // $notification = array(
+            //     'alert-success' => $isactive->name.' is Active!',
+            // );
         }
         else {
             $isactive->is_active = 0;
-            $notification = array(
-                'alert-danger' => $isactive->name.' is inactive!',
-            );
+            // $notification = array(
+            //     'alert-danger' => $isactive->name.' is inactive!',
+            // );
         }
         if(!($isactive->update())){
             $notification = array(
                 'error' => $isactive->name.' could not be changed!',
             );
         }
-        return back()->with($notification)->withInput();
+        return back()->withInput();
+        // return back()->with($notification)->withInput();
     }
-
-
 }

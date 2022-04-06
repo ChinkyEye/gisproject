@@ -55,7 +55,11 @@
                 No
               </label>
             </div>
-
+            @error('scroll')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
           </div>
         </div>
         <div class="form-group">
@@ -97,33 +101,32 @@
             <strong>{{ $message }}</strong>
           </span>
           @enderror
+          @error('type')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
         </div>
-        @error('type')
-        <span class="text-danger font-italic" role="alert">
-          <strong>{{ $message }}</strong>
-        </span>
-        @enderror
-
         <div class="form-group">
           <label for="document">Document</label>
           <div class="input-group">
-           <input type='file' id="document" name="document" onchange="fileType(event)"/>
-           <a href="{{ route('superadmin.notice.downloadfile',$notices->document)}}" style="color:red" title="Click Here"><i class="fas fa-file-pdf fa-5x"></i></a>
+            <input type='file' id="document" name="document" onchange="fileType(event)"/>
+            <a href="{{ route('superadmin.notice.downloadfile',$notices->document)}}" style="color:red" title="Click Here"><i class="fas fa-file-pdf fa-5x"></i></a>
 
-         </div>
-         <span class="error mt-2" style="color: red; display: none">* Input pdf file type</span>
-         @error('document')
-         <span class="text-danger font-italic" role="alert">
-          <strong>{{ $message }}</strong>
-        </span>
-        @enderror
+          </div>
+          <span class="error mt-2" style="color: red; display: none">* Input pdf file type</span>
+          @error('document')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
       </div>
-    </div>
-    <div class="card-footer justify-content-between">
-      <button type="submit" class="btn btn-info text-capitalize">Update</button>
-    </div>
-  </form>
-</div>
+      <div class="card-footer justify-content-between">
+        <button type="submit" class="btn btn-info text-capitalize">Update</button>
+      </div>
+    </form>
+  </div>
 </section>
 @endsection
 @push('javascript')

@@ -138,6 +138,30 @@
             </p>
           </a>
         </li>
+        <li class="nav-item">
+          <a href="{{ route('superadmin.hellocm.index')}}" class="nav-link {{ (request()->is('home/hellocm*')) ? 'active' : '' }}">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+             Hello CM
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('superadmin.mantralaya.index')}}" class="nav-link {{ (request()->is('home/mantralaya*')) ? 'active' : '' }}">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+             Mantralaya
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ route('superadmin.importantplace.index')}}" class="nav-link {{ (request()->is('home/importantplace*')) ? 'active' : '' }}">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+             Important Places
+            </p>
+          </a>
+        </li>
       </ul>
     </nav>
   </div>
