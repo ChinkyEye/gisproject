@@ -67,18 +67,35 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item has-treeview {{ (request()->is('home/mission-vision/*')) ? 'menu-open' : '' }}">
-          <a href="#" class="nav-link {{ (request()->is('home/mission-vision/*')) ? 'active' : '' }}">
+        <li class="nav-item has-treeview {{ (request()->is('home/menu-page/*')) ? 'menu-open' : '' }}">
+          <a href="#" class="nav-link {{ (request()->is('home/menu-page/*')) ? 'active' : '' }}">
             <i class="nav-icon far fa-plus-square"></i>
-            {{-- <i class="nav-icon fas fa-layer-plus"></i> --}}
             <p>
-              Mission/Vision
+              Menu Side
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ route('superadmin.mission.index')}}" class="nav-link {{ (request()->is('home/mission-vision/mission*')) ? 'active' : '' }}">
+              <a href="{{ route('superadmin.niti.index')}}" class="nav-link {{ (request()->is('home/menu-page/niti*')) ? 'active' : '' }}">
+                {{-- <i class="nav-icon fas fa-user"></i> --}}
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Niti
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('superadmin.notice.index')}}" class="nav-link {{ (request()->is('home/menu-page/notice*')) ? 'active' : '' }}">
+                {{-- <i class="nav-icon fas fa-user"></i> --}}
+                <i class="nav-icon fas fa-file-alt"></i>
+                <p>
+                  Notice
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('superadmin.mission.index')}}" class="nav-link {{ (request()->is('home/menu-page/mission*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-bars"></i>
 
                 <p>
@@ -87,11 +104,71 @@
               </a>
             </li>  
             <li class="nav-item">
-              <a href="{{ route('superadmin.vision.index')}}" class="nav-link {{ (request()->is('home/mission-vision/vision*')) ? 'active' : '' }}">
+              <a href="{{ route('superadmin.vision.index')}}" class="nav-link {{ (request()->is('home/menu-page/vision*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-bars"></i>
                 {{-- <i class="nav-icon fas fa-calendar-alt"></i> --}}
                 <p>
                   Vision
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('superadmin.coreperson.index')}}" class="nav-link {{ (request()->is('home/menu-page/coreperson*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                 Core Person
+               </p>
+             </a>
+           </li>
+          </ul>
+        </li>
+        <li class="nav-item has-treeview {{ (request()->is('home/sidebar-part/*')) ? 'menu-open' : '' }}">
+          <a href="#" class="nav-link {{ (request()->is('home/sidebar-part/*')) ? 'active' : '' }}">
+            <i class="nav-icon far fa-plus-square"></i>
+            <p>
+              Sidebar Side
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('superadmin.mantralaya.index')}}" class="nav-link {{ (request()->is('home/sidebar-part/mantralaya*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                  Mantralaya
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('superadmin.pradeshsabhasadasya.index')}}" class="nav-link {{ (request()->is('home/sidebar-part/pradeshsabhasadasya*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                  PradeshSadasya
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('superadmin.eservice.index')}}" class="nav-link {{ (request()->is('home/sidebar-part/eservice*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                  Eservice
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('superadmin.hellocm.index')}}" class="nav-link {{ (request()->is('home/sidebar-part/hellocm*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                  Hello CM
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('superadmin.importantplace.index')}}" class="nav-link {{ (request()->is('home/sidebar-part/importantplace*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-user"></i>
+                {{-- <i class="fa-solid fa-location-exclamation"></i> --}}
+                <p>
+                  Important Places
                 </p>
               </a>
             </li>
@@ -114,15 +191,6 @@
          </a>
        </li>
         <li class="nav-item">
-          <a href="{{ route('superadmin.coreperson.index')}}" class="nav-link {{ (request()->is('home/coreperson*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-users"></i>
-            <p>
-             Core Person
-            </p>
-          </a>
-        </li>  
-         
-        <li class="nav-item">
           <a href="{{ route('superadmin.employee.index')}}" class="nav-link {{ (request()->is('home/employee*')) ? 'active' : '' }}">
             <i class="nav-icon fas fa-user"></i>
             <p>
@@ -130,62 +198,7 @@
             </p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="{{ route('superadmin.niti.index')}}" class="nav-link {{ (request()->is('home/niti*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-             Niti
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ route('superadmin.notice.index')}}" class="nav-link {{ (request()->is('home/notice*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-             Notice
-            </p>
-          </a>
-        </li>  
-        <li class="nav-item">
-          <a href="{{ route('superadmin.eservice.index')}}" class="nav-link {{ (request()->is('home/eservice*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-             Eservice
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ route('superadmin.pradeshsabhasadasya.index')}}" class="nav-link {{ (request()->is('home/pradeshsabhasadasya*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-             Pradesh Sabha Sadasya
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ route('superadmin.hellocm.index')}}" class="nav-link {{ (request()->is('home/hellocm*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-             Hello CM
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ route('superadmin.mantralaya.index')}}" class="nav-link {{ (request()->is('home/mantralaya*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-             Mantralaya
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ route('superadmin.importantplace.index')}}" class="nav-link {{ (request()->is('home/importantplace*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-             Important Places
-            </p>
-          </a>
-        </li>
+        
       </ul>
     </nav>
   </div>

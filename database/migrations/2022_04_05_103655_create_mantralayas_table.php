@@ -21,6 +21,8 @@ class CreateMantralayasTable extends Migration
             $table->string('email')->nullable();
             $table->string('link')->nullable();
             $table->string('photo')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);

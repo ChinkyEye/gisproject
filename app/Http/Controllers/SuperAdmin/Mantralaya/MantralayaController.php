@@ -65,6 +65,8 @@ class MantralayaController extends Controller
             'email' => $request['email'],
             'link' => $request['link'],
             'photo'=> $fileName,
+            'latitude' => $request['latitude'],
+            'longitude' => $request['longitude'],
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
             'date' => date("Y-m-d"),
             'time' => date("H:i:s"),

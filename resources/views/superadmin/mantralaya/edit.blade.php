@@ -81,6 +81,31 @@
           </span>
           @enderror
        </div>
+       <div class="form-group">
+          <label for="course_name">Pick your Location:</label>
+          <div id="googleMap" style="height:280px;"></div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md">
+            <label for="latitude">Latitude</label>
+            <input type="text"  class="form-control max" id="lat" placeholder="Enter the latitude" name="latitude" autocomplete="off" autofocus value="{{ $datas->latitude }}">
+            @error('latitude')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+          <div class="form-group col-md">
+            <label for="longitude">Longitude</label>
+            <input type="text"  class="form-control max" id="lang" placeholder="Enter the longitude" name="longitude" autocomplete="off" autofocus value="{{ $datas->longitude }}">
+            @error('longitude')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+        </div>
+       </div> 
       <div class="modal-footer justify-content-between">
         <button type="submit" class="btn btn-info text-capitalize">Update Data</button>
       </div>
@@ -105,5 +130,40 @@
   $("#imgInp").change(function() {
     readURL(this);
   });
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1dKX5bl_Y-oEyO07qya3paa3RpdOVzb0">
+</script>
+<script type="text/javascript">
+  var myCenter=new google.maps.LatLng(26.475616, 87.283951);
+  function initialize()
+  {
+    var mapProp = {
+      draggable:true,
+      // zoomControl: false,
+      scaleControl: false,
+      scrollwheel: false,
+      disableDoubleClickZoom: true,
+      scrollwheel: true,
+      center:myCenter,
+      zoom:15,
+      mapTypeId:google.maps.MapTypeId.ROADMAP
+    };
+
+    var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+    var marker=new google.maps.Marker({
+      position:myCenter,
+    });
+    marker.setMap(map);
+
+    google.maps.event.addListener(map, 'click', function( event ){
+      $('#lat').html(" ");
+      $('#lat').html(" ");
+      $('.form-group').find('#lat').val(event.latLng.lat());
+      $('.form-group').find('#lang').val(event.latLng.lng());
+    });
+  }
+
+  google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 @endpush
