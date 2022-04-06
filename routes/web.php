@@ -80,9 +80,21 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('/pradeshsabhasadasya','PradeshSabhaSadasya\PradeshSabhaSadasyaController');
     Route::get('/pradeshsabhasadasya/active/{id}', 'PradeshSabhaSadasya\PradeshSabhaSadasyaController@isActive')->name('pradeshsabhasadasya.active');
 
-
     Route::resource('/eservice','Eservice\EserviceController');
     Route::get('/eservice/active/{id}', 'Eservice\EserviceController@isActive')->name('eservice.active');
+
+    Route::resource('/hellocm','HelloCM\HelloCMController');
+    Route::get('/hellocm/active/{id}', 'HelloCM\HelloCMController@isActive')->name('hellocm.active');
+
+    Route::resource('/mantralaya','Mantralaya\MantralayaController');
+    Route::get('/mantralaya/active/{id}', 'Mantralaya\MantralayaController@isActive')->name('mantralaya.active');
+
+    Route::resource('/importantplace','ImportantPlace\ImportantPlaceController');
+
+
+
+
+
 
 
 });

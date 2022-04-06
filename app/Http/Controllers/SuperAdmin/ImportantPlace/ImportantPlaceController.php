@@ -1,0 +1,117 @@
+<?php
+
+namespace App\Http\Controllers\SuperAdmin\ImportantPlace;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use App\ImportantPlace;
+use Auth;
+
+
+class ImportantPlaceController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('superadmin.importantplace.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('superadmin.importantplace.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+        ]);
+        $uppdf = $request->file('image');
+        if($uppdf != ""){
+            $this->validate($request, [
+                'image' => 'required|mimes:jpg,jpeg|max:1024',
+            ]);
+            $destinationPath = 'images/importantplace/';
+            $extension = $uppdf->getClientOriginalExtension();
+            $fileName = md5(mt_rand()).'.'.$extension;
+            $uppdf->move($destinationPath, $fileName);
+            $file_path = $destinationPath.'/'.$fileName;
+
+        }else{
+            $fileName = Null;
+        }
+       $datas = ImportantPlace::create([
+            'title' => $request['title'],
+            'description' => $request['description'],
+            'link' => $request['link'],
+            'image'=> $fileName,
+            'latitude' => $request['latitude'],
+            'longitude' => $request['longitude'],
+            'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+            'date' => date("Y-m-d"),
+            'time' => date("H:i:s"),
+            'created_by' => Auth::user()->id,
+        ]);
+        return redirect()->route('superadmin.importantplace.index')->with('alert-success', 'Data created succesffully!!!!');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+}
