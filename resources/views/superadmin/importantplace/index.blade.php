@@ -27,31 +27,33 @@
                   <thead class="thead-dark" style="text-align: center">                  
                     <tr>
                       <th >SN</th>
-                      <th>Thumbnail</th>
-                      <th>Email</th>
-                      <th>link</th>
+                      <th>Title</th>
+                      <th>Image</th>
+                      <th>Latitude</th>
+                      <th>Longitude</th>
                       <th>Status</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody style="text-align: center">
-                    {{-- @foreach($datas as $key => $data)
+                    @foreach($datas as $key => $data)
                     <tr class="{{$data->is_active == 1 ? '' : 'table-danger'}}">
                       <td>{{$key + 1}}</td>
+                      <td>{{$data->title}}</td>
                       <td>
-                        <img src="{{ $data->thumbnail == null ? asset('images/no-image-user.png') : asset('images/hellocm') . '/' . $data->thumbnail  }}" alt="" class="responsive" width="50" height="50">
+                        <img src="{{ $data->image == null ? asset('images/no-image-user.png') : asset('images/importantplace') . '/' . $data->image  }}" alt="" class="responsive" width="50" height="50">
                       </td>
-                      <td>{{$data->email}}</td>
-                      <td>{{$data->link}}</td>
+                      <td>{{$data->latitude}}</td>
+                      <td>{{$data->longitude}}</td>
                       <td>
-                        <a href="{{ route('superadmin.hellocm.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
+                        <a href="{{ route('superadmin.importantplace.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                           <i class="nav-icon fas {{ $data->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
                         </a>
                       </td>
                       <td>
-                        <a href="{{ route('superadmin.hellocm.edit',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('superadmin.importantplace.edit',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
 
-                        <form action='javascript:void(0)' data_url="{{route('superadmin.hellocm.destroy',$data->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
+                        <form action='javascript:void(0)' data_url="{{route('superadmin.importantplace.destroy',$data->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
                           <input type='hidden' name='_token' value='".csrf_token()."'>
                           <input name='_method' type='hidden' value='DELETE'>
                           <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
@@ -59,7 +61,7 @@
 
                       </td>
                     </tr>
-                    @endforeach --}}
+                    @endforeach
                   </tbody>
                 </table>
               </div>

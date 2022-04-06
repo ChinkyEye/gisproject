@@ -39,7 +39,7 @@
           </span>
           @enderror
         </div>
-        <div class="form-group">
+        {{-- <div class="form-group">
           <label for="link">Link</label>
           <input type="text"  class="form-control max" id="link" placeholder="Enter the link" name="link" autocomplete="off" autofocus value="{{ old('link') }}">
           @error('link')
@@ -47,7 +47,7 @@
             <strong>{{ $message }}</strong>
           </span>
           @enderror
-        </div>
+        </div> --}}
         <div class="form-group">
           <label for="imgInp">Photo</label>
           <div class="input-group">
@@ -115,38 +115,37 @@
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1dKX5bl_Y-oEyO07qya3paa3RpdOVzb0">
 </script>
-      <script type="text/javascript">
-          var myCenter=new google.maps.LatLng(26.475616, 87.283951);
+<script type="text/javascript">
+  var myCenter=new google.maps.LatLng(26.475616, 87.283951);
+  function initialize()
+  {
+    var mapProp = {
+      draggable:true,
+      // zoomControl: false,
+      scaleControl: false,
+      scrollwheel: false,
+      disableDoubleClickZoom: true,
+      scrollwheel: true,
+      center:myCenter,
+      zoom:15,
+      mapTypeId:google.maps.MapTypeId.ROADMAP
+    };
 
-            function initialize()
-            {
-            var mapProp = {
-                draggable:true,
-                // zoomControl: false,
-                scaleControl: false,
-                scrollwheel: false,
-                disableDoubleClickZoom: true,
-                scrollwheel: true,
-                center:myCenter,
-                zoom:15,
-                mapTypeId:google.maps.MapTypeId.ROADMAP
-            };
+    var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
 
-            var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+    var marker=new google.maps.Marker({
+      position:myCenter,
+    });
+    marker.setMap(map);
 
-            var marker=new google.maps.Marker({
-            position:myCenter,
-            });
-            marker.setMap(map);
+    google.maps.event.addListener(map, 'click', function( event ){
+      $('#lat').html(" ");
+      $('#lat').html(" ");
+      $('.form-group').find('#lat').val(event.latLng.lat());
+      $('.form-group').find('#lang').val(event.latLng.lng());
+    });
+  }
 
-            google.maps.event.addListener(map, 'click', function( event ){
-            $('#lat').html(" ");
-            $('#lat').html(" ");
-            $('.form-group').find('#lat').val(event.latLng.lat());
-            $('.form-group').find('#lang').val(event.latLng.lng());
-});
-            }
-
-            google.maps.event.addDomListener(window, 'load', initialize);
-            </script>
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 @endpush

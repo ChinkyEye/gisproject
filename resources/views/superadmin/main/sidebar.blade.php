@@ -22,38 +22,80 @@
       </div>
     </div>
     <nav class="mt-2">
+
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
-        <li class="nav-item">
-          <a href="{{ route('superadmin.header.index')}}" class="nav-link {{ (request()->is('home/header*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-calendar-alt"></i>
-            <p>
-             Header
-           </p>
-         </a>
+            <li class="nav-item has-treeview {{ (request()->is('home/main-entry/*')) ? 'menu-open' : '' }}">
+              <a href="#" class="nav-link {{ (request()->is('home/main-entry/*')) ? 'active' : '' }}">
+                <i class="nav-icon far fa-plus-square"></i>
+                <p>
+                  Main Entry
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="{{ route('superadmin.header.index')}}" class="nav-link {{ (request()->is('home/main-entry/header*')) ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-calendar-alt"></i>
+                    <p>
+                     Header
+                   </p>
+                 </a>
+               </li>
+               <li class="nav-item">
+                <a href="{{ route('superadmin.menu.index')}}" class="nav-link {{ (request()->is('home/main-entry/menu*')) ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-list"></i>
+                  <p>
+                    Menu
+                  </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('superadmin.sidemenu.index')}}" class="nav-link {{ (request()->is('home/main-entry/sidemenu*')) ? 'active' : '' }}">
+                  <i class="nav-icon fas fa-bars"></i>
+                  <p>
+                   Side Menu
+                 </p>
+               </a>
+             </li>
+             <li class="nav-item">
+              <a href="{{ route('superadmin.slider.index')}}" class="nav-link {{ (request()->is('home/main-entry/slider*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-calendar-alt"></i>
+                <p>
+                  Slider
+                </p>
+              </a>
+            </li>
+          </ul>
         </li>
-         <li class="nav-item">
-          <a href="{{ route('superadmin.slider.index')}}" class="nav-link {{ (request()->is('home/slider*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-calendar-alt"></i>
+        <li class="nav-item has-treeview {{ (request()->is('home/mission-vision/*')) ? 'menu-open' : '' }}">
+          <a href="#" class="nav-link {{ (request()->is('home/mission-vision/*')) ? 'active' : '' }}">
+            <i class="nav-icon far fa-plus-square"></i>
+            {{-- <i class="nav-icon fas fa-layer-plus"></i> --}}
             <p>
-            Slider
+              Mission/Vision
+              <i class="fas fa-angle-left right"></i>
             </p>
           </a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ route('superadmin.sidemenu.index')}}" class="nav-link {{ (request()->is('home/sidemenu*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-bars"></i>
-            <p>
-             Side Menu
-            </p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ route('superadmin.menu.index')}}" class="nav-link {{ (request()->is('home/menu*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-list"></i>
-            <p>
-              Menu
-            </p>
-          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('superadmin.mission.index')}}" class="nav-link {{ (request()->is('home/mission-vision/mission*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-bars"></i>
+
+                <p>
+                  Mission
+                </p>
+              </a>
+            </li>  
+            <li class="nav-item">
+              <a href="{{ route('superadmin.vision.index')}}" class="nav-link {{ (request()->is('home/mission-vision/vision*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-bars"></i>
+                {{-- <i class="nav-icon fas fa-calendar-alt"></i> --}}
+                <p>
+                  Vision
+                </p>
+              </a>
+            </li>
+          </ul>
         </li>
         <li class="nav-item">
           <a href="{{ route('superadmin.agency.index')}}" class="nav-link {{ (request()->is('home/agency*')) ? 'active' : '' }}">
@@ -63,14 +105,14 @@
             </p>
           </a>
         </li>  
-         <li class="nav-item">
+        <li class="nav-item">
           <a href="{{ route('superadmin.user.index')}}" class="nav-link {{ (request()->is('home/user*')) ? 'active' : '' }}">
             <i class="nav-icon fas fa-user"></i>
             <p>
              User
-            </p>
-          </a>
-        </li>
+           </p>
+         </a>
+       </li>
         <li class="nav-item">
           <a href="{{ route('superadmin.coreperson.index')}}" class="nav-link {{ (request()->is('home/coreperson*')) ? 'active' : '' }}">
             <i class="nav-icon fas fa-users"></i>
@@ -79,25 +121,7 @@
             </p>
           </a>
         </li>  
-         <li class="nav-item">
-          <a href="{{ route('superadmin.mission.index')}}" class="nav-link {{ (request()->is('home/mission*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-bars"></i>
-     
-            <p>
-             Mission
-            </p>
-          </a>
-        </li>  
-         <li class="nav-item">
-          <a href="{{ route('superadmin.vision.index')}}" class="nav-link {{ (request()->is('home/vision*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-bars"></i>
-            {{-- <i class="nav-icon fas fa-calendar-alt"></i> --}}
-            <p>
-            Vision
-            </p>
-          </a>
-        </li> 
-        </li>
+         
         <li class="nav-item">
           <a href="{{ route('superadmin.employee.index')}}" class="nav-link {{ (request()->is('home/employee*')) ? 'active' : '' }}">
             <i class="nav-icon fas fa-user"></i>

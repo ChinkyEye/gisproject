@@ -30,16 +30,23 @@ Auth::routes(['reset' => false,
 Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(['superadmin','auth'])->group(function(){
 
     Route::get('/', 'HomeController@index')->name('home');
-    Route::resource('/header','HeaderController');
-    Route::get('header/active/{id}', 'HeaderController@isActive')->name('header.active');
 
-    Route::resource('/menu','MenuController');
-    Route::get('menu/active/{id}', 'MenuController@isActive')->name('menu.active');
+    Route::resource('main-entry/header','HeaderController');
+    Route::get('main-entry/header/active/{id}', 'HeaderController@isActive')->name('header.active');
 
-    Route::resource('/menuhasdropdown','MenuHasDropdownController');
-    Route::get('/menuhasdropdown/active/{id}', 'MenuHasDropdownController@isActive')->name('menuhasdropdown.active');
-    Route::get('/menu/menuhasdropdown/{id}','MenuHasDropdownController@index')->name('menuhasdropdown.index');
-    Route::get('/menu/menuhasdropdown/create/{id}','MenuHasDropdownController@create')->name('menuhasdropdown.create');
+    Route::resource('main-entry/menu','MenuController');
+    Route::get('main-entry/menu/active/{id}', 'MenuController@isActive')->name('menu.active');
+
+    Route::resource('main-entry/menuhasdropdown','MenuHasDropdownController');
+    Route::get('main-entry/menuhasdropdown/active/{id}', 'MenuHasDropdownController@isActive')->name('menuhasdropdown.active');
+    Route::get('main-entry/menu/menuhasdropdown/{id}','MenuHasDropdownController@index')->name('menuhasdropdown.index');
+    Route::get('main-entry/menu/menuhasdropdown/create/{id}','MenuHasDropdownController@create')->name('menuhasdropdown.create');
+
+    Route::resource('main-entry/slider', 'SliderController');
+        Route::get('main-entry/slider/active/{id}', 'SliderController@isActive')->name('slider.active');
+
+    Route::resource('main-entry/sidemenu', 'SideMenuController');
+        Route::get('main-entry/sidemenu/active/{id}', 'SideMenuController@isActive')->name('sidemenu.active');
 
     //ofices or agency
     Route::resource('/agency','AgencyController');
@@ -51,17 +58,11 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::get('/user/changepassword/{id}', 'UserController@PasswordForm')->name('user.changepassword');
     Route::post('/user/changepassword/store/{id}', 'UserController@changePassword')->name('changepassword');
 
-    Route::resource('/slider', 'SliderController');
-        Route::get('/slider/active/{id}', 'SliderController@isActive')->name('slider.active');
+    Route::resource('mission-vision/mission', 'MissionController');
+        Route::get('mission-vision/mission/active/{id}', 'MissionController@isActive')->name('mission.active');
 
-    Route::resource('/sidemenu', 'SideMenuController');
-        Route::get('/sidemenu/active/{id}', 'SideMenuController@isActive')->name('sidemenu.active');
-
-    Route::resource('/mission', 'MissionController');
-        Route::get('/mission/active/{id}', 'MissionController@isActive')->name('mission.active');
-
-    Route::resource('/vision', 'VisionController');
-        Route::get('/vision/active/{id}', 'VisionController@isActive')->name('vision.active');
+    Route::resource('mission-vision/vision', 'VisionController');
+        Route::get('mission-vision/vision/active/{id}', 'VisionController@isActive')->name('vision.active');
 
     Route::resource('/coreperson','CorePersonController'); 
     Route::get('/coreperson/active/{id}', 'CorePersonController@isActive')->name('coreperson.active');
@@ -90,6 +91,8 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::get('/mantralaya/active/{id}', 'Mantralaya\MantralayaController@isActive')->name('mantralaya.active');
 
     Route::resource('/importantplace','ImportantPlace\ImportantPlaceController');
+    Route::get('/importantplace/active/{id}', 'ImportantPlace\ImportantPlaceController@isActive')->name('importantplace.active');
+
 
 
 
