@@ -121,6 +121,14 @@
              Notice
             </p>
           </a>
+        </li>  
+        <li class="nav-item">
+          <a href="{{ route('superadmin.eservice.index')}}" class="nav-link {{ (request()->is('home/eservice*')) ? 'active' : '' }}">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+             Eservice
+            </p>
+          </a>
         </li>
         <li class="nav-item">
           <a href="{{ route('superadmin.pradeshsabhasadasya.index')}}" class="nav-link {{ (request()->is('home/pradeshsabhasadasya*')) ? 'active' : '' }}">

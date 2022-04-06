@@ -120,6 +120,7 @@ class NoticeController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'type' => 'required',
+            'scroll' => 'required',
             'description' => 'required',
         ]);
        
@@ -201,6 +202,7 @@ class NoticeController extends Controller
         }
         return back()->with($notification)->withInput();
     }
+    
      public function downloadfile(Request $request,$file)
     {
         return response()->download(public_path('document/notice/'.$file));

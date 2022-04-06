@@ -57,7 +57,9 @@
                     <tr class="{{$notice->is_active == 1 ? '' : 'table-danger'}}">
                       <td>{{$key + 1}}</td>
                       <td>{{$notice->title}}</td>
-                      <td><a href="{{ route('superadmin.notice.downloadfile',$notice->document)}}"><i class="fas fa-file-pdf"></i></a></td>
+                      <td><a href="{{ route('superadmin.notice.downloadfile',$notice->document)}}"><i class="fas fa-file-pdf"></i></a>
+                      </td>
+
                       <td>
                         <a href="{{ route('superadmin.notice.active',$notice->id) }}" data-placement="top" title="{{ $notice->is_active == '1' ? 'Click to deactivatenotice' : 'Click to activate' }}">
                           <i class="nav-icon fas {{ $notice->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>

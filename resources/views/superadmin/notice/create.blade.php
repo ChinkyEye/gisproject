@@ -1,6 +1,6 @@
 @extends('superadmin.main.app')
 @section('content')
-<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('superadmin.','',Route::currentRouteName()), ".")); ?>
+<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('superadmin.','',Route::currentRouteName()), ".")); ?> 
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
@@ -43,13 +43,13 @@
           <label for="scroll">Scroll Notice<span class="text-danger">*</span></label>
           <div class="row col-md-5">
             <div class="form-check-inline col-md">
-              <input class="form-check-input" type="radio" name="scroll" id="yes" value="1" {{ old('scroll') == '1' ? 'checked' : ''}} >
+              <input class="form-check-input" type="radio" name="scroll" id="yes" value="1"  >
               <label class="form-check-label" for="scroll">
                 Yes
               </label>
             </div>
             <div class="form-check-inline col-md">
-              <input class="form-check-input" type="radio" name="scroll" id="no" value="2" {{ old('scroll') == '2' ? 'checked' : ''}}>
+              <input class="form-check-input" type="radio" name="scroll" id="no" value="2" >
               <label class="form-check-label" for="scroll">
                 No
               </label>
@@ -62,31 +62,31 @@
       <label for="type">Type:<span class="text-danger">*</span></label>
       <div class="row col-md-12">
         <div class="form-check-inline col-md">
-          <input class="form-check-input" type="checkbox" name="type" id="type1" value="1" {{ old('type') == '1' ? 'checked' : ''}} onclick="onlyOne(this)">
+          <input class="form-check-input" type="checkbox" name="type" id="type1" value="1">
           <label class="form-check-label" for="type1">
            Type1
          </label>
        </div>
        <div class="form-check-inline col-md">
-        <input class="form-check-input" type="checkbox" name="type" id="type2" value="2" {{ old('type') == '2' ? 'checked' : ''}} onclick="onlyOne(this)">
+        <input class="form-check-input" type="checkbox" name="type" id="type2" value="2" >
         <label class="form-check-label" for="type2">
           Type2
         </label>
       </div>
       <div class="form-check-inline col-md">
-        <input class="form-check-input" type="checkbox" name="type" id="type3" value="3" {{ old('type') == '3' ? 'checked' : ''}} onclick="onlyOne(this)">
+        <input class="form-check-input" type="checkbox" name="type" id="type3" value="3" >
         <label class="form-check-label" for="type3">
           type3
         </label>
       </div>
       <div class="form-check-inline col-md">
-        <input class="form-check-input" type="checkbox" name="type" id="type4" value="4" {{ old('type') == '4' ? 'checked' : ''}} onclick="onlyOne(this)">
+        <input class="form-check-input" type="checkbox" name="type" id="type4" value="4">
         <label class="form-check-label" for="type4">
           type4
         </label>
       </div>
       <div class="form-check-inline col-md">
-        <input class="form-check-input" type="checkbox" name="type" id="type5" value="5" {{ old('type') == '5' ? 'checked' : ''}} onclick="onlyOne(this)">
+        <input class="form-check-input" type="checkbox" name="type" id="type5" value="5" {>
         <label class="form-check-label" for="type5">
           type5
         </label>

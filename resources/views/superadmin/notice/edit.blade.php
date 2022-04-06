@@ -13,7 +13,7 @@
           <li class="breadcrumb-item active text-capitalize">{{ $page }} Page</li>
         </ol>
       </div>
-    </div>
+    </div> 
   </div>
 </section>
 <section class="content">
@@ -39,6 +39,24 @@
             <strong>{{ $message }}</strong>
           </span>
           @enderror
+        </div>
+        <div class="form-group">
+          <label for="scroll">Scroll Notice<span class="text-danger">*</span></label>
+          <div class="row col-md-5">
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="radio" name="scroll" id="yes" value="1" {{$notices->scroll == '1' ? 'checked' : ''}} >
+              <label class="form-check-label" for="scroll">
+                Yes
+              </label>
+            </div>
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="radio" name="scroll" id="no" value="2" {{$notices->scroll == '2' ? 'checked' : ''}}>
+              <label class="form-check-label" for="scroll">
+                No
+              </label>
+            </div>
+
+          </div>
         </div>
         <div class="form-group">
           <label for="type">Type:<span class="text-danger">*</span></label>
@@ -85,22 +103,22 @@
           <strong>{{ $message }}</strong>
         </span>
         @enderror
-      
-      <div class="form-group">
-        <label for="document">Document</label>
-        <div class="input-group">
-         <input type='file' id="document" name="document" onchange="fileType(event)"/>
-         <a href="{{ route('superadmin.notice.downloadfile',$notices->document)}}" style="color:red" title="Click Here"><i class="fas fa-file-pdf fa-5x"></i></a>
 
-       </div>
-       <span class="error mt-2" style="color: red; display: none">* Input pdf file type</span>
-       @error('document')
-       <span class="text-danger font-italic" role="alert">
-        <strong>{{ $message }}</strong>
-      </span>
-      @enderror
+        <div class="form-group">
+          <label for="document">Document</label>
+          <div class="input-group">
+           <input type='file' id="document" name="document" onchange="fileType(event)"/>
+           <a href="{{ route('superadmin.notice.downloadfile',$notices->document)}}" style="color:red" title="Click Here"><i class="fas fa-file-pdf fa-5x"></i></a>
+
+         </div>
+         <span class="error mt-2" style="color: red; display: none">* Input pdf file type</span>
+         @error('document')
+         <span class="text-danger font-italic" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+      </div>
     </div>
-  </div>
     <div class="card-footer justify-content-between">
       <button type="submit" class="btn btn-info text-capitalize">Update</button>
     </div>
