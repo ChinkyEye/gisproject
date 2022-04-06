@@ -78,6 +78,11 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
      Route::get('menu-page/notice/active/{id}', 'NoticeController@isActive')->name('notice.active');
     Route::get('menu-page/notice/download/{file}','NoticeController@downloadfile')->name('notice.downloadfile');
 
+    Route::resource('menu-page/sangathansanrachana','SangathanSanrachana\SangathanSanrachanaController');
+    Route::get('menu-page/sangathansanrachana/active/{id}', 'SangathanSanrachana\SangathanSanrachanaController@isActive')->name('sangathansanrachana.active');
+
+
+
     Route::resource('sidebar-part/pradeshsabhasadasya','PradeshSabhaSadasya\PradeshSabhaSadasyaController');
     Route::get('sidebar-part/pradeshsabhasadasya/active/{id}', 'PradeshSabhaSadasya\PradeshSabhaSadasyaController@isActive')->name('pradeshsabhasadasya.active');
 

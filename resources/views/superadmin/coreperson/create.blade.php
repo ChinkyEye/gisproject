@@ -59,6 +59,11 @@
           @enderror
         </div>
         <div class="form-group">
+          <label for="link">Link</label>
+          <input type="text"  class="form-control max" id="link" placeholder="Enter link" name="link" autocomplete="off" autofocus value="{{ old('link') }}">
+          <span class="error mt-2" style="color: red; display: none">* Input digits (0 - 9)</span>
+        </div>
+        <div class="form-group">
           <label for="type">Type:<span class="text-danger">*</span></label>
           <div class="row col-md-12">
             <div class="form-check-inline col-md">

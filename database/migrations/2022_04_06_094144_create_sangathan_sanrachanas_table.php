@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCorePeopleTable extends Migration
+class CreateSangathanSanrachanasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateCorePeopleTable extends Migration
      */
     public function up()
     {
-        Schema::create('core_people', function (Blueprint $table) {
+        Schema::create('sangathan_sanrachanas', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('address')->nullable();
-            $table->string('email')->unique();
-            $table->string('phone',10)->nullable();
-            $table->string('link')->nullable();
-            $table->string('responsibility')->nullable();
-            $table->integer('type'); 
+            $table->string('title')->nullable();
+            $table->string('image');
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);
@@ -41,6 +36,6 @@ class CreateCorePeopleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('core_people');
+        Schema::dropIfExists('sangathan_sanrachanas');
     }
 }

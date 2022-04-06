@@ -120,6 +120,14 @@
                </p>
              </a>
            </li>
+           <li class="nav-item">
+              <a href="{{ route('superadmin.sangathansanrachana.index')}}" class="nav-link {{ (request()->is('home/menu-page/sangathansanrachana*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                 Sangathan
+               </p>
+             </a>
+           </li>
           </ul>
         </li>
         <li class="nav-item has-treeview {{ (request()->is('home/sidebar-part/*')) ? 'menu-open' : '' }}">
@@ -190,15 +198,6 @@
            </p>
          </a>
        </li>
-        <li class="nav-item">
-          <a href="{{ route('superadmin.employee.index')}}" class="nav-link {{ (request()->is('home/employee*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-             Employee
-            </p>
-          </a>
-        </li>
-        
       </ul>
     </nav>
   </div>

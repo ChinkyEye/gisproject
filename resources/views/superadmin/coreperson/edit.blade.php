@@ -60,6 +60,16 @@
         @enderror
       </div>
       <div class="form-group">
+        <label for="link">Link<span class="text-danger">*</span></label>
+        <input type="text"  class="form-control max" id="link" placeholder="Enter link" name="link" autocomplete="off" autofocus value="{{ $corepersons->link }}">
+        <span class="error mt-2" style="color: red; display: none">* Input digits (0 - 9)</span>
+        @error('link')
+        <span class="text-danger font-italic" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+      </div>
+      <div class="form-group">
         <label for="type">Type:<span class="text-danger">*</span></label>
         <div class="row col-md-12">
           <div class="form-check-inline col-md">

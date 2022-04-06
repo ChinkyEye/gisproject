@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">
-            <p class="text-danger m-0">Person List</p>
+            <p class="text-danger m-0"> List</p>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -26,7 +26,7 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-md-2">
-                    <a href="{{route('superadmin.coreperson.create')}}" class="btn btn-flat btn-danger btn-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></a>
+                    <a href="{{route('superadmin.sangathansanrachana.create')}}" class="btn btn-flat btn-danger btn-block text-capitalize" style="color:#fff">Add  <i class="fas fa-plus fa-fw"></i></a>
                   </div>
                   <div class="col-md-10">
                     {{-- <input type="text" class="form-control" placeholder="Search by name"> --}}
@@ -39,45 +39,28 @@
                     <thead class="thead-dark">                  
                       <tr class="text-center">
                         <th width="10">SN</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Phone</th>
-                        <th>Link</th>
-                        <th>Post</th>
+                        <th>Title</th>
+                        <th>Image</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      @foreach($corepersons as $key => $coreperson)
-                      <tr class="{{$coreperson->is_active == 1 ? '' : 'table-danger'}} text-center">
+                      @foreach($datas as $key => $data)
+                      <tr class="{{$data->is_active == 1 ? '' : 'table-danger'}} text-center">
                         <td>{{$key + 1}}</td>
-                        <td>{{$coreperson->name}}</td>
-                        <td>{{$coreperson->address}}</td>
-                        {{-- <td>{{$coreperson->email}}</td> --}}
-                        <td>{{$coreperson->phone}}</td>
-                        <td>{{$coreperson->link}}</td>
+                        <td>{{$data->title}}</td>
                         <td>
-                          @if($coreperson->type == 1)
-                          <span>Karyalaya Pramukh</span>
-                          @elseif($coreperson->type == 2)
-                          <span>Prabatdaa</span>
-                          @elseif($coreperson->type == 3)
-                          <span>Suchana Sunne</span>
-                          @elseif($coreperson->type == 2)
-                          <span>Gunaso Sunne</span>
-                          @else
-                          <span>Anya</span>
-                          @endif
+                          <img src="{{ $data->image == null ? asset('images/no-image-user.png') : asset('images/sangathansanrachana') . '/' . $data->image  }}" alt="" class="responsive" width="50" height="50">
                         </td>
                         <td>
-                          <a href="{{ route('superadmin.coreperson.active',$coreperson->id) }}" data-placement="top" title="{{ $coreperson->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
-                            <i class="nav-icon fas {{ $coreperson->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
+                          <a href="{{ route('superadmin.sangathansanrachana.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
+                            <i class="nav-icon fas {{ $data->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
                           </a>
                         </td>
                         <td>
-                          <a href="{{ route('superadmin.coreperson.edit',$coreperson->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
-                          <form action='javascript:void(0)' data_url="{{route('superadmin.coreperson.destroy',$coreperson->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
+                          <a href="{{ route('superadmin.sangathansanrachana.edit',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
+                          <form action='javascript:void(0)' data_url="{{route('superadmin.sangathansanrachana.destroy',$data->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
                             <input type='hidden' name='_token' value='".csrf_token()."'>
                             <input name='_method' type='hidden' value='DELETE'>
                             <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>

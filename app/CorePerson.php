@@ -7,7 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 class CorePerson extends Model
 {
     protected $fillable = [
-        'name','address','email','phone','responsibility','type','is_active','date_np','date','time','created_by','updated_by'
+        'name',
+        'address',
+        'email',
+        'phone',
+        'link',
+        'responsibility',
+        'type',
+        'is_active',
+        'date_np',
+        'date',
+        'time',
+        'created_by',
+        'updated_by',
     ];
 
     public function setNameAttribute($value)

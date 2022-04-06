@@ -52,6 +52,7 @@ class CorePersonController extends Controller
             'address' => $request['address'],
             'email'=> $request['email'],
             'phone'=> $request['phone'],
+            'link'=> $request['link'],
             'responsibility'=> $request['responsibility'],
             'type'=> $request['type'],
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
