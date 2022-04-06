@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">
-            <p class="text-danger m-0"> List</p>
+            <p class="text-danger m-0">Sangathan-Sanrachana List</p>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->

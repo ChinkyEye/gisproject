@@ -123,9 +123,9 @@
            <li class="nav-item">
               <a href="{{ route('superadmin.sangathansanrachana.index')}}" class="nav-link {{ (request()->is('home/menu-page/sangathansanrachana*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-user"></i>
-                <p>
-                 Sangathan
-               </p>
+                {{-- <p> --}}
+                 Sangathan Sanrachana
+               {{-- </p> --}}
              </a>
            </li>
           </ul>

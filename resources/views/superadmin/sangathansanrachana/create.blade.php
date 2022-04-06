@@ -38,6 +38,11 @@
              <input type='file' class="d-none" id="imgInp" name="image" />
            </div>
          </div>
+         @error('image')
+         <span class="text-danger font-italic" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
        </div>
       </div>
       <div class="card-footer justify-content-between">
