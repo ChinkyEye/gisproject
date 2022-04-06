@@ -38,10 +38,10 @@
             <strong>{{ $message }}</strong>
           </span>
           @enderror
-        </div>
+        </div> 
         <div class="form-group">
           <label for="contact_no">Contact No:<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="contact" placeholder="Enter contact no" name="contact" autocomplete="off" autofocus value="{{ old('contact') }}" >
+          <input type="text"  class="form-control max" id="contact" placeholder="Enter contact no" name="contact" autocomplete="off" autofocus value="{{ old('contact') }}"  onkeypress="myFunction(event)" >
           <span class="error mt-2" style="color: red; display: none">* Input digits (0 - 9)</span>
           @error('contact')
           <span class="text-danger font-italic" role="alert">
@@ -60,7 +60,7 @@
       </div>
 
       <div class="form-group">
-        <label for="imgInp">Thumbnail</label>
+        <label for="imgInp">Thumbnail<span class="text-danger">*</span></label>
         <div class="input-group">
           <img id="blahDoc" src="{{URL::to('/')}}/images/80x80.png" onclick="document.getElementById('imgInpDoc').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
           <input type='file' class="d-none" id="imgInpDoc" name="thumbnail"autofocus value="{{ old('thumbnail') }}" />
@@ -72,7 +72,7 @@
         @enderror
       </div>
       <div class="form-group">
-        <label for="imgInp">Logo</label>
+        <label for="imgInp">Logo<span class="text-danger">*</span></label>
         <div class="input-group">
           <img id="blah" src="{{URL::to('/')}}/images/80x80.png" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
           <div class="input-group my-3">
@@ -94,6 +94,20 @@
 </section>
 @endsection
 @push('javascript')
+<script type="text/javascript">
+  function myFunction(e){
+    var keyCode = e.which ? e.which : e.keyCode
+    // alert(keyCode);
+    if (!((keyCode >= 48 && keyCode <= 57) || keyCode == 46)) {
+            $(".error").css("display", "inline");
+            // toastr.error('* Input digits (0 - 9)');
+            return false;
+          }
+          else{
+            $(".error").css("display", "none");
+          }
+  }
+</script>
 <script type="text/javascript">
   function readURL(input) {
     if (input.files && input.files[0]) {

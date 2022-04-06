@@ -42,7 +42,7 @@
         </div>
         <div class="form-group">
           <label for="contact_no">Contact No:<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="contact" placeholder="Enter contact no" name="contact" autocomplete="off" autofocus value="{{ $eservices->contact}}" >
+          <input type="text"  class="form-control max" id="contact" placeholder="Enter contact no" name="contact" autocomplete="off" autofocus value="{{ $eservices->contact}}"   onkeypress="myFunction(event)">
           <span class="error mt-2" style="color: red; display: none">* Input digits (0 - 9)</span>
           @error('contact')
           <span class="text-danger font-italic" role="alert">
@@ -88,13 +88,27 @@
     </div>
   </div>
   <div class="card-footer justify-content-between">
-    <button type="submit" class="btn btn-info text-capitalize">Save</button>
+    <button type="submit" class="btn btn-info text-capitalize">Update</button>
   </div>
 </form>
 </div>
 </section>
 @endsection
 @push('javascript')
+<script type="text/javascript">
+  function myFunction(e){
+    var keyCode = e.which ? e.which : e.keyCode
+    // alert(keyCode);
+    if (!((keyCode >= 48 && keyCode <= 57) || keyCode == 46)) {
+            $(".error").css("display", "inline");
+            // toastr.error('* Input digits (0 - 9)');
+            return false;
+          }
+          else{
+            $(".error").css("display", "none");
+          }
+  }
+</script>
 <script type="text/javascript">
   function readURL(input) {
     if (input.files && input.files[0]) {

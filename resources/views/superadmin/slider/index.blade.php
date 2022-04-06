@@ -7,11 +7,6 @@
 <div>
   <div class="content-header">
     <div class="container-fluid">
-      @if(session()->has('success'))
-      <div class="alert alert-success">
-        {{ session()->get('success') }}
-      </div>
-      @endif
       <div class="row">
         <div class="col-sm-6">
           <p class="text-danger m-0">Slider List</p>

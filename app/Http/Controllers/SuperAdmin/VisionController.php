@@ -56,11 +56,7 @@ class VisionController extends Controller
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        $pass = array(
-          'message' => 'Data added successfully!',
-          'alert-type' => 'success'
-        );
-        return redirect()->route('superadmin.vision.index')->with($pass)->withInput();
+        return redirect()->route('superadmin.vision.index')->with('alert-success', 'Vision created succesffully!!!');
     }
 
     /**
@@ -103,7 +99,7 @@ class VisionController extends Controller
         $all_data = $request->all();
         $all_data['updated_by'] = Auth::user()->id;
         $visions->update($all_data);
-        return redirect()->route('superadmin.vision.index');
+        return redirect()->route('superadmin.vision.index')->with('alert-success', 'Vision Updated succesffully!!!');
     }
 
     /**

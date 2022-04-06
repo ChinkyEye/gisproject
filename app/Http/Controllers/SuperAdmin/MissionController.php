@@ -56,7 +56,7 @@ class MissionController extends Controller
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        return redirect()->route('superadmin.mission.index')->with('alert-success', 'data created succesffully!!!');;
+        return redirect()->route('superadmin.mission.index')->with('alert-success', 'Data created succesffully!!!');
     }
 
     /**
@@ -99,7 +99,7 @@ class MissionController extends Controller
         $all_data = $request->all();
         $all_data['updated_by'] = Auth::user()->id;
         $missions->update($all_data);
-        return redirect()->route('superadmin.mission.index');
+        return redirect()->route('superadmin.mission.index')->with('alert-success', 'Data Updated succesffully!!!');
     }
 
     /**

@@ -53,7 +53,7 @@ class MenuController extends Controller
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        return redirect()->route('superadmin.menu.index');
+        return redirect()->route('superadmin.menu.index')->with('alert-success', 'Menu created successfully!!!!');;
     }
 
     /**
@@ -92,7 +92,7 @@ class MenuController extends Controller
         $all_data = $request->all();
         $all_data['updated_by'] = Auth::user()->id;
         $menus->update($all_data);
-        return redirect()->route('superadmin.menu.index');
+        return redirect()->route('superadmin.menu.index')->with('alert-success', 'Menu updated successfully!!!!');;
     }
 
     /**

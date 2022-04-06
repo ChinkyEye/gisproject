@@ -42,7 +42,8 @@
           </div>
           <div class="form-group col-md">
             <label for="phone">Phone<span class="text-danger">*</span></label>
-            <input type="text"  class="form-control max" id="phone" placeholder="Enter phone" name="phone" autocomplete="off" autofocus value="{{ old('phone') }}">
+            <input type="text"  class="form-control max" id="phone" placeholder="Enter phone" name="phone" autocomplete="off" autofocus value="{{ old('phone') }}"  onkeypress="myFunction(event)">
+            <span class="error mt-2" style="color: red; display: none">* Input digits (0 - 9)</span>
             @error('phone')
             <span class="text-danger font-italic" role="alert">
               <strong>{{ $message }}</strong>
@@ -79,6 +80,20 @@
 </section>
 @endsection
 @push('javascript')
+<script type="text/javascript">
+  function myFunction(e){
+    var keyCode = e.which ? e.which : e.keyCode
+    // alert(keyCode);
+    if (!((keyCode >= 48 && keyCode <= 57) || keyCode == 46)) {
+            $(".error").css("display", "inline");
+            // toastr.error('* Input digits (0 - 9)');
+            return false;
+          }
+          else{
+            $(".error").css("display", "none");
+          }
+  }
+</script>
 <script type="text/javascript">
   function readURL(input) {
     if (input.files && input.files[0]) {

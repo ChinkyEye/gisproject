@@ -42,7 +42,7 @@ class SliderController extends Controller
     {
      $this->validate($request, [
         'name' => 'required',
-        'image' => 'required'
+        'image' => 'required|mimes:jpeg,jpg,png,gif,svg|max:1048',
     ]);
      
      $uppdf = $request->file('image');
@@ -66,11 +66,8 @@ class SliderController extends Controller
         'time' => date("H:i:s"),
         'created_by' => Auth::user()->id,
     ]);
-    $pass = array(
-      'message' => 'Data added successfully!',
-      'alert-type' => 'success'
-  );
-    return redirect()->route('superadmin.slider.index')->with('success', 'Slider added successfully');  
+ 
+    return redirect()->route('superadmin.slider.index')->with('alert-success', 'Slider added successfully');  
 }
 
     /**
@@ -113,7 +110,7 @@ class SliderController extends Controller
         $uppdf = $request->file('image');
         if($uppdf != ""){
           $this->validate($request, [
-            'image' => 'required|mimes:jpeg,jpg|max:1024',
+            'image' => 'required|mimes:jpeg,jpg,png,gif,svg|max:1048',
         ]);
           // $destinationPath = 'images/slider/'.$slider->name;
           $destinationPath = 'images/slider/';
@@ -131,11 +128,7 @@ class SliderController extends Controller
     $all_data['updated_by'] = Auth::user()->id;
     $slider->update($all_data);
     $slider->update();
-    $pass = array(
-        'message' => 'Data updated successfully!',
-        'alert-type' => 'success'
-    );
-    return redirect()->route('superadmin.slider.index')->with('success','Slider updated successfully');
+    return redirect()->route('superadmin.slider.index')->with('alert-success', 'Slider updated successfully');
 }
 
     /**

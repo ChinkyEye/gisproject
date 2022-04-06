@@ -40,9 +40,11 @@ class AgencyController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+          $input = $request->all();
+          $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
+          $this->validate($request, [
             'contact_no' => 'required|digits_between:6,10',
-            'website_link' => 'required',
+            'website_link' => 'required|regex:'.$regex,
             'image' => 'required',
         ]);
          
@@ -70,7 +72,7 @@ class AgencyController extends Controller
           'message' => 'Data added successfully!',
           'alert-type' => 'success'
         );
-        return redirect()->route('superadmin.agency.index');
+        return redirect()->route('superadmin.agency.index')->with('alert-success', 'Agency added successfully');;
     }
 
     /**
@@ -105,10 +107,14 @@ class AgencyController extends Controller
      */
     public function update(Request $request, Agency $agency)
     {
-        $this->validate($request, [
-          'contact_no' => 'required',
+      $input = $request->all();
+      $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
 
-        ]);
+      $this->validate($request, [
+          'contact_no' => 'required',
+          'website_link' => 'required|regex:'.$regex,
+
+      ]);
         $all_data = $request->all();
         $uppdf = $request->file('image');
         if($uppdf != ""){
@@ -130,7 +136,7 @@ class AgencyController extends Controller
         }
         $all_data['updated_by'] = Auth::user()->id;
         $agency->update($all_data);
-        return redirect()->route('superadmin.agency.index')->with('success', 'header updated successfully.');
+        return redirect()->route('superadmin.agency.index')->with('alert-success', 'Agency Updated successfully');
     }
 
     /**

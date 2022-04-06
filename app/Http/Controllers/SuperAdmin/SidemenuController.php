@@ -52,7 +52,7 @@ class SidemenuController extends Controller
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        return redirect()->route('superadmin.sidemenu.index');
+        return redirect()->route('superadmin.sidemenu.index')->with('alert-success', 'Data added successfully');
     }
 
     /**
@@ -94,7 +94,7 @@ class SidemenuController extends Controller
         $all_data = $request->all();
         $all_data['updated_by'] = Auth::user()->id;
         $sidemenus->update($all_data);
-        return redirect()->route('superadmin.sidemenu.index');
+        return redirect()->route('superadmin.sidemenu.index')->with('alert-success', 'Data updated successfully');;
     }
 
     /**

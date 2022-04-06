@@ -77,11 +77,8 @@ class UserController extends Controller
         'time' => date("H:i:s"),
         'created_by' => Auth::user()->id,
     ]);
-    $pass = array(
-      'message' => 'Data added successfully!',
-      'alert-type' => 'success'
-  );
-    return redirect()->route('superadmin.user.index')->with($pass)->withInput();
+  
+    return redirect()->route('superadmin.user.index')->with('alert-success', 'User created successfully!!!!');
 }
 
 
@@ -131,7 +128,7 @@ class UserController extends Controller
         'message' => 'Data updated successfully!',
         'alert-type' => 'success'
     );
-     return redirect()->route('superadmin.user.index')->with($pass);
+     return redirect()->route('superadmin.user.index')->with('alert-success', 'User updated successfully!!!!');
  }
 
     /**
@@ -217,7 +214,7 @@ public function changePassword(Request $request, $id)
     $user->password = bcrypt($request->get('new-password'));
     $user->save();
 
-    return redirect()->back()->with("success","Password changed successfully !");
+    return redirect()->back()->with('alert-success', 'Password changed successfully!!!!'); 
 
 }
 }

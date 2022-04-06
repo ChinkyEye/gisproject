@@ -1,5 +1,5 @@
 <?php
-
+ 
 namespace App\Http\Controllers\SuperAdmin\Eservice;
 
 use App\Http\Controllers\Controller;
@@ -46,7 +46,7 @@ class EserviceController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'thumbnail' => 'required|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            'logo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'logo' => 'required|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'karyalaya' => 'required',
             'contact' =>'required|digits_between:6,10',
             'website_link' => 'required|regex:'.$regex,
@@ -91,7 +91,7 @@ class EserviceController extends Controller
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        return redirect()->route('superadmin.eservice.index');  
+        return redirect()->route('superadmin.eservice.index')->with('alert-success', 'Data created successfully!!!!');  
     }
 
     /**
@@ -175,7 +175,7 @@ class EserviceController extends Controller
 
     $all_data['updated_by'] = Auth::user()->id;
     $eservice->update($all_data);
-    return redirect()->route('superadmin.eservice.index')->with('success', 'header updated successfully.');
+    return redirect()->route('superadmin.eservice.index')->with('alert-success', 'Data updated successfully!!!!');
 }
 
     /**

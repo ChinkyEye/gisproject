@@ -82,7 +82,7 @@ class NoticeController extends Controller
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        return redirect()->route('superadmin.notice.index');
+        return redirect()->route('superadmin.notice.index')->with('alert-success', 'Notice created successfully!!!!');
     }
 
     /**
@@ -143,7 +143,7 @@ class NoticeController extends Controller
         $all_data['updated_by'] = Auth::user()->id;
         $notice->update($all_data);
         $notice->update();
-        return redirect()->route('superadmin.notice.index');
+        return redirect()->route('superadmin.notice.index')->with('alert-success', 'Notice updated successfully!!!!');
     }
 
     /**

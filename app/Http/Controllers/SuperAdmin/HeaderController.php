@@ -69,11 +69,7 @@ class HeaderController extends Controller
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        $pass = array(
-          'message' => 'Data added successfully!',
-          'alert-type' => 'success'
-        );
-        return redirect()->route('superadmin.header.index')->with('Success', 'header updated successfully.');
+        return redirect()->route('superadmin.header.index')->with('alert-success', 'Header created successfully!!!!');
     }
 
   
@@ -138,7 +134,7 @@ class HeaderController extends Controller
         $header->update($all_data);
         $header->update();
        
-        return redirect()->route('superadmin.header.index')->with('success', 'header updated successfully.');
+        return redirect()->route('superadmin.header.index')->with('alert-success', 'Header updated successfully!!!!');
     }
 
     /**
