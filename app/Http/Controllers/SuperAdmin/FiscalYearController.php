@@ -86,6 +86,9 @@ class FiscalYearController extends Controller
      */
     public function update(Request $request, FiscalYear $fiscalyear)
     {
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
         $all_data = $request->all();
         $all_data['updated_by'] = Auth::user()->id;
         if($fiscalyear->update($all_data))
