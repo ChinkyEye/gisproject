@@ -302,7 +302,7 @@ img {
   background-color: transparent !important; }
 
 .bg-gray {
-  background-color: #f1f7f9; }
+  background-color: #f1f7f9 !important; }
 
 .font-bold {
   font-weight: 700; }

@@ -2,65 +2,9 @@
 
 @section('content')
 {{-- section 1 --}}
-<section class="features-area py-5 bg-main-red">
+<section class="features-area py-5 bg-gray">
     <div class="container-fluid">
-        <div class="row ">
-            <div class="col-md-3 col-sm-6">
-                <div class="box">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
-                    <div class="box-content">
-                        <a href="">
-                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
-                            <span class="post">प्रदेश नं. १, विराटनगर</span>
-                        </a>
-                    </div>
-                    <ul class="icon">
-                        <li><a href="#"><i class="fa fa-link"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="box">
-                   <img src="{{ url('/web') }}/img/bg-img/1.jpg">
-                    <div class="box-content">
-                        <a href="">
-                            <h3 class="title">प्रदेश सभा सचिवालय</h3>
-                            <span class="post">प्रदेश नं. १, विराटनगर</span>
-                        </a>
-                    </div>
-                    <ul class="icon">
-                        <li><a href="#"><i class="fa fa-link"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="box">
-                   <img src="{{ url('/web') }}/img/bg-img/1.jpg">
-                    <div class="box-content">
-                        <a href="">
-                            <h3 class="title">प्रदेश सभा सचिवालय</h3>
-                            <span class="post">प्रदेश नं. १, विराटनगर</span>
-                        </a>
-                    </div>
-                    <ul class="icon">
-                        <li><a href="#"><i class="fa fa-link"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="box">
-                   <img src="{{ url('/web') }}/img/bg-img/1.jpg">
-                    <div class="box-content">
-                        <a href="">
-                            <h3 class="title">प्रदेश सभा सचिवालय</h3>
-                            <span class="post">प्रदेश नं. १, विराटनगर</span>
-                        </a>
-                    </div>
-                    <ul class="icon">
-                        <li><a href="#"><i class="fa fa-link"></i></a></li>
-                    </ul>
-                </div>
-            </div>
+        <div class="row">
             <div class="col-md-3 col-sm-6">
                 <div class="box">
                     <img src="{{ url('/web') }}/img/bg-img/1.jpg">
@@ -118,9 +62,119 @@
                 </div>
             </div>
         </div>
-        <div class=" text-center">
+        {{-- <div class=" text-center">
             <a href="#" class="btn credit-btn box-shadow btn-2">See More</a>
+        </div> --}}
+    </div>
+</section>
+{{-- end section 1 --}}
+{{-- section 2 --}}
+<section class="features-area py-5">
+    <div class="container-fluid">
+        <div class="owl-carousel owl-carousel2 owl-theme">
+            <div class="item">
+                <div class="box">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
+                    <div class="box-content">
+                        <a href="">
+                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
+                            <span class="post">प्रदेश नं. १, विराटनगर</span>
+                        </a>
+                    </div>
+                    <ul class="icon">
+                        <li><a href="#"><i class="fa fa-link"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="item">
+                <div class="box">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
+                    <div class="box-content">
+                        <a href="">
+                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
+                            <span class="post">प्रदेश नं. १, विराटनगर</span>
+                        </a>
+                    </div>
+                    <ul class="icon">
+                        <li><a href="#"><i class="fa fa-link"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="item">
+                <div class="box">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
+                    <div class="box-content">
+                        <a href="">
+                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
+                            <span class="post">प्रदेश नं. १, विराटनगर</span>
+                        </a>
+                    </div>
+                    <ul class="icon">
+                        <li><a href="#"><i class="fa fa-link"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="item">
+                <div class="box">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
+                    <div class="box-content">
+                        <a href="">
+                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
+                            <span class="post">प्रदेश नं. १, विराटनगर</span>
+                        </a>
+                    </div>
+                    <ul class="icon">
+                        <li><a href="#"><i class="fa fa-link"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="item">
+                <div class="box">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
+                    <div class="box-content">
+                        <a href="">
+                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
+                            <span class="post">प्रदेश नं. १, विराटनगर</span>
+                        </a>
+                    </div>
+                    <ul class="icon">
+                        <li><a href="#"><i class="fa fa-link"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="item">
+                <div class="box">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
+                    <div class="box-content">
+                        <a href="">
+                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
+                            <span class="post">प्रदेश नं. १, विराटनगर</span>
+                        </a>
+                    </div>
+                    <ul class="icon">
+                        <li><a href="#"><i class="fa fa-link"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="item">
+                <div class="box">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
+                    <div class="box-content">
+                        <a href="">
+                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
+                            <span class="post">प्रदेश नं. १, विराटनगर</span>
+                        </a>
+                    </div>
+                    <ul class="icon">
+                        <li><a href="#"><i class="fa fa-link"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            
         </div>
+        {{-- <div class=" text-center">
+            <a href="#" class="btn credit-btn box-shadow btn-2">See More</a>
+        </div> --}}
     </div>
 </section>
 {{-- <section class="features-area section-padding-100-0">
@@ -164,15 +218,15 @@
         </div>
     </div>
 </section> --}}
-{{-- section 1 end --}}
+{{-- section 2 end --}}
 
-{{-- section 2 --}}
+{{-- section 3 --}}
 <section class="cta-area d-flex flex-wrap">
     <!-- Cta Thumbnail -->
     <div class="cta-thumbnail bg-img jarallax" style="background-image: url({{ url('/web') }}/img/bg-img/5.jpg);"></div>
 
     <!-- Cta Content -->
-    <div class="cta-content bg-white">
+    <div class="cta-content bg-gray">
         <!-- Section Heading -->
         <div class="section-heading ">
             <div class="line"></div>
@@ -218,9 +272,9 @@
         <a href="#" class="btn credit-btn box-shadow btn-2">Read More</a>
     </div>
 </section>
-{{-- end section 2 --}}
+{{-- end section 3 --}}
 
-{{-- section 3 --}}
+{{-- section 4 --}}
 <section class="cta-2-area wow fadeInUp" data-wow-delay="100ms">
     <div class="container">
         <div class="row">
@@ -238,9 +292,9 @@
         </div>
     </div>
 </section>
-{{-- end section 3 --}}
+{{-- end section 4 --}}
 
-{{-- section 4 --}}
+{{-- section 5 --}}
 <section class="services-area section-padding-100-0">
     <div class="container">
         <div class="row">
@@ -323,9 +377,9 @@
         </div>
     </div>
 </section>
-{{-- end section 4 --}}
+{{-- end section 5 --}}
 
-{{-- section 5 --}}
+{{-- section 6 --}}
 <section class="services-area bg-gray py-5">
     <div class="container">
         <div class="row">
@@ -734,3 +788,28 @@
 </section> --}}
 {{-- end section 6 --}}
 @endsection
+
+@push('js')
+<script src="{{ url('/web') }}/js/slider.main.js"></script>
+<script type="text/javascript">
+    $('.owl-carousel2').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:false,
+        autoplay:true,
+        autoplayTimeout:2000,
+        autoplayHoverPause:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:3
+            },
+            1000:{
+                items:4
+            }
+        }
+    })
+</script>
+@endpush
