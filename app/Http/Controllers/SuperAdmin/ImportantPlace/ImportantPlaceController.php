@@ -44,6 +44,7 @@ class ImportantPlaceController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
+            'description' => 'required',
         ]);
         $uppdf = $request->file('image');
         if($uppdf != ""){
@@ -106,8 +107,9 @@ class ImportantPlaceController extends Controller
      */
     public function update(Request $request, ImportantPlace $importantplace)
     {
-        $this->validate($request, [
+         $this->validate($request, [
             'title' => 'required',
+            'description' => 'required',
         ]);
         $all_data = $request->all();
         $uppdf = $request->file('image');

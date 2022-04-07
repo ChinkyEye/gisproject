@@ -49,72 +49,76 @@
               </label>
             </div>
             <div class="form-check-inline col-md">
-              <input class="form-check-input" type="radio" name="scroll" id="no" value="2" >
+              <input class="form-check-input" type="radio" name="scroll" id="no" value="0" >
               <label class="form-check-label" for="scroll">
                 No
               </label>
             </div>
-
           </div>
+            @error('scroll')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
         </div>
 
-     <div class="form-group">
-      <label for="type">Type:<span class="text-danger">*</span></label>
-      <div class="row col-md-12">
-        <div class="form-check-inline col-md">
-          <input class="form-check-input" type="checkbox" name="type" id="type1" value="1">
-          <label class="form-check-label" for="type1">
-           Type1
-         </label>
-       </div>
-       <div class="form-check-inline col-md">
-        <input class="form-check-input" type="checkbox" name="type" id="type2" value="2" >
-        <label class="form-check-label" for="type2">
-          Type2
-        </label>
+        <div class="form-group">
+          <label for="type">Type:<span class="text-danger">*</span></label>
+          <div class="row col-md-12">
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="checkbox" name="type" id="type1" value="1">
+              <label class="form-check-label" for="type1">
+               Type1
+             </label>
+           </div>
+           <div class="form-check-inline col-md">
+            <input class="form-check-input" type="checkbox" name="type" id="type2" value="2" >
+            <label class="form-check-label" for="type2">
+              Type2
+            </label>
+          </div>
+          <div class="form-check-inline col-md">
+            <input class="form-check-input" type="checkbox" name="type" id="type3" value="3" >
+            <label class="form-check-label" for="type3">
+              type3
+            </label>
+          </div>
+          <div class="form-check-inline col-md">
+            <input class="form-check-input" type="checkbox" name="type" id="type4" value="4">
+            <label class="form-check-label" for="type4">
+              type4
+            </label>
+          </div>
+          <div class="form-check-inline col-md">
+            <input class="form-check-input" type="checkbox" name="type" id="type5" value="5" {>
+            <label class="form-check-label" for="type5">
+              type5
+            </label>
+          </div>
+        </div>
+        @error('type')
+        <span class="text-danger font-italic" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
       </div>
-      <div class="form-check-inline col-md">
-        <input class="form-check-input" type="checkbox" name="type" id="type3" value="3" >
-        <label class="form-check-label" for="type3">
-          type3
-        </label>
-      </div>
-      <div class="form-check-inline col-md">
-        <input class="form-check-input" type="checkbox" name="type" id="type4" value="4">
-        <label class="form-check-label" for="type4">
-          type4
-        </label>
-      </div>
-      <div class="form-check-inline col-md">
-        <input class="form-check-input" type="checkbox" name="type" id="type5" value="5" {>
-        <label class="form-check-label" for="type5">
-          type5
-        </label>
+      <div class="form-group">
+        <label for="document">Document<span class="text-danger">*</span></label>
+        <div class="input-group">
+          <input type='file' id="document" name="document" onchange="fileType(event)"/>
+        </div>
+        <span class="error mt-2" style="color: red; display: none">* Input pdf file type</span>
+        @error('document')
+        <span class="text-danger font-italic" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
       </div>
     </div>
-    @error('type')
-    <span class="text-danger font-italic" role="alert">
-      <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-  </div>
-  <div class="form-group">
-    <label for="document">Document<span class="text-danger">*</span></label>
-    <div class="input-group">
-      <input type='file' id="document" name="document" onchange="fileType(event)"/>
+    <div class="card-footer justify-content-between">
+      <button type="submit" class="btn btn-info text-capitalize">Save</button>
     </div>
-    <span class="error mt-2" style="color: red; display: none">* Input pdf file type</span>
-    @error('document')
-    <span class="text-danger font-italic" role="alert">
-      <strong>{{ $message }}</strong>
-    </span>
-    @enderror
-  </div>
-</div>
-<div class="card-footer justify-content-between">
-  <button type="submit" class="btn btn-info text-capitalize">Save</button>
-</div>
-</form>
+  </form>
 </div>
 </section>
 @endsection

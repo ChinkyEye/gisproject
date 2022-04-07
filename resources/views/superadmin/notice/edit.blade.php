@@ -50,7 +50,7 @@
               </label>
             </div>
             <div class="form-check-inline col-md">
-              <input class="form-check-input" type="radio" name="scroll" id="no" value="2" {{$notices->scroll == '2' ? 'checked' : ''}}>
+              <input class="form-check-input" type="radio" name="scroll" id="no" value="0" {{$notices->scroll == '0' ? 'checked' : ''}}>
               <label class="form-check-label" for="scroll">
                 No
               </label>

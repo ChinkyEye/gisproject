@@ -32,7 +32,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="description">Description</label>
+          <label for="description">Description<span class="text-danger">*</span></label>
           <textarea  type="text"  class="form-control max" id="description" placeholder="Enter description" name="description" autocomplete="off" autofocus>{{ $datas->description }}</textarea>
           @error('description')
           <span class="text-danger font-italic" role="alert">

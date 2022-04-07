@@ -23,7 +23,7 @@
         @csrf
         <div class="form-group">
           <label for="name">Name<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="name" placeholder="Enter name" name="name" autocomplete="off" autofocus value="{{ old('name') }}">
+          <input type="text"  class="form-control max id="name" placeholder="Enter name" name="name" autocomplete="off" autofocus value="{{ old('name') }}">
           @error('name')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
@@ -50,7 +50,7 @@
           @enderror
         </div>
         <div class="form-group">
-         <label for="website_link">Website Link<span class="text-danger">*</span></label>
+         <label for="website_link">Website Link</label>
          <textarea  type="text"  class="form-control max" id="website_link" placeholder="Enter website_link" name="website_link" autofocus value="{{ old('website_link') }}"></textarea>
          @error('website_link')
          <span class="text-danger font-italic" role="alert">

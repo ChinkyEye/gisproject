@@ -42,6 +42,7 @@ class SangathanSanrachanaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'title' => 'required',
             'image' => 'required',
         ]);
         $uppdf = $request->file('image');
@@ -101,6 +102,9 @@ class SangathanSanrachanaController extends Controller
      */
     public function update(Request $request, SangathanSanrachana $sangathansanrachana)
     {
+        $this->validate($request, [
+            'title' => 'required',
+        ]);
         $all_data = $request->all();
         $uppdf = $request->file('image');
         if($uppdf != ""){

@@ -40,11 +40,8 @@ class AgencyController extends Controller
      */
     public function store(Request $request)
     {
-          $input = $request->all();
-          $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
           $this->validate($request, [
             'contact_no' => 'required|digits_between:6,10',
-            'website_link' => 'required|regex:'.$regex,
             'image' => 'required',
         ]);
          
@@ -107,12 +104,10 @@ class AgencyController extends Controller
      */
     public function update(Request $request, Agency $agency)
     {
-      $input = $request->all();
-      $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
 
       $this->validate($request, [
           'contact_no' => 'required',
-          'website_link' => 'required|regex:'.$regex,
+      
 
       ]);
         $all_data = $request->all();
