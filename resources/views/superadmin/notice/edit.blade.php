@@ -87,7 +87,7 @@
               <input class="form-check-input" type="checkbox" name="type" id="type4" value="4" {{ $notices->type == '4' ? 'checked' : ''}} onclick="onlyOne(this)">
               <label class="form-check-label" for="type4">
                 type4
-              </label>
+              </label> 
             </div>
             <div class="form-check-inline col-md">
               <input class="form-check-input" type="checkbox" name="type" id="type5" value="5" {{$notices->type == '5' ? 'checked' : ''}} onclick="onlyOne(this)">
@@ -110,16 +110,19 @@
         <div class="form-group">
           <label for="document">Document</label>
           <div class="input-group">
+            @if($notices->document)
             <input type='file' id="document" name="document" onchange="fileType(event)"/>
             <a href="{{ route('superadmin.notice.downloadfile',$notices->document)}}" style="color:red" title="Click Here"><i class="fas fa-file-pdf fa-5x"></i></a>
-
           </div>
+          @else
+          <input type='file' id="document" name="document" onchange="fileType(event)"/>
+          @endif
           <span class="error mt-2" style="color: red; display: none">* Input pdf file type</span>
           @error('document')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
           </span>
-          @enderror
+          @enderror 
         </div>
       </div>
       <div class="card-footer justify-content-between">

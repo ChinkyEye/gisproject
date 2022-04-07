@@ -48,10 +48,9 @@ class NoticeController extends Controller
             'title' => 'required',
             'type' => 'required',
             'description' => 'required',
-            'document' => 'required',
             'scroll' => 'required',
         ]);
-        if(!$request->document){
+        if($request->document){
             $this->validate($request, [
                 'document' => 'required|mimes:pdf',               
             ]);

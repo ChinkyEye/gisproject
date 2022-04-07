@@ -46,9 +46,8 @@ class NitiController extends Controller
             'title' => 'required',
             'type' => 'required',
             'description' => 'required',
-            'document' => 'required',
         ]);
-        if(!$request->document){
+        if($request->document){
             $this->validate($request, [
                 'document' => 'required|mimes:pdf',               
             ]);
@@ -121,11 +120,7 @@ class NitiController extends Controller
             'type' => 'required',
             'description' => 'required',
         ]);
-        if($request->document){
-            $this->validate($request, [
-                'document' => 'required|mimes:pdf',               
-            ]);
-        }
+       
         $all_data = $request->all();
         $uppdf = $request->file('document');
         if($uppdf != ""){

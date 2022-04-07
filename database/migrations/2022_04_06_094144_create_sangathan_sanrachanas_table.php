@@ -16,7 +16,7 @@ class CreateSangathanSanrachanasTable extends Migration
         Schema::create('sangathan_sanrachanas', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);

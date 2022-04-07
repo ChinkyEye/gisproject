@@ -32,7 +32,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="imgInp">Photo<span class="text-danger">*</span></label>
+          <label for="imgInp">Photo</label>
           <div class="input-group">
             <img id="blah" src="{{URL::to('/')}}/images/sangathansanrachana/{{$datas->image}}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
             <div class="input-group my-3">

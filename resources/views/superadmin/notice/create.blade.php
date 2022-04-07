@@ -82,7 +82,7 @@
             <label class="form-check-label" for="type3">
               type3
             </label>
-          </div>
+          </div> 
           <div class="form-check-inline col-md">
             <input class="form-check-input" type="checkbox" name="type" id="type4" value="4">
             <label class="form-check-label" for="type4">
@@ -103,7 +103,7 @@
         @enderror
       </div>
       <div class="form-group">
-        <label for="document">Document<span class="text-danger">*</span></label>
+        <label for="document">Document</label>
         <div class="input-group">
           <input type='file' id="document" name="document" onchange="fileType(event)"/>
         </div>

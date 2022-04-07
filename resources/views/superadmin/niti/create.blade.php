@@ -39,15 +39,6 @@
           </span>
           @enderror
         </div>
-        {{-- <div class="form-group">
-          <label for="description">Description<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="description" placeholder="Enter comment" name="description" autocomplete="off" autofocus value="{{ old('description') }}">
-          @error('description')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div> --}}
         <div class="form-group">
           <label for="type">Type:<span class="text-danger">*</span></label>
           <div class="row col-md-12">
@@ -89,17 +80,17 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="document">Document<span class="text-danger">*</span></label>
+          <label for="document">Document</label>
           <div class="input-group">
             <input type='file' id="document" name="document" onchange="fileType(event)"/>
           </div>
-           <span class="error mt-2" style="color: red; display: none">* Input pdf file type</span>
+          <span class="error mt-2" style="color: red; display: none">* Input pdf file type</span>
           @error('document')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
           </span>
           @enderror
-       </div>
+        </div>
       </div>
       <div class="card-footer justify-content-between">
         <button type="submit" class="btn btn-info text-capitalize">Save</button>
@@ -126,40 +117,40 @@
   }
 </script>
 <script>
-    /* this function will call when page loaded successfully */
-    $(document).ready(function(){
- 
-        /* this function will call when onchange event fired */
-        $("#document").on("change",function(){
-             
-            /* current this object refer to input element */
-            var $input = $(this);
+  /* this function will call when page loaded successfully */
+  $(document).ready(function(){
+   
+    /* this function will call when onchange event fired */
+    $("#document").on("change",function(){
+     
+      /* current this object refer to input element */
+      var $input = $(this);
 
-            /* collect list of files choosen */
-            var files = $input[0].files;
- 
-            var filename = files[0].name;
+      /* collect list of files choosen */
+      var files = $input[0].files;
       
-            /* getting file extenstion eg- .jpg,.png, etc */
-            var extension = filename.substr(filename.lastIndexOf("."));
- 
-            /* define allowed file types */
-            var allowedExtensionsRegx = /(\.pdf)$/i;
+      var filename = files[0].name;
+      
+      /* getting file extenstion eg- .jpg,.png, etc */
+      var extension = filename.substr(filename.lastIndexOf("."));
+      
+      /* define allowed file types */
+      var allowedExtensionsRegx = /(\.pdf)$/i;
             // var allowedExtensionsRegx = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
- 
+            
             /* testing extension with regular expression */
             var isAllowed = allowedExtensionsRegx.test(extension);
- 
+            
             if(isAllowed){
               $(".error").css("display", "none");
                 // alert("File type is valid for the upload");
                 /* file upload logic goes here... */
-            }else{
+              }else{
                $(".error").css("display", "inline");
                 // alert("Invalid File Type.");
                 return false;
-            }
-        });    
-    });
+              }
+            });    
+  });
 </script>
 @endpush
