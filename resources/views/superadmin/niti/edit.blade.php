@@ -81,38 +81,29 @@
         @enderror
       </div>
       <div class="form-group">
-          <label for="document">Document<span class="text-danger">*</span></label>
-          <div class="input-group">
-           <input type='file' id="document" name="document" onchange="fileType(event)"/>
-           <a href="{{ route('superadmin.niti.downloadfile',$nitis->document)}}" style="color:red" title="Click Here"><i class="fas fa-file-pdf fa-5x"></i></a>
-           {{-- <span>{{$nitis->document}}</span> --}}
-           {{-- <iframe src="{{URL::to('/')}}/document/niti/{{$nitis->document}}" width="100" height="100" class="text-right"></iframe> --}}
-          </div>
-           <span class="error mt-2" style="color: red; display: none">* Input pdf file type</span>
-          @error('document')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-       </div>
-      {{-- <div class="form-group">
-        <label for="logo">Choose Logo</label>
-        <input type="hidden" value="{{$headers->image}}">
+        <label for="document">Document</label>
+        @if($nitis->document)
         <div class="input-group">
-          <input type="file" class="form-control d-none" id="image" name="image"  value="{{$headers->image}}" >
-          <img src="{{URL::to('/')}}/images/logo/{{$headers->image}}" id="profile-img-tag" width="200px" onclick="document.getElementById('image').click();" alt="your image" class="img-thumbnail img-fluid editback-gallery-img center-block"  />
-        </div>
-        @error('image')
-        <span class="text-danger font-italic" role="alert">
-          <strong>{{ $message }}</strong>
-        </span>
-        @enderror
-      </div> --}}
+         <input type='file' id="document" name="document" onchange="fileType(event)"/>
+         <a href="{{ route('superadmin.niti.downloadfile',$nitis->document)}}" style="color:red" title="Click Here"><i class="fas fa-file-pdf fa-5x"></i></a>
+       </div>
+       @else
+       <div class="input-group">
+         <input type='file' id="document" name="document" onchange="fileType(event)"/>
+       </div>
+       @endif
+       <span class="error mt-2" style="color: red; display: none">* Input pdf file type</span>
+       @error('document')
+       <span class="text-danger font-italic" role="alert">
+        <strong>{{ $message }}</strong>
+      </span>
+      @enderror
     </div>
-    <div class="modal-footer justify-content-between">
-      <button type="submit" class="btn btn-info text-capitalize">Update Niti</button>
-    </div>
-  </form>
+  </div>
+  <div class="modal-footer justify-content-between">
+    <button type="submit" class="btn btn-info text-capitalize">Update Niti</button>
+  </div>
+</form>
 </div>
 </section>
 @endsection
@@ -133,18 +124,41 @@
     })
   }
 </script>
-<script type="text/javascript">
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        $('#profile-img-tag').attr('src', e.target.result);
-      }
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-  $("#image").change(function(){
-    readURL(this);
+<script>
+  /* this function will call when page loaded successfully */
+  $(document).ready(function(){
+
+    /* this function will call when onchange event fired */
+    $("#document").on("change",function(){
+
+      /* current this object refer to input element */
+      var $input = $(this);
+
+      /* collect list of files choosen */
+      var files = $input[0].files;
+
+      var filename = files[0].name;
+      
+      /* getting file extenstion eg- .jpg,.png, etc */
+      var extension = filename.substr(filename.lastIndexOf("."));
+
+      /* define allowed file types */
+      var allowedExtensionsRegx = /(\.pdf)$/i;
+            // var allowedExtensionsRegx = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+            /* testing extension with regular expression */
+            var isAllowed = allowedExtensionsRegx.test(extension);
+
+            if(isAllowed){
+              $(".error").css("display", "none");
+                // alert("File type is valid for the upload");
+                /* file upload logic goes here... */
+              }else{
+               $(".error").css("display", "inline");
+                // alert("Invalid File Type.");
+                return false;
+              }
+            });    
   });
 </script>
 

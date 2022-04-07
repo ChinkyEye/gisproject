@@ -57,7 +57,11 @@
                     <tr class="{{$niti->is_active == 1 ? '' : 'table-danger'}}">
                       <td>{{$key + 1}}</td>
                       <td>{{$niti->title}}</td>
+                      @if($niti->document)
                       <td><a href="{{ route('superadmin.niti.downloadfile',$niti->document)}}"><i class="fas fa-file-pdf"></i></a></td>
+                      @else
+                      <td>NULL</td> 
+                      @endif
                       <td>
                         <a href="{{ route('superadmin.niti.active',$niti->id) }}" data-placement="top" title="{{ $niti->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                           <i class="nav-icon fas {{ $niti->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>

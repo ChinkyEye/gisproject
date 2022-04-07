@@ -43,7 +43,6 @@ class SangathanSanrachanaController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'image' => 'required',
         ]);
         $uppdf = $request->file('image');
         if($uppdf != ""){
