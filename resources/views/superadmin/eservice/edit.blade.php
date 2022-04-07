@@ -51,7 +51,7 @@
           @enderror
         </div>
         <div class="form-group">
-         <label for="website_link">Website Link<span class="text-danger">*</span></label>
+         <label for="website_link">Website Link</label>
          <textarea  type="text"  class="form-control max" id="website_link" placeholder="Enter website_link" name="website_link" autocomplete="off" autofocus value="{{ old('website_link') }}">{{$eservices->website_link}}</textarea>
          @error('website_link')
          <span class="text-danger font-italic" role="alert">

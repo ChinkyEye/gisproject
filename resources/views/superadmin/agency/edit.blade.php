@@ -19,48 +19,48 @@
 <section class="content">
   <div class="card">
     <form role="form" method="POST" action="{{route('superadmin.agency.update', $agencies->id)}}" enctype="multipart/form-data">
-       @method('PATCH')
-       @csrf
-      <div class="modal-body" >
-        <div class="form-group">
-          <label for="contact_no">Contact No:<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="contact_no" placeholder="Enter contact no" name="contact_no" autocomplete="off" autofocus value="{{ $agencies->contact_no}}">
-          @error('contact_no')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div>
+     @method('PATCH')
+     @csrf
+     <div class="modal-body" >
+      <div class="form-group">
+        <label for="contact_no">Contact No:<span class="text-danger">*</span></label>
+        <input type="text"  class="form-control max" id="contact_no" placeholder="Enter contact no" name="contact_no" autocomplete="off" autofocus value="{{ $agencies->contact_no}}">
+        @error('contact_no')
+        <span class="text-danger font-italic" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+      </div>
 
-        <div class="form-group">
-         <label for="website_link">Website Link<span class="text-danger">*</span></label>
-         <textarea  type="text"  class="form-control max" id="website_link" placeholder="Enter website_link" name="website_link" autocomplete="off">{{$agencies->website_link}}</textarea>
-          @error('website_link')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div>
-        <div class="form-group">
-            <label for="imgInp">Image</label>
-            <div class="input-group">
-              <img id="blah" src="{{URL::to('/')}}/images/agency/{{$agencies->image}}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
-              <div class="input-group my-3">
-               <input type='file' class="d-none" id="imgInp" name="image" />
-              </div>
-            </div>
-            @error('image')
-            <span class="text-danger font-italic" role="alert">
-              <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-          </div>
-      </div>
-      <div class="modal-footer justify-content-between">
-        <button type="submit" class="btn btn-info text-capitalize">Update Agency</button>
-      </div>
-    </form>
+      <div class="form-group">
+       <label for="website_link">Website Link</label>
+       <textarea  type="text"  class="form-control max" id="website_link" placeholder="Enter website_link" name="website_link" autocomplete="off">{{$agencies->website_link}}</textarea>
+       @error('website_link')
+       <span class="text-danger font-italic" role="alert">
+        <strong>{{ $message }}</strong>
+      </span>
+      @enderror
+    </div>
+    <div class="form-group">
+      <label for="imgInp">Image<span class="text-danger">*</span></label>
+      <div class="input-group">
+        <img id="blah" src="{{URL::to('/')}}/images/agency/{{$agencies->image}}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
+        <div class="input-group my-3">
+         <input type='file' class="d-none" id="imgInp" name="image" />
+       </div>
+     </div>
+     @error('image')
+     <span class="text-danger font-italic" role="alert">
+      <strong>{{ $message }}</strong>
+    </span>
+    @enderror
   </div>
+</div>
+<div class="modal-footer justify-content-between">
+  <button type="submit" class="btn btn-info text-capitalize">Update Agency</button>
+</div>
+</form>
+</div>
 </section>
 @endsection
 @push('javascript')

@@ -23,7 +23,7 @@
        @csrf
       <div class="card-body" >
         <div class="form-group">
-          <label for="title">Title</label>
+          <label for="title">Title<span class="text-danger">*</span></label>
           <input  type="text"  class="form-control max" id="title" placeholder="Enter name" name="title" autocomplete="off" value="{{ $datas->title }}">
           @error('title')
           <span class="text-danger font-italic" role="alert">

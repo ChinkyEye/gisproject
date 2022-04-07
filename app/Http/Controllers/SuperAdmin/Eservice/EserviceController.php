@@ -40,8 +40,7 @@ class EserviceController extends Controller
      */
     public function store(Request $request)
     {
-        $input = $request->all();
-        $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
+   
 
         $this->validate($request, [
             'name' => 'required',
@@ -49,7 +48,7 @@ class EserviceController extends Controller
             'logo' => 'required|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'karyalaya' => 'required',
             'contact' =>'required|digits_between:6,10',
-            'website_link' => 'required|regex:'.$regex,
+        
         ]);
         
         $uppdf = $request->file('thumbnail');
@@ -126,14 +125,12 @@ class EserviceController extends Controller
      */
     public function update(Request $request,  Eservice $eservice)
     {
-       $input = $request->all();
-       $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
-
+     
        $this->validate($request, [
         'name' => 'required',
         'karyalaya' => 'required',
         'contact' =>'required|digits_between:6,10',
-        'website_link' => 'required|regex:'.$regex,
+       
     ]);
        $all_data = $request->all();
 
