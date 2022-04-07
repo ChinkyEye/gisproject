@@ -7,7 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Eservice extends Model
 {
      protected $fillable = [
-        'name', 'thumbnail', 'logo', 'karyalaya', 'contact', 'website_link', 'is_active','date_np','date','time','created_by','updated_by'
+        'name',
+        'thumbnail',
+        'logo',
+        'karyalaya',
+        'contact',
+        'website_link',
+        'is_active',
+        'date_np',
+        'date',
+        'time',
+        'created_by',
+        'updated_by',
     ];
 
     public function getUser()

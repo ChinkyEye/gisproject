@@ -7,7 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Misvision extends Model
 {
    protected $fillable = [
-		'name',  'type','created_by','is_active','date_np','date','time',
+		'name',
+		'type',
+		'created_by',
+		'is_active',
+		'date_np',
+		'date',
+		'time',
 	];
 
 	public function getUser()

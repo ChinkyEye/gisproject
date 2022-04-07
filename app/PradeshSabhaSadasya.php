@@ -7,7 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 class PradeshSabhaSadasya extends Model
 {
     protected $fillable = [
-        'name','district','gender','dala','nirvachit_kshetra_no','phone','image','sort_id','is_active','date_np','date','time','created_by','updated_by'
+        'name',
+        'district',
+        'gender',
+        'dala',
+        'nirvachit_kshetra_no',
+        'phone',
+        'image',
+        'sort_id',
+        'is_active',
+        'date_np',
+        'date',
+        'time',
+        'created_by',
+        'updated_by',
     ];
 
     public function setNameAttribute($value)
