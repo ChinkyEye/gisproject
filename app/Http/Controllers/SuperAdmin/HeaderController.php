@@ -18,8 +18,8 @@ class HeaderController extends Controller
      */
     public function index()
     {
-         $headers = Header::orderBy('id', 'DESC')->get();
-      return view('superadmin.header.index', compact('headers'));
+        $headers = Header::orderBy('id', 'DESC')->get();
+        return view('superadmin.header.index', compact('headers'));
     }
 
     /**
@@ -44,12 +44,15 @@ class HeaderController extends Controller
         
         $this->validate($request, [
             'name' => 'required',
-            'image' => 'required|mimes:jpeg,jpg,png|max:1024',
             'slogan' => 'required',
+            'image' => 'required|mimes:png|max:1024',
         ]);
          
         $uppdf = $request->file('image');
         if($uppdf != ""){
+            $this->validate($request, [
+                'image' => 'required|mimes:jpeg,jpg,png,|max:1024',
+            ]);
             $destinationPath = 'images/logo/';
             $extension = $uppdf->getClientOriginalExtension();
             $fileName = md5(mt_rand()).'.'.$extension;
@@ -115,7 +118,7 @@ class HeaderController extends Controller
         $uppdf = $request->file('image');
         if($uppdf != ""){
           $this->validate($request, [
-            'image' => 'required|mimes:jpeg,jpg|max:1024',
+            'image' => 'required|mimes:jpeg,jpg,png,|max:1024',
           ]);
          
           $destinationPath = 'images/logo/';

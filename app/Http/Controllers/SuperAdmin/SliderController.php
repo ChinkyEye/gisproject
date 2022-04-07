@@ -40,34 +40,33 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-     $this->validate($request, [
-        'name' => 'required',
-        'image' => 'required|mimes:jpeg,jpg,png,gif,svg|max:1048',
-    ]);
+        $this->validate($request, [
+            'name' => 'required',
+            'image' => 'required|mimes:jpeg,jpg,png,|max:1048',
+        ]);
      
-     $uppdf = $request->file('image');
-     if($uppdf != ""){
-        $destinationPath = 'images/slider/';
-            // $destinationPath = 'images/slider/'.$request->name;
-        $extension = $uppdf->getClientOriginalExtension();
-        $fileName = md5(mt_rand()).'.'.$extension;
-        $uppdf->move($destinationPath, $fileName);
-        $file_path = $destinationPath.'/'.$fileName;
+        $uppdf = $request->file('image');
+        if($uppdf != ""){
+            $destinationPath = 'images/slider/';
+            $extension = $uppdf->getClientOriginalExtension();
+            $fileName = md5(mt_rand()).'.'.$extension;
+            $uppdf->move($destinationPath, $fileName);
+            $file_path = $destinationPath.'/'.$fileName;
 
-    }else{
-        $fileName = Null;
-    }
-    $sliders = Slider::create([
-        'name' => $request['name'],
-        'image'=> $fileName,
-        'is_active' => '1',
-        'date' => date("Y-m-d"),
-        'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
-        'time' => date("H:i:s"),
-        'created_by' => Auth::user()->id,
-    ]);
- 
-    return redirect()->route('superadmin.slider.index')->with('alert-success', 'Slider added successfully');  
+        }else{
+            $fileName = Null;
+        }
+        $sliders = Slider::create([
+            'name' => $request['name'],
+            'image'=> $fileName,
+            'is_active' => '1',
+            'date' => date("Y-m-d"),
+            'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+            'time' => date("H:i:s"),
+            'created_by' => Auth::user()->id,
+        ]);
+        
+        return redirect()->route('superadmin.slider.index')->with('alert-success', 'Slider added successfully');  
 }
 
     /**
@@ -101,34 +100,32 @@ class SliderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,Slider $slider)
-    
     {
         $this->validate($request, [
-          'name' => 'required',
-      ]);
+            'name' => 'required',
+        ]);
         $all_data = $request->all();
         $uppdf = $request->file('image');
         if($uppdf != ""){
-          $this->validate($request, [
-            'image' => 'required|mimes:jpeg,jpg,png,gif,svg|max:1048',
-        ]);
-          // $destinationPath = 'images/slider/'.$slider->name;
-          $destinationPath = 'images/slider/';
-          $oldFilename = $destinationPath.'/'.$slider->image;
+            $this->validate($request, [
+                'image' => 'required|mimes:jpeg,jpg,png,|max:1048',
+            ]);
+            $destinationPath = 'images/slider/';
+            $oldFilename = $destinationPath.'/'.$slider->image;
 
-          $extension = $uppdf->getClientOriginalExtension();
-          $fileName = md5(mt_rand()).'.'.$extension;
-          $uppdf->move($destinationPath, $fileName);
-          $file_path = $destinationPath.'/'.$fileName;
-          $all_data['image'] = $fileName;
-          if(File::exists($oldFilename)) {
-            File::delete($oldFilename);
+            $extension = $uppdf->getClientOriginalExtension();
+            $fileName = md5(mt_rand()).'.'.$extension;
+            $uppdf->move($destinationPath, $fileName);
+            $file_path = $destinationPath.'/'.$fileName;
+            $all_data['image'] = $fileName;
+            if(File::exists($oldFilename)) {
+                File::delete($oldFilename);
+            }
         }
-    }
-    $all_data['updated_by'] = Auth::user()->id;
-    $slider->update($all_data);
-    $slider->update();
-    return redirect()->route('superadmin.slider.index')->with('alert-success', 'Slider updated successfully');
+        $all_data['updated_by'] = Auth::user()->id;
+        $slider->update($all_data);
+        $slider->update();
+        return redirect()->route('superadmin.slider.index')->with('alert-success', 'Slider updated successfully');
 }
 
     /**

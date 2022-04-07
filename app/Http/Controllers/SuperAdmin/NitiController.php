@@ -47,14 +47,18 @@ class NitiController extends Controller
             'type' => 'required',
             'description' => 'required',
         ]);
-        if($request->document){
-            $this->validate($request, [
-                'document' => 'required|mimes:pdf',               
-            ]);
-        }
+        // if($request->document){
+        //     $this->validate($request, [
+        //         'document' => 'required|mimes:pdf',               
+        //     ]);
+        // }
          
         $uppdf = $request->file('document');
         if($uppdf != ""){
+            $this->validate($request, [
+                'document' => 'required|mimes:pdf',               
+            ]);
+
             $destinationPath = 'document/niti/';
             $extension = $uppdf->getClientOriginalExtension();
             $name = $uppdf->getClientOriginalName();
@@ -114,7 +118,6 @@ class NitiController extends Controller
      */
     public function update(Request $request,Niti $niti)
     {
-        // dd($request);
         $this->validate($request, [
             'title' => 'required',
             'type' => 'required',
@@ -124,6 +127,9 @@ class NitiController extends Controller
         $all_data = $request->all();
         $uppdf = $request->file('document');
         if($uppdf != ""){
+            $this->validate($request, [
+                'document' => 'required|mimes:pdf',               
+            ]);
             $destinationPath = 'document/niti/';
             $oldFilename = $destinationPath.'/'.$niti->document;
 

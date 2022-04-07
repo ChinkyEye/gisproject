@@ -45,12 +45,12 @@
           <div class="input-group">
             <input type="file" class="form-control d-none" id="image" name="image" value="{{ old('image') }}">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl1xtOkMGh312RKiJXUPbwyODQ7hdHgHFqYR5RwBGHiKaKz9eO&s" id="profile-img-tag" width="200px" onclick="document.getElementById('image').click();" alt="your image" class="img-thumbnail img-fluid editback-gallery-img center-block"  />
-            @error('image')
-            <span class="text-danger font-italic" role="alert">
-              <strong>{{ $message }}</strong>
-            </span>
-            @enderror
           </div>
+          @error('image')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
         </div>
 
         

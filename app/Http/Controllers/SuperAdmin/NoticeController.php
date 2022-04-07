@@ -50,14 +50,12 @@ class NoticeController extends Controller
             'description' => 'required',
             'scroll' => 'required',
         ]);
-        if($request->document){
-            $this->validate($request, [
-                'document' => 'required|mimes:pdf',               
-            ]);
-        }
          
         $uppdf = $request->file('document');
         if($uppdf != ""){
+            $this->validate($request, [
+                'document' => 'required|mimes:pdf',               
+            ]);
             $destinationPath = 'document/notice/';
             $extension = $uppdf->getClientOriginalExtension();
             $name = $uppdf->getClientOriginalName();
@@ -126,6 +124,9 @@ class NoticeController extends Controller
         $all_data = $request->all();
         $uppdf = $request->file('document');
         if($uppdf != ""){
+            $this->validate($request, [
+                'document' => 'required|mimes:pdf',               
+            ]);
             $destinationPath = 'document/notice/';
             $oldFilename = $destinationPath.'/'.$notice->document;
 

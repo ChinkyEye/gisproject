@@ -23,7 +23,7 @@
         @csrf
         <div class="form-group">
           <label for="name">Name<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="name" placeholder="Enter vision name" name="name" autocomplete="off" autofocus value="{{ old('name') }}">
+          <input type="text"  class="form-control max" id="name" placeholder="Enter vision" name="name" autocomplete="off" autofocus value="{{ old('name') }}">
           @error('name')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
