@@ -200,7 +200,9 @@
        </li>
        <li class="nav-item">
           <a href="{{ route('superadmin.fiscalyear.index')}}" class="nav-link {{ (request()->is('home/fiscalyear*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-user"></i>
+            {{-- <i class="nav-icon fas fa-user"></i> --}}
+            {{-- <i class="nav-icon fas fa-setting"></i> --}}
+            <i class="nav-icon fas fa-cog"></i>
             <p>
              Fiscal Year
            </p>
