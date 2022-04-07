@@ -16,10 +16,10 @@ class CreateEservicesTable extends Migration
         Schema::create('eservices', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('thumbnail');        
             $table->string('karyalaya');
-            $table->string('logo');
             $table->string('contact');
+            $table->string('thumbnail')->nullable();        
+            $table->string('logo')->nullable();
             $table->text('website_link')->nullable();         
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);

@@ -21,24 +21,26 @@
     <form role="form" method="POST" action="{{route('superadmin.eservice.store')}}" class="signup" id="signup" enctype="multipart/form-data">
       <div class="card-body">
         @csrf
-        <div class="form-group">
-          <label for="name">Name<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max id="name" placeholder="Enter name" name="name" autocomplete="off" autofocus value="{{ old('name') }}">
-          @error('name')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
+        <div class="row">
+          <div class="form-group col-md">
+            <label for="name">Name<span class="text-danger">*</span></label>
+            <input type="text"  class="form-control max" id="name" placeholder="Enter name" name="name" autocomplete="off" autofocus value="{{ old('name') }}">
+            @error('name')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+          <div class="form-group col-md">
+            <label for="karyalaya">Karyalaya<span class="text-danger">*</span></label>
+            <input type="text"  class="form-control max" id="karyalaya" placeholder="Enter Karyalaya" name="karyalaya" autocomplete="off" autofocus value="{{ old('karyalaya') }}">
+            @error('karyalaya')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div> 
         </div>
-        <div class="form-group">
-          <label for="karyalaya">Karyalaya<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="karyalaya" placeholder="Enter Karyalaya" name="karyalaya" autocomplete="off" autofocus value="{{ old('karyalaya') }}">
-          @error('karyalaya')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div> 
         <div class="form-group">
           <label for="contact_no">Contact No:<span class="text-danger">*</span></label>
           <input type="text"  class="form-control max" id="contact" placeholder="Enter contact no" name="contact" autocomplete="off" autofocus value="{{ old('contact') }}"  onkeypress="myFunction(event)" >
@@ -51,40 +53,41 @@
         </div>
         <div class="form-group">
          <label for="website_link">Website Link</label>
-         <textarea  type="text"  class="form-control max" id="website_link" placeholder="Enter website_link" name="website_link" autofocus value="{{ old('website_link') }}"></textarea>
+         <textarea  type="text"  class="form-control max" id="website_link" placeholder="Enter the link" name="website_link" autofocus value="{{ old('website_link') }}"></textarea>
          @error('website_link')
          <span class="text-danger font-italic" role="alert">
           <strong>{{ $message }}</strong>
         </span>
         @enderror
       </div>
-
-      <div class="form-group">
-        <label for="imgInp">Thumbnail<span class="text-danger">*</span></label>
-        <div class="input-group">
-          <img id="blahDoc" src="{{URL::to('/')}}/images/80x80.png" onclick="document.getElementById('imgInpDoc').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
-          <input type='file' class="d-none" id="imgInpDoc" name="thumbnail"autofocus value="{{ old('thumbnail') }}" />
+      <div class="row">
+        <div class="form-group col-md">
+          <label for="imgInp">Thumbnail</label>
+          <div class="input-group">
+            <img id="blahDoc" src="{{URL::to('/')}}/images/80x80.png" onclick="document.getElementById('imgInpDoc').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
+            <input type='file' class="d-none" id="imgInpDoc" name="thumbnail"autofocus value="{{ old('thumbnail') }}" />
+          </div>
+          @error('thumbnail')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
         </div>
-         @error('thumbnail')
+        <div class="form-group col-md">
+          <label for="imgInp">Logo</label>
+          <div class="input-group">
+            <img id="blah" src="{{URL::to('/')}}/images/80x80.png" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
+            <div class="input-group my-3">
+             <input type='file' class="d-none" id="imgInp" name="logo"autofocus value="{{ old('logo') }}" />
+           </div>
+         </div>
+         @error('logo')
          <span class="text-danger font-italic" role="alert">
           <strong>{{ $message }}</strong>
         </span>
         @enderror
       </div>
-      <div class="form-group">
-        <label for="imgInp">Logo<span class="text-danger">*</span></label>
-        <div class="input-group">
-          <img id="blah" src="{{URL::to('/')}}/images/80x80.png" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
-          <div class="input-group my-3">
-           <input type='file' class="d-none" id="imgInp" name="logo"autofocus value="{{ old('logo') }}" />
-         </div>
-       </div>
-        @error('logo')
-         <span class="text-danger font-italic" role="alert">
-          <strong>{{ $message }}</strong>
-        </span>
-        @enderror
-     </div>
+    </div>
    </div>
    <div class="card-footer justify-content-between">
     <button type="submit" class="btn btn-info text-capitalize">Save</button>

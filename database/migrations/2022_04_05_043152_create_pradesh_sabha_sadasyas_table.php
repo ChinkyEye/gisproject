@@ -18,10 +18,10 @@ class CreatePradeshSabhaSadasyasTable extends Migration
             $table->string('name');
             $table->string('district');
             $table->string('gender');
-            $table->string('dala');
+            $table->string('dala')->nullable();
             $table->string('nirvachit_kshetra_no');
-            $table->string('phone');
-            $table->string('image');
+            $table->string('phone')->nullable();
+            $table->string('image')->nullable();
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);

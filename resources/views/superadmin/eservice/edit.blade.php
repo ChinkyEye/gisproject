@@ -22,23 +22,25 @@
       <div class="card-body">
         @method('PATCH')
         @csrf
-        <div class="form-group">
-          <label for="name">Name<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="name" placeholder="Enter name" name="name" autocomplete="off" autofocus value="{{$eservices->name}}">
-          @error('name')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div>
-        <div class="form-group">
-          <label for="karyalaya">Karyalaya<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="karyalaya" placeholder="Enter Karyalaya" name="karyalaya" autocomplete="off" autofocus value="{{ $eservices->karyalaya}}">
-          @error('karyalaya')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
+        <div class="row">
+          <div class="form-group col-md">
+            <label for="name">Name<span class="text-danger">*</span></label>
+            <input type="text"  class="form-control max" id="name" placeholder="Enter name" name="name" autocomplete="off" autofocus value="{{$eservices->name}}">
+            @error('name')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+          <div class="form-group col-md">
+            <label for="karyalaya">Karyalaya<span class="text-danger">*</span></label>
+            <input type="text"  class="form-control max" id="karyalaya" placeholder="Enter Karyalaya" name="karyalaya" autocomplete="off" autofocus value="{{ $eservices->karyalaya}}">
+            @error('karyalaya')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
         </div>
         <div class="form-group">
           <label for="contact_no">Contact No:<span class="text-danger">*</span></label>
@@ -59,32 +61,34 @@
         </span>
         @enderror
       </div>
-
-      <div class="form-group">
-        <label for="imgInp">Thumbnail</label>
-        <div class="input-group">
-          <img id="blahDoc" src="{{URL::to('/')}}/images/thumbnail/{{$eservices->thumbnail}}" onclick="document.getElementById('imgInpDoc').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
-          <input type='file' class="d-none" id="imgInpDoc" name="thumbnail" />
+      <div class="row">
+        <div class="form-group col-md">
+          <label for="imgInp">Thumbnail</label>
+          <div class="input-group">
+            <img id="blahDoc" src="{{URL::to('/')}}/images/thumbnail/{{$eservices->thumbnail}}" onclick="document.getElementById('imgInpDoc').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
+            <input type='file' class="d-none" id="imgInpDoc" name="thumbnail" />
+          </div>
+          @error('thumbnail')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
         </div>
-        @error('thumbnail')
-        <span class="text-danger font-italic" role="alert">
+        <div class="form-group col-md">
+          <label for="imgInp">Logo</label>
+          <div class="input-group">
+            <img id="blah" src="{{URL::to('/')}}/images/eservicelogo/{{$eservices->logo}}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
+            <div class="input-group my-3">
+             <input type='file' class="d-none" id="imgInp" name="logo" />
+           </div>
+         </div>
+         @error('logo')
+         <span class="text-danger font-italic" role="alert">
           <strong>{{ $message }}</strong>
         </span>
         @enderror
       </div>
-      <div class="form-group">
-        <label for="imgInp">Logo</label>
-        <div class="input-group">
-          <img id="blah" src="{{URL::to('/')}}/images/eservicelogo/{{$eservices->logo}}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
-          <div class="input-group my-3">
-           <input type='file' class="d-none" id="imgInp" name="logo" />
-         </div>
-       </div>
-       @error('logo')
-       <span class="text-danger font-italic" role="alert">
-        <strong>{{ $message }}</strong>
-      </span>
-      @enderror
+      
     </div>
   </div>
   <div class="card-footer justify-content-between">
