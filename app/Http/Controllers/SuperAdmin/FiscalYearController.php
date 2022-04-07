@@ -4,12 +4,10 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Menu;
+use App\FiscalYear;
 use Auth;
-use Response;
 
-
-class MenuController extends Controller
+class FiscalYearController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,10 +16,10 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus  = Menu::orderBy('id','DESC')
-                        ->where('created_by',Auth::user()->id)
-                        ->paginate(10);
-        return view('superadmin.menu.index', compact('menus'));
+        $datas = FiscalYear::orderBy('id','DESC')
+                            ->where('created_by', Auth::user()->id)
+                            ->paginate('10');
+        return view('superadmin.fiscalyear.index', compact('datas'));
     }
 
     /**
@@ -31,7 +29,7 @@ class MenuController extends Controller
      */
     public function create()
     {
-        return view('superadmin.menu.create');
+        return view('superadmin.fiscalyear.create');
     }
 
     /**
@@ -45,7 +43,7 @@ class MenuController extends Controller
         $this->validate($request, [
             'name' => 'required',
         ]);
-        $menu = Menu::create([
+        $fiscalyear = FiscalYear::create([
             'name' => $request['name'],
             'is_active' => '1',
             'date' => date("Y-m-d"),
@@ -53,7 +51,7 @@ class MenuController extends Controller
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        return redirect()->route('superadmin.menu.index')->with('alert-success', 'Menu created successfully!!!!');
+        return redirect()->route('superadmin.fiscalyear.index')->with('alert-success', 'Data created successfully!!!!');
     }
 
     /**
@@ -75,8 +73,8 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-        $menus = Menu::find($id);
-        return view('superadmin.menu.edit', compact('menus'));
+        $datas = FiscalYear::find($id);
+        return view("superadmin.fiscalyear.edit", compact('datas'));
     }
 
     /**
@@ -86,13 +84,14 @@ class MenuController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, FiscalYear $fiscalyear)
     {
-        $menus = Menu::find($id);
         $all_data = $request->all();
         $all_data['updated_by'] = Auth::user()->id;
-        $menus->update($all_data);
-        return redirect()->route('superadmin.menu.index')->with('alert-success', 'Menu updated successfully!!!!');;
+        if($fiscalyear->update($all_data))
+        {
+            return redirect()->route('superadmin.fiscalyear.index')->with('alert-success', 'Data updated succesffully!!!!');;
+        };
     }
 
     /**
@@ -103,51 +102,35 @@ class MenuController extends Controller
      */
     public function destroy($id)
     {
-        $menus = Menu::find($id);
-        $menus->delete();
+        $datas = FiscalYear::find($id);
+        $datas->delete();
         return response()->json([
             'success' => 'Record has been deleted successfully!'
         ]);
-
-        // $menus = Menu::find($id);
-        // if($menus->delete()){
-        //     $notification = array(
-        //       'message' => $menus->name.' is deleted successfully!',
-        //       'status' => 'success'
-        //   );
-        // }else{
-        //     $notification = array(
-        //       'message' => $menus->name.' could not be deleted!',
-        //       'status' => 'error'
-        //   );
-        // }
-        // return Response::json($notification);
     }
 
     public function isActive(Request $request,$id)
     {
-        $get_is_active = Menu::where('id',$id)->value('is_active');
-        $isactive = Menu::find($id);
+        $get_is_active = FiscalYear::where('id',$id)->value('is_active');
+        $isactive = FiscalYear::find($id);
         if($get_is_active == 0){
-        $isactive->is_active = 1;
-        $notification = array(
-          'message' => $isactive->name.' is Active!',
-          'alert-type' => 'success'
-        );
+            $isactive->is_active = 1;
+            // $notification = array(
+            //     'alert-success' => $isactive->name.' is Active!',
+            // );
         }
         else {
-        $isactive->is_active = 0;
-        $notification = array(
-          'message' => $isactive->name.' is inactive!',
-          'alert-type' => 'error'
-        );
+            $isactive->is_active = 0;
+            // $notification = array(
+            //     'alert-danger' => $isactive->name.' is inactive!',
+            // );
         }
         if(!($isactive->update())){
-        $notification = array(
-          'message' => $isactive->name.' could not be changed!',
-          'alert-type' => 'error'
-        );
+            $notification = array(
+                'error' => $isactive->name.' could not be changed!',
+            );
         }
-        return back()->with($notification)->withInput();
+        return back()->withInput();
+        // return back()->with($notification)->withInput();
     }
 }
