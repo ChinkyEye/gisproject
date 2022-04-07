@@ -198,6 +198,14 @@
            </p>
          </a>
        </li>
+       <li class="nav-item">
+          <a href="{{ route('superadmin.fiscalyear.index')}}" class="nav-link {{ (request()->is('home/fiscalyear*')) ? 'active' : '' }}">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+             Fiscal Year
+           </p>
+         </a>
+       </li>
       </ul>
     </nav>
   </div>
