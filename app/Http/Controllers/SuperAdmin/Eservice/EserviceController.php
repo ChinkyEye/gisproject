@@ -40,19 +40,17 @@ class EserviceController extends Controller
      */
     public function store(Request $request)
     {
-   
-
         $this->validate($request, [
             'name' => 'required',
-            'thumbnail' => 'required|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            'logo' => 'required|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'karyalaya' => 'required',
             'contact' =>'required|digits_between:6,10',
-        
         ]);
         
         $uppdf = $request->file('thumbnail');
         if($uppdf != ""){
+            $this->validate($request, [
+                'thumbnail' => 'required|mimes:jpg,png,jpeg,|max:2048',
+            ]);
             $destinationPath = 'images/thumbnail/';
             $extension = $uppdf->getClientOriginalExtension();
             $fileName = md5(mt_rand()).'.'.$extension;
@@ -65,7 +63,9 @@ class EserviceController extends Controller
 
         $uppd = $request->file('logo');
         if($uppd != ""){
-
+            $this->validate($request, [
+                'logo' => 'required|mimes:jpg,png,jpeg,|max:2048',
+            ]);
             $destination = 'images/eservicelogo/';
             $extensions = $uppd->getClientOriginalExtension();
             $fileNaam = md5(mt_rand()).'.'.$extensions;
@@ -76,7 +76,6 @@ class EserviceController extends Controller
             $fileNaam = Null;
         }
 
-    // dd($uppdf,$uppd);
         $eservices = Eservice::create([
             'name' => $request['name'],
             'thumbnail'=> $fileName,
@@ -126,53 +125,52 @@ class EserviceController extends Controller
     public function update(Request $request,  Eservice $eservice)
     {
      
-       $this->validate($request, [
-        'name' => 'required',
-        'karyalaya' => 'required',
-        'contact' =>'required|digits_between:6,10',
-       
-    ]);
-       $all_data = $request->all();
-
-       $uppdf = $request->file('logo');
-       $uppd = $request->file('thumbnail');
-       if($uppdf != ""){
-           $this->validate($request, [
-            'logo' => 'required',
-        ]);
-           $destinationPath = 'images/eservicelogo/';
-           $oldFilename = $destinationPath.'/'.$eservice->logo;
-
-           $extension = $uppdf->getClientOriginalExtension();
-           $fileName = md5(mt_rand()).'.'.$extension;
-           $uppdf->move($destinationPath, $fileName);
-           $file_path = $destinationPath.'/'.$fileName;
-           $all_data['logo'] = $fileName;
-           if(File::exists($oldFilename)) {
-            File::delete($oldFilename);
-        }
-    } 
-
-    if($uppd != ""){
         $this->validate($request, [
-            'thumbnail' => 'required',
+            'name' => 'required',
+            'karyalaya' => 'required',
+            'contact' =>'required|digits_between:6,10',
+
         ]);
-        $destination = 'images/thumbnail/';
-        $oldFilenaam = $destination.'/'.$eservice->thumbnail;
+        $all_data = $request->all();
 
-        $extensions = $uppd->getClientOriginalExtension();
-        $fileNaam = md5(mt_rand()).'.'.$extensions;
-        $uppd->move($destination, $fileNaam);
-        $filePath = $destination.'/'.$fileNaam;
-        $all_data['thumbnail'] = $fileNaam;
-        if(File::exists($oldFilenaam)) {
-            File::delete($oldFilenaam);
+        $uppdf = $request->file('logo');
+        $uppd = $request->file('thumbnail');
+        if($uppdf != ""){
+            $this->validate($request, [
+                'logo' => 'required|mimes:jpg,png,|max:2048',
+            ]);
+            $destinationPath = 'images/eservicelogo/';
+            $oldFilename = $destinationPath.'/'.$eservice->logo;
+
+            $extension = $uppdf->getClientOriginalExtension();
+            $fileName = md5(mt_rand()).'.'.$extension;
+            $uppdf->move($destinationPath, $fileName);
+            $file_path = $destinationPath.'/'.$fileName;
+            $all_data['logo'] = $fileName;
+            if(File::exists($oldFilename)) {
+                File::delete($oldFilename);
+            }
+        } 
+        if($uppd != ""){
+            $this->validate($request, [
+                'thumbnail' => 'required|mimes:jpg,png,|max:2048',
+            ]);
+            $destination = 'images/thumbnail/';
+            $oldFilenaam = $destination.'/'.$eservice->thumbnail;
+
+            $extensions = $uppd->getClientOriginalExtension();
+            $fileNaam = md5(mt_rand()).'.'.$extensions;
+            $uppd->move($destination, $fileNaam);
+            $filePath = $destination.'/'.$fileNaam;
+            $all_data['thumbnail'] = $fileNaam;
+            if(File::exists($oldFilenaam)) {
+                File::delete($oldFilenaam);
+            }
         }
-    }
 
-    $all_data['updated_by'] = Auth::user()->id;
-    $eservice->update($all_data);
-    return redirect()->route('superadmin.eservice.index')->with('alert-success', 'Data updated successfully!!!!');
+        $all_data['updated_by'] = Auth::user()->id;
+        $eservice->update($all_data);
+        return redirect()->route('superadmin.eservice.index')->with('alert-success', 'Data updated successfully!!!!');
 }
 
     /**

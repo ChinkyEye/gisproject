@@ -50,19 +50,20 @@
                   </thead>
                   <tbody style="text-align: center">
                     @foreach($eservices as $key => $service)
-
+                      <tr class="{{$service->is_active == 1 ? '' : 'table-danger'}}">
                       <td>{{$key + 1}}</td>
                       <td>{{$service->name}}</td>
-
                       <td>
                         <img src="{{ asset('images/thumbnail/') . '/' . $service->thumbnail }}" alt="" class="responsive" width="50">
                       </td>
                       <td>
                         <img src="{{ asset('images/eservicelogo/') . '/' . $service->logo }}" alt="" class="responsive" width="50">
                       </td>
-                      <td><a href="{{$service->website_link}}">{{$service->website_link}}</a></td>
-                      <th>{{$service->contact}}</th>
-                        <td>
+                      <td>
+                        <a href="{{$service->website_link}}">{{$service->website_link}}</a>
+                      </td>
+                      <td>{{$service->contact}}</td>
+                      <td>
                         <a href="{{ route('superadmin.eservice.active',$service->id) }}" data-placement="top" title="{{ $service->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                           <i class="nav-icon fas {{ $service->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
                         </a>
@@ -75,7 +76,6 @@
                           <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
                         </form>
                       </td>
-
                     </tr>
                     @endforeach
                   </tbody>
