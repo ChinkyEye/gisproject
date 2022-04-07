@@ -38,7 +38,7 @@
                   <table class="table table-sm table-bordered table-hover">
                     <thead class="thead-dark" style="text-align: center">                  
                       <tr>
-                        <th>SN</th>
+                        <th width="10">SN</th>
                         <th>Name</th>
                         <th>Status</th>
                         <th>Action</th>
