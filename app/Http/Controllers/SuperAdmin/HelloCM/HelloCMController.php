@@ -18,8 +18,8 @@ class HelloCMController extends Controller
     public function index()
     {
         $datas = HelloCM::orderBy('id','DESC')
-                        ->where('created_by', Auth::user()->id)
-                        ->paginate(10);
+        ->where('created_by', Auth::user()->id)
+        ->paginate(10);
         return view('superadmin.hellocm.index', compact('datas'));
     }
 
@@ -41,9 +41,12 @@ class HelloCMController extends Controller
      */
     public function store(Request $request)
     {
+        $input = $request->all();
+        $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
+        
         $this->validate($request, [
             'email' => 'required',
-            'link' => 'required',
+            'link' => 'required|regex:'.$regex,
         ]);
         $uppdf = $request->file('image');
         if($uppdf != ""){
@@ -59,7 +62,7 @@ class HelloCMController extends Controller
         }else{
             $fileName = Null;
         }
-       $datas = HelloCM::create([
+        $datas = HelloCM::create([
             'email' => $request['email'],
             'description' => $request['description'],
             'thumbnail'=> $fileName,
@@ -104,36 +107,39 @@ class HelloCMController extends Controller
      */
     public function update(Request $request, HelloCM $hellocm)
     {
-        $this->validate($request, [
-            'email' => 'required',
-            'link' => 'required',
-        ]);
-        $all_data = $request->all();
-        $uppdf = $request->file('image');
+     $input = $request->all();
+     $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
+     
+     $this->validate($request, [
+        'email' => 'required',
+        'link' => 'required|regex:'.$regex,
+    ]);
+     $all_data = $request->all();
+     $uppdf = $request->file('image');
         // dd($uppdf);
-        if($uppdf != ""){
-            $this->validate($request, [
-                'image' => 'required|mimes:jpg,jpeg|max:1024',
-            ]);
-            $destinationPath = 'images/hellocm/';
-            $oldFilename = $destinationPath.'/'.$hellocm->image;
+     if($uppdf != ""){
+        $this->validate($request, [
+            'image' => 'required|mimes:jpg,jpeg|max:1024',
+        ]);
+        $destinationPath = 'images/hellocm/';
+        $oldFilename = $destinationPath.'/'.$hellocm->image;
 
-            $extension = $uppdf->getClientOriginalExtension();
-            $name = $uppdf->getClientOriginalName();
-            $fileName = $name.'.'.$extension;
-            $uppdf->move($destinationPath, $fileName);
-            $file_path = $destinationPath.'/'.$fileName;
-            $all_data['thumbnail'] = $fileName;
-            if(File::exists($oldFilename)) {
-                File::delete($oldFilename);
-            }
+        $extension = $uppdf->getClientOriginalExtension();
+        $name = $uppdf->getClientOriginalName();
+        $fileName = $name.'.'.$extension;
+        $uppdf->move($destinationPath, $fileName);
+        $file_path = $destinationPath.'/'.$fileName;
+        $all_data['thumbnail'] = $fileName;
+        if(File::exists($oldFilename)) {
+            File::delete($oldFilename);
         }
-        $all_data['updated_by'] = Auth::user()->id;
-        if($hellocm->update($all_data))
-        {
-            return redirect()->route('superadmin.hellocm.index')->with('alert-success', 'Data updated succesffully!!!!');;
-        };
     }
+    $all_data['updated_by'] = Auth::user()->id;
+    if($hellocm->update($all_data))
+    {
+        return redirect()->route('superadmin.hellocm.index')->with('alert-success', 'Data updated succesffully!!!!');;
+    };
+}
 
     /**
      * Remove the specified resource from storage.

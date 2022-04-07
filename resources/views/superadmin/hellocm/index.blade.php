@@ -42,7 +42,7 @@
                         <img src="{{ $data->thumbnail == null ? asset('images/no-image-user.png') : asset('images/hellocm') . '/' . $data->thumbnail  }}" alt="" class="responsive" width="50" height="50">
                       </td>
                       <td>{{$data->email}}</td>
-                      <td>{{$data->link}}</td>
+                      <td> <a href="{{$data->link}}">{{$data->link}}</a></td>
                       <td>
                         <a href="{{ route('superadmin.hellocm.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                           <i class="nav-icon fas {{ $data->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>

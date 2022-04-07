@@ -60,7 +60,7 @@
                       <td>
                         <img src="{{ asset('images/eservicelogo/') . '/' . $service->logo }}" alt="" class="responsive" width="50">
                       </td>
-                      <td>{{$service->website_link}}</td>
+                      <td><a href="{{$service->website_link}}">{{$service->website_link}}</a></td>
                       <th>{{$service->contact}}</th>
                         <td>
                         <a href="{{ route('superadmin.eservice.active',$service->id) }}" data-placement="top" title="{{ $service->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
