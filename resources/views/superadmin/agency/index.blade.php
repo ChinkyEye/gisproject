@@ -44,7 +44,7 @@
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
-                    </thead>
+                    </thead> 
                     <tbody style="text-align: center">
                       @foreach($agencies as $key => $data)
                       <tr class="{{$data->is_active == 1 ? '' : 'table-danger'}}">
@@ -52,7 +52,8 @@
                         <td>{{$data->contact_no}}</td>
                         <td><span class="text-info">{{$data->website_link}}</span></td>
                         <td>
-                          <img src="{{ asset('images/agency') . '/' . $data->image }}" alt="" class="responsive" width="50" height="50">
+                           <img src="{{ $data->image == null ? asset('images/no-image-user.png') : asset('images/agency') . '/' . $data->image  }}" alt="" class="responsive" width="50" height="50">
+                      </td>
                         </td>
                         <td>
                           <a href="{{ route('superadmin.agency.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">

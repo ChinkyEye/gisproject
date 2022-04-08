@@ -42,7 +42,7 @@
           </div> 
         </div>
         <div class="form-group">
-          <label for="contact_no">Contact No:<span class="text-danger">*</span></label>
+          <label for="contact_no">Contact No:</label>
           <input type="text"  class="form-control max" id="contact" placeholder="Enter contact no" name="contact" autocomplete="off" autofocus value="{{ old('contact') }}"  onkeypress="myFunction(event)" >
           <span class="error mt-2" style="color: red; display: none">* Input digits (0 - 9)</span>
           @error('contact')
@@ -65,7 +65,7 @@
           <label for="imgInp">Thumbnail</label>
           <div class="input-group">
             <img id="blahDoc" src="{{URL::to('/')}}/images/80x80.png" onclick="document.getElementById('imgInpDoc').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
-            <input type='file' class="d-none" id="imgInpDoc" name="thumbnail"autofocus value="{{ old('thumbnail') }}" />
+            <input type='file' class="d-none" id="imgInpDoc" name="thumbnail" autofocus value="{{ old('thumbnail') }}" />
           </div>
           @error('thumbnail')
           <span class="text-danger font-italic" role="alert">

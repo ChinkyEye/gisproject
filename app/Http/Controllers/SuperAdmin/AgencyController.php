@@ -42,11 +42,14 @@ class AgencyController extends Controller
     {
           $this->validate($request, [
             'contact_no' => 'required|digits_between:6,10',
-            'image' => 'required',
+            
         ]);
          
         $uppdf = $request->file('image');
         if($uppdf != ""){
+             $this->validate($request, [
+                'image' => 'required|mimes:jpg,png,jpeg,|max:2048',
+            ]);
             $destinationPath = 'images/agency/';
             $extension = $uppdf->getClientOriginalExtension();
             $fileName = md5(mt_rand()).'.'.$extension;
@@ -118,7 +121,7 @@ class AgencyController extends Controller
           ]);
          
           $destinationPath = 'images/agency/';
-          $oldFilename = $destinationPath.'/'.$header->image;
+          $oldFilename = $destinationPath.'/'.$agency->image;
 
           $extension = $uppdf->getClientOriginalExtension();
           $fileName = md5(mt_rand()).'.'.$extension;

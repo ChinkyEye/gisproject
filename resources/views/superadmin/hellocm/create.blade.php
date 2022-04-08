@@ -5,12 +5,12 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6 pl-1">
-        <h1 class="text-capitalize">Add Sadasya</h1>
+        <h1 class="text-capitalize">Add {{ $page }}</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item"><a href="{{route('superadmin.home')}}">Home</a></li>
-          <li class="breadcrumb-item active text-capitalize">pradesh-sadasya Page</li>
+          <li class="breadcrumb-item active text-capitalize">{{ $page }}</li>
         </ol>
       </div>
     </div>
@@ -22,7 +22,7 @@
       <div class="card-body">
         @csrf
         <div class="form-group">
-          <label for="email">Email<span class="text-danger">*</span></label>
+          <label for="email">Email</label>
           <input type="email"  class="form-control max" id="email" placeholder="Enter email" name="email" autocomplete="off" autofocus value="{{ old('email') }}">
           @error('email')
           <span class="text-danger font-italic" role="alert">
@@ -40,7 +40,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="link">Link <span class="text-danger">*</span></label>
+          <label for="link">Link</label>
           <input type="text"  class="form-control max" id="link" placeholder="Enter the link" name="link" autocomplete="off" autofocus value="{{ old('link') }}">
           @error('link')
           <span class="text-danger font-italic" role="alert">

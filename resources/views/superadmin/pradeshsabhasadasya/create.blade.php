@@ -80,7 +80,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="phone">Phone no<span class="text-danger">*</span></label>
+          <label for="phone">Phone no</label>
           <input type="text"  class="form-control max" id="phone" placeholder="Enter phone no" name="phone" autocomplete="off" autofocus value="{{ old('phone') }}"  onkeypress="myFunction(event)">
           <span class="error mt-2" style="color: red; display: none">* Input digits (0 - 9)</span>
           @error('phone')

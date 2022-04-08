@@ -43,9 +43,17 @@ class EserviceController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'karyalaya' => 'required',
-            'contact' =>'required|digits_between:6,10',
+           
         ]);
-        
+        $number = $request['contact'];
+        if($number != ""){
+            $this->validate($request, [
+                'contact' => 'required|digits_between:6,10',
+            ]); 
+        }
+        else{
+            Null;
+        }
         $uppdf = $request->file('thumbnail');
         if($uppdf != ""){
             $this->validate($request, [
@@ -128,13 +136,23 @@ class EserviceController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'karyalaya' => 'required',
-            'contact' =>'required|digits_between:6,10',
-
         ]);
+        
         $all_data = $request->all();
 
         $uppdf = $request->file('logo');
         $uppd = $request->file('thumbnail');
+        $number = $request['phone'];
+        
+        if($number != ""){
+            $this->validate($request, [
+                'phone' => 'required|digits_between:6,10',
+            ]); 
+         }
+         else{
+            Null;
+         }
+
         if($uppdf != ""){
             $this->validate($request, [
                 'logo' => 'required|mimes:jpg,png,|max:2048',
