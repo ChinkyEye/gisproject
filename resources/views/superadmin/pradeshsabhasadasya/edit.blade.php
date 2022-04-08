@@ -81,7 +81,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="phone">Phone no<span class="text-danger">*</span></label>
+          <label for="phone">Phone no</label>
           <input type="text"  class="form-control max" id="phone" placeholder="Enter phone no" name="phone" autocomplete="off" autofocus value="{{ $datas->phone }}" onkeypress="myFunction(event)">
           <span class="error mt-2" style="color: red; display: none">* Input digits (0 - 9)</span>
           @error('phone')
@@ -94,9 +94,14 @@
         <div class="form-group">
             <label for="imgInp">Image</label>
             <div class="input-group">
+              @if($datas->image)
               <img id="blah" src="{{URL::to('/')}}/images/pradeshsabhasadasya/{{$datas->image}}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
-              <div class="input-group my-3">
                <input type='file' class="d-none" id="imgInp" name="image" />
+              @else
+                <img id="blah" src="{{ asset('images/no-image-user.png') }}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
+               <input type='file' class="d-none" id="imgInp" name="image"  />
+               @endif
+              <div class="input-group my-3">
               </div>
             </div>
             @error('image')

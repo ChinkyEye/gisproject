@@ -42,7 +42,8 @@
                       <td>{{$data->name}}</td>
                       <td>{{$data->district}}</td>
                       <td>{{$data->nirvachit_kshetra_no}}</td>
-                      <td><img src="{{ asset('images/pradeshsabhasadasya') . '/' . $data->image }}" alt="" class="responsive" width="50" height="50"></td>
+                      <td>
+                       <img src="{{ $data->image == null ? asset('images/no-image-user.png') : asset('images/pradeshsabhasadasya') . '/' . $data->image  }}" alt="" class="responsive" width="50" height="50"></td>
                       <td>
                         <a href="{{ route('superadmin.pradeshsabhasadasya.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                           <i class="nav-icon fas {{ $data->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>

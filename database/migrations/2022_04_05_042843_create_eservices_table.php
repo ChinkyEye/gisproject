@@ -17,7 +17,7 @@ class CreateEservicesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('karyalaya');
-            $table->string('contact');
+            $table->string('contact')->nullable();
             $table->string('thumbnail')->nullable();        
             $table->string('logo')->nullable();
             $table->text('website_link')->nullable();         

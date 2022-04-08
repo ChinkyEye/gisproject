@@ -5,7 +5,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6 pl-1">
-        <h1 class="text-capitalize">Add {{ $page }}</h1>
+        <h1 class="text-capitalize">EDIT {{ $page }}</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -43,7 +43,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="contact_no">Contact No:<span class="text-danger">*</span></label>
+          <label for="contact_no">Contact No:</label>
           <input type="text"  class="form-control max" id="contact" placeholder="Enter contact no" name="contact" autocomplete="off" autofocus value="{{ $eservices->contact}}"   onkeypress="myFunction(event)">
           <span class="error mt-2" style="color: red; display: none">* Input digits (0 - 9)</span>
           @error('contact')
@@ -65,8 +65,15 @@
         <div class="form-group col-md">
           <label for="imgInp">Thumbnail</label>
           <div class="input-group">
-            <img id="blahDoc" src="{{URL::to('/')}}/images/thumbnail/{{$eservices->thumbnail}}" onclick="document.getElementById('imgInpDoc').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
-            <input type='file' class="d-none" id="imgInpDoc" name="thumbnail" />
+            @if($eservices->thumbnail)
+            <img id="blah" src="{{URL::to('/')}}/images/thumbnail/{{$eservices->thumbnail}}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
+            <input type='file' class="d-none" id="imgInp" name="thumbnail" />
+            @else
+            <img id="blah" src="{{ asset('images/no-image-user.png') }}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
+            <input type='file' class="d-none" id="imgInp" name="thumbnail"  />
+            @endif
+            <div class="input-group my-3">
+            </div>
           </div>
           @error('thumbnail')
           <span class="text-danger font-italic" role="alert">
@@ -77,18 +84,23 @@
         <div class="form-group col-md">
           <label for="imgInp">Logo</label>
           <div class="input-group">
-            <img id="blah" src="{{URL::to('/')}}/images/eservicelogo/{{$eservices->logo}}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
+            @if($eservices->logo)
+            <img id="blahDoc" src="{{URL::to('/')}}/images/eservicelogo/{{$eservices->logo}}" onclick="document.getElementById('imgInpDoc').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
+            <input type='file' class="d-none" id="imgInpDoc" name="logo" />
+            @else
+            <img id="blahDoc" src="{{ asset('images/no-image-user.png') }}" onclick="document.getElementById('imgInpDoc').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
+            <input type='file' class="d-none" id="imgInpDoc" name="logo"  />
+            @endif
             <div class="input-group my-3">
-             <input type='file' class="d-none" id="imgInp" name="logo" />
-           </div>
-         </div>
-         @error('logo')
-         <span class="text-danger font-italic" role="alert">
-          <strong>{{ $message }}</strong>
-        </span>
-        @enderror
+            </div>
+          </div>
+          @error('logo')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
       </div>
-      
     </div>
   </div>
   <div class="card-footer justify-content-between">
@@ -104,49 +116,49 @@
     var keyCode = e.which ? e.which : e.keyCode
     // alert(keyCode);
     if (!((keyCode >= 48 && keyCode <= 57) || keyCode == 46)) {
-            $(".error").css("display", "inline");
+      $(".error").css("display", "inline");
             // toastr.error('* Input digits (0 - 9)');
             return false;
           }
           else{
             $(".error").css("display", "none");
           }
-  }
-</script>
-<script type="text/javascript">
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
+        }
+      </script>
+      <script type="text/javascript">
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
-      reader.onload = function(e) {
-        $('#blah').attr('src', e.target.result);
-      }
+            reader.onload = function(e) {
+              $('#blah').attr('src', e.target.result);
+            }
 
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
 
-  function readURLDoc(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
+        function readURLDoc(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
-      reader.onload = function(e) {
-        $('#blahDoc').attr('src', e.target.result);
-      }
+            reader.onload = function(e) {
+              $('#blahDoc').attr('src', e.target.result);
+            }
 
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
 
-  $("#imgInp").change(function() {
-    readURL(this);
-  });
-  $("#imgInpDoc").change(function() {
-    readURLDoc(this);
-  });
-</script>
-
-
+        $("#imgInp").change(function() {
+          readURL(this);
+        });
+        $("#imgInpDoc").change(function() {
+          readURLDoc(this);
+        });
+      </script>
 
 
-@endpush
+
+
+      @endpush

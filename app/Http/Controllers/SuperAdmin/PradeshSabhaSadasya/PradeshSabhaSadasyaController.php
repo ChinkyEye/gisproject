@@ -46,9 +46,19 @@ class PradeshSabhaSadasyaController extends Controller
             'district' => 'required',
             'gender' => 'required',
             'dala' => 'required',
-            'nirvachit_kshetra_no' => 'required',
-            'phone' => 'required|digits_between:6,10',
+            'nirvachit_kshetra_no' => 'required',            
         ]);
+
+        $number = $request['phone'];
+        if($number != ""){
+            $this->validate($request, [
+                'phone' => 'required|digits_between:6,10',
+            ]); 
+         }
+            else{
+                Null;
+            }
+
         $uppdf = $request->file('image');
         if($uppdf != ""){
             $this->validate($request, [
@@ -63,6 +73,7 @@ class PradeshSabhaSadasyaController extends Controller
         }else{
             $fileName = Null;
         }
+
        $datas = PradeshSabhaSadasya::create([
             'name' => $request['name'],
             'district' => $request['district'],
@@ -117,9 +128,17 @@ class PradeshSabhaSadasyaController extends Controller
             'gender' => 'required',
             'dala' => 'required',
             'nirvachit_kshetra_no' => 'required',
-            'phone' => 'required|digits_between:6,10',
         ]);
         $all_data = $request->all();
+        $number = $request['phone'];
+        if($number != ""){
+            $this->validate($request, [
+                'phone' => 'required|digits_between:6,10',
+            ]); 
+         }
+            else{
+                Null;
+            }
         $uppdf = $request->file('image');
         if($uppdf != ""){
             $this->validate($request, [

@@ -23,7 +23,7 @@
        @csrf
       <div class="card-body" >
         <div class="form-group">
-          <label for="email">Email<span class="text-danger">*</span></label>
+          <label for="email">Email</label>
           <input type="email"  class="form-control max" id="email" placeholder="Enter email" name="email" autocomplete="off" autofocus value="{{ $datas->email }}">
           @error('email')
           <span class="text-danger font-italic" role="alert">
@@ -41,7 +41,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="link">Link<span class="text-danger">*</span></label>
+          <label for="link">Link</label>
           <input type="text"  class="form-control max" id="link" placeholder="Enter the link" name="link" autocomplete="off" autofocus value="{{ $datas->link }}">
           @error('link')
           <span class="text-danger font-italic" role="alert">
