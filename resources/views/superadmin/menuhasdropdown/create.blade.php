@@ -31,6 +31,58 @@
           </span>
           @enderror
         </div>
+        <div class="form-group">
+          <label for="model_data">Model<span class="text-danger">*</span></label>
+          <select id="nationality" class="form-control" name="model" id="modal">
+            <option value="">--Select--</option>
+            <option value="Niti">Niti</option>
+            <option value="About">About</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="link">Link<span class="text-danger">*</span></label>
+          <input type="text"  class="form-control max" id="link" placeholder="Enter menu name" name="link" autocomplete="off" autofocus value="{{ old('link') }}">
+          @error('link')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
+        <div class="form-group">
+          <div class="row col-md-5">
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="checkbox" name="is_main" id="is_main" value="1"  >
+              <label class="form-check-label" for="is_main">
+                Is Dropdown
+              </label>
+            </div>
+          </div>
+            @error('scroll')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+        <div class="form-group">
+          <label for="type" class="control-label">Type <span class="text-danger">*</span></label>
+          <select class="form-control" name="type" id="type">
+            {{-- <option value="">Select Type</option> --}}
+            @foreach ($modelhastypes as $key => $data)
+            <option value="{{ $data->id }}" {{ old('type') == $data->id ? 'selected' : ''}}>
+              {{$data->type}}
+            </option>
+            @endforeach
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="page">Page<span class="text-danger">*</span></label>
+          <input type="text"  class="form-control max" id="page" placeholder="Enter menu name" name="page" autocomplete="off" autofocus value="{{ old('page') }}">
+          @error('page')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
       </div>
       <div class="card-footer justify-content-between">
         <button type="submit" class="btn btn-info text-capitalize">Save</button>

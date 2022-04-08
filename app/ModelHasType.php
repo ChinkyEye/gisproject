@@ -4,16 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MenuHasDropdown extends Model
+class ModelHasType extends Model
 {
     protected $fillable = [
-        'dropdown_name',
-        'menu_id',
         'model',
-        'link',
-        'is_main',
         'type',
-        'page',
         'is_active',
         'date_np',
         'date',
@@ -21,9 +16,4 @@ class MenuHasDropdown extends Model
         'created_by',
         'updated_by',
     ];
-
-    public function setNameAttribute($value)
-    {
-        $this->attributes['dropdown_name'] = ucwords($value);
-    }
 }

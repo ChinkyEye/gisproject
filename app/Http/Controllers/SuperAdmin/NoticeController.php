@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Notice;
+use App\ModelHasType;
 use Auth;
 use Response;
 use File;
@@ -30,9 +31,13 @@ class NoticeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-       return view('superadmin.notice.create');
+        $modelhastypes = ModelHasType::orderBy('id','DESC')
+                                    ->where('created_by', Auth::user()->id)
+                                    ->where('model',$request->model)
+                                    ->get();
+        return view('superadmin.notice.create', compact('modelhastypes'));
     }
 
     /**
@@ -43,6 +48,7 @@ class NoticeController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
       
         $this->validate($request, [
             'title' => 'required',

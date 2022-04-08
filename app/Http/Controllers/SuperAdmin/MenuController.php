@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Menu;
+use App\ModelHasType;
 use Auth;
 use Response;
 
@@ -20,7 +21,9 @@ class MenuController extends Controller
     {
         $menus  = Menu::orderBy('id','DESC')
                         ->where('created_by',Auth::user()->id)
-                        ->paginate(10);
+                        ->where('parent_id','0')
+                        ->with('getModelType')
+                        ->paginate(50);
         return view('superadmin.menu.index', compact('menus'));
     }
 
@@ -31,7 +34,10 @@ class MenuController extends Controller
      */
     public function create()
     {
-        return view('superadmin.menu.create');
+        $modelhastypes = ModelHasType::orderBy('id','ASC')
+                                        ->where('created_by',Auth::user()->id)
+                                        ->get();
+        return view('superadmin.menu.create', compact('modelhastypes'));
     }
 
     /**
@@ -45,8 +51,14 @@ class MenuController extends Controller
         $this->validate($request, [
             'name' => 'required',
         ]);
+        $is_main = $request->has('is_main');
         $menu = Menu::create([
             'name' => $request['name'],
+            'model' => $request['model'],
+            'link' => $request['link'],
+            'is_main' => $is_main?'1':'0',
+            'type' => $request['type'],
+            'page' => $request['page'],
             'is_active' => '1',
             'date' => date("Y-m-d"),
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),

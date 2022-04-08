@@ -61,8 +61,21 @@
             </span>
             @enderror
         </div>
-
         <div class="form-group">
+          <label for="type">Type <span class="text-danger">*</span></label><br>
+          <div class="row col-md-12">
+            @foreach ($modelhastypes as $key => $data)
+            <div class="form-check-inline col-md">
+              <input class="form-check-inline" type="checkbox" name="type" value="{{$data->id}}">
+              <label class="form-check-label" for="type1">
+               {{$data->type}}
+             </label>
+           </div>
+           @endforeach
+          </div>
+        </div>
+
+        {{-- <div class="form-group">
           <label for="type">Type:<span class="text-danger">*</span></label>
           <div class="row col-md-12">
             <div class="form-check-inline col-md">
@@ -101,7 +114,7 @@
           <strong>{{ $message }}</strong>
         </span>
         @enderror
-      </div>
+      </div> --}}
       <div class="form-group">
         <label for="document">Document</label>
         <div class="input-group">

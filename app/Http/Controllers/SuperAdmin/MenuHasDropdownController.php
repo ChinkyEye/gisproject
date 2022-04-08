@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Menu;
 use App\MenuHasDropdown;
+use App\ModelHasType;
 use Auth;
 use Response;
+
 
 
 class MenuHasDropdownController extends Controller
@@ -20,7 +22,8 @@ class MenuHasDropdownController extends Controller
     public function index($id)
     {
         $menus = Menu::find($id);
-        $menuhasdropdowns = MenuHasDropdown::where('menu_id',$id)->paginate(10);
+        // $menuhasdropdowns = MenuHasDropdown::where('menu_id',$id)->paginate(10);
+        $menuhasdropdowns = Menu::where('parent_id',$id)->paginate(10);
         return view('superadmin.menuhasdropdown.index', compact('menus','menuhasdropdowns'));
     }
 
@@ -31,8 +34,11 @@ class MenuHasDropdownController extends Controller
      */
     public function create($id)
     {
+        $modelhastypes = ModelHasType::orderBy('id','DESC')
+                                        ->where('created_by',Auth::user()->id)
+                                        ->get();
         $menus = Menu::find($id);
-        return view('superadmin.menuhasdropdown.create', compact('menus'));
+        return view('superadmin.menuhasdropdown.create', compact('menus','modelhastypes'));
     }
 
     /**
@@ -43,18 +49,47 @@ class MenuHasDropdownController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'dropdown_name' => 'required',
-        ]);
-        $menuhasdropdown = MenuHasDropdown::create([
-            'dropdown_name' => $request['dropdown_name'],
-            'menu_id' => $request['menu_id'],
+        // dd($request);
+        // $this->validate($request, [
+        //     'dropdown_name' => 'required',
+        // ]);
+        // $is_main = $request->has('is_main');
+        // $menuhasdropdown = MenuHasDropdown::create([
+        //     'dropdown_name' => $request['dropdown_name'],
+        //     'menu_id' => $request['menu_id'],
+        //     'model' => $request['model'],
+        //     'link' => $request['link'],
+        //     'is_main' => $is_main?'1':'0',
+        //     'type' => $request['type'],
+        //     'page' => $request['page'],
+        //     'date' => date("Y-m-d"),
+        //     'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+        //     'time' => date("H:i:s"),
+        //     'created_by' => Auth::user()->id,
+        // ]);
+        // return redirect()->route('superadmin.menuhasdropdown.index',$request->menu_id);
+
+        // $this->validate($request, [
+        //     'name' => 'required',
+        // ]);
+        $is_main = $request->has('is_main');
+        $menu = Menu::create([
+            'name' => $request['dropdown_name'],
+            'model' => $request['model'],
+            'link' => $request['link'],
+            'is_main' => $is_main?'1':'0',
+            'type' => $request['type'],
+            'page' => $request['page'],
+            'parent_id' => $request['menu_id'],
+            'is_active' => '1',
             'date' => date("Y-m-d"),
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
         return redirect()->route('superadmin.menuhasdropdown.index',$request->menu_id);
+
+        // return redirect()->route('superadmin.menu.index')->with('alert-success', 'Menu created successfully!!!!');
     }
 
     /**

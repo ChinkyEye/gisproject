@@ -35,6 +35,10 @@
 	color: var(--site-color-red);
 }
 
+.text-bluish{
+    color: var(--site-color-blue);
+}
+
 .header-area .credit-main-menu::before {
   width: 50%;
   height: 100%;
@@ -48,6 +52,17 @@
 
 .bg-main-red {
     background-color: var(--site-color-red);
+}
+.bg-main-blue {
+    color: white;
+    background-color: var(--site-color-blue);
+}
+
+.btn-hover-main:hover {
+    color: var(--white);
+    background: var(--site-color-red);
+    font-weight: normal;
+    font-size: .875rem;
 }
 /*social icon*/
 
@@ -602,9 +617,11 @@
     }
 
     .list-item-head p {
-        padding: 5px 20px;
-        margin: 10px;
-        color: var(--site-color-red);
+        padding: 0px 20px;
+        /*margin: 10px;*/
+        margin-bottom: 0 !important;
+        color: var(--white);
+        background: var(--site-color-red);
         font-weight: bold;
         font-size: 16px;
     }
@@ -616,25 +633,25 @@
     }
 
     .list-item-body {
-        padding: 10px;
-        margin: 10px;
+        /*padding: 10px;*/
+        /*margin: 10px;*/
         display: grid;
-        grid-gap: 10px;
+        grid-gap: 5px;
     }
 
     .list-item-body-content {
-        padding: 10px;
-        padding-right: 0px;
+        padding: 3px;
+        padding-right: 5px;
         display: grid;
         grid-template-columns: 1fr 10fr;
         font-size: 13px;
         grid-gap: 10px;
-        border: 1px solid transparent;
+        border-bottom: 1px solid #dadada;
         cursor: pointer;
     }
 
     .list-item-body-content:hover {
-        border-radius: 15px;
+        /*border-radius: 15px;*/
         border: 1px solid var(--site-color-red);
     }
 

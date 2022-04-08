@@ -19,8 +19,21 @@
 
                     <!-- Nav Start -->
                     <div class="classynav">
+                        @foreach($total_menu as $key => $data)
                         <ul>
-                            <li><a href="{{ route('web.home') }}">{{ __('language.home') }}</a></li>
+                            <li>
+                                @if($data->parent_id == '0')
+                                <a href="{{ route('web.home.link',$data->link) }}">{{ $data->name }}</a>
+                                @endif
+                                @if($data->parent()->count())
+                                <ul class="dropdown">
+                                    @foreach($data->parent()->get() as $d)
+                                        <li><a href="{{ route('web.home.link',$d->link) }}">{{ $d->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                                @endif
+                            </li>
+                            {{-- <li><a href="{{ route('web.home') }}">{{ __('language.home') }}</a></li>
                             <li><a href="{{ route('web.home') }}">{{ __('language.about-us') }}</a></li>
                             <li><a href="{{ route('web.home') }}">{{ __('language.ministries-bodies') }}</a></li>
                             <li><a href="#">{{ __('language.acts-laws-rules') }}</a>
@@ -40,9 +53,12 @@
                                 </ul>
                             </li>
                             <li></li>
-                            <li><a href="{{ route('web.home') }}">{{ __('language.state-gazette') }}</a></li>
-                            <li><a href="{{ route('web.home') }}">{{ __('language.contact') }}</a></li>
+                            <li><a href="{{ route('web.home') }}">{{ __('language.state-gazette') }}</a>
+                            </li>
+                            <li><a href="{{ route('web.home') }}">{{ __('language.contact') }}</a>
+                            </li> --}}
                         </ul>
+                        @endforeach
                     </div>
                     <!-- Nav End -->
                 </div>

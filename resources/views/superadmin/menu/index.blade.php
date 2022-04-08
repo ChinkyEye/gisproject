@@ -40,6 +40,11 @@
                       <tr>
                         <th>SN</th>
                         <th>Name</th>
+                        <th>Type</th>
+                        <th>Model</th>
+                        <th>Link</th>
+                        <th>Page</th>
+                        <th>Sub menu</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
@@ -49,6 +54,23 @@
                       <tr class="{{$menu->is_active == 1 ? '' : 'table-danger'}}">
                         <td>{{$key + 1}}</td>
                         <td>{{$menu->name}}</td>
+                        <td>{{$menu->getModelType->type}}</td>
+                        @if($menu->is_main == 1)
+                        <td>{{$menu->model}}</td>
+                        <td>{{$menu->link}}</td>
+                        <td>{{$menu->page}}</td>
+                        @else
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        @endif
+                        <td>
+                          @if($menu->is_main)
+                          Yes
+                          @else
+                          No
+                          @endif
+                        </td>
                         <td>
                           <a href="{{ route('superadmin.menu.active',$menu->id) }}" data-placement="top" title="{{ $menu->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                             <i class="nav-icon fas {{ $menu->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
@@ -56,7 +78,10 @@
                         </td>
                         <td>
                           <a href="{{ route('superadmin.menu.edit',$menu->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
+                          @if($menu->is_main)
                           <a href="{{ route('superadmin.menuhasdropdown.index',$menu->id) }}" class="btn btn-xs btn-outline-info" title="Add menu Schedule"><i class="fas fa-plus"></i></a>
+                          @endif
+
                           <form action='javascript:void(0)' data_url="{{route('superadmin.menu.destroy',$menu->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
                             <input type='hidden' name='_token' value='".csrf_token()."'>
                             <input name='_method' type='hidden' value='DELETE'>

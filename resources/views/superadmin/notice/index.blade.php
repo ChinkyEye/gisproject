@@ -3,7 +3,8 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet"/>
 @endpush
 @section('content')
-<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('superadmin.','',Route::currentRouteName()), ".")); ?>
+<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('superadmin.','',Route::currentRouteName()), ".")); 
+?>
 <div>
   <div class="content-header">
     <div class="container-fluid">
@@ -30,8 +31,17 @@
           <div class="card">
             <div class="card-header">
               <div class="row">
-                <div class="col-md-2">
-                  <a href="{{route('superadmin.notice.create')}}" class="btn btn-flat btn-danger btn-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></a>
+                <div class="col-md-5">
+
+                  <form action="{{route('superadmin.notice.create')}}" method="GET" class="d-inline-block">
+                    <input type="hidden" id="model" name="model" value="{{ Request::segment(3) }} ">
+                    <button type="submit" class="btn btn-sm btn-flat btn-danger btn-inline-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></button>
+                  </form>
+
+                  {{-- <a href="{{route('superadmin.notice.create')}}" class="btn btn-sm btn-flat btn-danger btn-inline-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></a> --}}
+
+                  <a href="{{route('superadmin.modelhastype.index',last(request()->segments()) )}}" class="btn btn-sm btn-info text-capitalize"><i class="fas fa-plus fa-fw"></i>
+                  </a>
                 </div>
                 <div class="col-md-10">
                   {{-- <input type="text" class="form-control" placeholder="Search by name"> --}}

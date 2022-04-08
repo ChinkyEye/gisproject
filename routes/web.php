@@ -17,11 +17,6 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest'])->group(function(){
-    // home
-    Route::get('/', 'HomeController@index')->name('home');
-    
-});
 
 Auth::routes(['reset' => false,
             'register' => false
@@ -70,9 +65,20 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('/employee','EmployeeController');
     Route::get('/employee/active/{id}', 'EmployeeController@isActive')->name('employee.active');
 
+    Route::get('menu-page/{type}/modelhastype', 'ModelHasTypeController@index')->name('modelhastype.index');
+    Route::get('menu-page/{type}/modelhastype/create', 'ModelHasTypeController@create')->name('modelhastype.create');
+    Route::post('menu-page/modelhastype/store', 'ModelHasTypeController@store')->name('modelhastype.store');
+    Route::get('menu-page/modelhastype/{id}/edit', 'ModelHasTypeController@edit')->name('modelhastype.edit');
+    Route::post('menu-page/modelhastype/update/{id}', 'ModelHasTypeController@update')->name('modelhastype.update');
+
+    Route::resource('menu-page/niti/nitihastype','NitiHasTypeController');
+
+    // Route::resource('niti','NitiController');
     Route::resource('menu-page/niti','NitiController');
     Route::get('menu-page/niti/active/{id}', 'NitiController@isActive')->name('niti.active');
     Route::get('menu-page/niti/download/{file}','NitiController@downloadfile')->name('niti.downloadfile');
+
+
 
     Route::resource('menu-page/notice','NoticeController');
      Route::get('menu-page/notice/active/{id}', 'NoticeController@isActive')->name('notice.active');
@@ -111,4 +117,11 @@ Route::namespace('User')->prefix('user')->name('user.')->middleware(['user','aut
     Route::resource('userhasdetail','UserHasDetailController');
     Route::get('/userhasdetail/create/{id}','UserHasDetailController@create')->name('userhasdetail.create');
 
+});
+
+Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest'])->group(function(){
+    // home
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/{link}/{links?}', 'HomeController@link')->name('home.link');
+    
 });

@@ -3,7 +3,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet"/>
 @endpush
 @section('content')
-<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('superadmin.','',Route::currentRouteName()), "."));?>
+<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('superadmin.','',Route::currentRouteName()), ".")); ?>
 <div>
   <div class="content-header">
     <div class="container-fluid">
@@ -14,7 +14,7 @@
       @endif
       <div class="row">
         <div class="col-sm-6">
-          <p class="text-danger m-0">Niti List</p>
+          <p class="text-danger m-0 text-capitalize">{{$type}} Type List</p>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -31,15 +31,10 @@
             <div class="card-header">
               <div class="row">
                 <div class="col-md-2">
-                  <form action="{{route('superadmin.niti.create')}}" method="GET" class="d-inline-block">
-                    <input type="hidden" id="model" name="model" value="{{ Request::segment(3) }} ">
-                    <button type="submit" class="btn btn-flat btn-danger btn-inline-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></button>
-                  </form>
-
-                  {{-- <a href="{{route('superadmin.niti.create')}}" class="btn btn-flat btn-danger btn-inline-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></a>  --}}
-
-                  <a href="{{route('superadmin.modelhastype.index',last(request()->segments()) )}}" class="btn btn-info btn-inline-block text-capitalize"><i class="fas fa-plus fa-fw"></i>
-                  </a>
+                  <a href="{{route('superadmin.modelhastype.create',$type)}}" class="btn btn-flat btn-danger btn-block text-capitalize" style="color:#fff">Add Type <i class="fas fa-plus fa-fw"></i></a> 
+                </div>
+                <div class="col-md-10">
+                  {{-- <input type="text" class="form-control" placeholder="Search by name"> --}}
                 </div>
               </div>
             </div><!-- /.card-header -->
@@ -49,38 +44,24 @@
                   <thead class="thead-dark" style="text-align: center">                  
                     <tr>
                       <th >SN</th>
-                      <th>Title</th>
-                      <th>Download</th>
+                      <th>Type</th>
                       <th>Status</th>
-                      <th>Created At</th>
-                      <th>Created By</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody style="text-align: center">
-                    @foreach($nitis as $key => $niti)
-                    <tr class="{{$niti->is_active == 1 ? '' : 'table-danger'}}">
+                    @foreach($datas as $key => $data)
+                    <tr class="{{$data->is_active == 1 ? '' : 'table-danger'}}">
                       <td>{{$key + 1}}</td>
-                      <td>{{$niti->title}}</td>
-                      @if($niti->document)
-                      <td><a href="{{ route('superadmin.niti.downloadfile',$niti->document)}}"><i class="fas fa-file-pdf"></i></a></td>
-                      @else
-                      <td>NULL</td> 
-                      @endif
+                      <td>{{$data->type}}</td>
                       <td>
-                        <a href="{{ route('superadmin.niti.active',$niti->id) }}" data-placement="top" title="{{ $niti->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
-                          <i class="nav-icon fas {{ $niti->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
-                        </a>
+                        {{-- <a href="{{ route('superadmin.data.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
+                          <i class="nav-icon fas {{ $data->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
+                        </a> --}}
                       </td>
                       <td>
-                        {{$niti->date_np}}
-                      </td>
-                      <td>
-                        {{$niti->getUser->name}}
-                      </td>
-                      <td>
-                        <a href="{{ route('superadmin.niti.edit',$niti->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
-                        <form action='javascript:void(0)' data_url="{{route('superadmin.niti.destroy',$niti->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
+                        <a href="{{ route('superadmin.modelhastype.edit',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
+                        <form action='javascript:void(0)' data_url="{{route('superadmin.nitihastype.destroy',$data->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
                           <input type='hidden' name='_token' value='".csrf_token()."'>
                           <input name='_method' type='hidden' value='DELETE'>
                           <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>

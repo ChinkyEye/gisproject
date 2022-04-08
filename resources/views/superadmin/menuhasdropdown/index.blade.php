@@ -40,6 +40,10 @@
                       <tr>
                         <th>SN</th>
                         <th>Name</th>
+                        <th>Model</th>
+                        <th>Link</th>
+                        <th>Type</th>
+                        <th>Page</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
@@ -48,7 +52,11 @@
                       @foreach($menuhasdropdowns as $key => $menuhasdropdown)
                       <tr class="{{$menuhasdropdown->is_active == 1 ? '' : 'table-danger'}}">
                         <td>{{$key + 1}}</td>
-                        <td>{{$menuhasdropdown->dropdown_name}}</td>
+                        <td>{{$menuhasdropdown->name}}</td>
+                        <td>{{$menuhasdropdown->model}}</td>
+                        <td>{{$menuhasdropdown->link}}</td>
+                        <td>{{$menuhasdropdown->getModelType->type}}</td>
+                        <td>{{$menuhasdropdown->page}}</td>
                         <td>
                           <a href="{{ route('superadmin.menuhasdropdown.active',$menuhasdropdown->id) }}" data-placement="top" title="{{ $menuhasdropdown->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                             <i class="nav-icon fas {{ $menuhasdropdown->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>

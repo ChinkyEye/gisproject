@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Niti;
+use App\ModelHasType;
 use Auth;
 use Response;
 use File;
@@ -29,9 +30,15 @@ class NitiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('superadmin.niti.create');
+        // dd($request);
+        $modelhastypes = ModelHasType::orderBy('id','ASC')
+                                    ->where('created_by', Auth::user()->id)
+                                    ->where('model',$request->model)
+                                    ->get();
+        // dd($modelhastypes);
+        return view('superadmin.niti.create',compact('modelhastypes'));
     }
 
     /**
@@ -42,6 +49,7 @@ class NitiController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $this->validate($request, [
             'title' => 'required',
             'type' => 'required',
@@ -212,4 +220,5 @@ class NitiController extends Controller
     {
         return response()->download(public_path('document/niti/'.$file));
     }
+
 }

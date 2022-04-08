@@ -18,6 +18,12 @@ class CreateMenuHasDropdownsTable extends Migration
             $table->string('dropdown_name');
             $table->unsignedBigInteger('menu_id');
             $table->foreign('menu_id')->references('id')->on('menus');
+            $table->string('model')->nullable();
+            $table->unsignedBigInteger('type');
+            $table->foreign('type')->references('id')->on('model_has_types');
+            $table->string('link')->nullable();
+            $table->integer('is_main')->default(0);
+            $table->string('page')->nullable();
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);

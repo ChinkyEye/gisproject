@@ -381,32 +381,44 @@
 
 {{-- section 6 --}}
 <section class="services-area bg-gray py-5">
-    <div class="container">
+    <div class="container-fluid px-5">
         <div class="row">
             <div class="col-md-3">
                     <div class="list-item">
                         <div class="list-item-head">
                           <p>सूचना/जानकारी</p>
-                          <hr>
-                      </div>
+                        </div>
                       
                       <div class="list-item-body">
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
+                    <a href="" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
                 </div>
             </div>
@@ -414,26 +426,38 @@
                 <div class="list-item">
                     <div class="list-item-head">
                         <p>बार्षिक बजेट / कार्यक्रम</p>
-                        <hr>
                     </div>
 
                     <div class="list-item-body">
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
+                    <a href="" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
                 </div>
             </div>
@@ -441,26 +465,38 @@
                 <div class="list-item">
                     <div class="list-item-head">
                         <p>सार्वजनिक खरिद/बोलपत्र</p>
-                        <hr>
                     </div>
 
                     <div class="list-item-body">
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
+                    <a href="" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
                 </div>
             </div>
@@ -468,26 +504,38 @@
                 <div class="list-item">
                     <div class="list-item-head">
                         <p>ऐन/कानून संग्रह</p>
-                        <hr>
                     </div>
 
                     <div class="list-item-body">
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
+                    <a href="" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
                 </div>
             </div>
@@ -496,32 +544,44 @@
 </section>
 {{--  --}}
 <section class="miscellaneous-area section-padding-100-0">
-    <div class="container">
+    <div class="container-fluid px-5">
         <div class="row">
             <div class="col-md-3">
                     <div class="list-item">
                         <div class="list-item-head">
                           <p>सेवा प्रवाह </p>
-                          <hr>
                       </div>
                       
                       <div class="list-item-body">
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
+                    <a href="" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
                 </div>
             </div>
@@ -529,26 +589,38 @@
                 <div class="list-item">
                     <div class="list-item-head">
                         <p>इ-फारम </p>
-                        <hr>
                     </div>
 
                     <div class="list-item-body">
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
+                    <a href="" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
                 </div>
             </div>
@@ -556,26 +628,38 @@
                 <div class="list-item">
                     <div class="list-item-head">
                         <p>प्रतिवेदन/रिपोर्ट </p>
-                        <hr>
                     </div>
 
                     <div class="list-item-body">
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
+                    <a href="" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
                 </div>
             </div>
@@ -583,26 +667,38 @@
                 <div class="list-item">
                     <div class="list-item-head">
                         <p>सूचना/जानकारी </p>
-                        <hr>
                     </div>
 
                     <div class="list-item-body">
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
                         <div class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
-                            <span>List Title here</span>
+                            <span>
+                                <span class="text-bluish">List Title here</span>
+                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                            </span>
                         </div>
+                    <a href="" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
                 </div>
             </div>
