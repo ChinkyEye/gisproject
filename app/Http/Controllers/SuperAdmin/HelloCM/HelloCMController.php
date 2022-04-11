@@ -41,6 +41,10 @@ class HelloCMController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'email' => 'required',
+            
+        ]);
         $uppdf = $request->file('image');
         if($uppdf != ""){
             $this->validate($request, [
@@ -103,10 +107,10 @@ class HelloCMController extends Controller
     //  $input = $request->all();
     //  $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
      
-    //  $this->validate($request, [
-    //     'email' => 'required',
-    //     'link' => 'required|regex:'.$regex,
-    // ]);
+     $this->validate($request, [
+        'email' => 'required',
+        // 'link' => 'required|regex:'.$regex,
+    ]);
      $all_data = $request->all();
      $uppdf = $request->file('image');
         // dd($uppdf);

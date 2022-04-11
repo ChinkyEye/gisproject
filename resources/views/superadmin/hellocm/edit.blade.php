@@ -23,7 +23,7 @@
        @csrf
       <div class="card-body" >
         <div class="form-group">
-          <label for="email">Email</label>
+          <label for="email">Email<span class="text-danger">*</span></label>
           <input type="email"  class="form-control max" id="email" placeholder="Enter email" name="email" autocomplete="off" autofocus value="{{ $datas->email }}">
           @error('email')
           <span class="text-danger font-italic" role="alert">
