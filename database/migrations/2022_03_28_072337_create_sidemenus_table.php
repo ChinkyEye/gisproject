@@ -16,6 +16,10 @@ class CreateSidemenusTable extends Migration
         Schema::create('sidemenus', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('model')->nullable();
+            $table->string('link')->nullable();
+            $table->integer('link_type')->nullable();  // 1 for api link, 0 for normal 
+            $table->string('page')->nullable();
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);

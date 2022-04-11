@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Menu;
+use App\Sidemenu;
 use App\MenuHasDropdown;
+use App\PradeshSabhaSadasya;
 // remote table
 use App\TblRemoteNotice;
 use App\TblRemoteYearlyBudget;
@@ -48,6 +50,18 @@ class HomeController extends Controller
         // var_dump($model,$page);
         $modelName = '\\App\\' . $model;
         $datas = $modelName::where('type',$type)->get();
+        return view('web.'.$page, compact(['datas']));
+    }
+
+    public function sidelink(Request $request, $link)
+    {
+        // dd($link);
+        $model = Sidemenu::where('link',$link)->value('model');
+        $page = Sidemenu::where('link',$link)->value('page');
+        // $type = Sidemenu::where('link',$link)->value('type');
+
+        $modelName = '\\App\\' . $model;
+        $datas = $modelName::get();
         return view('web.'.$page, compact(['datas']));
     }
 }

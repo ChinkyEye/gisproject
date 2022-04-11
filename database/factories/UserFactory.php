@@ -3,6 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\User;
+use App\ModelHasType;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -41,6 +42,18 @@ $factory->define(User::class, function (Faker $faker) {
         'user_type' => '1',
         'is_active' => '1',
         'created_at' => date('Y-m-d H:i:s'),
+    ];
+});
+
+$factory->define(ModelHasType::class, function (Faker $faker) {
+    return [
+        'model' => 'none',
+        'type' => 'none',
+        'is_active' => '1',
+        'date_np' => date('Y-m-d H:i:s'),
+        'date' => date('Y-m-d'),
+        'time' => date('H:i:s'),
+        'created_by' => '1',
     ];
 });
 

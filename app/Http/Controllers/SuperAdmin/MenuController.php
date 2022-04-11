@@ -88,7 +88,10 @@ class MenuController extends Controller
     public function edit($id)
     {
         $menus = Menu::find($id);
-        return view('superadmin.menu.edit', compact('menus'));
+        $modelhastypes = ModelHasType::orderBy('id','ASC')
+                                        ->where('created_by',Auth::user()->id)
+                                        ->get();
+        return view('superadmin.menu.edit', compact('menus','modelhastypes'));
     }
 
     /**

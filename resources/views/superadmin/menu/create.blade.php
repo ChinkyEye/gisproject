@@ -40,18 +40,9 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="link">Link<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="link" placeholder="Enter menu name" name="link" autocomplete="off" autofocus value="{{ old('link') }}">
-          @error('link')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div>
-        <div class="form-group">
           <div class="row col-md-5">
             <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="is_main" id="is_main" value="1"  >
+              <input class="form-check-input" type="checkbox" name="is_main" id="is_main" value="1" onchange="Check(this)" >
               <label class="form-check-label" for="is_main">
                 Is Dropdown
               </label>
@@ -63,6 +54,17 @@
             </span>
             @enderror
         </div>
+      <div id="Myid">
+        <div class="form-group">
+          <label for="link">Link<span class="text-danger">*</span></label>
+          <input type="text"  class="form-control max" id="link" placeholder="Enter menu name" name="link" autocomplete="off" autofocus value="{{ old('link') }}">
+          @error('link')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
+        
         <div class="form-group">
           <label for="type" class="control-label">Type <span class="text-danger">*</span></label>
           <select class="form-control" name="type" id="type">
@@ -83,6 +85,8 @@
           </span>
           @enderror
         </div>
+        {{-- <p id="verdict" style="display: block;">hehehehe</p> --}}
+      </div>
 
       </div>
       <div class="card-footer justify-content-between">
@@ -128,4 +132,28 @@
         Pace.stop();
   });
 </script> --}}
+{{-- <script>
+function toggleText(id){
+  var x = document.getElementById("Myid");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script> --}}
+<script>
+    function Check(value) {
+      var y = value.checked;
+      var x = document.getElementById("Myid");
+      if(y == true){
+        x.style.display = "none";
+      }
+      else{
+        x.style.display = "block";
+
+      }
+
+    };
+  </script>
 @endpush
