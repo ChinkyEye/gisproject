@@ -296,14 +296,14 @@
         box-shadow: 0px 1px 0px 0px #dbdbdb;
     }
 
-    .items-body-content:hover {
+    .items-body-content:hover, .items-body-content:focus {
         /*border-radius: 15px;*/
         /*border-top: 1px solid var(--site-color-red);*/
         /*border-bottom: 1px solid var(--site-color-red);*/
         /*background: radial-gradient(#00142d, var(--site-color-blue));*/
         box-shadow: 0px 0px 0px 1px var(--site-color-blue);
-        font-weight: normal;
-        font-size: 12px;
+        font-weight: normal !important;
+        font-size: 12px !important;
         color: var(--site-color-red) !important;
     }
 
