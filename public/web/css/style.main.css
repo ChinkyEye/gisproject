@@ -74,6 +74,19 @@
     transition: .4s;
     color: var(--site-color-red);
 }
+
+.table-anchor {
+    color: var(--site-color-red);
+    font-weight: bold;
+    font-size: 12px;
+    transition: .4s;
+}
+
+.table-anchor:hover {
+    color: var(--site-color-blue);
+    font-weight: bold;
+    font-size: 12px;
+}
 /*social icon*/
 
     .template-demo>.btn {
