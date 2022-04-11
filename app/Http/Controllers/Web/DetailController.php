@@ -10,14 +10,23 @@ use App\MenuHasDropdown;
 use App\TblRemoteNotice;
 use App\TblRemoteYearlyBudget;
 
-class HomeController extends Controller
+class DetailController extends Controller
 {
-    public function index()
+    public function index(Request $request, $type)
     {
-        $page_name = "Welcome";
-        $remote_notices = TblRemoteNotice::orderBy('id','DESC')->take(10)->get();
-        $remote_yearly_budgets = TblRemoteYearlyBudget::orderBy('id','DESC')->take(10)->get();
-        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets']));
+        switch ($type) {
+            case 'suchana':
+            $model = TblRemoteNotice::orderBy('id','DESC');
+                break;
+            case 'yearly-budget':
+            $model = TblRemoteYearlyBudget::orderBy('id','DESC');
+                break;
+            default:
+                # code...
+                break;
+        }
+        $datas = $model->get();
+        return view('web.detail', compact(['datas']));
     }
 
     public function link(Request $request, $link,$link2 = Null)

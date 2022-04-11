@@ -33,8 +33,6 @@
     </header>
     <!-- ##### Header End ##### -->
 
-    @include('web.layouts.slider')
-
     @yield('content')
 
     <!-- ##### Footer Start ##### -->

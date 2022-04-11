@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
-
 @section('content')
+@include('web.layouts.slider')
 {{-- section 1 --}}
 <section class="features-area py-5 bg-gray">
     <div class="container-fluid">
@@ -390,35 +390,18 @@
                         </div>
                       
                       <div class="list-item-body">
+                        @foreach($remote_notices as $remote_notice)
                         <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
+                            <a href="">
+                                <i class="fa fa-angle-right"></i>
+                                <span>
+                                    <span class="text-bluish">{{$remote_notice->title}}</span>
+                                    <small class="d-block w-100">- {{$remote_notice->created_at_np}} <span class="text-redish float-right">- {{$remote_notice->server}}</span></small>
+                                </span>
+                            </a>    
                         </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                    <a href="" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
+                        @endforeach
+                    <a href="{{route('web.detail.index',['type' => 'suchana'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
                 </div>
             </div>
@@ -429,35 +412,18 @@
                     </div>
 
                     <div class="list-item-body">
+                        @foreach($remote_yearly_budgets as $budget)
                         <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
+                            <a href="">
+                                <i class="fa fa-angle-right"></i>
+                                <span>
+                                    <span class="text-bluish">{{$budget->title}}</span>
+                                    <small class="d-block w-100">- {{$budget->created_at_np}} <span class="text-redish float-right">- {{$budget->server}}</span></small>
+                                </span>
+                            </a>    
                         </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                    <a href="" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
+                        @endforeach
+                    <a href="{{route('web.detail.index',['type' => 'yearly-budget'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
                 </div>
             </div>
