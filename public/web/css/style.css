@@ -471,7 +471,8 @@ img {
           .header-area .credit-main-menu .classy-navbar .classynav ul li a {
             color: var(--site-color-blue); } }
       .header-area .credit-main-menu .classy-navbar .classynav > ul > li:first-child a {
-        padding-left: 0; }
+        /*padding-left: 0;*/
+        }
         @media only screen and (min-width: 768px) and (max-width: 991px) {
           .header-area .credit-main-menu .classy-navbar .classynav > ul > li:first-child a {
             padding-left: 15px; } }

@@ -19,54 +19,31 @@
 
                     <!-- Nav Start -->
                     <div class="classynav">
-                        @foreach($total_menu as $key => $data)
                         <ul>
+                            @foreach($total_menu as $key => $data)
                             <li>
                                 @if($data->parent_id == '0')
-                                <a href="{{ route('web.home.link',$data->link) }}">{{ $data->name }}</a>
+                                <a href="{{ route('web.home.link',$data->link) }}">
+                                    {{ $data->name }}
+                                </a>
                                 @endif
                                 @if($data->parent()->count())
                                 <ul class="dropdown">
                                     @foreach($data->parent()->get() as $d)
-                                        <li><a href="{{ route('web.home.link',$d->link) }}">{{ $d->name }}</a></li>
+                                        <li>
+                                            <a href="{{ route('web.home.link',$d->link) }}">
+                                                {{ $d->name }}
+                                            </a>
+                                        </li>
                                     @endforeach
                                 </ul>
                                 @endif
                             </li>
-                            {{-- <li><a href="{{ route('web.home') }}">{{ __('language.home') }}</a></li>
-                            <li><a href="{{ route('web.home') }}">{{ __('language.about-us') }}</a></li>
-                            <li><a href="{{ route('web.home') }}">{{ __('language.ministries-bodies') }}</a></li>
-                            <li><a href="#">{{ __('language.acts-laws-rules') }}</a>
-                                <ul class="dropdown">
-                                    <li><a href="{{ route('web.home') }}">{{ __('language.acts') }}</a></li>
-                                    <li><a href="{{ route('web.home') }}">{{ __('language.rules') }} Us</a></li>
-                                    <li><a href="{{ route('web.home') }}">{{ __('language.procedure') }}</a></li>
-                                    <li><a href="{{ route('web.home') }}">{{ __('language.directory') }}</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">{{ __('language.publications') }}</a>
-                                <ul class="dropdown">
-                                    <li><a href="{{ route('web.home') }}">{{ __('language.policies-and-programs') }}</a></li>
-                                    <li><a href="{{ route('web.home') }}">{{ __('language.major-achievements') }} Us</a></li>
-                                    <li><a href="{{ route('web.home') }}">{{ __('language.state-profile') }}</a></li>
-                                    <li><a href="{{ route('web.home') }}">{{ __('language.org-development-program') }}</a></li>
-                                </ul>
-                            </li>
-                            <li></li>
-                            <li><a href="{{ route('web.home') }}">{{ __('language.state-gazette') }}</a>
-                            </li>
-                            <li><a href="{{ route('web.home') }}">{{ __('language.contact') }}</a>
-                            </li> --}}
+                            @endforeach
                         </ul>
-                        @endforeach
                     </div>
                     <!-- Nav End -->
                 </div>
-
-                <!-- Contact -->
-                {{-- <div class="contact">
-                    <a href="#"><img src="{{ url('/web') }}/img/core-img/call2.png" alt=""> +800 49 900 900</a>
-                </div> --}}
             </nav>
         </div>
     </div>
