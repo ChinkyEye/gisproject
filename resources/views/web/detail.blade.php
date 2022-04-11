@@ -10,48 +10,49 @@ About |
 @section('content')
 <section class="breadcrumb-main my-4">
 	<div class="container">
-		<div class="row">
-			<div class="col-md">
-				{{-- select --}}
-				<div class="form-group">
-					<select class="form-control select2bs4 w-100">
-						<option value="">Choose</option>
-						<option>Alaska</option>
-						<option>California</option>
-						<option>Delaware</option>
-						<option>Tennessee</option>
-						<option>Texas</option>
-						<option>Washington</option>
-					</select>
+		<form>
+			<div class="row">
+				<div class="col-md">
+					<div class="form-group">
+						<select class="form-control select2bs4 w-100">
+							<option value="">Choose</option>
+							<option>Alaska</option>
+							<option>California</option>
+							<option>Delaware</option>
+							<option>Tennessee</option>
+							<option>Texas</option>
+							<option>Washington</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="form-group">
+						<select class="form-control select2bs4 w-100">
+							<option value="">Choose</option>
+							<option>Alaska</option>
+							<option>California</option>
+							<option>Delaware</option>
+							<option>Tennessee</option>
+							<option>Texas</option>
+							<option>Washington</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="form-group">
+						<input type="text" class="form-control form-control-border date-picker1" id="date_np_start" name="date_np_start" placeholder="Choose Start Date" value="{{ old('date_np') }}" autocomplete="date_np_start">
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="form-group">
+						<input type="text" class="form-control form-control-border date-picker2" id="date_np_end" name="date_np_end" placeholder="Choose End Date" value="{{ old('date_np') }}" autocomplete="date_np_end">
+					</div>
+				</div>
+				<div class="col-md-2">
+					<button type="submit" class="btn btn-primary btn-block">Search</button>
 				</div>
 			</div>
-			<div class="col-md">
-				<div class="form-group">
-					<select class="form-control select2bs4 w-100">
-						<option value="">Choose</option>
-						<option>Alaska</option>
-						<option>California</option>
-						<option>Delaware</option>
-						<option>Tennessee</option>
-						<option>Texas</option>
-						<option>Washington</option>
-					</select>
-				</div>
-			</div>
-			<div class="col-md">
-				<div class="form-group">
-				  <input type="text" class="form-control form-control-border date-picker1" id="date_np_start" name="date_np_start" placeholder="Choose Start Date" value="{{ old('date_np') }}" autocomplete="date_np_start">
-				</div>
-			</div>
-			<div class="col-md">
-				<div class="form-group">
-				  <input type="text" class="form-control form-control-border date-picker2" id="date_np_end" name="date_np_end" placeholder="Choose End Date" value="{{ old('date_np') }}" autocomplete="date_np_end">
-				</div>
-			</div>
-			<div class="col-md-2">
-				<button type="submit" class="btn btn-primary btn-block">Search</button>
-			</div>
-		</div>
+		</form>
 	</div>
 </section>
 
