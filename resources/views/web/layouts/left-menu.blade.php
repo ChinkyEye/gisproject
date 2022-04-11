@@ -1,6 +1,18 @@
 <div class="items">
     <div class="items-body">
-      <a class="items-body-content">
+      
+      @foreach($left_menu as $key => $data)
+        @if($data->link_type == 0)
+        <a href="{{ route('web.home.sidelink',$data->link) }}" class="items-body-content">
+          <span>{{$data->name}}</span>
+        </a>
+        @else
+        <a href="{{ $data->link }}" class="items-body-content" target="_blank">
+          <span>{{$data->name}}</span>
+        </a>
+        @endif
+      @endforeach
+      {{-- <a class="items-body-content">
         <span>
             मुख्यमन्त्री तथा मन्त्रिपरिषद्को कार्यालय
         </span>
@@ -31,6 +43,6 @@
       </div>
       <div class="items-body-content">
         <span>पर्यटन तथा संस्कृति मन्त्रालय</span>
-      </div>
+      </div> --}}
     </div>
   </div>

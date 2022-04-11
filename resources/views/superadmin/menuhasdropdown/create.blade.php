@@ -24,7 +24,7 @@
         <input type="hidden" name="menu_id" id="menu_id" value="{{$menus->id}}">
         <div class="form-group">
           <label for="dropdown_name">Name<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="dropdown_name" placeholder="Enter menu dropdown name" name="dropdown_name" autocomplete="off" autofocus value="{{ old('dropdown_name') }}">
+          <input type="text"  class="form-control max" id="dropdown_name" placeholder="Enter menu dropdown name" name="name" autocomplete="off" autofocus value="{{ old('dropdown_name') }}">
           @error('dropdown_name')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
@@ -48,7 +48,7 @@
           </span>
           @enderror
         </div>
-        <div class="form-group">
+        {{-- <div class="form-group">
           <div class="row col-md-5">
             <div class="form-check-inline col-md">
               <input class="form-check-input" type="checkbox" name="is_main" id="is_main" value="1"  >
@@ -62,7 +62,7 @@
               <strong>{{ $message }}</strong>
             </span>
             @enderror
-        </div>
+        </div> --}}
         <div class="form-group">
           <label for="type" class="control-label">Type <span class="text-danger">*</span></label>
           <select class="form-control" name="type" id="type">

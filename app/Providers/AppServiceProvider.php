@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Menu;
+use App\Sidemenu;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -33,6 +34,9 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('web.layouts.navbar', function ($view) use ($request){
             $view->with('total_menu', Menu::totalMenu($request));
+        });
+        view()->composer('web.layouts.left-menu', function ($view) use ($request){
+            $view->with('left_menu', Sidemenu::totalSidemenu($request));
         });
     }
 }
