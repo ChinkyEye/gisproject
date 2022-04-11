@@ -314,20 +314,11 @@
                       
                       <div class="list-item-body">
                         @foreach($remote_notices as $remote_notice)
-<<<<<<< HEAD
-                        <div class="list-item-body-content">
-                            <a href="">
-                                <i class="fa fa-angle-right"></i>
-                                <span>
-                                    <span class="text-bluish">{{$remote_notice->title}}</span>
-                                    <small class="d-block w-100">- {{$remote_notice->date_np}} <span class="text-redish float-right">- {{$remote_notice->server}}</span></small>
-=======
                         <a href="" class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
                             <span>
                                 <span class="text-bluish">
                                     {{$remote_notice->title}}
->>>>>>> origin/master
                                 </span>
                                 <small class="d-block w-100">
                                     {{ $remote_notice->created_at_np ? '- '.$remote_notice->created_at_np : '' }} 
@@ -347,6 +338,7 @@
                     <div class="list-item-head">
                         <p>बार्षिक बजेट / कार्यक्रम</p>
                     </div>
+
                     <div class="list-item-body">
                         @foreach($remote_yearly_budgets as $budget)
                         <div class="list-item-body-content">
@@ -354,7 +346,7 @@
                                 <i class="fa fa-angle-right"></i>
                                 <span>
                                     <span class="text-bluish">{{$budget->title}}</span>
-                                    <small class="d-block w-100">- {{$budget->date_np}} <span class="text-redish float-right">- {{$budget->server}}</span></small>
+                                    <small class="d-block w-100">- {{$budget->created_at_np}} <span class="text-redish float-right">- {{$budget->server}}</span></small>
                                 </span>
                             </a>    
                         </div>
@@ -368,7 +360,6 @@
                     <div class="list-item-head">
                         <p>सार्वजनिक खरिद/बोलपत्र</p>
                     </div>
-
                     <div class="list-item-body">
                         @foreach($remote_kharid_bolpatras as $bolpatra)
                         <div class="list-item-body-content">
@@ -383,6 +374,8 @@
                         
                       <a href="{{route('web.detail.index',['type' => 'kharid-bolpatra'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
+
+                    
                 </div>
             </div>
             <div class="col-md-3">
@@ -390,7 +383,6 @@
                     <div class="list-item-head">
                         <p>ऐन/कानून संग्रह</p>
                     </div>
-
                     <div class="list-item-body">
                         @foreach($remote_ain_kanuns as $ainkanun)
                         <div class="list-item-body-content">
@@ -404,6 +396,8 @@
                         
                     <a href="{{route('web.detail.index',['type' => 'ain-kanoon'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
+
+                    
                 </div>
             </div>
         </div>
@@ -419,21 +413,22 @@
                         <div class="list-item-head">
                           <p>सेवा प्रवाह </p>
                       </div>
-                      
-                      <div class="list-item-body">
-                        @foreach($remote_sewa_pravas as $sewaprava)
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">{{$sewaprava->title}}</span>
-                                <small class="d-block w-100">- {{$sewaprava->date_np}} <span class="text-redish float-right">- {{$sewaprava->server}}</span></small>
-                            </span>
-                        </div>
-                        @endforeach
 
-                        
-                    <a href="{{route('web.detail.index',['type' => 'sewa-prava'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
-                    </div>
+                        <div class="list-item-body">
+                          @foreach($remote_sewa_pravas as $sewaprava)
+                          <div class="list-item-body-content">
+                              <i class="fa fa-angle-right"></i>
+                              <span>
+                                  <span class="text-bluish">{{$sewaprava->title}}</span>
+                                  <small class="d-block w-100">- {{$sewaprava->date_np}} <span class="text-redish float-right">- {{$sewaprava->server}}</span></small>
+                              </span>
+                          </div>
+                          @endforeach
+
+                          
+                      <a href="{{route('web.detail.index',['type' => 'sewa-prava'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
+                      </div>
+                      
                 </div>
             </div>
             <div class="col-md-3">
@@ -455,6 +450,8 @@
                         
                     <a href="{{route('web.detail.index',['type' => 'e-farum'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
+
+                    
                 </div>
             </div>
             <div class="col-md-3">
@@ -476,6 +473,8 @@
                         
                     <a href="{{route('web.detail.index',['type' => 'prativedan'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
+
+                    
                 </div>
             </div>
             <div class="col-md-3">
@@ -497,6 +496,8 @@
 
                     <a href="{{route('web.detail.index',['type' => 'publication'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
+
+                    
                 </div>
             </div>
         </div>
