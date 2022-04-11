@@ -46,6 +46,10 @@ class SidemenuController extends Controller
         ]);
         $sidemenu = Sidemenu::create([
             'name' => $request['name'],
+            'model' => $request['model'],
+            'link' => $request['link'],
+            'link_type' => strpos($request->link, "http") === 0 ? 1 : 0,
+            'page' => $request['page'],
             'is_active' => '1',
             'date' => date("Y-m-d"),
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),

@@ -73,10 +73,11 @@ class MenuHasDropdownController extends Controller
         //     'name' => 'required',
         // ]);
         $is_main = $request->has('is_main');
+        $parent_link = Menu::where('id',$request->menu_id)->value('link');
         $menu = Menu::create([
-            'name' => $request['dropdown_name'],
+            'name' => $request['name'],
             'model' => $request['model'],
-            'link' => $request['link'],
+            'link' => $parent_link.'/'.$request['link'],
             'is_main' => $is_main?'1':'0',
             'type' => $request['type'],
             'page' => $request['page'],
@@ -111,9 +112,12 @@ class MenuHasDropdownController extends Controller
      */
     public function edit($id)
     {
-        $menu_value = MenuHasDropdown::where('id',$id)->first();
-        $menuhasdropdowns = MenuHasDropdown::find($id);
-        return view('superadmin.menuhasdropdown.edit', compact('menuhasdropdowns','menu_value'));
+        $menu_value = Menu::where('id',$id)->first();
+        $menuhasdropdowns = Menu::find($id);
+        $modelhastypes = ModelHasType::orderBy('id','ASC')
+                                        ->where('created_by',Auth::user()->id)
+                                        ->get();
+        return view('superadmin.menuhasdropdown.edit', compact('menuhasdropdowns','menu_value','modelhastypes'));
     }
 
     /**
@@ -125,7 +129,8 @@ class MenuHasDropdownController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $menuhasdropdowns = MenuHasDropdown::find($id);
+        // dd($request);
+        $menuhasdropdowns = Menu::find($id);
         $all_data = $request->all();
         $all_data['updated_by'] = Auth::user()->id;
         $menuhasdropdowns->update($all_data);
@@ -140,7 +145,7 @@ class MenuHasDropdownController extends Controller
      */
     public function destroy($id)
     {
-        $menuhasdropdowns = MenuHasDropdown::find($id);
+        $menuhasdropdowns = Menu::find($id);
         if($menuhasdropdowns->delete()){
             $notification = array(
               'message' => $menuhasdropdowns->name.' is deleted successfully!',
