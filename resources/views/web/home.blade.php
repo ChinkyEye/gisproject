@@ -15,49 +15,49 @@
                         </a>
                     </div>
                     <ul class="icon">
-                        <li><a href="#"><i class="fa fa-link"></i></a></li>
+                        <li><a href="#"><img src="{{ url('web/img/nepal-gov-logo.png') }}"></a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="box">
-                   <img src="{{ url('/web') }}/img/bg-img/1.jpg">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
                     <div class="box-content">
                         <a href="">
-                            <h3 class="title">प्रदेश सभा सचिवालय</h3>
+                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
                             <span class="post">प्रदेश नं. १, विराटनगर</span>
                         </a>
                     </div>
                     <ul class="icon">
-                        <li><a href="#"><i class="fa fa-link"></i></a></li>
+                        <li><a href="#"><img src="{{ url('web/img/nepal-gov-logo.png') }}"></a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="box">
-                   <img src="{{ url('/web') }}/img/bg-img/1.jpg">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
                     <div class="box-content">
                         <a href="">
-                            <h3 class="title">प्रदेश सभा सचिवालय</h3>
+                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
                             <span class="post">प्रदेश नं. १, विराटनगर</span>
                         </a>
                     </div>
                     <ul class="icon">
-                        <li><a href="#"><i class="fa fa-link"></i></a></li>
+                        <li><a href="#"><img src="{{ url('web/img/nepal-gov-logo.png') }}"></a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6">
                 <div class="box">
-                   <img src="{{ url('/web') }}/img/bg-img/1.jpg">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
                     <div class="box-content">
                         <a href="">
-                            <h3 class="title">प्रदेश सभा सचिवालय</h3>
+                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
                             <span class="post">प्रदेश नं. १, विराटनगर</span>
                         </a>
                     </div>
                     <ul class="icon">
-                        <li><a href="#"><i class="fa fa-link"></i></a></li>
+                        <li><a href="#"><img src="{{ url('web/img/nepal-gov-logo.png') }}"></a></li>
                     </ul>
                 </div>
             </div>
@@ -73,104 +73,68 @@
     <div class="container-fluid">
         <div class="owl-carousel owl-carousel2 owl-theme">
             <div class="item">
-                <div class="box">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
-                    <div class="box-content">
-                        <a href="">
-                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
-                            <span class="post">प्रदेश नं. १, विराटनगर</span>
-                        </a>
+                <a href="" class="card" style="width: 18rem;">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
+                    <div class="card-body py-3 main-hover-card-text text-center">
+                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
+                        <small class="post">प्रदेश नं. १, विराटनगर</small>
                     </div>
-                    <ul class="icon">
-                        <li><a href="#"><i class="fa fa-link"></i></a></li>
-                    </ul>
-                </div>
+                </a>
             </div>
             <div class="item">
-                <div class="box">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
-                    <div class="box-content">
-                        <a href="">
-                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
-                            <span class="post">प्रदेश नं. १, विराटनगर</span>
-                        </a>
+                <a href="" class="card" style="width: 18rem;">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
+                    <div class="card-body py-3 main-hover-card-text text-center">
+                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
+                        <small class="post">प्रदेश नं. १, विराटनगर</small>
                     </div>
-                    <ul class="icon">
-                        <li><a href="#"><i class="fa fa-link"></i></a></li>
-                    </ul>
-                </div>
+                </a>
             </div>
             <div class="item">
-                <div class="box">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
-                    <div class="box-content">
-                        <a href="">
-                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
-                            <span class="post">प्रदेश नं. १, विराटनगर</span>
-                        </a>
+                <a href="" class="card" style="width: 18rem;">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
+                    <div class="card-body py-3 main-hover-card-text text-center">
+                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
+                        <small class="post">प्रदेश नं. १, विराटनगर</small>
                     </div>
-                    <ul class="icon">
-                        <li><a href="#"><i class="fa fa-link"></i></a></li>
-                    </ul>
-                </div>
+                </a>
             </div>
             <div class="item">
-                <div class="box">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
-                    <div class="box-content">
-                        <a href="">
-                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
-                            <span class="post">प्रदेश नं. १, विराटनगर</span>
-                        </a>
+                <a href="" class="card" style="width: 18rem;">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
+                    <div class="card-body py-3 main-hover-card-text text-center">
+                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
+                        <small class="post">प्रदेश नं. १, विराटनगर</small>
                     </div>
-                    <ul class="icon">
-                        <li><a href="#"><i class="fa fa-link"></i></a></li>
-                    </ul>
-                </div>
+                </a>
             </div>
             <div class="item">
-                <div class="box">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
-                    <div class="box-content">
-                        <a href="">
-                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
-                            <span class="post">प्रदेश नं. १, विराटनगर</span>
-                        </a>
+                <a href="" class="card" style="width: 18rem;">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
+                    <div class="card-body py-3 main-hover-card-text text-center">
+                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
+                        <small class="post">प्रदेश नं. १, विराटनगर</small>
                     </div>
-                    <ul class="icon">
-                        <li><a href="#"><i class="fa fa-link"></i></a></li>
-                    </ul>
-                </div>
+                </a>
             </div>
             <div class="item">
-                <div class="box">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
-                    <div class="box-content">
-                        <a href="">
-                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
-                            <span class="post">प्रदेश नं. १, विराटनगर</span>
-                        </a>
+                <a href="" class="card" style="width: 18rem;">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
+                    <div class="card-body py-3 main-hover-card-text text-center">
+                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
+                        <small class="post">प्रदेश नं. १, विराटनगर</small>
                     </div>
-                    <ul class="icon">
-                        <li><a href="#"><i class="fa fa-link"></i></a></li>
-                    </ul>
-                </div>
+                </a>
             </div>
             <div class="item">
-                <div class="box">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
-                    <div class="box-content">
-                        <a href="">
-                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
-                            <span class="post">प्रदेश नं. १, विराटनगर</span>
-                        </a>
+                <a href="" class="card" style="width: 18rem;">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
+                    <div class="card-body py-3 main-hover-card-text text-center">
+                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
+                        <small class="post">प्रदेश नं. १, विराटनगर</small>
                     </div>
-                    <ul class="icon">
-                        <li><a href="#"><i class="fa fa-link"></i></a></li>
-                    </ul>
-                </div>
+                </a>
             </div>
-            
         </div>
         {{-- <div class=" text-center">
             <a href="#" class="btn credit-btn box-shadow btn-2">See More</a>
