@@ -50,7 +50,58 @@ class DetailController extends Controller
                 break;
         }
         $datas = $model->get();
-        return view('web.detail', compact(['datas']));
+        return view('web.detail', compact(['datas','type']));
+    }
+
+    public function search(Request $request, $type){
+        $year = $request->year;
+        $ministry = $request->ministry;
+        $date_np_start = $request->date_np_start;
+        $date_np_end = $request->date_np_end;
+        switch ($type) {
+            case 'suchana':
+            $model = TblRemoteNotice::orderBy('id','DESC');
+                break;
+            case 'yearly-budget':
+            $model = TblRemoteYearlyBudget::orderBy('id','DESC');
+                break;
+            case 'kharid-bolpatra':
+            $model = TblRemoteKharidBolpatra::orderBy('id','DESC');
+                break;
+            case 'ain-kanoon':
+            $model = TblRemoteAainKanun::orderBy('id','DESC');
+                break; 
+            case 'sewa-prava':
+            $model = TblRemoteSewaPrava::orderBy('id','DESC');
+                break;   
+            case 'e-farum':
+            $model = TblRemoteEFarum::orderBy('id','DESC');
+                break;  
+            case 'prativedan':
+            $model = TblRemotePrativedan::orderBy('id','DESC');
+                break;  
+            case 'publication':
+            $model = TblRemotePublication::orderBy('id','DESC');
+                break;                    
+            default:
+                # code...
+                break;
+        }
+        if($request->has('year') && $request->get('year')!="")
+            {            
+                $model = $model->where('date_np','LIKE', "%{$request->year}%");
+            }
+        if($request->has('ministry') && $request->get('ministry')!="")
+            {    
+                $model = $model->where('server', $ministry);
+            }
+        if(($request->has('date_np_start')) || ($request->has('date_np_end')))
+            {
+                $model = $model->whereBetween('date_np', [$request->date_np_start, $request->date_np_end]);
+            }
+        $datas = $model->where('is_active','1')->get();
+        // var_dump($datas); die();
+        return view('web.detail', compact(['datas','type','year','ministry','date_np_start','date_np_end']));
     }
 
     public function link(Request $request, $link,$link2 = Null)

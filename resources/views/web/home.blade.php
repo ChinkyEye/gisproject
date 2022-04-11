@@ -314,16 +314,16 @@
                       
                       <div class="list-item-body">
                         @foreach($remote_notices as $remote_notice)
-                        <a href="" class="list-item-body-content">
+                        <a href="{{$remote_notice->url}}" target="_blank" class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
                             <span>
                                 <span class="text-bluish">
                                     {{$remote_notice->title}}
                                 </span>
                                 <small class="d-block w-100">
-                                    {{ $remote_notice->created_at_np ? '- '.$remote_notice->created_at_np : '' }} 
+                                    {{ $remote_notice->date_np ? '- '.$remote_notice->date_np : '' }} 
                                     <span class="text-redish float-right">
-                                        {{ $remote_notice->server ? '- '.$remote_notice->server : '' }}
+                                        {{ $remote_notice->ministry ? '- '.$remote_notice->ministry : '' }}
                                     </span>
                                 </small>
                             </span>
@@ -346,7 +346,7 @@
                                 <i class="fa fa-angle-right"></i>
                                 <span>
                                     <span class="text-bluish">{{$budget->title}}</span>
-                                    <small class="d-block w-100">- {{$budget->created_at_np}} <span class="text-redish float-right">- {{$budget->server}}</span></small>
+                                    <small class="d-block w-100">- {{$budget->date_np}} <span class="text-redish float-right">- {{$budget->ministry}}</span></small>
                                 </span>
                             </a>    
                         </div>
@@ -366,7 +366,7 @@
                             <i class="fa fa-angle-right"></i>
                             <span>
                                 <span class="text-bluish">{{$bolpatra->title}}</span>
-                                <small class="d-block w-100">- {{$bolpatra->date_np}} <span class="text-redish float-right">- {{$bolpatra->server}}</span></small>
+                                <small class="d-block w-100">- {{$bolpatra->date_np}} <span class="text-redish float-right">- {{$bolpatra->ministry}}</span></small>
                             </span>
                         </div>
                         @endforeach
@@ -389,7 +389,7 @@
                             <i class="fa fa-angle-right"></i>
                             <span>
                                 <span class="text-bluish">{{$ainkanun->title}}</span>
-                                <small class="d-block w-100">- {{$ainkanun->date_np}} <span class="text-redish float-right">- {{$ainkanun->server}}</span></small>
+                                <small class="d-block w-100">- {{$ainkanun->date_np}} <span class="text-redish float-right">- {{$ainkanun->ministry}}</span></small>
                             </span>
                         </div>
                         @endforeach
@@ -420,7 +420,7 @@
                               <i class="fa fa-angle-right"></i>
                               <span>
                                   <span class="text-bluish">{{$sewaprava->title}}</span>
-                                  <small class="d-block w-100">- {{$sewaprava->date_np}} <span class="text-redish float-right">- {{$sewaprava->server}}</span></small>
+                                  <small class="d-block w-100">- {{$sewaprava->date_np}} <span class="text-redish float-right">- {{$sewaprava->ministry}}</span></small>
                               </span>
                           </div>
                           @endforeach
@@ -443,7 +443,7 @@
                             <i class="fa fa-angle-right"></i>
                             <span>
                                 <span class="text-bluish">{{$farum->title}}</span>
-                                <small class="d-block w-100">- {{$farum->date_np}} <span class="text-redish float-right">- {{$farum->server}}</span></small>
+                                <small class="d-block w-100">- {{$farum->date_np}} <span class="text-redish float-right">- {{$farum->ministry}}</span></small>
                             </span>
                         </div>
                         @endforeach
@@ -466,7 +466,7 @@
                             <i class="fa fa-angle-right"></i>
                             <span>
                                 <span class="text-bluish">{{$prativedan->title}}</span>
-                                <small class="d-block w-100">- {{$prativedan->date_np}} <span class="text-redish float-right">- {{$prativedan->server}}</span></small>
+                                <small class="d-block w-100">- {{$prativedan->date_np}} <span class="text-redish float-right">- {{$prativedan->ministry}}</span></small>
                             </span>
                         </div>
                         @endforeach
@@ -489,7 +489,7 @@
                             <i class="fa fa-angle-right"></i>
                             <span>
                                 <span class="text-bluish">{{$publication->title}}</span>
-                                <small class="d-block w-100">- {{$publication->date_np}} <span class="text-redish float-right">- {{$publication->server}}</span></small>
+                                <small class="d-block w-100">- {{$publication->date_np}} <span class="text-redish float-right">- {{$publication->ministry}}</span></small>
                             </span>
                         </div>
                         @endforeach
