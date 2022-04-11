@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTblRemoteNoticesTable extends Migration
+class CreateTblRemoteSewaPravasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTblRemoteNoticesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_remote_notices', function (Blueprint $table) {
+        Schema::create('tbl_remote_sewa_pravas', function (Blueprint $table) {
             $table->id();
             $table->integer('remote_id'); // id of api table
             $table->string('server'); // define which api server
@@ -33,6 +33,6 @@ class CreateTblRemoteNoticesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_remote_notices');
+        Schema::dropIfExists('tbl_remote_sewa_pravas');
     }
 }

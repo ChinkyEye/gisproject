@@ -43,7 +43,7 @@ About |
 							<tr>
 								<td>{{$loop->iteration}}</td>
 								<td class="text-left">{{$data->title}}</td>
-								<td>{{$data->created_at_np}}</td>
+								<td>{{$data->date_np}}</td>
 								<td><span class="badge badge-info">{{$data->created_at->diffForHumans()}}</span></td>
 								<td>{{$data->server}}</td>
 								<td><a href="{{$data->url}}" target="_blank">View Detail</a></td>

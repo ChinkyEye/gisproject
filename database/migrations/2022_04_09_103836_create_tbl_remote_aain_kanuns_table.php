@@ -19,7 +19,8 @@ class CreateTblRemoteAainKanunsTable extends Migration
             $table->string('server'); // define which api server
             $table->string('title'); // define which title
             $table->string('url'); // redirects which url it follow
-            $table->string('created_at_np'); // to get nepali date
+            $table->string('date_np'); // to get nepali date
+            $table->string('time_np'); // to get time
             $table->boolean('is_active')->default(true); // 1 active, 0 non active
             $table->timestamps();
         });
