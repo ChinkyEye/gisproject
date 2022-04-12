@@ -16,12 +16,10 @@ About |
 					<div class="form-group">
 						<select class="form-control select2bs4 w-100" name="year">
 							<option value="">Choose</option>
-							<option value="1">Alaska</option>
-							<option>California</option>
-							<option>Delaware</option>
-							<option>Tennessee</option>
-							<option>Texas</option>
-							<option>Washington</option>
+							@foreach($years as $key=>$year)
+							<option value="{{$year->name}}">{{$year->name}}</option>
+							@endforeach
+							
 						</select>
 					</div>
 				</div>
@@ -153,21 +151,4 @@ About |
 		});
 	});
 </script>
-
-{{-- <script>
-  $(document).ready(function() {
-    var date = new Date();
-    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-    var end = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-
-    $('#dob,#register_date').datepicker({
-      maxDate: '0',
-      todayHighlight: true,
-      endDate: '+0d',
-      format: 'yyyy-mm-dd',
-      autoclose: true
-    });
-    $('#dob,#register_date').datepicker('setDate', today);
-  });
-</script> --}}
 @endpush

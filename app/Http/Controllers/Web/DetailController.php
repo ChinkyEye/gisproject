@@ -15,6 +15,7 @@ use App\TblRemoteSewaPrava;
 use App\TblRemoteEFarum;
 use App\TblRemotePrativedan;
 use App\TblRemotePublication;
+use App\FiscalYear;
 
 class DetailController extends Controller
 {
@@ -50,7 +51,8 @@ class DetailController extends Controller
                 break;
         }
         $datas = $model->get();
-        return view('web.detail', compact(['datas','type']));
+        $years = FiscalYear::where('is_active',1)->get();
+        return view('web.detail', compact(['datas','type','years']));
     }
 
     public function search(Request $request, $type){
