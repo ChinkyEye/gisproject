@@ -5,7 +5,24 @@
 <section class="features-area py-5 bg-gray">
     <div class="container-fluid">
         <div class="row">
+            @foreach($offices as $key => $data)
             <div class="col-md-3 col-sm-6">
+                <div class="box">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
+                    <div class="box-content">
+                        <a href="">
+                            <h5 class="title">{{$data->name}}</h5>
+                            <span class="post">{{$data->address}}</span>
+                        </a>
+                    </div>
+                    <ul class="icon">
+                        <li><a href="#"><img src="{{ url('web/img/nepal-gov-logo.png') }}"></a></li>
+                    </ul>
+                </div>
+            </div>
+            @endforeach
+
+            <!-- <div class="col-md-3 col-sm-6">
                 <div class="box">
                     <img src="{{ url('/web') }}/img/bg-img/1.jpg">
                     <div class="box-content">
@@ -46,21 +63,7 @@
                         <li><a href="#"><img src="{{ url('web/img/nepal-gov-logo.png') }}"></a></li>
                     </ul>
                 </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="box">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
-                    <div class="box-content">
-                        <a href="">
-                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
-                            <span class="post">प्रदेश नं. १, विराटनगर</span>
-                        </a>
-                    </div>
-                    <ul class="icon">
-                        <li><a href="#"><img src="{{ url('web/img/nepal-gov-logo.png') }}"></a></li>
-                    </ul>
-                </div>
-            </div>
+            </div> -->
         </div>
         {{-- <div class=" text-center">
             <a href="#" class="btn credit-btn box-shadow btn-2">See More</a>
@@ -309,7 +312,7 @@
             <div class="col-md-3">
                     <div class="list-item">
                         <div class="list-item-head">
-                          <p>सूचना/जानकारी</p>
+                          <p>{{ __('language.notice')}}</p>
                         </div>
                       
                       <div class="list-item-body">
@@ -329,14 +332,14 @@
                             </span>
                         </a>
                         @endforeach
-                    <a href="{{route('web.detail.index',['type' => 'suchana'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
+                    <a href="{{route('web.detail.index',['type' => 'suchana'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="list-item">
                     <div class="list-item-head">
-                        <p>बार्षिक बजेट / कार्यक्रम</p>
+                        <p>{{ __('language.yearly-budget-program')}}</p>
                     </div>
 
                     <div class="list-item-body">
@@ -357,14 +360,14 @@
                         </a>
                         @endforeach
                         
-                    <a href="{{route('web.detail.index',['type' => 'yearly-budget'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
+                    <a href="{{route('web.detail.index',['type' => 'yearly-budget'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="list-item">
                     <div class="list-item-head">
-                        <p>सार्वजनिक खरिद/बोलपत्र</p>
+                        <p>{{ __('language.public-procurement-bidding')}}</p>
                     </div>
                     <div class="list-item-body">
                         @foreach($remote_kharid_bolpatras as $bolpatra)
@@ -384,7 +387,7 @@
                         </a>
                         @endforeach
                         
-                      <a href="{{route('web.detail.index',['type' => 'kharid-bolpatra'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
+                      <a href="{{route('web.detail.index',['type' => 'kharid-bolpatra'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
                     </div>
 
                     
@@ -393,7 +396,7 @@
             <div class="col-md-3">
                 <div class="list-item">
                     <div class="list-item-head">
-                        <p>ऐन/कानून संग्रह</p>
+                        <p>{{ __('language.acts-laws-rules')}}</p>
                     </div>
                     <div class="list-item-body">
                         @foreach($remote_ain_kanuns as $ainkanun)
@@ -412,7 +415,7 @@
                             </span>
                         </a>
                         @endforeach
-                    <a href="{{route('web.detail.index',['type' => 'ain-kanoon'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
+                    <a href="{{route('web.detail.index',['type' => 'ain-kanoon'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
                     </div>
 
                     
@@ -429,7 +432,7 @@
             <div class="col-md-3">
                     <div class="list-item">
                         <div class="list-item-head">
-                          <p>सेवा प्रवाह </p>
+                          <p>{{ __('language.services')}} </p>
                       </div>
 
                         <div class="list-item-body">
@@ -451,7 +454,7 @@
                             @endforeach
 
                           
-                      <a href="{{route('web.detail.index',['type' => 'sewa-prava'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
+                      <a href="{{route('web.detail.index',['type' => 'sewa-prava'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
                       </div>
                       
                 </div>
@@ -459,7 +462,7 @@
             <div class="col-md-3">
                 <div class="list-item">
                     <div class="list-item-head">
-                        <p>इ-फारम </p>
+                        <p>{{ __('language.form')}} </p>
                     </div>
 
                     <div class="list-item-body">
@@ -480,16 +483,14 @@
                         </a>
                         @endforeach
 
-                    <a href="{{route('web.detail.index',['type' => 'e-farum'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
+                    <a href="{{route('web.detail.index',['type' => 'e-farum'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
                     </div>
-
-                    
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="list-item">
                     <div class="list-item-head">
-                        <p>प्रतिवेदन/रिपोर्ट </p>
+                        <p>{{ __('language.report')}}</p>
                     </div>
 
                     <div class="list-item-body">
@@ -510,7 +511,7 @@
                         </a>
                         @endforeach
 
-                    <a href="{{route('web.detail.index',['type' => 'prativedan'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
+                    <a href="{{route('web.detail.index',['type' => 'prativedan'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
                     </div>
 
                     
@@ -519,7 +520,7 @@
             <div class="col-md-3">
                 <div class="list-item">
                     <div class="list-item-head">
-                        <p>सूचना/जानकारी </p>
+                        <p>{{ __('language.publication')}}</p>
                     </div>
 
                     <div class="list-item-body">
@@ -540,7 +541,7 @@
                         </a>
                         @endforeach
 
-                    <a href="{{route('web.detail.index',['type' => 'publication'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
+                    <a href="{{route('web.detail.index',['type' => 'publication'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
                     </div>
 
                     

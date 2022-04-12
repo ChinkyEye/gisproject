@@ -19,7 +19,9 @@ class OfficeController extends Controller
      */
     public function index()
     {
-        $offices =Office::get(); 
+        $offices =Office::orderBy('id','DESC')
+                        ->where('created_by', Auth::user()->id)
+                        ->paginate(10);
        return view('superadmin.office.index',compact('offices'));
     }
 

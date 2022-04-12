@@ -8,6 +8,7 @@ use App\Menu;
 use App\Sidemenu;
 use App\MenuHasDropdown;
 use App\PradeshSabhaSadasya;
+use App\Office;
 // remote table
 use App\TblRemoteNotice;
 use App\TblRemoteYearlyBudget;
@@ -17,6 +18,7 @@ use App\TblRemoteSewaPrava;
 use App\TblRemoteEFarum;
 use App\TblRemotePrativedan;
 use App\TblRemotePublication;
+
 
 class HomeController extends Controller
 {
@@ -31,7 +33,8 @@ class HomeController extends Controller
         $remote_e_farums = TblRemoteEFarum::orderBy('id','DESC')->take(10)->get();
         $remote_prativedans = TblRemotePrativedan::orderBy('id','DESC')->take(10)->get();
         $remote_publications = TblRemotePublication::orderBy('id','DESC')->take(10)->get();
-        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications']));
+        $offices = Office::orderBy('id','DESC')->take(10)->get();
+        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','offices']));
     }
 
     public function link(Request $request, $link,$link2 = Null)
