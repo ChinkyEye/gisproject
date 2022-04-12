@@ -7,14 +7,14 @@
             <!-- Single Footer Widget -->
             <div class="col-12 col-sm-6 col-lg-5">
                 <div class="single-footer-widget mb-70 text-white">
-                    <h5 class="widget-title font-weight-bold">About Us</h5>
+                    <h5 class="widget-title font-weight-bold">{{ __('language.about-us')}}</h5>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo sapiente odit aut tempore alias ducimus eius natus odio, est repellat mollitia, harum perferendis dolores id unde libero. Numquam doloribus, vero. Nemo sapiente odit aut tempore alias ducimus eius natus odio, est repellat mollitia, harum perferendis dolores id unde libero. Numquam doloribus, vero.. </p>
                     <a href="" class="text-danger hover-icon">Read more <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-lg-3">
                 <div class="single-footer-widget mb-70">
-                    <h5 class="widget-title font-weight-bold">Useful Link</h5>
+                    <h5 class="widget-title font-weight-bold">{{ __('language.useful-link')}}</h5>
 
                     <div class="single-latest-news-area d-flex align-items-center">
                         <div class="news-content">
@@ -53,7 +53,7 @@
             <!-- Single Footer Widget -->
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="single-footer-widget mb-70">
-                    <h5 class="widget-title font-weight-bold">Contact</h5>
+                    <h5 class="widget-title font-weight-bold">{{ __('language.contact')}}</h5>
                     <div class="single-contact-content d-flex align-items-center text-white mb-4">
                         <div class="mr-3 icon-font">
                             <i class="fa fa-map-marker"></i>

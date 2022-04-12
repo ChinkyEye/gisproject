@@ -5,7 +5,24 @@
 <section class="features-area py-5 bg-gray">
     <div class="container-fluid">
         <div class="row">
+            @foreach($offices as $key => $data)
             <div class="col-md-3 col-sm-6">
+                <div class="box">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
+                    <div class="box-content">
+                        <a href="">
+                            <h5 class="title">{{$data->name}}</h5>
+                            <span class="post">{{$data->address}}</span>
+                        </a>
+                    </div>
+                    <ul class="icon">
+                        <li><a href="#"><img src="{{ url('web/img/nepal-gov-logo.png') }}"></a></li>
+                    </ul>
+                </div>
+            </div>
+            @endforeach
+
+            <!-- <div class="col-md-3 col-sm-6">
                 <div class="box">
                     <img src="{{ url('/web') }}/img/bg-img/1.jpg">
                     <div class="box-content">
@@ -46,21 +63,7 @@
                         <li><a href="#"><img src="{{ url('web/img/nepal-gov-logo.png') }}"></a></li>
                     </ul>
                 </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="box">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
-                    <div class="box-content">
-                        <a href="">
-                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
-                            <span class="post">प्रदेश नं. १, विराटनगर</span>
-                        </a>
-                    </div>
-                    <ul class="icon">
-                        <li><a href="#"><img src="{{ url('web/img/nepal-gov-logo.png') }}"></a></li>
-                    </ul>
-                </div>
-            </div>
+            </div> -->
         </div>
         {{-- <div class=" text-center">
             <a href="#" class="btn credit-btn box-shadow btn-2">See More</a>
@@ -309,128 +312,113 @@
             <div class="col-md-3">
                     <div class="list-item">
                         <div class="list-item-head">
-                          <p>सूचना/जानकारी</p>
+                          <p>{{ __('language.notice')}}</p>
                         </div>
                       
                       <div class="list-item-body">
                         @foreach($remote_notices as $remote_notice)
-                        <a href="" class="list-item-body-content">
+                        <a href="{{$remote_notice->url}}" target="_blank" class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
                             <span>
                                 <span class="text-bluish">
                                     {{$remote_notice->title}}
                                 </span>
                                 <small class="d-block w-100">
-                                    {{ $remote_notice->created_at_np ? '- '.$remote_notice->created_at_np : '' }} 
+                                    {{ $remote_notice->date_np ? '- '.$remote_notice->date_np : '' }} 
                                     <span class="text-redish float-right">
-                                        {{ $remote_notice->server ? '- '.$remote_notice->server : '' }}
+                                        {{ $remote_notice->ministry ? '- '.$remote_notice->ministry : '' }}
                                     </span>
                                 </small>
                             </span>
                         </a>
                         @endforeach
-                    <a href="{{route('web.detail.index',['type' => 'suchana'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
+                    <a href="{{route('web.detail.index',['type' => 'suchana'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="list-item">
                     <div class="list-item-head">
-                        <p>बार्षिक बजेट / कार्यक्रम</p>
+                        <p>{{ __('language.yearly-budget-program')}}</p>
                     </div>
 
                     <div class="list-item-body">
                         @foreach($remote_yearly_budgets as $budget)
-                        <div class="list-item-body-content">
-                            <a href="">
-                                <i class="fa fa-angle-right"></i>
-                                <span>
-                                    <span class="text-bluish">{{$budget->title}}</span>
-                                    <small class="d-block w-100">- {{$budget->created_at_np}} <span class="text-redish float-right">- {{$budget->server}}</span></small>
+                        <a href="{{$budget->url}}" target="_blank" class="list-item-body-content">
+                            <i class="fa fa-angle-right"></i>
+                            <span>
+                                <span class="text-bluish">
+                                    {{$budget->title}}
                                 </span>
-                            </a>    
-                        </div>
+                                <small class="d-block w-100">
+                                    {{ $budget->date_np ? '- '.$budget->date_np : '' }} 
+                                    <span class="text-redish float-right">
+                                        {{ $budget->ministry ? '- '.$budget->ministry : '' }}
+                                    </span>
+                                </small>
+                            </span>
+                        </a>
                         @endforeach
-                    <a href="{{route('web.detail.index',['type' => 'yearly-budget'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
+                        
+                    <a href="{{route('web.detail.index',['type' => 'yearly-budget'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="list-item">
                     <div class="list-item-head">
-                        <p>सार्वजनिक खरिद/बोलपत्र</p>
+                        <p>{{ __('language.public-procurement-bidding')}}</p>
+                    </div>
+                    <div class="list-item-body">
+                        @foreach($remote_kharid_bolpatras as $bolpatra)
+                        <a href="{{$bolpatra->url}}" target="_blank" class="list-item-body-content">
+                            <i class="fa fa-angle-right"></i>
+                            <span>
+                                <span class="text-bluish">
+                                    {{$bolpatra->title}}
+                                </span>
+                                <small class="d-block w-100">
+                                    {{ $bolpatra->date_np ? '- '.$bolpatra->date_np : '' }} 
+                                    <span class="text-redish float-right">
+                                        {{ $bolpatra->ministry ? '- '.$bolpatra->ministry : '' }}
+                                    </span>
+                                </small>
+                            </span>
+                        </a>
+                        @endforeach
+                        
+                      <a href="{{route('web.detail.index',['type' => 'kharid-bolpatra'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
                     </div>
 
-                    <div class="list-item-body">
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                    <a href="" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
-                    </div>
+                    
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="list-item">
                     <div class="list-item-head">
-                        <p>ऐन/कानून संग्रह</p>
+                        <p>{{ __('language.acts-laws-rules')}}</p>
+                    </div>
+                    <div class="list-item-body">
+                        @foreach($remote_ain_kanuns as $ainkanun)
+                        <a href="{{$ainkanun->url}}" target="_blank" class="list-item-body-content">
+                            <i class="fa fa-angle-right"></i>
+                            <span>
+                                <span class="text-bluish">
+                                    {{$ainkanun->title}}
+                                </span>
+                                <small class="d-block w-100">
+                                    {{ $ainkanun->date_np ? '- '.$ainkanun->date_np : '' }} 
+                                    <span class="text-redish float-right">
+                                        {{ $ainkanun->ministry ? '- '.$ainkanun->ministry : '' }}
+                                    </span>
+                                </small>
+                            </span>
+                        </a>
+                        @endforeach
+                    <a href="{{route('web.detail.index',['type' => 'ain-kanoon'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
                     </div>
 
-                    <div class="list-item-body">
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                    <a href="" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -444,157 +432,119 @@
             <div class="col-md-3">
                     <div class="list-item">
                         <div class="list-item-head">
-                          <p>सेवा प्रवाह </p>
+                          <p>{{ __('language.services')}} </p>
+                      </div>
+
+                        <div class="list-item-body">
+                            @foreach($remote_sewa_pravas as $sewaprava)
+                            <a href="{{$sewaprava->url}}" target="_blank" class="list-item-body-content">
+                                <i class="fa fa-angle-right"></i>
+                                <span>
+                                    <span class="text-bluish">
+                                        {{$sewaprava->title}}
+                                    </span>
+                                    <small class="d-block w-100">
+                                        {{ $sewaprava->date_np ? '- '.$sewaprava->date_np : '' }} 
+                                        <span class="text-redish float-right">
+                                            {{ $sewaprava->ministry ? '- '.$sewaprava->ministry : '' }}
+                                        </span>
+                                    </small>
+                                </span>
+                            </a>
+                            @endforeach
+
+                          
+                      <a href="{{route('web.detail.index',['type' => 'sewa-prava'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
                       </div>
                       
-                      <div class="list-item-body">
-                        <div class="list-item-body-content">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="list-item">
+                    <div class="list-item-head">
+                        <p>{{ __('language.form')}} </p>
+                    </div>
+
+                    <div class="list-item-body">
+                        @foreach($remote_e_farums as $farum)
+                        <a href="{{$farum->url}}" target="_blank" class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
                             <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                                <span class="text-bluish">
+                                    {{$farum->title}}
+                                </span>
+                                <small class="d-block w-100">
+                                    {{ $farum->date_np ? '- '.$farum->date_np : '' }} 
+                                    <span class="text-redish float-right">
+                                        {{ $farum->ministry ? '- '.$farum->ministry : '' }}
+                                    </span>
+                                </small>
                             </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                    <a href="" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
+                        </a>
+                        @endforeach
+
+                    <a href="{{route('web.detail.index',['type' => 'e-farum'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="list-item">
                     <div class="list-item-head">
-                        <p>इ-फारम </p>
+                        <p>{{ __('language.report')}}</p>
                     </div>
 
                     <div class="list-item-body">
-                        <div class="list-item-body-content">
+                        @foreach($remote_prativedans as $prativedan)
+                        <a href="{{$prativedan->url}}" target="_blank" class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
                             <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                                <span class="text-bluish">
+                                    {{$prativedan->title}}
+                                </span>
+                                <small class="d-block w-100">
+                                    {{ $prativedan->date_np ? '- '.$prativedan->date_np : '' }} 
+                                    <span class="text-redish float-right">
+                                        {{ $prativedan->ministry ? '- '.$prativedan->ministry : '' }}
+                                    </span>
+                                </small>
                             </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                    <a href="" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
+                        </a>
+                        @endforeach
+
+                    <a href="{{route('web.detail.index',['type' => 'prativedan'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
                     </div>
+
+                    
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="list-item">
                     <div class="list-item-head">
-                        <p>प्रतिवेदन/रिपोर्ट </p>
+                        <p>{{ __('language.publication')}}</p>
                     </div>
 
                     <div class="list-item-body">
-                        <div class="list-item-body-content">
+                        @foreach($remote_publications as $publication)
+                        <a href="{{$publication->url}}" target="_blank" class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
                             <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
+                                <span class="text-bluish">
+                                    {{$publication->title}}
+                                </span>
+                                <small class="d-block w-100">
+                                    {{ $publication->date_np ? '- '.$publication->date_np : '' }} 
+                                    <span class="text-redish float-right">
+                                        {{ $publication->ministry ? '- '.$publication->ministry : '' }}
+                                    </span>
+                                </small>
                             </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                    <a href="" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="list-item">
-                    <div class="list-item-head">
-                        <p>सूचना/जानकारी </p>
+                        </a>
+                        @endforeach
+
+                    <a href="{{route('web.detail.index',['type' => 'publication'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
                     </div>
 
-                    <div class="list-item-body">
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                        <div class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">List Title here</span>
-                                <small class="d-block w-100">- 2078-12-25 <span class="text-redish float-right">- Sumit Pradhan</span></small>
-                            </span>
-                        </div>
-                    <a href="" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
-                    </div>
+                    
                 </div>
             </div>
         </div>

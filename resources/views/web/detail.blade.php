@@ -10,26 +10,24 @@ About |
 @section('content')
 <section class="breadcrumb-main my-4">
 	<div class="container">
-		<form>
+		<form method="GET" action="{{route('web.detail.search',['type' => $type])}}">
 			<div class="row">
 				<div class="col-md">
 					<div class="form-group">
-						<select class="form-control select2bs4 w-100">
+						<select class="form-control select2bs4 w-100" name="year">
 							<option value="">Choose</option>
-							<option>Alaska</option>
-							<option>California</option>
-							<option>Delaware</option>
-							<option>Tennessee</option>
-							<option>Texas</option>
-							<option>Washington</option>
+							@foreach($years as $key=>$year)
+							<option value="{{$year->name}}">{{$year->name}}</option>
+							@endforeach
+							
 						</select>
 					</div>
 				</div>
 				<div class="col-md">
 					<div class="form-group">
-						<select class="form-control select2bs4 w-100">
+						<select class="form-control select2bs4 w-100" name="ministry">
 							<option value="">Choose</option>
-							<option>Alaska</option>
+							<option value="1">Alaska</option>
 							<option>California</option>
 							<option>Delaware</option>
 							<option>Tennessee</option>
@@ -68,7 +66,7 @@ About |
 								<th class="text-left">Name</th>
 								<th width="10%">Date</th>
 								<th width="10%">Created At</th>
-								<th width="5%">Mantralaya</th>
+								<th width="20%">Mantralaya</th>
 								<th width="10%">Link</th>
 							</tr>
 						</thead>
@@ -77,9 +75,9 @@ About |
 							<tr>
 								<td>{{$loop->iteration}}</td>
 								<td class="text-left">{{$data->title}}</td>
-								<td>{{$data->created_at_np}}</td>
+								<td>{{$data->date_np}}</td>
 								<td><span class="badge badge-info">{{$data->created_at->diffForHumans()}}</span></td>
-								<td>{{$data->server}}</td>
+								<td>{{$data->ministry}}</td>
 								<td>
 									<a href="{{$data->url}}" target="_blank" class="table-anchor">View Detail</a>
 								</td>
@@ -136,13 +134,20 @@ About |
 	    theme: 'bootstrap4'
 	  });
 
+	   var currentDate = NepaliFunctions.ConvertDateFormat(NepaliFunctions.GetCurrentBsDate(), "YYYY-MM-DD");
+        $('#date_np_start').val(currentDate);
+        $('#date_np_end').val(currentDate);
+
 		$('#date_np_start').nepaliDatePicker({
 			ndpYear: true,
 			ndpMonth: true,
+			dateFormat: "YYYY-MM-DD"
 		});
+
 		$('#date_np_end').nepaliDatePicker({
 			ndpYear: true,
 			ndpMonth: true,
+			dateFormat: "YYYY-MM-DD"
 		});
 	});
 </script>
