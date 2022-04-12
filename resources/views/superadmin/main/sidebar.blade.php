@@ -136,6 +136,14 @@
                {{-- </p> --}}
              </a>
            </li>
+           <li class="nav-item">
+              <a href="{{ route('superadmin.contactus.index')}}" class="nav-link {{ (request()->is('home/menu-page/contactus*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-address-card"></i>
+                <p>
+                 Contact Us
+               </p>
+             </a>
+           </li>
           </ul>
         </li>
         <li class="nav-item has-treeview {{ (request()->is('home/sidebar-part/*')) ? 'menu-open' : '' }}">
