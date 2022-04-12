@@ -341,16 +341,22 @@
 
                     <div class="list-item-body">
                         @foreach($remote_yearly_budgets as $budget)
-                        <div class="list-item-body-content">
-                            <a href="">
-                                <i class="fa fa-angle-right"></i>
-                                <span>
-                                    <span class="text-bluish">{{$budget->title}}</span>
-                                    <small class="d-block w-100">- {{$budget->date_np}} <span class="text-redish float-right">- {{$budget->ministry}}</span></small>
+                        <a href="{{$budget->url}}" target="_blank" class="list-item-body-content">
+                            <i class="fa fa-angle-right"></i>
+                            <span>
+                                <span class="text-bluish">
+                                    {{$budget->title}}
                                 </span>
-                            </a>    
-                        </div>
+                                <small class="d-block w-100">
+                                    {{ $budget->date_np ? '- '.$budget->date_np : '' }} 
+                                    <span class="text-redish float-right">
+                                        {{ $budget->ministry ? '- '.$budget->ministry : '' }}
+                                    </span>
+                                </small>
+                            </span>
+                        </a>
                         @endforeach
+                        
                     <a href="{{route('web.detail.index',['type' => 'yearly-budget'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
                 </div>
@@ -362,15 +368,21 @@
                     </div>
                     <div class="list-item-body">
                         @foreach($remote_kharid_bolpatras as $bolpatra)
-                        <div class="list-item-body-content">
+                        <a href="{{$bolpatra->url}}" target="_blank" class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
                             <span>
-                                <span class="text-bluish">{{$bolpatra->title}}</span>
-                                <small class="d-block w-100">- {{$bolpatra->date_np}} <span class="text-redish float-right">- {{$bolpatra->ministry}}</span></small>
+                                <span class="text-bluish">
+                                    {{$bolpatra->title}}
+                                </span>
+                                <small class="d-block w-100">
+                                    {{ $bolpatra->date_np ? '- '.$bolpatra->date_np : '' }} 
+                                    <span class="text-redish float-right">
+                                        {{ $bolpatra->ministry ? '- '.$bolpatra->ministry : '' }}
+                                    </span>
+                                </small>
                             </span>
-                        </div>
+                        </a>
                         @endforeach
-                        
                         
                       <a href="{{route('web.detail.index',['type' => 'kharid-bolpatra'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
@@ -385,15 +397,21 @@
                     </div>
                     <div class="list-item-body">
                         @foreach($remote_ain_kanuns as $ainkanun)
-                        <div class="list-item-body-content">
+                        <a href="{{$ainkanun->url}}" target="_blank" class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
                             <span>
-                                <span class="text-bluish">{{$ainkanun->title}}</span>
-                                <small class="d-block w-100">- {{$ainkanun->date_np}} <span class="text-redish float-right">- {{$ainkanun->ministry}}</span></small>
+                                <span class="text-bluish">
+                                    {{$ainkanun->title}}
+                                </span>
+                                <small class="d-block w-100">
+                                    {{ $ainkanun->date_np ? '- '.$ainkanun->date_np : '' }} 
+                                    <span class="text-redish float-right">
+                                        {{ $ainkanun->ministry ? '- '.$ainkanun->ministry : '' }}
+                                    </span>
+                                </small>
                             </span>
-                        </div>
+                        </a>
                         @endforeach
-                        
                     <a href="{{route('web.detail.index',['type' => 'ain-kanoon'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
 
@@ -415,15 +433,22 @@
                       </div>
 
                         <div class="list-item-body">
-                          @foreach($remote_sewa_pravas as $sewaprava)
-                          <div class="list-item-body-content">
-                              <i class="fa fa-angle-right"></i>
-                              <span>
-                                  <span class="text-bluish">{{$sewaprava->title}}</span>
-                                  <small class="d-block w-100">- {{$sewaprava->date_np}} <span class="text-redish float-right">- {{$sewaprava->ministry}}</span></small>
-                              </span>
-                          </div>
-                          @endforeach
+                            @foreach($remote_sewa_pravas as $sewaprava)
+                            <a href="{{$sewaprava->url}}" target="_blank" class="list-item-body-content">
+                                <i class="fa fa-angle-right"></i>
+                                <span>
+                                    <span class="text-bluish">
+                                        {{$sewaprava->title}}
+                                    </span>
+                                    <small class="d-block w-100">
+                                        {{ $sewaprava->date_np ? '- '.$sewaprava->date_np : '' }} 
+                                        <span class="text-redish float-right">
+                                            {{ $sewaprava->ministry ? '- '.$sewaprava->ministry : '' }}
+                                        </span>
+                                    </small>
+                                </span>
+                            </a>
+                            @endforeach
 
                           
                       <a href="{{route('web.detail.index',['type' => 'sewa-prava'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
@@ -439,15 +464,22 @@
 
                     <div class="list-item-body">
                         @foreach($remote_e_farums as $farum)
-                        <div class="list-item-body-content">
+                        <a href="{{$farum->url}}" target="_blank" class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
                             <span>
-                                <span class="text-bluish">{{$farum->title}}</span>
-                                <small class="d-block w-100">- {{$farum->date_np}} <span class="text-redish float-right">- {{$farum->ministry}}</span></small>
+                                <span class="text-bluish">
+                                    {{$farum->title}}
+                                </span>
+                                <small class="d-block w-100">
+                                    {{ $farum->date_np ? '- '.$farum->date_np : '' }} 
+                                    <span class="text-redish float-right">
+                                        {{ $farum->ministry ? '- '.$farum->ministry : '' }}
+                                    </span>
+                                </small>
                             </span>
-                        </div>
+                        </a>
                         @endforeach
-                        
+
                     <a href="{{route('web.detail.index',['type' => 'e-farum'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
 
@@ -462,15 +494,22 @@
 
                     <div class="list-item-body">
                         @foreach($remote_prativedans as $prativedan)
-                        <div class="list-item-body-content">
+                        <a href="{{$prativedan->url}}" target="_blank" class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
                             <span>
-                                <span class="text-bluish">{{$prativedan->title}}</span>
-                                <small class="d-block w-100">- {{$prativedan->date_np}} <span class="text-redish float-right">- {{$prativedan->ministry}}</span></small>
+                                <span class="text-bluish">
+                                    {{$prativedan->title}}
+                                </span>
+                                <small class="d-block w-100">
+                                    {{ $prativedan->date_np ? '- '.$prativedan->date_np : '' }} 
+                                    <span class="text-redish float-right">
+                                        {{ $prativedan->ministry ? '- '.$prativedan->ministry : '' }}
+                                    </span>
+                                </small>
                             </span>
-                        </div>
+                        </a>
                         @endforeach
-                        
+
                     <a href="{{route('web.detail.index',['type' => 'prativedan'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
                     </div>
 
@@ -485,13 +524,20 @@
 
                     <div class="list-item-body">
                         @foreach($remote_publications as $publication)
-                        <div class="list-item-body-content">
+                        <a href="{{$publication->url}}" target="_blank" class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
                             <span>
-                                <span class="text-bluish">{{$publication->title}}</span>
-                                <small class="d-block w-100">- {{$publication->date_np}} <span class="text-redish float-right">- {{$publication->ministry}}</span></small>
+                                <span class="text-bluish">
+                                    {{$publication->title}}
+                                </span>
+                                <small class="d-block w-100">
+                                    {{ $publication->date_np ? '- '.$publication->date_np : '' }} 
+                                    <span class="text-redish float-right">
+                                        {{ $publication->ministry ? '- '.$publication->ministry : '' }}
+                                    </span>
+                                </small>
                             </span>
-                        </div>
+                        </a>
                         @endforeach
 
                     <a href="{{route('web.detail.index',['type' => 'publication'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">See more</a>
