@@ -71,7 +71,7 @@
           <a href="#" class="nav-link {{ (request()->is('home/menu-page/*')) ? 'active' : '' }}">
             <i class="nav-icon far fa-plus-square"></i>
             <p>
-              Menu Side
+              Menu Top
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
@@ -121,6 +121,14 @@
              </a>
            </li>
            <li class="nav-item">
+              <a href="{{ route('superadmin.pratibedan.index')}}" class="nav-link {{ (request()->is('home/menu-page/pratibedan*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-file"></i>
+                <p>
+                 Pratibedan
+               </p>
+             </a>
+           </li>
+           <li class="nav-item">
               <a href="{{ route('superadmin.sangathansanrachana.index')}}" class="nav-link {{ (request()->is('home/menu-page/sangathansanrachana*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-user"></i>
                 {{-- <p> --}}
@@ -134,7 +142,7 @@
           <a href="#" class="nav-link {{ (request()->is('home/sidebar-part/*')) ? 'active' : '' }}">
             <i class="nav-icon far fa-plus-square"></i>
             <p>
-              Sidebar Side
+              Sidebar Menu
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>

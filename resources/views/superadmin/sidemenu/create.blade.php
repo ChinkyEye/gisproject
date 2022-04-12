@@ -31,7 +31,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="model_data">Model<span class="text-danger">*</span></label>
+          <label for="model_data">Model</label>
           <select id="nationality" class="form-control" name="model" id="modal">
             <option value="">--Select--</option>
             <option value="Mantralaya">Mantralaya</option>
@@ -40,7 +40,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="link">Link<span class="text-danger">*</span></label>
+          <label for="link">Link</label>
           <input type="text"  class="form-control max" id="link" placeholder="Enter menu name" name="link" autocomplete="off" autofocus value="{{ old('link') }}">
           @error('link')
           <span class="text-danger font-italic" role="alert">
@@ -49,7 +49,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="page">Page<span class="text-danger">*</span></label>
+          <label for="page">Page</label>
           <input type="text"  class="form-control max" id="page" placeholder="Enter menu name" name="page" autocomplete="off" autofocus value="{{ old('page') }}">
           @error('page')
           <span class="text-danger font-italic" role="alert">

@@ -4,26 +4,26 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Notice;
 use App\ModelHasType;
+use App\Pratibedan;
 use Auth;
 use Response;
 use File;
 
 
-class NoticeController extends Controller
+class PratibedanController extends Controller
 {
-    /** 
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-       $notices = Notice::orderBy('id','DESC')
+        $pratibedans = Pratibedan::orderBy('id','DESC')
                         ->where('created_by', Auth::user()->id)
                         ->paginate(10);
-        return view('superadmin.notice.index', compact('notices')); 
+        return view('superadmin.pratibedan.index', compact('pratibedans'));
     }
 
     /**
@@ -33,11 +33,11 @@ class NoticeController extends Controller
      */
     public function create(Request $request)
     {
-        $modelhastypes = ModelHasType::orderBy('id','DESC')
+        $modelhastypes = ModelHasType::orderBy('id','ASC')
                                     ->where('created_by', Auth::user()->id)
                                     ->where('model',$request->model)
                                     ->get();
-        return view('superadmin.notice.create', compact('modelhastypes'));
+        return view('superadmin.pratibedan.create',compact('modelhastypes'));
     }
 
     /**
@@ -48,25 +48,20 @@ class NoticeController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-      
         $this->validate($request, [
             'title' => 'required',
             'type' => 'required',
             'description' => 'required',
-            'scroll' => 'required',
         ]);
-         
         $uppdf = $request->file('document');
         if($uppdf != ""){
             $this->validate($request, [
                 'document' => 'required|mimes:pdf',               
             ]);
-            $destinationPath = 'document/notice/';
+
+            $destinationPath = 'document/pratibedan/';
             $extension = $uppdf->getClientOriginalExtension();
             $name = $uppdf->getClientOriginalName();
-            // $fileName = md5(mt_rand()).'.'.$extension;
-            // $fileName = time().'.'.$extension;
             $fileName = $name.'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
@@ -74,18 +69,17 @@ class NoticeController extends Controller
         }else{
             $fileName = Null;
         }
-       $notices = Notice::create([
+        $pratibedan = Pratibedan::create([
             'title' => $request['title'],
             'description' => $request['description'],
             'type'=> $request['type'],
-            'scroll'=> $request['scroll'],
             'document'=> $fileName,
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
             'date' => date("Y-m-d"),
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        return redirect()->route('superadmin.notice.index')->with('alert-success', 'Notice created successfully!!!!');
+        return redirect()->route('superadmin.pratibedan.index')->with('alert-success', 'Data created succesffully!!!!');
     }
 
     /**
@@ -105,15 +99,14 @@ class NoticeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request,$id)
+    public function edit(Request $request, $id)
     {
-        // dd($request);
-        $notices = Notice::find($id);
+        $pratibedans = Pratibedan::find($id);
         $modelhastypes = ModelHasType::orderBy('id','ASC')
                                         ->where('model',$request->model)
                                         ->where('created_by',Auth::user()->id)
                                         ->get();
-        return view('superadmin.notice.edit', compact('notices','modelhastypes'));
+        return view('superadmin.pratibedan.edit', compact('pratibedans','modelhastypes'));
     }
 
     /**
@@ -123,12 +116,11 @@ class NoticeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Notice $notice)
+    public function update(Request $request, Pratibedan $pratibedan)
     {
         $this->validate($request, [
             'title' => 'required',
             'type' => 'required',
-            'scroll' => 'required',
             'description' => 'required',
         ]);
        
@@ -138,8 +130,8 @@ class NoticeController extends Controller
             $this->validate($request, [
                 'document' => 'required|mimes:pdf',               
             ]);
-            $destinationPath = 'document/notice/';
-            $oldFilename = $destinationPath.'/'.$notice->document;
+            $destinationPath = 'document/pratibedan/';
+            $oldFilename = $destinationPath.'/'.$pratibedan->document;
 
             $extension = $uppdf->getClientOriginalExtension();
             $name = $uppdf->getClientOriginalName();
@@ -152,9 +144,10 @@ class NoticeController extends Controller
             }
         }
         $all_data['updated_by'] = Auth::user()->id;
-        $notice->update($all_data);
-        $notice->update();
-        return redirect()->route('superadmin.notice.index')->with('alert-success', 'Notice updated successfully!!!!');
+        if($pratibedan->update($all_data))
+        {
+            return redirect()->route('superadmin.pratibedan.index')->with('alert-success', 'data updated succesffully');;
+        };
     }
 
     /**
@@ -165,57 +158,46 @@ class NoticeController extends Controller
      */
     public function destroy($id)
     {
-         $notices = Notice::find($id);
-
-        $destinationPath = 'document/notice/';
-        $oldFilename = $destinationPath.'/'.$notices->document;
-
-        if($notices->delete()){
+        $datas = Pratibedan::find($id);
+        $destinationPath = 'images/pratibedan/';
+        $oldFilename = $destinationPath.'/'.$datas->image;
+        if($datas->delete()){
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
-                // File::deleteDirectory($destinationPath);
             }
-            $notification = array(
-              'message' => $notices->name.' is deleted successfully!',
-              'status' => 'success'
-          );
-        }else{
-            $notification = array(
-              'message' => $notices->name.' could not be deleted!',
-              'status' => 'error'
-          );
         }
-        return Response::json($notification);
+        return response()->json([
+            'success' => 'Record has been deleted successfully!'
+        ]);
     }
-      public function isActive(Request $request,$id)
+
+    public function isActive(Request $request,$id)
     {
-        $get_is_active = Notice::where('id',$id)->value('is_active');
-        $isactive = Notice::find($id);
+        $get_is_active = Pratibedan::where('id',$id)->value('is_active');
+        $isactive = Pratibedan::find($id);
         if($get_is_active == 0){
-        $isactive->is_active = 1;
-        $notification = array(
-          'message' => $isactive->name.' is Active!',
-          'alert-type' => 'success'
-        );
+            $isactive->is_active = 1;
+            // $notification = array(
+            //     'alert-success' => $isactive->name.' is Active!',
+            // );
         }
         else {
-        $isactive->is_active = 0;
-        $notification = array(
-          'message' => $isactive->name.' is inactive!',
-          'alert-type' => 'error'
-        );
+            $isactive->is_active = 0;
+            // $notification = array(
+            //     'alert-danger' => $isactive->name.' is inactive!',
+            // );
         }
         if(!($isactive->update())){
-        $notification = array(
-          'message' => $isactive->name.' could not be changed!',
-          'alert-type' => 'error'
-        );
+            $notification = array(
+                'error' => $isactive->name.' could not be changed!',
+            );
         }
-        return back()->with($notification)->withInput();
+        return back()->withInput();
+        // return back()->with($notification)->withInput();
     }
-    
-     public function downloadfile(Request $request,$file)
+
+    public function downloadfile(Request $request,$file)
     {
-        return response()->download(public_path('document/notice/'.$file));
+        return response()->download(public_path('document/pratibedan/'.$file));
     }
 }

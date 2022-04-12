@@ -3,8 +3,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet"/>
 @endpush
 @section('content')
-<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('superadmin.','',Route::currentRouteName()), ".")); 
-?>
+<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('superadmin.','',Route::currentRouteName()), "."));?>
 <div>
   <div class="content-header">
     <div class="container-fluid">
@@ -15,7 +14,7 @@
       @endif
       <div class="row">
         <div class="col-sm-6">
-          <p class="text-danger m-0">Notice List</p>
+          <p class="text-danger m-0">Niti List</p>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -31,20 +30,16 @@
           <div class="card">
             <div class="card-header">
               <div class="row">
-                <div class="col-md-5">
-
-                  <form action="{{route('superadmin.notice.create')}}" method="GET" class="d-inline-block">
+                <div class="col-md-3">
+                  <form action="{{route('superadmin.pratibedan.create')}}" method="GET" class="d-inline-block">
                     <input type="hidden" id="model" name="model" value="{{ Request::segment(3) }} ">
-                    <button type="submit" class="btn btn-sm btn-flat btn-danger btn-inline-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></button>
+                    <button type="submit" class="btn btn-flat btn-danger btn-inline-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></button>
                   </form>
 
-                  {{-- <a href="{{route('superadmin.notice.create')}}" class="btn btn-sm btn-flat btn-danger btn-inline-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></a> --}}
+                  {{-- <a href="{{route('superadmin.niti.create')}}" class="btn btn-flat btn-danger btn-inline-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></a>  --}}
 
-                  <a href="{{route('superadmin.modelhastype.index',last(request()->segments()) )}}" class="btn btn-sm btn-info text-capitalize"><i class="fas fa-plus fa-fw"></i>
+                  <a href="{{route('superadmin.modelhastype.index',last(request()->segments()) )}}" class="btn btn-info btn-inline-block text-capitalize"><i class="fas fa-plus fa-fw"></i>
                   </a>
-                </div>
-                <div class="col-md-10">
-                  {{-- <input type="text" class="form-control" placeholder="Search by name"> --}}
                 </div>
               </div>
             </div><!-- /.card-header -->
@@ -63,35 +58,34 @@
                     </tr>
                   </thead>
                   <tbody style="text-align: center">
-                    @foreach($notices as $key => $notice)
-                    <tr class="{{$notice->is_active == 1 ? '' : 'table-danger'}}">
+                    @foreach($pratibedans as $key => $pratibedan)
+                    <tr class="{{$pratibedan->is_active == 1 ? '' : 'table-danger'}}">
                       <td>{{$key + 1}}</td>
-                      <td>{{$notice->title}}</td>
-                      @if($notice->document)
-                      <td><a href="{{ route('superadmin.notice.downloadfile',$notice->document)}}"><i class="fas fa-file-pdf"></i></a>
+                      <td>{{$pratibedan->title}}</td>
+                      @if($pratibedan->document)
+                      <td>
+                        <a href="{{ route('superadmin.pratibedan.downloadfile',$pratibedan->document)}}"><i class="fas fa-file-pdf"></i></a>
                       </td>
                       @else
-                      <td>NULL</td>
+                      <td>NULL</td> 
                       @endif
                       <td>
-                        <a href="{{ route('superadmin.notice.active',$notice->id) }}" data-placement="top" title="{{ $notice->is_active == '1' ? 'Click to deactivatenotice' : 'Click to activate' }}">
-                          <i class="nav-icon fas {{ $notice->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
+                        <a href="{{ route('superadmin.pratibedan.active',$pratibedan->id) }}" data-placement="top" title="{{ $pratibedan->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
+                          <i class="nav-icon fas {{ $pratibedan->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
                         </a>
                       </td>
                       <td>
-                        {{$notice->date_np}}
+                        {{$pratibedan->date_np}}
                       </td>
                       <td>
-                        {{$notice->getUser->name}}
+                        {{$pratibedan->getUser->name}}
                       </td>
                       <td>
-
-                        <form action="{{ route('superadmin.notice.edit',$notice->id)}}" method="GET" class="d-inline-block">
+                        <form action="{{route('superadmin.pratibedan.edit',$pratibedan->id)}}" method="GET" class="d-inline-block">
                           <input type="hidden" id="model" name="model" value="{{ Request::segment(3) }} ">
                           <button type="submit" class="btn btn-xs btn-outline-info"><i class="fas fa-edit"></i></button>
                         </form>
-                        
-                        <form action='javascript:void(0)' data_url="{{route('superadmin.notice.destroy',$notice->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
+                        <form action='javascript:void(0)' data_url="{{route('superadmin.pratibedan.destroy',$pratibedan->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
                           <input type='hidden' name='_token' value='".csrf_token()."'>
                           <input name='_method' type='hidden' value='DELETE'>
                           <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>

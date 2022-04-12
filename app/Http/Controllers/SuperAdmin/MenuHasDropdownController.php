@@ -34,7 +34,7 @@ class MenuHasDropdownController extends Controller
      */
     public function create($id)
     {
-        $modelhastypes = ModelHasType::orderBy('id','DESC')
+        $modelhastypes = ModelHasType::orderBy('id','ASC')
                                         ->where('created_by',Auth::user()->id)
                                         ->get();
         $menus = Menu::find($id);

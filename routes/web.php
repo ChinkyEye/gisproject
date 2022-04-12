@@ -59,30 +59,38 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('menu-page/vision', 'VisionController');
         Route::get('menu-page/vision/active/{id}', 'VisionController@isActive')->name('vision.active');
 
-    Route::resource('menu-page/coreperson','CorePersonController'); 
-    Route::get('menu-page/coreperson/active/{id}', 'CorePersonController@isActive')->name('coreperson.active');
 
     Route::resource('/employee','EmployeeController');
     Route::get('/employee/active/{id}', 'EmployeeController@isActive')->name('employee.active');
 
+    // for static model has type
     Route::get('menu-page/{type}/modelhastype', 'ModelHasTypeController@index')->name('modelhastype.index');
+    Route::get('/menu-page/modelhastype/active/{id}', 'ModelHasTypeController@isActive')->name('modelhastype.active');
     Route::get('menu-page/{type}/modelhastype/create', 'ModelHasTypeController@create')->name('modelhastype.create');
     Route::post('menu-page/modelhastype/store', 'ModelHasTypeController@store')->name('modelhastype.store');
     Route::get('menu-page/modelhastype/{id}/edit', 'ModelHasTypeController@edit')->name('modelhastype.edit');
     Route::post('menu-page/modelhastype/update/{id}', 'ModelHasTypeController@update')->name('modelhastype.update');
+    Route::delete('menu-page/modelhastype/destroy/{id}', 'ModelHasTypeController@destroy')->name('modelhastype.delete');
 
-    Route::resource('menu-page/niti/nitihastype','NitiHasTypeController');
+    //end
+
+    Route::resource('menu-page/coreperson','CorePersonController'); 
+    Route::get('menu-page/coreperson/active/{id}', 'CorePersonController@isActive')->name('coreperson.active');
+
 
     // Route::resource('niti','NitiController');
     Route::resource('menu-page/niti','NitiController');
     Route::get('menu-page/niti/active/{id}', 'NitiController@isActive')->name('niti.active');
     Route::get('menu-page/niti/download/{file}','NitiController@downloadfile')->name('niti.downloadfile');
 
-
-
     Route::resource('menu-page/notice','NoticeController');
      Route::get('menu-page/notice/active/{id}', 'NoticeController@isActive')->name('notice.active');
     Route::get('menu-page/notice/download/{file}','NoticeController@downloadfile')->name('notice.downloadfile');
+
+    Route::resource('menu-page/pratibedan','PratibedanController');
+    Route::get('menu-page/pratibedan/active/{id}', 'PratibedanController@isActive')->name('pratibedan.active');
+    Route::get('menu-page/pratibedan/download/{file}','PratibedanController@downloadfile')->name('pratibedan.downloadfile');
+
 
     Route::resource('menu-page/sangathansanrachana','SangathanSanrachana\SangathanSanrachanaController');
     Route::get('menu-page/sangathansanrachana/active/{id}', 'SangathanSanrachana\SangathanSanrachanaController@isActive')->name('sangathansanrachana.active');

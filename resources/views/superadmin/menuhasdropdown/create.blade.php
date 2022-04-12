@@ -37,6 +37,8 @@
             <option value="">--Select--</option>
             <option value="Niti">Niti</option>
             <option value="About">About</option>
+            <option value="Pratibedan">Pratibedan</option>
+            <option value="Notice">Notice</option>
           </select>
         </div>
         <div class="form-group">

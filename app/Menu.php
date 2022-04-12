@@ -24,10 +24,10 @@ class Menu extends Model
         'updated_by',
     ];
 
-    public function setNameAttribute($value)
-    {
-        $this->attributes['name'] = ucwords($value);
-    }
+    // public function setNameAttribute($value)
+    // {
+    //     $this->attributes['name'] = ucwords($value);
+    // }
 
     public static function totalMenu(Request $request){
         return Menu::orderBy('sort_id','ASC')->with('parent')->where('is_active', '1')->get();

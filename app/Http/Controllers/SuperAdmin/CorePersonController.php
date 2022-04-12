@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\CorePerson;
+use App\ModelHasType;
 use Auth;
 
 class CorePersonController extends Controller
@@ -17,6 +18,7 @@ class CorePersonController extends Controller
     public function index()
     {
         $corepersons = CorePerson::where('created_by', Auth::user()->id)
+                                ->with('getCorepersonType')
                                 ->get();
         return view('superadmin.coreperson.index', compact('corepersons'));
     }
@@ -26,9 +28,13 @@ class CorePersonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('superadmin.coreperson.create');
+        $modelhastypes = ModelHasType::orderBy('id','ASC')
+                                    ->where('created_by', Auth::user()->id)
+                                    ->where('model',$request->model)
+                                    ->get();
+        return view('superadmin.coreperson.create', compact('modelhastypes'));
     }
 
     /**

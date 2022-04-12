@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMenuHasDropdownsTable extends Migration
+class CreatePratibedansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,12 @@ class CreateMenuHasDropdownsTable extends Migration
      */
     public function up()
     {
-        Schema::create('menu_has_dropdowns', function (Blueprint $table) {
+        Schema::create('pratibedans', function (Blueprint $table) {
             $table->id();
-            $table->string('dropdown_name');
-            $table->unsignedBigInteger('menu_id');
-            $table->foreign('menu_id')->references('id')->on('menus');
-            $table->string('model')->nullable();
-            $table->unsignedBigInteger('type');
-            $table->foreign('type')->references('id')->on('model_has_types');
-            $table->string('link')->nullable();
-            $table->integer('is_main')->default(0);
-            $table->string('page')->nullable();
-            $table->integer('sort_id')->nullable();
+            $table->string('title');
+            $table->string('document')->nullable();
+            $table->string('description')->nullable();
+            $table->integer('type');
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);
             $table->string('date',10);
@@ -43,6 +37,6 @@ class CreateMenuHasDropdownsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menu_has_dropdowns');
+        Schema::dropIfExists('pratibedans');
     }
 }

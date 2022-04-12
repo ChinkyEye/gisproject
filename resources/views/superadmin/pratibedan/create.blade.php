@@ -1,6 +1,6 @@
 @extends('superadmin.main.app')
 @section('content')
-<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('superadmin.','',Route::currentRouteName()), ".")); ?> 
+<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('superadmin.','',Route::currentRouteName()), ".")); ?>
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
@@ -18,7 +18,7 @@
 </section>
 <section class="content">
   <div class="card card-info">
-    <form role="form" method="POST" action="{{route('superadmin.notice.store')}}" enctype="multipart/form-data">
+    <form role="form" method="POST" action="{{route('superadmin.pratibedan.store')}}" enctype="multipart/form-data">
       <div class="card-body">
         @csrf
         <div class="form-group">
@@ -39,101 +39,77 @@
           </span>
           @enderror
         </div>
-        <div class="form-group">
-          <label for="scroll">Scroll Notice<span class="text-danger">*</span></label>
-          <div class="row col-md-5">
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="radio" name="scroll" id="yes" value="1"  >
-              <label class="form-check-label" for="scroll">
-                Yes
-              </label>
-            </div>
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="radio" name="scroll" id="no" value="0" >
-              <label class="form-check-label" for="scroll">
-                No
-              </label>
-            </div>
-          </div>
-            @error('scroll')
-            <span class="text-danger font-italic" role="alert">
-              <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-        </div>
-        <div class="form-group">
+         <div class="form-group">
           <label for="type">Type <span class="text-danger">*</span></label><br>
           <div class="row col-md-12">
             @foreach ($modelhastypes as $key => $data)
             <div class="form-check-inline col-md">
-              <input class="form-check-inline" type="checkbox" name="type" value="{{$data->id}}" onclick="onlyOne(this)">
+              <input class="form-check-inline" type="radio" name="type" id="type" value="{{$data->id}}">
               <label class="form-check-label" for="type">
                {{$data->type}}
-               {{$data->id}}
              </label>
            </div>
            @endforeach
           </div>
         </div>
-
         {{-- <div class="form-group">
           <label for="type">Type:<span class="text-danger">*</span></label>
           <div class="row col-md-12">
             <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="type1" value="1">
-              <label class="form-check-label" for="type1">
-               Type1
-             </label>
-           </div>
-           <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="type2" value="2" >
-            <label class="form-check-label" for="type2">
-              Type2
-            </label>
+              <input class="form-check-input" type="checkbox" name="type" id="ahyan" value="1" {{ old('type') == '1' ? 'checked' : ''}} onclick="onlyOne(this)">
+              <label class="form-check-label" for="ahyan">
+                Ahyan
+              </label>
+            </div>
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="checkbox" name="type" id="niyammawali" value="2" {{ old('type') == '2' ? 'checked' : ''}} onclick="onlyOne(this)">
+              <label class="form-check-label" for="niyammawali">
+                Niyammawali
+              </label>
+            </div>
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="checkbox" name="type" id="karyabidhi" value="3" {{ old('type') == '3' ? 'checked' : ''}} onclick="onlyOne(this)">
+              <label class="form-check-label" for="karyabidhi">
+                Karyabidhi
+              </label>
+            </div>
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="checkbox" name="type" id="nirdesika" value="4" {{ old('type') == '4' ? 'checked' : ''}} onclick="onlyOne(this)">
+              <label class="form-check-label" for="nirdesika">
+                Nirdesika
+              </label>
+            </div>
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="checkbox" name="type" id="aanya" value="5" {{ old('type') == '5' ? 'checked' : ''}} onclick="onlyOne(this)">
+              <label class="form-check-label" for="aanya">
+                Aanya
+              </label>
+            </div>
           </div>
-          <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="type3" value="3" >
-            <label class="form-check-label" for="type3">
-              type3
-            </label>
-          </div> 
-          <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="type4" value="4">
-            <label class="form-check-label" for="type4">
-              type4
-            </label>
+          @error('type')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div> --}}
+        <div class="form-group">
+          <label for="document">Document</label>
+          <div class="input-group">
+            <input type='file' id="document" name="document" onchange="fileType(event)"/>
           </div>
-          <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="type5" value="5" {>
-            <label class="form-check-label" for="type5">
-              type5
-            </label>
-          </div>
+          <span class="error mt-2" style="color: red; display: none">* Input pdf file type</span>
+          @error('document')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
         </div>
-        @error('type')
-        <span class="text-danger font-italic" role="alert">
-          <strong>{{ $message }}</strong>
-        </span>
-        @enderror
-      </div> --}}
-      <div class="form-group">
-        <label for="document">Document</label>
-        <div class="input-group">
-          <input type='file' id="document" name="document" onchange="fileType(event)"/>
-        </div>
-        <span class="error mt-2" style="color: red; display: none">* Input pdf file type</span>
-        @error('document')
-        <span class="text-danger font-italic" role="alert">
-          <strong>{{ $message }}</strong>
-        </span>
-        @enderror
       </div>
-    </div>
-    <div class="card-footer justify-content-between">
-      <button type="submit" class="btn btn-info text-capitalize">Save</button>
-    </div>
-  </form>
-</div>
+      <div class="card-footer justify-content-between">
+        <button type="submit" class="btn btn-info text-capitalize">Save</button>
+      </div>
+    </form>
+  </div>
 </section>
 @endsection
 @push('javascript')
@@ -156,28 +132,28 @@
 <script>
   /* this function will call when page loaded successfully */
   $(document).ready(function(){
-
+   
     /* this function will call when onchange event fired */
     $("#document").on("change",function(){
-
+     
       /* current this object refer to input element */
       var $input = $(this);
 
       /* collect list of files choosen */
       var files = $input[0].files;
-
+      
       var filename = files[0].name;
       
       /* getting file extenstion eg- .jpg,.png, etc */
       var extension = filename.substr(filename.lastIndexOf("."));
-
+      
       /* define allowed file types */
       var allowedExtensionsRegx = /(\.pdf)$/i;
             // var allowedExtensionsRegx = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-
+            
             /* testing extension with regular expression */
             var isAllowed = allowedExtensionsRegx.test(extension);
-
+            
             if(isAllowed){
               $(".error").css("display", "none");
                 // alert("File type is valid for the upload");

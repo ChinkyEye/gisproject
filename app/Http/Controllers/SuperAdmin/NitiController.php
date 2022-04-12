@@ -32,12 +32,10 @@ class NitiController extends Controller
      */
     public function create(Request $request)
     {
-        // dd($request);
         $modelhastypes = ModelHasType::orderBy('id','ASC')
                                     ->where('created_by', Auth::user()->id)
                                     ->where('model',$request->model)
                                     ->get();
-        // dd($modelhastypes);
         return view('superadmin.niti.create',compact('modelhastypes'));
     }
 
@@ -49,18 +47,11 @@ class NitiController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $this->validate($request, [
             'title' => 'required',
             'type' => 'required',
             'description' => 'required',
         ]);
-        // if($request->document){
-        //     $this->validate($request, [
-        //         'document' => 'required|mimes:pdf',               
-        //     ]);
-        // }
-         
         $uppdf = $request->file('document');
         if($uppdf != ""){
             $this->validate($request, [
@@ -70,8 +61,6 @@ class NitiController extends Controller
             $destinationPath = 'document/niti/';
             $extension = $uppdf->getClientOriginalExtension();
             $name = $uppdf->getClientOriginalName();
-            // $fileName = md5(mt_rand()).'.'.$extension;
-            // $fileName = time().'.'.$extension;
             $fileName = $name.'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
@@ -89,7 +78,6 @@ class NitiController extends Controller
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        // session()->flash('alert-success', 'Post successfully updated.');
         return redirect()->route('superadmin.niti.index')->with('alert-success', 'niti created succesffully!!!!');
 
     }
@@ -111,10 +99,14 @@ class NitiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
         $nitis = Niti::find($id);
-        return view('superadmin.niti.edit', compact('nitis'));
+        $modelhastypes = ModelHasType::orderBy('id','ASC')
+                                    ->where('created_by', Auth::user()->id)
+                                    ->where('model',$request->model)
+                                    ->get();
+        return view('superadmin.niti.edit', compact('nitis','modelhastypes'));
     }
 
     /**

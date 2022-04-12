@@ -18,7 +18,7 @@
 </section>
 <section class="content">
   <div class="card">
-    <form role="form" method="POST" action="{{route('superadmin.niti.update', $nitis->id)}}" enctype="multipart/form-data">
+    <form role="form" method="POST" action="{{route('superadmin.pratibedan.update', $pratibedans->id)}}" enctype="multipart/form-data">
      @method('PATCH')
      @csrf
      <div class="modal-body" >
@@ -29,11 +29,11 @@
           <strong>{{ $message }}</strong>
         </span>
         @enderror
-        <input type="text"  class="form-control max" id="title" placeholder="Enter Insurance Id" name="title"  autocomplete="off" value="{{ $nitis->title }}">
+        <input type="text"  class="form-control max" id="title" placeholder="Enter Insurance Id" name="title"  autocomplete="off" value="{{ $pratibedans->title }}">
       </div>
       <div class="form-group">
         <label for="description">Description <span class="text-danger">*</span></label>
-        <textarea class="form-control" id="description" name="description">{{ $nitis->description }}</textarea>
+        <textarea class="form-control" id="description" name="description">{{ $pratibedans->description }}</textarea>
         @error('description')
         <span class="text-danger font-italic" role="alert">
           <strong>{{ $message }}</strong>
@@ -45,7 +45,7 @@
         <div class="row col-md-12">
           @foreach ($modelhastypes as $key => $data)
           <div class="form-check-inline col-md">
-            <input class="form-check-inline" type="radio" name="type" id="type" value="{{$data->id}}" {{ $nitis->type == $data->id ? 'checked' : ''}}>
+            <input class="form-check-inline" type="radio" name="type" id="type" value="{{$data->id}}" {{ $pratibedans->type == $data->id ? 'checked' : ''}}>
             <label class="form-check-label" for="type">
              {{$data->type}}
            </label>
@@ -53,35 +53,37 @@
          @endforeach
         </div>
       </div>
+
+
       {{-- <div class="form-group">
         <label for="type">Type:<span class="text-danger">*</span></label>
         <div class="row col-md-12">
           <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="ahyan" value="1" {{$nitis->type == '1' ? 'checked' : ' '}} onclick="onlyOne(this)">
+            <input class="form-check-input" type="checkbox" name="type" id="ahyan" value="1" {{$pratibedans->type == '1' ? 'checked' : ' '}} onclick="onlyOne(this)">
             <label class="form-check-label" for="ahyan">
               Ahyan
             </label>
           </div>
           <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="niyammawali" value="2" {{ $nitis->type == '2' ? 'checked' : ''}} onclick="onlyOne(this)">
+            <input class="form-check-input" type="checkbox" name="type" id="niyammawali" value="2" {{ $pratibedans->type == '2' ? 'checked' : ''}} onclick="onlyOne(this)">
             <label class="form-check-label" for="niyammawali">
               Niyammawali
             </label>
           </div>
           <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="karyabidhi" value="3" {{ $nitis->type == '3' ? 'checked' : ''}} onclick="onlyOne(this)">
+            <input class="form-check-input" type="checkbox" name="type" id="karyabidhi" value="3" {{ $pratibedans->type == '3' ? 'checked' : ''}} onclick="onlyOne(this)">
             <label class="form-check-label" for="karyabidhi">
               Karyabidhi
             </label>
           </div>
           <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="nirdesika" value="4" {{ $nitis->type == '4' ? 'checked' : ''}} onclick="onlyOne(this)">
+            <input class="form-check-input" type="checkbox" name="type" id="nirdesika" value="4" {{ $pratibedans->type == '4' ? 'checked' : ''}} onclick="onlyOne(this)">
             <label class="form-check-label" for="nirdesika">
               Nirdesika
             </label>
           </div>
           <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="aanya" value="5" {{$nitis->type == '5' ? 'checked' : ''}} onclick="onlyOne(this)">
+            <input class="form-check-input" type="checkbox" name="type" id="aanya" value="5" {{$pratibedans->type == '5' ? 'checked' : ''}} onclick="onlyOne(this)">
             <label class="form-check-label" for="aanya">
               Aanya
             </label>
@@ -93,12 +95,13 @@
         </span>
         @enderror
       </div> --}}
+
       <div class="form-group">
         <label for="document">Document</label>
-        @if($nitis->document)
+        @if($pratibedans->document)
         <div class="input-group">
          <input type='file' id="document" name="document" onchange="fileType(event)"/>
-         <a href="{{ route('superadmin.niti.downloadfile',$nitis->document)}}" style="color:red" title="Click Here"><i class="fas fa-file-pdf fa-5x"></i></a>
+         <a href="{{ route('superadmin.niti.downloadfile',$pratibedans->document)}}" style="color:red" title="Click Here"><i class="fas fa-file-pdf fa-5x"></i></a>
        </div>
        @else
        <div class="input-group">

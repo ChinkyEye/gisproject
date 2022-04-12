@@ -33,6 +33,8 @@
             <option value="">--Select--</option>
             <option value="Niti" {{ $menuhasdropdowns->model == 'Niti' ? 'selected' : ''}}>Niti</option>
             <option value="About" {{ $menuhasdropdowns->model == 'About' ? 'selected' : ''}}>About</option>
+            <option value="Pratibedan" {{ $menuhasdropdowns->model == 'Pratibedan' ? 'selected' : '' }}>Pratibedan</option>
+            <option value="Notice" {{ $menuhasdropdowns->model == 'Notice' ? 'selected' : '' }}>Notice</option>
           </select>
         </div>
         <div class="form-group">
@@ -49,7 +51,7 @@
           <select class="form-control" name="type" id="type">
             {{-- <option value="">Select Type</option> --}}
             @foreach ($modelhastypes as $key => $data)
-            <option value="{{ $data->id }}" {{ $menuhasdropdowns->type == $data->id ? 'checked' : ''}}>
+            <option value="{{ $data->id }}" {{ $menuhasdropdowns->type == $data->id ? 'selected' : ''}}>
               {{$data->type}}
             </option>
             @endforeach

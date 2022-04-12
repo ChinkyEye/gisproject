@@ -62,50 +62,19 @@
             @enderror
           </div>
         </div>
+
         <div class="form-group">
-          <label for="type">Type:<span class="text-danger">*</span></label>
+          <label for="type">Type <span class="text-danger">*</span></label><br>
           <div class="row col-md-12">
+            @foreach ($modelhastypes as $key => $data)
             <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="type1" value="1" {{$notices->type == '1' ? 'checked' : ' '}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="type1">
-                type1
-              </label>
-            </div>
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="type2" value="2" {{ $notices->type == '2' ? 'checked' : ''}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="type2">
-                type2
-              </label>
-            </div>
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="type3" value="3" {{ $notices->type == '3' ? 'checked' : ''}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="type3">
-                type3
-              </label>
-            </div>
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="type4" value="4" {{ $notices->type == '4' ? 'checked' : ''}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="type4">
-                type4
-              </label> 
-            </div>
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="type5" value="5" {{$notices->type == '5' ? 'checked' : ''}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="type5">
-                type5
-              </label>
-            </div>
-          </div>
-          @error('type')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-          @error('type')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
+              <input class="form-check-inline" type="radio" name="type" id="type" value="{{$data->id}}" {{ $notices->type == $data->id ? 'checked' : ''}}>
+              <label class="form-check-label" for="type">
+               {{$data->type}}
+             </label>
+           </div>
+           @endforeach
+         </div>
         </div>
         <div class="form-group">
           <label for="document">Document</label>

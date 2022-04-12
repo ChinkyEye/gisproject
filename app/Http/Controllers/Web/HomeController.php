@@ -24,21 +24,29 @@ class HomeController extends Controller
 
     public function link(Request $request, $link,$link2 = Null)
     {
-        // var_dump($link,$link2); die();
-        if($link2 == Null){
-            $link = $link;
+        if($link == '/'){
+           $page = 'home';
+           $datas = array();
+           return view('web.'.$page, compact(['datas']));
         }
         else{
-            $link = $link.'/'.$link2;
-        }
+            // var_dump($link,$link2); die();
+            if($link2 == Null){
+                $link = $link;
+            }
+            else{
+                $link = $link.'/'.$link2;
+            }
             $model = Menu::where('link',$link)->value('model');
             $page = Menu::where('link',$link)->value('page');
             $type = Menu::where('link',$link)->value('type');
-        
-        // var_dump($model,$page);
-        $modelName = '\\App\\' . $model;
-        $datas = $modelName::where('type',$type)->get();
-        return view('web.'.$page, compact(['datas']));
+            
+        // var_dump($type); die();
+            $modelName = '\\App\\' . $model;
+            $datas = $modelName::where('type',$type)->get();
+            return view('web.'.$page, compact(['datas']));
+            
+        }
     }
 
     public function sidelink(Request $request, $link)

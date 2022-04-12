@@ -26,4 +26,9 @@ class CorePerson extends Model
     {
         $this->attributes['name'] = ucwords($value);
     }
+
+    public function getCorepersonType()
+    {
+        return $this->belongsTo('App\ModelHasType','type','id');
+    }
 }

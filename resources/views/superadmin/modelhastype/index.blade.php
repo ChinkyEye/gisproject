@@ -55,13 +55,15 @@
                       <td>{{$key + 1}}</td>
                       <td>{{$data->type}}</td>
                       <td>
-                        {{-- <a href="{{ route('superadmin.data.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
+                        <a href="{{ route('superadmin.modelhastype.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                           <i class="nav-icon fas {{ $data->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
-                        </a> --}}
+                        </a>
                       </td>
                       <td>
                         <a href="{{ route('superadmin.modelhastype.edit',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
-                        <form action='javascript:void(0)' data_url="{{route('superadmin.nitihastype.destroy',$data->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
+                        
+
+                        <form action='javascript:void(0)' data_url="{{route('superadmin.modelhastype.delete',$data->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
                           <input type='hidden' name='_token' value='".csrf_token()."'>
                           <input name='_method' type='hidden' value='DELETE'>
                           <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
