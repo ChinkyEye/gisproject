@@ -136,11 +136,16 @@ About |
 	    theme: 'bootstrap4'
 	  });
 
+	   var currentDate = NepaliFunctions.ConvertDateFormat(NepaliFunctions.GetCurrentBsDate(), "YYYY-MM-DD");
+        $('#date_np_start').val(currentDate);
+        $('#date_np_end').val(currentDate);
+
 		$('#date_np_start').nepaliDatePicker({
 			ndpYear: true,
 			ndpMonth: true,
 			dateFormat: "YYYY-MM-DD"
 		});
+
 		$('#date_np_end').nepaliDatePicker({
 			ndpYear: true,
 			ndpMonth: true,
@@ -148,4 +153,21 @@ About |
 		});
 	});
 </script>
+
+{{-- <script>
+  $(document).ready(function() {
+    var date = new Date();
+    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+    var end = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+    $('#dob,#register_date').datepicker({
+      maxDate: '0',
+      todayHighlight: true,
+      endDate: '+0d',
+      format: 'yyyy-mm-dd',
+      autoclose: true
+    });
+    $('#dob,#register_date').datepicker('setDate', today);
+  });
+</script> --}}
 @endpush
