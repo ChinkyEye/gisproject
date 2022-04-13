@@ -144,6 +144,22 @@
                </p>
              </a>
            </li>
+           <li class="nav-item">
+              <a href="{{ route('superadmin.aboutus.index')}}" class="nav-link {{ (request()->is('home/menu-page/aboutus*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-info"></i>
+                <p>
+                 About Us
+               </p>
+             </a>
+           </li>
+           <li class="nav-item">
+              <a href="{{ route('superadmin.gallery.index')}}" class="nav-link {{ (request()->is('home/menu-page/gallery*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-images"></i>
+                <p>
+                 Gallery
+               </p>
+             </a>
+           </li>
           </ul>
         </li>
         <li class="nav-item has-treeview {{ (request()->is('home/sidebar-part/*')) ? 'menu-open' : '' }}">

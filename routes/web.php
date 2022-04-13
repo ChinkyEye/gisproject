@@ -95,6 +95,21 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('menu-page/sangathansanrachana','SangathanSanrachana\SangathanSanrachanaController');
     Route::get('menu-page/sangathansanrachana/active/{id}', 'SangathanSanrachana\SangathanSanrachanaController@isActive')->name('sangathansanrachana.active');
 
+    Route::resource('menu-page/contactus','ContactUsController');
+    Route::get('menu-page/contactus/active/{id}', 'ContactUsController@isActive')->name('contactus.active');
+
+    Route::resource('menu-page/aboutus','AboutUsController');
+    Route::get('menu-page/aboutus/active/{id}', 'AboutUsController@isActive')->name('aboutus.active');
+
+    Route::resource('menu-page/gallery','GalleryController');
+    Route::get('menu-page/gallery/active/{id}', 'GalleryController@isActive')->name('gallery.active');
+
+    Route::resource('menu-page/galleryhasimage','GalleryHasImageController');
+    Route::get('menu-page/gallery/galleryhasimage/{id}','GalleryHasImageController@index')->name('galleryhasimage.index');
+
+
+
+
 
 
     Route::resource('sidebar-part/pradeshsabhasadasya','PradeshSabhaSadasya\PradeshSabhaSadasyaController');
@@ -118,7 +133,6 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('office', 'Office\OfficeController');
      Route::get('office/active/{id}', 'Office\OfficeController@isActive')->name('office.active');
 
-    Route::resource('contactus','ContactUsController');
 
 });
 

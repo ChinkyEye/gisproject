@@ -40,14 +40,14 @@ class AgencyController extends Controller
      */
     public function store(Request $request)
     {
-          $this->validate($request, [
+        $this->validate($request, [
             'contact_no' => 'required|digits_between:6,10',
-            
+
         ]);
-         
+
         $uppdf = $request->file('image');
         if($uppdf != ""){
-             $this->validate($request, [
+            $this->validate($request, [
                 'image' => 'required|mimes:jpg,png,jpeg,|max:2048',
             ]);
             $destinationPath = 'images/agency/';
@@ -59,7 +59,7 @@ class AgencyController extends Controller
         }else{
             $fileName = Null;
         }
-       $agencies = Agency::create([
+        $agencies = Agency::create([
             'contact_no' => $request['contact_no'],
             'website_link' => $request['website_link'],
             'image'=> $fileName,
@@ -69,10 +69,10 @@ class AgencyController extends Controller
             'created_by' => Auth::user()->id,
         ]);
         $pass = array(
-          'message' => 'Data added successfully!',
-          'alert-type' => 'success'
+            'message' => 'Data added successfully!',
+            'alert-type' => 'success'
         );
-        return redirect()->route('superadmin.agency.index')->with('alert-success', 'Agency added successfully');;
+        return redirect()->route('superadmin.agency.index')->with('alert-success', 'Agency added successfully');
     }
 
     /**

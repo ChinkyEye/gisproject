@@ -4,11 +4,10 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\ContactUs;
+use App\Gallery;
 use Auth;
 
-
-class ContactUsController extends Controller
+class GalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +16,11 @@ class ContactUsController extends Controller
      */
     public function index()
     {
-        $contactus = ContactUs::orderBy('id','DESC')
-                                ->where('created_by', Auth::user()->id)
-                                ->get();
-        return view('superadmin.contactus.index',compact('contactus'));
+        $galleries = Gallery::orderBy('id','DESC')
+                            ->where('created_by',Auth::user()->id)
+                            ->withCount('imagecount')
+                            ->get();
+        return view('superadmin.gallery.index', compact('galleries'));
     }
 
     /**
@@ -30,7 +30,7 @@ class ContactUsController extends Controller
      */
     public function create()
     {
-        return view('superadmin.contactus.create');
+        return view('superadmin.gallery.create');
     }
 
     /**
@@ -41,23 +41,18 @@ class ContactUsController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'iframe' => 'required',
-        //     'address' => 'required',
-        //     'email' => 'required|email',
-        // ]);
-
-        $contactus = ContactUs::create([
-            'iframe' => $request['iframe'],
-            'address' => $request['address'],
-            'email'=> $request['email'],
-            'phone'=> $request['phone'],
-            'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+        $this->validate($request, [
+            'title' => 'required',
+        ]);
+        $gallery = Gallery::create([
+            'title' => $request['title'],
+            'is_active' => '1',
             'date' => date("Y-m-d"),
+            'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        return redirect()->route('superadmin.contactus.index')->with('alert-success', 'data created succesffully!!!');;
+        return redirect()->route('superadmin.gallery.index')->with('alert-success', 'Data created successfully!!!!');
     }
 
     /**
@@ -79,8 +74,8 @@ class ContactUsController extends Controller
      */
     public function edit($id)
     {
-        $datas = ContactUs::find($id);
-        return view('superadmin.contactus.edit', compact('datas'));
+        $datas = Gallery::find($id);
+        return view('superadmin.gallery.edit', compact('datas'));
     }
 
     /**
@@ -90,16 +85,17 @@ class ContactUsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Gallery $gallery)
     {
-        $contactus = ContactUs::find($id);
+        $this->validate($request, [
+            'title' => 'required',
+        ]);
         $all_data = $request->all();
         $all_data['updated_by'] = Auth::user()->id;
-        if($contactus->update($all_data))
+        if($gallery->update($all_data))
         {
-            return redirect()->route('superadmin.contactus.index')->with('alert-success', 'Data updated succesffully!!!!');;
+            return redirect()->route('superadmin.gallery.index')->with('alert-success', 'Data updated succesffully!!!!');;
         };
-
     }
 
     /**
@@ -110,17 +106,13 @@ class ContactUsController extends Controller
      */
     public function destroy($id)
     {
-        $datas = ContactUs::find($id);
-        $datas->delete();
-        return response()->json([
-            'success' => 'Record has been deleted successfully!'
-        ]);
+        //
     }
 
     public function isActive(Request $request,$id)
     {
-        $get_is_active = ContactUs::where('id',$id)->value('is_active');
-        $isactive = ContactUs::find($id);
+        $get_is_active = Gallery::where('id',$id)->value('is_active');
+        $isactive = Gallery::find($id);
         if($get_is_active == 0){
             $isactive->is_active = 1;
             // $notification = array(

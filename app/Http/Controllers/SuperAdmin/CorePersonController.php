@@ -52,8 +52,8 @@ class CorePersonController extends Controller
             'phone' => 'required|digits_between:6,10',
             'type' => 'required',
         ]);
-         
-       $corepersons = CorePerson::create([
+
+        $corepersons = CorePerson::create([
             'name' => $request['name'],
             'address' => $request['address'],
             'email'=> $request['email'],
@@ -66,7 +66,7 @@ class CorePersonController extends Controller
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        return redirect()->route('superadmin.coreperson.index')->with('alert-success', 'data created succesffully!!!');;
+        return redirect()->route('superadmin.coreperson.index')->with('alert-success', 'data created succesffully!!!');
     }
 
     /**

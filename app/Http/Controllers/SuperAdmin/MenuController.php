@@ -22,7 +22,7 @@ class MenuController extends Controller
         $menus  = Menu::orderBy('id','DESC')
                         ->where('created_by',Auth::user()->id)
                         ->where('parent_id','0')
-                        ->with('getModelType')
+                        ->with('getModelType','parent')
                         ->paginate(50);
         return view('superadmin.menu.index', compact('menus'));
     }
