@@ -40,8 +40,8 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="model_data">Model</label>
-          <select id="nationality" class="form-control" name="model" id="modal">
+          <label for="select_model">Model</label>
+          <select class="form-control" name="model" id="select_model">
             <option value="">--Select--</option>
             <option value="Niti">Niti</option>
             <option value="Notice">Notice</option>
@@ -65,7 +65,6 @@
             @enderror
         </div>
       <div id="Myid">
-        
         <div class="form-group">
           <label for="type" class="control-label">Type</label>
           <select class="form-control" name="type" id="type">
@@ -99,10 +98,16 @@
 
 @endsection
 @push('javascript')
-{{-- <script type="text/javascript">
-  $("body").on("change","#model_data", function(event){
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+//   $(document).ready(function () {
+//     // alert('aa');
+//   });
+//   $("#link").keydown(function(){
+//     alert('aa');
+// });
+  $("body").on("change","#select_model", function(event){
     alert("abc");
-    Pace.start();
     toastr.success('Now Select Class');
     var shift_id = $('#shift_data').val(),
         token = $('meta[name="csrf-token"]').attr('content');
@@ -113,7 +118,7 @@
     $.ajax({
       type:"POST",
       dataType:"JSON",
-      url:"{{route('admin.getClassList')}}", 
+      {{-- url:"{{route('admin.getClassList')}}",  --}}
       data:{
         _token: token,
         shift_id: shift_id
@@ -132,7 +137,7 @@
     });
         Pace.stop();
   });
-</script> --}}
+</script>
 {{-- <script>
 function toggleText(id){
   var x = document.getElementById("Myid");
