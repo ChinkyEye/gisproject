@@ -14,9 +14,9 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-     public function __construct(Helper $helper,Request $request,  Guard $auth)
+    public function __construct(Helper $helper,Request $request,  Guard $auth)
     {
        $this->request = $request;
-        $this->helper = $helper;
+       $this->helper = $helper;
     }
 }

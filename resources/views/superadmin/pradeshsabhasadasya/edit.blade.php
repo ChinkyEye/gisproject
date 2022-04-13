@@ -4,15 +4,9 @@
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
-      <div class="col-sm-6 pl-1">
-        <h1 class="text-capitalize">Edit {{ $page }}</h1>
-      </div>
-      <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="{{route('superadmin.home')}}">Home</a></li>
-          <li class="breadcrumb-item active text-capitalize">{{ $page }} Page</li>
-        </ol>
-      </div>
+      <div class="col-sm-12">
+            <p class="text-danger m-0">Edit Pradesh Shava Shadashya</p>
+          </div>
     </div>
   </div>
 </section>

@@ -17,7 +17,7 @@ class CreateGalleryHasImagesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('gallery_id');
             $table->foreign('gallery_id')->references('id')->on('galleries');
-            $table->string('image')
+            $table->string('image');
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);

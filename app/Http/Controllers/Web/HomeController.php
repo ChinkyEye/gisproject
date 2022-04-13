@@ -59,7 +59,13 @@ class HomeController extends Controller
             
         // var_dump($type); die();
             $modelName = '\\App\\' . $model;
-            $datas = $modelName::where('type',$type)->get();
+            if($type == '1'){
+                $datas = $modelName::orderBy('id','DESC');
+            }
+            else{
+                $datas = $modelName::orderBy('id','DESC')->where('type',$type);
+            }
+            $datas = $datas->get();
             return view('web.'.$page, compact(['datas']));
             
         }

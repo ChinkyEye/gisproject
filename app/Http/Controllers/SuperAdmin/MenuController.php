@@ -51,10 +51,12 @@ class MenuController extends Controller
         // dd($request);
         $this->validate($request, [
             'name' => 'required',
+            'name_np' => 'required',
         ]);
         $is_main = $request->has('is_main');
         $menu = Menu::create([
             'name' => $request['name'],
+            'name_np' => $request['name_np'],
             'model' => $request['model'],
             'link' => $request['link'],
             'is_main' => $is_main?'1':'0',

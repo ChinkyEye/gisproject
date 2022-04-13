@@ -4,14 +4,8 @@
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
-      <div class="col-sm-6 pl-1">
-        <h3 class="text-capitalize"><small> {{$menu_value->name}}</small></h3>
-      </div>
-      <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="{{route('superadmin.home')}}">Home</a></li>
-          <li class="breadcrumb-item active text-capitalize">Menu Dropdown Page</li>
-        </ol>
+      <div class="col-sm-12">
+          <p class="text-danger m-0">Edit on {{$edit_value}}</p>
       </div>
     </div>
   </div>
@@ -26,6 +20,20 @@
         <div class="form-group">
           <label for="dropdown_name">Name:<span class="text-danger">*</span></label>
           <input type="text"  class="form-control max" id="dropdown_name" placeholder="Enter Insurance Id" name="name"  autocomplete="off" value="{{ $menuhasdropdowns->name }}">
+          @error('name_np')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
+        <div class="form-group">
+          <label for="name_np">Name Np<span class="text-danger">*</span></label>
+          <input type="text"  class="form-control max" id="name_np" placeholder="Enter menu name in Nepali" name="name_np" autocomplete="off" value="{{ $menuhasdropdowns->name_np }}">
+          @error('name_np')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
         </div>
         <div class="form-group">
           <label for="model_data">Model<span class="text-danger">*</span></label>
@@ -39,7 +47,7 @@
         </div>
         <div class="form-group">
           <label for="link">Link<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="link" placeholder="Enter menu name" name="link" autocomplete="off" autofocus value="{{ $menuhasdropdowns->link }}">
+          <input type="text"  class="form-control max" id="link" placeholder="Enter menu name" name="link" autocomplete="off" value="{{ $menuhasdropdowns->link }}">
           @error('link')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>

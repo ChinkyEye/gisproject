@@ -8,6 +8,8 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Helper\Helper;
+
 
 class RegisterController extends Controller
 {
@@ -36,9 +38,10 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Helper $helper)
     {
         $this->middleware('guest');
+        $this->helper = $helper;
     }
 
     /**
@@ -68,6 +71,9 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+            'date' => date("Y-m-d"),
+            'time' => date("H:i:s"),
         ]);
     }
 }
