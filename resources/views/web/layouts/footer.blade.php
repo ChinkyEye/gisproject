@@ -15,8 +15,17 @@
             <div class="col-12 col-sm-6 col-lg-3">
                 <div class="single-footer-widget mb-70">
                     <h5 class="widget-title font-weight-bold">{{ __('language.useful-link')}}</h5>
-
+                    @foreach($usefullink as $key => $data)
                     <div class="single-latest-news-area d-flex align-items-center">
+                        <div class="news-content">
+                            <span class="text-light icon-foot">
+                                <i class="fa fa-angle-right"></i>
+                            </span>
+                            <a href="{{$data->website_link}}" class="d-inline-block">{{$data->name}}</a>
+                        </div>
+                    </div>
+                    @endforeach
+                   <!--  <div class="single-latest-news-area d-flex align-items-center">
                         <div class="news-content">
                             <span class="text-light icon-foot">
                                 <i class="fa fa-angle-right"></i>
@@ -39,15 +48,7 @@
                             </span>
                             <a href="#" class="d-inline-block">List title here</a>
                         </div>
-                    </div>
-                    <div class="single-latest-news-area d-flex align-items-center">
-                        <div class="news-content">
-                            <span class="text-light icon-foot">
-                                <i class="fa fa-angle-right"></i>
-                            </span>
-                            <a href="#" class="d-inline-block">List title here</a>
-                        </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <!-- Single Footer Widget -->
