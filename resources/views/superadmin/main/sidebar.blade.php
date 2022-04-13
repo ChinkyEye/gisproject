@@ -231,6 +231,22 @@
              Office
            </p>
          </a>
+       </li>  
+        <li class="nav-item">
+          <a href="{{ route('superadmin.usefullink.index')}}" class="nav-link {{ (request()->is('home/usefullink*')) ? 'active' : '' }}">
+            <i class="nav-icon fas  fa-link"></i>
+            <p>
+             Useful Link
+           </p>
+         </a>
+       </li> 
+        <li class="nav-item">
+          <a href="{{ route('superadmin.introduction.index')}}" class="nav-link {{ (request()->is('home/introduction*')) ? 'active' : '' }}">
+            <i class="nav-icon fas fa-calendar-alt"></i>
+            <p>
+            Introduction
+           </p>
+         </a>
        </li>
       </ul>
     </nav>

@@ -115,10 +115,18 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
 
     Route::resource('fiscalyear','FiscalYearController');
     Route::get('fiscalyear/active/{id}', 'FiscalYearController@isActive')->name('fiscalyear.active');
+
     Route::resource('office', 'Office\OfficeController');
-     Route::get('office/active/{id}', 'Office\OfficeController@isActive')->name('office.active');
+    Route::get('office/active/{id}', 'Office\OfficeController@isActive')->name('office.active');
 
     Route::resource('contactus','ContactUsController');
+
+    Route::resource('/usefullink','Usefullink\UsefullinkController');
+    Route::get('usefullink/active/{id}', 'Usefullink\UsefullinkController@isActive')->name('usefullink.active');
+
+    Route::resource('/introduction','Introduction\IntroductionController');
+     Route::get('introduction/active/{id}', 'Introduction\IntroductionController@isActive')->name('introduction.active');
+
 
 });
 
