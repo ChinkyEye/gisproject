@@ -4,14 +4,8 @@
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
-      <div class="col-sm-6 pl-1">
-        <h1 class="text-capitalize">Add {{ $page }}</h1>
-      </div>
-      <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="{{route('superadmin.home')}}">Home</a></li>
-          <li class="breadcrumb-item active text-capitalize">{{ $page }} Page</li>
-        </ol>
+      <div class="col-sm-12">
+          <p class="text-danger m-0">Add {{$page}}</p>
       </div>
     </div>
   </div>
@@ -25,6 +19,15 @@
           <label for="name">Name<span class="text-danger">*</span></label>
           <input type="text"  class="form-control max" id="name" placeholder="Enter menu name" name="name" autocomplete="off" autofocus value="{{ old('name') }}">
           @error('name')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
+        <div class="form-group">
+          <label for="name_np">Name Np<span class="text-danger">*</span></label>
+          <input type="text"  class="form-control max" id="name_np" placeholder="Enter menu name in Nepali" name="name_np" autocomplete="off" autofocus value="{{ old('name_np') }}">
+          @error('name_np')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
           </span>

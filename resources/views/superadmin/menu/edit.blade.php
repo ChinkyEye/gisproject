@@ -25,6 +25,20 @@
         <div class="form-group">
           <label for="name">Name:<span class="text-danger">*</span></label>
           <input type="text"  class="form-control max" id="name" placeholder="Enter menu" name="name"  autocomplete="off" value="{{ $menus->name }}">
+          @error('name')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
+        <div class="form-group">
+          <label for="name_np">Name Np<span class="text-danger">*</span></label>
+          <input type="text"  class="form-control max" id="name_np" placeholder="Enter menu name in Nepali" name="name_np" autocomplete="off" value="{{ $menus->name_np }}">
+          @error('name_np')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
         </div>
         <div class="form-group">
           <label for="model_data">Model<span class="text-danger">*</span></label>

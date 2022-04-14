@@ -8,8 +8,8 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm-6">
-            <p class="text-danger m-0">Menu Dropdown List</p>
+          <div class="col-sm-12">
+            <p class="text-danger m-0">Add Dropdown on {{$menu_name}}</p>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -40,6 +40,7 @@
                       <tr>
                         <th>SN</th>
                         <th>Name</th>
+                        <th>Name Nepali</th>
                         <th>Model</th>
                         <th>Link</th>
                         <th>Type</th>
@@ -53,6 +54,7 @@
                       <tr class="{{$menuhasdropdown->is_active == 1 ? '' : 'table-danger'}}">
                         <td>{{$key + 1}}</td>
                         <td>{{$menuhasdropdown->name}}</td>
+                        <td>{{$menuhasdropdown->name_np}}</td>
                         <td>{{$menuhasdropdown->model}}</td>
                         <td>{{$menuhasdropdown->link}}</td>
                         <td>{{$menuhasdropdown->getModelType->type}}</td>

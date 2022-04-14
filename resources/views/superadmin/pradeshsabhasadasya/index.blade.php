@@ -6,6 +6,15 @@
 <?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('superadmin.','',Route::currentRouteName()), ".")); ?>
 <div>
   <!-- /.content-header -->
+  <div class="content-header">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="text-danger m-0">Pradesh Shava Shadashya List</p>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
   <!-- Main content --> 
   <section class="content">
     <div class="container-fluid">
@@ -29,6 +38,7 @@
                       <th >SN</th>
                       <th>Full Name</th>
                       <th>District</th>
+                      <th>Dal</th>
                       <th>Nirvachit kshetra no</th>
                       <th>Image</th>
                       <th>Status</th>
@@ -41,6 +51,7 @@
                       <td>{{$key + 1}}</td>
                       <td>{{$data->name}}</td>
                       <td>{{$data->district}}</td>
+                      <td>{{$data->dal}}</td>
                       <td>{{$data->nirvachit_kshetra_no}}</td>
                       <td>
                        <img src="{{ $data->image == null ? asset('images/no-image-user.png') : asset('images/pradeshsabhasadasya') . '/' . $data->image  }}" alt="" class="responsive" width="50" height="50"></td>

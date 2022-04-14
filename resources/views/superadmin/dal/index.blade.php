@@ -3,13 +3,12 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet"/>
 @endpush
 @section('content')
-<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('superadmin.','',Route::currentRouteName()), ".")); ?>
 <div>
     <div class="content-header">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm-6">
-            <p class="text-danger m-0">Menu List</p>
+          <div class="col-sm-12">
+            <p class="text-danger m-0">Dal List</p>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -26,10 +25,9 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-md-2">
-                    <a href="{{route('superadmin.menu.create')}}" class="btn btn-flat btn-danger btn-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></a>
+                    <a href="{{route('superadmin.dal.create')}}" class="btn btn-flat btn-danger btn-block text-capitalize" style="color:#fff">Add Dal <i class="fas fa-plus fa-fw"></i></a>
                   </div>
                   <div class="col-md-10">
-                    {{-- <input type="text" class="form-control" placeholder="Search by name"> --}}
                   </div>
                 </div>
               </div><!-- /.card-header -->
@@ -40,53 +38,23 @@
                       <tr>
                         <th>SN</th>
                         <th>Name</th>
-                        <th>Name Nepali</th>
-                        <th>Type</th>
-                        <th>Model</th>
-                        <th>Link</th>
-                        <th>Page</th>
-                        <th>Sub menu</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
-                    </thead>
+                    </thead> 
                     <tbody style="text-align: center">
-                      @foreach($menus as $key => $menu)
-                      <tr class="{{$menu->is_active == 1 ? '' : 'table-danger'}}">
+                      @foreach($datas as $key => $data)
+                      <tr class="{{$data->is_active == 1 ? '' : 'table-danger'}}">
                         <td>{{$key + 1}}</td>
-                        <td>{{$menu->name}}</td>
-                        <td>{{$menu->name_np}}</td>
-                        <td>{{$menu->getModelType->type}}</td>
-                        @if($menu->is_main == 1)
-                        <td>{{$menu->model}}</td>
-                        <td>{{$menu->link}}</td>
-                        <td>{{$menu->page}}</td>
-                        @else
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        @endif
+                        <td>{{ $data->name }}</td>
                         <td>
-                          @if($menu->is_main)
-                          Yes
-                          @else
-                          No
-                          @endif
-                        </td>
-                        <td>
-                          <a href="{{ route('superadmin.menu.active',$menu->id) }}" data-placement="top" title="{{ $menu->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
-                            <i class="nav-icon fas {{ $menu->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
+                          <a href="{{ route('superadmin.dal.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
+                            <i class="nav-icon fas {{ $data->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
                           </a>
                         </td>
                         <td>
-                          {{-- <a href="{{ route('superadmin.menu.edit',$menu->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a> --}}
-                          @if($menu->is_main)
-                          <a href="{{ route('superadmin.menuhasdropdown.index',$menu->id) }}" class="btn btn-xs btn-outline-info" title="Add menu Schedule">
-                            <i class="fas fa-plus">{{$menu->parent->count()}}</i>
-                          </a>
-                          @endif
-
-                          <form action='javascript:void(0)' data_url="{{route('superadmin.menu.destroy',$menu->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
+                          <a href="{{ route('superadmin.dal.edit',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
+                          <form action='javascript:void(0)' data_url="{{route('superadmin.dal.destroy',$data->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
                             <input type='hidden' name='_token' value='".csrf_token()."'>
                             <input name='_method' type='hidden' value='DELETE'>
                             <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
@@ -97,7 +65,7 @@
                     </tbody>
                   </table>
                 </div>
-                {!! $menus->links() !!}
+                {{-- {!! $menus->links() !!} --}}
               </div>
             </div>
             <!-- /.card -->

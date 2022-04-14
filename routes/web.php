@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes(['reset' => false,
-            'register' => false
+            // 'register' => false
             ]);
 
 Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(['superadmin','auth'])->group(function(){
@@ -110,7 +110,8 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
 
 
 
-
+    Route::resource('sidebar-part/dal','Dal\DalController');
+    Route::get('sidebar-part/dal/active/{id}', 'Dal\DalController@isActive')->name('dal.active');
 
     Route::resource('sidebar-part/pradeshsabhasadasya','PradeshSabhaSadasya\PradeshSabhaSadasyaController');
     Route::get('sidebar-part/pradeshsabhasadasya/active/{id}', 'PradeshSabhaSadasya\PradeshSabhaSadasyaController@isActive')->name('pradeshsabhasadasya.active');

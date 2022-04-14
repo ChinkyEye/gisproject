@@ -180,6 +180,14 @@
               </a>
             </li>
             <li class="nav-item">
+              <a href="{{ route('superadmin.dal.index')}}" class="nav-link {{ (request()->is('home/sidebar-part/dal*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                  Dal
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="{{ route('superadmin.pradeshsabhasadasya.index')}}" class="nav-link {{ (request()->is('home/sidebar-part/pradeshsabhasadasya*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-user"></i>
                 <p>

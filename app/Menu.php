@@ -10,6 +10,7 @@ class Menu extends Model
 {
     protected $fillable = [
         'name',
+        'name_np',
         'model',
         'link',
         'is_main',

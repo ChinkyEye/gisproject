@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SuperAdmin\PradeshSabhaSadasya;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\PradeshSabhaSadasya;
+use App\Dal;
 use Auth;
 use File;
 
@@ -30,7 +31,8 @@ class PradeshSabhaSadasyaController extends Controller
      */
     public function create()
     {
-        return view('superadmin.pradeshsabhasadasya.create');
+        $dals = Dal::where('is_active','1')->get();
+        return view('superadmin.pradeshsabhasadasya.create',compact('dals'));
     }
 
     /**
