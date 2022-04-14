@@ -107,21 +107,15 @@
 //     alert('aa');
 // });
   $("body").on("change","#select_model", function(event){
-    alert("abc");
-    toastr.success('Now Select Class');
-    var shift_id = $('#shift_data').val(),
-        token = $('meta[name="csrf-token"]').attr('content');
-      $('#idcardShift').val(shift_id);
-      $('#id_shift').val(shift_id);
-      $('#shift_certificate').val(shift_id);
-      $('#shift_studentmigrate').val(shift_id);
+    var model = $('#select_model').val(),
+    token = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
       type:"POST",
       dataType:"JSON",
       {{-- url:"{{route('admin.getClassList')}}",  --}}
       data:{
         _token: token,
-        shift_id: shift_id
+        model: model
       },
       success: function(response){
         $('#class_data').html('');
