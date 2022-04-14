@@ -48,7 +48,6 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $this->validate($request, [
             'name' => 'required',
             'name_np' => 'required',
@@ -60,7 +59,7 @@ class MenuController extends Controller
             'model' => $request['model'],
             'link' => $request['link'],
             'is_main' => $is_main?'1':'0',
-            'type' => $request['type'],
+            'type' => $request['type'] == null ? '1' : $request['type'],
             'page' => $request['page'],
             'is_active' => '1',
             'date' => date("Y-m-d"),
@@ -127,19 +126,6 @@ class MenuController extends Controller
             'success' => 'Record has been deleted successfully!'
         ]);
 
-        // $menus = Menu::find($id);
-        // if($menus->delete()){
-        //     $notification = array(
-        //       'message' => $menus->name.' is deleted successfully!',
-        //       'status' => 'success'
-        //   );
-        // }else{
-        //     $notification = array(
-        //       'message' => $menus->name.' could not be deleted!',
-        //       'status' => 'error'
-        //   );
-        // }
-        // return Response::json($notification);
     }
 
     public function isActive(Request $request,$id)
@@ -167,5 +153,14 @@ class MenuController extends Controller
         );
         }
         return back()->with($notification)->withInput();
+    }
+
+    public function getTypeList(Request $request)
+    {
+      $model = $request->model;
+      $type_list = ModelHasType::where('model',$model)
+                                ->where('is_active','1')
+                                ->get();
+      return Response::json($type_list);
     }
 }

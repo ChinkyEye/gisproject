@@ -68,16 +68,27 @@
             @enderror
         </div>
       <div id="Myid">
-        <div class="form-group">
+        {{-- <div class="form-group">
           <label for="type" class="control-label">Type</label>
           <select class="form-control" name="type" id="type">
-            {{-- <option value="">Select Type</option> --}}
+            <option value="">Select Type</option>
             @foreach ($modelhastypes as $key => $data)
             <option value="{{ $data->id }}" {{ old('type') == $data->id ? 'selected' : ''}}>
               {{$data->type}}
             </option>
             @endforeach
           </select>
+        </div> --}}
+        <div class="form-group">
+          <label for="type_data" class="control-label">Type</label>
+          <select class="form-control" name="type" id="type_data">
+            <option value="">Select Type</option>
+          </select>
+          @error('type')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
         </div>
         <div class="form-group">
           <label for="page">Page</label>
@@ -103,36 +114,31 @@
 @push('javascript')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
-//   $(document).ready(function () {
-//     // alert('aa');
-//   });
-//   $("#link").keydown(function(){
-//     alert('aa');
-// });
   $("body").on("change","#select_model", function(event){
+
     var model = $('#select_model').val(),
     token = $('meta[name="csrf-token"]').attr('content');
     $.ajax({
       type:"POST",
       dataType:"JSON",
-      {{-- url:"{{route('admin.getClassList')}}",  --}}
+      url:"{{route('superadmin.getTypeList')}}", 
       data:{
         _token: token,
         model: model
       },
       success: function(response){
-        $('#class_data').html('');
-        $('#class_data').append('<option value="">--Choose Class--</option>');
-        // $('#studentSearch').prop('disabled', true);
+        console.log(response);
+        $('#type_data').html('');
+        $('#type_data').append('<option value="">--Choose Type--</option>');
         $.each( response, function( i, val ) {
-          $('#class_data').append('<option value='+val.get_class.id+'>'+val.get_class.name+'</option>');
+          $('#type_data').append('<option value='+val.id+'>'+val.type+'</option>');
         });
       },
       error: function(event){
         alert("Sorry");
       }
     });
-        Pace.stop();
+        // Pace.stop();
   });
 </script>
 {{-- <script>

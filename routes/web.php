@@ -31,6 +31,8 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
 
     Route::resource('main-entry/menu','MenuController');
     Route::get('main-entry/menu/active/{id}', 'MenuController@isActive')->name('menu.active');
+    Route::post('main-entry/menu/getTypeList', 'MenuController@getTypeList')->name('getTypeList');
+
 
     Route::resource('main-entry/menuhasdropdown','MenuHasDropdownController');
     Route::get('main-entry/menuhasdropdown/active/{id}', 'MenuHasDropdownController@isActive')->name('menuhasdropdown.active');
