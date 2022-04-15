@@ -3,7 +3,7 @@
 About | 
 @endpush
 @section('content')
-<nav class="bg-light breadcrumb-main">
+<nav class="breadcrumb-main mt-4">
 	<div class="container">
 		<ol class="breadcrumb bg-light align-content-center">
 			<li class="breadcrumb-item my-auto">
