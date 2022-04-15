@@ -2,6 +2,7 @@
 @section('content')
 @include('web.layouts.slider')
 {{-- section 1 --}}
+@if ($offices->count())
 <section class="features-area py-5 bg-gray">
     <div class="container-fluid">
         <div class="row">
@@ -70,9 +71,10 @@
         </div> --}}
     </div>
 </section>
+@endif
 {{-- end section 1 --}}
 {{-- section 2 --}}
-<section class="features-area py-5">
+<section class="features-area py-5 {{ $offices->count() ? '' : 'bg-light' }}">
     <div class="container-fluid">
         <div class="owl-carousel owl-carousel2 owl-theme">
             <div class="item">

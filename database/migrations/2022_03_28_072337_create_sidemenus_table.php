@@ -19,6 +19,7 @@ class CreateSidemenusTable extends Migration
             $table->string('name_np')->nullable();
             $table->string('model')->nullable();
             $table->string('link')->nullable();
+            $table->integer('level')->default(1);
             $table->integer('link_type')->nullable();  // 1 for api link, 0 for normal 
             $table->string('page')->nullable();
             $table->integer('sort_id')->nullable();

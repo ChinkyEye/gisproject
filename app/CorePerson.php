@@ -12,6 +12,8 @@ class CorePerson extends Model
         'email',
         'phone',
         'link',
+        'path',
+        'image',
         'responsibility',
         'type',
         'is_active',

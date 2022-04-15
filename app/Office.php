@@ -11,6 +11,8 @@ class Office extends Model
          'address',
          'website_link',
          'logo',
+         'pathlogo',
+         'paththumbnail',
          'thumbnail',
          'is_active',
          'date_np',

@@ -13,6 +13,7 @@ class Sidemenu extends Model
         'name_np',
         'model',
         'link',
+        'level',
         'link_type',
         'page',
         'is_active',

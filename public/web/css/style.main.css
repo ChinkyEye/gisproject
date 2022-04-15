@@ -1,6 +1,7 @@
 :root{
     --site-color-red: #bd2921;
     --site-color-blue: #003679; /*#294d99*/
+    --primary: var(--site-color-blue);
     --site-color-footer-blue: #021c3c; /*#294d99*/
     --menu-height-md: 4rem;
     --menu-height-sm: 70px;
@@ -57,13 +58,29 @@
     color: white;
     background-color: var(--site-color-blue);
 }
-
-.btn-hover-main:hover {
-    color: var(--white);
-    background: var(--site-color-red);
-    font-weight: normal;
-    font-size: .875rem;
-}
+/*bottom*/
+    .btn.bg-main-red i,.btn.bg-main-blue i{
+        transition: .5s;
+    }
+    .btn.bg-main-red:hover i{
+        color: var(--site-color-blue);
+        transition: .5s;
+    }
+    .btn.bg-main-blue:hover i{
+        color: var(--site-color-red);
+        transition: .5s;
+    }
+    .btn.bg-main-blue:hover,.btn.bg-main-red:hover{
+        color: white;
+        font-weight: inherit;
+        font-size: 16px;
+    }
+    .btn-hover-main:hover {
+        color: var(--white);
+        background: var(--site-color-red);
+        font-weight: normal;
+        font-size: .875rem;
+    }
 
 .card:hover > .main-hover-card-text, .card:hover > .main-hover-card-text > .card-title {
     transition: 1s;
@@ -693,11 +710,23 @@
     }
 
 /*breadcrumb*/
-    .breadcrumb-item+.breadcrumb-item::before {
-        display: inline-block;
-        padding-right: 0.5rem;
-        color: #6c757d;
-        content: "/";
+    .breadcrumb-main .breadcrumb .breadcrumb-item:nth-child(2)::before{
+        content: "";
+    }
+    .breadcrumb-main .breadcrumb-item a,.breadcrumb-main .breadcrumb-item a i{
+        color: var(--site-color-blue);
+        transition: .5s;
+    }
+    .breadcrumb-main .breadcrumb-item.active a,.breadcrumb-main .breadcrumb-item.active a:hover{
+        color: black;
+    }
+    .breadcrumb-main .breadcrumb-item a:hover{
+        color: var(--site-color-red);
+    }
+    .breadcrumb-main .breadcrumb-item a i:hover{
+        color: var(--site-color-red);
+        transition: .5s;
+        text-shadow: 0px 2px 4px var(--site-color-blue);
     }
 
 /*table*/
@@ -709,3 +738,46 @@
     {
       vertical-align: middle !important;
     }
+
+/*list page*/
+    .main-card {
+        /*width: 400px;*/
+        border: none;
+        border-radius: 10px;
+        background-color: #fff
+    }
+
+    .main-stats {
+        background: #f2f5f8 !important;
+        color: #000 !important
+    }
+
+    .main-articles {
+        font-size: 10px;
+        color: #a1aab9
+    }
+
+    .main-number1 {
+        font-weight: 500
+    }
+
+    .main-followers {
+        font-size: 10px;
+        color: #a1aab9
+    }
+
+    .main-number2 {
+        font-weight: 500
+    }
+
+    .main-rating {
+        font-size: 10px;
+        color: #a1aab9
+    }
+
+    .main-number3 {
+        font-weight: 500
+    }
+
+/* breadcrumb */
+

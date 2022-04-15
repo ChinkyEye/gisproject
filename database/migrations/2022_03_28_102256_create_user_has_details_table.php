@@ -18,7 +18,8 @@ class CreateUserHasDetailsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->text('website_link')->nullable();
-            $table->string('image');
+            $table->string('path')->nullable();
+            $table->string('image')->nullable();
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);

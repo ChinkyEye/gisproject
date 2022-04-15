@@ -13,6 +13,7 @@ try {
 
     require('bootstrap');
     require('admin-lte');
+    require('jquery-ui/ui/widgets/sortable');
 } catch (e) {}
 
 /**

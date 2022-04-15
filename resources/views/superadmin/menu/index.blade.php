@@ -2,6 +2,8 @@
 @push('style')
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet"/>
 @endpush
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 @section('content')
 <?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('superadmin.','',Route::currentRouteName()), ".")); ?>
 <div>
@@ -16,6 +18,19 @@
     </div>
     <!-- /.content-header -->
     <!-- Main content -->
+    <div class="box-body table-responsive">
+@if(isset($menus))
+@if(count($menus) > 0)
+<ul id="menu" class="sortable">
+    @foreach($menus as $menu)
+    <li id="{{$menu->id}}">
+      <a>{{$menu->name}}</a>
+    </li>
+    @endforeach
+  </ul>
+  @endif
+  @endif
+</div>
     <section class="content">
       <div class="container-fluid">
         <div class="row">
@@ -27,9 +42,6 @@
                 <div class="row">
                   <div class="col-md-2">
                     <a href="{{route('superadmin.menu.create')}}" class="btn btn-flat btn-danger btn-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></a>
-                  </div>
-                  <div class="col-md-10">
-                    {{-- <input type="text" class="form-control" placeholder="Search by name"> --}}
                   </div>
                 </div>
               </div><!-- /.card-header -->
@@ -57,14 +69,12 @@
                         <td>{{$menu->name}}</td>
                         <td>{{$menu->name_np}}</td>
                         <td>{{$menu->getModelType->type}}</td>
-                        @if($menu->is_main == 1)
                         <td>{{$menu->model}}</td>
                         <td>{{$menu->link}}</td>
-                        <td>{{$menu->page}}</td>
+                        @if($menu->link == '/')
+                        <td>welcome</td>
                         @else
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{$menu->page}}</td>
                         @endif
                         <td>
                           @if($menu->is_main)
@@ -97,7 +107,6 @@
                     </tbody>
                   </table>
                 </div>
-                {!! $menus->links() !!}
               </div>
             </div>
             <!-- /.card -->
@@ -111,6 +120,26 @@
   </div>
 @endsection
 @push('javascript')
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.1/jquery-ui.min.js"></script> -->
+<script>
+    $(function(){
+      $("#menu").sortable({
+        stop: function(){
+          $.map($(this).find('li'), function(el) {
+            var itemID = el.id;
+            var itemIndex = $(el).index();
+            $.ajax({
+              url:"{{route('superadmin.order-menu')}}",
+              type:'GET',
+              dataType:'json',
+              data: {itemID:itemID, itemIndex: itemIndex},
+            })
+          });
+        }
+      });
+    });
+  </script>
 <script>
   function myFunction(el) {
     const url = $(el).attr('data_url');
@@ -162,4 +191,5 @@
       });
   }
 </script>
+
 @endpush

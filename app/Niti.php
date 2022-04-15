@@ -10,6 +10,7 @@ class Niti extends Model
         'title',
         'type',
         'document',
+        'path',
         'description',
         'is_active',
         'date_np',

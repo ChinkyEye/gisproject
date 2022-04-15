@@ -16,6 +16,7 @@ class CreatePratibedansTable extends Migration
         Schema::create('pratibedans', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('path')->nullable();
             $table->string('document')->nullable();
             $table->string('description')->nullable();
             $table->integer('type');
