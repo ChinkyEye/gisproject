@@ -4,15 +4,9 @@
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
-      <div class="col-sm-6 pl-1">
-        <h3 class="text-capitalize"><small> {{$sidemenus->name}}</small></h3>
-      </div>
-      <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="{{route('superadmin.home')}}">Home</a></li>
-          <li class="breadcrumb-item active text-capitalize">Menu Dropdown Page</li>
-        </ol>
-      </div>
+      <div class="col-sm-12">
+            <p class="text-danger m-0">Edit {{$sidemenus->name}}</p>
+          </div>
     </div>
   </div>
 </section>
@@ -31,6 +25,15 @@
           @enderror
         </div>
         <div class="form-group">
+          <label for="name_np">Name Np<span class="text-danger">*</span></label>
+          <input type="text"  class="form-control max" id="name_np" placeholder="Enter menu name in Nepali" name="name_np" autocomplete="off" value="{{ $sidemenus->name_np }}">
+          @error('name_np')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
+        <div class="form-group">
           <label for="model_data">Model<span class="text-danger">*</span></label>
           <select id="nationality" class="form-control" name="model" id="modal">
             <option value="">--Select--</option>
@@ -41,7 +44,7 @@
         </div>
         <div class="form-group">
           <label for="link">Link<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="link" placeholder="Enter menu name" name="link" autocomplete="off" autofocus value="{{ $sidemenus->link }}">
+          <input type="text"  class="form-control max" id="link" placeholder="Enter menu name" name="link" autocomplete="off" value="{{ $sidemenus->link }}">
           @error('link')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
@@ -50,7 +53,7 @@
         </div>
         <div class="form-group">
           <label for="page">Page<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="page" placeholder="Enter menu name" name="page" autocomplete="off" autofocus value="{{ $sidemenus->page }}">
+          <input type="text"  class="form-control max" id="page" placeholder="Enter menu name" name="page" autocomplete="off" value="{{ $sidemenus->page }}">
           @error('page')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>

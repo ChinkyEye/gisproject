@@ -25,11 +25,15 @@
             <div class="card">
               <div class="card-header">
                 <div class="row">
-                  <div class="col-md-2">
-                    <a href="{{route('superadmin.coreperson.create')}}" class="btn btn-flat btn-danger btn-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></a>
-                  </div>
-                  <div class="col-md-10">
-                    {{-- <input type="text" class="form-control" placeholder="Search by name"> --}}
+                  <div class="col-md-3">
+                   {{--  <a href="{{route('superadmin.coreperson.create')}}" class="btn btn-flat btn-danger btn-inline-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></a> --}}
+                    <form action="{{route('superadmin.coreperson.create')}}" method="GET" class="d-inline-block">
+                      <input type="hidden" id="model" name="model" value="{{ Request::segment(3) }} ">
+                      <button type="submit" class="btn btn-flat btn-danger btn-inline-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></button>
+                    </form>
+
+                    <a href="{{route('superadmin.modelhastype.index',last(request()->segments()) )}}" class="btn btn-info btn-inline-block text-capitalize"><i class="fas fa-plus fa-fw"></i>
+                    </a>
                   </div>
                 </div>
               </div><!-- /.card-header -->
@@ -58,7 +62,8 @@
                         <td>{{$coreperson->phone}}</td>
                         <td>{{$coreperson->link}}</td>
                         <td>
-                          @if($coreperson->type == 1)
+                          {{$coreperson->getCorepersonType->type}}
+                          {{-- @if($coreperson->type == 1)
                           <span>Karyalaya Pramukh</span>
                           @elseif($coreperson->type == 2)
                           <span>Prabatdaa</span>
@@ -68,7 +73,7 @@
                           <span>Gunaso Sunne</span>
                           @else
                           <span>Anya</span>
-                          @endif
+                          @endif --}}
                         </td>
                         <td>
                           <a href="{{ route('superadmin.coreperson.active',$coreperson->id) }}" data-placement="top" title="{{ $coreperson->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">

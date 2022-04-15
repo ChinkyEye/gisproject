@@ -105,10 +105,15 @@ class NoticeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-       $notices = Notice::find($id);
-        return view('superadmin.notice.edit', compact('notices'));
+        // dd($request);
+        $notices = Notice::find($id);
+        $modelhastypes = ModelHasType::orderBy('id','ASC')
+                                        ->where('model',$request->model)
+                                        ->where('created_by',Auth::user()->id)
+                                        ->get();
+        return view('superadmin.notice.edit', compact('notices','modelhastypes'));
     }
 
     /**

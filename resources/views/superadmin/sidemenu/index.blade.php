@@ -8,8 +8,8 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-sm-6">
-            <p class="text-danger m-0">Side Menu List</p>
+          <div class="col-sm-12">
+            <p class="text-danger m-0">Add {{$page}}</p>
           </div><!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -40,6 +40,9 @@
                       <tr class="text-center">
                         <th>SN</th>
                         <th>Name</th>
+                        <th>Name Nepali</th>
+                        <th>Model</th>
+                        <th>Link</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
@@ -49,6 +52,9 @@
                       <tr class="{{$sidemenu->is_active == 1 ? '' : 'table-danger'}} text-center">
                         <td>{{$key + 1}}</td>
                         <td>{{$sidemenu->name}}</td>
+                        <td>{{$sidemenu->name_np}}</td>
+                        <td>{{$sidemenu->model}}</td>
+                        <td>{{$sidemenu->page}}</td>
                         <td>
                           <a href="{{ route('superadmin.sidemenu.active',$sidemenu->id) }}" data-placement="top" title="{{ $sidemenu->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                             <i class="nav-icon fas {{ $sidemenu->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\CorePerson;
+use App\ModelHasType;
 use Auth;
 
 class CorePersonController extends Controller
@@ -17,6 +18,7 @@ class CorePersonController extends Controller
     public function index()
     {
         $corepersons = CorePerson::where('created_by', Auth::user()->id)
+                                ->with('getCorepersonType')
                                 ->get();
         return view('superadmin.coreperson.index', compact('corepersons'));
     }
@@ -26,9 +28,13 @@ class CorePersonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('superadmin.coreperson.create');
+        $modelhastypes = ModelHasType::orderBy('id','ASC')
+                                    ->where('created_by', Auth::user()->id)
+                                    ->where('model',$request->model)
+                                    ->get();
+        return view('superadmin.coreperson.create', compact('modelhastypes'));
     }
 
     /**
@@ -46,8 +52,8 @@ class CorePersonController extends Controller
             'phone' => 'required|digits_between:6,10',
             'type' => 'required',
         ]);
-         
-       $corepersons = CorePerson::create([
+
+        $corepersons = CorePerson::create([
             'name' => $request['name'],
             'address' => $request['address'],
             'email'=> $request['email'],
@@ -60,7 +66,7 @@ class CorePersonController extends Controller
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        return redirect()->route('superadmin.coreperson.index')->with('alert-success', 'data created succesffully!!!');;
+        return redirect()->route('superadmin.coreperson.index')->with('alert-success', 'data created succesffully!!!');
     }
 
     /**

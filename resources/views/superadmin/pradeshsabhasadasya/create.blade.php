@@ -4,15 +4,9 @@
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
-      <div class="col-sm-6 pl-1">
-        <h1 class="text-capitalize">Add Sadasya</h1>
-      </div>
-      <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="{{route('superadmin.home')}}">Home</a></li>
-          <li class="breadcrumb-item active text-capitalize">pradesh-sadasya Page</li>
-        </ol>
-      </div>
+      <div class="col-sm-12">
+            <p class="text-danger m-0">Add Pradesh Shava Shadashya</p>
+          </div>
     </div>
   </div>
 </section>
@@ -62,13 +56,19 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="dala">Dala<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="dala" placeholder="Enter dala" name="dala" autocomplete="off" autofocus value="{{ old('dala') }}">
+          <label for="dala">Dal<span class="text-danger">*</span></label>
+          <select class="form-control max" id="dala" name="dala">
+            <option>--Please choose one--</option>
+          @foreach($dals as $dal)
+          <option value="{{$dal->id}}">{{$dal->name}}</option>
+          @endforeach
+          </select>
           @error('dala')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
           </span>
           @enderror
+          
         </div>
         <div class="form-group">
           <label for="nirvachit_kshetra_no">Nirvachit kshetra no<span class="text-danger">*</span></label>

@@ -23,7 +23,7 @@
                             @foreach($total_menu as $key => $data)
                             <li>
                                 @if($data->parent_id == '0')
-                                <a href="{{ route('web.home.link',$data->link) }}">
+                                <a href="{{ $data->is_main == '0' ? route('web.home.link',$data->link) : '#' }}">
                                     {{ $data->name }}
                                 </a>
                                 @endif

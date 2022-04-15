@@ -8,6 +8,8 @@ use App\Menu;
 use App\Sidemenu;
 use App\MenuHasDropdown;
 use App\PradeshSabhaSadasya;
+use App\Office;
+use App\Usefullink;
 // remote table
 use App\TblRemoteNotice;
 use App\TblRemoteYearlyBudget;
@@ -17,6 +19,7 @@ use App\TblRemoteSewaPrava;
 use App\TblRemoteEFarum;
 use App\TblRemotePrativedan;
 use App\TblRemotePublication;
+
 
 class HomeController extends Controller
 {
@@ -31,26 +34,51 @@ class HomeController extends Controller
         $remote_e_farums = TblRemoteEFarum::orderBy('id','DESC')->take(10)->get();
         $remote_prativedans = TblRemotePrativedan::orderBy('id','DESC')->take(10)->get();
         $remote_publications = TblRemotePublication::orderBy('id','DESC')->take(10)->get();
-        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications']));
+        $offices = Office::orderBy('id','DESC')->take(10)->get();
+        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','offices']));
     }
 
     public function link(Request $request, $link,$link2 = Null)
     {
-        // var_dump($link,$link2); die();
-        if($link2 == Null){
-            $link = $link;
+        if($link == '/'){
+           $page = 'home';
+           $datas = array();
+           return view('web.'.$page, compact(['datas']));
         }
         else{
-            $link = $link.'/'.$link2;
-        }
+            // var_dump($link,$link2); die();
+            if($link2 == Null){
+                $link = $link;
+            }
+            else{
+                $link = $link.'/'.$link2;
+            }
             $model = Menu::where('link',$link)->value('model');
             $page = Menu::where('link',$link)->value('page');
             $type = Menu::where('link',$link)->value('type');
-        
-        // var_dump($model,$page);
+            
+        // var_dump($type); die();
+            $modelName = '\\App\\' . $model;
+            if($type == '1'){
+                $datas = $modelName::orderBy('id','DESC');
+            }
+            else{
+                $datas = $modelName::orderBy('id','DESC')->where('type',$type);
+            }
+            $datas = $datas->get();
+            return view('web.'.$page, compact(['datas','link','link2']));
+            
+        }
+    }
+
+    public function detail(Request $request, $link,$link2)
+    {
+        $model = Menu::where('link',$link)->value('model');
+        // var_dump($type); die();
         $modelName = '\\App\\' . $model;
-        $datas = $modelName::where('type',$type)->get();
-        return view('web.'.$page, compact(['datas']));
+        $datas = $modelName::orderBy('id','DESC')->where('id',$link2)->get();
+        return view('web.view-more', compact(['datas','link','link2']));
+            
     }
 
     public function sidelink(Request $request, $link)

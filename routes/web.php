@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes(['reset' => false,
-            'register' => false
+            // 'register' => false
             ]);
 
 Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(['superadmin','auth'])->group(function(){
@@ -31,6 +31,8 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
 
     Route::resource('main-entry/menu','MenuController');
     Route::get('main-entry/menu/active/{id}', 'MenuController@isActive')->name('menu.active');
+    Route::post('main-entry/menu/getTypeList', 'MenuController@getTypeList')->name('getTypeList');
+
 
     Route::resource('main-entry/menuhasdropdown','MenuHasDropdownController');
     Route::get('main-entry/menuhasdropdown/active/{id}', 'MenuHasDropdownController@isActive')->name('menuhasdropdown.active');
@@ -59,35 +61,59 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('menu-page/vision', 'VisionController');
         Route::get('menu-page/vision/active/{id}', 'VisionController@isActive')->name('vision.active');
 
-    Route::resource('menu-page/coreperson','CorePersonController'); 
-    Route::get('menu-page/coreperson/active/{id}', 'CorePersonController@isActive')->name('coreperson.active');
 
     Route::resource('/employee','EmployeeController');
     Route::get('/employee/active/{id}', 'EmployeeController@isActive')->name('employee.active');
 
+    // for static model has type
     Route::get('menu-page/{type}/modelhastype', 'ModelHasTypeController@index')->name('modelhastype.index');
+    Route::get('/menu-page/modelhastype/active/{id}', 'ModelHasTypeController@isActive')->name('modelhastype.active');
     Route::get('menu-page/{type}/modelhastype/create', 'ModelHasTypeController@create')->name('modelhastype.create');
     Route::post('menu-page/modelhastype/store', 'ModelHasTypeController@store')->name('modelhastype.store');
     Route::get('menu-page/modelhastype/{id}/edit', 'ModelHasTypeController@edit')->name('modelhastype.edit');
     Route::post('menu-page/modelhastype/update/{id}', 'ModelHasTypeController@update')->name('modelhastype.update');
+    Route::delete('menu-page/modelhastype/destroy/{id}', 'ModelHasTypeController@destroy')->name('modelhastype.delete');
 
-    Route::resource('menu-page/niti/nitihastype','NitiHasTypeController');
+    //end
+
+    Route::resource('menu-page/coreperson','CorePersonController'); 
+    Route::get('menu-page/coreperson/active/{id}', 'CorePersonController@isActive')->name('coreperson.active');
+
 
     // Route::resource('niti','NitiController');
     Route::resource('menu-page/niti','NitiController');
     Route::get('menu-page/niti/active/{id}', 'NitiController@isActive')->name('niti.active');
     Route::get('menu-page/niti/download/{file}','NitiController@downloadfile')->name('niti.downloadfile');
 
-
-
     Route::resource('menu-page/notice','NoticeController');
      Route::get('menu-page/notice/active/{id}', 'NoticeController@isActive')->name('notice.active');
     Route::get('menu-page/notice/download/{file}','NoticeController@downloadfile')->name('notice.downloadfile');
 
+    Route::resource('menu-page/pratibedan','PratibedanController');
+    Route::get('menu-page/pratibedan/active/{id}', 'PratibedanController@isActive')->name('pratibedan.active');
+    Route::get('menu-page/pratibedan/download/{file}','PratibedanController@downloadfile')->name('pratibedan.downloadfile');
+
+
     Route::resource('menu-page/sangathansanrachana','SangathanSanrachana\SangathanSanrachanaController');
     Route::get('menu-page/sangathansanrachana/active/{id}', 'SangathanSanrachana\SangathanSanrachanaController@isActive')->name('sangathansanrachana.active');
 
+    Route::resource('menu-page/contactus','ContactUsController');
+    Route::get('menu-page/contactus/active/{id}', 'ContactUsController@isActive')->name('contactus.active');
 
+    Route::resource('menu-page/aboutus','AboutUsController');
+    Route::get('menu-page/aboutus/active/{id}', 'AboutUsController@isActive')->name('aboutus.active');
+
+    Route::resource('menu-page/gallery','GalleryController');
+    Route::get('menu-page/gallery/active/{id}', 'GalleryController@isActive')->name('gallery.active');
+
+    Route::resource('menu-page/galleryhasimage','GalleryHasImageController');
+    Route::get('menu-page/gallery/galleryhasimage/{id}','GalleryHasImageController@index')->name('galleryhasimage.index');
+
+
+
+
+    Route::resource('sidebar-part/dal','Dal\DalController');
+    Route::get('sidebar-part/dal/active/{id}', 'Dal\DalController@isActive')->name('dal.active');
 
     Route::resource('sidebar-part/pradeshsabhasadasya','PradeshSabhaSadasya\PradeshSabhaSadasyaController');
     Route::get('sidebar-part/pradeshsabhasadasya/active/{id}', 'PradeshSabhaSadasya\PradeshSabhaSadasyaController@isActive')->name('pradeshsabhasadasya.active');
@@ -107,8 +133,18 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
 
     Route::resource('fiscalyear','FiscalYearController');
     Route::get('fiscalyear/active/{id}', 'FiscalYearController@isActive')->name('fiscalyear.active');
+
     Route::resource('office', 'Office\OfficeController');
-     Route::get('office/active/{id}', 'Office\OfficeController@isActive')->name('office.active');
+    Route::get('office/active/{id}', 'Office\OfficeController@isActive')->name('office.active');
+
+
+    Route::resource('/usefullink','Usefullink\UsefullinkController');
+    Route::get('usefullink/active/{id}', 'Usefullink\UsefullinkController@isActive')->name('usefullink.active');
+
+    Route::resource('/introduction','Introduction\IntroductionController');
+     Route::get('introduction/active/{id}', 'Introduction\IntroductionController@isActive')->name('introduction.active');
+
+
 });
 
 
@@ -127,6 +163,7 @@ Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest'])->group(
     Route::get('/detail/{type}', 'DetailController@index')->name('detail.index');
     Route::get('/detail/{type}/search', 'DetailController@search')->name('detail.search');
     Route::get('/{link}/{links?}', 'HomeController@link')->name('home.link');
+    Route::get('/{link}/detail/{links}', 'HomeController@detail')->name('home.detail');
     Route::get('/web/sidelink/{link}', 'HomeController@sidelink')->name('home.sidelink');
     
 });

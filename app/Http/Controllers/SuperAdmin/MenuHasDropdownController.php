@@ -22,9 +22,9 @@ class MenuHasDropdownController extends Controller
     public function index($id)
     {
         $menus = Menu::find($id);
-        // $menuhasdropdowns = MenuHasDropdown::where('menu_id',$id)->paginate(10);
+        $menu_name = Menu::where('id',$id)->value('name');
         $menuhasdropdowns = Menu::where('parent_id',$id)->paginate(10);
-        return view('superadmin.menuhasdropdown.index', compact('menus','menuhasdropdowns'));
+        return view('superadmin.menuhasdropdown.index', compact('menus','menuhasdropdowns','menu_name'));
     }
 
     /**
@@ -34,11 +34,12 @@ class MenuHasDropdownController extends Controller
      */
     public function create($id)
     {
-        $modelhastypes = ModelHasType::orderBy('id','DESC')
+        $modelhastypes = ModelHasType::orderBy('id','ASC')
                                         ->where('created_by',Auth::user()->id)
                                         ->get();
         $menus = Menu::find($id);
-        return view('superadmin.menuhasdropdown.create', compact('menus','modelhastypes'));
+        $menu_name = Menu::where('id',$id)->value('name');
+        return view('superadmin.menuhasdropdown.create', compact('menus','modelhastypes','menu_name'));
     }
 
     /**
@@ -49,37 +50,19 @@ class MenuHasDropdownController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        // $this->validate($request, [
-        //     'dropdown_name' => 'required',
-        // ]);
-        // $is_main = $request->has('is_main');
-        // $menuhasdropdown = MenuHasDropdown::create([
-        //     'dropdown_name' => $request['dropdown_name'],
-        //     'menu_id' => $request['menu_id'],
-        //     'model' => $request['model'],
-        //     'link' => $request['link'],
-        //     'is_main' => $is_main?'1':'0',
-        //     'type' => $request['type'],
-        //     'page' => $request['page'],
-        //     'date' => date("Y-m-d"),
-        //     'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
-        //     'time' => date("H:i:s"),
-        //     'created_by' => Auth::user()->id,
-        // ]);
-        // return redirect()->route('superadmin.menuhasdropdown.index',$request->menu_id);
-
-        // $this->validate($request, [
-        //     'name' => 'required',
-        // ]);
+        $this->validate($request, [
+            'name' => 'required',
+            'name_np' => 'required',
+        ]);
         $is_main = $request->has('is_main');
         $parent_link = Menu::where('id',$request->menu_id)->value('link');
         $menu = Menu::create([
             'name' => $request['name'],
+            'name_np' => $request['name_np'],
             'model' => $request['model'],
             'link' => $parent_link.'/'.$request['link'],
             'is_main' => $is_main?'1':'0',
-            'type' => $request['type'],
+            'type' => $request['type'] == null ? '1' : $request['type'],
             'page' => $request['page'],
             'parent_id' => $request['menu_id'],
             'is_active' => '1',
@@ -88,9 +71,7 @@ class MenuHasDropdownController extends Controller
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        return redirect()->route('superadmin.menuhasdropdown.index',$request->menu_id);
-
-        // return redirect()->route('superadmin.menu.index')->with('alert-success', 'Menu created successfully!!!!');
+        return redirect()->route('superadmin.menuhasdropdown.index',$request->menu_id)->with('alert-success', 'Menu created successfully!!!!');;
     }
 
     /**
@@ -113,11 +94,12 @@ class MenuHasDropdownController extends Controller
     public function edit($id)
     {
         $menu_value = Menu::where('id',$id)->first();
+        $edit_value = Menu::where('id',$id)->value('name');
         $menuhasdropdowns = Menu::find($id);
         $modelhastypes = ModelHasType::orderBy('id','ASC')
                                         ->where('created_by',Auth::user()->id)
                                         ->get();
-        return view('superadmin.menuhasdropdown.edit', compact('menuhasdropdowns','menu_value','modelhastypes'));
+        return view('superadmin.menuhasdropdown.edit', compact('menuhasdropdowns','menu_value','modelhastypes','edit_value'));
     }
 
     /**
@@ -129,7 +111,10 @@ class MenuHasDropdownController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request);
+        $this->validate($request, [
+            'name' => 'required',
+            'name_np' => 'required',
+        ]);
         $menuhasdropdowns = Menu::find($id);
         $all_data = $request->all();
         $all_data['updated_by'] = Auth::user()->id;
@@ -162,8 +147,8 @@ class MenuHasDropdownController extends Controller
 
     public function isActive(Request $request,$id)
     {
-        $get_is_active = MenuHasDropdown::where('id',$id)->value('is_active');
-        $isactive = MenuHasDropdown::find($id);
+        $get_is_active = Menu::where('id',$id)->value('is_active');
+        $isactive = Menu::find($id);
         if($get_is_active == 0){
         $isactive->is_active = 1;
         $notification = array(

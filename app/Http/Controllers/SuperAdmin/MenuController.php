@@ -22,7 +22,7 @@ class MenuController extends Controller
         $menus  = Menu::orderBy('id','DESC')
                         ->where('created_by',Auth::user()->id)
                         ->where('parent_id','0')
-                        ->with('getModelType')
+                        ->with('getModelType','parent')
                         ->paginate(50);
         return view('superadmin.menu.index', compact('menus'));
     }
@@ -50,14 +50,16 @@ class MenuController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'name_np' => 'required',
         ]);
         $is_main = $request->has('is_main');
         $menu = Menu::create([
             'name' => $request['name'],
+            'name_np' => $request['name_np'],
             'model' => $request['model'],
             'link' => $request['link'],
             'is_main' => $is_main?'1':'0',
-            'type' => $request['type'],
+            'type' => $request['type'] == null ? '1' : $request['type'],
             'page' => $request['page'],
             'is_active' => '1',
             'date' => date("Y-m-d"),
@@ -124,19 +126,6 @@ class MenuController extends Controller
             'success' => 'Record has been deleted successfully!'
         ]);
 
-        // $menus = Menu::find($id);
-        // if($menus->delete()){
-        //     $notification = array(
-        //       'message' => $menus->name.' is deleted successfully!',
-        //       'status' => 'success'
-        //   );
-        // }else{
-        //     $notification = array(
-        //       'message' => $menus->name.' could not be deleted!',
-        //       'status' => 'error'
-        //   );
-        // }
-        // return Response::json($notification);
     }
 
     public function isActive(Request $request,$id)
@@ -164,5 +153,14 @@ class MenuController extends Controller
         );
         }
         return back()->with($notification)->withInput();
+    }
+
+    public function getTypeList(Request $request)
+    {
+      $model = $request->model;
+      $type_list = ModelHasType::where('model',$model)
+                                ->where('is_active','1')
+                                ->get();
+      return Response::json($type_list);
     }
 }

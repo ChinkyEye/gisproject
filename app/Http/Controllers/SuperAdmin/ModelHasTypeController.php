@@ -107,6 +107,35 @@ class ModelHasTypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $datas = ModelHasType::find($id);
+        $datas->delete();
+        return response()->json([
+            'success' => 'Record has been deleted successfully!'
+        ]);
+    }
+
+    public function isActive(Request $request,$id)
+    {
+        $get_is_active = ModelHasType::where('id',$id)->value('is_active');
+        $isactive = ModelHasType::find($id);
+        if($get_is_active == 0){
+            $isactive->is_active = 1;
+            // $notification = array(
+            //     'alert-success' => $isactive->name.' is Active!',
+            // );
+        }
+        else {
+            $isactive->is_active = 0;
+            // $notification = array(
+            //     'alert-danger' => $isactive->name.' is inactive!',
+            // );
+        }
+        if(!($isactive->update())){
+            $notification = array(
+                'error' => $isactive->name.' could not be changed!',
+            );
+        }
+        return back()->withInput();
+        // return back()->with($notification)->withInput();
     }
 }

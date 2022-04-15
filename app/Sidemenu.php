@@ -10,6 +10,7 @@ class Sidemenu extends Model
 {
     protected $fillable = [
         'name',
+        'name_np',
         'model',
         'link',
         'link_type',

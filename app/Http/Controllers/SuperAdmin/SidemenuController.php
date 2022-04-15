@@ -43,9 +43,11 @@ class SidemenuController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'name_np' => 'required',
         ]);
         $sidemenu = Sidemenu::create([
             'name' => $request['name'],
+            'name_np' => $request['name_np'],
             'model' => $request['model'],
             'link' => $request['link'],
             'link_type' => strpos($request->link, "http") === 0 ? 1 : 0,
@@ -93,6 +95,7 @@ class SidemenuController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'name_np' => 'required',
         ]);
         $sidemenus = Sidemenu::find($id);
         $all_data = $request->all();

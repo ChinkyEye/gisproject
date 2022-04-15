@@ -71,7 +71,7 @@
           <a href="#" class="nav-link {{ (request()->is('home/menu-page/*')) ? 'active' : '' }}">
             <i class="nav-icon far fa-plus-square"></i>
             <p>
-              Menu Side
+              Menu Top
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
@@ -121,11 +121,43 @@
              </a>
            </li>
            <li class="nav-item">
+              <a href="{{ route('superadmin.pratibedan.index')}}" class="nav-link {{ (request()->is('home/menu-page/pratibedan*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-file"></i>
+                <p>
+                 Pratibedan
+               </p>
+             </a>
+           </li>
+           <li class="nav-item">
               <a href="{{ route('superadmin.sangathansanrachana.index')}}" class="nav-link {{ (request()->is('home/menu-page/sangathansanrachana*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-user"></i>
                 {{-- <p> --}}
                  Sangathan Sanrachana
                {{-- </p> --}}
+             </a>
+           </li>
+           <li class="nav-item">
+              <a href="{{ route('superadmin.contactus.index')}}" class="nav-link {{ (request()->is('home/menu-page/contactus*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-address-card"></i>
+                <p>
+                 Contact Us
+               </p>
+             </a>
+           </li>
+           <li class="nav-item">
+              <a href="{{ route('superadmin.aboutus.index')}}" class="nav-link {{ (request()->is('home/menu-page/aboutus*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-info"></i>
+                <p>
+                 About Us
+               </p>
+             </a>
+           </li>
+           <li class="nav-item">
+              <a href="{{ route('superadmin.gallery.index')}}" class="nav-link {{ (request()->is('home/menu-page/gallery*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-images"></i>
+                <p>
+                 Gallery
+               </p>
              </a>
            </li>
           </ul>
@@ -134,7 +166,7 @@
           <a href="#" class="nav-link {{ (request()->is('home/sidebar-part/*')) ? 'active' : '' }}">
             <i class="nav-icon far fa-plus-square"></i>
             <p>
-              Sidebar Side
+              Sidebar Menu
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
@@ -144,6 +176,14 @@
                 <i class="nav-icon fas fa-user"></i>
                 <p>
                   Mantralaya
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('superadmin.dal.index')}}" class="nav-link {{ (request()->is('home/sidebar-part/dal*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                  Dal
                 </p>
               </a>
             </li>
@@ -213,6 +253,22 @@
             <i class="nav-icon fas fa-building"></i>
             <p>
              Office
+           </p>
+         </a>
+       </li>  
+        <li class="nav-item">
+          <a href="{{ route('superadmin.usefullink.index')}}" class="nav-link {{ (request()->is('home/usefullink*')) ? 'active' : '' }}">
+            <i class="nav-icon fas  fa-link"></i>
+            <p>
+             Useful Link
+           </p>
+         </a>
+       </li> 
+        <li class="nav-item">
+          <a href="{{ route('superadmin.introduction.index')}}" class="nav-link {{ (request()->is('home/introduction*')) ? 'active' : '' }}">
+            <i class="nav-icon fas fa-calendar-alt"></i>
+            <p>
+            Introduction
            </p>
          </a>
        </li>

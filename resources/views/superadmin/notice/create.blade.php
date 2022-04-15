@@ -66,9 +66,10 @@
           <div class="row col-md-12">
             @foreach ($modelhastypes as $key => $data)
             <div class="form-check-inline col-md">
-              <input class="form-check-inline" type="checkbox" name="type" value="{{$data->id}}">
-              <label class="form-check-label" for="type1">
+              <input class="form-check-inline" type="checkbox" name="type" value="{{$data->id}}" onclick="onlyOne(this)">
+              <label class="form-check-label" for="type">
                {{$data->type}}
+               {{$data->id}}
              </label>
            </div>
            @endforeach

@@ -40,6 +40,7 @@
                       <tr>
                         <th>SN</th>
                         <th>Name</th>
+                        <th>Name Nepali</th>
                         <th>Type</th>
                         <th>Model</th>
                         <th>Link</th>
@@ -54,15 +55,14 @@
                       <tr class="{{$menu->is_active == 1 ? '' : 'table-danger'}}">
                         <td>{{$key + 1}}</td>
                         <td>{{$menu->name}}</td>
+                        <td>{{$menu->name_np}}</td>
                         <td>{{$menu->getModelType->type}}</td>
-                        @if($menu->is_main == 1)
                         <td>{{$menu->model}}</td>
                         <td>{{$menu->link}}</td>
-                        <td>{{$menu->page}}</td>
+                        @if($menu->link == '/')
+                        <td>welcome</td>
                         @else
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{$menu->page}}</td>
                         @endif
                         <td>
                           @if($menu->is_main)
@@ -77,9 +77,11 @@
                           </a>
                         </td>
                         <td>
-                          <a href="{{ route('superadmin.menu.edit',$menu->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
+                          {{-- <a href="{{ route('superadmin.menu.edit',$menu->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a> --}}
                           @if($menu->is_main)
-                          <a href="{{ route('superadmin.menuhasdropdown.index',$menu->id) }}" class="btn btn-xs btn-outline-info" title="Add menu Schedule"><i class="fas fa-plus"></i></a>
+                          <a href="{{ route('superadmin.menuhasdropdown.index',$menu->id) }}" class="btn btn-xs btn-outline-info" title="Add menu Schedule">
+                            <i class="fas fa-plus">{{$menu->parent->count()}}</i>
+                          </a>
                           @endif
 
                           <form action='javascript:void(0)' data_url="{{route('superadmin.menu.destroy',$menu->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>

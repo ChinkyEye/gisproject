@@ -50,7 +50,7 @@ $factory->define(ModelHasType::class, function (Faker $faker) {
         'model' => 'none',
         'type' => 'none',
         'is_active' => '1',
-        'date_np' => date('Y-m-d H:i:s'),
+        'date_np' => date('Y-m-d'),
         'date' => date('Y-m-d'),
         'time' => date('H:i:s'),
         'created_by' => '1',

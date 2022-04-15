@@ -79,7 +79,13 @@
                         {{$niti->getUser->name}}
                       </td>
                       <td>
-                        <a href="{{ route('superadmin.niti.edit',$niti->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
+                        {{-- <a href="{{ route('superadmin.niti.edit',$niti->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a> --}}
+
+                        <form action="{{route('superadmin.niti.edit',$niti->id)}}" method="GET" class="d-inline-block">
+                          <input type="hidden" id="model" name="model" value="{{ Request::segment(3) }} ">
+                          <button type="submit" class="btn btn-xs btn-outline-info"><i class="fas fa-edit"></i></button>
+                        </form>
+
                         <form action='javascript:void(0)' data_url="{{route('superadmin.niti.destroy',$niti->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
                           <input type='hidden' name='_token' value='".csrf_token()."'>
                           <input name='_method' type='hidden' value='DELETE'>
