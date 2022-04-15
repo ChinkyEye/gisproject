@@ -98,4 +98,14 @@ class HomeController extends Controller
     public function list() {
         return view('web.list');
     }
+
+    public function gallery() {
+        $pages = "Gallery";
+        return view('web.gallery-folder', compact('pages'));
+    }
+
+    public function gallerySlug($slug) {
+        $pages = "Gallery Name";
+        return view('web.gallery', compact('pages'));
+    }
 }

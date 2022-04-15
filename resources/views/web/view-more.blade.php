@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 @push('tab_title')
-About | 
+{{$name}} | 
 @endpush
 @section('content')
 <nav class="breadcrumb-main mt-4">
@@ -14,11 +14,11 @@ About |
 			<li class="breadcrumb-item my-auto active">
 				<a href="#" class="">{{$name}}</a>
 			</li>
-			<!-- <li class="breadcrumb-item my-auto active">
+			{{-- <li class="breadcrumb-item my-auto active">
 				<a href="javascript:void(0);" class="font-weight-normal">
 					Data
 				</a>
-			</li> -->
+			</li> --}}
 		</ol>
 	</div>
 </nav>

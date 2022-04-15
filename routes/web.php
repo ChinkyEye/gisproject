@@ -160,6 +160,8 @@ Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest'])->group(
     // home
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/list', 'HomeController@list')->name('list');
+    Route::get('/gallery', 'HomeController@gallery')->name('gallery');
+    Route::get('/gallery/{slug}', 'HomeController@gallerySlug')->name('gallerySlug');
     Route::get('/detail/{type}', 'DetailController@index')->name('detail.index');
     Route::get('/detail/{type}/search', 'DetailController@search')->name('detail.search');
     Route::get('/{link}/{links?}', 'HomeController@link')->name('home.link');

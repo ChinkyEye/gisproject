@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 @push('tab_title')
-About | 
+{{$name}} | 
 @endpush
 @section('content')
 <nav class="breadcrumb-main mt-4">
