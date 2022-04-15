@@ -17,6 +17,7 @@ class CreateNitisTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('document')->nullable();
+            $table->string('path')->nullable();
             $table->string('description')->nullable();
             $table->integer('type');
             $table->boolean('is_active')->default(True); // 1 active, 0 non active

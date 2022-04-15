@@ -67,12 +67,14 @@ class NitiController extends Controller
 
         }else{
             $fileName = Null;
+            $destinationPath = Null;
         }
        $nitis = Niti::create([
             'title' => $request['title'],
             'description' => $request['description'],
             'type'=> $request['type'],
             'document'=> $fileName,
+            'path'=> $destinationPath,
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
             'date' => date("Y-m-d"),
             'time' => date("H:i:s"),

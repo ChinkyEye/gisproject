@@ -57,14 +57,12 @@
                         <td>{{$menu->name}}</td>
                         <td>{{$menu->name_np}}</td>
                         <td>{{$menu->getModelType->type}}</td>
-                        @if($menu->is_main == 1)
                         <td>{{$menu->model}}</td>
                         <td>{{$menu->link}}</td>
-                        <td>{{$menu->page}}</td>
+                        @if($menu->link == '/')
+                        <td>welcome</td>
                         @else
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{$menu->page}}</td>
                         @endif
                         <td>
                           @if($menu->is_main)

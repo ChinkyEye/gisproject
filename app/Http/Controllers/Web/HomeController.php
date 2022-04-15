@@ -66,9 +66,19 @@ class HomeController extends Controller
                 $datas = $modelName::orderBy('id','DESC')->where('type',$type);
             }
             $datas = $datas->get();
-            return view('web.'.$page, compact(['datas']));
+            return view('web.'.$page, compact(['datas','link','link2']));
             
         }
+    }
+
+    public function detail(Request $request, $link,$link2)
+    {
+        $model = Menu::where('link',$link)->value('model');
+        // var_dump($type); die();
+        $modelName = '\\App\\' . $model;
+        $datas = $modelName::orderBy('id','DESC')->where('id',$link2)->get();
+        return view('web.view-more', compact(['datas','link','link2']));
+            
     }
 
     public function sidelink(Request $request, $link)

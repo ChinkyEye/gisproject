@@ -43,6 +43,7 @@ return [
      'useful-link' => 'Useful link',
      'read-more' => 'Read more',
      'created-at' => 'Created at',
+     'read_more' => 'Read More',
 
 
 

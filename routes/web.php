@@ -162,6 +162,7 @@ Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest'])->group(
     Route::get('/detail/{type}', 'DetailController@index')->name('detail.index');
     Route::get('/detail/{type}/search', 'DetailController@search')->name('detail.search');
     Route::get('/{link}/{links?}', 'HomeController@link')->name('home.link');
+    Route::get('/{link}/detail/{links}', 'HomeController@detail')->name('home.detail');
     Route::get('/web/sidelink/{link}', 'HomeController@sidelink')->name('home.sidelink');
     
 });
