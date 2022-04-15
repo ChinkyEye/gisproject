@@ -64,4 +64,8 @@ class HomeController extends Controller
         $datas = $modelName::get();
         return view('web.'.$page, compact(['datas']));
     }
+
+    public function list() {
+        return view('web.list');
+    }
 }

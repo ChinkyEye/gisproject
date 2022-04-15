@@ -123,6 +123,7 @@ Route::namespace('User')->prefix('user')->name('user.')->middleware(['user','aut
 Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest'])->group(function(){
     // home
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/list', 'HomeController@list')->name('list');
     Route::get('/detail/{type}', 'DetailController@index')->name('detail.index');
     Route::get('/detail/{type}/search', 'DetailController@search')->name('detail.search');
     Route::get('/{link}/{links?}', 'HomeController@link')->name('home.link');

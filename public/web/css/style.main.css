@@ -709,3 +709,44 @@
     {
       vertical-align: middle !important;
     }
+
+/*list page*/
+    .main-card {
+        /*width: 400px;*/
+        border: none;
+        border-radius: 10px;
+        background-color: #fff
+    }
+
+    .main-stats {
+        background: #f2f5f8 !important;
+        color: #000 !important
+    }
+
+    .main-articles {
+        font-size: 10px;
+        color: #a1aab9
+    }
+
+    .main-number1 {
+        font-weight: 500
+    }
+
+    .main-followers {
+        font-size: 10px;
+        color: #a1aab9
+    }
+
+    .main-number2 {
+        font-weight: 500
+    }
+
+    .main-rating {
+        font-size: 10px;
+        color: #a1aab9
+    }
+
+    .main-number3 {
+        font-weight: 500
+    }
+
