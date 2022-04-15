@@ -9,6 +9,7 @@ class Agency extends Model
     protected $fillable = [
         'contact_no',
         'website_link',
+        'path',
         'image',
         'is_active',
         'date_np',

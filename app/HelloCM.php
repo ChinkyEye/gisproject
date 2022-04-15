@@ -8,6 +8,7 @@ class HelloCM extends Model
 {
    protected $fillable = [
       'thumbnail',
+      'path',
       'email',
       'description',
       'link',

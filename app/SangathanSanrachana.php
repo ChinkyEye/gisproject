@@ -8,6 +8,7 @@ class SangathanSanrachana extends Model
 {
     protected $fillable = [
         'title',
+        'path',
         'image',
         'is_active',
         'date_np',

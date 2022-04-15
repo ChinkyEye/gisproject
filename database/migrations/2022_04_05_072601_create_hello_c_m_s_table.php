@@ -15,10 +15,11 @@ class CreateHelloCMSTable extends Migration
     {
         Schema::create('hello_c_m_s', function (Blueprint $table) {
             $table->id();
-            $table->string('thumbnail')->nullable();
             $table->string('email')->nullable();
             $table->text('description')->nullable();
             $table->string('link')->nullable();
+            $table->string('path')->nullable();
+            $table->string('thumbnail')->nullable();
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);

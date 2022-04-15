@@ -24,8 +24,13 @@
 </nav>
 <section class="breadcrumb-main my-4">
 	<div class="container">
+<<<<<<< HEAD
 		<div class="section-heading ">
 			<small>{{ Date('j F, Y',strtotime($datas->date)) }}</small>
+=======
+		<div class="section-heading">
+			<small class="col-12">{{ Date('j F, Y',strtotime($datas->date)) }}</small>
+>>>>>>> 3083318 (path added)
 		    <h2>{{$datas->title}}</h2>
 		    <div class="line"></div>
 		</div>
