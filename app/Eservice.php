@@ -10,6 +10,8 @@ class Eservice extends Model
         'name',
         'thumbnail',
         'logo',
+        'paththumbnail',
+        'pathlogo',
         'karyalaya',
         'contact',
         'website_link',

@@ -8,6 +8,7 @@ class Mantralaya extends Model
 {
     protected $fillable = [
         'photo',
+        'path',
         'email',
         'name',
         'phone',

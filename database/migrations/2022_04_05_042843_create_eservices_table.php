@@ -20,6 +20,8 @@ class CreateEservicesTable extends Migration
             $table->string('contact')->nullable();
             $table->string('thumbnail')->nullable();        
             $table->string('logo')->nullable();
+            $table->string('paththumbnail')->nullable();        
+            $table->string('pathlogo')->nullable();
             $table->text('website_link')->nullable();         
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);

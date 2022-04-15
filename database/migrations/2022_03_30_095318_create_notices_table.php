@@ -16,6 +16,7 @@ class CreateNoticesTable extends Migration
         Schema::create('notices', function (Blueprint $table) {
         $table->id();
             $table->string('title');
+            $table->string('path')->nullable();
             $table->string('document')->nullable();
             $table->string('description')->nullable();
             $table->integer('scroll');

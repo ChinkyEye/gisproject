@@ -8,6 +8,7 @@ class Pratibedan extends Model
 {
     protected $fillable = [
         'title',
+        'path',
         'type',
         'document',
         'description',

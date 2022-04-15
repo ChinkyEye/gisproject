@@ -15,8 +15,10 @@ class CreateAboutUsTable extends Migration
     {
         Schema::create('about_us', function (Blueprint $table) {
             $table->id();
+            $table->text('title')->nullable();
             $table->text('description');
             $table->string('image')->nullable();
+            $table->string('path')->nullable();
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);

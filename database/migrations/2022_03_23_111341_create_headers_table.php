@@ -16,6 +16,7 @@ class CreateHeadersTable extends Migration
         Schema::create('headers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('path')->nullable();
             $table->string('image')->nullable();
             $table->string('slogan');  
             $table->integer('sort_id')->nullable();          

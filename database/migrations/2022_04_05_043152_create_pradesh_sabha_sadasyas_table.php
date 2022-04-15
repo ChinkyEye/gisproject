@@ -21,6 +21,7 @@ class CreatePradeshSabhaSadasyasTable extends Migration
             $table->string('dala')->nullable();
             $table->string('nirvachit_kshetra_no');
             $table->string('phone')->nullable();
+            $table->string('path')->nullable();
             $table->string('image')->nullable();
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
