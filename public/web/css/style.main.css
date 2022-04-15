@@ -1,6 +1,7 @@
 :root{
     --site-color-red: #bd2921;
     --site-color-blue: #003679; /*#294d99*/
+    --primary: var(--site-color-blue);
     --site-color-footer-blue: #021c3c; /*#294d99*/
     --menu-height-md: 4rem;
     --menu-height-sm: 70px;
@@ -57,13 +58,29 @@
     color: white;
     background-color: var(--site-color-blue);
 }
-
-.btn-hover-main:hover {
-    color: var(--white);
-    background: var(--site-color-red);
-    font-weight: normal;
-    font-size: .875rem;
-}
+/*bottom*/
+    .btn.bg-main-red i,.btn.bg-main-blue i{
+        transition: .5s;
+    }
+    .btn.bg-main-red:hover i{
+        color: var(--site-color-blue);
+        transition: .5s;
+    }
+    .btn.bg-main-blue:hover i{
+        color: var(--site-color-red);
+        transition: .5s;
+    }
+    .btn.bg-main-blue:hover,.btn.bg-main-red:hover{
+        color: white;
+        font-weight: inherit;
+        font-size: 16px;
+    }
+    .btn-hover-main:hover {
+        color: var(--white);
+        background: var(--site-color-red);
+        font-weight: normal;
+        font-size: .875rem;
+    }
 
 .card:hover > .main-hover-card-text, .card:hover > .main-hover-card-text > .card-title {
     transition: 1s;
