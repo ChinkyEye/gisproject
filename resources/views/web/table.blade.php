@@ -3,8 +3,26 @@
 About | 
 @endpush
 @section('content')
-
-<section class="breadcrumb-main my-4">
+<nav class="bg-light breadcrumb-main">
+	<div class="container">
+		<ol class="breadcrumb bg-light align-content-center">
+			<li class="breadcrumb-item my-auto">
+				<a href="{{ route('web.home') }}">
+					<i class="fa fa-home fa-2x"></i>
+				</a>
+			</li>
+			<li class="breadcrumb-item my-auto">
+				<a href="#" class="">Library</a>
+			</li>
+			<li class="breadcrumb-item my-auto active">
+				<a href="javascript:void(0);" class="font-weight-normal">
+					Data
+				</a>
+			</li>
+		</ol>
+	</div>
+</nav>
+<section class="my-4">
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
