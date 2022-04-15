@@ -38,6 +38,7 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::get('main-entry/menuhasdropdown/active/{id}', 'MenuHasDropdownController@isActive')->name('menuhasdropdown.active');
     Route::get('main-entry/menu/menuhasdropdown/{id}','MenuHasDropdownController@index')->name('menuhasdropdown.index');
     Route::get('main-entry/menu/menuhasdropdown/create/{id}','MenuHasDropdownController@create')->name('menuhasdropdown.create');
+    Route::post('/update-items', 'MenuHasDropdownController@updateItems')->name('update.items');
 
     Route::resource('main-entry/slider', 'SliderController');
         Route::get('main-entry/slider/active/{id}', 'SliderController@isActive')->name('slider.active');

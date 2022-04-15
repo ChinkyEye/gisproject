@@ -23,7 +23,11 @@ class MenuHasDropdownController extends Controller
     {
         $menus = Menu::find($id);
         $menu_name = Menu::where('id',$id)->value('name');
-        $menuhasdropdowns = Menu::where('parent_id',$id)->paginate(10);
+        // $menuhasdropdowns = Menu::where('parent_id',$id)->paginate(10);
+        $menuhasdropdowns = Menu::where('parent_id',$id)
+                                    ->orderBy('sort_id')
+                                    ->get();
+                                    // dd($menuhasdropdowns);
         return view('superadmin.menuhasdropdown.index', compact('menus','menuhasdropdowns','menu_name'));
     }
 
@@ -171,4 +175,23 @@ class MenuHasDropdownController extends Controller
         }
         return back()->with($notification)->withInput();
     }
+
+    public function updateItems(Request $request)
+    {
+        $input = $request->all();
+        
+        if(!empty($input['pending']))
+        {
+            foreach ($input['pending'] as $key => $value) {
+                $key = $key + 1;
+                Menu::where('id',$value)
+                        ->update([
+                            'sort_id'=>$key
+                        ]);
+            }
+        }
+        return response()->json(['status'=>'success']);
+    }
+
+
 }
