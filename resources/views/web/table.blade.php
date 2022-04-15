@@ -12,13 +12,13 @@ About |
 				</a>
 			</li>
 			<li class="breadcrumb-item my-auto">
-				<a href="#" class="">Library</a>
+				<a href="#" class="">{{$name}}</a>
 			</li>
-			<li class="breadcrumb-item my-auto active">
+			<!-- <li class="breadcrumb-item my-auto active">
 				<a href="javascript:void(0);" class="font-weight-normal">
 					Data
 				</a>
-			</li>
+			</li> -->
 		</ol>
 	</div>
 </nav>
