@@ -25,6 +25,7 @@ About |
 <section class="breadcrumb-main my-4">
 	<div class="container">
 		<div class="section-heading ">
+			<small class="col-12">{{ Date('j F, Y',strtotime($datas->date)) }}</small>
 		    <h2>{{$datas->title}}</h2>
 		    <div class="line"></div>
 		</div>
@@ -32,7 +33,6 @@ About |
 			<div class="col-md-12{{--  text-justify --}}">
 				<p>{!! $datas->description !!}</p>
 			</div>
-			<small class="col-12">{{ Date('j F, Y',strtotime($datas->date)) }}</small>
 			<div class="col-12">
 				<a href="{{URL::to('/')}}/{{$datas->path}}/{{$datas->document}}" class="btn bg-main-blue"><i class="fa fa-download"></i> Download</a>
 			</div>
