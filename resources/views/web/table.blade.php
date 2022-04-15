@@ -11,14 +11,20 @@
 					<i class="fa fa-home fa-2x"></i>
 				</a>
 			</li>
+			@if($level == '1')
 			<li class="breadcrumb-item my-auto">
-				<a href="#" class="">{{$name}}</a>
+				<a href="#" class="">{{$link}}</a>
 			</li>
-			<!-- <li class="breadcrumb-item my-auto active">
+			@elseif($level == '2')
+			<li class="breadcrumb-item my-auto">
+				<a href="#" class="">{{$link}}</a>
+			</li>
+			<li class="breadcrumb-item my-auto active">
 				<a href="javascript:void(0);" class="font-weight-normal">
-					Data
+					{{$link2}}
 				</a>
-			</li> -->
+			</li>
+			@endif
 		</ol>
 	</div>
 </nav>
@@ -51,10 +57,22 @@
 				                    </a>
 								</td>
 								<td>
+									@if($level == '1')
 									<a class="effect1" href="{{ route('web.home.detail', [$link, $data->id ]) }}">
                               {{ __('language.read_more')}}
                               <span class="bg"></span>
                             </a>
+                            @elseif($level == '2')
+                            <a class="effect1" href="{{ route('web.home.more', [$link,$link2, $data->id ]) }}">
+                              {{ __('language.read_more')}}
+                              <span class="bg"></span>
+                            </a>
+                            @else
+                            <a class="effect1" href="{{ route('web.home.more', [$link, $data->id ]) }}">
+                              {{ __('language.read_more')}}
+                              <span class="bg"></span>
+                            </a>
+                            @endif
 								</td>
 							</tr>
 							@endforeach

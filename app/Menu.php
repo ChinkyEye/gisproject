@@ -13,6 +13,7 @@ class Menu extends Model
         'name_np',
         'model',
         'link',
+        'level',
         'is_main',
         'type',
         'page',

@@ -19,12 +19,21 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus  = Menu::orderBy('id','DESC')
+        $menus  = Menu::orderBy('sort_id','ASC')
                         ->where('created_by',Auth::user()->id)
                         ->where('parent_id','0')
                         ->with('getModelType','parent')
-                        ->paginate(50);
+                        ->get();
         return view('superadmin.menu.index', compact('menus'));
+    }
+
+    public function order_menu(Request $request){
+        $menu = Menu::orderBy('sort_id','ASC')->get();
+        $itemID = $request->itemID;
+        $itemIndex = $request->itemIndex;
+        foreach($menu as $value){
+            return Menu::where('id','=',$itemID)->update(array('sort_id'=> $itemIndex));
+        }
     }
 
     /**

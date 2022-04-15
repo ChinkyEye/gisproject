@@ -21,6 +21,7 @@ class CreateMenusTable extends Migration
             $table->unsignedBigInteger('type');
             $table->foreign('type')->references('id')->on('model_has_types');
             $table->string('link')->nullable();
+            $table->integer('level')->default(1);
             $table->integer('is_main')->default(0);
             $table->string('page')->nullable();
             $table->integer('parent_id')->default('0');

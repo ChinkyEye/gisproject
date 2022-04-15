@@ -55,10 +55,12 @@ class AboutUsCOntroller extends Controller
 
         }else{
             $fileName = Null;
+            $destinationPath = Null;
         }
         $aboutus = AboutUs::create([
             'description' => $request['description'],
             'image'=> $fileName,
+            'path'=> $destinationPath,
             'is_active' => '1',
             'date' => date("Y-m-d"),
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),

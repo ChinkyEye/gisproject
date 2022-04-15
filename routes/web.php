@@ -24,6 +24,8 @@ Auth::routes(['reset' => false,
 
 Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(['superadmin','auth'])->group(function(){
 
+    Route::get('/order-menu','MenuController@order_menu')->name('order-menu');
+
     Route::get('/', 'HomeController@index')->name('home');
 
     Route::resource('main-entry/header','HeaderController');
@@ -165,7 +167,8 @@ Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest'])->group(
     Route::get('/detail/{type}', 'DetailController@index')->name('detail.index');
     Route::get('/detail/{type}/search', 'DetailController@search')->name('detail.search');
     Route::get('/{link}/{links?}', 'HomeController@link')->name('home.link');
-    Route::get('/{link}/detail/{links}', 'HomeController@detail')->name('home.detail');
+    Route::get('/{link}/detail/{id}', 'HomeController@detail')->name('home.detail');
+    Route::get('/{link}/{link2}/more/{id}', 'HomeController@more')->name('home.more');
     Route::get('/web/sidelink/{link}', 'HomeController@sidelink')->name('home.sidelink');
     
 });

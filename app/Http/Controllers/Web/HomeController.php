@@ -19,6 +19,7 @@ use App\TblRemoteSewaPrava;
 use App\TblRemoteEFarum;
 use App\TblRemotePrativedan;
 use App\TblRemotePublication;
+use App\Notice;
 
 
 class HomeController extends Controller
@@ -26,6 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $page_name = "Welcome";
+        $scroll_notice = Notice::orderBy('id','DESC')->where('scroll','1')->where('is_active','1')->take(10)->get();
         $remote_notices = TblRemoteNotice::orderBy('id','DESC')->take(10)->get();
         $remote_yearly_budgets = TblRemoteYearlyBudget::orderBy('id','DESC')->take(10)->get();
         $remote_kharid_bolpatras = TblRemoteKharidBolpatra::orderBy('id','DESC')->take(10)->get();
@@ -34,8 +36,8 @@ class HomeController extends Controller
         $remote_e_farums = TblRemoteEFarum::orderBy('id','DESC')->take(10)->get();
         $remote_prativedans = TblRemotePrativedan::orderBy('id','DESC')->take(10)->get();
         $remote_publications = TblRemotePublication::orderBy('id','DESC')->take(10)->get();
-        $offices = Office::orderBy('id','DESC')->take(10)->get();
-        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','offices']));
+        $offices = Office::orderBy('id','DESC')->get();
+        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','offices','scroll_notice']));
     }
 
     public function link(Request $request, $link,$link2 = Null)
@@ -48,15 +50,16 @@ class HomeController extends Controller
         else{
             // var_dump($link,$link2); die();
             if($link2 == Null){
-                $link = $link;
+                $linkf = $link;
             }
             else{
-                $link = $link.'/'.$link2;
+                $linkf = $link.'/'.$link2;
             }
-            $model = Menu::where('link',$link)->value('model');
-            $page = Menu::where('link',$link)->value('page');
-            $type = Menu::where('link',$link)->value('type');
-            $name = Menu::where('link',$link)->value('name');
+            $model = Menu::where('link',$linkf)->value('model');
+            $page = Menu::where('link',$linkf)->value('page');
+            $type = Menu::where('link',$linkf)->value('type');
+            $name = Menu::where('link',$linkf)->value('name');
+            $level = Menu::where('link',$linkf)->value('level');
             
         // var_dump($type); die();
             $modelName = '\\App\\' . $model;
@@ -67,19 +70,35 @@ class HomeController extends Controller
                 $datas = $modelName::orderBy('id','DESC')->where('type',$type);
             }
             $datas = $datas->get();
-            return view('web.'.$page, compact(['datas','link','link2','name']));
+            return view('web.'.$page, compact(['datas','link','link2','name','level']));
             
         }
     }
 
-    public function detail(Request $request, $link,$link2)
+    public function detail(Request $request, $link, $id)
     {
+        // var_dump($link); die();
         $model = Menu::where('link',$link)->value('model');
         $name = Menu::where('link',$link)->value('name');
+        $level = Menu::where('link',$link)->value('level');
         // var_dump($type); die();
         $modelName = '\\App\\' . $model;
-        $datas = $modelName::orderBy('id','DESC')->find($link2);
-        return view('web.view-more', compact(['datas','link','link2','name']));
+        $datas = $modelName::orderBy('id','DESC')->find($id);
+        return view('web.view-more', compact(['datas','link','name','level']));
+            
+    }
+
+    public function more(Request $request, $link,$link2, $id)
+    {
+        // var_dump($link,$link2); die();
+        $linkf = $link.'/'.$link2;
+        $model = Menu::where('link',$linkf)->value('model');
+        $name = Menu::where('link',$linkf)->value('name');
+        $level = Menu::where('link',$linkf)->value('level');
+        // var_dump($type); die();
+        $modelName = '\\App\\' . $model;
+        $datas = $modelName::orderBy('id','DESC')->find($id);
+        return view('web.view-more', compact(['datas','link','link2','name','level']));
             
     }
 

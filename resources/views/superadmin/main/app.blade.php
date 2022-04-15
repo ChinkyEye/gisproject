@@ -38,14 +38,11 @@
   </div>
   <!-- ./wrapper -->
   <script src="{{ asset('js/app.js') }}" defer></script>
-  <script src="{{URL::to('/')}}/jquery/jquery.min.js"></script>
-  {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> --}}
-  {{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script> --}}
 
   <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+  
   @stack('javascript')
 
 </body>
