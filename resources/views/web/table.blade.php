@@ -54,6 +54,7 @@
 								<td>
 									<a href="{{URL::to('/')}}/{{$data->path}}/{{$data->document}}" target="_blank" class="text-danger text-center">
 				                          <i class="fa fa-file-pdf-o fa-2x"></i>
+				                          {{-- <i class="fa fa-file fa-2x"></i> --}}
 				                    </a>
 								</td>
 								<td>
