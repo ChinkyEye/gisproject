@@ -18,19 +18,34 @@
     </div>
     <!-- /.content-header -->
     <!-- Main content -->
-    <div class="box-body table-responsive">
-@if(isset($menus))
-@if(count($menus) > 0)
-<ul id="menu" class="sortable">
-    @foreach($menus as $menu)
-    <li id="{{$menu->id}}">
-      <a>{{$menu->name}}</a>
-    </li>
-    @endforeach
-  </ul>
-  @endif
-  @endif
-</div>
+    {{-- <section class="container-fluid">
+      <div class="box-body table-responsive">
+        @if(isset($menus))
+        @if(count($menus) > 0)
+        <table class="table table-sm table-bordered table-hover table-striped">
+          <tbody id="menu" class="sortable">
+              @foreach($menus as $menu)
+            <tr>
+              <td id="{{$menu->id}}">
+                <a class="">
+                  {{$menu->name}}
+                </a>
+              </td>
+            </tr>
+              @endforeach
+          </tbody>
+        </table>
+        <ul id="menu" class="list-inline sortable">
+          @foreach($menus as $menu)
+          <li class="list-inline-item" id="{{$menu->id}}">
+            <a class="btn btn-sm btn-dark text-white">{{$menu->name}}</a>
+          </li>
+          @endforeach
+        </ul>
+        @endif
+        @endif
+      </div>
+    </section> --}}
     <section class="content">
       <div class="container-fluid">
         <div class="row">
@@ -41,13 +56,16 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-md-2">
-                    <a href="{{route('superadmin.menu.create')}}" class="btn btn-flat btn-danger btn-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></a>
+                    <a href="{{route('superadmin.menu.create')}}" class="btn btn-flat btn-sm btn-danger btn-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></a>
+                  </div>
+                  <div class="col-md">
+                    <i class="float-right">Drap & drop for sorting.</i>
                   </div>
                 </div>
               </div><!-- /.card-header -->
-              <div class="card-body">
+              <div class="card-body p-0">
                 <div class="table-responsive">
-                  <table class="table table-sm table-bordered table-hover">
+                  <table class="table {{-- table-sm --}} table-bordered table-hover mb-0">
                     <thead class="thead-dark" style="text-align: center">                  
                       <tr>
                         <th>SN</th>
@@ -62,9 +80,9 @@
                         <th>Action</th>
                       </tr>
                     </thead>
-                    <tbody style="text-align: center">
+                    <tbody  id="menu" class="sortable" style="text-align: center">
                       @foreach($menus as $key => $menu)
-                      <tr class="{{$menu->is_active == 1 ? '' : 'table-danger'}}">
+                      <tr id="{{$menu->id}}" class="{{$menu->is_active == 1 ? '' : 'table-danger'}}">
                         <td>{{$key + 1}}</td>
                         <td>{{$menu->name}}</td>
                         <td>{{$menu->name_np}}</td>
@@ -91,15 +109,15 @@
                         <td>
                           {{-- <a href="{{ route('superadmin.menu.edit',$menu->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a> --}}
                           @if($menu->is_main)
-                          <a href="{{ route('superadmin.menuhasdropdown.index',$menu->id) }}" class="btn btn-xs btn-outline-info" title="Add menu Schedule">
+                          <a href="{{ route('superadmin.menuhasdropdown.index',$menu->id) }}" class="btn btn-sm btn-outline-info" title="Add menu Schedule">
                             <i class="fas fa-plus">{{$menu->parent->count()}}</i>
                           </a>
                           @endif
 
-                          <form action='javascript:void(0)' data_url="{{route('superadmin.menu.destroy',$menu->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
+                          <form action='javascript:void(0)' data_url="{{route('superadmin.menu.destroy',$menu->id)}}" method='post' class='d-inline-block mb-0'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
                             <input type='hidden' name='_token' value='".csrf_token()."'>
                             <input name='_method' type='hidden' value='DELETE'>
-                            <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
+                            <button class='btn btn-sm btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
                           </form>
                         </td>
                       </tr>
@@ -126,7 +144,7 @@
     $(function(){
       $("#menu").sortable({
         stop: function(){
-          $.map($(this).find('li'), function(el) {
+          $.map($(this).find('tr'), function(el) {
             var itemID = el.id;
             var itemIndex = $(el).index();
             $.ajax({
@@ -134,7 +152,7 @@
               type:'GET',
               dataType:'json',
               data: {itemID:itemID, itemIndex: itemIndex},
-            })
+            });
           });
         }
       });
