@@ -43,14 +43,13 @@ class MantralayaController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'image' => 'required|mimes:jpg,jpeg|max:1024',
         ]);
         $uppdf = $request->file('image');
         if($uppdf != ""){
-            $this->validate($request, [
-                'image' => 'required|mimes:jpg,jpeg|max:1024',
-            ]);
             $destinationPath = 'images/mantralaya/';
             $extension = $uppdf->getClientOriginalExtension();
+            $mimes = $uppdf->getMimeType();
             $fileName = md5(mt_rand()).'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
@@ -64,7 +63,9 @@ class MantralayaController extends Controller
             'phone' => $request['phone'],
             'email' => $request['email'],
             'link' => $request['link'],
-            'photo'=> $fileName,
+            'document'=> $fileName,
+            'path'=> $destinationPath,
+            'mimes_type'=> $mimes,
             'latitude' => $request['latitude'],
             'longitude' => $request['longitude'],
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),

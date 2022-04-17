@@ -53,6 +53,7 @@ class ImportantPlaceController extends Controller
             ]);
             $destinationPath = 'images/importantplace/';
             $extension = $uppdf->getClientOriginalExtension();
+            $mimes = $uppdf->getMimeType();
             $fileName = md5(mt_rand()).'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;

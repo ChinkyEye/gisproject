@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Mantralaya extends Model
 {
     protected $fillable = [
-        'photo',
         'path',
+        'document',
+        'mimes_type',
         'email',
         'name',
         'phone',

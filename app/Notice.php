@@ -8,9 +8,9 @@ class Notice extends Model
 {
    protected $fillable = [
          'title',
-         'path',
          'scroll',
          'type',
+         'path',
          'document',
          'mimes_type',
          'description',

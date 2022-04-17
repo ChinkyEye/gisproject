@@ -9,7 +9,8 @@ class ImportantPlace extends Model
     protected $fillable = [
       'title',
       'path',
-      'image',
+      'document',
+      'mimes_type',
       'description',
       'longitude',
       'latitude',
