@@ -61,7 +61,7 @@ class AboutUsCOntroller extends Controller
         }
         $aboutus = AboutUs::create([
             'description' => $request['description'],
-            'image'=> $fileName,
+            'document'=> $fileName,
             'path'=> $destinationPath,
             'mimes_type'=> $mimes,
             'is_active' => '1',
@@ -118,14 +118,14 @@ class AboutUsCOntroller extends Controller
                 'image' => 'required|mimes:jpg,jpeg,png',               
             ]);
             $destinationPath = 'images/aboutus/';
-            $oldFilename = $destinationPath.'/'.$aboutus->image;
+            $oldFilename = $destinationPath.'/'.$aboutus->document;
 
             $extension = $uppdf->getClientOriginalExtension();
             $name = $uppdf->getClientOriginalName();
             $fileName = $name.'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
-            $all_data['image'] = $fileName;
+            $all_data['document'] = $fileName;
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
             }
@@ -147,7 +147,7 @@ class AboutUsCOntroller extends Controller
     {
         $datas = AboutUs::find($id);
         $destinationPath = 'images/aboutus/';
-        $oldFilename = $destinationPath.'/'.$datas->image;
+        $oldFilename = $destinationPath.'/'.$datas->document;
         if($datas->delete()){
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);

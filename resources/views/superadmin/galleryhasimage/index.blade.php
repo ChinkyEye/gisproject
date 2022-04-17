@@ -48,10 +48,10 @@
                       <tr class="{{$data->is_active == 1 ? '' : 'table-danger'}}">
                         <td>{{$key + 1}}</td>
                         <td>
-                           <img src="{{ $data->image == null ? asset('images/no-image-user.png') : asset('images/gallery') . '/' . $data->image  }}" alt="" class="responsive" width="50" height="50">
+                           <img src="{{ $data->document == null ? asset('images/no-image-user.png') : asset('images/gallery') . '/' . $data->document  }}" alt="" class="responsive" width="50" height="50">
                         </td>
                         <td>
-                          <form action='javascript:void(0)' data_url="{{route('superadmin.gallery.destroy',$data->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
+                          <form action='javascript:void(0)' data_url="{{route('superadmin.galleryhasimage.destroy',$data->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
                             <input type='hidden' name='_token' value='".csrf_token()."'>
                             <input name='_method' type='hidden' value='DELETE'>
                             <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>

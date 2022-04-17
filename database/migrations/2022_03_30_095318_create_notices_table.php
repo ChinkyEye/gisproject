@@ -18,6 +18,7 @@ class CreateNoticesTable extends Migration
             $table->string('title');
             $table->string('path')->nullable();
             $table->string('document')->nullable();
+            $table->string('mimes_type')->nullable();
             $table->string('description')->nullable();
             $table->integer('scroll');
             $table->integer('type');

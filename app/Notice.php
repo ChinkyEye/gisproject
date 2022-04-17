@@ -12,6 +12,7 @@ class Notice extends Model
          'scroll',
          'type',
          'document',
+         'mimes_type',
          'description',
          'is_active',
          'date_np',

@@ -11,6 +11,7 @@ class Pratibedan extends Model
         'path',
         'type',
         'document',
+        'mimes_type',
         'description',
         'is_active',
         'date_np',

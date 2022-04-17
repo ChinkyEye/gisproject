@@ -17,7 +17,8 @@ class CreateSangathanSanrachanasTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->string('path')->nullable();
-            $table->string('image')->nullable();
+            $table->string('document')->nullable();
+            $table->string('mimes_type')->nullable();
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);

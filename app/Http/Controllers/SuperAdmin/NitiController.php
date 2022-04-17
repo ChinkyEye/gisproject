@@ -62,12 +62,14 @@ class NitiController extends Controller
             $extension = $uppdf->getClientOriginalExtension();
             $name = $uppdf->getClientOriginalName();
             $fileName = $name.'.'.$extension;
+            $mimes = $uppdf->getMimeType();
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
 
         }else{
             $fileName = Null;
             $destinationPath = Null;
+            $mimes = Null;
         }
        $nitis = Niti::create([
             'title' => $request['title'],
@@ -75,6 +77,7 @@ class NitiController extends Controller
             'type'=> $request['type'],
             'document'=> $fileName,
             'path'=> $destinationPath,
+            'mimes_type' => $mimes,
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
             'date' => date("Y-m-d"),
             'time' => date("H:i:s"),
