@@ -21,7 +21,8 @@ class CreateMantralayasTable extends Migration
             $table->string('email')->nullable();
             $table->string('link')->nullable();
             $table->string('path')->nullable();
-            $table->string('photo')->nullable();
+            $table->string('mimes_types')->nullable();
+            $table->string('document')->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
             $table->integer('sort_id')->nullable();

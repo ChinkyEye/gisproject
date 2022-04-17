@@ -58,10 +58,12 @@ class AgencyController extends Controller
 
         }else{
             $fileName = Null;
+            $destinationPath = Null;
         }
         $agencies = Agency::create([
             'contact_no' => $request['contact_no'],
             'website_link' => $request['website_link'],
+            'path'=> $destinationPath,
             'image'=> $fileName,
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
             'date' => date("Y-m-d"),

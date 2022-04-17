@@ -18,11 +18,10 @@ class CreateImportantPlacesTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('path')->nullable();
-            $table->string('image')->nullable();
+            $table->string('mimes_types')->nullable();
+            $table->string('document')->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
-            // $table->float('latitude',6,2)->nullable();
-            // $table->float('longitude',6,2)->nullable();
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);

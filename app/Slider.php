@@ -8,8 +8,9 @@ class Slider extends Model
 {
     protected $fillable = [
         'name',
-        'image',
         'path',
+        'document',
+        'mimes_types',
         'is_active',
         'date_np',
         'date',

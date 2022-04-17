@@ -9,7 +9,8 @@ class SangathanSanrachana extends Model
     protected $fillable = [
         'title',
         'path',
-        'image',
+        'document',
+        'mimes_types',
         'is_active',
         'date_np',
         'date',

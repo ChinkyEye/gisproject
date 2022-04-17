@@ -158,7 +158,6 @@
         <!-- Section Heading -->
         <div class="section-heading ">
             <div class="line"></div>
-            <p>Title</p>
             <h2>प्रदेश परिचय</h2>
         </div>
         <div class="">

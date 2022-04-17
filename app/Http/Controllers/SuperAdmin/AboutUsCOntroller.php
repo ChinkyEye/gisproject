@@ -45,7 +45,7 @@ class AboutUsCOntroller extends Controller
         $this->validate($request, [
             'description' => 'required',
         ]);
-        $uppdf = $request->file('image');
+        $uppdf = $request->file('document');
         if($uppdf != ""){
             $destinationPath = 'images/aboutus/';
             $extension = $uppdf->getClientOriginalExtension();
@@ -56,11 +56,13 @@ class AboutUsCOntroller extends Controller
         }else{
             $fileName = Null;
             $destinationPath = Null;
+            $extension = Null;
         }
         $aboutus = AboutUs::create([
             'description' => $request['description'],
-            'image'=> $fileName,
+            'document'=> $fileName,
             'path'=> $destinationPath,
+            'mimes_types'=> $extension,
             'is_active' => '1',
             'date' => date("Y-m-d"),
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
