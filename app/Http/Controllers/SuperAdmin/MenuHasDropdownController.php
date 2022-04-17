@@ -69,6 +69,7 @@ class MenuHasDropdownController extends Controller
             'type' => $request['type'] == null ? '1' : $request['type'],
             'page' => $request['page'],
             'parent_id' => $request['menu_id'],
+            'level' => '2',
             'is_active' => '1',
             'date' => date("Y-m-d"),
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),

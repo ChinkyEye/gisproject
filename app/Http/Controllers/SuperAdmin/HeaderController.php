@@ -48,9 +48,9 @@ class HeaderController extends Controller
          
         $uppdf = $request->file('image');
         if($uppdf != ""){
-         /*   $this->validate($request, [
-                'document' => 'required|mimes:jpeg,jpg,png,|max:1024',
-            ]);*/
+            $this->validate($request, [
+                'image' => 'required|mimes:jpeg,jpg,png',
+            ]);
             $destinationPath = 'images/logo/';
             $extension = $uppdf->getClientOriginalExtension();
             $mimes = $uppdf->getMimeType();
@@ -121,17 +121,17 @@ class HeaderController extends Controller
         $uppdf = $request->file('image');
         if($uppdf != ""){
           $this->validate($request, [
-            'image' => 'required|mimes:jpeg,jpg,png,|max:1024',
+            'image' => 'required|mimes:jpeg,jpg,png',
           ]);
          
           $destinationPath = 'images/logo/';
-          $oldFilename = $destinationPath.'/'.$header->image;
+          $oldFilename = $destinationPath.'/'.$header->document;
 
           $extension = $uppdf->getClientOriginalExtension();
           $fileName = md5(mt_rand()).'.'.$extension;
           $uppdf->move($destinationPath, $fileName);
           $file_path = $destinationPath.'/'.$fileName;
-          $all_data['image'] = $fileName;
+          $all_data['document'] = $fileName;
           if(File::exists($oldFilename)) {
             File::delete($oldFilename);
           }
@@ -153,7 +153,7 @@ class HeaderController extends Controller
     {
         $headers = Header::find($id);
         $destinationPath = 'images/logo/';
-        $oldFilename = $destinationPath.'/'.$headers->image;
+        $oldFilename = $destinationPath.'/'.$headers->document;
 
         if($headers->delete()){
             if(File::exists($oldFilename)) {

@@ -53,7 +53,7 @@
                       <td>{{$header->name}}</td>
                       <td>{{$header->slogan}}</td>
                       <td>
-                        <img src="{{ asset('images/logo/') . '/' . $header->image }}" alt="" class="responsive" width="50">
+                        <img src="{{ asset('images/logo/') . '/' . $header->document }}" alt="" class="responsive" width="50">
                        </td>
                       <td>
                         <a href="{{ route('superadmin.header.active',$header->id) }}" data-placement="top" title="{{ $header->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">

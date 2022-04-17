@@ -42,10 +42,10 @@
       </div>
       <div class="form-group">
         <label for="logo">Choose Logo</label>
-        <input type="hidden" value="{{$headers->image}}">
+        <input type="hidden" value="{{$headers->document}}">
         <div class="input-group">
           <input type="file" class="form-control d-none" id="image" name="image"  value="{{$headers->image}}" >
-          <img src="{{URL::to('/')}}/images/logo/{{$headers->image}}" id="profile-img-tag" width="200px" onclick="document.getElementById('image').click();" alt="your image" class="img-thumbnail img-fluid editback-gallery-img center-block"  />
+          <img src="{{URL::to('/')}}/images/logo/{{$headers->document}}" id="profile-img-tag" width="200px" onclick="document.getElementById('image').click();" alt="your image" class="img-thumbnail img-fluid editback-gallery-img center-block"  />
         </div>
         @error('image')
         <span class="text-danger font-italic" role="alert">
