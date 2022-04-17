@@ -9,7 +9,7 @@ class Header extends Model
       'name',
       'path',
       'document',
-      'mimes_types',
+      'mimes_type',
       'slogan',
       'is_active',
       'date_np',

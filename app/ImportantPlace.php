@@ -10,7 +10,7 @@ class ImportantPlace extends Model
       'title',
       'path',
       'document',
-      'mimes_types',
+      'mimes_type',
       'description',
       'longitude',
       'latitude',

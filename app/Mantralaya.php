@@ -9,7 +9,7 @@ class Mantralaya extends Model
     protected $fillable = [
         'path',
         'document',
-        'mimes_types',
+        'mimes_type',
         'email',
         'name',
         'phone',

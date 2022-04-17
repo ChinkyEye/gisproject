@@ -18,7 +18,7 @@ class CreateSlidersTable extends Migration
             $table->string('name');
             $table->string('path')->nullable();
             $table->string('document')->nullable();
-            $table->string('mimes_types')->nullable();
+            $table->string('mimes_type')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);
             $table->string('date',10);

@@ -15,7 +15,7 @@ class PradeshSabhaSadasya extends Model
         'phone',
         'path',
         'document',
-        'mimes_types',
+        'mimes_type',
         'sort_id',
         'is_active',
         'date_np',

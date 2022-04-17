@@ -40,31 +40,34 @@ class HeaderController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        
         $this->validate($request, [
             'name' => 'required',
             'slogan' => 'required',
-            'image' => 'required|mimes:png|max:1024',
+            'image' => 'required|mimes:png,jpeg|max:1024',
         ]);
          
         $uppdf = $request->file('image');
         if($uppdf != ""){
-            $this->validate($request, [
-                'image' => 'required|mimes:jpeg,jpg,png,|max:1024',
-            ]);
+         /*   $this->validate($request, [
+                'document' => 'required|mimes:jpeg,jpg,png,|max:1024',
+            ]);*/
             $destinationPath = 'images/logo/';
             $extension = $uppdf->getClientOriginalExtension();
+            $mimes = $uppdf->getMimeType();
             $fileName = md5(mt_rand()).'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
 
         }else{
             $fileName = Null;
+            $destinationPath = Null;
+            $mimes = Null;
         }
        $headers = Header::create([
             'name' => $request['name'],
-            'image'=> $fileName,
+            'document'=> $fileName,
+            'path'=> $destinationPath,
+            'mimes_type'=> $mimes,
             'slogan' => $request['slogan'],
             'is_active' => '1',
             'date' => date("Y-m-d"),

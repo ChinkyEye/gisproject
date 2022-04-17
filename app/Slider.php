@@ -10,7 +10,7 @@ class Slider extends Model
         'name',
         'path',
         'document',
-        'mimes_types',
+        'mimes_type',
         'is_active',
         'date_np',
         'date',

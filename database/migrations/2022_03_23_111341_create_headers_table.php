@@ -17,7 +17,7 @@ class CreateHeadersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('path')->nullable();
-            $table->string('mimes_types')->nullable();
+            $table->string('mimes_type')->nullable();
             $table->string('document')->nullable();
             $table->string('slogan');  
             $table->integer('sort_id')->nullable();          

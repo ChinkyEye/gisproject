@@ -52,17 +52,22 @@ class HelloCMController extends Controller
             ]);
             $destinationPath = 'images/hellocm/';
             $extension = $uppdf->getClientOriginalExtension();
+             $mimes = $uppdf->getMimeType();
             $fileName = md5(mt_rand()).'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
 
         }else{
             $fileName = Null;
+            $destinationPath = Null;
+            $mimes = Null;
         }
         $datas = HelloCM::create([
             'email' => $request['email'],
             'description' => $request['description'],
-            'thumbnail'=> $fileName,
+            'document'=> $fileName,
+            'path'=> $destinationPath,
+            'mimes_type'=> $mimes,
             'link' => $request['link'],
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
             'date' => date("Y-m-d"),

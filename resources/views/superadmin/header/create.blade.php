@@ -30,7 +30,6 @@
           </span>
           @enderror
         </div>
-
         <div class="form-group">
           <label for="slogan">Slogan<span class="text-danger">*</span></label>
          <textarea  type="text"  class="form-control max" id="slogan" placeholder="Enter slogan" name="slogan" autocomplete="off" autofocus>{{ old('slogan')}}</textarea>

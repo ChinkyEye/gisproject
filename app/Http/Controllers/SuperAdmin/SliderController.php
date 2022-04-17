@@ -49,16 +49,21 @@ class SliderController extends Controller
         if($uppdf != ""){
             $destinationPath = 'images/slider/';
             $extension = $uppdf->getClientOriginalExtension();
+            $mimes = $uppdf->getMimeType();
             $fileName = md5(mt_rand()).'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
 
         }else{
             $fileName = Null;
+            $destinationPath = Null;
+            $mimes = Null;
         }
         $sliders = Slider::create([
             'name' => $request['name'],
-            'image'=> $fileName,
+            'document'=> $fileName,
+            'path'=> $destinationPath,
+            'mimes_type'=> $mimes,
             'is_active' => '1',
             'date' => date("Y-m-d"),
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
@@ -103,21 +108,18 @@ class SliderController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+             'image' => 'required|mimes:jpeg,jpg,png,|max:1048',
         ]);
         $all_data = $request->all();
         $uppdf = $request->file('image');
         if($uppdf != ""){
-            $this->validate($request, [
-                'image' => 'required|mimes:jpeg,jpg,png,|max:1048',
-            ]);
             $destinationPath = 'images/slider/';
-            $oldFilename = $destinationPath.'/'.$slider->image;
-
+            $oldFilename = $destinationPath.'/'.$slider->document;
             $extension = $uppdf->getClientOriginalExtension();
             $fileName = md5(mt_rand()).'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
-            $all_data['image'] = $fileName;
+            $all_data['document'] = $fileName;
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
             }
@@ -139,7 +141,7 @@ class SliderController extends Controller
         $sliders = Slider::find($id);
 
         $destinationPath = 'images/slider/';
-        $oldFilename = $destinationPath.'/'.$sliders->image;
+        $oldFilename = $destinationPath.'/'.$sliders->document;
 
         if($sliders->delete()){
             if(File::exists($oldFilename)) {
