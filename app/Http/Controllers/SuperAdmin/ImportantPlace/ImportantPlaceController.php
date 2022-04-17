@@ -60,12 +60,16 @@ class ImportantPlaceController extends Controller
 
         }else{
             $fileName = Null;
+            $destinationPath = Null;
+            $mimes = Null;
         }
        $datas = ImportantPlace::create([
             'title' => $request['title'],
             'description' => $request['description'],
             'link' => $request['link'],
-            'image'=> $fileName,
+            'document'=> $fileName,
+            'path'=> $destinationPath,
+            'mimes_type'=> $mimes,
             'latitude' => $request['latitude'],
             'longitude' => $request['longitude'],
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
@@ -119,14 +123,15 @@ class ImportantPlaceController extends Controller
                 'image' => 'required|mimes:jpg,jpeg|max:1024',
             ]);
             $destinationPath = 'images/importantplace/';
-            $oldFilename = $destinationPath.'/'.$importantplace->image;
+            $oldFilename = $destinationPath.'/'.$importantplace->document;
 
             $extension = $uppdf->getClientOriginalExtension();
             $name = $uppdf->getClientOriginalName();
             $fileName = $name.'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
-            $all_data['image'] = $fileName;
+            $all_data['document'] = $fileName;
+            $all_data['path'] = $destinationPath;
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
             }
@@ -148,7 +153,7 @@ class ImportantPlaceController extends Controller
     {
         $datas = ImportantPlace::find($id);
         $destinationPath = 'images/importantplace/';
-        $oldFilename = $destinationPath.'/'.$datas->photo;
+        $oldFilename = $destinationPath.'/'.$datas->document;
         if($datas->delete()){
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
