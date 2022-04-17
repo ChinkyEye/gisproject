@@ -1693,6 +1693,7 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2022-04-07T22:37:05+00:00"
         },
         {
@@ -1776,6 +1777,9 @@
                 }
             ],
             "time": "2021-08-14T12:15:32+00:00"
+=======
+            "time": "2022-01-13T17:18:13+00:00"
+>>>>>>> origin/master
         },
         {
             "name": "league/flysystem",
@@ -8106,5 +8110,9 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
+<<<<<<< HEAD
     "plugin-api-version": "2.2.0"
+=======
+    "plugin-api-version": "2.0.0"
+>>>>>>> origin/master
 }

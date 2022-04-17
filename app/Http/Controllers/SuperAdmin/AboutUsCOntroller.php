@@ -49,6 +49,7 @@ class AboutUsCOntroller extends Controller
         if($uppdf != ""){
             $destinationPath = 'images/aboutus/';
             $extension = $uppdf->getClientOriginalExtension();
+            $mimes = $uppdf->getMimeType();
             $fileName = md5(mt_rand()).'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
@@ -56,13 +57,21 @@ class AboutUsCOntroller extends Controller
         }else{
             $fileName = Null;
             $destinationPath = Null;
+<<<<<<< HEAD
             $extension = Null;
+=======
+            $mimes = Null;
+>>>>>>> origin/master
         }
         $aboutus = AboutUs::create([
             'description' => $request['description'],
             'document'=> $fileName,
             'path'=> $destinationPath,
+<<<<<<< HEAD
             'mimes_types'=> $extension,
+=======
+            'mimes_type'=> $mimes,
+>>>>>>> origin/master
             'is_active' => '1',
             'date' => date("Y-m-d"),
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
