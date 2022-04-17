@@ -70,7 +70,7 @@
         <div class="form-group">
           <label for="imgInp">Photo</label>
           <div class="input-group">
-            <img id="blah" src="{{URL::to('/')}}/images/mantralaya/{{$datas->photo}}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
+            <img id="blah" src="{{URL::to('/')}}/images/mantralaya/{{$datas->document}}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
             <div class="input-group my-3">
              <input type='file' class="d-none" id="imgInp" name="image" />
            </div>

@@ -9,7 +9,7 @@ class HelloCM extends Model
    protected $fillable = [
       'path',
       'document',
-      'mimes_types',
+      'mimes_type',
       'email',
       'description',
       'link',

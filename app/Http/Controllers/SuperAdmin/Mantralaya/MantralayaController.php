@@ -43,10 +43,12 @@ class MantralayaController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'image' => 'required|mimes:jpg,jpeg|max:1024',
         ]);
         $uppdf = $request->file('image');
         if($uppdf != ""){
+            $this->validate($request, [
+                'image' => 'required|mimes:jpg,jpeg',
+            ]);
             $destinationPath = 'images/mantralaya/';
             $extension = $uppdf->getClientOriginalExtension();
             $mimes = $uppdf->getMimeType();
@@ -115,17 +117,17 @@ class MantralayaController extends Controller
         $uppdf = $request->file('image');
         if($uppdf != ""){
             $this->validate($request, [
-                'image' => 'required|mimes:jpg,jpeg|max:1024',
+                'image' => 'required|mimes:jpg,jpeg',
             ]);
             $destinationPath = 'images/mantralaya/';
-            $oldFilename = $destinationPath.'/'.$mantralaya->image;
+            $oldFilename = $destinationPath.'/'.$mantralaya->document;
 
             $extension = $uppdf->getClientOriginalExtension();
             $name = $uppdf->getClientOriginalName();
             $fileName = $name.'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
-            $all_data['photo'] = $fileName;
+            $all_data['document'] = $fileName;
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
             }
@@ -147,7 +149,7 @@ class MantralayaController extends Controller
     {
         $datas = Mantralaya::find($id);
         $destinationPath = 'images/mantralaya/';
-        $oldFilename = $destinationPath.'/'.$datas->photo;
+        $oldFilename = $destinationPath.'/'.$datas->document;
         if($datas->delete()){
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);

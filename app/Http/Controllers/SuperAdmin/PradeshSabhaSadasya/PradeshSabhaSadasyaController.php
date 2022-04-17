@@ -55,7 +55,7 @@ class PradeshSabhaSadasyaController extends Controller
         if($number != ""){
             $this->validate($request, [
                 'phone' => 'required|digits_between:6,10',
-                'image' => 'required|mimes:jpg,jpeg|max:1024',
+                'image' => 'required|mimes:jpg,jpeg',
             ]); 
          }
             else{
@@ -147,17 +147,17 @@ class PradeshSabhaSadasyaController extends Controller
         $uppdf = $request->file('image');
         if($uppdf != ""){
             $this->validate($request, [
-                'image' => 'required|mimes:jpg,jpeg|max:1024',
+                'image' => 'required|mimes:jpg,jpeg',
             ]);
             $destinationPath = 'images/pradeshsabhasadasya/';
-            $oldFilename = $destinationPath.'/'.$pradeshsabhasadasya->image;
+            $oldFilename = $destinationPath.'/'.$pradeshsabhasadasya->document;
 
             $extension = $uppdf->getClientOriginalExtension();
             $name = $uppdf->getClientOriginalName();
             $fileName = $name.'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
-            $all_data['image'] = $fileName;
+            $all_data['document'] = $fileName;
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
             }
@@ -181,7 +181,7 @@ class PradeshSabhaSadasyaController extends Controller
     {
         $datas = PradeshSabhaSadasya::find($id);
         $destinationPath = 'images/pradeshsabhasadasya/';
-        $oldFilename = $destinationPath.'/'.$datas->image;
+        $oldFilename = $destinationPath.'/'.$datas->document;
         if($datas->delete()){
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
