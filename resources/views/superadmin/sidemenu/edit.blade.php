@@ -37,9 +37,9 @@
           <label for="model_data">Model<span class="text-danger">*</span></label>
           <select id="nationality" class="form-control" name="model" id="modal">
             <option value="">--Select--</option>
-            <option value="Mantralaya" >Mantralaya</option>
-            <option value="HelloCM" >HelloCM</option>
-            <option value="PradeshSabhaSanrachana">PradeshSabhaSadasya</option>
+            <option value="Mantralaya" {{ $sidemenus->model == 'Mantralaya' ? 'selected' : ''}}>Mantralaya</option>
+            <option value="HelloCM" {{ $sidemenus->model == 'HelloCM' ? 'selected' : ''}}>HelloCM</option>
+            <option value="PradeshSabhaSanrachana" {{ $sidemenus->model == 'PradeshSabhaSanrachana' ? 'selected' : ''}}>PradeshSabhaSadasya</option>
           </select>
         </div>
         <div class="form-group">

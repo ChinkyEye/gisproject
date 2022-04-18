@@ -58,6 +58,15 @@ class MenuHasDropdownController extends Controller
             'name' => 'required',
             'name_np' => 'required',
         ]);
+        $link = $request['link'];
+        if($link != ""){
+            $this->validate($request, [
+                'link' => 'required|unique:menus',
+            ]); 
+        }
+        else{
+            Null;
+        }
         $is_main = $request->has('is_main');
         $parent_link = Menu::where('id',$request->menu_id)->value('link');
         $menu = Menu::create([
@@ -120,6 +129,15 @@ class MenuHasDropdownController extends Controller
             'name' => 'required',
             'name_np' => 'required',
         ]);
+        $link = $request['link'];
+        if($link != ""){
+            $this->validate($request, [
+                'link' => 'required|unique:menus,link,'.$id,
+            ]); 
+        }
+        else{
+            Null;
+        }
         $menuhasdropdowns = Menu::find($id);
         $all_data = $request->all();
         $all_data['updated_by'] = Auth::user()->id;

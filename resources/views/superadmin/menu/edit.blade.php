@@ -41,8 +41,17 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="model_data">Model<span class="text-danger">*</span></label>
-          <select id="nationality" class="form-control" name="model" id="modal">
+          <label for="link">Link</label>
+          <input type="text"  class="form-control max" id="link" placeholder="Enter link" name="link" autocomplete="off" autofocus value="{{ $menus->link }}">
+          @error('link')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
+        <div class="form-group">
+          <label for="select_model">Model</label>
+          <select class="form-control" name="model" id="select_model">
             <option value="">--Select--</option>
             <option value="Niti" {{ $menus->model == 'Niti' ? 'selected' : ''}}>Niti</option>
             <option value="Notice" {{ $menus->model == 'Notice' ? 'selected' : ''}}>Notice</option>
@@ -65,19 +74,10 @@
             @enderror
         </div>
         <div id="Myid">
-        <div class="form-group">
-          <label for="link">Link<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="link" placeholder="Enter link" name="link" autocomplete="off" autofocus value="{{ $menus->link }}">
-          @error('link')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div>
         
         <div class="form-group">
-          <label for="type" class="control-label">Type <span class="text-danger">*</span></label>
-          <select class="form-control" name="type" id="type">
+          <label for="type_data" class="control-label">Type </label>
+          <select class="form-control" name="type" id="type_data">
             {{-- <option value="">Select Type</option> --}}
             @foreach ($modelhastypes as $key => $data)
             <option value="{{ $data->id }}" {{ $menus->type == $data->id ? 'selected' : ''}}>
@@ -87,7 +87,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="page">Page<span class="text-danger">*</span></label>
+          <label for="page">Page</label>
           <input type="text"  class="form-control max" id="page" placeholder="Enter page" name="page" autocomplete="off" autofocus value="{{ $menus->page }}">
           @error('page')
           <span class="text-danger font-italic" role="alert">
@@ -106,10 +106,53 @@
 </section>
 @endsection
 @push('javascript')
+<script type="text/javascript">
+  $("body").on("change","#select_model", function(event){
+
+    var model = $('#select_model').val(),
+    token = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+      type:"POST",
+      dataType:"JSON",
+      url:"{{route('superadmin.getTypeList')}}", 
+      data:{
+        _token: token,
+        model: model
+      },
+      success: function(response){
+        console.log(response);
+        $('#type_data').html('');
+        $('#type_data').append('<option value="">--Choose Type--</option>');
+        $.each( response, function( i, val ) {
+          $('#type_data').append('<option value='+val.id+'>'+val.type+'</option>');
+        });
+      },
+      error: function(event){
+        alert("Sorry");
+      }
+    });
+        // Pace.stop();
+  });
+</script>
+<script type="text/javascript">
+  $( document ).ready(function() {
+    // console.log(document.getElementById("is_main").checked);
+    var x = document.getElementById("Myid");
+    if(document.getElementById("is_main").checked)
+    {
+        x.style.display = "none";
+    }
+    else
+    {
+        x.style.display = "block";
+    }
+
+  });
+</script>
 <script>
     function Check(value) {
       var y = value.checked;
-      console.log(y);
+      // console.log(y);
       var x = document.getElementById("Myid");
       if(y == true){
         x.style.display = "none";

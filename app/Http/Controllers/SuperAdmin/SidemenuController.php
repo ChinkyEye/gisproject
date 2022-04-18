@@ -45,6 +45,15 @@ class SidemenuController extends Controller
             'name' => 'required',
             'name_np' => 'required',
         ]);
+        $link = $request['link'];
+        if($link != ""){
+            $this->validate($request, [
+                'link' => 'required|unique:sidemenus',
+            ]); 
+        }
+        else{
+            Null;
+        }
         $sidemenu = Sidemenu::create([
             'name' => $request['name'],
             'name_np' => $request['name_np'],
@@ -97,6 +106,15 @@ class SidemenuController extends Controller
             'name' => 'required',
             'name_np' => 'required',
         ]);
+        $link = $request['link'];
+        if($link != ""){
+            $this->validate($request, [
+                'link' => 'required|unique:sidemenus,link,'.$id,
+            ]); 
+        }
+        else{
+            Null;
+        }
         $sidemenus = Sidemenu::find($id);
         $all_data = $request->all();
         $all_data['updated_by'] = Auth::user()->id;
