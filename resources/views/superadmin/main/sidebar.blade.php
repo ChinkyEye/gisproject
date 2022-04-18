@@ -220,6 +220,14 @@
                 </p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{ route('superadmin.pradeshsarkar.index')}}" class="nav-link {{ (request()->is('home/sidebar-part/pradeshsarkar*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                  Pradesh Sarkar
+                </p>
+              </a>
+            </li>
           </ul>
         </li>
         <li class="nav-item">

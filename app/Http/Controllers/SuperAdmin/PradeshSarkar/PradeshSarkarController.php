@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\SuperAdmin;
+namespace App\Http\Controllers\SuperAdmin\PradeshSarkar;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Slider;
-use Auth;
+use App\PradeshSarkar;
 use File;
+use Auth;
 use Response;
 
-class SliderController extends Controller
+class PradeshSarkarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,8 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $sliders = Slider::orderBy('id', 'DESC')->get();
-        return view('superadmin.slider.index', compact('sliders'));
+        $datas = PradeshSarkar::get();
+        return view('superadmin.pradeshsarkar.index', compact('datas'));
     }
 
     /**
@@ -29,7 +29,7 @@ class SliderController extends Controller
      */
     public function create()
     {
-        return view('superadmin.slider.create');
+        return view('superadmin.pradeshsarkar.create');
     }
 
     /**
@@ -40,14 +40,17 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
+        
         $this->validate($request, [
-            'name' => 'required',
-            'image' => 'required|mimes:jpeg,jpg,png',
+            'title' => 'required',
+            'description' => 'required',
         ]);
-     
         $uppdf = $request->file('image');
         if($uppdf != ""){
-            $destinationPath = 'images/slider/';
+            $this->validate($request, [
+                'image' => 'required|mimes:jpg,png,jpeg,|max:2048',
+            ]);
+            $destinationPath = 'images/pradeshsarkar/';
             $extension = $uppdf->getClientOriginalExtension();
             $mimes = $uppdf->getMimeType();
             $fileName = md5(mt_rand()).'.'.$extension;
@@ -57,10 +60,12 @@ class SliderController extends Controller
         }else{
             $fileName = Null;
             $destinationPath = Null;
+            $extension = Null;
             $mimes = Null;
         }
-        $sliders = Slider::create([
-            'name' => $request['name'],
+        $datas = PradeshSarkar::create([
+            'title' => $request['title'],
+            'description' => $request['description'],
             'document'=> $fileName,
             'path'=> $destinationPath,
             'mimes_type'=> $mimes,
@@ -71,8 +76,8 @@ class SliderController extends Controller
             'created_by' => Auth::user()->id,
         ]);
         
-        return redirect()->route('superadmin.slider.index')->with('alert-success', 'Slider added successfully');  
-}
+        return redirect()->route('superadmin.pradeshsarkar.index')->with('alert-success', 'Data added successfully!!');  
+    }
 
     /**
      * Display the specified resource.
@@ -93,8 +98,8 @@ class SliderController extends Controller
      */
     public function edit($id)
     {
-        $sliders = Slider::find($id);
-        return view('superadmin.slider.edit',compact('sliders'));
+        $datas = PradeshSarkar::find($id); 
+        return view('superadmin.pradeshsarkar.edit',compact('datas'));
     }
 
     /**
@@ -104,37 +109,39 @@ class SliderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'name' => 'required',
+          $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
         ]);
 
-        $slider = Slider::find($id);
+        $datas = PradeshSarkar::find($id);
         $all_data = $request->all();
         $uppdf = $request->file('image');
         if($uppdf != ""){
             $this->validate($request, [
-                'image' => 'required|mimes:jpeg,jpg,png',
+                'image' => 'required|mimes:jpg,jpeg,png',               
             ]);
-            $destinationPath = 'images/slider/';
-            $oldFilename = $destinationPath.'/'.$slider->document;
+            $destinationPath = 'images/pradeshsarkar/';
+            $oldFilename = $destinationPath.'/'.$datas->document;
+
             $extension = $uppdf->getClientOriginalExtension();
             $name = $uppdf->getClientOriginalName();
             $fileName = $name.'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
             $all_data['document'] = $fileName;
-            
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
             }
         }
         $all_data['updated_by'] = Auth::user()->id;
-        $slider->update($all_data);
-        $slider->update();
-        return redirect()->route('superadmin.slider.index')->with('alert-success', 'Slider updated successfully');
-}
+        if($datas->update($all_data))
+        {
+            return redirect()->route('superadmin.pradeshsarkar.index')->with('alert-success', 'Data updated succesffully!!!');;
+        };
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -144,22 +151,22 @@ class SliderController extends Controller
      */
     public function destroy($id)
     {
-        $sliders = Slider::find($id);
-        $destinationPath = 'images/slider/';
-        $oldFilename = $destinationPath.'/'.$sliders->document;
+        $datas = PradeshSarkar::find($id);
+        $destinationPath = 'images/pradeshsarkar/';
+        $oldFilename = $destinationPath.'/'.$datas->document;
 
-        if($sliders->delete()){
+        if($datas->delete()){
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
                 // File::deleteDirectory($destinationPath);
             }
             $notification = array(
-              'message' => $sliders->name.' is deleted successfully!',
+              'message' => $datas->name.' is deleted successfully!',
               'status' => 'success'
           );
         }else{
             $notification = array(
-              'message' => $sliders->name.' could not be deleted!',
+              'message' => $datas->name.' could not be deleted!',
               'status' => 'error'
           );
         }
@@ -167,8 +174,8 @@ class SliderController extends Controller
     }
     public function isActive(Request $request,$id)
     {
-        $get_is_active = Slider::where('id',$id)->value('is_active');
-        $isactive = Slider::find($id);
+        $get_is_active = PradeshSarkar::where('id',$id)->value('is_active');
+        $isactive = PradeshSarkar::find($id);
         if($get_is_active == 0){
             $isactive->is_active = 1;
             $notification = array(
