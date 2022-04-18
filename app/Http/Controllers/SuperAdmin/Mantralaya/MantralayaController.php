@@ -4,7 +4,10 @@ namespace App\Http\Controllers\SuperAdmin\Mantralaya;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Mantralaya;
+use App\MantralayaHasUser;
+use App\User;
 use Auth;
 use File;
 
@@ -17,8 +20,10 @@ class MantralayaController extends Controller
      */
     public function index()
     {
-        $datas = Mantralaya::orderBy('id','DESC')
+        $datas = User::orderBy('id','DESC')
+                            ->where('user_type','2')
                             ->where('created_by',Auth::user()->id)
+                            ->with('getUserMantralaya')
                             ->paginate();
         return view('superadmin.mantralaya.index', compact('datas'));
     }
@@ -58,13 +63,27 @@ class MantralayaController extends Controller
 
         }else{
             $fileName = Null;
+            $destinationPath = Null;
+            $mimes = Null;
         }
-       $datas = Mantralaya::create([
+        
+        $users = User::create([
             'name' => $request['name'],
             'address' => $request['address'],
             'phone' => $request['phone'],
             'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'is_active' => '1',
+            'user_type' => '2',
+            'date' => date("Y-m-d"),
+            'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+            'time' => date("H:i:s"),
+            'created_by' => Auth::user()->id,
+        ]);
+        $datas = MantralayaHasUser::create([
+            'user_id' => $users->id,
             'link' => $request['link'],
+            'prefix' => $request['prefix'],
             'document'=> $fileName,
             'path'=> $destinationPath,
             'mimes_type'=> $mimes,
@@ -97,7 +116,7 @@ class MantralayaController extends Controller
      */
     public function edit($id)
     {
-        $datas = Mantralaya::find($id);
+        $datas = User::find($id);
         return view('superadmin.mantralaya.edit', compact('datas'));
     }
 
@@ -108,32 +127,49 @@ class MantralayaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mantralaya $mantralaya)
+    public function update(Request $request,$id)
     {
         $this->validate($request, [
             'name' => 'required',
         ]);
-        $all_data = $request->all();
+
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->address = $request->address;
+        $user->phone = $request->phone;
+        $user->update();
+
+        $mantralayahasuser = MantralayaHasUser::where('user_id',$id)->first();
         $uppdf = $request->file('image');
         if($uppdf != ""){
             $this->validate($request, [
                 'image' => 'required|mimes:jpg,jpeg',
             ]);
             $destinationPath = 'images/mantralaya/';
-            $oldFilename = $destinationPath.'/'.$mantralaya->document;
+            $oldFilename = $destinationPath.'/'.$mantralayahasuser->document;
 
             $extension = $uppdf->getClientOriginalExtension();
             $name = $uppdf->getClientOriginalName();
+            $mimes = $uppdf->getMimeType();
             $fileName = $name.'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
-            $all_data['document'] = $fileName;
+            $mantralayahasuser->document = $fileName;
+            $mantralayahasuser->path = $destinationPath;
+            $mantralayahasuser->mimes_type = $mimes;
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
             }
         }
-        $all_data['updated_by'] = Auth::user()->id;
-        if($mantralaya->update($all_data))
+
+        $mantralayahasuser->link = $request->link;
+        $mantralayahasuser->prefix = $request->prefix;
+        $mantralayahasuser->latitude = $request->latitude;
+        $mantralayahasuser->longitude = $request->longitude;
+        $mantralayahasuser->updated_by = Auth::user()->id;
+
+        if($mantralayahasuser->update())
         {
             return redirect()->route('superadmin.mantralaya.index')->with('alert-success', 'Data updated succesffully!!!!');;
         };
@@ -147,14 +183,17 @@ class MantralayaController extends Controller
      */
     public function destroy($id)
     {
-        $datas = Mantralaya::find($id);
+        $mantralayahasuser = MantralayaHasUser::where('user_id',$id)->first();
+
         $destinationPath = 'images/mantralaya/';
-        $oldFilename = $destinationPath.'/'.$datas->document;
-        if($datas->delete()){
+        $oldFilename = $destinationPath.'/'.$mantralayahasuser->document;
+        if($mantralayahasuser->delete()){
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
             }
         }
+        $datas = User::find($id);
+        $datas->delete();
         return response()->json([
             'success' => 'Record has been deleted successfully!'
         ]);
@@ -162,8 +201,8 @@ class MantralayaController extends Controller
 
     public function isActive(Request $request,$id)
     {
-        $get_is_active = Mantralaya::where('id',$id)->value('is_active');
-        $isactive = Mantralaya::find($id);
+        $get_is_active = User::where('id',$id)->value('is_active');
+        $isactive = User::find($id);
         if($get_is_active == 0){
             $isactive->is_active = 1;
             // $notification = array(

@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\User;
-use Auth;
 
-
-class HomeController extends Controller
+class MantralayaHasUserConroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $datas = User::where('id', Auth::user()->id)
-                        ->where('user_type',2)
-                        ->with('getUserMantralaya')
-                        ->first();
-        return view('user.main.home', compact('datas'));
+        //
     }
 
     /**

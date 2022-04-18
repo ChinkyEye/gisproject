@@ -155,7 +155,7 @@ Route::namespace('User')->prefix('user')->name('user.')->middleware(['user','aut
     Route::get('/', 'HomeController@index')->name('home');
 
     Route::resource('userhasdetail','UserHasDetailController');
-    Route::get('/userhasdetail/create/{id}','UserHasDetailController@create')->name('userhasdetail.create');
+    // Route::get('/userhasdetail/create/{id}','UserHasDetailController@create')->name('userhasdetail.create');
 
 });
 

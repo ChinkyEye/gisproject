@@ -18,14 +18,12 @@
           <div class="card-body box-profile">
             <div class="text-center">
               <img class="profile-user-img img-fluid img-circle"
-              alt="User profile picture" src="{{asset('images/no-image-user.png')}}">
+              alt="User profile picture" src="{{$datas->getUserMantralaya->document == null ?asset('images/no-image-user.png') : asset('images/mantralaya').'/'.$datas->getUserMantralaya->document}}">
             </div>
 
             <h3 class="profile-username text-center text-capitalize">{{$datas->name}}</h3>
             <div class="d-block text-center text-muted">
               <span>email:{{$datas->email}}</span>
-              {{-- <br> --}}
-              {{-- <span>student_code:</span> --}}
             </div>
 
             <ul class="list-group list-group-unbordered mb-3">
@@ -38,34 +36,12 @@
               <li class="list-group-item">
                 <b>Register Date</b> <a class="float-right">{{$datas->date_np}}</a>
               </li>
-              <li class="list-group-item text-center mt-2">
+              {{-- <li class="list-group-item text-center mt-2">
                 <a href="{{ route('user.userhasdetail.create',$datas->id)}}" class="btn btn-xs btn-outline-info" title="Update further data"><i class="fas fa-plus"></i></a>
-              </li>
+              </li> --}}
             </ul>
           </div>
         </div>
-
-        {{-- <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title">About Parent</h3>
-          </div>
-
-          <div class="card-body">
-            <strong><i class="fas fa-user mr-1"></i> Father Name</strong>
-            <p class="text-muted">
-              ....
-            </p>
-            <hr> 
-            <strong><i class="fas fa-user mr-1"></i> Mother Name</strong>
-            <p class="text-muted">
-              .....
-            </p>
-            <hr>
-            <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-            <p class="text-muted">.....</p>
-            <hr>
-          </div>
-        </div> --}}
       </div>
       <div class="col-md-9">
         <div class="card">
@@ -80,9 +56,9 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @if($datas->getUserDetail != null)
+                  @if($datas->getUserMantralaya != null)
                   <tr class="text-center">
-                    <td>{{$datas->getUserDetail->website_link}}</td>
+                    <td>{{$datas->getUserMantralaya->link}}</td>
                     <td></td>
                     <td></td>
                   </tr>

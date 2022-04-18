@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\UserHasDetail','user_id');
     }
+
+    public function getUserMantralaya()
+    {
+        return $this->hasOne('App\MantralayaHasUser','user_id');
+    }
 }

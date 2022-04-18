@@ -42,43 +42,43 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-       $this->validate($request, [
-        'name' => 'required',
-        'address' => 'required|unique:users',
-        'email' => 'required|unique:users',
-        'phone' => 'required|unique:users',
-        'password' => 'required',
-        'address' => 'required',
-        'photo' => 'mimes:jpg,jpeg,png|max:1024',
-    ]);
-       $uppdf = $request->file('image');
-       if($uppdf != ""){
-        $destinationPath = 'images/user/';
-        $extension = $uppdf->getClientOriginalExtension();
-        $fileName = md5(mt_rand()).'.'.$extension;
-        $uppdf->move($destinationPath, $fileName);
-        $file_path = $destinationPath.'/'.$fileName;
+        $this->validate($request, [
+            'name' => 'required',
+            'address' => 'required|unique:users',
+            'email' => 'required|unique:users',
+            'phone' => 'required|unique:users',
+            'password' => 'required',
+            'address' => 'required',
+            'photo' => 'mimes:jpg,jpeg,png|max:1024',
+        ]);
+        $uppdf = $request->file('image');
+        if($uppdf != ""){
+            $destinationPath = 'images/user/';
+            $extension = $uppdf->getClientOriginalExtension();
+            $fileName = md5(mt_rand()).'.'.$extension;
+            $uppdf->move($destinationPath, $fileName);
+            $file_path = $destinationPath.'/'.$fileName;
 
-    }else{
-        $fileName = Null;
-    }
+        }else{
+            $fileName = Null;
+        }
 
-    $users = User::create([
-        'name' => $request['name'],
-        'address' => $request['address'],
-        'phone' => $request['phone'],
-        'email' => $request['email'],
-        'password' => Hash::make($request['password']),
-        'image'=> $fileName,
-        'is_active' => '1',
-        'user_type' => '2',
-        'date' => date("Y-m-d"),
-        'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
-        'time' => date("H:i:s"),
-        'created_by' => Auth::user()->id,
-    ]);
-  
-    return redirect()->route('superadmin.user.index')->with('alert-success', 'User created successfully!!!!');
+        $users = User::create([
+            'name' => $request['name'],
+            'address' => $request['address'],
+            'phone' => $request['phone'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'image'=> $fileName,
+            'is_active' => '1',
+            'user_type' => '2',
+            'date' => date("Y-m-d"),
+            'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+            'time' => date("H:i:s"),
+            'created_by' => Auth::user()->id,
+        ]);
+        
+        return redirect()->route('superadmin.user.index')->with('alert-success', 'User created successfully!!!!');
 }
 
 

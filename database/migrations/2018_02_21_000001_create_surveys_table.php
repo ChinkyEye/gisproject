@@ -17,7 +17,8 @@ class CreateSurveysTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('slug');
-            $table->json('json');
+            // $table->json('json');
+            $table->text('json');
             $table->timestamps();
             $table->softDeletes();
         });
