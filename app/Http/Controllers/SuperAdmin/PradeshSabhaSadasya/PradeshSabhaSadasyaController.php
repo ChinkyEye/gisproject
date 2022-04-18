@@ -20,6 +20,7 @@ class PradeshSabhaSadasyaController extends Controller
     {
         $datas = PradeshSabhaSadasya::orderBy('id','DESC')
                                     ->where('created_by', Auth::user()->id)
+                                    ->with('getDal')
                                     ->paginate(20);
         return view('superadmin.pradeshsabhasadasya.index', compact('datas'));
     }
@@ -114,8 +115,9 @@ class PradeshSabhaSadasyaController extends Controller
      */
     public function edit($id)
     {
+        $dals = Dal::where('is_active','1')->get();
         $datas = PradeshSabhaSadasya::find($id);
-        return view('superadmin.pradeshsabhasadasya.edit', compact('datas'));
+        return view('superadmin.pradeshsabhasadasya.edit', compact('datas','dals'));
     }
 
     /**

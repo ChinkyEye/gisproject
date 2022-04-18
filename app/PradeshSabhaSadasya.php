@@ -34,4 +34,9 @@ class PradeshSabhaSadasya extends Model
     {
         return $this->belongsTo('App\User','created_by','id');
     }
+
+    public function getDal()
+    {
+        return $this->belongsTo('App\Dal','dala','id');
+    }
 }

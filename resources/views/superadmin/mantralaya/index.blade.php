@@ -60,6 +60,8 @@
                           <input name='_method' type='hidden' value='DELETE'>
                           <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
                         </form>
+                        <a href="{{route('superadmin.mantralaya.changepassword',$data->id)}}" class="btn btn-xs btn-outline-info" title="Change Password">
+                          <i class="fas fa-key"></i></a>
 
                       </td>
                     </tr>

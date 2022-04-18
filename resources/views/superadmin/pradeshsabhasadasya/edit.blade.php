@@ -57,8 +57,13 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="dala">Dala<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="dala" placeholder="Enter dala" name="dala" autocomplete="off" autofocus value="{{ $datas->dala }}">
+          <label for="dala">Dal<span class="text-danger">*</span></label>
+          <select class="form-control max" id="dala" name="dala">
+          <option>--Please choose one--</option>
+          @foreach($dals as $dal)
+          <option value="{{$dal->id}}" {{ $datas->dala == $dal->id ? 'selected' : ''}}>{{$dal->name}}</option>
+          @endforeach
+          </select>
           @error('dala')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>

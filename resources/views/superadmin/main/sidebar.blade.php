@@ -238,13 +238,14 @@
             </p>
           </a>
         </li>  
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a href="{{ route('superadmin.user.index')}}" class="nav-link {{ (request()->is('home/user*')) ? 'active' : '' }}">
             <i class="nav-icon fas fa-user"></i>
             <p>
              User
            </p>
          </a>
+       </li> --}}
        <li class="nav-item">
           <a href="{{ route('superadmin.fiscalyear.index')}}" class="nav-link {{ (request()->is('home/fiscalyear*')) ? 'active' : '' }}">
             {{-- <i class="nav-icon fas fa-user"></i> --}}

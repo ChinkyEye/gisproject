@@ -51,7 +51,7 @@
                       <td>{{$key + 1}}</td>
                       <td>{{$data->name}}</td>
                       <td>{{$data->district}}</td>
-                      <td>{{$data->dal}}</td>
+                      <td>{{$data->getDal->name}}</td>
                       <td>{{$data->nirvachit_kshetra_no}}</td>
                       <td>
                        <img src="{{ $data->document == null ? asset('images/no-image-user.png') : asset('images/pradeshsabhasadasya') . '/' . $data->document  }}" alt="" class="responsive" width="50" height="50"></td>

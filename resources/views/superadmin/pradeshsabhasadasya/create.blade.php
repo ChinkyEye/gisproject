@@ -58,7 +58,7 @@
         <div class="form-group">
           <label for="dala">Dal<span class="text-danger">*</span></label>
           <select class="form-control max" id="dala" name="dala">
-            <option>--Please choose one--</option>
+          <option>--Please choose one--</option>
           @foreach($dals as $dal)
           <option value="{{$dal->id}}">{{$dal->name}}</option>
           @endforeach
