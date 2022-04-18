@@ -110,13 +110,14 @@ class HeaderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Header $header)
+    public function update(Request $request,$id)
     {
         $this->validate($request, [
           'name' => 'required',
           'slogan' => 'required',
 
-        ]);
+        ]); 
+        $header = Header::find($id);
         $all_data = $request->all();
         $uppdf = $request->file('image');
         if($uppdf != ""){
@@ -128,7 +129,8 @@ class HeaderController extends Controller
           $oldFilename = $destinationPath.'/'.$header->document;
 
           $extension = $uppdf->getClientOriginalExtension();
-          $fileName = md5(mt_rand()).'.'.$extension;
+          $name = $uppdf->getClientOriginalName();
+          $fileName = $name.'.'.$extension;
           $uppdf->move($destinationPath, $fileName);
           $file_path = $destinationPath.'/'.$fileName;
           $all_data['document'] = $fileName;

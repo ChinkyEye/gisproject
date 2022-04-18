@@ -147,6 +147,8 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('/introduction','Introduction\IntroductionController');
      Route::get('introduction/active/{id}', 'Introduction\IntroductionController@isActive')->name('introduction.active');
 
+     Route::resource('sidebar-part/pradeshsarkar','PradeshSarkar\PradeshSarkarController');
+     Route::get('sidebar-part/pradeshsarkar/active/{id}', 'PradeshSarkar\PradeshSarkarController@isActive')->name('pradeshsarkar.active');
 
 });
 
