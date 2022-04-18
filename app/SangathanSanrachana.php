@@ -10,7 +10,7 @@ class SangathanSanrachana extends Model
         'title',
         'path',
         'document',
-        'mimes_types',
+        'mimes_type',
         'is_active',
         'date_np',
         'date',

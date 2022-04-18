@@ -17,7 +17,7 @@ class CreateNitisTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('path')->nullable();
-            $table->string('mimes_types')->nullable();
+            $table->string('mimes_type')->nullable();
             $table->string('document')->nullable();
             $table->string('description')->nullable();
             $table->integer('type');

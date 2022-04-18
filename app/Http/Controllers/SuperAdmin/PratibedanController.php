@@ -62,18 +62,23 @@ class PratibedanController extends Controller
             $destinationPath = 'document/pratibedan/';
             $extension = $uppdf->getClientOriginalExtension();
             $name = $uppdf->getClientOriginalName();
-            $fileName = $name.'.'.$extension;
+            $mimes = $uppdf->getMimeType();
+            $fileName = $name;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
 
         }else{
             $fileName = Null;
+            $destinationPath = Null;
+            $mimes = Null;
         }
         $pratibedan = Pratibedan::create([
             'title' => $request['title'],
             'description' => $request['description'],
             'type'=> $request['type'],
             'document'=> $fileName,
+            'path'=> $destinationPath,
+            'mimes_type'=> $mimes,
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
             'date' => date("Y-m-d"),
             'time' => date("H:i:s"),
@@ -159,8 +164,8 @@ class PratibedanController extends Controller
     public function destroy($id)
     {
         $datas = Pratibedan::find($id);
-        $destinationPath = 'images/pratibedan/';
-        $oldFilename = $destinationPath.'/'.$datas->image;
+        $destinationPath = 'document/pratibedan/';
+        $oldFilename = $destinationPath.'/'.$datas->document;
         if($datas->delete()){
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);

@@ -18,7 +18,7 @@ class CreateImportantPlacesTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('path')->nullable();
-            $table->string('mimes_types')->nullable();
+            $table->string('mimes_type')->nullable();
             $table->string('document')->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();

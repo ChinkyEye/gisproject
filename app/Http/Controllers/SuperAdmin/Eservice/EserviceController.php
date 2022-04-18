@@ -57,37 +57,45 @@ class EserviceController extends Controller
         $uppdf = $request->file('thumbnail');
         if($uppdf != ""){
             $this->validate($request, [
-                'thumbnail' => 'required|mimes:jpg,png,jpeg,|max:2048',
+                'thumbnail' => 'required|mimes:jpg,png,jpeg',
             ]);
-            $destinationPath = 'images/thumbnail/';
+            $destinationPathThumbnail = 'images/thumbnail/';
             $extension = $uppdf->getClientOriginalExtension();
             $fileName = md5(mt_rand()).'.'.$extension;
-            $uppdf->move($destinationPath, $fileName);
-            $file_path = $destinationPath.'/'.$fileName;
+            $mimes = $uppdf->getMimeType();
+            $uppdf->move($destinationPathThumbnail, $fileName);
+            $file_path = $destinationPathThumbnail.'/'.$fileName;
 
         }else{
             $fileName = Null;
+            $destinationPathThumbnail = Null;
+            $mimes = Null;
         } 
 
         $uppd = $request->file('logo');
         if($uppd != ""){
             $this->validate($request, [
-                'logo' => 'required|mimes:jpg,png,jpeg,|max:2048',
+                'logo' => 'required|mimes:jpg,png,jpeg',
             ]);
-            $destination = 'images/eservicelogo/';
+            $destinationLogo = 'images/eservicelogo/';
             $extensions = $uppd->getClientOriginalExtension();
             $fileNaam = md5(mt_rand()).'.'.$extensions;
-            $uppd->move($destination, $fileNaam);
-            $file_path = $destination.'/'.$fileNaam;
+            $mimes = $uppd->getMimeType();
+            $uppd->move($destinationLogo, $fileNaam);
+            $file_path = $destinationLogo.'/'.$fileNaam;
 
         }else{
             $fileNaam = Null;
+            $destinationLogo = Null;
         }
 
         $eservices = Eservice::create([
             'name' => $request['name'],
             'thumbnail'=> $fileName,
             'logo' => $fileNaam,
+            'pathlogo' => $destinationLogo,
+            'paththumbnail' => $destinationPathThumbnail,
+            'mimes_type' => $mimes,
             'karyalaya' =>$request['karyalaya'],
             'contact' => $request['contact'],
             'website_link' => $request['website_link'],
@@ -140,8 +148,8 @@ class EserviceController extends Controller
         
         $all_data = $request->all();
 
-        $uppdf = $request->file('logo');
-        $uppd = $request->file('thumbnail');
+        $uppdf = $request->file('thumbnail');
+        $uppd = $request->file('logo');
         $number = $request['phone'];
         
         if($number != ""){
@@ -155,32 +163,34 @@ class EserviceController extends Controller
 
         if($uppdf != ""){
             $this->validate($request, [
-                'logo' => 'required|mimes:jpg,png,|max:2048',
+                'thumbnail' => 'required|mimes:jpg,png',
             ]);
-            $destinationPath = 'images/eservicelogo/';
-            $oldFilename = $destinationPath.'/'.$eservice->logo;
+            $destinationPathThumbnail = 'images/thumbnail/';
+            $oldFilename = $destinationPathThumbnail.'/'.$eservice->thumbnail;
 
             $extension = $uppdf->getClientOriginalExtension();
             $fileName = md5(mt_rand()).'.'.$extension;
-            $uppdf->move($destinationPath, $fileName);
-            $file_path = $destinationPath.'/'.$fileName;
-            $all_data['logo'] = $fileName;
+            $uppdf->move($destinationPathThumbnail, $fileName);
+            $file_path = $destinationPathThumbnail.'/'.$fileName;
+            $all_data['thumbnail'] = $fileName;
+            $all_data['paththumbnail'] = $destinationPathThumbnail;
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
             }
         } 
         if($uppd != ""){
             $this->validate($request, [
-                'thumbnail' => 'required|mimes:jpg,png,|max:2048',
+                'logo' => 'required|mimes:jpg,png,|max:2048',
             ]);
-            $destination = 'images/thumbnail/';
-            $oldFilenaam = $destination.'/'.$eservice->thumbnail;
+            $destinationLogo = 'images/eservicelogo/';
+            $oldFilenaam = $destinationLogo.'/'.$eservice->logo;
 
             $extensions = $uppd->getClientOriginalExtension();
             $fileNaam = md5(mt_rand()).'.'.$extensions;
-            $uppd->move($destination, $fileNaam);
-            $filePath = $destination.'/'.$fileNaam;
-            $all_data['thumbnail'] = $fileNaam;
+            $uppd->move($destinationLogo, $fileNaam);
+            $filePath = $destinationLogo.'/'.$fileNaam;
+            $all_data['logo'] = $fileNaam;
+            $all_data['pathlogo'] = $destinationLogo;
             if(File::exists($oldFilenaam)) {
                 File::delete($oldFilenaam);
             }
@@ -201,11 +211,11 @@ class EserviceController extends Controller
     {
      $eservices = Eservice::find($id);
 
-     $destinationPath = 'images/thumbnail/';
-     $oldFilename = $destinationPath.'/'.$eservices->thumbnail;
+     $destinationPathThumbnail = 'images/thumbnail/';
+     $oldFilename = $destinationPathThumbnail.'/'.$eservices->thumbnail;
 
-     $destination = 'images/eservicelogo';
-     $oldfile = $destination.'/'.$eservices->logo;
+     $destinationLogo = 'images/eservicelogo';
+     $oldfile = $destinationLogo.'/'.$eservices->logo;
 
      if($eservices->delete()){
         if(File::exists($oldFilename,$oldfile)) {

@@ -41,7 +41,7 @@
                       <td>{{$key + 1}}</td>
                       <td>{{$data->title}}</td>
                       <td>
-                        <img src="{{ $data->image == null ? asset('images/no-image-user.png') : asset('images/importantplace') . '/' . $data->image  }}" alt="" class="responsive" width="50" height="50">
+                        <img src="{{ $data->document == null ? asset('images/no-image-user.png') : asset('images/importantplace') . '/' . $data->document  }}" alt="" class="responsive" width="50" height="50">
                       </td>
                       <td>{{$data->latitude}}</td>
                       <td>{{$data->longitude}}</td>

@@ -50,7 +50,7 @@
                         <td>{{$key + 1}}</td>
                         <td>{!! $data->description !!}</td>
                         <td>
-                         <img src="{{ $data->image == null ? asset('images/no-image-user.png') : asset('images/aboutus') . '/' . $data->image  }}" alt="" class="responsive" width="50" height="50">
+                         <img src="{{ $data->document == null ? asset('images/no-image-user.png') : asset('images/aboutus') . '/' . $data->document  }}" alt="" class="responsive" width="50" height="50">
                         </td>
                         <td>
                           <a href="{{ route('superadmin.aboutus.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">

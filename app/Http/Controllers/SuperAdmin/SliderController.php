@@ -42,7 +42,7 @@ class SliderController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'image' => 'required|mimes:jpeg,jpg,png,|max:1048',
+            'image' => 'required|mimes:jpeg,jpg,png',
         ]);
      
         $uppdf = $request->file('image');
@@ -108,11 +108,13 @@ class SliderController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-             'image' => 'required|mimes:jpeg,jpg,png,|max:1048',
         ]);
         $all_data = $request->all();
         $uppdf = $request->file('image');
         if($uppdf != ""){
+            $this->validate($request, [
+                'image' => 'required|mimes:jpeg,jpg,png',
+            ]);
             $destinationPath = 'images/slider/';
             $oldFilename = $destinationPath.'/'.$slider->document;
             $extension = $uppdf->getClientOriginalExtension();

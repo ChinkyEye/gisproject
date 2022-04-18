@@ -53,15 +53,20 @@ class GalleryHasImageController extends Controller
                 $destinationPath = 'images/gallery/';
                 $extension = $uppdf->getClientOriginalExtension();
                 $fileName = md5(mt_rand()).'.'.$extension;
+                $mimes = $uppdf->getMimeType();
                 $uppdf->move($destinationPath, $fileName);
                 $file_path = $destinationPath.'/'.$fileName;
 
             }else{
                 $fileName = Null;
+                $destinationPath = Null;
+                $mimes = $mimes;
             }
             $datas = GalleryHasImage::create([
                 'gallery_id'=> $request->gallery_id,
-                'image'=> $fileName,
+                'document'=> $fileName,
+                'path'=> $destinationPath,
+                'mimes_type'=> $mimes,
                 'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
                 'date' => date("Y-m-d"),
                 'time' => date("H:i:s"),
@@ -113,6 +118,16 @@ class GalleryHasImageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $datas = GalleryHasImage::find($id);
+        $destinationPath = 'images/gallery/';
+        $oldFilename = $destinationPath.'/'.$datas->document;
+        if($datas->delete()){
+            if(File::exists($oldFilename)) {
+                File::delete($oldFilename);
+            }
+        }
+        return response()->json([
+            'success' => 'Record has been deleted successfully!'
+        ]);
     }
 }

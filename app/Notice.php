@@ -12,7 +12,7 @@ class Notice extends Model
          'type',
          'path',
          'document',
-         'mimes_types',
+         'mimes_type',
          'description',
          'is_active',
          'date_np',
