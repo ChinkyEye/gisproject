@@ -21,7 +21,8 @@ class CreateCorePeopleTable extends Migration
             $table->string('phone',10)->nullable();
             $table->string('link')->nullable();
             $table->string('path')->nullable();
-            $table->string('image')->nullable();
+            $table->string('mimes_types')->nullable();
+            $table->string('document')->nullable();
             $table->string('responsibility')->nullable();
             $table->integer('type'); 
             $table->integer('sort_id')->nullable();

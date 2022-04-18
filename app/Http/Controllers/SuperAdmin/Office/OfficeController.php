@@ -50,31 +50,36 @@ class OfficeController extends Controller
         $uppdf = $request->file('thumbnail');
         if($uppdf != ""){
             $this->validate($request, [
-                'thumbnail' => 'required|mimes:jpg,png,jpeg,|max:1048',
+                'thumbnail' => 'required|mimes:jpg,png,jpeg',
             ]);
-            $destinationPath = 'images/officethumbnail/';
+            $destinationPathThumbnail = 'images/officethumbnail/';
             $extension = $uppdf->getClientOriginalExtension();
+            $mimes = $uppdf->getMimeType();
             $fileName = md5(mt_rand()).'.'.$extension;
-            $uppdf->move($destinationPath, $fileName);
-            $file_path = $destinationPath.'/'.$fileName;
+            $uppdf->move($destinationPathThumbnail, $fileName);
+            $file_path = $destinationPathThumbnail.'/'.$fileName;
 
         }else{
             $fileName = Null;
+            $destinationPathThumbnail = Null;
+            $mimes = Null;
         } 
 
         $uppd = $request->file('logo');
         if($uppd != ""){
             $this->validate($request, [
-                'logo' => 'required|mimes:jpg,png,jpeg,|max:1048',
+                'logo' => 'required|mimes:jpg,png,jpeg',
             ]);
-            $destination = 'images/officelogo/';
+            $destinationLogo = 'images/officelogo/';
             $extensions = $uppd->getClientOriginalExtension();
+            $mimes = $uppd->getMimeType();
             $fileNaam = md5(mt_rand()).'.'.$extensions;
-            $uppd->move($destination, $fileNaam);
-            $file_path = $destination.'/'.$fileNaam;
+            $uppd->move($destinationLogo, $fileNaam);
+            $file_path = $destinationLogo.'/'.$fileNaam;
 
         }else{
             $fileNaam = Null;
+            $destinationLogo = Null;
         }
 
         $offices = Office::create([
@@ -83,6 +88,9 @@ class OfficeController extends Controller
             'website_link' => $request['website_link'],
             'thumbnail'=> $fileName,
             'logo' => $fileNaam,
+            'pathlogo' => $destinationLogo,
+            'paththumbnail' => $destinationPathThumbnail,
+            'mimes_type' => $mimes,
             'is_active' => '1',
             'date' => date("Y-m-d"),
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
@@ -138,13 +146,13 @@ class OfficeController extends Controller
             $this->validate($request, [
                 'logo' => 'required|mimes:jpg,png,|max:1048',
             ]);
-            $destinationPath = 'images/officelogo/';
-            $oldFilename = $destinationPath.'/'.$office->logo;
+            $destinationPathThumbnail = 'images/officelogo/';
+            $oldFilename = $destinationPathThumbnail.'/'.$office->logo;
 
             $extension = $uppdf->getClientOriginalExtension();
             $fileName = md5(mt_rand()).'.'.$extension;
-            $uppdf->move($destinationPath, $fileName);
-            $file_path = $destinationPath.'/'.$fileName;
+            $uppdf->move($destinationPathThumbnail, $fileName);
+            $file_path = $destinationPathThumbnail.'/'.$fileName;
             $all_data['logo'] = $fileName;
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
@@ -154,13 +162,13 @@ class OfficeController extends Controller
             $this->validate($request, [
                 'thumbnail' => 'required|mimes:jpg,png,|max:1048',
             ]);
-            $destination = 'images/officethumbnail/';
-            $oldFilenaam = $destination.'/'.$office->thumbnail;
+            $destinationLogo = 'images/officethumbnail/';
+            $oldFilenaam = $destinationLogo.'/'.$office->thumbnail;
 
             $extensions = $uppd->getClientOriginalExtension();
             $fileNaam = md5(mt_rand()).'.'.$extensions;
-            $uppd->move($destination, $fileNaam);
-            $filePath = $destination.'/'.$fileNaam;
+            $uppd->move($destinationLogo, $fileNaam);
+            $filePath = $destinationLogo.'/'.$fileNaam;
             $all_data['thumbnail'] = $fileNaam;
             if(File::exists($oldFilenaam)) {
                 File::delete($oldFilenaam);
@@ -183,11 +191,11 @@ class OfficeController extends Controller
     {
       $offices = Office::find($id);
 
-     $destinationPath = 'images/officethumbnail/';
-     $oldFilename = $destinationPath.'/'.$offices->thumbnail;
+     $destinationPathThumbnail = 'images/officethumbnail/';
+     $oldFilename = $destinationPathThumbnail.'/'.$offices->thumbnail;
 
-     $destination = 'images/officelogo';
-     $oldfile = $destination.'/'.$offices->logo;
+     $destinationLogo = 'images/officelogo';
+     $oldfile = $destinationLogo.'/'.$offices->logo;
 
      if($offices->delete()){
         if(File::exists($oldFilename,$oldfile)) {

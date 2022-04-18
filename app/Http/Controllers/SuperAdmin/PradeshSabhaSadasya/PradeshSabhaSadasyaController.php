@@ -20,6 +20,7 @@ class PradeshSabhaSadasyaController extends Controller
     {
         $datas = PradeshSabhaSadasya::orderBy('id','DESC')
                                     ->where('created_by', Auth::user()->id)
+                                    ->with('getDal')
                                     ->paginate(20);
         return view('superadmin.pradeshsabhasadasya.index', compact('datas'));
     }
@@ -55,6 +56,7 @@ class PradeshSabhaSadasyaController extends Controller
         if($number != ""){
             $this->validate($request, [
                 'phone' => 'required|digits_between:6,10',
+                'image' => 'required|mimes:jpg,jpeg',
             ]); 
          }
             else{
@@ -63,17 +65,17 @@ class PradeshSabhaSadasyaController extends Controller
 
         $uppdf = $request->file('image');
         if($uppdf != ""){
-            $this->validate($request, [
-                'image' => 'required|mimes:jpg,jpeg|max:1024',
-            ]);
             $destinationPath = 'images/pradeshsabhasadasya/';
             $extension = $uppdf->getClientOriginalExtension();
+            $mimes = $uppdf->getMimeType();
             $fileName = md5(mt_rand()).'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
 
         }else{
             $fileName = Null;
+            $destinationPath = Null;
+            $mimes = Null;
         }
 
        $datas = PradeshSabhaSadasya::create([
@@ -83,7 +85,9 @@ class PradeshSabhaSadasyaController extends Controller
             'dala' => $request['dala'],
             'nirvachit_kshetra_no' => $request['nirvachit_kshetra_no'],
             'phone' => $request['phone'],
-            'image'=> $fileName,
+            'document'=> $fileName,
+            'path'=> $destinationPath,
+            'mimes_type'=> $mimes,
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
             'date' => date("Y-m-d"),
             'time' => date("H:i:s"),
@@ -111,8 +115,9 @@ class PradeshSabhaSadasyaController extends Controller
      */
     public function edit($id)
     {
+        $dals = Dal::where('is_active','1')->get();
         $datas = PradeshSabhaSadasya::find($id);
-        return view('superadmin.pradeshsabhasadasya.edit', compact('datas'));
+        return view('superadmin.pradeshsabhasadasya.edit', compact('datas','dals'));
     }
 
     /**
@@ -144,17 +149,17 @@ class PradeshSabhaSadasyaController extends Controller
         $uppdf = $request->file('image');
         if($uppdf != ""){
             $this->validate($request, [
-                'image' => 'required|mimes:jpg,jpeg|max:1024',
+                'image' => 'required|mimes:jpg,jpeg',
             ]);
             $destinationPath = 'images/pradeshsabhasadasya/';
-            $oldFilename = $destinationPath.'/'.$pradeshsabhasadasya->image;
+            $oldFilename = $destinationPath.'/'.$pradeshsabhasadasya->document;
 
             $extension = $uppdf->getClientOriginalExtension();
             $name = $uppdf->getClientOriginalName();
             $fileName = $name.'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
-            $all_data['image'] = $fileName;
+            $all_data['document'] = $fileName;
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
             }
@@ -178,7 +183,7 @@ class PradeshSabhaSadasyaController extends Controller
     {
         $datas = PradeshSabhaSadasya::find($id);
         $destinationPath = 'images/pradeshsabhasadasya/';
-        $oldFilename = $destinationPath.'/'.$datas->image;
+        $oldFilename = $destinationPath.'/'.$datas->document;
         if($datas->delete()){
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);

@@ -45,7 +45,7 @@
                       <td>{{$data->email}}</td>
                       <td>{{$data->phone}}</td>
                       <td>
-                        <img src="{{ $data->photo == null ? asset('images/no-image-user.png') : asset('images/mantralaya') . '/' . $data->photo  }}" alt="" class="responsive" width="50" height="50">
+                        <img src="{{ $data->getUserMantralaya->document == null ? asset('images/no-image-user.png') : asset('images/mantralaya') . '/' . $data->getUserMantralaya->document  }}" alt="" class="responsive" width="50" height="50">
                       </td>
                       <td>
                         <a href="{{ route('superadmin.mantralaya.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
@@ -60,6 +60,8 @@
                           <input name='_method' type='hidden' value='DELETE'>
                           <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
                         </form>
+                        <a href="{{route('superadmin.mantralaya.changepassword',$data->id)}}" class="btn btn-xs btn-outline-info" title="Change Password">
+                          <i class="fas fa-key"></i></a>
 
                       </td>
                     </tr>

@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class GalleryHasImage extends Model
 {
      protected $fillable = [
-        'image',
+        'document',
+        'path',
+        'mimes_type',
         'gallery_id',
         'sort_id',
         'is_active',

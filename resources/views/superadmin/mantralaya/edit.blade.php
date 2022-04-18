@@ -60,8 +60,17 @@
         </div>
         <div class="form-group">
           <label for="link">Link</label>
-          <input type="text"  class="form-control max" id="link" placeholder="Enter the link" name="link" autocomplete="off" value="{{ $datas->link }}">
+          <input type="text"  class="form-control max" id="link" placeholder="Enter the link" name="link" autocomplete="off" value="{{ $datas->getUserMantralaya->link }}">
           @error('link')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
+        <div class="form-group">
+          <label for="prefix">Prefix</label>
+          <input type="text"  class="form-control max" id="prefix" placeholder="Enter the prefix" name="prefix" autocomplete="off" value="{{ $datas->getUserMantralaya->prefix }}">
+          @error('prefix')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
           </span>
@@ -70,7 +79,7 @@
         <div class="form-group">
           <label for="imgInp">Photo</label>
           <div class="input-group">
-            <img id="blah" src="{{URL::to('/')}}/images/mantralaya/{{$datas->photo}}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
+            <img id="blah" src="{{URL::to('/')}}/images/mantralaya/{{$datas->getUserMantralaya->document}}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
             <div class="input-group my-3">
              <input type='file' class="d-none" id="imgInp" name="image" />
            </div>
@@ -88,7 +97,7 @@
         <div class="row">
           <div class="form-group col-md">
             <label for="latitude">Latitude</label>
-            <input type="text"  class="form-control max" id="lat" placeholder="Enter the latitude" name="latitude" autocomplete="off" autofocus value="{{ $datas->latitude }}">
+            <input type="text"  class="form-control max" id="lat" placeholder="Enter the latitude" name="latitude" autocomplete="off" autofocus value="{{ $datas->getUserMantralaya->latitude }}">
             @error('latitude')
             <span class="text-danger font-italic" role="alert">
               <strong>{{ $message }}</strong>
@@ -97,7 +106,7 @@
           </div>
           <div class="form-group col-md">
             <label for="longitude">Longitude</label>
-            <input type="text"  class="form-control max" id="lang" placeholder="Enter the longitude" name="longitude" autocomplete="off" autofocus value="{{ $datas->longitude }}">
+            <input type="text"  class="form-control max" id="lang" placeholder="Enter the longitude" name="longitude" autocomplete="off" autofocus value="{{ $datas->getUserMantralaya->longitude }}">
             @error('longitude')
             <span class="text-danger font-italic" role="alert">
               <strong>{{ $message }}</strong>

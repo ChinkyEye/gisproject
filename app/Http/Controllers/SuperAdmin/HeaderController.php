@@ -40,31 +40,34 @@ class HeaderController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        
         $this->validate($request, [
             'name' => 'required',
             'slogan' => 'required',
-            'image' => 'required|mimes:png|max:1024',
+            'image' => 'required|mimes:png,jpeg|max:1024',
         ]);
          
         $uppdf = $request->file('image');
         if($uppdf != ""){
             $this->validate($request, [
-                'image' => 'required|mimes:jpeg,jpg,png,|max:1024',
+                'image' => 'required|mimes:jpeg,jpg,png',
             ]);
             $destinationPath = 'images/logo/';
             $extension = $uppdf->getClientOriginalExtension();
+            $mimes = $uppdf->getMimeType();
             $fileName = md5(mt_rand()).'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
 
         }else{
             $fileName = Null;
+            $destinationPath = Null;
+            $mimes = Null;
         }
        $headers = Header::create([
             'name' => $request['name'],
-            'image'=> $fileName,
+            'document'=> $fileName,
+            'path'=> $destinationPath,
+            'mimes_type'=> $mimes,
             'slogan' => $request['slogan'],
             'is_active' => '1',
             'date' => date("Y-m-d"),
@@ -107,28 +110,30 @@ class HeaderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Header $header)
+    public function update(Request $request,$id)
     {
         $this->validate($request, [
           'name' => 'required',
           'slogan' => 'required',
 
-        ]);
+        ]); 
+        $header = Header::find($id);
         $all_data = $request->all();
         $uppdf = $request->file('image');
         if($uppdf != ""){
           $this->validate($request, [
-            'image' => 'required|mimes:jpeg,jpg,png,|max:1024',
+            'image' => 'required|mimes:jpeg,jpg,png',
           ]);
          
           $destinationPath = 'images/logo/';
-          $oldFilename = $destinationPath.'/'.$header->image;
+          $oldFilename = $destinationPath.'/'.$header->document;
 
           $extension = $uppdf->getClientOriginalExtension();
-          $fileName = md5(mt_rand()).'.'.$extension;
+          $name = $uppdf->getClientOriginalName();
+          $fileName = $name.'.'.$extension;
           $uppdf->move($destinationPath, $fileName);
           $file_path = $destinationPath.'/'.$fileName;
-          $all_data['image'] = $fileName;
+          $all_data['document'] = $fileName;
           if(File::exists($oldFilename)) {
             File::delete($oldFilename);
           }
@@ -150,7 +155,7 @@ class HeaderController extends Controller
     {
         $headers = Header::find($id);
         $destinationPath = 'images/logo/';
-        $oldFilename = $destinationPath.'/'.$headers->image;
+        $oldFilename = $destinationPath.'/'.$headers->document;
 
         if($headers->delete()){
             if(File::exists($oldFilename)) {

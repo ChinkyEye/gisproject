@@ -57,8 +57,13 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="dala">Dala<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="dala" placeholder="Enter dala" name="dala" autocomplete="off" autofocus value="{{ $datas->dala }}">
+          <label for="dala">Dal<span class="text-danger">*</span></label>
+          <select class="form-control max" id="dala" name="dala">
+          <option>--Please choose one--</option>
+          @foreach($dals as $dal)
+          <option value="{{$dal->id}}" {{ $datas->dala == $dal->id ? 'selected' : ''}}>{{$dal->name}}</option>
+          @endforeach
+          </select>
           @error('dala')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
@@ -88,8 +93,8 @@
         <div class="form-group">
             <label for="imgInp">Image</label>
             <div class="input-group">
-              @if($datas->image)
-              <img id="blah" src="{{URL::to('/')}}/images/pradeshsabhasadasya/{{$datas->image}}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
+              @if($datas->document)
+              <img id="blah" src="{{URL::to('/')}}/images/pradeshsabhasadasya/{{$datas->document}}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
                <input type='file' class="d-none" id="imgInp" name="image" />
               @else
                 <img id="blah" src="{{ asset('images/no-image-user.png') }}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>

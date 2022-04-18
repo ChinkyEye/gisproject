@@ -13,7 +13,9 @@ class PradeshSabhaSadasya extends Model
         'dala',
         'nirvachit_kshetra_no',
         'phone',
-        'image',
+        'path',
+        'document',
+        'mimes_type',
         'sort_id',
         'is_active',
         'date_np',
@@ -31,5 +33,10 @@ class PradeshSabhaSadasya extends Model
     public function getUser()
     {
         return $this->belongsTo('App\User','created_by','id');
+    }
+
+    public function getDal()
+    {
+        return $this->belongsTo('App\Dal','dala','id');
     }
 }

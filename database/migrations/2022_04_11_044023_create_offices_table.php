@@ -21,7 +21,8 @@ class CreateOfficesTable extends Migration
             $table->string('logo')->nullable();      
             $table->string('thumbnail')->nullable();
             $table->string('pathlogo')->nullable();      
-            $table->string('paththumbnail')->nullable();        
+            $table->string('paththumbnail')->nullable(); 
+            $table->string('mimes_type')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);
             $table->string('date',10);

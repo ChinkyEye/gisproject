@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class HelloCM extends Model
 {
    protected $fillable = [
-      'thumbnail',
       'path',
+      'document',
+      'mimes_type',
       'email',
       'description',
       'link',

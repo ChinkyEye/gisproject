@@ -129,6 +129,8 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
 
     Route::resource('sidebar-part/mantralaya','Mantralaya\MantralayaController');
     Route::get('sidebar-part/mantralaya/active/{id}', 'Mantralaya\MantralayaController@isActive')->name('mantralaya.active');
+    Route::get('/sidebar-part/mantralaya/changepassword/{id}', 'Mantralaya\MantralayaController@PasswordForm')->name('mantralaya.changepassword');
+    Route::post('/sidebar-part/mantralaya/changepassword/store/{id}', 'Mantralaya\MantralayaController@changePassword')->name('mantralaya.storechangepassword');
 
     Route::resource('sidebar-part/importantplace','ImportantPlace\ImportantPlaceController');
     Route::get('sidebar-part/importantplace/active/{id}', 'ImportantPlace\ImportantPlaceController@isActive')->name('importantplace.active');
@@ -147,6 +149,8 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('/introduction','Introduction\IntroductionController');
      Route::get('introduction/active/{id}', 'Introduction\IntroductionController@isActive')->name('introduction.active');
 
+     Route::resource('sidebar-part/pradeshsarkar','PradeshSarkar\PradeshSarkarController');
+     Route::get('sidebar-part/pradeshsarkar/active/{id}', 'PradeshSarkar\PradeshSarkarController@isActive')->name('pradeshsarkar.active');
 
 });
 
@@ -159,7 +163,7 @@ Route::namespace('User')->prefix('user')->name('user.')->middleware(['user','aut
    
 
     Route::resource('userhasdetail','UserHasDetailController');
-    Route::get('/userhasdetail/create/{id}','UserHasDetailController@create')->name('userhasdetail.create');
+    // Route::get('/userhasdetail/create/{id}','UserHasDetailController@create')->name('userhasdetail.create');
 
 });
 

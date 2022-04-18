@@ -48,21 +48,26 @@ class HelloCMController extends Controller
         $uppdf = $request->file('image');
         if($uppdf != ""){
             $this->validate($request, [
-                'image' => 'required|mimes:jpg,jpeg|max:1024',
+                'image' => 'required|mimes:jpg,jpeg',
             ]);
             $destinationPath = 'images/hellocm/';
             $extension = $uppdf->getClientOriginalExtension();
+             $mimes = $uppdf->getMimeType();
             $fileName = md5(mt_rand()).'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
 
         }else{
             $fileName = Null;
+            $destinationPath = Null;
+            $mimes = Null;
         }
         $datas = HelloCM::create([
             'email' => $request['email'],
             'description' => $request['description'],
-            'thumbnail'=> $fileName,
+            'document'=> $fileName,
+            'path'=> $destinationPath,
+            'mimes_type'=> $mimes,
             'link' => $request['link'],
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
             'date' => date("Y-m-d"),
@@ -107,26 +112,25 @@ class HelloCMController extends Controller
     //  $input = $request->all();
     //  $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
      
-     $this->validate($request, [
+    $this->validate($request, [
         'email' => 'required',
-        // 'link' => 'required|regex:'.$regex,
     ]);
      $all_data = $request->all();
      $uppdf = $request->file('image');
-        // dd($uppdf);
      if($uppdf != ""){
         $this->validate($request, [
-            'image' => 'required|mimes:jpg,jpeg|max:1024',
+            'image' => 'required|mimes:jpg,jpeg',
         ]);
         $destinationPath = 'images/hellocm/';
-        $oldFilename = $destinationPath.'/'.$hellocm->image;
+        $oldFilename = $destinationPath.'/'.$hellocm->document;
 
         $extension = $uppdf->getClientOriginalExtension();
         $name = $uppdf->getClientOriginalName();
         $fileName = $name.'.'.$extension;
         $uppdf->move($destinationPath, $fileName);
         $file_path = $destinationPath.'/'.$fileName;
-        $all_data['thumbnail'] = $fileName;
+        $all_data['document'] = $fileName;
+        $all_data['path'] = $destinationPath;
         if(File::exists($oldFilename)) {
             File::delete($oldFilename);
         }
@@ -148,7 +152,7 @@ class HelloCMController extends Controller
     {
         $datas = HelloCM::find($id);
         $destinationPath = 'images/hellocm/';
-        $oldFilename = $destinationPath.'/'.$datas->thumbnail;
+        $oldFilename = $destinationPath.'/'.$datas->document;
         if($datas->delete()){
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);

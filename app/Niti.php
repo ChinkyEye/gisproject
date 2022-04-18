@@ -9,8 +9,9 @@ class Niti extends Model
     protected $fillable = [
         'title',
         'type',
-        'document',
         'path',
+        'mimes_type',
+        'document',
         'description',
         'is_active',
         'date_np',

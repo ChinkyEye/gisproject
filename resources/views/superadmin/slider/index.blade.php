@@ -51,7 +51,7 @@
                       <td>{{$key + 1}}</td>
                       <td>{{$slider->name}}</td>
                       <td>
-                        <img src="{{ asset('images/slider/') . '/' . $slider->image }}" alt="" class="responsive" width="50">
+                        <img src="{{ asset('images/slider/') . '/' . $slider->document }}" alt="" class="responsive" width="50">
                         {{-- <img src="{{ asset('images/slider/') . '/' . $slider->name . '/' . $slider->image }}" alt="" class="responsive" width="50"> --}}
                       </td>
                       <td>

@@ -7,8 +7,9 @@ class Header extends Model
 {
 	protected $fillable = [
       'name',
-      'image',
       'path',
+      'document',
+      'mimes_type',
       'slogan',
       'is_active',
       'date_np',

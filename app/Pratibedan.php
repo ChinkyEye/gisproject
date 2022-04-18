@@ -8,9 +8,10 @@ class Pratibedan extends Model
 {
     protected $fillable = [
         'title',
-        'path',
         'type',
+        'path',
         'document',
+        'mimes_type',
         'description',
         'is_active',
         'date_np',

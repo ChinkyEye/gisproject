@@ -18,8 +18,12 @@ class CreateSurveysTable extends Migration
             $table->string('name');
             $table->string('slug');
             $table->json('json');
+<<<<<<< HEAD
             $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id')->on('users');
+=======
+            // $table->text('json');
+>>>>>>> origin/master
             $table->timestamps();
             $table->softDeletes();
         });

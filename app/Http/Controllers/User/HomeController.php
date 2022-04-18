@@ -19,9 +19,8 @@ class HomeController extends Controller
     {
         $datas = User::where('id', Auth::user()->id)
                         ->where('user_type',2)
-                        ->with('getUserDetail')
+                        ->with('getUserMantralaya')
                         ->first();
-                        // dd($datas);
         return view('user.main.home', compact('datas'));
     }
 
