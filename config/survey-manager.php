@@ -15,7 +15,7 @@ return [
     'api_prefix'                =>  'api',
 
     // The prefix used in admin route
-    'admin_prefix'              =>  'admin',
+    'admin_prefix'              =>  'home',
 
     /*
     |--------------------------------------------------------------------------
