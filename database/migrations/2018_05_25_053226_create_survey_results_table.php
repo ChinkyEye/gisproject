@@ -18,8 +18,8 @@ class CreateSurveyResultsTable extends Migration
             $table->unsignedInteger('survey_id');
             $table->unsignedInteger('user_id')->nullable();
             $table->string('ip_address')->nullable();
-            // $table->json('json');
-            $table->text('json');
+            $table->json('json');
+            // $table->text('json');
             $table->timestamps();
         });
     }
