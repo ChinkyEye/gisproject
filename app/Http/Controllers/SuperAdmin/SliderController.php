@@ -120,6 +120,7 @@ class SliderController extends Controller
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
             $all_data['document'] = $fileName;
+            
             if(File::exists($oldFilename)) {
                 File::delete($oldFilename);
             }
@@ -139,7 +140,6 @@ class SliderController extends Controller
     public function destroy($id)
     {
         $sliders = Slider::find($id);
-
         $destinationPath = 'images/slider/';
         $oldFilename = $destinationPath.'/'.$sliders->document;
 
