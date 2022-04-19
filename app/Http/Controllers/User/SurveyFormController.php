@@ -41,7 +41,7 @@ class SurveyFormController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'description' => 'required',
+            'title' => 'required',
         ]);
         $surveyforms = SurveyForm::create([
             'title' => $request['title'],
@@ -88,7 +88,7 @@ class SurveyFormController extends Controller
     public function update(Request $request, SurveyForm $surveyform)
     {
         $this->validate($request, [
-            'description' => 'required',
+            'title' => 'required',
         ]);
         $all_data = $request->all();
         $all_data['updated_by'] = Auth::user()->id;
