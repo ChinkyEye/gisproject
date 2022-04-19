@@ -21,7 +21,7 @@ use App\TblRemotePrativedan;
 use App\TblRemotePublication;
 use App\Notice;
 use App\Introduction;
-
+use App\Slider;
 
 class HomeController extends Controller
 {
@@ -38,8 +38,9 @@ class HomeController extends Controller
         $remote_prativedans = TblRemotePrativedan::orderBy('id','DESC')->take(10)->get();
         $remote_publications = TblRemotePublication::orderBy('id','DESC')->take(10)->get();
         $offices = Office::orderBy('id','DESC')->get();
-        $introductions = Introduction::orderBy('id','DESC')->get();
-        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','offices','scroll_notice','introductions']));
+        $introductions = Introduction::orderBy('id','DESC')->where('is_active','1')->get();
+        $sliders = Slider::orderBy('id','DESC')->where('is_active','1')->get();
+        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','offices','scroll_notice','introductions','sliders']));
     }
 
     public function link(Request $request, $link,$link2 = Null)

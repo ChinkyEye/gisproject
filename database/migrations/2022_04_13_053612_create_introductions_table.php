@@ -16,8 +16,11 @@ class CreateIntroductionsTable extends Migration
         Schema::create('introductions', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('detail');
-             $table->boolean('is_active')->default(True); // 1 active, 0 non active
+            $table->text('description');
+            $table->string('path')->nullable();
+            $table->string('mimes_type')->nullable();
+            $table->string('document')->nullable();
+            $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);
             $table->string('date',10);
             $table->string('time',8);

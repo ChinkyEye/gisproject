@@ -169,17 +169,17 @@ Route::namespace('User')->prefix('user')->name('user.')->middleware(['user','aut
 
 
 
-// Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest'])->group(function(){
-//     // home
-//     Route::get('/', 'HomeController@index')->name('home');
-//     Route::get('/list', 'HomeController@list')->name('list');
-//     Route::get('/gallery', 'HomeController@gallery')->name('gallery');
-//     Route::get('/gallery/{slug}', 'HomeController@gallerySlug')->name('gallerySlug');
-//     Route::get('/detail/{type}', 'DetailController@index')->name('detail.index');
-//     Route::get('/detail/{type}/search', 'DetailController@search')->name('detail.search');
-//     Route::get('/{link}/{links?}', 'HomeController@link')->name('home.link');
-//     Route::get('/{link}/detail/{id}', 'HomeController@detail')->name('home.detail');
-//     Route::get('/{link}/{link2}/more/{id}', 'HomeController@more')->name('home.more');
-//     Route::get('/web/sidelink/{link}', 'HomeController@sidelink')->name('home.sidelink');
+Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest'])->group(function(){
+    // home
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/list', 'HomeController@list')->name('list');
+    Route::get('/gallery', 'HomeController@gallery')->name('gallery');
+    Route::get('/gallery/{slug}', 'HomeController@gallerySlug')->name('gallerySlug');
+    Route::get('/detail/{type}', 'DetailController@index')->name('detail.index');
+    Route::get('/detail/{type}/search', 'DetailController@search')->name('detail.search');
+    Route::get('/{link}/{links?}', 'HomeController@link')->name('home.link');
+    Route::get('/{link}/detail/{id}', 'HomeController@detail')->name('home.detail');
+    Route::get('/{link}/{link2}/more/{id}', 'HomeController@more')->name('home.more');
+    Route::get('/web/sidelink/{link}', 'HomeController@sidelink')->name('home.sidelink');
     
-// });
+});
