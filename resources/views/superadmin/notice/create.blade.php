@@ -141,6 +141,7 @@
 <script>
   $(function () {
     CKEDITOR.replace('description');
+    CKEDITOR.config.autoParagraph = false;
     CKEDITOR.config.removeButtons = 'Anchor';
     CKEDITOR.config.removePlugins = 'stylescombo,link,sourcearea,maximize,image,about,tabletools,scayt';
   });

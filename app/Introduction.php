@@ -8,7 +8,10 @@ class Introduction extends Model
 {
      protected $fillable = [
        'title',
-       'detail',
+       'description',
+       'path',
+       'document',
+       'mimes_type',
        'created_by',
        'is_active',
        'date_np',

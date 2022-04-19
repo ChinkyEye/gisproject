@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\View;
 use App\Menu;
 use App\Sidemenu;
 use App\Usefullink;
+use App\Notice;
+use App\Slider;
+
 
 
 class AppServiceProvider extends ServiceProvider
@@ -42,5 +45,9 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('web.layouts.footer', function ($view) use ($request){
             $view->with('usefullink', Usefullink::totalusefullink($request));
         });
+        view()->composer('web.layouts.head-top', function ($view) use ($request){
+            $view->with('notice', Notice::totalnotice($request));
+        }); 
+       
     }
 }
