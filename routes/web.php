@@ -171,11 +171,6 @@ Route::namespace('User')->prefix('user')->name('user.')->middleware(['user','aut
 
 });
 
-
-
-
-Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest'])->group(function(){
-
 Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest','setlocale'])->group(function(){
     Route::get('language/{lang}', 'HomeController@switchLang')->name('LangChange');
 

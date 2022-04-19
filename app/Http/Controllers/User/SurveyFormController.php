@@ -46,6 +46,7 @@ class SurveyFormController extends Controller
         ]);
         $surveyforms = SurveyForm::create([
             'title' => $request['title'],
+            'slug' => mt_rand(11111,99999).date('Ymd'),
             'description' => $request['description'],
             'is_active' => '1',
             'date' => date("Y-m-d"),
@@ -76,7 +77,7 @@ class SurveyFormController extends Controller
      */
     public function edit($id)
     {
-        $datas = SurveyForm::find($id);
+        $datas = SurveyForm::where('created_by', Auth::user()->id)->find($id);
         return view('user.surveyform.edit', compact('datas'));
     }
 
