@@ -57,7 +57,7 @@
                         </td>
                         <td>
                           <a href="{{ route('user.surveyform.edit',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
-                          <a href="{{ route('user.surveyform.edit',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-plus"></i></a>
+                          <a href="{{ route('user.surveyform.attribute',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-plus"></i></a>
                           <form action='javascript:void(0)' data_url="{{route('user.surveyform.destroy',$data->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
                             <input type='hidden' name='_token' value='".csrf_token()."'>
                             <input name='_method' type='hidden' value='DELETE'>
