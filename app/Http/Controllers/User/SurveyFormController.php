@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\SurveyForm;
+use App\SurveyFormHasAttribute;
 use Auth;
 
 class SurveyFormController extends Controller
@@ -63,7 +64,8 @@ class SurveyFormController extends Controller
      */
     public function show($id)
     {
-        //
+        $datas = SurveyFormHasAttribute::where('form_id',$id)->get();
+        return view('user.surveyform.show', compact('datas'));
     }
 
     /**

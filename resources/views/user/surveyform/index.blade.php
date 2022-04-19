@@ -63,6 +63,7 @@
                             <input name='_method' type='hidden' value='DELETE'>
                             <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
                           </form>
+                          <a href="{{ route('user.surveyform.show',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-eye"></i></a>
                         </td>
                       </tr>
                       @endforeach
