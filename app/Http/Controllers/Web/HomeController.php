@@ -133,16 +133,6 @@ class HomeController extends Controller
         return view('web.gallery', compact('pages'));
     }
 
-    // public function setLang(Request $request){
-    //   $lang = $request->lang;
-    //   // App::setlocale($lang);
-    //   Session::put('locale', $lang);
-    //   $ab = Session::get('locale');
-    //   App::setLocale($lang);
-    //   $locale = App::getLocale();
-    //   var_dump($lang,$ab,$locale); die();
-    // }
-
     public function switchLang(Request $request)
     {
         // dd($request->lang);
