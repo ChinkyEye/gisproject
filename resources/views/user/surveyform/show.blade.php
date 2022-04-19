@@ -26,11 +26,6 @@
               <th width="20">SN</th>
               <th>Questions</th>
               <th>Type</th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
               <th class="text-center">Status</th>
               <th>Action</th>
             </tr>
@@ -41,11 +36,6 @@
               <td><a>{{$key + 1}}</a></td>
               <td>{{$data->question}}</td>
               <td>{{$data->type}}</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
               <td class="text-center">
                 <a href="">
                   <i class="fa {{ $data->is_active == '1' ? 'fa-check check-css' : 'fa-times cross-css' }}"></i>
@@ -68,37 +58,4 @@
     </div>
   </div>
 </section>
-
-{{-- <section class="content">
-  <div class="card">
-    <form role="form" method="POST" action="{{route('user.surveyform.update', $datas->id)}}">
-      @method('PATCH')
-      @csrf
-      <div class="modal-body" >
-        <div class="form-group">
-          <label for="title">Title<span class="text-danger">*</span></label>
-          <input  type="text"  class="form-control max" rows="4" id="title" placeholder="Enter title" name="title" value="{{$datas->title}}">
-          @error('title')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div>
-        <div class="form-group">
-          <label for="description">Description</label>
-          <textarea  type="text"  class="form-control max" rows="4" id="description" placeholder="Enter description" name="description" autocomplete="off">{{$datas->description}}</textarea>
-          @error('description')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div>
-      </div>
-      <div class="modal-footer justify-content-between">
-        <button type="submit" class="btn btn-info text-capitalize">Update Survey</button>
-      </div>
-    </form>
-  </div>
-</section> --}}
-
 @endsection

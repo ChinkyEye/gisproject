@@ -11,6 +11,7 @@ class SurveyForm extends Model
 
     protected $fillable = [
         'title',
+        'slug',
         'description',
         'sort_id',
         'is_active',
