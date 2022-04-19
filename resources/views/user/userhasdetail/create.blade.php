@@ -9,7 +9,7 @@
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="{{route('superadmin.home')}}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{{route('user.home')}}">Home</a></li>
           <li class="breadcrumb-item active text-capitalize">{{ $page }} Page</li>
         </ol>
       </div>

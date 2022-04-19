@@ -1,6 +1,6 @@
 @extends('user.main.app')
 @section('content')
-<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('superadmin.','',Route::currentRouteName()), ".")); ?>
+<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('user.','',Route::currentRouteName()), ".")); ?>
 <section class="content-header">
   <div class="container-fluid">
     <div class="row mb-2">
@@ -9,7 +9,7 @@
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item"><a href="{{route('superadmin.home')}}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{{route('user.home')}}">Home</a></li>
           <li class="breadcrumb-item active text-capitalize">{{ $page }} Page</li>
         </ol>
       </div>

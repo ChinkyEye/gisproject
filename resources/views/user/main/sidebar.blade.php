@@ -1,13 +1,4 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4 inverted">
-  {{-- <a href="" class="brand-link">
-    <img src="{{URL::to('/')}}/image/logo.png" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
-    @php preg_match_all('/(?<=\s|^)[a-z]/i', Auth::user()->getSchool->school_name, $schools); @endphp
-    <span class="brand-text font-weight-light">{{strtoupper(implode('', $schools[0]))}} 
-      @if(Auth::user()->getBatch)
-      ({{Auth::user()->getBatch->name}})
-      @endif
-    </span>
-  </a> --}}
   <div class="sidebar">
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image pt-1">
@@ -23,14 +14,6 @@
     </div>
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
-        {{-- <li class="nav-item">
-          <a href="{{URL::to('/')}}/user/survey" class="nav-link {{ (request()->is('user/surveyjs*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-list"></i>
-            <p>
-              Menu
-            </p>
-          </a>
-        </li> --}}
         <li class="nav-item">
           <a href="{{ route('user.surveyform.index')}}" class="nav-link {{ (request()->is('user/surveyform*')) ? 'active' : '' }}">
             <i class="nav-icon fas fa-list"></i>

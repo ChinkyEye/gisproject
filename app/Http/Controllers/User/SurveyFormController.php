@@ -19,6 +19,7 @@ class SurveyFormController extends Controller
     {
         $datas = SurveyForm::orderBy('id','DESC')
                             ->where('created_by', Auth::user()->id)
+                            ->with('getSurveyQuestion')
                             ->get();
         return view('user.surveyform.index', compact('datas'));
     }

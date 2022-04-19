@@ -156,18 +156,16 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
 });
 
 
-Route::namespace('User')->prefix('user')->name('user.')->middleware(['user','auth'])->group(function(){
+Route::namespace('User')->prefix('user')->name('user.')->middleware(['user'])->group(function(){
     Route::get('/', 'HomeController@index')->name('home');
    
 
-    Route::resource('userhasdetail','UserHasDetailController');
     Route::resource('surveyform','SurveyFormController');
     Route::get('surveyform/attribute/{id}', 'SurveyFormAttributeController@createSurveyFormAttribute')->name('surveyform.attribute');
     Route::resource('surveyformattribute', 'SurveyFormAttributeController');
 
     Route::get('surveyform/active/{id}', 'SurveyFormController@isActive')->name('surveyform.active');
 
-    // Route::get('/userhasdetail/create/{id}','UserHasDetailController@create')->name('userhasdetail.create');
 
 });
 
@@ -176,6 +174,9 @@ Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest','setlocal
 
     // home
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/survey', 'SurveyController@index')->name('survey.index');
+    Route::post('/survey', 'SurveyController@store')->name('survey.index');
+    Route::get('/surrvey/{slug}', 'SurveyController@getQuestion')->name('survey.question');
     Route::get('/list', 'HomeController@list')->name('list');
     Route::get('/gallery', 'HomeController@gallery')->name('gallery');
     Route::get('/gallery/{slug}', 'HomeController@gallerySlug')->name('gallerySlug');

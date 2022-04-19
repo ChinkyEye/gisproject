@@ -20,6 +20,8 @@
                     <!-- Nav Start -->
                     <div class="classynav">
                         <ul>
+                            <li>
+                                <a href="{{route('web.survey.index')}}">Survey</a></li>
                             @foreach($total_menu as $key => $data)
                             <li>
                                 @if($data->parent_id == '0')
