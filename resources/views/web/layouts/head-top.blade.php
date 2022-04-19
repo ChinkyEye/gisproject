@@ -27,12 +27,12 @@
       <div class="col-sm-2 d-flex main-d-sm-none top-header p-0">
         <ul class="list-unstyled pl-2">
           <li class="list-inline-item">
-            <a href="" class="text-light lang" id="en">
+            <a href="{{ route('web.LangChange','en') }}" class="text-light lang" id="en">
               En
             </a>
           </li>
           <li  class="list-inline-item">
-            <a href="" class="text-light lang" id="np">
+            <a href="{{ route('web.LangChange','ne') }}" class="text-light lang" id="ne">
               Ne
             </a>
           </li>

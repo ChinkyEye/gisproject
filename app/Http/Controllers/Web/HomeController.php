@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 use App\Menu;
 use App\Sidemenu;
 use App\MenuHasDropdown;
@@ -22,6 +24,8 @@ use App\TblRemotePublication;
 use App\Notice;
 use App\Introduction;
 use App\Slider;
+
+
 
 class HomeController extends Controller
 {
@@ -129,5 +133,13 @@ class HomeController extends Controller
     public function gallerySlug($slug) {
         $pages = "Gallery Name";
         return view('web.gallery', compact('pages'));
+    }
+
+    public function switchLang(Request $request)
+    {
+        // dd($request->lang);
+        // dd(session(['APP_LOCALE' => $request->lang]));
+        session(['APP_LOCALE' => $request->lang]);
+        return back();
     }
 }

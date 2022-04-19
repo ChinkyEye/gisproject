@@ -26,6 +26,7 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
 
     Route::get('/order-menu','MenuController@order_menu')->name('order-menu');
 
+
     Route::get('/', 'HomeController@index')->name('home');
 
     Route::resource('main-entry/header','HeaderController');
@@ -157,19 +158,27 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
 
 Route::namespace('User')->prefix('user')->name('user.')->middleware(['user','auth'])->group(function(){
     Route::get('/', 'HomeController@index')->name('home');
-
-   
-
    
 
     Route::resource('userhasdetail','UserHasDetailController');
+    Route::resource('surveyform','SurveyFormController');
+    Route::get('surveyform/attribute/{id}', 'SurveyFormAttributeController@createSurveyFormAttribute')->name('surveyform.attribute');
+    Route::resource('surveyformattribute', 'SurveyFormAttributeController');
+
+    Route::get('surveyform/active/{id}', 'SurveyFormController@isActive')->name('surveyform.active');
+
     // Route::get('/userhasdetail/create/{id}','UserHasDetailController@create')->name('userhasdetail.create');
 
 });
 
 
 
+
 Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest'])->group(function(){
+
+Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest','setlocale'])->group(function(){
+    Route::get('language/{lang}', 'HomeController@switchLang')->name('LangChange');
+
     // home
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/list', 'HomeController@list')->name('list');
