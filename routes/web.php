@@ -161,6 +161,9 @@ Route::namespace('User')->prefix('user')->name('user.')->middleware(['user','aut
    
 
     Route::resource('userhasdetail','UserHasDetailController');
+    Route::resource('surveyform','SurveyFormController');
+    Route::get('surveyform/active/{id}', 'SurveyFormController@isActive')->name('surveyform.active');
+
     // Route::get('/userhasdetail/create/{id}','UserHasDetailController@create')->name('userhasdetail.create');
 
 });

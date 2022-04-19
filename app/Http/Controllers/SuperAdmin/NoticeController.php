@@ -191,7 +191,8 @@ class NoticeController extends Controller
         }
         return Response::json($notification);
     }
-      public function isActive(Request $request,$id)
+    
+    public function isActive(Request $request,$id)
     {
         $get_is_active = Notice::where('id',$id)->value('is_active');
         $isactive = Notice::find($id);
