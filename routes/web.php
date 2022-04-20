@@ -29,6 +29,11 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
 
     Route::get('/', 'HomeController@index')->name('home');
 
+    Route::resource('surveyform','Survey\SurveyFormController');
+    Route::get('surveyform/attribute/{id}', 'Survey\SurveyFormAttributeController@createSurveyFormAttribute')->name('surveyform.attribute');
+    Route::resource('surveyformattribute', 'Survey\SurveyFormAttributeController');
+    Route::get('surveyform/get/type', 'Survey\SurveyFormAttributeController@getType')->name('survey.getType');
+
     Route::resource('main-entry/header','HeaderController');
     Route::get('main-entry/header/active/{id}', 'HeaderController@isActive')->name('header.active');
 
@@ -161,9 +166,9 @@ Route::namespace('User')->prefix('user')->name('user.')->middleware(['user','aut
    
 
     Route::resource('userhasdetail','UserHasDetailController');
-    Route::resource('surveyform','SurveyFormController');
-    Route::get('surveyform/attribute/{id}', 'SurveyFormAttributeController@createSurveyFormAttribute')->name('surveyform.attribute');
-    Route::resource('surveyformattribute', 'SurveyFormAttributeController');
+    // Route::resource('surveyform','SurveyFormController');
+    // Route::get('surveyform/attribute/{id}', 'SurveyFormAttributeController@createSurveyFormAttribute')->name('surveyform.attribute');
+    // Route::resource('surveyformattribute', 'SurveyFormAttributeController');
 
     Route::get('surveyform/active/{id}', 'SurveyFormController@isActive')->name('surveyform.active');
 
