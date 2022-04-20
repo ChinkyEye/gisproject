@@ -174,9 +174,10 @@ Route::namespace('User')->prefix('user')->name('user.')->middleware(['user'])->g
     Route::resource('surveyformattribute', 'SurveyFormAttributeController');
 
     Route::get('surveyform/active/{id}', 'SurveyFormController@isActive')->name('surveyform.active');
+    Route::get('surveyformquestion/active/{id}', 'SurveyFormController@isActiveQuestion')->name('surveyformquestion.active');
     Route::get('surveyform/getsurveyuser/{slug}', 'SurveyFormController@getsurveyuser')->name('surveyform.getsurveyuser');
     Route::get('surveyform/surveyanswer/{id}', 'SurveyFormController@getSurveyanswer')->name('surveyform.surveyanswer');
-
+    Route::get('/survey-question','SurveyFormController@survey_question')->name('survey-question');
 
 });
 

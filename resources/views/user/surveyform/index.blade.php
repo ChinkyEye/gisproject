@@ -46,9 +46,9 @@
                         <th>Action</th>
                       </tr>
                     </thead> 
-                    <tbody style="text-align: center">
+                    <tbody id="menu" class="sortable" style="text-align: center">
                       @foreach($datas as $key => $data)
-                      <tr class="{{$data->is_active == 1 ? '' : 'table-danger'}}">
+                      <tr id="{{$data->id}}" class="{{$data->is_active == 1 ? '' : 'table-danger'}}">
                         <td>{{$key + 1}}</td>
                         <td>{{ $data->title }}</td>
                         <td>{{ $data->description }}</td>

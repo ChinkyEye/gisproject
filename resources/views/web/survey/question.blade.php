@@ -28,7 +28,7 @@
 					<div class="form-group">
 						<label>{{$data->question}} <span>{{($data->is_required == '1') ? '*' : ""}}</span></label>
 
-						@if($data->type == 'text')
+						@if($data->type == 'text' || $data->type == 'email' || $data->type == 'url')
 						<input type="{{$data->type}}" class="form-control" {{($data->is_required == '1') ? 'required' : ""}} minlength="{{$data->min}}" maxlength="{{$data->max}}" name="answer[{{$data->id}}]">
 
 						@elseif($data->type == 'textarea')
