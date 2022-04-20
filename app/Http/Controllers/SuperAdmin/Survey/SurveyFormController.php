@@ -29,6 +29,7 @@ class SurveyFormController extends Controller
         ]);
         $surveyforms = SurveyForm::create([
             'title' => $request['title'],
+            'slug' => $request['title'],
             'description' => $request['description'],
             'is_active' => '1',
             'date' => date("Y-m-d"),

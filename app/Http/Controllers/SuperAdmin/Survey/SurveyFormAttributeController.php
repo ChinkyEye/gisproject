@@ -30,8 +30,6 @@ class SurveyFormAttributeController extends Controller
 
         }
 
-      
-
     }
 
     public function store(Request $request)

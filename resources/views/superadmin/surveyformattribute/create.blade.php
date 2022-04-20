@@ -59,9 +59,7 @@
             
           </div>
 
-          <div id="replaceTable">
-            
-          </div>
+          
           
           
           <div class="form-group col-md-6">
@@ -73,8 +71,8 @@
           <label for="max">Max</label>
           <input type="number" class="form-control form-control-border" id="max" placeholder="Enter max" name="max">
           </div>
-          <div class="form-group">
-          
+          <div class="col-md-12" id="replaceTable">
+            
           </div>
           
           
@@ -123,24 +121,19 @@
 </script> --}}
 
 <script type="text/javascript">
-    var max_fields      = 14; 
-    var x = 0;
-    var wrapper         = $("#radio-entry-table"); 
-    $("body").on("click", "#radio_more", function(event){
-      console.log('kkkkradiobuttons');
-        if(x < max_fields){
-            x++;
-            var $cloned = $("#radio-main-entry:first").clone();
-            $cloned.append('<div class="remove_field input-group-btn"><a href="javascript:void(0)" class="btn btn-outline-danger btn-xs"><i class="fas fa-minus-circle"></i></a></div>').find("input[type='file']").val("");
-            wrapper.append($cloned);
-        }
-        else
-            alertify.alert("only max 15 entries");
-    });
-    wrapper.on("click",".remove_field", function(e){
-        e.preventDefault(); $(this).parent('div').remove(); 
-        x--;
-    });
+   
+    function cloningSection() {
+      var clone = $(".radio-entry-table:first").clone();
+      clone.find("input").val("");
+      $("#radio-entry-table").after(clone);
+    }
+
+    function removeSection(e) {
+        e.preventDefault();
+        // $("#radio-entry-table:closest").remove();
+        $(this).parent('#radio-entry-table').remove();
+    }
+    
 </script>
 
 <script type="text/javascript">
@@ -157,7 +150,18 @@
           },
           success:function(response){
             $('#replaceTable').html("");
+            // $('#replaceTable').after(response);
             $('#replaceTable').html(response);
+            $("body").on("click", ".radio_more", function(event){
+              // debugger;
+              cloningSection();
+            });
+            $("body").on("click", ".radio-entry-table .radio_remove", function(event){
+            // $("#radio-entry-table .radio_remove").click(function(e){
+              event.preventDefault();
+              debugger;
+              $(this).parent().remove();
+            });
           },
           error: function (e) {
             alert('Sorry! we cannot load data this time');
