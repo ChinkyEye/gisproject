@@ -23,39 +23,50 @@
 			<div class="col-12">
 				<form role="form" method="POST" action="{{route('web.survey.index')}}" enctype="multipart/form-data">
 					@csrf
+					<input type="hidden" name="survey_id" value="{{$survey_id}}">
 					@foreach($datas as $key => $data)
 					<div class="form-group">
-						<input type="hidden" name="question[]" value="{{$data->id}}">
 						<label>{{$data->question}} <span>{{($data->is_required == '1') ? '*' : ""}}</span></label>
 
-						@if($data->type == 'text')
-						<input type="{{$data->type}}" class="form-control" {{($data->is_required == '1') ? 'required' : ""}} minlength="{{$data->min}}" maxlength="{{$data->max}}" name="answer[]">
+						@if($data->type == 'text' || $data->type == 'email' || $data->type == 'url')
+						<input type="{{$data->type}}" class="form-control" {{($data->is_required == '1') ? 'required' : ""}} minlength="{{$data->min}}" maxlength="{{$data->max}}" name="answer[{{$data->id}}]">
 
 						@elseif($data->type == 'textarea')
-						<textarea class="form-control" {{($data->is_required == '1') ? 'required' : ""}} minlength="{{$data->min}}" maxlength="{{$data->max}}" name="answer[]"></textarea>
+						<textarea class="form-control" {{($data->is_required == '1') ? 'required' : ""}} minlength="{{$data->min}}" maxlength="{{$data->max}}" name="answer[{{$data->id}}]"></textarea>
 
 						@elseif($data->type == 'dropdown')
-						<select class="form-control" {{($data->is_required == '1') ? 'required' : ""}} minlength="{{$data->min}}" maxlength="{{$data->max}}" name="answer[]">
-							<option>-- Please select --</option>
+						<select class="form-control" {{($data->is_required == '1') ? 'required' : ""}} minlength="{{$data->min}}" maxlength="{{$data->max}}" name="answer[{{$data->id}}]">
+							<option value="" disabled selected>-- Please select --</option>
 							@foreach($data->getSurveyChoice()->where('is_active','1')->get() as $choicedata)
-							<option value="{{$choicedata->choice}}">{{$choicedata->choice}}</option>
+							<option value="{{$choicedata->choice}}" >
+								{{$choicedata->choice}}
+							</option>
 							@endforeach
 						</select>
 
 						@elseif($data->type == 'checkbox')
-						@foreach($data->getSurveyChoice()->where('is_active','1')->get() as $choicecheck)
-						<input type="{{$data->type}}" name="answer[check][]" class="form-control" id="{{$choicecheck->choice}}" value="{{$choicecheck->choice}}">
-						<label for="{{$choicecheck->choice}}">{{$choicecheck->choice}}</label>
-						@endforeach
+
+						<div class="row col-md-12">
+							@foreach($data->getSurveyChoice()->where('is_active','1')->get() as $choicecheck)
+							<div class=" form-check-inline col-md">
+								<input type="{{$data->type}}" name="checkbox[{{$data->id}}][]" class="form-check-inline" id="{{$choicecheck->choice}}" value="{{$choicecheck->choice}}">
+								<label class="form-check-label" for="{{$choicecheck->choice}}">{{$choicecheck->choice}}</label>
+							</div>
+							@endforeach
+						</div>
 
 						@elseif($data->type == 'radio')
-						@foreach($data->getSurveyChoice()->where('is_active','1')->get() as $choiceradio)
-						<input type="{{$data->type}}" name="answer[]" class="form-control" id="{{$choiceradio->choice}}" value="{{$choiceradio->choice}}">
-						<label for="{{$choiceradio->choice}}" >{{$choiceradio->choice}}</label>
-						@endforeach
+						<div class="row col-md-12">
+							@foreach($data->getSurveyChoice()->where('is_active','1')->get() as $choiceradio)
+							<div class="form-check-inline col-md">
+								<input type="{{$data->type}}" name="answer[{{$data->id}}]" class="form-check-inline" id="{{$choiceradio->choice}}" value="{{$choiceradio->choice}}" {{($data->is_required == '1') ? 'required' : ""}}>
+								<label class="form-check-label" for="{{$choiceradio->choice}}" >{{$choiceradio->choice}}</label>
+							</div>
+							@endforeach
+						</div>
 
 						@elseif($data->type == 'file')
-						<input type="{{$data->type}}" name="answer[]">
+						<input type="{{$data->type}}" name="image[{{$data->id}}]" {{($data->is_required == '1') ? 'required' : ""}}>
 						@endif
 					</div>
 					@endforeach

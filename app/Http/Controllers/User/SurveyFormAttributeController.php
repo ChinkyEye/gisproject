@@ -4,6 +4,8 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\SurveyFormHasAttribute;
+use Auth;
 
 class SurveyFormAttributeController extends Controller
 {
@@ -42,7 +44,24 @@ class SurveyFormAttributeController extends Controller
      */
     public function store(Request $request)
     {
-        dd('hey');
+        // dd('hey');
+        // $this->validate($request, [
+        //     'title' => 'required',
+        // ]);
+        // dd($request);
+
+        $surveyforms = SurveyFormHasAttribute::create([
+            'form_id' => $request['form_id'],
+            'question' => $request['question'],
+            'type' => $request['type'],
+            'is_active' => '1',
+            'date' => date("Y-m-d"),
+            'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+            'time' => date("H:i:s"),
+            'created_by' => Auth::user()->id,
+        ]);
+        return redirect()->back()->with('alert-success', 'Data added successfully!!');
+        // return redirect()->route('user.surveyform.index')->with('alert-success', 'Data added successfully!!');
     }
 
     /**

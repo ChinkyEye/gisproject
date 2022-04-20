@@ -30,15 +30,15 @@
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="menu" class="sortable">
             @foreach($datas as $key => $data)
-            <tr>
+            <tr  id="{{$data->id}}" class="{{$data->is_active == 1 ? '' : 'table-danger'}}">
               <td><a>{{$key + 1}}</a></td>
               <td>{{$data->question}}</td>
               <td>{{$data->type}}</td>
               <td class="text-center">
-                <a href="">
-                  <i class="fa {{ $data->is_active == '1' ? 'fa-check check-css' : 'fa-times cross-css' }}"></i>
+                <a href="{{ route('user.surveyformquestion.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
+                  <i class="nav-icon fas {{ $data->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
                 </a>
               </td>
               <td>  
@@ -59,3 +59,24 @@
   </div>
 </section>
 @endsection
+@push('javascript')
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" defer></script>
+ <script>
+  $(function(){
+    $("#menu").sortable({
+      stop: function(){
+        $.map($(this).find('tr'), function(el) {
+          var itemID = el.id;
+          var itemIndex = $(el).index();
+          $.ajax({
+            url:"{{route('user.survey-question')}}",
+            type:'GET',
+            dataType:'json',
+            data: {itemID:itemID, itemIndex: itemIndex},
+          });
+        });
+      }
+    });
+  });
+</script>
+@endpush

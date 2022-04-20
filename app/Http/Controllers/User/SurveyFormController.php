@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\SurveyForm;
 use App\SurveyFormHasAttribute;
+use App\SurveyFormHasUser;
+use App\SurveyHasResult;
 use Auth;
 
 class SurveyFormController extends Controller
@@ -66,7 +68,7 @@ class SurveyFormController extends Controller
      */
     public function show($id)
     {
-        $datas = SurveyFormHasAttribute::where('form_id',$id)->get();
+        $datas = SurveyFormHasAttribute::where('form_id',$id)->orderBy('sort_id','ASC')->get();
         return view('user.surveyform.show', compact('datas'));
     }
 
@@ -140,5 +142,60 @@ class SurveyFormController extends Controller
         }
         return back()->withInput();
         // return back()->with($notification)->withInput();
+    }
+
+    public function isActiveQuestion(Request $request,$id)
+    {
+        $get_is_active = SurveyFormHasAttribute::where('id',$id)->value('is_active');
+        $isactive = SurveyFormHasAttribute::find($id);
+        if($get_is_active == 0){
+            $isactive->is_active = 1;
+            // $notification = array(
+            //     'alert-success' => $isactive->name.' is Active!',
+            // );
+        }
+        else {
+            $isactive->is_active = 0;
+            // $notification = array(
+            //     'alert-danger' => $isactive->name.' is inactive!',
+            // );
+        }
+        if(!($isactive->update())){
+            $notification = array(
+                'error' => $isactive->name.' could not be changed!',
+            );
+        }
+        return back()->withInput();
+        // return back()->with($notification)->withInput();
+    }
+
+    public function getsurveyuser(Request $request,$slug)
+    {
+        $survey_id = SurveyForm::where('slug',$slug)->value('id');
+        $survey_datas = SurveyForm::where('slug',$slug)->first();
+        $datas = SurveyFormHasUser::where('surveyform_id',$survey_id)->get();
+        return view('user.surveyform.surveyuser', compact('datas','survey_datas'));
+
+    }
+
+    public function getSurveyanswer(Request $request,$id)
+    {
+        // var_dump($id); die();
+        $survey_users = SurveyFormHasUser::find($id);
+        $datas = SurveyHasResult::where('surveyform_has_user_id',$id)
+                                ->with('getSurveyQuestions')
+                                ->get();
+        return view('user.surveyform.surveyanswer', compact('datas','survey_users'));
+
+    }
+
+    public function survey_question(Request $request){
+        $menu = SurveyFormHasAttribute::orderBy('sort_id','ASC')->get();
+        $itemID = $request->itemID;
+        $itemIndex = $request->itemIndex;
+        // dd($request);
+        foreach($menu as $value){
+            return SurveyFormHasAttribute::where('id','=',$itemID)->update(array('sort_id'=> $itemIndex));
+        }
     }
 }

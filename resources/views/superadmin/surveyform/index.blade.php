@@ -1,9 +1,9 @@
-@extends('user.main.app')
+@extends('superadmin.main.app')
 @push('style')
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet"/>
 @endpush
 @section('content')
-<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('user.','',Route::currentRouteName()), ".")); ?>
+<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('superadmin.','',Route::currentRouteName()), ".")); ?>
 <div>
     <div class="content-header">
       <div class="container-fluid">
@@ -26,7 +26,7 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-md-2">
-                    <a href="{{route('user.surveyform.create')}}" class="btn btn-flat btn-danger btn-block text-capitalize" style="color:#fff">Add Survey<i class="fas fa-plus fa-fw"></i></a>
+                    <a href="{{route('superadmin.surveyform.create')}}" class="btn btn-flat btn-danger btn-block text-capitalize" style="color:#fff">Add Survey<i class="fas fa-plus fa-fw"></i></a>
                   </div>
                   <div class="col-md-10">
                   </div>
@@ -40,39 +40,30 @@
                         <th>SN</th>
                         <th>Title</th>
                         <th>Description</th>
-                        <th>Questions Count</th>
-                        <th>Answer</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
                     </thead> 
-                    <tbody id="menu" class="sortable" style="text-align: center">
+                    <tbody style="text-align: center">
                       @foreach($datas as $key => $data)
-                      <tr id="{{$data->id}}" class="{{$data->is_active == 1 ? '' : 'table-danger'}}">
+                      <tr class="{{$data->is_active == 1 ? '' : 'table-danger'}}">
                         <td>{{$key + 1}}</td>
                         <td>{{ $data->title }}</td>
                         <td>{{ $data->description }}</td>
-                        <td>
-                          {{ $data->getSurveyQuestion->count()}}
-                          <a href="{{ route('user.surveyform.show',$data->id) }}" title="View question"><i class="fas fa-eye "></i></a>
-                        </td>
-                        <td>
-                          <a href="{{ route('user.surveyform.getsurveyuser',$data->slug) }}" title="View Answer"><i class="fas fa-eye"></i></a>
-                        </td>
-                        <td>
-                          <a href="{{ route('user.surveyform.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
+                        <td></td>
+                        {{-- <td>
+                          <a href="{{ route('superadmin.surveyform.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                             <i class="nav-icon fas {{ $data->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
                           </a>
-                        </td>
+                        </td> --}}
                         <td>
-                          <a href="{{ route('user.surveyform.edit',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
-                          <a href="{{ route('user.surveyform.attribute',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-plus"></i></a>
-                          <form action='javascript:void(0)' data_url="{{route('user.surveyform.destroy',$data->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
+                          {{-- <a href="{{ route('superadmin.surveyform.edit',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a> --}}
+                          <a href="{{ route('superadmin.surveyform.attribute',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-plus"></i></a>
+                          {{-- <form action='javascript:void(0)' data_url="{{route('superadmin.surveyform.destroy',$data->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
                             <input type='hidden' name='_token' value='".csrf_token()."'>
                             <input name='_method' type='hidden' value='DELETE'>
                             <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
-                          </form>
-                          
+                          </form> --}}
                         </td>
                       </tr>
                       @endforeach
