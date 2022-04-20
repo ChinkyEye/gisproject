@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\SurveyFormHasAttribute;
 use App\SurveyFormHasChoice;
+use App\SurveyForm;
 use Auth;
 
 class SurveyFormAttributeController extends Controller
@@ -13,7 +14,9 @@ class SurveyFormAttributeController extends Controller
     public function createSurveyFormAttribute($id)
     {
         // dd('kk');
-        return view('superadmin.surveyformattribute.create',compact('id'));
+        $find_survey = SurveyForm::find($id);
+        // dd($find_survey);
+        return view('superadmin.surveyformattribute.create',compact('id','find_survey'));
         //
     }
 
@@ -25,9 +28,32 @@ class SurveyFormAttributeController extends Controller
         {
             return view('superadmin.surveyformattribute.short');
         }
-        else{
+        elseif($type == 'number'){
+            return view('superadmin.surveyformattribute.number');
+        }
+        elseif($type == 'email'){
+            return view('superadmin.surveyformattribute.email');
+        }
+        elseif($type == 'long'){
+            return view('superadmin.surveyformattribute.long');
+        }
+        elseif($type == 'radio'){
             return view('superadmin.surveyformattribute.radio');
-
+        }
+        elseif($type == 'dropdown'){
+            return view('superadmin.surveyformattribute.dropdown');
+        }
+        elseif($type == 'checkbox'){
+            return view('superadmin.surveyformattribute.checkbox');
+        }
+        elseif($type == 'date'){
+            return view('superadmin.surveyformattribute.date');
+        }
+        elseif($type == 'image'){
+            return view('superadmin.surveyformattribute.image');
+        }
+        else{
+            return view('superadmin.surveyformattribute.url');
         }
 
     }
@@ -35,9 +61,11 @@ class SurveyFormAttributeController extends Controller
     public function store(Request $request)
     {
         // dd('hey');
-        // $this->validate($request, [
-        //     'title' => 'required',
-        // ]);
+        // dd($request);
+        $this->validate($request, [
+            'question' => 'required',
+            'type' => 'required',
+        ]);
         // dd($request);
         $type = $request->type;
         $question = $request->question;
@@ -49,6 +77,20 @@ class SurveyFormAttributeController extends Controller
         else{
             $is_required = '0';
         }
+
+        if($type == 'short'){
+            $type = 'text';
+        }
+
+        if($type == 'long'){
+            $type = 'textarea';
+        }
+
+        if($type == 'image'){
+            $type = 'file';
+        }
+
+
 
         $surveyforms = SurveyFormHasAttribute::create([
             'form_id' => $request['form_id'],
@@ -64,15 +106,56 @@ class SurveyFormAttributeController extends Controller
             'created_by' => Auth::user()->id,
         ]);
 
-        // $surveychoiceforms = SurveyFormHasChoice::create([
-        //     'surveyform_has_attr_id' => $surveyforms->id,
-        //     'choice' => $request->radioquestion,
-        //     'is_active' => '1',
-        //     'date' => date("Y-m-d"),
-        //     'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
-        //     'time' => date("H:i:s"),
-        //     'created_by' => Auth::user()->id,
-        // ]);
+        $radiooption = $request->radiooption;
+        $dropdownoption = $request->dropdownoption;
+        $checkboxoption = $request->checkboxoption;
+        // dd($radiooption);
+
+        if($type == 'radio'){
+            foreach($radiooption as $key=>$value){
+                $surveychoiceforms = SurveyFormHasChoice::create([
+                    'surveyform_has_attr_id' => $surveyforms->id,
+                    'choice' => $radiooption[$key],
+                    'is_active' => '1',
+                    'date' => date("Y-m-d"),
+                    'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+                    'time' => date("H:i:s"),
+                    'created_by' => Auth::user()->id,
+                ]);
+            }
+        }
+
+        if($type == 'dropdown'){
+            foreach($dropdownoption as $key=>$value){
+                $surveychoiceforms = SurveyFormHasChoice::create([
+                    'surveyform_has_attr_id' => $surveyforms->id,
+                    'choice' => $dropdownoption[$key],
+                    'is_active' => '1',
+                    'date' => date("Y-m-d"),
+                    'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+                    'time' => date("H:i:s"),
+                    'created_by' => Auth::user()->id,
+                ]);
+            }
+        }
+
+        if($type == 'checkbox'){
+            foreach($checkboxoption as $key=>$value){
+                $surveychoiceforms = SurveyFormHasChoice::create([
+                    'surveyform_has_attr_id' => $surveyforms->id,
+                    'choice' => $checkboxoption[$key],
+                    'is_active' => '1',
+                    'date' => date("Y-m-d"),
+                    'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+                    'time' => date("H:i:s"),
+                    'created_by' => Auth::user()->id,
+                ]);
+            }
+        }
+
+
+
+       
 
         // foreach($type as $key=>$value){
 

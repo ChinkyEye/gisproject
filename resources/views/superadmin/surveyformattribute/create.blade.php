@@ -19,8 +19,8 @@
 <section class="content">
   <div class="card card-info">
     <div class="card-header">
-      <h4 class="mb-0">dsa</h4>
-      <p class="mb-0">Lorem ipsum dolor sit, amet, consectetur adipisicing elit. Accusamus nostrum officiis, perspiciatis vero inventore dolorem cum provident alias ipsam dolore tempora asperiores sequi eaque, culpa quo deleniti eius, nulla id.</p>
+      <h4 class="mb-0">{{$find_survey->title}}</h4>
+      <p class="mb-0">{{$find_survey->description}}</p>
     </div>
     <form role="form" method="POST" action="{{route('superadmin.surveyformattribute.store')}}" class="signup" id="signup" enctype="multipart/form-data">
       <div class="card-body" id="entry-table">
@@ -39,21 +39,27 @@
           <div class="form-group col-md-6">
             <label for="question">Question</label>
             <input type="text" class="form-control form-control-border" id="question" placeholder="Enter questions" name="question">
+            @error('question')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
           </div>
           <div class="form-group col-md-6">
             <label for="type">Type<span class="text-danger">*</span></label>
             <select class="form-control max" id="type" name="type">
-              <option>--Please choose one--</option>
-              <option value="short">Short</option>
+              <option value="">--Please choose one--</option>
+              <option value="short">Short Answer</option>
+              <option value="long">Long Answer</option>
+              <option value="url">URL</option>
               <option value="number">Number</option>
               <option value="email">Email</option>
-              <option value="long">Long</option>
               <option value="radio">Radio</option>
               <option value="dropdown">Dropdown</option>
               <option value="checkbox">Checkbox</option>
               <option value="date">Date</option>
               <option value="image">Image</option>
-              <option value="pdf">Pdf</option>
+              {{-- <option value="pdf">Pdf</option> --}}
             </select>
             @error('type')
             <span class="text-danger font-italic" role="alert">
@@ -64,23 +70,15 @@
           </div>
 
           
-          <div class="form-group col-md-6">
-          <label for="min">Min</label>
-          <input type="number" class="form-control form-control-border" id="min" placeholder="Enter min length" name="min">
-          </div>
+          
 
-          <div class="form-group col-md-6">
-          <label for="max">Max</label>
-          <input type="number" class="form-control form-control-border" id="max" placeholder="Enter max" name="max">
-          </div>
+          
           <div class="col-md-12" id="replaceTable">
             
           </div>
           
           
-          <div class="input-group-btn"> 
-            {{-- <button type="button" name="add" id="add_more" class="btn btn-xs btn-outline-primary"><i class="fas fa-plus"></i></button> --}}
-          </div>
+          
         </div>
         
       </div>
@@ -135,6 +133,14 @@
         // $("#radio-entry-table:closest").remove();
         $(this).parent('#radio-entry-table').remove();
     }
+
+    function cloningdropdownSection() {
+      var clone = $(".dropdown-entry-table:first").clone();
+      clone.find("input").val("");
+      $("#dropdown-entry-table").after(clone);
+    }
+
+
     
 </script>
 
@@ -151,8 +157,7 @@
             type: type,
           },
           success:function(response){
-            $('#replaceTable').html("");
-            // $('#replaceTable').after(response);
+            $('#replaceTable').html();
             $('#replaceTable').html(response);
             $("body").on("click", ".radio_more", function(event){
               // debugger;
@@ -163,6 +168,17 @@
               event.preventDefault();
               $(this).parent().remove();
             });
+
+            $("body").on("click", ".dropdown_more", function(event){
+              // debugger;
+              cloningdropdownSection();
+            });
+            $("body").on("click", ".dropdown-entry-table .dropdown_remove", function(event){
+            // $("#radio-entry-table .radio_remove").click(function(e){
+              event.preventDefault();
+              $(this).parent().remove();
+            });
+
           },
           error: function (e) {
             alert('Sorry! we cannot load data this time');

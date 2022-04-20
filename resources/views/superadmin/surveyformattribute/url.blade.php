@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-12">
-		<label class="d-block">This is for email</label>
+		<label class="d-block">This is for url</label>
 		{{-- <input type="text" class="form-control form-control-border" id="short" placeholder="Enter questions" name="short"> --}}
 	</div>
 	<div class="form-group col-md-6">
