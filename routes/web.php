@@ -175,6 +175,7 @@ Route::namespace('User')->prefix('user')->name('user.')->middleware(['user'])->g
 
     Route::get('surveyform/active/{id}', 'SurveyFormController@isActive')->name('surveyform.active');
     Route::get('surveyform/getsurveyuser/{slug}', 'SurveyFormController@getsurveyuser')->name('surveyform.getsurveyuser');
+    Route::get('surveyform/surveyanswer/{id}', 'SurveyFormController@getSurveyanswer')->name('surveyform.surveyanswer');
 
 
 });

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\SurveyForm;
 use App\SurveyFormHasAttribute;
 use App\SurveyFormHasUser;
+use App\SurveyHasResult;
 use Auth;
 
 class SurveyFormController extends Controller
@@ -148,6 +149,15 @@ class SurveyFormController extends Controller
         $survey_id = SurveyForm::where('slug',$slug)->value('id');
         $datas = SurveyFormHasUser::where('surveyform_id',$survey_id)->get();
         return view('user.surveyform.surveyuser', compact('datas'));
+
+    }
+
+    public function getSurveyanswer(Request $request,$id)
+    {
+        $datas = SurveyHasResult::where('surveyform_has_user_id',$id)
+                                ->with('getSurveyQuestions')
+                                ->get();
+        return view('user.surveyform.surveyanswer', compact('datas'));
 
     }
 }
