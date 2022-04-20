@@ -50,6 +50,7 @@
                         <td>{{$key + 1}}</td>
                         <td>{{ $data->title }}</td>
                         <td>{{ $data->description }}</td>
+                        <td></td>
                         {{-- <td>
                           <a href="{{ route('superadmin.surveyform.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                             <i class="nav-icon fas {{ $data->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
