@@ -18,6 +18,10 @@
 </section>
 <section class="content">
   <div class="card card-info">
+    <div class="card-header">
+      <h4 class="mb-0">dsa</h4>
+      <p class="mb-0">Lorem ipsum dolor sit, amet, consectetur adipisicing elit. Accusamus nostrum officiis, perspiciatis vero inventore dolorem cum provident alias ipsam dolore tempora asperiores sequi eaque, culpa quo deleniti eius, nulla id.</p>
+    </div>
     <form role="form" method="POST" action="{{route('superadmin.surveyformattribute.store')}}" class="signup" id="signup" enctype="multipart/form-data">
       <div class="card-body" id="entry-table">
         @csrf
@@ -33,23 +37,23 @@
             @enderror
           </div> --}}
           <div class="form-group col-md-6">
-          <label for="question">Question</label>
-          <input type="text" class="form-control form-control-border" id="question" placeholder="Enter questions" name="question">
+            <label for="question">Question</label>
+            <input type="text" class="form-control form-control-border" id="question" placeholder="Enter questions" name="question">
           </div>
-          <div class="form-group col-md-4">
+          <div class="form-group col-md-6">
             <label for="type">Type<span class="text-danger">*</span></label>
             <select class="form-control max" id="type" name="type">
-            <option>--Please choose one--</option>
-            <option value="short">Short</option>
-            <option value="number">Number</option>
-            <option value="email">Email</option>
-            <option value="long">Long</option>
-            <option value="radio">Radio</option>
-            <option value="dropdown">Dropdown</option>
-            <option value="checkbox">Checkbox</option>
-            <option value="date">Date</option>
-            <option value="image">Image</option>
-            <option value="pdf">Pdf</option>
+              <option>--Please choose one--</option>
+              <option value="short">Short</option>
+              <option value="number">Number</option>
+              <option value="email">Email</option>
+              <option value="long">Long</option>
+              <option value="radio">Radio</option>
+              <option value="dropdown">Dropdown</option>
+              <option value="checkbox">Checkbox</option>
+              <option value="date">Date</option>
+              <option value="image">Image</option>
+              <option value="pdf">Pdf</option>
             </select>
             @error('type')
             <span class="text-danger font-italic" role="alert">
@@ -59,8 +63,6 @@
             
           </div>
 
-          
-          
           
           <div class="form-group col-md-6">
           <label for="min">Min</label>
@@ -159,7 +161,6 @@
             $("body").on("click", ".radio-entry-table .radio_remove", function(event){
             // $("#radio-entry-table .radio_remove").click(function(e){
               event.preventDefault();
-              debugger;
               $(this).parent().remove();
             });
           },
