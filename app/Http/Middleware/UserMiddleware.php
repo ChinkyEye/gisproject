@@ -25,7 +25,7 @@ class UserMiddleware
 
     public function handle($request, Closure $next)
     {
-        if (!$this->auth->check() || ($request->user()->user_type != '2' || $request->user()->is_active != '1')) {
+        if (!$this->auth->check() || ($request->user()->user_type != '2')) {
             $this->auth->logout();
             return redirect ('/login')->with('message', 'Account Disable!');
         }

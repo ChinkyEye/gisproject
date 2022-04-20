@@ -24,4 +24,8 @@ class SurveyFormHasAttribute extends Model
         'created_by',
         'updated_by',
     ];
+    public function getSurveyChoice()
+    {
+        return $this->hasMany('App\SurveyFormHasChoice','surveyform_has_attr_id','id');
+    }
 }

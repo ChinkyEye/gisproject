@@ -13,7 +13,7 @@
 <section class="content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-3" v-for="(profile, index) in allprofile" :key="profile.id">
+      <div class="col-md-3">
         <div class="card card-primary card-outline">
           <div class="card-body box-profile">
             <div class="text-center">
@@ -36,9 +36,7 @@
               <li class="list-group-item">
                 <b>Register Date</b> <a class="float-right">{{$datas->date_np}}</a>
               </li>
-              {{-- <li class="list-group-item text-center mt-2">
-                <a href="{{ route('user.userhasdetail.create',$datas->id)}}" class="btn btn-xs btn-outline-info" title="Update further data"><i class="fas fa-plus"></i></a>
-              </li> --}}
+              
             </ul>
           </div>
         </div>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIntroductionsTable extends Migration
+class CreateSurveyFormHasUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,17 @@ class CreateIntroductionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('introductions', function (Blueprint $table) {
+        Schema::create('survey_form_has_users', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->string('path')->nullable();
-            $table->string('mimes_type')->nullable();
-            $table->string('document')->nullable();
+            $table->string('ip')->nullable();
+            $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);
             $table->string('date',10);
             $table->string('time',8);
-            $table->unsignedBigInteger('created_by');
-            $table->foreign('created_by')->references('id')->on('users');
+            $table->unsignedBigInteger('surveyform_id');
+            $table->foreign('surveyform_id')->references('id')->on('survey_forms');
             $table->integer('updated_by')->nullable();
-
             $table->timestamps();
         });
     }
@@ -39,6 +35,6 @@ class CreateIntroductionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('introductions');
+        Schema::dropIfExists('survey_form_has_users');
     }
 }

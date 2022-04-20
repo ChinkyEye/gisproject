@@ -6,15 +6,16 @@
         <div class="col-md-6 px-0">
             <div class="hero-area">
                 <div class="hero-slideshow owl-carousel">
+                    @foreach($sliders as $slider)
                     <div class="single-slide bg-img">
-                        <div class="slide-bg-img bg-img bg-overlay" style="background-image: url({{ url('/web') }}/img/slider.jpg);"></div>
+                        <div class="slide-bg-img bg-img bg-overlay">  <img src="{{ asset('images/slider/') . '/' . $slider->document }}" alt="" class="responsive" width="50">
+                        </div>
                         <div class="container h-100">
                             <div class="row h-100 align-items-center justify-content-center">
                                 <div class="col-12 col-lg-9">
                                     <div class="welcome-text text-center">
                                         {{-- <h6 data-animation="fadeInUp" data-delay="100ms">2 years interest</h6> --}}
-                                        <h2 data-animation="fadeInUp" data-delay="300ms">विश्वको सर्वोच्च  <span>शिखर सगरमाथा</span></h2>
-                                        {{-- <p data-animation="fadeInUp" data-delay="500ms">विश्वको सर्वोच्च शिखर सगरमाथा</p> --}}
+                                        <h2 data-animation="fadeInUp" data-delay="300ms">{{$slider->name}}<!-- span>शिखर सगरमाथा</span> --></h2>
                                         {{-- <a href="#" class="btn credit-btn mt-50" data-animation="fadeInUp" data-delay="700ms">Discover</a> --}}
                                     </div>
                                 </div>
@@ -22,9 +23,9 @@
                         </div>
                         <div class="slide-du-indicator"></div>
                     </div>
-
+                    @endforeach
                     <!-- Single Slide -->
-                    <div class="single-slide bg-img">
+                  <!--   <div class="single-slide bg-img">
                         <div class="slide-bg-img bg-img bg-overlay" style="background-image: url({{ url('/web') }}/img/slider1.jpg);"></div>
                         <div class="container h-100">
                             <div class="row h-100 align-items-center justify-content-center">
@@ -39,7 +40,7 @@
                             </div>
                         </div>
                         <div class="slide-du-indicator"></div>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -65,17 +66,17 @@
                             <i class="fa fa-instagram"></i>
                         </a> 
                     </div>
-                  </div>
                 </div>
-                {{-- <div class="border-0 text-center">
-                  <img src="{{ url('/') }}/web/img/mantri.jpg" class="card-img-top main-card-img text-center" alt="...">
-                  <div class="card-body px-0 py-1">
-                    <h5 class="card-title my-0">मा. राजेन्द्र कुमार राई</h5>
-                    <p class="card-text">मुख्यमन्त्री</p>
-                  </div>
-                </div> --}}
-                
             </div>
-        </div>
+            {{-- <div class="border-0 text-center">
+              <img src="{{ url('/') }}/web/img/mantri.jpg" class="card-img-top main-card-img text-center" alt="...">
+              <div class="card-body px-0 py-1">
+                <h5 class="card-title my-0">मा. राजेन्द्र कुमार राई</h5>
+                <p class="card-text">मुख्यमन्त्री</p>
+            </div>
+        </div> --}}
+        
     </div>
+</div>
+</div>
 {{-- </div> --}}

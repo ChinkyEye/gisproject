@@ -31,22 +31,62 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="description">Description<span class="text-danger">*</span></label>
-          <textarea  type="text"  class="form-control max" id="description" placeholder="Enter description" name="detail" autocomplete="off" autofocus>{{ old('detail')}}</textarea>
-          @error('detail')
+          <label for="description">Description <span class="text-danger">*</span></label>
+          <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
+          @error('description')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
           </span>
           @enderror
         </div>
-      
-      
+        <div class="form-group">
+          <label for="imgInp">Image</label>
+          <div class="input-group">
+            <img id="blah" src="{{URL::to('/')}}/images/80x80.png" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
+            <div class="input-group my-3">
+             <input type='file' class="d-none" id="imgInp" name="image" />
+           </div>
+         </div>
+         @error('image')
+         <span class="text-danger font-italic" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
       </div>
-      <div class="card-footer justify-content-between">
-        <button type="submit" class="btn btn-info text-capitalize">Save</button>
-      </div>
-    </form>
-  </div>
+    </div>
+    <div class="card-footer justify-content-between">
+      <button type="submit" class="btn btn-info text-capitalize">Save</button>
+    </div>
+  </form>
+</div>
 </section>
 @endsection
+@push('javascript')
+<script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+<script>
+  $(function () {
+    CKEDITOR.replace('description');
+    CKEDITOR.config.autoParagraph = false;
+    CKEDITOR.config.removeButtons = 'Anchor';
+    CKEDITOR.config.removePlugins = 'stylescombo,link,sourcearea,maximize,image,about,tabletools,scayt';
+  });
+</script>
+<script type="text/javascript">
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function(e) {
+        $('#blah').attr('src', e.target.result);
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $("#imgInp").change(function() {
+    readURL(this);
+  });
+</script>
+@endpush
 

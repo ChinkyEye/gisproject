@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\SurveyForm;
+use App\SurveyFormHasAttribute;
 use Auth;
 
 class SurveyFormController extends Controller
@@ -18,6 +19,7 @@ class SurveyFormController extends Controller
     {
         $datas = SurveyForm::orderBy('id','DESC')
                             ->where('created_by', Auth::user()->id)
+                            ->with('getSurveyQuestion')
                             ->get();
         return view('user.surveyform.index', compact('datas'));
     }
@@ -45,6 +47,7 @@ class SurveyFormController extends Controller
         ]);
         $surveyforms = SurveyForm::create([
             'title' => $request['title'],
+            'slug' => mt_rand(11111,99999).date('Ymd'),
             'description' => $request['description'],
             'is_active' => '1',
             'date' => date("Y-m-d"),
@@ -63,7 +66,8 @@ class SurveyFormController extends Controller
      */
     public function show($id)
     {
-        //
+        $datas = SurveyFormHasAttribute::where('form_id',$id)->get();
+        return view('user.surveyform.show', compact('datas'));
     }
 
     /**
@@ -74,7 +78,7 @@ class SurveyFormController extends Controller
      */
     public function edit($id)
     {
-        $datas = SurveyForm::find($id);
+        $datas = SurveyForm::where('created_by', Auth::user()->id)->find($id);
         return view('user.surveyform.edit', compact('datas'));
     }
 

@@ -3,7 +3,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet"/>
 @endpush
 @section('content')
-<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('superadmin.','',Route::currentRouteName()), ".")); ?>
+<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('user.','',Route::currentRouteName()), ".")); ?>
 <div>
     <div class="content-header">
       <div class="container-fluid">
@@ -40,6 +40,7 @@
                         <th>SN</th>
                         <th>Title</th>
                         <th>Description</th>
+                        <th>Questions Count</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
@@ -50,6 +51,7 @@
                         <td>{{$key + 1}}</td>
                         <td>{{ $data->title }}</td>
                         <td>{{ $data->description }}</td>
+                        <td>{{ $data->getSurveyQuestion->count()}}</td>
                         <td>
                           <a href="{{ route('user.surveyform.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                             <i class="nav-icon fas {{ $data->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
@@ -63,6 +65,7 @@
                             <input name='_method' type='hidden' value='DELETE'>
                             <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
                           </form>
+                          <a href="{{ route('user.surveyform.show',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-eye"></i></a>
                         </td>
                       </tr>
                       @endforeach

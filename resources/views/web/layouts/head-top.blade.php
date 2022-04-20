@@ -10,12 +10,15 @@
               <div class="col-md-11">
                 <div class="marquee overflow-hidden">
                   <ul class="list-inline m-0">
+                    @foreach($notice as $notices)
                     <li class="list-inline-item mr-4">
                       <small><i class="fa fa-bullhorn mr-2 text-warning"></i></small>
                       <a class="text-light" href="#">
-                      </a>
-                    </li>
-                  </ul>
+                       {{$notices->title}} :: {{$notices->description}}
+                     </a>
+                   </li>
+                   @endforeach
+                 </ul>
                 </div>
               </div>
             </div>

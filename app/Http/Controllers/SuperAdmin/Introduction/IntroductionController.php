@@ -41,12 +41,34 @@ class IntroductionController extends Controller
     { 
         $this->validate($request, [
             'title' => 'required',
-            'detail' => 'required',
+            'description' => 'required',
           
         ]);
+        $uppdf = $request->file('image');
+        if($uppdf != ""){
+            $this->validate($request, [
+           'image' => 'required|mimes:jpg,png',
+          
+        ]);
+            $destinationPath = 'images/introduction/';
+            $extension = $uppdf->getClientOriginalExtension();
+            $mimes = $uppdf->getMimeType();
+            $fileName = md5(mt_rand()).'.'.$extension;
+            $uppdf->move($destinationPath, $fileName);
+            $file_path = $destinationPath.'/'.$fileName;
+
+        }else{
+            $fileName = Null;
+            $destinationPath = Null;
+            $extension = Null;
+            $mimes = Null;
+        }
         $datas = Introduction::create([
             'title' => $request['title'],
-            'detail' => $request['detail'],
+            'description' => $request['description'],
+            'document'=> $fileName,
+            'path'=> $destinationPath,
+            'mimes_type'=> $mimes,
             'is_active' => '1',
             'date' => date("Y-m-d"),
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
@@ -88,16 +110,35 @@ class IntroductionController extends Controller
      */
     public function update(Request $request, $id)
     {
-           $this->validate($request, [
-            'title' => 'required',
-            'detail' => 'required',
-          
+            $this->validate($request, [
+            'description' => 'required',
         ]);
+
         $datas = Introduction::find($id);
         $all_data = $request->all();
+        $uppdf = $request->file('image');
+        if($uppdf != ""){
+            $this->validate($request, [
+                'image' => 'required|mimes:jpg,jpeg,png',               
+            ]);
+            $destinationPath = 'images/introduction/';
+            $oldFilename = $destinationPath.'/'.$datas->document;
+
+            $extension = $uppdf->getClientOriginalExtension();
+            $name = $uppdf->getClientOriginalName();
+            $fileName = $name.'.'.$extension;
+            $uppdf->move($destinationPath, $fileName);
+            $file_path = $destinationPath.'/'.$fileName;
+            $all_data['document'] = $fileName;
+            if(File::exists($oldFilename)) {
+                File::delete($oldFilename);
+            }
+        }
         $all_data['updated_by'] = Auth::user()->id;
-        $datas->update($all_data);
-        return redirect()->route('superadmin.introduction.index')->with('alert-success', 'Introduction updated successfully!!!!');
+        if($datas->update($all_data))
+        {
+            return redirect()->route('superadmin.introduction.index')->with('alert-success', 'Data updated succesffully!!!');;
+        };
     }
 
     /**
@@ -108,8 +149,14 @@ class IntroductionController extends Controller
      */
     public function destroy($id)
     {
-        $datas = Introduction::find($id);
-        $datas->delete();
+         $datas = Introduction::find($id);
+        $destinationPath = 'images/introduction/';
+        $oldFilename = $destinationPath.'/'.$datas->document;
+        if($datas->delete()){
+            if(File::exists($oldFilename)) {
+                File::delete($oldFilename);
+            }
+        }
         return response()->json([
             'success' => 'Record has been deleted successfully!'
         ]);

@@ -152,21 +152,23 @@
 <section class="cta-area d-flex flex-wrap">
     <!-- Cta Thumbnail -->
     <div class="cta-thumbnail bg-img jarallax" style="background-image: url({{ url('/web') }}/img/bg-img/5.jpg);"></div>
-
+    {{--  <img src="{{ $data->document == null ? asset('images/no-image-user.png') : asset('images/introduction') . '/' . $data->document }}"> --}}
     <!-- Cta Content -->
+    @foreach($introductions as $data)
     <div class="cta-content bg-gray">
         <!-- Section Heading -->
         <div class="section-heading ">
-            <div class="line"></div>
-            <h2>प्रदेश परिचय</h2>
+            <h2>
+                {{$data->title}}
+                <!-- प्रदेश परिचय -->
+            </h2>
         </div>
         <div class="">
-            
-            {!! substr('
-            <p>हिमाल, पहाड र तराईसम्म फैलिएको यस प्रदेश नं. १ मा झापा, इलाम, पाँचथर, ताप्लेजुङ, संखुवासभा, तेह्रथुम, भोजपुर, धनकुटा, खोटाङ, सुनसरी, मोरङ, सोलुखुम्बु, ओखलढुङ्गा र उदयपुर गरी जम्मा १४ वटा जिल्ला पर्दछन् । यस प्रदेशको पूर्वतर्फ भारतको पश्चिम बङ्गाल राज्य र दक्षिणतर्फ बिहार राज्य पर्दछन् । यसै गरी उत्तरतर्फ चीनको स्वशासित क्षेत्र तिब्बत र पश्चिमतर्फ प्रदेश नं. २ र प्रदेश नं. ३ पर्दछन् । यो प्रदेश ८६ डिग्री १ मिनेटदेखि ८८ डिग्री ३ मिनेट पूर्वी देशान्तर र २८ डिग्री २ मिनेटदेखि २६ डिग्री ३ मिनेट उत्तर देशान्तरको बीचमा रहेको छ । यस प्रदेशको कूल क्षेत्रफल २५९०५ वर्ग कि. मि. तथा कूल जनसङ्ख्या ४५३४९४३ रहेको छ ।</p>
 
-            <p>जातीय तथा भाषिक विविधता रहेको यस प्रदेशमा मुख्य रुपमा ब्राम्हण, क्षेत्री, राई, लिम्बू, थारू, लेप्चा, मुस्लिम, तामाङ, गुरुङ, मेचे, कोचे, यादव, राजवंशीलगायतका जातिहरूको बसोबास रहेको छ भने नेपाली, मैथिली, किराँती, तामाङ, लिम्बू, गुरुङ, लेप्चा, मुस्लिम, मगर र थारू भाषा मुख्य रुपमा बोलिन्छन् । विश्वकै सर्वाेच्च शिखर सगरमाथालगायत कञ्चनजङ्घा, मकालु, चोयु, ल्होत्से, जन्नु आदि हिमालहरूको अवस्थितिले मित्रराष्ट्र चीनसँग प्राकृतिक सीमाको काम गरेको छ ।</p>'
-            ,0,1200) !!}
+            <p>
+                {{$data->description}}
+            </p>
+            
         </div>
         {{-- <div class="d-flex flex-wrap mt-50">
             <div class="single-skils-area mb-70 mr-5">
@@ -198,6 +200,7 @@
         </div> --}}
         <a href="#" class="btn credit-btn box-shadow btn-2">Read More</a>
     </div>
+    @endforeach
 </section>
 {{-- end section 3 --}}
 
@@ -239,7 +242,7 @@
             <!-- Single Service Area -->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="single-service-area d-flex mb-100 wow fadeInUp" data-wow-delay="200ms">
-                        <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="img-fluid  icon-img mr-4">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="img-fluid  icon-img mr-4">
                     <div class="text">
                         <h5>Some Title</h5>
                         <p>Morbi ut dapibus dui. Sed ut iaculis elit, quis varius mauris. Integer ut ultricies orci, lobortis egestas sem.</p>
@@ -250,7 +253,7 @@
             <!-- Single Service Area -->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="single-service-area d-flex mb-100 wow fadeInUp" data-wow-delay="200ms">
-                        <img src="{{ url('/web') }}/img/bg-img/2.jpg" class="img-fluid  icon-img mr-4">
+                    <img src="{{ url('/web') }}/img/bg-img/2.jpg" class="img-fluid  icon-img mr-4">
                     <div class="text">
                         <h5>Some Title</h5>
                         <p>Morbi ut dapibus dui. Sed ut iaculis elit, quis varius mauris. Integer ut ultricies orci, lobortis egestas sem.</p>
@@ -261,7 +264,7 @@
             <!-- Single Service Area -->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="single-service-area d-flex mb-100 wow fadeInUp" data-wow-delay="200ms">
-                        <img src="{{ url('/web') }}/img/bg-img/3.jpg" class="img-fluid  icon-img mr-4">
+                    <img src="{{ url('/web') }}/img/bg-img/3.jpg" class="img-fluid  icon-img mr-4">
                     <div class="text">
                         <h5>Some Title</h5>
                         <p>Morbi ut dapibus dui. Sed ut iaculis elit, quis varius mauris. Integer ut ultricies orci, lobortis egestas sem.</p>
@@ -272,7 +275,7 @@
             <!-- Single Service Area -->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="single-service-area d-flex mb-100 wow fadeInUp" data-wow-delay="200ms">
-                        <img src="{{ url('/web') }}/img/bg-img/4.jpg" class="img-fluid  icon-img mr-4">
+                    <img src="{{ url('/web') }}/img/bg-img/4.jpg" class="img-fluid  icon-img mr-4">
                     <div class="text">
                         <h5>Some Title</h5>
                         <p>Morbi ut dapibus dui. Sed ut iaculis elit, quis varius mauris. Integer ut ultricies orci, lobortis egestas sem.</p>
@@ -283,7 +286,7 @@
             <!-- Single Service Area -->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="single-service-area d-flex mb-100 wow fadeInUp" data-wow-delay="200ms">
-                        <img src="{{ url('/web') }}/img/bg-img/5.jpg" class="img-fluid  icon-img mr-4">
+                    <img src="{{ url('/web') }}/img/bg-img/5.jpg" class="img-fluid  icon-img mr-4">
                     <div class="text">
                         <h5>Some Title</h5>
                         <p>Morbi ut dapibus dui. Sed ut iaculis elit, quis varius mauris. Integer ut ultricies orci, lobortis egestas sem.</p>
@@ -294,7 +297,7 @@
             <!-- Single Service Area -->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="single-service-area d-flex mb-100 wow fadeInUp" data-wow-delay="200ms">
-                        <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="img-fluid  icon-img mr-4">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="img-fluid  icon-img mr-4">
                     <div class="text">
                         <h5>Some Title</h5>
                         <p>Morbi ut dapibus dui. Sed ut iaculis elit, quis varius mauris. Integer ut ultricies orci, lobortis egestas sem.</p>
@@ -311,119 +314,119 @@
     <div class="container-fluid px-5">
         <div class="row">
             <div class="col-md-3">
-                    <div class="list-item">
-                        <div class="list-item-head">
-                          <p>{{ __('language.notice')}}</p>
-                        </div>
-                      
-                      <div class="list-item-body">
-                        @foreach($remote_notices as $remote_notice)
-                        <a href="{{$remote_notice->url}}" target="_blank" class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">
-                                    {{$remote_notice->title}}
-                                </span>
-                                <small class="d-block w-100">
-                                    {{ $remote_notice->date_np ? '- '.$remote_notice->date_np : '' }} 
-                                    <span class="text-redish float-right">
-                                        {{ $remote_notice->ministry ? '- '.$remote_notice->ministry : '' }}
-                                    </span>
-                                </small>
+                <div class="list-item">
+                    <div class="list-item-head">
+                      <p>{{ __('language.notice')}}</p>
+                  </div>
+
+                  <div class="list-item-body">
+                    @foreach($remote_notices as $remote_notice)
+                    <a href="{{$remote_notice->url}}" target="_blank" class="list-item-body-content">
+                        <i class="fa fa-angle-right"></i>
+                        <span>
+                            <span class="text-bluish">
+                                {{$remote_notice->title}}
                             </span>
-                        </a>
-                        @endforeach
+                            <small class="d-block w-100">
+                                {{ $remote_notice->date_np ? '- '.$remote_notice->date_np : '' }} 
+                                <span class="text-redish float-right">
+                                    {{ $remote_notice->ministry ? '- '.$remote_notice->ministry : '' }}
+                                </span>
+                            </small>
+                        </span>
+                    </a>
+                    @endforeach
                     <a href="{{route('web.detail.index',['type' => 'suchana'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="list-item">
-                    <div class="list-item-head">
-                        <p>{{ __('language.yearly-budget-program')}}</p>
-                    </div>
-
-                    <div class="list-item-body">
-                        @foreach($remote_yearly_budgets as $budget)
-                        <a href="{{$budget->url}}" target="_blank" class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">
-                                    {{$budget->title}}
-                                </span>
-                                <small class="d-block w-100">
-                                    {{ $budget->date_np ? '- '.$budget->date_np : '' }} 
-                                    <span class="text-redish float-right">
-                                        {{ $budget->ministry ? '- '.$budget->ministry : '' }}
-                                    </span>
-                                </small>
-                            </span>
-                        </a>
-                        @endforeach
-                        
-                    <a href="{{route('web.detail.index',['type' => 'yearly-budget'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="list-item">
-                    <div class="list-item-head">
-                        <p>{{ __('language.public-procurement-bidding')}}</p>
-                    </div>
-                    <div class="list-item-body">
-                        @foreach($remote_kharid_bolpatras as $bolpatra)
-                        <a href="{{$bolpatra->url}}" target="_blank" class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">
-                                    {{$bolpatra->title}}
-                                </span>
-                                <small class="d-block w-100">
-                                    {{ $bolpatra->date_np ? '- '.$bolpatra->date_np : '' }} 
-                                    <span class="text-redish float-right">
-                                        {{ $bolpatra->ministry ? '- '.$bolpatra->ministry : '' }}
-                                    </span>
-                                </small>
-                            </span>
-                        </a>
-                        @endforeach
-                        
-                      <a href="{{route('web.detail.index',['type' => 'kharid-bolpatra'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
-                    </div>
-
-                    
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="list-item">
-                    <div class="list-item-head">
-                        <p>{{ __('language.acts-laws-rules')}}</p>
-                    </div>
-                    <div class="list-item-body">
-                        @foreach($remote_ain_kanuns as $ainkanun)
-                        <a href="{{$ainkanun->url}}" target="_blank" class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">
-                                    {{$ainkanun->title}}
-                                </span>
-                                <small class="d-block w-100">
-                                    {{ $ainkanun->date_np ? '- '.$ainkanun->date_np : '' }} 
-                                    <span class="text-redish float-right">
-                                        {{ $ainkanun->ministry ? '- '.$ainkanun->ministry : '' }}
-                                    </span>
-                                </small>
-                            </span>
-                        </a>
-                        @endforeach
-                    <a href="{{route('web.detail.index',['type' => 'ain-kanoon'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
-                    </div>
-
-                    
                 </div>
             </div>
         </div>
+        <div class="col-md-3">
+            <div class="list-item">
+                <div class="list-item-head">
+                    <p>{{ __('language.yearly-budget-program')}}</p>
+                </div>
+
+                <div class="list-item-body">
+                    @foreach($remote_yearly_budgets as $budget)
+                    <a href="{{$budget->url}}" target="_blank" class="list-item-body-content">
+                        <i class="fa fa-angle-right"></i>
+                        <span>
+                            <span class="text-bluish">
+                                {{$budget->title}}
+                            </span>
+                            <small class="d-block w-100">
+                                {{ $budget->date_np ? '- '.$budget->date_np : '' }} 
+                                <span class="text-redish float-right">
+                                    {{ $budget->ministry ? '- '.$budget->ministry : '' }}
+                                </span>
+                            </small>
+                        </span>
+                    </a>
+                    @endforeach
+
+                    <a href="{{route('web.detail.index',['type' => 'yearly-budget'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="list-item">
+                <div class="list-item-head">
+                    <p>{{ __('language.public-procurement-bidding')}}</p>
+                </div>
+                <div class="list-item-body">
+                    @foreach($remote_kharid_bolpatras as $bolpatra)
+                    <a href="{{$bolpatra->url}}" target="_blank" class="list-item-body-content">
+                        <i class="fa fa-angle-right"></i>
+                        <span>
+                            <span class="text-bluish">
+                                {{$bolpatra->title}}
+                            </span>
+                            <small class="d-block w-100">
+                                {{ $bolpatra->date_np ? '- '.$bolpatra->date_np : '' }} 
+                                <span class="text-redish float-right">
+                                    {{ $bolpatra->ministry ? '- '.$bolpatra->ministry : '' }}
+                                </span>
+                            </small>
+                        </span>
+                    </a>
+                    @endforeach
+
+                    <a href="{{route('web.detail.index',['type' => 'kharid-bolpatra'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="list-item">
+                <div class="list-item-head">
+                    <p>{{ __('language.acts-laws-rules')}}</p>
+                </div>
+                <div class="list-item-body">
+                    @foreach($remote_ain_kanuns as $ainkanun)
+                    <a href="{{$ainkanun->url}}" target="_blank" class="list-item-body-content">
+                        <i class="fa fa-angle-right"></i>
+                        <span>
+                            <span class="text-bluish">
+                                {{$ainkanun->title}}
+                            </span>
+                            <small class="d-block w-100">
+                                {{ $ainkanun->date_np ? '- '.$ainkanun->date_np : '' }} 
+                                <span class="text-redish float-right">
+                                    {{ $ainkanun->ministry ? '- '.$ainkanun->ministry : '' }}
+                                </span>
+                            </small>
+                        </span>
+                    </a>
+                    @endforeach
+                    <a href="{{route('web.detail.index',['type' => 'ain-kanoon'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
+                </div>
+
+
+            </div>
+        </div>
     </div>
+</div>
 </section>
 {{-- section 6 end --}}
 {{-- section 7 --}}
@@ -431,125 +434,125 @@
     <div class="container-fluid px-5">
         <div class="row">
             <div class="col-md-3">
-                    <div class="list-item">
-                        <div class="list-item-head">
-                          <p>{{ __('language.services')}} </p>
-                      </div>
-
-                        <div class="list-item-body">
-                            @foreach($remote_sewa_pravas as $sewaprava)
-                            <a href="{{$sewaprava->url}}" target="_blank" class="list-item-body-content">
-                                <i class="fa fa-angle-right"></i>
-                                <span>
-                                    <span class="text-bluish">
-                                        {{$sewaprava->title}}
-                                    </span>
-                                    <small class="d-block w-100">
-                                        {{ $sewaprava->date_np ? '- '.$sewaprava->date_np : '' }} 
-                                        <span class="text-redish float-right">
-                                            {{ $sewaprava->ministry ? '- '.$sewaprava->ministry : '' }}
-                                        </span>
-                                    </small>
-                                </span>
-                            </a>
-                            @endforeach
-
-                          
-                      <a href="{{route('web.detail.index',['type' => 'sewa-prava'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
-                      </div>
-                      
-                </div>
-            </div>
-            <div class="col-md-3">
                 <div class="list-item">
                     <div class="list-item-head">
-                        <p>{{ __('language.form')}} </p>
-                    </div>
+                      <p>{{ __('language.services')}} </p>
+                  </div>
 
-                    <div class="list-item-body">
-                        @foreach($remote_e_farums as $farum)
-                        <a href="{{$farum->url}}" target="_blank" class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">
-                                    {{$farum->title}}
-                                </span>
-                                <small class="d-block w-100">
-                                    {{ $farum->date_np ? '- '.$farum->date_np : '' }} 
-                                    <span class="text-redish float-right">
-                                        {{ $farum->ministry ? '- '.$farum->ministry : '' }}
-                                    </span>
-                                </small>
+                  <div class="list-item-body">
+                    @foreach($remote_sewa_pravas as $sewaprava)
+                    <a href="{{$sewaprava->url}}" target="_blank" class="list-item-body-content">
+                        <i class="fa fa-angle-right"></i>
+                        <span>
+                            <span class="text-bluish">
+                                {{$sewaprava->title}}
                             </span>
-                        </a>
-                        @endforeach
+                            <small class="d-block w-100">
+                                {{ $sewaprava->date_np ? '- '.$sewaprava->date_np : '' }} 
+                                <span class="text-redish float-right">
+                                    {{ $sewaprava->ministry ? '- '.$sewaprava->ministry : '' }}
+                                </span>
+                            </small>
+                        </span>
+                    </a>
+                    @endforeach
+
+
+                    <a href="{{route('web.detail.index',['type' => 'sewa-prava'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="list-item">
+                <div class="list-item-head">
+                    <p>{{ __('language.form')}} </p>
+                </div>
+
+                <div class="list-item-body">
+                    @foreach($remote_e_farums as $farum)
+                    <a href="{{$farum->url}}" target="_blank" class="list-item-body-content">
+                        <i class="fa fa-angle-right"></i>
+                        <span>
+                            <span class="text-bluish">
+                                {{$farum->title}}
+                            </span>
+                            <small class="d-block w-100">
+                                {{ $farum->date_np ? '- '.$farum->date_np : '' }} 
+                                <span class="text-redish float-right">
+                                    {{ $farum->ministry ? '- '.$farum->ministry : '' }}
+                                </span>
+                            </small>
+                        </span>
+                    </a>
+                    @endforeach
 
                     <a href="{{route('web.detail.index',['type' => 'e-farum'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="list-item">
-                    <div class="list-item-head">
-                        <p>{{ __('language.report')}}</p>
-                    </div>
-
-                    <div class="list-item-body">
-                        @foreach($remote_prativedans as $prativedan)
-                        <a href="{{$prativedan->url}}" target="_blank" class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">
-                                    {{$prativedan->title}}
-                                </span>
-                                <small class="d-block w-100">
-                                    {{ $prativedan->date_np ? '- '.$prativedan->date_np : '' }} 
-                                    <span class="text-redish float-right">
-                                        {{ $prativedan->ministry ? '- '.$prativedan->ministry : '' }}
-                                    </span>
-                                </small>
-                            </span>
-                        </a>
-                        @endforeach
-
-                    <a href="{{route('web.detail.index',['type' => 'prativedan'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
-                    </div>
-
-                    
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="list-item">
-                    <div class="list-item-head">
-                        <p>{{ __('language.publication')}}</p>
-                    </div>
-
-                    <div class="list-item-body">
-                        @foreach($remote_publications as $publication)
-                        <a href="{{$publication->url}}" target="_blank" class="list-item-body-content">
-                            <i class="fa fa-angle-right"></i>
-                            <span>
-                                <span class="text-bluish">
-                                    {{$publication->title}}
-                                </span>
-                                <small class="d-block w-100">
-                                    {{ $publication->date_np ? '- '.$publication->date_np : '' }} 
-                                    <span class="text-redish float-right">
-                                        {{ $publication->ministry ? '- '.$publication->ministry : '' }}
-                                    </span>
-                                </small>
-                            </span>
-                        </a>
-                        @endforeach
-
-                    <a href="{{route('web.detail.index',['type' => 'publication'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
-                    </div>
-
-                    
                 </div>
             </div>
         </div>
+        <div class="col-md-3">
+            <div class="list-item">
+                <div class="list-item-head">
+                    <p>{{ __('language.report')}}</p>
+                </div>
+
+                <div class="list-item-body">
+                    @foreach($remote_prativedans as $prativedan)
+                    <a href="{{$prativedan->url}}" target="_blank" class="list-item-body-content">
+                        <i class="fa fa-angle-right"></i>
+                        <span>
+                            <span class="text-bluish">
+                                {{$prativedan->title}}
+                            </span>
+                            <small class="d-block w-100">
+                                {{ $prativedan->date_np ? '- '.$prativedan->date_np : '' }} 
+                                <span class="text-redish float-right">
+                                    {{ $prativedan->ministry ? '- '.$prativedan->ministry : '' }}
+                                </span>
+                            </small>
+                        </span>
+                    </a>
+                    @endforeach
+
+                    <a href="{{route('web.detail.index',['type' => 'prativedan'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="list-item">
+                <div class="list-item-head">
+                    <p>{{ __('language.publication')}}</p>
+                </div>
+
+                <div class="list-item-body">
+                    @foreach($remote_publications as $publication)
+                    <a href="{{$publication->url}}" target="_blank" class="list-item-body-content">
+                        <i class="fa fa-angle-right"></i>
+                        <span>
+                            <span class="text-bluish">
+                                {{$publication->title}}
+                            </span>
+                            <small class="d-block w-100">
+                                {{ $publication->date_np ? '- '.$publication->date_np : '' }} 
+                                <span class="text-redish float-right">
+                                    {{ $publication->ministry ? '- '.$publication->ministry : '' }}
+                                </span>
+                            </small>
+                        </span>
+                    </a>
+                    @endforeach
+
+                    <a href="{{route('web.detail.index',['type' => 'publication'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
+                </div>
+
+
+            </div>
+        </div>
     </div>
+</div>
 </section>
 {{-- section 7 end --}}
 @endsection

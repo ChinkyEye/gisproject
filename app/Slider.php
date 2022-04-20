@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Auth;
 
 class Slider extends Model
 {
@@ -23,4 +25,5 @@ class Slider extends Model
     {
         return $this->belongsTo('App\User','created_by','id');
     }
+  
 }
