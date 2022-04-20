@@ -20,4 +20,8 @@ class SurveyFormHasUser extends Model
         'created_by',
         'updated_by',
     ];
+    public function getSurveyName()
+    {
+        return $this->belongsTo('App\SurveyForm','surveyform_id','id');
+    }
 }

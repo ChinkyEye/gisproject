@@ -54,10 +54,10 @@
                         <td>{{ $data->description }}</td>
                         <td>
                           {{ $data->getSurveyQuestion->count()}}
-                          <a href="{{ route('user.surveyform.show',$data->id) }}" class="btn btn-xs btn-outline" title="Update"><i class="fas fa-eye"></i></a>
+                          <a href="{{ route('user.surveyform.show',$data->id) }}" title="View question"><i class="fas fa-eye "></i></a>
                         </td>
                         <td>
-                          <a href="{{ route('user.surveyform.getsurveyuser',$data->slug) }}" class="btn btn-xs btn-outline-info" title="View Answer"><i class="fas fa-eye"></i></a>
+                          <a href="{{ route('user.surveyform.getsurveyuser',$data->slug) }}" title="View Answer"><i class="fas fa-eye"></i></a>
                         </td>
                         <td>
                           <a href="{{ route('user.surveyform.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">

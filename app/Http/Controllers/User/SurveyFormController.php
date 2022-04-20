@@ -147,17 +147,20 @@ class SurveyFormController extends Controller
     public function getsurveyuser(Request $request,$slug)
     {
         $survey_id = SurveyForm::where('slug',$slug)->value('id');
+        $survey_datas = SurveyForm::where('slug',$slug)->first();
         $datas = SurveyFormHasUser::where('surveyform_id',$survey_id)->get();
-        return view('user.surveyform.surveyuser', compact('datas'));
+        return view('user.surveyform.surveyuser', compact('datas','survey_datas'));
 
     }
 
     public function getSurveyanswer(Request $request,$id)
     {
+        // var_dump($id); die();
+        $survey_users = SurveyFormHasUser::find($id);
         $datas = SurveyHasResult::where('surveyform_has_user_id',$id)
                                 ->with('getSurveyQuestions')
                                 ->get();
-        return view('user.surveyform.surveyanswer', compact('datas'));
+        return view('user.surveyform.surveyanswer', compact('datas','survey_users'));
 
     }
 }
