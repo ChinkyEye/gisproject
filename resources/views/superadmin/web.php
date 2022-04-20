@@ -29,10 +29,9 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
 
     Route::get('/', 'HomeController@index')->name('home');
 
-    Route::resource('surveyform','Survey\SurveyFormController');
-    Route::get('surveyform/attribute/{id}', 'Survey\SurveyFormAttributeController@createSurveyFormAttribute')->name('surveyform.attribute');
-    Route::resource('surveyformattribute', 'Survey\SurveyFormAttributeController');
-    Route::get('surveyform/get/type', 'Survey\SurveyFormAttributeController@getType')->name('survey.getType');
+    Route::resource('surveyform','SurveyFormController');
+    Route::get('surveyform/attribute/{id}', 'SurveyFormAttributeController@createSurveyFormAttribute')->name('surveyform.attribute');
+    Route::resource('surveyformattribute', 'SurveyFormAttributeController');
 
     Route::resource('main-entry/header','HeaderController');
     Route::get('main-entry/header/active/{id}', 'HeaderController@isActive')->name('header.active');
@@ -161,7 +160,7 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
 });
 
 
-Route::namespace('User')->prefix('user')->name('user.')->middleware(['user'])->group(function(){
+Route::namespace('User')->prefix('user')->name('user.')->middleware(['user','auth'])->group(function(){
     Route::get('/', 'HomeController@index')->name('home');
    
 
@@ -169,24 +168,19 @@ Route::namespace('User')->prefix('user')->name('user.')->middleware(['user'])->g
     // Route::resource('surveyform','SurveyFormController');
     // Route::get('surveyform/attribute/{id}', 'SurveyFormAttributeController@createSurveyFormAttribute')->name('surveyform.attribute');
     // Route::resource('surveyformattribute', 'SurveyFormAttributeController');
-    Route::resource('surveyform','SurveyFormController');
-    Route::get('surveyform/attribute/{id}', 'SurveyFormAttributeController@createSurveyFormAttribute')->name('surveyform.attribute');
-    Route::resource('surveyformattribute', 'SurveyFormAttributeController');
 
     Route::get('surveyform/active/{id}', 'SurveyFormController@isActive')->name('surveyform.active');
-    Route::get('surveyform/getsurveyuser/{slug}', 'SurveyFormController@getsurveyuser')->name('surveyform.getsurveyuser');
 
+    // Route::get('/userhasdetail/create/{id}','UserHasDetailController@create')->name('userhasdetail.create');
 
 });
 
+
+
 Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest','setlocale'])->group(function(){
     Route::get('language/{lang}', 'HomeController@switchLang')->name('LangChange');
-
     // home
     Route::get('/', 'HomeController@index')->name('home');
-    Route::get('/survey', 'SurveyController@index')->name('survey.index');
-    Route::post('/survey', 'SurveyController@store')->name('survey.index');
-    Route::get('/surrvey/{slug}', 'SurveyController@getQuestion')->name('survey.question');
     Route::get('/list', 'HomeController@list')->name('list');
     Route::get('/gallery', 'HomeController@gallery')->name('gallery');
     Route::get('/gallery/{slug}', 'HomeController@gallerySlug')->name('gallerySlug');
