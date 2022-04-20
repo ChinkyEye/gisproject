@@ -18,7 +18,7 @@
 </section>
 <section class="content">
   <div class="card card-info">
-    <form role="form" method="POST" action="{{route('superadmin.coreperson.store')}}">
+    <form role="form" method="POST" action="{{route('superadmin.coreperson.store')}}" enctype="multipart/form-data">
       <div class="card-body">
         @csrf
         <div class="form-group">
@@ -39,7 +39,7 @@
           </span>
           @enderror
         </div>
-        <div class="form-group">
+        <div class="form-group"> 
           <label for="email">Email<span class="text-danger">*</span></label>
           <input type="text"  class="form-control max" id="email" placeholder="Enter email" name="email" autocomplete="off" autofocus value="{{ old('email') }}">
           @error('email')
@@ -61,7 +61,20 @@
         <div class="form-group">
           <label for="link">Link</label>
           <input type="text"  class="form-control max" id="link" placeholder="Enter link" name="link" autocomplete="off" autofocus value="{{ old('link') }}">
-          <span class="error mt-2" style="color: red; display: none">* Input digits (0 - 9)</span>
+          @error('link')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
+        <div class="form-group">
+          <label for="facebook">Facebook link</label>
+          <input type="text"  class="form-control max" id="facebook" placeholder="Enter facebook link" name="facebook" autocomplete="off" autofocus value="{{ old('facebook') }}">
+          @error('facebook')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
         </div>
         <div class="form-group">
           <label for="type">Type <span class="text-danger">*</span></label><br>
@@ -74,63 +87,59 @@
              </label>
            </div>
            @endforeach
+         </div>
+       </div>
+       <div class="form-group">
+        <label for="is_top">Is Top<span class="text-danger">*</span></label>
+        <div class="row col-md-5">
+          <div class="form-check-inline col-md">
+            <input class="form-check-input" type="radio" name="is_top" id="yes" value="1"  >
+            <label class="form-check-label" for="is_top">
+              Yes
+            </label>
+          </div>
+          <div class="form-check-inline col-md">
+            <input class="form-check-input" type="radio" name="is_top" id="no" value="0" >
+            <label class="form-check-label" for="is_top">
+              No
+            </label>
           </div>
         </div>
-        {{-- <div class="form-group">
-          <label for="type">Type:<span class="text-danger">*</span></label>
-          <div class="row col-md-12">
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="pramukh" value="1" {{ old('type') == '1' ? 'checked' : ''}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="pramukh">
-                karyalaya pramukh
-              </label>
-            </div>
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="Prabatdaa" value="2" {{ old('type') == '2' ? 'checked' : ''}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="Prabatdaa">
-                Prabatdaa
-              </label>
-            </div>
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="suchana_sunne" value="3" {{ old('type') == '3' ? 'checked' : ''}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="suchana_sunne">
-                Suchana Sunne
-              </label>
-            </div>
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="gunaso_sunne" value="4" {{ old('type') == '4' ? 'checked' : ''}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="gunaso_sunne">
-                Gunaso Sunne
-              </label>
-            </div>
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="aanya" value="5" {{ old('type') == '5' ? 'checked' : ''}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="aanya">
-                Aanya
-              </label>
-            </div>
-          </div>
-          @error('type')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div> --}}
-        <div class="form-group">
-          <label for="responsibility">Responsibilities</label>
-          <input type="text"  class="form-control max" id="responsibility" placeholder="Enter their responsibility" name="responsibility" autocomplete="off" autofocus value="{{ old('responsibility') }}">
-          @error('responsibility')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div>
+        @error('is_top')
+        <span class="text-danger font-italic" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
       </div>
-      <div class="card-footer justify-content-between">
-        <button type="submit" class="btn btn-info text-capitalize">Save</button>
+      <div class="form-group">
+        <label for="responsibility">Responsibilities</label>
+        <input type="text"  class="form-control max" id="responsibility" placeholder="Enter their responsibility" name="responsibility" autocomplete="off" autofocus value="{{ old('responsibility') }}">
+        @error('responsibility')
+        <span class="text-danger font-italic" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
       </div>
-    </form>
+      <div class="form-group">
+        <label for="imgInp">Image</label>
+        <div class="input-group">
+          <img id="blah" src="{{URL::to('/')}}/images/80x80.png" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
+          <div class="input-group my-3">
+           <input type='file' class="d-none" id="imgInp" name="image" />
+         </div>
+       </div>
+       @error('image')
+       <span class="text-danger font-italic" role="alert">
+        <strong>{{ $message }}</strong>
+      </span>
+      @enderror
+    </div>
   </div>
+  <div class="card-footer justify-content-between">
+    <button type="submit" class="btn btn-info text-capitalize">Save</button>
+  </div>
+</form>
+</div>
 </section>
 @endsection
 @push('javascript')
@@ -139,21 +148,38 @@
     var keyCode = e.which ? e.which : e.keyCode
     // alert(keyCode);
     if (!((keyCode >= 48 && keyCode <= 57) || keyCode == 46)) {
-            $(".error").css("display", "inline");
+      $(".error").css("display", "inline");
             // toastr.error('* Input digits (0 - 9)');
             return false;
           }
           else{
             $(".error").css("display", "none");
           }
-  }
-</script>
-<script type="text/javascript">
-  function onlyOne(checkbox) {
-    var checkboxes = document.getElementsByName('type')
-    checkboxes.forEach((item) => {
-      if (item !== checkbox) item.checked = false
-    })
-  }
-</script>
-@endpush
+        }
+      </script>
+      <script type="text/javascript">
+        function onlyOne(checkbox) {
+          var checkboxes = document.getElementsByName('type')
+          checkboxes.forEach((item) => {
+            if (item !== checkbox) item.checked = false
+          })
+        }
+      </script>
+      <script type="text/javascript">
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+              $('#blah').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+
+        $("#imgInp").change(function() {
+          readURL(this);
+        });
+      </script>
+      @endpush

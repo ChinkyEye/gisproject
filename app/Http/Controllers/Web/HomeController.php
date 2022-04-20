@@ -24,6 +24,8 @@ use App\TblRemotePublication;
 use App\Notice;
 use App\Introduction;
 use App\Slider;
+use App\CorePerson;
+use App\MantralayaHasUser;
 
 
 
@@ -44,7 +46,10 @@ class HomeController extends Controller
         $offices = Office::orderBy('id','DESC')->get();
         $introductions = Introduction::orderBy('id','DESC')->where('is_active','1')->get();
         $sliders = Slider::orderBy('id','DESC')->where('is_active','1')->get();
-        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','offices','scroll_notice','introductions','sliders']));
+        $coreperson = CorePerson::orderBy('id','DESC')->where('is_top','1')->where('is_active','1')->get();
+        $mantralaya = MantralayaHasUser::orderBy('id','DESC')->where('is_active','1')->get();
+
+        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','offices','scroll_notice','introductions','sliders','coreperson','mantralaya']));
     }
 
     public function link(Request $request, $link,$link2 = Null)

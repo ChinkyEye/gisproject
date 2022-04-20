@@ -41,33 +41,26 @@
                         </div>
                         <div class="slide-du-indicator"></div>
                     </div> -->
-
                 </div>
             </div>
         </div>
         <div class="col-md">
+            @foreach($coreperson as $data)
             <div class="profile-main text-center">
                 <div class="border-0 my-4">
-                  <img src="{{ url('/') }}/web/img/mantri.jpg" class="card-img-top main-card-img text-center" alt="...">
+                  <!--     <img src="{{ url('/') }}/web/img/mantri.jpg" class="card-img-top main-card-img text-center" alt="..."> -->
+                  <img src="{{ $data->document == null ? asset('images/no-image-user.png') : asset('images/coreperson') . '/' . $data->document  }}" alt="" class="responsive" width="50" height="50">
                   <div class="card-body px-0 py-1">
-                    <h5 class="card-title my-2">मा. राजेन्द्र कुमार राई</h5>
-                    <p class="card-text">मुख्यमन्त्री</p>
+                    <h5 class="card-title my-2">{{$data->name}}<!-- मा. राजेन्द्र कुमार राई --></h5>
+                    <p class="card-text"> {{$data->getCorepersonType->type}}<!-- मुख्यमन्त्री --></p>
                     <div class="template-demo text-center"> 
-                        <a href="" class="btn btn-social-icon btn-facebook btn-rounded">
+                        <a href="{{$data->facebook}}" class="btn btn-social-icon btn-facebook btn-rounded">
                             <i class="fa fa-facebook"></i>
-                        </a> 
-                        <a href="" class="btn btn-social-icon btn-twitter btn-rounded">
-                            <i class="fa fa-twitter"></i>
-                        </a> 
-                        <a href="" class="btn btn-social-icon btn-linkedin btn-rounded">
-                            <i class="fa fa-linkedin"></i>
-                        </a> 
-                        <a href="" class="btn btn-social-icon btn-instagram btn-rounded">
-                            <i class="fa fa-instagram"></i>
-                        </a> 
+                        </a>                        
                     </div>
                 </div>
             </div>
+            @endforeach
             {{-- <div class="border-0 text-center">
               <img src="{{ url('/') }}/web/img/mantri.jpg" class="card-img-top main-card-img text-center" alt="...">
               <div class="card-body px-0 py-1">
@@ -75,7 +68,6 @@
                 <p class="card-text">मुख्यमन्त्री</p>
             </div>
         </div> --}}
-        
     </div>
 </div>
 </div>

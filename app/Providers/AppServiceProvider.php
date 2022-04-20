@@ -11,7 +11,9 @@ use App\Menu;
 use App\Sidemenu;
 use App\Usefullink;
 use App\Notice;
-use App\Slider;
+use App\AboutUs;
+use App\ContactUs;
+use App\Header;
 
 
 
@@ -47,6 +49,15 @@ class AppServiceProvider extends ServiceProvider
         });
         view()->composer('web.layouts.head-top', function ($view) use ($request){
             $view->with('notice', Notice::totalnotice($request));
+        }); 
+        view()->composer('web.layouts.footer', function ($view) use ($request){
+            $view->with('aboutus', AboutUs::totalaboutus($request));
+        });  
+        view()->composer('web.layouts.footer', function ($view) use ($request){
+            $view->with('contact', ContactUs::totalcontact($request));
+        });  
+        view()->composer('web.layouts.header', function ($view) use ($request){
+            $view->with('header', Header::totalheader($request));
         }); 
        
     }

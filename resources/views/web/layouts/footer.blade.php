@@ -8,7 +8,9 @@
             <div class="col-12 col-sm-6 col-lg-5">
                 <div class="single-footer-widget mb-70 text-white">
                     <h5 class="widget-title font-weight-bold">{{ __('language.about-us')}}</h5>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo sapiente odit aut tempore alias ducimus eius natus odio, est repellat mollitia, harum perferendis dolores id unde libero. Numquam doloribus, vero. Nemo sapiente odit aut tempore alias ducimus eius natus odio, est repellat mollitia, harum perferendis dolores id unde libero. Numquam doloribus, vero.. </p>
+                    @foreach($aboutus as $data)
+                    <p>{!! $data->description !!} </p>
+                    @endforeach
                     <a href="" class="text-danger hover-icon">Read more <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -21,7 +23,7 @@
                             <span class="text-light icon-foot">
                                 <i class="fa fa-angle-right"></i>
                             </span>
-                            <a href="{{$data->website_link}}" target="_blank" class="d-inline-block">{{$data->name}}</a>
+                            <a href="//{{$data->website_link}}" target="_blank" class="d-inline-block">{{$data->name}}</a>
                         </div>
                     </div>
                     @endforeach
@@ -55,12 +57,14 @@
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="single-footer-widget mb-70">
                     <h5 class="widget-title font-weight-bold">{{ __('language.contact')}}</h5>
+                    @foreach($contact as $data)
                     <div class="single-contact-content d-flex align-items-center text-white mb-4">
                         <div class="mr-3 icon-font">
                             <i class="fa fa-map-marker"></i>
                         </div>
                         <div class="text">
-                            Birtnagar, Morang, Nepal
+                           <!--  Birtnagar, Morang, Nepal -->
+                           {{$data->address}}
                         </div>
                     </div>
                     <div class="single-contact-content d-flex align-items-center text-white mb-4">
@@ -68,7 +72,8 @@
                             <i class="fa fa-envelope-o"></i>
                         </div>
                         <div class="text">
-                            info@p1.com.np
+                          <!--   info@p1.com.np -->
+                          {{$data->email}}
                         </div>
                     </div>
                     <div class="single-contact-content d-flex align-items-center text-white mb-4">
@@ -76,29 +81,21 @@
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="text">
-                            (+977) - 021 - 342323
+                            {{$data->phone}}
                         </div>
                     </div>
                     <div class="template-demo text-center text-md-left"> 
-                        <a href="" class="btn btn-social-icon btn-facebook btn-rounded">
+                        <a href="{{$data->facebook}}" class="btn btn-social-icon btn-facebook btn-rounded" target="_blank">
                             <i class="fa fa-facebook"></i>
                         </a> 
-                        <a href="" class="btn btn-social-icon btn-youtube btn-rounded">
+                        <a href="{{$data->youtube}}" class="btn btn-social-icon btn-youtube btn-rounded" target="_blank">
                             <i class="fa fa-youtube"></i>
                         </a> 
-                        <a href="" class="btn btn-social-icon btn-twitter btn-rounded">
+                        <a href="{{$data->twitter}}" class="btn btn-social-icon btn-twitter btn-rounded" target="_blank">
                             <i class="fa fa-twitter"></i>
                         </a> 
-                        <a href="" class="btn btn-social-icon btn-dribbble btn-rounded">
-                            <i class="fa fa-dribbble"></i>
-                        </a> 
-                        <a href="" class="btn btn-social-icon btn-linkedin btn-rounded">
-                            <i class="fa fa-linkedin"></i>
-                        </a> 
-                        <a href="" class="btn btn-social-icon btn-instagram btn-rounded">
-                            <i class="fa fa-instagram"></i>
-                        </a> 
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -19,6 +19,9 @@ class CreateContactUsTable extends Migration
             $table->string('address')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
+            $table->string('youtube')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('login')->nullable();
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);

@@ -9,7 +9,7 @@
             @foreach($offices as $key => $data)
             <div class="col-md-3 col-sm-6">
                 <div class="box">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
+                    <img src="{{ $data->thumbnail == null ? asset('images/logo.png') : asset('images/officethumbnail') . '/' . $data->thumbnail  }}">
                     <div class="box-content">
                         <a href="">
                             <h5 class="title">{{$data->name}}</h5>
@@ -17,7 +17,7 @@
                         </a>
                     </div>
                     <ul class="icon">
-                        <li><a href="#"><img src="{{ url('web/img/nepal-gov-logo.png') }}"></a></li>
+                        <li><a href="{{$data->website_link}}" target="_blank"><img src="{{ $data->logo == null ? asset('images/logo.png') : asset('images/officelogo') . '/' . $data->logo  }}"></a></li>
                     </ul>
                 </div>
             </div>
@@ -77,7 +77,18 @@
 <section class="features-area py-5 {{ $offices->count() ? '' : 'bg-light' }}">
     <div class="container-fluid">
         <div class="owl-carousel owl-carousel2 owl-theme">
+            @foreach($mantralaya as $key => $data)
             <div class="item">
+                <a href="{{route('web.mantralaya.detail',$data->id)}}" class="card" style="width: 18rem;">
+                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
+                    <div class="card-body py-3 main-hover-card-text text-center">
+                        <h6 class="card-title mb-0">{{$data->getUserDetail->name}}</h6>
+                        <small class="post">{{$data->getUserDetail->address}}</small>
+                    </div>
+                </a>
+            </div>
+            @endforeach
+          <!--   <div class="item">
                 <a href="" class="card" style="width: 18rem;">
                     <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
                     <div class="card-body py-3 main-hover-card-text text-center">
@@ -130,19 +141,10 @@
                         <small class="post">प्रदेश नं. १, विराटनगर</small>
                     </div>
                 </a>
-            </div>
-            <div class="item">
-                <a href="" class="card" style="width: 18rem;">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body py-3 main-hover-card-text text-center">
-                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
-                        <small class="post">प्रदेश नं. १, विराटनगर</small>
-                    </div>
-                </a>
-            </div>
+            </div> -->
         </div>
         <div class="mt-3 text-center">
-            <a href="#" class="btn credit-btn box-shadow btn-2">See More</a>
+            <a href="{{route('web.mantralaya.index')}}" class="btn credit-btn box-shadow btn-2">View All</a>
         </div>
     </div>
 </section>
@@ -151,10 +153,9 @@
 {{-- section 3 --}}
 <section class="cta-area d-flex flex-wrap">
     <!-- Cta Thumbnail -->
-    <div class="cta-thumbnail bg-img jarallax" style="background-image: url({{ url('/web') }}/img/bg-img/5.jpg);"></div>
-    {{--  <img src="{{ $data->document == null ? asset('images/no-image-user.png') : asset('images/introduction') . '/' . $data->document }}"> --}}
-    <!-- Cta Content -->
     @foreach($introductions as $data)
+    <div class="cta-thumbnail bg-img jarallax" > <img src="{{ $data->document == null ? asset('images/no-image-user.png') : asset('images/introduction') . '/' . $data->document }}"></div>
+    <!-- Cta Content -->
     <div class="cta-content bg-gray">
         <!-- Section Heading -->
         <div class="section-heading ">
@@ -215,7 +216,7 @@
                         <h4>Get in touch with us.</h4>
                     </div>
                     <div class="cta-btn">
-                        <a href="#" class="btn credit-btn box-shadow">Contact</a>
+                        <a href="{{route('web.contactus.index')}}" class="btn credit-btn box-shadow">Contact</a>
                     </div>
                 </div>
             </div>
