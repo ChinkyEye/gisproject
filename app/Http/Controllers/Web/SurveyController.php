@@ -47,10 +47,12 @@ class SurveyController extends Controller
 
         foreach($answers as $key => $data){
             // var_dump($data); die();
+                $type = SurveyFormHasAttribute::where('id',$key)->value('type');
                 $datas = SurveyHasResult::create([
                     'surveyform_has_user_id'=> $surveyformhasusers->id,
                     'surveyform_has_attr_id'=> $key,
                     'result'=> $data,
+                    'type' =>$type,
                     'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
                     'date' => date("Y-m-d"),
                     'time' => date("H:i:s"),
@@ -70,10 +72,13 @@ class SurveyController extends Controller
                     $image->move($destinationPath, $fileName);
                     $file_path = $destinationPath.'/'.$fileName;
 
+                    $type = SurveyFormHasAttribute::where('id',$key)->value('type');
+
                     $datas = SurveyHasResult::create([
                         'surveyform_has_user_id'=> $surveyformhasusers->id,
                         'surveyform_has_attr_id'=> $key,
                         'result'=> $fileName,
+                        'type'=> $type,
                         'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
                         'date' => date("Y-m-d"),
                         'time' => date("H:i:s"),
@@ -98,11 +103,13 @@ class SurveyController extends Controller
         if($checkbox){
             foreach($checkbox as $key => $data){
                 $id = $key;
+                $type = SurveyFormHasAttribute::where('id',$key)->value('type');
                 foreach($data as $key => $dat){
                     $datas = SurveyHasResult::create([
                         'surveyform_has_user_id'=> $surveyformhasusers->id,
                         'surveyform_has_attr_id'=> $id,
                         'result'=> $dat,
+                        'type'=> $type,
                         'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
                         'date' => date("Y-m-d"),
                         'time' => date("H:i:s"),
