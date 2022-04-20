@@ -22,4 +22,9 @@ class SurveyHasResult extends Model
         'created_by',
         'updated_by',
     ];
+
+    public function getSurveyQuestions()
+    {
+        return $this->belongsTo('App\SurveyFormHasAttribute','surveyform_has_attr_id','id');
+    }
 }

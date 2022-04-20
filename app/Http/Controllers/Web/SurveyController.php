@@ -31,6 +31,7 @@ class SurveyController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request);
         $imagefile = $request->file('image');
         $answers = $request->answer;
         $questions = $request->question;
@@ -45,6 +46,7 @@ class SurveyController extends Controller
         ]);
 
         foreach($answers as $key => $data){
+            // var_dump($data); die();
                 $datas = SurveyHasResult::create([
                     'surveyform_has_user_id'=> $surveyformhasusers->id,
                     'surveyform_has_attr_id'=> $key,
@@ -59,23 +61,36 @@ class SurveyController extends Controller
         {
             foreach($imagefile as $key => $image){
                 if($image != ""){
+                    $this->validate($request, [
+                        'image.*' => 'required|mimes:jpg,jpeg',
+                    ]);
                     $destinationPath = 'images/answer/';
                     $extension = $image->getClientOriginalExtension();
                     $fileName = md5(mt_rand()).'.'.$extension;
                     $image->move($destinationPath, $fileName);
                     $file_path = $destinationPath.'/'.$fileName;
 
-                }else{
-                    $fileName = Null;
+                    $datas = SurveyHasResult::create([
+                        'surveyform_has_user_id'=> $surveyformhasusers->id,
+                        'surveyform_has_attr_id'=> $key,
+                        'result'=> $fileName,
+                        'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+                        'date' => date("Y-m-d"),
+                        'time' => date("H:i:s"),
+                    ]);
+
                 }
-                $datas = SurveyHasResult::create([
-                    'surveyform_has_user_id'=> $surveyformhasusers->id,
-                    'surveyform_has_attr_id'=> $key,
-                    'result'=> $fileName,
-                    'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
-                    'date' => date("Y-m-d"),
-                    'time' => date("H:i:s"),
-                ]);
+                // else{
+                //     $fileName = "";
+                // }
+                // $datas = SurveyHasResult::create([
+                //     'surveyform_has_user_id'=> $surveyformhasusers->id,
+                //     'surveyform_has_attr_id'=> $key,
+                //     'result'=> $fileName,
+                //     'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+                //     'date' => date("Y-m-d"),
+                //     'time' => date("H:i:s"),
+                // ]);
             }
 
         }
