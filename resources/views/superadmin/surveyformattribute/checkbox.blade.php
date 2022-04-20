@@ -6,7 +6,7 @@
 		      <input type="radio"  checked>
 		    </div>
 		  </div>
-		  <input type="text" class="form-control form-control-border" placeholder="Enter Op" name="radiooption[]">
+		  <input type="text" class="form-control form-control-border" placeholder="Enter Op" name="checkboxoption[]">
 		</div>
 			{{-- <div class="form-group col-md" id="radio-main-entry">
 				<label for="radioquestion">Question</label>
