@@ -41,6 +41,7 @@
                         <th>Title</th>
                         <th>Description</th>
                         <th>Questions Count</th>
+                        <th>Answer</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
@@ -51,7 +52,13 @@
                         <td>{{$key + 1}}</td>
                         <td>{{ $data->title }}</td>
                         <td>{{ $data->description }}</td>
-                        <td>{{ $data->getSurveyQuestion->count()}}</td>
+                        <td>
+                          {{ $data->getSurveyQuestion->count()}}
+                          <a href="{{ route('user.surveyform.show',$data->id) }}" class="btn btn-xs btn-outline" title="Update"><i class="fas fa-eye"></i></a>
+                        </td>
+                        <td>
+                          <a href="{{ route('user.surveyform.getsurveyuser',$data->slug) }}" class="btn btn-xs btn-outline-info" title="View Answer"><i class="fas fa-eye"></i></a>
+                        </td>
                         <td>
                           <a href="{{ route('user.surveyform.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                             <i class="nav-icon fas {{ $data->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
@@ -65,7 +72,7 @@
                             <input name='_method' type='hidden' value='DELETE'>
                             <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
                           </form>
-                          <a href="{{ route('user.surveyform.show',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-eye"></i></a>
+                          
                         </td>
                       </tr>
                       @endforeach
