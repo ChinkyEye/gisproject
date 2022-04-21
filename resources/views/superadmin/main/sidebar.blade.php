@@ -121,6 +121,14 @@
              </a>
            </li>
            <li class="nav-item">
+              <a href="{{ route('superadmin.department.index')}}" class="nav-link {{ (request()->is('home/menu-page/department*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                 Department
+               </p>
+             </a>
+           </li>
+           <li class="nav-item">
               <a href="{{ route('superadmin.pratibedan.index')}}" class="nav-link {{ (request()->is('home/menu-page/pratibedan*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-file"></i>
                 <p>

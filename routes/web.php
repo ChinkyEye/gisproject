@@ -88,6 +88,8 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('menu-page/coreperson','CorePersonController'); 
     Route::get('menu-page/coreperson/active/{id}', 'CorePersonController@isActive')->name('coreperson.active');
 
+    Route::resource('menu-page/department','DepartmentController'); 
+
 
     // Route::resource('niti','NitiController');
     Route::resource('menu-page/niti','NitiController');
