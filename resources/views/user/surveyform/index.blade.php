@@ -73,6 +73,8 @@
                             <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
                           </form>
                           
+                         {{--   <a href="{{ route('user.surveyform.edit',$data->slug) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a> --}}
+                          
                         </td>
                       </tr>
                       @endforeach

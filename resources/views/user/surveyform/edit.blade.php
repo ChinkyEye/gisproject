@@ -5,7 +5,7 @@
   <div class="container-fluid">
     <div class="row mb-2">
       <div class="col-sm-6 pl-1">
-        <h1 class="text-capitalize">Edit {{ $page }}</h1>
+        <h1 class="text-capitalize">Editd {{ $page }}</h1>
       </div>
       <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">

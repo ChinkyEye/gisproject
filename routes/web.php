@@ -173,6 +173,14 @@ Route::namespace('User')->prefix('user')->name('user.')->middleware(['user'])->g
     Route::get('surveyform/attribute/{id}', 'SurveyFormAttributeController@createSurveyFormAttribute')->name('surveyform.attribute');
     Route::resource('surveyformattribute', 'SurveyFormAttributeController');
 
+    Route::get('surveyform/get/type', 'SurveyFormAttributeController@getType')->name('survey.getType');
+    Route::post('/survey/form/edit', 'SurveyFormController@getSurveyEdit')->name('survey_form.edit');
+    Route::delete('/surveyform/surveychoice/destroy/{id}','SurveyFormController@deleteSurveyChoice')->name('surveyformchoice.destroy');
+    
+    //surveychoiceform
+    Route::post('/survey/form/choice/edit', 'SurveyFormController@getSurveyChoiceEdit')->name('survey_form_choice.edit');
+    Route::post('/survey/form/choice/add', 'SurveyFormController@addSurveyChoice')->name('addsurveyformchoice.store');
+
     Route::get('surveyform/active/{id}', 'SurveyFormController@isActive')->name('surveyform.active');
     Route::get('surveyformquestion/active/{id}', 'SurveyFormController@isActiveQuestion')->name('surveyformquestion.active');
     Route::get('surveyform/getsurveyuser/{slug}', 'SurveyFormController@getsurveyuser')->name('surveyform.getsurveyuser');

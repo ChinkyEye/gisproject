@@ -90,8 +90,6 @@ class SurveyFormAttributeController extends Controller
             $type = 'file';
         }
 
-
-
         $surveyforms = SurveyFormHasAttribute::create([
             'form_id' => $request['form_id'],
             'question' => $question,
@@ -152,29 +150,7 @@ class SurveyFormAttributeController extends Controller
                 ]);
             }
         }
-
-
-
-       
-
-        // foreach($type as $key=>$value){
-
-        //     $surveyforms = SurveyFormHasAttribute::create([
-        //         'form_id' => $request['form_id'],
-        //         'question' => $question[$key],
-        //         'type' => $type[$key],
-        //         'is_active' => '1',
-        //         'date' => date("Y-m-d"),
-        //         'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
-        //         'time' => date("H:i:s"),
-        //         'created_by' => Auth::user()->id,
-        //     ]);
-        // }
-
-
-
        
         return redirect()->back()->with('alert-success', 'Data added successfully!!');
-        // return redirect()->route('user.surveyform.index')->with('alert-success', 'Data added successfully!!');
     }
 }

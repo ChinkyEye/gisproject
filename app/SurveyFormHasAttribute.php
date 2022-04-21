@@ -12,6 +12,7 @@ class SurveyFormHasAttribute extends Model
     protected $fillable = [
         'question',
         'type',
+        'type_mimes',
         'min',
         'max',
         'is_required',

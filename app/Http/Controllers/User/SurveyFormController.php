@@ -8,7 +8,9 @@ use App\SurveyForm;
 use App\SurveyFormHasAttribute;
 use App\SurveyFormHasUser;
 use App\SurveyHasResult;
+use App\SurveyFormHasChoice;
 use Auth;
+use Response;
 
 class SurveyFormController extends Controller
 {
@@ -44,6 +46,7 @@ class SurveyFormController extends Controller
      */
     public function store(Request $request)
     {
+        // dd('hello',$request);
         $this->validate($request, [
             'title' => 'required',
         ]);
@@ -84,6 +87,56 @@ class SurveyFormController extends Controller
         return view('user.surveyform.edit', compact('datas'));
     }
 
+    public function getSurveyEdit(Request $request)
+    {
+        // dd($request);
+        $id = $request->id;
+        $val = $request->val;
+        // dd($id,$request);
+        $survey = SurveyFormHasAttribute::find($id);
+        $survey->question = $val;
+        if($survey->save()){
+            $response = array(
+                'status' => 'success',
+                'msg' => 'Successfully Changed',
+            );
+        }else{
+            $response = array(
+                'status' => 'failure',
+                'msg' => 'Change Unsuccessful',
+            );
+            }
+
+        return Response::json($response);
+
+        // dd($request);
+        // $datas = SurveyForm::where('created_by', Auth::user()->id)->find($id);
+        // return view('user.surveyform.edit', compact('datas'));
+    }
+
+    public function getSurveyChoiceEdit(Request $request)
+    {
+        // dd($request);
+        $id = $request->id;
+        $val = $request->val;
+        // dd($id,$request);
+        $surveychoice = SurveyFormHasChoice::find($id);
+        $surveychoice->choice = $val;
+        if($surveychoice->save()){
+            $response = array(
+                'status' => 'success',
+                'msg' => 'Successfully Changed',
+            );
+        }else{
+            $response = array(
+                'status' => 'failure',
+                'msg' => 'Change Unsuccessful',
+            );
+            }
+
+        return Response::json($response);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -117,6 +170,43 @@ class SurveyFormController extends Controller
         return response()->json([
             'success' => 'Record has been deleted successfully!'
         ]);
+    }
+
+    public function deleteSurveyChoice($id)
+    {
+        $datas = SurveyFormHasChoice::find($id);
+        $datas->delete();
+        return response()->json([
+            'success' => 'Record has been deleted successfully!'
+        ]);
+    }
+
+    public function addSurveyChoice(Request $request)
+    {
+        // dd($request,'hello');
+        // $this->validate($request, [
+        //     'title' => 'required',
+        // ]);
+        $radiooption = $request->radiooption;
+        $surveyformattr_id = $request->surveyformattr_id;
+        // dd($request);
+
+        // if($type == 'radio'){
+            foreach($radiooption as $key=>$value){
+                $surveychoiceforms = SurveyFormHasChoice::create([
+                    'surveyform_has_attr_id' => $surveyformattr_id,
+                    'choice' => $radiooption[$key],
+                    'is_active' => '1',
+                    'date' => date("Y-m-d"),
+                    'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+                    'time' => date("H:i:s"),
+                    'created_by' => Auth::user()->id,
+                ]);
+            }
+        // }
+
+        return redirect()->back()->with('alert-success', 'Data added successfully!!');
+      
     }
 
     public function isActive(Request $request,$id)
@@ -198,4 +288,6 @@ class SurveyFormController extends Controller
             return SurveyFormHasAttribute::where('id','=',$itemID)->update(array('sort_id'=> $itemIndex));
         }
     }
+
+
 }
