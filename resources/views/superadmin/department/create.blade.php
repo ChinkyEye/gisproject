@@ -40,7 +40,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="address">Address<span class="text-danger">*</span></label>
+          <label for="address">Address</label>
           <input type="text"  class="form-control max" id="address" placeholder="Enter address" name="address" autocomplete="off" autofocus value="{{ old('address') }}">
           @error('address')
           <span class="text-danger font-italic" role="alert">
@@ -49,7 +49,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="designation">Designation<span class="text-danger">*</span></label>
+          <label for="designation">Designation</label>
           <input type="text"  class="form-control max" id="designation" placeholder="Enter designation" name="designation" autocomplete="off" autofocus value="{{ old('designation') }}">
           @error('designation')
           <span class="text-danger font-italic" role="alert">
@@ -58,7 +58,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="email">Email<span class="text-danger">*</span></label>
+          <label for="email">Email</label>
           <input type="email"  class="form-control max" id="email" placeholder="Enter email" name="email" autocomplete="off" autofocus value="{{ old('email') }}">
           @error('email')
           <span class="text-danger font-italic" role="alert">
@@ -67,7 +67,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="phone">Phone No<span class="text-danger">*</span></label>
+          <label for="phone">Phone No</label>
           <input type="phone"  class="form-control max" id="phone" placeholder="Enter phone" name="phone" autocomplete="off" autofocus value="{{ old('phone') }}">
           @error('phone')
           <span class="text-danger font-italic" role="alert">
@@ -76,8 +76,8 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="work_to_be_done">Work To Be Done<span class="text-danger">*</span></label>
-          <textarea class="form-control max" id="work_to_be_done" name="work_to_be_done" autocomplete="off" autofocus value="{{ old('work_to_be_done') }}">write here.....</textarea>
+          <label for="work_to_be_done">Work To Be Done</label>
+          <textarea class="form-control max" id="work_to_be_done" name="work_to_be_done" autocomplete="off" autofocus value="{{ old('work_to_be_done') }}"  placeholder="Enter Text here"></textarea>
           @error('work_to_be_done')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>

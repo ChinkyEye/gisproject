@@ -58,7 +58,7 @@
                       @if($vision->description == '')
                        <td>Null</td>
                       @else
-                      <td>Has Description</td>
+                      <td>{!! \Illuminate\Support\Str::words($vision->description, 6,'....')  !!}</td>
                        @endif
                       <td>
                         <a href="{{ route('superadmin.vision.active',$vision->id) }}" data-placement="top" title="{{ $vision->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">

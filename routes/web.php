@@ -70,7 +70,6 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('menu-page/vision', 'VisionController');
         Route::get('menu-page/vision/active/{id}', 'VisionController@isActive')->name('vision.active');
 
-
     Route::resource('/employee','EmployeeController');
     Route::get('/employee/active/{id}', 'EmployeeController@isActive')->name('employee.active');
 
@@ -88,7 +87,8 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('menu-page/coreperson','CorePersonController'); 
     Route::get('menu-page/coreperson/active/{id}', 'CorePersonController@isActive')->name('coreperson.active');
 
-    Route::resource('menu-page/department','DepartmentController'); 
+    Route::resource('menu-page/department','DepartmentController');
+    Route::get('menu-page/department/active/{id}', 'DepartmentController@isActive')->name('department.active'); 
 
 
     // Route::resource('niti','NitiController');
