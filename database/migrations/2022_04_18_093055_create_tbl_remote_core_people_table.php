@@ -16,8 +16,10 @@ class CreateTblRemoteCorePeopleTable extends Migration
         Schema::create('tbl_remote_core_people', function (Blueprint $table) {
             $table->id();
             $table->integer('mantralaya_id'); // id of api table
+            $table->string('server'); // id of api table
             $table->string('name'); 
             $table->string('post'); 
+            $table->string('link'); 
             $table->string('phone')->nullable(); 
             $table->integer('is_top'); 
             $table->boolean('is_active')->default(true); // 1 active, 0 non active

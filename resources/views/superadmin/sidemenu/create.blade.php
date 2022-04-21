@@ -37,9 +37,12 @@
           <label for="model_data">Model</label>
           <select id="nationality" class="form-control" name="model" id="modal">
             <option value="">--Select--</option>
-            <option value="Mantralaya">Mantralaya</option>
+            <option value="PradeshSarkar">PradeshSarkar</option>
+            <option value="MantralayaHasUser">Mantralaya</option>
             <option value="HelloCM">HelloCM</option>
-            <option value="PradeshSabhaSanrachana">PradeshSabhaSadasya</option>
+            <option value="PradeshSabhaSadasya">PradeshSabhaSadasya</option>
+            <option value="Eservice">Eservice</option>
+            <option value="KaryalayaPramukh">KaryalayaPramukh</option>
           </select>
         </div>
         <div class="form-group">
