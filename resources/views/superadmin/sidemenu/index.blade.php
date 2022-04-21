@@ -47,9 +47,9 @@
                         <th>Action</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="menu" class="sortable">
                       @foreach($sidemenus as $key => $sidemenu)
-                      <tr class="{{$sidemenu->is_active == 1 ? '' : 'table-danger'}} text-center">
+                      <tr id="{{$sidemenu->id}}" class="{{$sidemenu->is_active == 1 ? '' : 'table-danger'}} text-center">
                         <td>{{$key + 1}}</td>
                         <td>{{$sidemenu->name}}</td>
                         <td>{{$sidemenu->name_np}}</td>
@@ -87,6 +87,25 @@
   </div>
 @endsection
 @push('javascript')
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.1/jquery-ui.min.js"></script> -->
+<script>
+    $(function(){
+      $("#menu").sortable({
+        stop: function(){
+          $.map($(this).find('tr'), function(el) {
+            var itemID = el.id;
+            var itemIndex = $(el).index();
+            $.ajax({
+              url:"{{route('superadmin.sortable-sidemenu')}}",
+              type:'GET',
+              dataType:'json',
+              data: {itemID:itemID, itemIndex: itemIndex},
+            });
+          });
+        }
+      });
+    });
+  </script>
 <script>
   function myFunction(el) {
     const url = $(el).attr('data_url');

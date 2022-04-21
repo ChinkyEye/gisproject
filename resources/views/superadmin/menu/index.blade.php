@@ -80,7 +80,7 @@
                         <th>Action</th>
                       </tr>
                     </thead>
-                    <tbody style="text-align: center">
+                    <tbody style="text-align: center" id="menu" class="sortable">
                       @foreach($menus as $key => $menu)
                       <tr id="{{$menu->id}}" class="{{$menu->is_active == 1 ? '' : 'table-danger'}}">
                         <td>{{$key + 1}}</td>

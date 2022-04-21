@@ -17,7 +17,7 @@ class SidemenuController extends Controller
      */
     public function index()
     {
-        $sidemenus = Sidemenu::orderBy('id','DESC')
+        $sidemenus = Sidemenu::orderBy('sort_id')
                             ->where('created_by', Auth::user()->id)
                             ->paginate(10);
         return view('superadmin.sidemenu.index', compact('sidemenus'));
@@ -170,5 +170,14 @@ class SidemenuController extends Controller
         );
         }
         return back()->with($notification)->withInput();
+    }
+
+    public function sortable_sidemenu(Request $request){
+        $Sidemenu = Sidemenu::orderBy('sort_id','ASC')->get();
+        $itemID = $request->itemID;
+        $itemIndex = $request->itemIndex;
+        foreach($Sidemenu as $value){
+            return Sidemenu::where('id','=',$itemID)->update(array('sort_id'=> $itemIndex));
+        }
     }
 }
