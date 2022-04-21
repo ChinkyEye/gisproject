@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMisvisionsTable extends Migration
+class CreateMissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateMisvisionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('misvisions', function (Blueprint $table) {
+        Schema::create('missions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('type');
+            $table->string('title');
+            $table->text('description')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);
             $table->string('date',10);
@@ -35,6 +35,6 @@ class CreateMisvisionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('misvisions');
+        Schema::dropIfExists('missions');
     }
 }

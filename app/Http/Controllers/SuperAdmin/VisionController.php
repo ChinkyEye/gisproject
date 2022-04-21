@@ -4,7 +4,7 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Misvision;
+use App\Vision;
 use App\User;
 use Auth;
 use Response;
@@ -18,8 +18,7 @@ class VisionController extends Controller
      */
     public function index()
     {
-         $visions = Misvision::orderBy('id','DESC')
-                            ->where('type','2')
+         $visions = Vision::orderBy('id','DESC')
                             ->paginate(10);
        return view('superadmin.vision.index', compact('visions'));
     }
@@ -44,13 +43,13 @@ class VisionController extends Controller
     {
        
        $this->validate($request, [
-            'name' => 'required',
+            'title' => 'required',
           
         ]);
-            $missions = Misvision::create([
-            'name' => $request['name'],
+            $missions = Vision::create([
+            'title' => $request['title'],
+            'description' => $request['description'],
             'is_active' => '1',
-            'type' => '2',
             'date' => date("Y-m-d"),
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
             'time' => date("H:i:s"),
@@ -78,7 +77,7 @@ class VisionController extends Controller
      */
     public function edit($id)
     {
-        $visions = Misvision::find($id); 
+        $visions = Vision::find($id); 
        return view('superadmin.vision.edit', compact('visions'));
     }
 
@@ -92,10 +91,10 @@ class VisionController extends Controller
     public function update(Request $request, $id)
     {
           $this->validate($request, [
-            'name' => 'required',
+            'title' => 'required',
           
         ]);
-         $visions = Misvision::find($id);
+         $visions = Vision::find($id);
         $all_data = $request->all();
         $all_data['updated_by'] = Auth::user()->id;
         $visions->update($all_data);
@@ -111,7 +110,7 @@ class VisionController extends Controller
     public function destroy($id)
     {
         
-        $visions = Misvision::find($id);
+        $visions = Vision::find($id);
         if($visions->delete()){
             $notification = array(
                 'message' => $visions->name.' is deleted successfully!',
@@ -128,8 +127,8 @@ class VisionController extends Controller
      
     public function isActive(Request $request,$id)
     {
-        $get_is_active = Misvision::where('id',$id)->value('is_active');
-        $isactive = Misvision::find($id);
+        $get_is_active = Vision::where('id',$id)->value('is_active');
+        $isactive = Vision::find($id);
         if($get_is_active == 0){
         $isactive->is_active = 1;
         $notification = array(

@@ -28,11 +28,13 @@
 <section class="breadcrumb-main my-4">
 	<div class="container">
 		<div class="row">
+			@foreach($galleryhasimages as $key => $gallery)
 			<div class="col-md-6 col-lg-3 mb-4 wow fadeInUp" data-wow-delay="100ms">
-			  <a href="{{ url('/') }}/web/img/mantri.jpg" data-fancybox="gallery">
-			  	<img src="{{ url('/') }}/web/img/mantri.jpg" class="img-fluid">
+			  <a href="{{URL::to('/')}}/{{$gallery->path}}{{$gallery->document}}" data-fancybox="gallery">
+			  	<img src="{{URL::to('/')}}/{{$gallery->path}}{{$gallery->document}}" class="img-fluid">
 			  </a>
 			</div>
+			@endforeach
 		</div>
 	</div>
 </section>

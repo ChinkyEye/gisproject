@@ -26,6 +26,8 @@ use App\Introduction;
 use App\Slider;
 use App\CorePerson;
 use App\MantralayaHasUser;
+use App\Gallery;
+use App\GalleryHasImage;
 
 
 
@@ -110,6 +112,7 @@ class HomeController extends Controller
         // var_dump($type); die();
         $modelName = '\\App\\' . $model;
         $datas = $modelName::orderBy('id','DESC')->find($id);
+        dd($datas);
         return view('web.view-more', compact(['datas','link','link2','name','level']));
             
     }
@@ -137,7 +140,9 @@ class HomeController extends Controller
 
     public function gallerySlug($slug) {
         $pages = "Gallery Name";
-        return view('web.gallery', compact('pages'));
+        $gallery_id = Gallery::where('slug',$slug)->value('id');
+        $galleryhasimages = GalleryHasImage::where('gallery_id',$gallery_id)->get();
+        return view('web.gallery', compact('pages','galleryhasimages'));
     }
 
     public function switchLang(Request $request)
