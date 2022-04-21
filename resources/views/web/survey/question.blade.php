@@ -3,7 +3,7 @@
  | 
 @endpush
 @section('content')
-<nav class="breadcrumb-main mt-4">
+<nav class="breadcrumb-main">
 	<div class="container">
 		<ol class="breadcrumb bg-light align-content-center">
 			<li class="breadcrumb-item my-auto">
@@ -19,6 +19,10 @@
 </nav>
 <section class="my-4">
 	<div class="container">
+		<div>
+			<h4 >{{$survey_datas->title}}</h4>
+			<p >{{$survey_datas->description}}</p>
+		</div>
 		<div class="row">
 			<div class="col-12">
 				<form role="form" method="POST" action="{{route('web.survey.index')}}" enctype="multipart/form-data">
