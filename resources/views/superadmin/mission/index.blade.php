@@ -44,7 +44,8 @@
                   <thead class="thead-dark" style="text-align: center">                  
                     <tr>
                       <th >SN</th>
-                      <th>Name</th>
+                      <th>Title</th>
+                      <th>Description</th>
                       <th>Status</th>
                       <th>Action</th>
                     </tr>
@@ -53,13 +54,17 @@
                     @foreach($missions as $key => $mission)
                     <tr class="{{$mission->is_active == 1 ? '' : 'table-danger'}}">
                       <td>{{$key + 1}}</td>
-                      <td>{{$mission->name}}</td>
+                      <td>{{$mission->title}}</td>
+                      @if($mission->description == '')
+                      <td>Null</td>
+                      @else
+                      <td>{!! \Illuminate\Support\Str::words($mission->description, 8,'....')  !!}</td>
+                      @endif
                       <td>
                         <a href="{{ route('superadmin.mission.active',$mission->id) }}" data-placement="top" title="{{ $mission->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                           <i class="nav-icon fas {{ $mission->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
                         </a>
                       </td>
-                      
                       <td>
                         <a href="{{ route('superadmin.mission.edit',$mission->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
                         <form action='javascript:void(0)' data_url="{{route('superadmin.mission.destroy',$mission->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>

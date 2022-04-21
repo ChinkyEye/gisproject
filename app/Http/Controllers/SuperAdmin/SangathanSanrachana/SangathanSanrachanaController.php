@@ -51,16 +51,23 @@ class SangathanSanrachanaController extends Controller
             ]);
             $destinationPath = 'images/sangathansanrachana/';
             $extension = $uppdf->getClientOriginalExtension();
+            $mimes = $uppdf->getMimeType();
             $fileName = md5(mt_rand()).'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
 
         }else{
             $fileName = Null;
+            $destinationPath = Null;
+            $extension = Null;
+            $mimes = Null;
         }
        $datas = SangathanSanrachana::create([
             'title' => $request['title'],
-            'image'=> $fileName,
+            'document'=> $fileName,
+            'path'=> $destinationPath,
+            'mimes_types'=> $extension,
+            'mimes_type'=> $mimes,
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
             'date' => date("Y-m-d"),
             'time' => date("H:i:s"),

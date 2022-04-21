@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\CorePerson;
 use App\ModelHasType;
 use Auth;
+use File;
+use Response;
 
 class CorePersonController extends Controller
 {
@@ -45,21 +47,43 @@ class CorePersonController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $this->validate($request, [
             'name' => 'required',
             'address' => 'required',
             'email' => 'required|email',
             'phone' => 'required|digits_between:6,10',
             'type' => 'required',
+            'is_top' => 'required',
         ]);
+         $uppdf = $request->file('image');
+        if($uppdf != ""){
+            $destinationPath = 'images/coreperson/';
+            $extension = $uppdf->getClientOriginalExtension();
+            $mimes = $uppdf->getMimeType();
+            $fileName = md5(mt_rand()).'.'.$extension;
+            $uppdf->move($destinationPath, $fileName);
+            $file_path = $destinationPath.'/'.$fileName;
 
+        }else{
+            $fileName = Null;
+            $destinationPath = Null;
+            $extension = Null;
+            $mimes = Null;
+        }
         $corepersons = CorePerson::create([
             'name' => $request['name'],
             'address' => $request['address'],
             'email'=> $request['email'],
             'phone'=> $request['phone'],
             'link'=> $request['link'],
+            'facebook' => $request['facebook'],
+            'document'=> $fileName,
+            'path'=> $destinationPath,
+            'mimes_types'=> $extension,
+            'mimes_type'=> $mimes,
             'responsibility'=> $request['responsibility'],
+            'is_top' => $request['is_top'],
             'type'=> $request['type'],
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
             'date' => date("Y-m-d"),
@@ -89,7 +113,8 @@ class CorePersonController extends Controller
     public function edit($id)
     {
         $corepersons = CorePerson::find($id);
-        return view('superadmin.coreperson.edit', compact('corepersons'));
+        $modelhastypes = ModelHasType::get();
+        return view('superadmin.coreperson.edit', compact('corepersons','modelhastypes'));
     }
 
     /**
@@ -99,20 +124,44 @@ class CorePersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CorePerson $coreperson)
+    public function update(Request $request, $id)
     {
-        $this->validate($request, [
+       $this->validate($request, [
             'name' => 'required',
             'address' => 'required',
             'email' => 'required|email',
+            'phone' => 'required|digits_between:6,10',
+            'type' => 'required',
+            'is_top' => 'required',
         ]);
         $all_data = $request->all();
+        $coreperson = CorePerson::find($id);
+        $all_data = $request->all();
+        $uppdf = $request->file('image');
+        if($uppdf != ""){
+            $this->validate($request, [
+                'image' => 'required|mimes:jpg,jpeg,png',               
+            ]);
+            $destinationPath = 'images/coreperson/';
+            $oldFilename = $destinationPath.'/'.$coreperson->document;
+
+            $extension = $uppdf->getClientOriginalExtension();
+            $name = $uppdf->getClientOriginalName();
+            $fileName = $name.'.'.$extension;
+            $uppdf->move($destinationPath, $fileName);
+            $file_path = $destinationPath.'/'.$fileName;
+            $all_data['document'] = $fileName;
+            if(File::exists($oldFilename)) {
+                File::delete($oldFilename);
+            }
+        }
         $all_data['updated_by'] = Auth::user()->id;
-        if($coreperson->update($all_data))
-        {
-            return redirect()->route('superadmin.coreperson.index')->with('alert-success', 'Data updated succesffully!!!');;
-        };
+        $coreperson->update($all_data);
+        $coreperson->update();
+       
+        return redirect()->route('superadmin.coreperson.index')->with('alert-success', 'Data updated successfully!!!!');
     }
+    
 
     /**
      * Remove the specified resource from storage.

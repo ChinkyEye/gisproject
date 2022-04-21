@@ -70,7 +70,6 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('menu-page/vision', 'VisionController');
         Route::get('menu-page/vision/active/{id}', 'VisionController@isActive')->name('vision.active');
 
-
     Route::resource('/employee','EmployeeController');
     Route::get('/employee/active/{id}', 'EmployeeController@isActive')->name('employee.active');
 
@@ -87,6 +86,9 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
 
     Route::resource('menu-page/coreperson','CorePersonController'); 
     Route::get('menu-page/coreperson/active/{id}', 'CorePersonController@isActive')->name('coreperson.active');
+
+    Route::resource('menu-page/department','DepartmentController');
+    Route::get('menu-page/department/active/{id}', 'DepartmentController@isActive')->name('department.active'); 
 
 
     // Route::resource('niti','NitiController');
@@ -198,6 +200,9 @@ Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest','setlocal
     Route::post('/survey', 'SurveyController@store')->name('survey.index');
     Route::get('/surrvey/{slug}', 'SurveyController@getQuestion')->name('survey.question');
     Route::get('/list', 'HomeController@list')->name('list');
+    Route::get('/mantralaya', 'MantralayaController@index')->name('mantralaya.index');
+    Route::get('/mantralaya/{id}', 'MantralayaController@show')->name('mantralaya.detail');
+    Route::get('/contactus','ContactUsController@index')->name('contactus.index');
     Route::get('/gallery', 'HomeController@gallery')->name('gallery');
     Route::get('/gallery/{slug}', 'HomeController@gallerySlug')->name('gallerySlug');
     Route::get('/detail/{type}', 'DetailController@index')->name('detail.index');

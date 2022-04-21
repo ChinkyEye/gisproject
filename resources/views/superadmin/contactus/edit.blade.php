@@ -59,12 +59,39 @@
         </span>
         @enderror
       </div>
+      <div class="form-group">
+        <label for="facebook">Facebook Link</label>
+        <input type="facebook"  class="form-control max" id="facebook" placeholder="Enter facebook Link" name="facebook" autocomplete="off" autofocus value="{{ $datas->facebook }}">
+        @error('facebook')
+        <span class="text-danger font-italic" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+      </div> 
+      <div class="form-group">
+        <label for="youtube">Youtube Link</label>
+        <input type="youtube"  class="form-control max" id="youtube" placeholder="Enter youtube Link" name="youtube" autocomplete="off" autofocus value="{{ $datas->youtube }}">
+        @error('youtube')
+        <span class="text-danger font-italic" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+      </div>  
+      <div class="form-group">
+        <label for="twitter">Twitter Link</label>
+        <input type="twitter"  class="form-control max" id="twitter" placeholder="Enter twitter Link" name="twitter" autocomplete="off" autofocus value="{{ $datas->twitter }}">
+        @error('twitter')
+        <span class="text-danger font-italic" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+      </div>
 
     </div>
     <div class="modal-footer justify-content-between">
       <button type="submit" class="btn btn-info text-capitalize">Update Contact</button>
     </div>
-</form>
+  </form>
 </div>
 </section>
 @endsection

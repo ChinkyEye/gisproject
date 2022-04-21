@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Auth;
 
 class AboutUs extends Model
 {
@@ -20,4 +22,8 @@ class AboutUs extends Model
         'created_by',
         'updated_by',
     ];
+
+     public static function totalaboutus(Request $request){
+        return AboutUs::orderBy('id','DESC')->where('is_active','1')->get();
+    }
 }

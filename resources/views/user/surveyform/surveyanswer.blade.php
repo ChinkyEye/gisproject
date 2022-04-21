@@ -29,7 +29,13 @@
             {{$key+1}}.
               {{$data->getSurveyQuestions->question}}
             </span>
-            <i>Ans:</i> {{$data->result}}
+            @if($data->type == 'file')
+            <img src="{{asset('/images/answer').'/'.$data->result}}" style="width: 20%;height: 20%;">
+            {{-- @elseif($data->type == 'checkbox') --}}
+            @else
+            <i>Ans:</i> 
+              {{$data->result}}
+            @endif
           </div>
         </div>
         @endforeach

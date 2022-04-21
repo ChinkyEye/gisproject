@@ -4,7 +4,7 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Misvision;
+use App\Mission;
 use App\User;
 use Auth;
 use Response;
@@ -18,8 +18,7 @@ class MissionController extends Controller
      */
     public function index()
     {
-        $missions = Misvision::orderBy('id','DESC')
-                            ->where('type','1')
+        $missions = Mission::orderBy('id','DESC')
                             ->paginate(10);
         return view('superadmin.mission.index', compact('missions'));
     }
@@ -44,19 +43,20 @@ class MissionController extends Controller
     public function store(Request $request)
     {
        $this->validate($request, [
-            'name' => 'required',
+            'title' => 'required',
+            'description' => 'required',
           
         ]);
-        $missions = Misvision::create([
-            'name' => $request['name'],
+        $missions = Mission::create([
+            'title' => $request['title'],
+            'description' => $request['description'],
             'is_active' => '1',
-            'type' => '1',
             'date' => date("Y-m-d"),
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        return redirect()->route('superadmin.mission.index')->with('alert-success', 'Data created succesffully!!!');
+        return redirect()->route('superadmin.mission.index')->with('alert-success', 'Data created successfully!!!');
     }
 
     /**
@@ -78,7 +78,7 @@ class MissionController extends Controller
      */
     public function edit($id)
     {
-       $missions = Misvision::find($id); 
+       $missions = Mission::find($id); 
        return view('superadmin.mission.edit', compact('missions'));
     }
 
@@ -92,10 +92,10 @@ class MissionController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required',
+            'title' => 'required',
           
         ]);
-        $missions = Misvision::find($id);
+        $missions = Mission::find($id);
         $all_data = $request->all();
         $all_data['updated_by'] = Auth::user()->id;
         $missions->update($all_data);
@@ -110,7 +110,7 @@ class MissionController extends Controller
      */
     public function destroy($id)
     {
-      $missions = Misvision::find($id);
+      $missions = Mission::find($id);
         if($missions->delete()){
             $notification = array(
               'message' => $missions->name.' is deleted successfully!',
@@ -126,8 +126,8 @@ class MissionController extends Controller
     }
      public function isActive(Request $request,$id)
     {
-        $get_is_active = Misvision::where('id',$id)->value('is_active');
-        $isactive = Misvision::find($id);
+        $get_is_active = Mission::where('id',$id)->value('is_active');
+        $isactive = Mission::find($id);
         if($get_is_active == 0){
         $isactive->is_active = 1;
         $notification = array(

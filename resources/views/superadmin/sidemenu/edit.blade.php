@@ -51,9 +51,28 @@
           </span>
           @enderror
         </div>
-        <div class="form-group">
+        {{-- <div class="form-group">
           <label for="page">Page<span class="text-danger">*</span></label>
           <input type="text"  class="form-control max" id="page" placeholder="Enter menu name" name="page" autocomplete="off" value="{{ $sidemenus->page }}">
+          @error('page')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div> --}}
+        <div class="form-group">
+          <label for="page">Page</label>
+          <select id="nationality" class="form-control" name="page" id="page">
+            <option value="" disabled selected>--Select--</option>
+            <option value="background">Background</option>
+            <option value="mantralaya-detail">Mantralaya Detail</option>
+            <option value="mantriparishad">Mantriparishad</option>
+            <option value="block">Block</option>
+            <option value="eservice">Eservice</option>
+            <option value="table">Table</option>
+            <option value="hellocm">HelloCM</option>
+            <option value="important-place">Important Place</option>
+          </select>
           @error('page')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>

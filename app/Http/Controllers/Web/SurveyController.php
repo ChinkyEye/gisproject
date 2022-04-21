@@ -18,15 +18,21 @@ class SurveyController extends Controller
 {
     public function index(Request $request)
     {
-        $datas = SurveyForm::get();
+        $datas = SurveyForm::orderBy('id','DESC')
+                            ->where('is_active',true)
+                            ->get();
         return view ('web.survey.index',compact('datas'));
     }
 
     public function getQuestion(Request $request, $slug)
     {
         $survey_id = SurveyForm::where('slug',$slug)->value('id');
-        $datas = SurveyFormHasAttribute::where('form_id',$survey_id)->get();
-        return view ('web.survey.question',compact('datas','survey_id'));
+        $survey_datas = SurveyForm::where('slug',$slug)->first();
+        $datas = SurveyFormHasAttribute::where('form_id',$survey_id)
+                                        ->where('is_active',true)
+                                        ->orderBy('sort_id')
+                                        ->get();
+        return view ('web.survey.question',compact('datas','survey_id','survey_datas'));
     }
 
     public function store(Request $request)
@@ -47,10 +53,12 @@ class SurveyController extends Controller
 
         foreach($answers as $key => $data){
             // var_dump($data); die();
+                $type = SurveyFormHasAttribute::where('id',$key)->value('type');
                 $datas = SurveyHasResult::create([
                     'surveyform_has_user_id'=> $surveyformhasusers->id,
                     'surveyform_has_attr_id'=> $key,
                     'result'=> $data,
+                    'type' =>$type,
                     'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
                     'date' => date("Y-m-d"),
                     'time' => date("H:i:s"),
@@ -70,10 +78,13 @@ class SurveyController extends Controller
                     $image->move($destinationPath, $fileName);
                     $file_path = $destinationPath.'/'.$fileName;
 
+                    $type = SurveyFormHasAttribute::where('id',$key)->value('type');
+
                     $datas = SurveyHasResult::create([
                         'surveyform_has_user_id'=> $surveyformhasusers->id,
                         'surveyform_has_attr_id'=> $key,
                         'result'=> $fileName,
+                        'type'=> $type,
                         'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
                         'date' => date("Y-m-d"),
                         'time' => date("H:i:s"),
@@ -98,11 +109,13 @@ class SurveyController extends Controller
         if($checkbox){
             foreach($checkbox as $key => $data){
                 $id = $key;
+                $type = SurveyFormHasAttribute::where('id',$key)->value('type');
                 foreach($data as $key => $dat){
                     $datas = SurveyHasResult::create([
                         'surveyform_has_user_id'=> $surveyformhasusers->id,
                         'surveyform_has_attr_id'=> $id,
                         'result'=> $dat,
+                        'type'=> $type,
                         'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
                         'date' => date("Y-m-d"),
                         'time' => date("H:i:s"),

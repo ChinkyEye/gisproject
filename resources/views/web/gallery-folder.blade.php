@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 @push('tab_title')
-{{ $pages }} | 
+| 
 @endpush
 @push('css')
 <link rel="stylesheet" type="text/css" href="{{ url('/') }}/web/css/gallery.main.css">
@@ -15,7 +15,7 @@
 				</a>
 			</li>
 			<li class="breadcrumb-item my-auto active">
-				<a href="#" class="">{{ $pages }}</a>
+				<a href="#" class="">Gallery</a>
 			</li>
 			<!-- <li class="breadcrumb-item my-auto active">
 				<a href="javascript:void(0);" class="font-weight-normal">
@@ -28,8 +28,9 @@
 <section class="breadcrumb-main my-4">
 	<div class="container">
 		<div class="row">
+			@foreach($datas as $key => $data)
 			<div class="col-md-3">
-				<a href="{{ route('web.gallerySlug','slug') }}">
+				<a href="{{ route('web.gallerySlug',$data->slug) }}">
 				  <div class='thumb album-thumb'>
 				    <div class='thumb-container'>
 				      <div class='images-container'>
@@ -45,11 +46,12 @@
 				      </div>
 				    </div>
 				    <div class='title'>
-				      Album title goes here
+				      {{$data->title}}
 				    </div>
 				  </div>
 				</a>
 			</div>
+			@endforeach
 		</div>
 	</div>
 </section>

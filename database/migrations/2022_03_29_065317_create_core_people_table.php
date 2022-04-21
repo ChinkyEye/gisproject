@@ -20,11 +20,13 @@ class CreateCorePeopleTable extends Migration
             $table->string('email')->unique();
             $table->string('phone',10)->nullable();
             $table->string('link')->nullable();
+            $table->string('facebook')->nullable();
             $table->string('path')->nullable();
-            $table->string('mimes_types')->nullable();
+            $table->string('mimes_type')->nullable();
             $table->string('document')->nullable();
             $table->string('responsibility')->nullable();
             $table->integer('type'); 
+            $table->integer('is_top')->default(0); 
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);

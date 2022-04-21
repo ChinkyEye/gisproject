@@ -60,7 +60,7 @@
         @enderror
       </div>
       <div class="form-group">
-        <label for="link">Link<span class="text-danger">*</span></label>
+        <label for="link">Link</label>
         <input type="text"  class="form-control max" id="link" placeholder="Enter link" name="link" autocomplete="off" autofocus value="{{ $corepersons->link }}">
         <span class="error mt-2" style="color: red; display: none">* Input digits (0 - 9)</span>
         @error('link')
@@ -68,42 +68,12 @@
           <strong>{{ $message }}</strong>
         </span>
         @enderror
-      </div>
+      </div> 
       <div class="form-group">
-        <label for="type">Type:<span class="text-danger">*</span></label>
-        <div class="row col-md-12">
-          <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="pramukh" value="1" {{ $corepersons->type == '1' ? 'checked' : ''}} onclick="onlyOne(this)">
-            <label class="form-check-label" for="pramukh">
-              karyalaya pramukh
-            </label>
-          </div>
-          <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="Prabatdaa" value="2" {{ $corepersons->type == '2' ? 'checked' : ''}} onclick="onlyOne(this)">
-            <label class="form-check-label" for="Prabatdaa">
-              Prabatdaa
-            </label>
-          </div>
-          <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="suchana_sunne" value="3" {{ $corepersons->type == '3' ? 'checked' : ''}} onclick="onlyOne(this)">
-            <label class="form-check-label" for="suchana_sunne">
-              Suchana Sunne
-            </label>
-          </div>
-          <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="gunaso_sunne" value="4" {{ $corepersons->type == '4' ? 'checked' : ''}} onclick="onlyOne(this)">
-            <label class="form-check-label" for="gunaso_sunne">
-              Gunaso Sunne
-            </label>
-          </div>
-          <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="aanya" value="5" {{ $corepersons->type == '5' ? 'checked' : ''}} onclick="onlyOne(this)">
-            <label class="form-check-label" for="aanya">
-              Aanya
-            </label>
-          </div>
-        </div>
-        @error('type')
+        <label for="facebook">Facebook link</label>
+        <input type="text"  class="form-control max" id="facebook" placeholder="Enter facebook link" name="facebook" autocomplete="off" autofocus value="{{ $corepersons->facebook }}">
+        <span class="error mt-2" style="color: red; display: none">* Input digits (0 - 9)</span>
+        @error('facebook')
         <span class="text-danger font-italic" role="alert">
           <strong>{{ $message }}</strong>
         </span>
@@ -118,11 +88,60 @@
         </span>
         @enderror
       </div>
+      <div class="form-group">
+       <label for="type">Type <span class="text-danger">*</span></label><br>
+       <div class="row col-md-12">
+        @foreach ($modelhastypes as $key => $data)
+        <div class="form-check-inline col-md">
+          <input class="form-check-inline" type="checkbox" name="type" id="type" value="{{$data->id}}" onclick="onlyOne(this)" {{ $corepersons->type == $data->id ? 'checked' : ''}}>
+          <label class="form-check-label" for="type">
+           {{$data->type}}
+         </label>
+       </div>
+     </div>
+       @endforeach
+     </div>
+     <div class="form-group">
+      <label for="is_top">Is Top<span class="text-danger">*</span></label>
+      <div class="row col-md-5">
+        <div class="form-check-inline col-md">
+          <input class="form-check-input" type="radio" name="is_top" id="yes" value="1">
+          <label class="form-check-label" for="is_top">
+            Yes
+          </label>
+        </div>
+        <div class="form-check-inline col-md">
+          <input class="form-check-input" type="radio" name="is_top" id="no" value="0">
+          <label class="form-check-label" for="is_top">
+            No
+          </label>
+        </div>
+      </div>
+      @error('is_top')
+      <span class="text-danger font-italic" role="alert">
+        <strong>{{ $message }}</strong>
+      </span>
+      @enderror
     </div>
-    <div class="modal-footer justify-content-between">
-      <button type="submit" class="btn btn-info text-capitalize">Update Detail</button>
+     <div class="form-group">
+      <label for="imgInp">Image</label>
+      <div class="input-group">
+        <img id="blah" src="{{URL::to('/')}}/images/coreperson/{{$corepersons->document}}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
+        <div class="input-group my-3">
+          <input type='file' class="d-none" id="imgInp" name="image" />
+        </div>
+      </div>
+      @error('image')
+      <span class="text-danger font-italic" role="alert">
+        <strong>{{ $message }}</strong>
+      </span>
+      @enderror
     </div>
-  </form>
+  </div>
+  <div class="modal-footer justify-content-between">
+    <button type="submit" class="btn btn-info text-capitalize">Update Detail</button>
+  </div>
+</form>
 </div>
 </section>
 @endsection
@@ -147,13 +166,16 @@
   function readURL(input) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
-      reader.onload = function (e) {
-        $('#profile-img-tag').attr('src', e.target.result);
+
+      reader.onload = function(e) {
+        $('#blah').attr('src', e.target.result);
       }
+
       reader.readAsDataURL(input.files[0]);
     }
   }
-  $("#image").change(function(){
+
+  $("#imgInp").change(function() {
     readURL(this);
   });
 </script>

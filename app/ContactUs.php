@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Auth;
 
 class ContactUs extends Model
 {
@@ -11,6 +13,9 @@ class ContactUs extends Model
         'address',
         'email',
         'phone',
+        'youtube',
+        'facebook',
+        'twitter',
         'sort_id',
         'is_active',
         'date_np',
@@ -19,4 +24,7 @@ class ContactUs extends Model
         'created_by',
         'updated_by',
     ];
+    public static function totalcontact(Request $request){
+        return ContactUs::orderBy('id','DESC')->where('is_active','1')->get();
+    }
 }

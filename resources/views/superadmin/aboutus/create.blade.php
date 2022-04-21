@@ -61,6 +61,11 @@
   $(function () {
     CKEDITOR.replace('description');
     CKEDITOR.config.removeButtons = 'Anchor';
+    CKEDITOR.config.autoParagraph = false;
+    CKEDITOR.config.fillEmptyBlocks = false;
+    CKEDITOR.config.fullPage = false;
+    CKEDITOR.config.ignoreEmptyParagraph = true;
+    CKEDITOR. config.enterMode = CKEDITOR.ENTER_BR; 
     CKEDITOR.config.removePlugins = 'stylescombo,link,sourcearea,maximize,image,about,tabletools,scayt';
   });
 </script>

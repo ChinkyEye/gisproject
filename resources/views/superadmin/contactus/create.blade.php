@@ -60,6 +60,32 @@
           </span>
           @enderror
         </div>
+        <div class="form-group">
+          <label for="facebook">Facebook link</label>
+          <input type="text"  class="form-control max" id="facebook" placeholder="Enter facebook link" name="facebook" autocomplete="off" autofocus value="{{ old('facebook') }}">
+          @error('facebook')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div> 
+        <div class="form-group">
+          <label for="youtube">Youtube link</label>
+          <input type="text"  class="form-control max" id="youtube" placeholder="Enter youtube link" name="youtube" autocomplete="off" autofocus value="{{ old('youtube') }}">
+          @error('youtube')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div> <div class="form-group">
+          <label for="twitter">Twitter link</label>
+          <input type="text"  class="form-control max" id="twitter" placeholder="Enter twitter link" name="twitter" autocomplete="off" autofocus value="{{ old('twitter') }}">
+          @error('twitter')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
       </div>
       <div class="card-footer justify-content-between">
         <button type="submit" class="btn btn-info text-capitalize">Save</button>

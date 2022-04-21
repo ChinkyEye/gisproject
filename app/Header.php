@@ -2,6 +2,8 @@
 
 namespace App;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Auth;
 
 class Header extends Model
 {
@@ -22,5 +24,8 @@ class Header extends Model
     public function getUser()
     {
         return $this->belongsTo('App\User','created_by','id');
+    }
+     public static function totalheader(Request $request){
+        return Header::orderBy('id','DESC')->where('is_active','1')->get();
     }
 }

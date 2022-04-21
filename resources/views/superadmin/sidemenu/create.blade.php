@@ -37,14 +37,18 @@
           <label for="model_data">Model</label>
           <select id="nationality" class="form-control" name="model" id="modal">
             <option value="">--Select--</option>
-            <option value="Mantralaya">Mantralaya</option>
+            <option value="PradeshSarkar">PradeshSarkar</option>
+            <option value="MantralayaHasUser">Mantralaya</option>
+            <option value="PradeshSabhaSadasya">Pradesh Sabha Sadasya</option>
+            <option value="Eservice">Eservice</option>
             <option value="HelloCM">HelloCM</option>
-            <option value="PradeshSabhaSanrachana">PradeshSabhaSadasya</option>
+            <option value="TblRemoteCorePerson">KaryalayaPramukh</option>
+            <option value="ImportantPlace">Important Places</option>
           </select>
         </div>
         <div class="form-group">
           <label for="link">Link</label>
-          <input type="text"  class="form-control max" id="link" placeholder="Enter menu name" name="link" autocomplete="off" autofocus value="{{ old('link') }}">
+          <input type="text"  class="form-control max" id="link" placeholder="Enter link" name="link" autocomplete="off" autofocus value="{{ old('link') }}">
           @error('link')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
@@ -53,7 +57,17 @@
         </div>
         <div class="form-group">
           <label for="page">Page</label>
-          <input type="text"  class="form-control max" id="page" placeholder="Enter menu name" name="page" autocomplete="off" autofocus value="{{ old('page') }}">
+          <select id="nationality" class="form-control" name="page" id="page">
+            <option value="" disabled selected>--Select--</option>
+            <option value="background">Background</option>
+            <option value="mantralaya-detail">Mantralaya Detail</option>
+            <option value="mantriparishad">Mantriparishad</option>
+            <option value="block">Block</option>
+            <option value="eservice">Eservice</option>
+            <option value="sidemenu-table">Table</option>
+            <option value="hellocm">HelloCM</option>
+            <option value="important-place">Important Place</option>
+          </select>
           @error('page')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>

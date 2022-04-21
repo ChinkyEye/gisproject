@@ -24,6 +24,10 @@ use App\TblRemotePublication;
 use App\Notice;
 use App\Introduction;
 use App\Slider;
+use App\CorePerson;
+use App\MantralayaHasUser;
+use App\Gallery;
+use App\GalleryHasImage;
 
 
 
@@ -44,7 +48,10 @@ class HomeController extends Controller
         $offices = Office::orderBy('id','DESC')->get();
         $introductions = Introduction::orderBy('id','DESC')->where('is_active','1')->get();
         $sliders = Slider::orderBy('id','DESC')->where('is_active','1')->get();
-        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','offices','scroll_notice','introductions','sliders']));
+        $coreperson = CorePerson::orderBy('id','DESC')->where('is_top','1')->where('is_active','1')->get();
+        $mantralaya = MantralayaHasUser::orderBy('id','DESC')->where('is_active','1')->get();
+
+        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','offices','scroll_notice','introductions','sliders','coreperson','mantralaya']));
     }
 
     public function link(Request $request, $link,$link2 = Null)
@@ -105,6 +112,7 @@ class HomeController extends Controller
         // var_dump($type); die();
         $modelName = '\\App\\' . $model;
         $datas = $modelName::orderBy('id','DESC')->find($id);
+        dd($datas);
         return view('web.view-more', compact(['datas','link','link2','name','level']));
             
     }
@@ -118,7 +126,10 @@ class HomeController extends Controller
 
         $modelName = '\\App\\' . $model;
         $datas = $modelName::get();
-        return view('web.'.$page, compact(['datas']));
+        // dd($datas);
+        $name = "";
+        $level = "";
+        return view('web.'.$page, compact(['datas','name','level']));
     }
 
     public function list() {
@@ -132,7 +143,9 @@ class HomeController extends Controller
 
     public function gallerySlug($slug) {
         $pages = "Gallery Name";
-        return view('web.gallery', compact('pages'));
+        $gallery_id = Gallery::where('slug',$slug)->value('id');
+        $galleryhasimages = GalleryHasImage::where('gallery_id',$gallery_id)->get();
+        return view('web.gallery', compact('pages','galleryhasimages'));
     }
 
     public function switchLang(Request $request)
