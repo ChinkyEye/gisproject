@@ -48,7 +48,11 @@
             <option value="">--Select--</option>
             <option value="Niti">Niti</option>
             <option value="Notice">Notice</option>
-            <option value="About">About</option>
+            <option value="AboutUs">About</option>
+            <option value="Mission">Mission</option>
+            <option value="Vision">Vision</option>
+            <option value="Gallery">Gallery</option>
+            <option value="SangathanSanrachana">Sangathan Sanrachana</option>
             <option value="Pratibedan">Pratibedan</option>
           </select>
         </div>
