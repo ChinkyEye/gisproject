@@ -23,13 +23,22 @@
      @csrf
      <div class="modal-body" >
       <div class="form-group">
-        <label for="name">Name:<span class="text-danger">*</span></label>
-        <input type="text"  class="form-control max" id="name" placeholder="Enter mission" name="name"  autocomplete="off" value="{{ $missions->name }}">
-         @error('name')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
+        <label for="title">Title<span class="text-danger">*</span></label>
+        <input type="text"  class="form-control max" id="title" placeholder="Enter mission" name="title"  autocomplete="off" value="{{ $missions->title }}">
+        @error('title')
+        <span class="text-danger font-italic" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+      </div>
+      <div class="form-group">
+        <label for="description">Description<span class="text-danger">*</span></label>
+        <textarea  type="text"  class="form-control max" id="description" placeholder="Enter description" name="description" autocomplete="off">{{$missions->description}}</textarea>
+        @error('description')
+        <span class="text-danger font-italic" role="alert">
+          <strong>{{ $message }}</strong>
+        </span>
+        @enderror
       </div>
     </div>
     <div class="modal-footer justify-content-between">
@@ -39,3 +48,15 @@
 </div>
 </section>
 @endsection
+@push('javascript')
+<script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+<script>
+  $(function () {
+    CKEDITOR.replace('description');
+    CKEDITOR.config.autoParagraph = false;
+    CKEDITOR.config.removeButtons = 'Anchor';
+    CKEDITOR.config.removePlugins = 'stylescombo,link,sourcearea,maximize,image,about,tabletools,scayt';
+  });
+</script>
+@endpush
+

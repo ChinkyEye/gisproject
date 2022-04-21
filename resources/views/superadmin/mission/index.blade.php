@@ -44,7 +44,8 @@
                   <thead class="thead-dark" style="text-align: center">                  
                     <tr>
                       <th >SN</th>
-                      <th>Name</th>
+                      <th>Title</th>
+                      <th>Description</th>
                       <th>Status</th>
                       <th>Action</th>
                     </tr>
@@ -53,7 +54,12 @@
                     @foreach($missions as $key => $mission)
                     <tr class="{{$mission->is_active == 1 ? '' : 'table-danger'}}">
                       <td>{{$key + 1}}</td>
-                      <td>{{$mission->name}}</td>
+                      <td>{{$mission->title}}</td>
+                        @if($mission->description == '')
+                       <td>Null</td>
+                      @else
+                      <td>Has Description</td>
+                       @endif
                       <td>
                         <a href="{{ route('superadmin.mission.active',$mission->id) }}" data-placement="top" title="{{ $mission->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                           <i class="nav-icon fas {{ $mission->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
