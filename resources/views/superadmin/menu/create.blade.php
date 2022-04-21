@@ -35,7 +35,7 @@
         </div>
         <div class="form-group">
           <label for="link">Link</label>
-          <input type="text"  class="form-control max" id="link" placeholder="Enter menu name" name="link" autocomplete="off" autofocus value="{{ old('link') }}">
+          <input type="text"  class="form-control max" id="link" placeholder="Enter link" name="link" autocomplete="off" autofocus value="{{ old('link') }}">
           @error('link')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
@@ -92,7 +92,7 @@
         </div>
         <div class="form-group">
           <label for="page">Page</label>
-          <input type="text"  class="form-control max" id="page" placeholder="Enter menu name" name="page" autocomplete="off" autofocus value="{{ old('page') }}">
+          <input type="text"  class="form-control max" id="page" placeholder="Enter page name" name="page" autocomplete="off" autofocus value="{{ old('page') }}">
           @error('page')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>

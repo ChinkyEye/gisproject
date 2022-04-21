@@ -45,7 +45,7 @@
 			</div>
 			@if ($datas->path)
 			<div class="col-12 mt-4">
-				<a href="{{URL::to('/')}}/{{$datas->path}}/{{$datas->document}}" class="btn bg-main-blue"><i class="fa fa-download"></i> Download</a>
+				<a href="{{URL::to('/')}}/{{$datas->path}}{{$datas->document}}" class="btn bg-main-blue"><i class="fa fa-download"></i> Download</a>
 			</div>
 			@endif
 		</div>

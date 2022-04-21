@@ -46,6 +46,7 @@ class GalleryController extends Controller
         ]);
         $gallery = Gallery::create([
             'title' => $request['title'],
+            'slug' => mt_rand(11111,99999).date('Ymd'),
             'is_active' => '1',
             'date' => date("Y-m-d"),
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),

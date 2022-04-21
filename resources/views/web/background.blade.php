@@ -38,17 +38,17 @@ About | {{$name}}
 		</div>
 		<div class="row">
 			<div class="col-md-12 {{-- text-justify --}}">
-				@if ($data->image)
+				@if($data->document)
 				{{--  w-25 -> for 25% area , w-100 : for 100% area --}}
-				<img src="{{URL::to('/')}}/{{$data->path}}/{{$data->image}}" class="img-fluid float-left main-img-detail w-25 mr-3">
+				<img src="{{URL::to('/')}}/{{$data->path}}/{{$data->document}}" class="img-fluid float-left main-img-detail w-25 mr-3">
 				@endif
 				{!! $data->description !!}
 			</div>
-			@if ($data->path)
+			<!-- @if ($data->path)
 			<div class="col-12 mt-4">
 				<a href="{{URL::to('/')}}/{{$data->path}}/{{$data->document}}" class="btn bg-main-blue"><i class="fa fa-download"></i> Download</a>
 			</div>
-			@endif
+			@endif -->
 		</div>
 		@endforeach
 	</div>
