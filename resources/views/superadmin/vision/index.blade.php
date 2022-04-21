@@ -45,8 +45,8 @@
                     <tr>
                       <th >SN</th>
                       <th>Name</th>
-                       <th>Status</th>
-                      
+                      <th>Description</th>
+                      <th>Status</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -54,13 +54,17 @@
                     @foreach($visions as $key => $vision)
                     <tr class="{{$vision->is_active == 1 ? '' : 'table-danger'}}">
                       <td>{{$key + 1}}</td>
-                      <td>{{$vision->name}}</td>
+                      <td>{{$vision->title}}</td>
+                      @if($vision->description == '')
+                       <td>Null</td>
+                      @else
+                      <td>Has Description</td>
+                       @endif
                       <td>
                         <a href="{{ route('superadmin.vision.active',$vision->id) }}" data-placement="top" title="{{ $vision->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                           <i class="nav-icon fas {{ $vision->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
                         </a>
                       </td>
-                      
                       <td>
                         <a href="{{ route('superadmin.vision.edit',$vision->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
                         <form action='javascript:void(0)' data_url="{{route('superadmin.vision.destroy',$vision->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>

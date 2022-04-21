@@ -18,7 +18,7 @@
 </section>
 <section class="content">
   <div class="card card-info">
-    <form role="form" method="POST" action="{{route('superadmin.mission.store')}}">
+    <form role="form" method="POST" action="{{route('superadmin.mission.store')}}" enctype="multipart/form-data">
       <div class="card-body">
         @csrf
         <div class="form-group">
@@ -31,8 +31,8 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="description">Description<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="description" placeholder="Enter mission" name="description" autocomplete="off" autofocus value="{{ old('description') }}">
+          <label for="description">Description <span class="text-danger">*</span></label>
+          <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
           @error('description')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>

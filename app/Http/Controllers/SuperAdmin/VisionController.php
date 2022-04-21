@@ -8,6 +8,7 @@ use App\Vision;
 use App\User;
 use Auth;
 use Response;
+use File;
 
 class VisionController extends Controller
 {
@@ -41,6 +42,7 @@ class VisionController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
        
        $this->validate($request, [
             'title' => 'required',
@@ -55,7 +57,7 @@ class VisionController extends Controller
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        return redirect()->route('superadmin.vision.index')->with('alert-success', 'Vision created succesffully!!!');
+        return redirect()->route('superadmin.vision.index')->with('alert-success', 'Vision created successfully!!!');
     }
 
     /**

@@ -44,6 +44,7 @@ class MissionController extends Controller
     {
        $this->validate($request, [
             'title' => 'required',
+            'description' => 'required',
           
         ]);
         $missions = Mission::create([
@@ -55,7 +56,7 @@ class MissionController extends Controller
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        return redirect()->route('superadmin.mission.index')->with('alert-success', 'Data created succesffully!!!');
+        return redirect()->route('superadmin.mission.index')->with('alert-success', 'Data created successfully!!!');
     }
 
     /**
