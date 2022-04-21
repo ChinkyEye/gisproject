@@ -205,6 +205,7 @@ Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest','setlocal
     Route::get('/mantralaya', 'MantralayaController@index')->name('mantralaya.index');
     Route::get('/mantralaya/{id}', 'MantralayaController@show')->name('mantralaya.detail');
     Route::get('/contactus','ContactUsController@index')->name('contactus.index');
+
     Route::get('/gallery', 'HomeController@gallery')->name('gallery');
     Route::get('/gallery/{slug}', 'HomeController@gallerySlug')->name('gallerySlug');
     Route::get('/detail/{type}', 'DetailController@index')->name('detail.index');

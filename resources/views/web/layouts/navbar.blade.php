@@ -20,13 +20,15 @@
                     <!-- Nav Start -->
                     <div class="classynav">
                         <ul>
-                            {{-- <li> --}}
-                                {{-- <a href="{{route('web.survey.index')}}">Survey</a></li> --}}
                             @foreach($total_menu as $key => $data)
                             <li>
                                 @if($data->parent_id == '0')
                                 <a href="{{ $data->is_main == '0' ? route('web.home.link',$data->link) : '#' }}">
+                                    @if(app()->getLocale() == 'en')
                                     {{ $data->name }}
+                                    @else
+                                    {{ $data->name_np }}
+                                    @endif
                                 </a>
                                 @endif
                                 @if($data->parent()->count())
@@ -34,7 +36,11 @@
                                     @foreach($data->parent()->get() as $d)
                                         <li>
                                             <a href="{{ route('web.home.link',$d->link) }}">
+                                                @if(app()->getLocale() == 'en')
                                                 {{ $d->name }}
+                                                @else
+                                                {{$d->name_np}}
+                                                @endif
                                             </a>
                                         </li>
                                     @endforeach
@@ -42,6 +48,9 @@
                                 @endif
                             </li>
                             @endforeach
+                            <li>
+                                <a href="{{route('web.survey.index')}}">Survey</a>
+                            </li>
                         </ul>
                     </div>
                     <!-- Nav End -->

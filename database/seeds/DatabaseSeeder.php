@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+<<<<<<< Updated upstream
             UserSeeder::class,
             ModelHasTypeSeeder::class
         ]);
@@ -21,5 +22,11 @@ class DatabaseSeeder extends Seeder
         // factory(App\User::class,1)->create();
         // factory(App\ModelHasType::class,1)->create();
 
+=======
+            UsersTableSeeder::class
+        ]);
+         // factory(App\User::class,1)->create();
+         // factory(App\ModelHasType::class,1)->create();
+>>>>>>> Stashed changes
     }
 }
