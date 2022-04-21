@@ -53,6 +53,8 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
 
     Route::resource('main-entry/sidemenu', 'SideMenuController');
         Route::get('main-entry/sidemenu/active/{id}', 'SideMenuController@isActive')->name('sidemenu.active');
+    Route::get('/sortable-sidemenu','SideMenuController@sortable_sidemenu')->name('sortable-sidemenu');
+
 
     //ofices or agency
     Route::resource('/agency','AgencyController');
