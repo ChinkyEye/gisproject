@@ -18,6 +18,7 @@ class CreateTblRemoteCorePeopleTable extends Migration
             $table->integer('mantralaya_id'); // id of api table
             $table->string('server'); // id of api table
             $table->string('name'); 
+            $table->string('image'); 
             $table->string('post'); 
             $table->string('link'); 
             $table->string('phone')->nullable(); 

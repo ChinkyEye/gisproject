@@ -30,25 +30,13 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 							<img src="{{ url($data->path.'/'.$data->document) }}" class="rounded" width="155"> 
 						</div>
 						<div class="ml-3 w-100">
-							<h4 class="mb-0 mt-0">{{$data->name}}</h4> 
-							<span>{{$data['getDal']->name}}</span>
+							<h4 class="mb-0 mt-0">{{$data->getUserDetail->name}}</h4> 
+							<span></span>
 							<div class="p-2 mt-2 bg-primary rounded text-white main-stats">
 								<ul class="list-unstyled">
 									<li>
 										<b>Phone : </b>
-										<span>{{$data->phone}}</span>
-									</li>
-									<li>
-										<b>Gender : </b>
-										<span>{{$data->gender}}</span>
-									</li>
-									<li>
-										<b>District : </b>
-										<span>{{$data->district}}</span>
-									</li>
-									<li>
-										<b>Nirvachit kshetra no : </b>
-										<span>{{$data->nirvachit_kshetra_no}}</span>
+										<span>{{$data->getUserDetail->phone}}</span>
 									</li>
 								</ul>
 							</div>

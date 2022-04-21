@@ -8,7 +8,7 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 @push('css')
 @endpush
 @section('content')
-<nav class="breadcrumb-main mt-4">
+{{-- <nav class="breadcrumb-main mt-4">
 	<div class="container">
 		<ol class="breadcrumb bg-light align-content-center">
 			<li class="breadcrumb-item my-auto">
@@ -18,7 +18,7 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 			</li>
 		</ol>
 	</div>
-</nav>
+</nav> --}}
 <section class="breadcrumb-main my-4">
 	<div class="container">
 		<div class="row">
@@ -27,11 +27,11 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 				<div class="card main-card p-3 shadow-sm">
 					<div class="d-flex align-items-center">
 						<div class="image"> 
-							<img src="{{ url($data->path.'/'.$data->document) }}" class="rounded" width="155"> 
+							<img src="{{ $data->image }}" class="rounded" width="155"> 
 						</div>
 						<div class="ml-3 w-100">
 							<h4 class="mb-0 mt-0">{{$data->name}}</h4> 
-							<span>{{$data['getDal']->name}}</span>
+							<span></span>
 							<div class="p-2 mt-2 bg-primary rounded text-white main-stats">
 								<ul class="list-unstyled">
 									<li>

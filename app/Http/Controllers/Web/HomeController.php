@@ -126,7 +126,10 @@ class HomeController extends Controller
 
         $modelName = '\\App\\' . $model;
         $datas = $modelName::get();
-        return view('web.'.$page, compact(['datas']));
+        // dd($datas);
+        $name = "";
+        $level = "";
+        return view('web.'.$page, compact(['datas','name','level']));
     }
 
     public function list() {
