@@ -20,6 +20,7 @@ class CreateTblRemoteYearlyBudgetsTable extends Migration
             $table->string('title'); // define which title
             $table->string('url'); // redirects which url it follow
             $table->string('date_np'); // to get nepali date
+            $table->integer('page'); // to page type
             $table->string('ministry')->nullable(); // to get nepali date
             $table->boolean('is_active')->default(true); // 1 active, 0 non active
             $table->timestamps();
