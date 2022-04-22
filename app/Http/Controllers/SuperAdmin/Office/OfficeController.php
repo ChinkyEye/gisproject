@@ -45,6 +45,7 @@ class OfficeController extends Controller
     {
          $this->validate($request, [
             'name' => 'required',
+            'address' => 'required',
            
         ]);
         $uppdf = $request->file('thumbnail');
@@ -134,6 +135,7 @@ class OfficeController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'address' => 'required',
             
         ]);
         
