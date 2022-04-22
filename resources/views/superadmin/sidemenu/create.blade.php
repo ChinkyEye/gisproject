@@ -42,7 +42,8 @@
             <option value="PradeshSabhaSadasya">Pradesh Sabha Sadasya</option>
             <option value="Eservice">Eservice</option>
             <option value="HelloCM">HelloCM</option>
-            <option value="TblRemoteCorePerson">KaryalayaPramukh</option>
+            <option value="TblRemoteCorePerson">Api Mantri Parisadh</option>
+            <option value="TblRemoteCorePerson">Api KaryalayaPramukh</option>
             <option value="ImportantPlace">Important Places</option>
           </select>
         </div>

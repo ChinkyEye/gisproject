@@ -42,6 +42,7 @@
             <option value="About">About</option>
             <option value="Pratibedan">Pratibedan</option>
             <option value="Notice">Notice</option>
+            <option value="Department">Bivagh/Karyalaya</option>
           </select>
         </div>
         <div class="form-group">

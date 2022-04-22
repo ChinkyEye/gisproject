@@ -112,7 +112,7 @@ class HomeController extends Controller
         // var_dump($type); die();
         $modelName = '\\App\\' . $model;
         $datas = $modelName::orderBy('id','DESC')->find($id);
-        dd($datas);
+        // dd($datas);
         return view('web.view-more', compact(['datas','link','link2','name','level']));
             
     }
@@ -126,7 +126,6 @@ class HomeController extends Controller
 
         $modelName = '\\App\\' . $model;
         $datas = $modelName::get();
-        // dd($datas);
         $name = "";
         $level = "";
         return view('web.'.$page, compact(['datas','name','level']));
