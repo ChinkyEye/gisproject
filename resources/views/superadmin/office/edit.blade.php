@@ -54,7 +54,7 @@
       </div>
       <div class="row">
         <div class="form-group col-md">
-          <label for="imgInp">Thumbnail</label>
+          <label for="imgInp">Thumbnail<sub class="text-danger">(1074*617 pixel)</sub></label>
           <div class="input-group">
             @if($offices->thumbnail)
             <img id="blah" src="{{URL::to('/')}}/images/officethumbnail/{{$offices->thumbnail}}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
