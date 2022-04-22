@@ -57,7 +57,10 @@ class CorePersonController extends Controller
             'is_top' => 'required',
         ]);
          $uppdf = $request->file('image');
-        if($uppdf != ""){
+          if($uppdf != ""){
+            $this->validate($request, [
+                'image' => 'required|mimes:jpg,png,jpeg',
+            ]);
             $destinationPath = 'images/coreperson/';
             $extension = $uppdf->getClientOriginalExtension();
             $mimes = $uppdf->getMimeType();

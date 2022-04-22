@@ -45,8 +45,11 @@ class AboutUsCOntroller extends Controller
         $this->validate($request, [
             'description' => 'required',
         ]);
-        $uppdf = $request->file('document');
+        $uppdf = $request->file('image');
         if($uppdf != ""){
+            $this->validate($request, [
+                'image' => 'required|mimes:jpg,png,jpeg',
+            ]);
             $destinationPath = 'images/aboutus/';
             $extension = $uppdf->getClientOriginalExtension();
             $mimes = $uppdf->getMimeType();
