@@ -227,7 +227,7 @@
 {{-- end section 4 --}}
 
 {{-- section 5 --}}
-<section class="services-area section-padding-100-0">
+{{-- <section class="services-area section-padding-100-0">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -308,7 +308,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 {{-- end section 5 --}}
 
 {{-- section 6 --}}

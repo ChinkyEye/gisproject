@@ -16,6 +16,7 @@ use App\TblRemoteEFarum;
 use App\TblRemotePrativedan;
 use App\TblRemotePublication;
 use App\FiscalYear;
+use App\MantralayaHasUser;
 
 class DetailController extends Controller
 {
@@ -52,7 +53,8 @@ class DetailController extends Controller
         }
         $datas = $model->get();
         $years = FiscalYear::where('is_active',1)->get();
-        return view('web.detail', compact(['datas','type','years']));
+        $mantralayas = MantralayaHasUser::where('is_active',1)->get();
+        return view('web.detail', compact(['datas','type','years','mantralayas']));
     }
 
     public function search(Request $request, $type){
@@ -103,7 +105,9 @@ class DetailController extends Controller
             }
         $datas = $model->where('is_active','1')->get();
         // var_dump($datas); die();
-        return view('web.detail', compact(['datas','type','year','ministry','date_np_start','date_np_end']));
+        $years = FiscalYear::where('is_active',1)->get();
+        $mantralayas = MantralayaHasUser::where('is_active',1)->get();
+        return view('web.detail', compact(['datas','type','year','ministry','date_np_start','date_np_end','years','mantralayas']));
     }
 
     public function link(Request $request, $link,$link2 = Null)

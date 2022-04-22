@@ -125,7 +125,15 @@ class HomeController extends Controller
         // $type = Sidemenu::where('link',$link)->value('type');
 
         $modelName = '\\App\\' . $model;
-        $datas = $modelName::get();
+        if($link == 'mantriparishad'){
+            $datas = $modelName::where('is_top','1')->get();
+        }
+        elseif ($link == 'karyala-pramuk') {
+             $datas = $modelName::where('is_start','1')->get();
+        }
+        else{
+            $datas = $modelName::get();
+        }
         $name = "";
         $level = "";
         return view('web.'.$page, compact(['datas','name','level']));
