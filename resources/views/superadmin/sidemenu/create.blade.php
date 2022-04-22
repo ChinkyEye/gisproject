@@ -68,6 +68,7 @@
             <option value="sidemenu-table">Table</option>
             <option value="hellocm">HelloCM</option>
             <option value="important-place">Important Place</option>
+            <option value="karyala-promukh">Karalaya Pramukh</option>
           </select>
           @error('page')
           <span class="text-danger font-italic" role="alert">

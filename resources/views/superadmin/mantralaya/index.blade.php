@@ -45,7 +45,10 @@
                       <td>{{$data->email}}</td>
                       <td>{{$data->phone}}</td>
                       <td>
+                        @if($data->getUserMantralaya)
                         <img src="{{ $data->getUserMantralaya->document == null ? asset('images/no-image-user.png') : asset('images/mantralaya') . '/' . $data->getUserMantralaya->document  }}" alt="" class="responsive" width="50" height="50">
+                        @else
+                        @endif
                       </td>
                       <td>
                         <a href="{{ route('superadmin.mantralaya.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">

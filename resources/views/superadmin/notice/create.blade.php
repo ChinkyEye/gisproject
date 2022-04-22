@@ -69,7 +69,7 @@
               <input class="form-check-inline" type="checkbox" name="type" value="{{$data->id}}" onclick="onlyOne(this)">
               <label class="form-check-label" for="type">
                {{$data->type}}
-               {{$data->id}}
+               {{-- {{$data->id}} --}}
              </label>
            </div>
            @endforeach
@@ -117,7 +117,7 @@
         @enderror
       </div> --}}
       <div class="form-group">
-        <label for="document">Document</label>
+        <label for="document">Document <span class="text-danger">(pdf only)</span></label>
         <div class="input-group">
           <input type='file' id="document" name="document" onchange="fileType(event)"/>
         </div>

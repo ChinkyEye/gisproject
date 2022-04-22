@@ -29,10 +29,10 @@ class CorePerson extends Model
         'updated_by',
     ];
 
-    public function setNameAttribute($value)
-    {
-        $this->attributes['name'] = ucwords($value);
-    }
+    // public function setNameAttribute($value)
+    // {
+    //     $this->attributes['name'] = ucwords($value);
+    // }
 
     public function getCorepersonType()
     {

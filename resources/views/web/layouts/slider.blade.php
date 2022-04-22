@@ -49,7 +49,7 @@
             <div class="profile-main text-center">
                 <div class="border-0 my-4">
                   <!--     <img src="{{ url('/') }}/web/img/mantri.jpg" class="card-img-top main-card-img text-center" alt="..."> -->
-                  <img src="{{ $data->document == null ? asset('images/no-image-user.png') : asset('images/coreperson') . '/' . $data->document  }}" alt="" class="responsive" width="50" height="50">
+                  <img src="{{ $data->document == null ? asset('images/no-image-user.png') : asset('images/coreperson') . '/' . $data->document  }}" alt="" class="responsive" width="250" height="250">
                   <div class="card-body px-0 py-1">
                     <h5 class="card-title my-2">{{$data->name}}<!-- मा. राजेन्द्र कुमार राई --></h5>
                     <p class="card-text"> {{$data->getCorepersonType->type}}<!-- मुख्यमन्त्री --></p>
