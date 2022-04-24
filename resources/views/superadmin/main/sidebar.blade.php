@@ -238,14 +238,14 @@
             </li>
           </ul>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a href="{{ route('superadmin.agency.index')}}" class="nav-link {{ (request()->is('home/agency*')) ? 'active' : '' }}">
             <i class="nav-icon fas fa-calendar-alt"></i>
             <p>
               Agency
             </p>
           </a>
-        </li>  
+        </li>   -->
         {{-- <li class="nav-item">
           <a href="{{ route('superadmin.user.index')}}" class="nav-link {{ (request()->is('home/user*')) ? 'active' : '' }}">
             <i class="nav-icon fas fa-user"></i>
