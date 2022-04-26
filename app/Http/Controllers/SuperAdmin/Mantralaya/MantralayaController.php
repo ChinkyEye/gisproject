@@ -129,6 +129,7 @@ class MantralayaController extends Controller
      */
     public function update(Request $request,$id)
     {
+        // dd($request);
         $this->validate($request, [
             'name' => 'required',
         ]);
