@@ -81,7 +81,7 @@
             <div class="item">
                 <a href="{{route('web.mantralaya.detail',$data->id)}}" class="card" style="width: 18rem;">
                     <img src="{{ $data->document == null ? asset('images/noimage.png') : asset('images/mantralaya') . '/' . $data->document }}" class="card-img-top" alt="Images">
-                   <!--  <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="..."> -->
+                    {{-- <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="..."> --}}
                     <div class="card-body py-3 main-hover-card-text text-center">
                         <h6 class="card-title mb-0">{{$data->getUserDetail->name}}</h6>
                         <small class="post">{{$data->getUserDetail->address}}</small>
