@@ -97,9 +97,11 @@
         <div class="form-group">
           <label for="page">Page</label>
           <select class="form-control" name="page" id="page">
+            <option value="" selected disabled>-----Select Page------</option>
             <option value="table">Table</option>
             <option value="background">Background</option>
-          <!-- <input type="text"  class="form-control max" id="page" placeholder="Enter page name" name="page" autocomplete="off" autofocus value="{{ old('page') }}"> -->
+            <option value="gallery-folder">Gallery</option>
+          </select> 
           @error('page')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
