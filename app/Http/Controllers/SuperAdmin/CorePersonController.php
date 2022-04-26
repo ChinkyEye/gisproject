@@ -113,10 +113,13 @@ class CorePersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
         $corepersons = CorePerson::find($id);
-        $modelhastypes = ModelHasType::get();
+        $modelhastypes = ModelHasType::orderBy('id','ASC')
+                                    ->where('created_by', Auth::user()->id)
+                                    ->where('model',$request->model)
+                                    ->get();
         return view('superadmin.coreperson.edit', compact('corepersons','modelhastypes'));
     }
 
