@@ -35,10 +35,9 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="model">Model<span class="text-danger">*</span></label>
+          <label for="model">Model</label>
           <select class="form-control" name="model" id="model">
             <option value="">--Select--</option>
-
             <option value="Niti">Niti</option>
             <option value="Notice">Notice</option>
             <option value="AboutUs">About</option>
@@ -51,7 +50,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="link">Link<span class="text-danger">*</span></label>
+          <label for="link">Link</label>
           <input type="text"  class="form-control max" id="link" placeholder="Enter menu name" name="link" autocomplete="off" autofocus value="{{ old('link') }}">
           @error('link')
           <span class="text-danger font-italic" role="alert">
@@ -71,8 +70,16 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="page">Page<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="page" placeholder="Enter menu name" name="page" autocomplete="off" autofocus value="{{ old('page') }}">
+          <label for="page">Page</label>
+          <select class="form-control" name="page" id="page">
+            <option value="" selected disabled>-----Select Page------</option>
+            <option value="table">Table</option>
+            <option value="background">Background</option>
+            <option value="gallery-folder">Gallery</option>
+            <option value="contactus">Contact us</option>
+            <option value="detail">Detail</option>
+            <option value="view-more">View More</option>
+          </select> 
           @error('page')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
