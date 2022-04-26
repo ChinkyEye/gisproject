@@ -47,12 +47,11 @@ class CorePersonController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $this->validate($request, [
             'name' => 'required',
-            'address' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required|digits_between:6,10',
+            // 'address' => 'required',
+            // 'email' => 'required|email',
+            // 'phone' => 'required|digits_between:6,10',
             'type' => 'required',
             'is_top' => 'required',
         ]);
@@ -134,9 +133,9 @@ class CorePersonController extends Controller
     {
        $this->validate($request, [
             'name' => 'required',
-            'address' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required|digits_between:6,10',
+            // 'address' => 'required',
+            // 'email' => 'required|email',
+            // 'phone' => 'required|digits_between:6,10',
             'type' => 'required',
             'is_top' => 'required',
         ]);

@@ -41,11 +41,9 @@ class ContactUsController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'iframe' => 'required',
-        //     'address' => 'required',
-        //     'email' => 'required|email',
-        // ]);
+        $this->validate($request, [
+            'address' => 'required',
+        ]);
 
         $contactus = ContactUs::create([
             'iframe' => $request['iframe'],
@@ -95,6 +93,9 @@ class ContactUsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'address' => 'required',
+        ]);
         $contactus = ContactUs::find($id);
         $all_data = $request->all();
         $all_data['updated_by'] = Auth::user()->id;

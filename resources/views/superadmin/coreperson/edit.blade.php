@@ -32,7 +32,7 @@
         @enderror
       </div>
       <div class="form-group">
-        <label for="address">Address<span class="text-danger">*</span></label>
+        <label for="address">Address</label>
         <input type="text"  class="form-control max" id="address" placeholder="Enter address" name="address" autocomplete="off" autofocus value="{{ $corepersons->address }}">
         @error('address')
         <span class="text-danger font-italic" role="alert">
@@ -41,7 +41,7 @@
         @enderror
       </div>
       <div class="form-group">
-        <label for="email">Email<span class="text-danger">*</span></label>
+        <label for="email">Email</label>
         <input type="text"  class="form-control max" id="email" placeholder="Enter email" name="email" autocomplete="off" autofocus value="{{ $corepersons->email }}">
         @error('email')
         <span class="text-danger font-italic" role="alert">
@@ -50,7 +50,7 @@
         @enderror
       </div>
       <div class="form-group">
-        <label for="phone">Phone<span class="text-danger">*</span></label>
+        <label for="phone">Phone</label>
         <input type="text"  class="form-control max" id="phone" placeholder="Enter phone number" name="phone" autocomplete="off" autofocus value="{{ $corepersons->phone }}" onkeypress="myFunction(event)">
         <span class="error mt-2" style="color: red; display: none">* Input digits (0 - 9)</span>
         @error('phone')

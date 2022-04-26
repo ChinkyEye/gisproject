@@ -50,7 +50,6 @@ class NitiController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'type' => 'required',
-            'description' => 'required',
         ]);
         $uppdf = $request->file('document');
         if($uppdf != ""){
@@ -126,7 +125,6 @@ class NitiController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'type' => 'required',
-            'description' => 'required',
         ]);
        
         $all_data = $request->all();

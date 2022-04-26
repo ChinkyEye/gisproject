@@ -31,7 +31,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="address">Address<span class="text-danger">*</span></label>
+          <label for="address">Address</label>
           <input type="text"  class="form-control max" id="address" placeholder="Enter address" name="address" autocomplete="off" autofocus value="{{ old('address') }}">
           @error('address')
           <span class="text-danger font-italic" role="alert">
@@ -40,7 +40,7 @@
           @enderror
         </div>
         <div class="form-group"> 
-          <label for="email">Email<span class="text-danger">*</span></label>
+          <label for="email">Email</label>
           <input type="text"  class="form-control max" id="email" placeholder="Enter email" name="email" autocomplete="off" autofocus value="{{ old('email') }}">
           @error('email')
           <span class="text-danger font-italic" role="alert">
@@ -49,7 +49,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="phone">Phone<span class="text-danger">*</span></label>
+          <label for="phone">Phone</label>
           <input type="text"  class="form-control max" id="phone" placeholder="Enter phone number" name="phone" autocomplete="off" autofocus value="{{ old('phone') }}" onkeypress="myFunction(event)">
           <span class="error mt-2" style="color: red; display: none">* Input digits (0 - 9)</span>
           @error('phone')
@@ -77,29 +77,34 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="type">Type <span class="text-danger">*</span></label><br>
+          <label for="type">Type<span class="text-danger">*</span></label><br>
           <div class="row col-md-12">
             @foreach ($modelhastypes as $key => $data)
             <div class="form-check-inline col-md">
-              <input class="form-check-inline" type="checkbox" name="type" id="type" value="{{$data->id}}" onclick="onlyOne(this)">
+              <input class="form-check-inline" type="checkbox" name="type" id="type" value="{{$data->id}}" {{ old('type') == $data->id ? 'checked' : '' }} onclick="onlyOne(this)">
               <label class="form-check-label" for="type">
                {{$data->type}}
              </label>
            </div>
            @endforeach
-         </div>
+          </div>
+          @error('type')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
        </div>
        <div class="form-group">
         <label for="is_top">Is Top<span class="text-danger">*</span></label>
         <div class="row col-md-5">
           <div class="form-check-inline col-md">
-            <input class="form-check-input" type="radio" name="is_top" id="yes" value="1"  >
+            <input class="form-check-input" type="radio" name="is_top" id="yes" value="1" {{ old('is_top') == "1" ? 'checked' : '' }}>
             <label class="form-check-label" for="is_top">
               Yes
             </label>
           </div>
           <div class="form-check-inline col-md">
-            <input class="form-check-input" type="radio" name="is_top" id="no" value="0" >
+            <input class="form-check-input" type="radio" name="is_top" id="no" value="0" {{ old('is_top') == "2" ? 'checked' : '' }}>
             <label class="form-check-label" for="is_top">
               No
             </label>

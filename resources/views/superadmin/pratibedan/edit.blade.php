@@ -29,10 +29,10 @@
           <strong>{{ $message }}</strong>
         </span>
         @enderror
-        <input type="text"  class="form-control max" id="title" placeholder="Enter Insurance Id" name="title"  autocomplete="off" value="{{ $pratibedans->title }}">
+        <input type="text"  class="form-control max" id="title" placeholder="Enter title" name="title"  autocomplete="off" value="{{ $pratibedans->title }}">
       </div>
       <div class="form-group">
-        <label for="description">Description <span class="text-danger">*</span></label>
+        <label for="description">Description</label>
         <textarea class="form-control" id="description" name="description">{{ $pratibedans->description }}</textarea>
         @error('description')
         <span class="text-danger font-italic" role="alert">
@@ -53,49 +53,6 @@
          @endforeach
         </div>
       </div>
-
-
-      {{-- <div class="form-group">
-        <label for="type">Type:<span class="text-danger">*</span></label>
-        <div class="row col-md-12">
-          <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="ahyan" value="1" {{$pratibedans->type == '1' ? 'checked' : ' '}} onclick="onlyOne(this)">
-            <label class="form-check-label" for="ahyan">
-              Ahyan
-            </label>
-          </div>
-          <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="niyammawali" value="2" {{ $pratibedans->type == '2' ? 'checked' : ''}} onclick="onlyOne(this)">
-            <label class="form-check-label" for="niyammawali">
-              Niyammawali
-            </label>
-          </div>
-          <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="karyabidhi" value="3" {{ $pratibedans->type == '3' ? 'checked' : ''}} onclick="onlyOne(this)">
-            <label class="form-check-label" for="karyabidhi">
-              Karyabidhi
-            </label>
-          </div>
-          <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="nirdesika" value="4" {{ $pratibedans->type == '4' ? 'checked' : ''}} onclick="onlyOne(this)">
-            <label class="form-check-label" for="nirdesika">
-              Nirdesika
-            </label>
-          </div>
-          <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="aanya" value="5" {{$pratibedans->type == '5' ? 'checked' : ''}} onclick="onlyOne(this)">
-            <label class="form-check-label" for="aanya">
-              Aanya
-            </label>
-          </div>
-        </div>
-        @error('type')
-        <span class="text-danger font-italic" role="alert">
-          <strong>{{ $message }}</strong>
-        </span>
-        @enderror
-      </div> --}}
-
       <div class="form-group">
         <label for="document">Document</label>
         @if($pratibedans->document)

@@ -31,7 +31,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="description">Description <span class="text-danger">*</span></label>
+          <label for="description">Description</label>
           <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
           @error('description')
           <span class="text-danger font-italic" role="alert">
@@ -44,56 +44,21 @@
           <div class="row col-md-12">
             @foreach ($modelhastypes as $key => $data)
             <div class="form-check-inline col-md">
-              <input class="form-check-inline" type="radio" name="type" id="type" value="{{$data->id}}">
+              <input class="form-check-inline" type="radio" name="type" id="type" value="{{$data->id}}" {{ old('type') == $data->id ? 'checked' : '' }}>
               <label class="form-check-label" for="type">
                {{$data->type}}
              </label>
            </div>
-           @endforeach
-          </div>
-        </div>
-        {{-- <div class="form-group">
-          <label for="type">Type:<span class="text-danger">*</span></label>
-          <div class="row col-md-12">
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="ahyan" value="1" {{ old('type') == '1' ? 'checked' : ''}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="ahyan">
-                Ahyan
-              </label>
-            </div>
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="niyammawali" value="2" {{ old('type') == '2' ? 'checked' : ''}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="niyammawali">
-                Niyammawali
-              </label>
-            </div>
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="karyabidhi" value="3" {{ old('type') == '3' ? 'checked' : ''}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="karyabidhi">
-                Karyabidhi
-              </label>
-            </div>
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="nirdesika" value="4" {{ old('type') == '4' ? 'checked' : ''}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="nirdesika">
-                Nirdesika
-              </label>
-            </div>
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="aanya" value="5" {{ old('type') == '5' ? 'checked' : ''}} onclick="onlyOne(this)">
-              <label class="form-check-label" for="aanya">
-                Aanya
-              </label>
-            </div>
+          @endforeach
           </div>
           @error('type')
-          <span class="text-danger font-italic" role="alert">
+           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
           </span>
           @enderror
-        </div> --}}
+        </div>
         <div class="form-group">
-          <label for="document">Document</label>
+          <label for="document">Document <sup class="text-danger">(pdf only)</sup></label>
           <div class="input-group">
             <input type='file' id="document" name="document" onchange="fileType(event)"/>
           </div>

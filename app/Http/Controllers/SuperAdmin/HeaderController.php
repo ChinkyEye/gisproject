@@ -43,7 +43,7 @@ class HeaderController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'slogan' => 'required',
-            'image' => 'required|mimes:png,jpeg|max:1024',
+            'image' => 'required|mimes:png,jpeg,jpg|max:1024',
         ]);
          
         $uppdf = $request->file('image');

@@ -32,7 +32,7 @@
         @enderror
       </div>
       <div class="form-group">
-        <label for="address">Address:</label>
+        <label for="address">Address:<span class="text-danger">*</span></label>
         <input type="text"  class="form-control max" id="address" placeholder="Enter address" name="address" autocomplete="off" autofocus value="{{ $datas->address }}">
         @error('address')
         <span class="text-danger font-italic" role="alert">

@@ -35,9 +35,6 @@
                     <input type="hidden" id="model" name="model" value="{{ Request::segment(3) }} ">
                     <button type="submit" class="btn btn-flat btn-danger btn-inline-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></button>
                   </form>
-
-                  {{-- <a href="{{route('superadmin.niti.create')}}" class="btn btn-flat btn-danger btn-inline-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></a>  --}}
-
                   <a href="{{route('superadmin.modelhastype.index',last(request()->segments()) )}}" class="btn btn-info btn-inline-block text-capitalize"><i class="fas fa-plus fa-fw"></i>
                   </a>
                 </div>

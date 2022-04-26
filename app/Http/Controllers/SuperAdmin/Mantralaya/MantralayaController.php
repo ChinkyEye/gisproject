@@ -48,6 +48,8 @@ class MantralayaController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
         ]);
         $uppdf = $request->file('image');
         if($uppdf != ""){
@@ -132,6 +134,8 @@ class MantralayaController extends Controller
         // dd($request);
         $this->validate($request, [
             'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
         ]);
 
         $user = User::find($id);

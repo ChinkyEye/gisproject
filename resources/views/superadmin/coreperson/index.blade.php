@@ -63,17 +63,6 @@
                         <td>{{$coreperson->link}}</td>
                         <td>
                           {{$coreperson->getCorepersonType->type}}
-                          {{-- @if($coreperson->type == 1)
-                          <span>Karyalaya Pramukh</span>
-                          @elseif($coreperson->type == 2)
-                          <span>Prabatdaa</span>
-                          @elseif($coreperson->type == 3)
-                          <span>Suchana Sunne</span>
-                          @elseif($coreperson->type == 2)
-                          <span>Gunaso Sunne</span>
-                          @else
-                          <span>Anya</span>
-                          @endif --}}
                         </td>
                         <td>
                           <a href="{{ route('superadmin.coreperson.active',$coreperson->id) }}" data-placement="top" title="{{ $coreperson->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">

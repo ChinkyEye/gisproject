@@ -31,7 +31,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="address">Address:</label>
+          <label for="address">Address:<span class="text-danger">*</span></label>
           <input type="text"  class="form-control max" id="address" placeholder="Enter address" name="address" autocomplete="off" autofocus value="{{ old('address') }}">
           <span class="error mt-2" style="color: red; display: none">* Input digits (0 - 9)</span>
           @error('address')

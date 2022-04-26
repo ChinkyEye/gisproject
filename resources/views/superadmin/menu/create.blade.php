@@ -55,6 +55,7 @@
             <option value="SangathanSanrachana">Sangathan Sanrachana</option>
             <option value="Pratibedan">Pratibedan</option>
             <option value="Department">Bivagh/Karyalaya</option>
+            <option value="ContactUs">Contact Us</option>
           </select>
         </div>
         <div class="form-group">
