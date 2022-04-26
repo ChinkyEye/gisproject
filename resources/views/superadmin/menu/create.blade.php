@@ -96,7 +96,10 @@
         </div>
         <div class="form-group">
           <label for="page">Page</label>
-          <input type="text"  class="form-control max" id="page" placeholder="Enter page name" name="page" autocomplete="off" autofocus value="{{ old('page') }}">
+          <select class="form-control" name="page" id="page">
+            <option value="table">Table</option>
+            <option value="background">Background</option>
+          <!-- <input type="text"  class="form-control max" id="page" placeholder="Enter page name" name="page" autocomplete="off" autofocus value="{{ old('page') }}"> -->
           @error('page')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
