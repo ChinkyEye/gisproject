@@ -44,7 +44,6 @@
         <div class="form-group">
           <label for="website_link">Website Link</label>
           <input type="text"  class="form-control max" id="website_link" placeholder="Enter website" name="website_link" autocomplete="off" autofocus value="{{ old('website_link') }}">
-          <span class="error mt-2" style="color: red; display: none">* Input digits (0 - 9)</span>
           @error('website_link')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
