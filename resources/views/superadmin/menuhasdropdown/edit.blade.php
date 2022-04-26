@@ -36,17 +36,18 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="model_data">Model<span class="text-danger">*</span></label>
+          <label for="model_data">Model</label>
           <select id="nationality" class="form-control" name="model" id="modal">
             <option value="">--Select--</option>
             <option value="Niti" {{ $menuhasdropdowns->model == 'Niti' ? 'selected' : ''}}>Niti</option>
             <option value="About" {{ $menuhasdropdowns->model == 'About' ? 'selected' : ''}}>About</option>
             <option value="Pratibedan" {{ $menuhasdropdowns->model == 'Pratibedan' ? 'selected' : '' }}>Pratibedan</option>
-            <option value="Notice" {{ $menuhasdropdowns->model == 'Notice' ? 'selected' : '' }}>Notice</option>
+            <option value="Notice" {{ $menuhasdropdowns->model == 'Notice' ? 'selected' : '' }}>Notice</option>  <option value="Mission" {{ $menuhasdropdowns->model == 'Mission' ? 'selected' : '' }}>Mission</option>  <option value="Vision" {{ $menuhasdropdowns->model == 'Vision' ? 'selected' : '' }}>Vision</option>  <option value="Gallery" {{ $menuhasdropdowns->model == 'Gallery' ? 'selected' : '' }}>Gallery</option>  <option value="SangathanSanrachana" {{ $menuhasdropdowns->model == 'SangathanSanrachana' ? 'selected' : '' }}>Sangathan Sanrachana</option>  
+            <option value="Department" {{ $menuhasdropdowns->model == 'Department' ? 'selected' : '' }}>Bivagh/Karyalaya</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="link">Link<span class="text-danger">*</span></label>
+          <label for="link">Link</label>
           <input type="text"  class="form-control max" id="link" placeholder="Enter menu name" name="link" autocomplete="off" value="{{ $menuhasdropdowns->link }}">
           @error('link')
           <span class="text-danger font-italic" role="alert">
@@ -55,7 +56,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="type" class="control-label">Type <span class="text-danger">*</span></label>
+          <label for="type" class="control-label">Type</label>
           <select class="form-control" name="type" id="type">
             {{-- <option value="">Select Type</option> --}}
             @foreach ($modelhastypes as $key => $data)
@@ -65,15 +66,18 @@
             @endforeach
           </select>
         </div>
-        <div class="form-group">
-          <label for="page">Page<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="page" placeholder="Enter menu name" name="page" autocomplete="off" autofocus value="{{ $menuhasdropdowns->page }}">
-          @error('page')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div>
+       <div class="form-group">
+          <label for="select_model">Page</label>
+          <select class="form-control" name="page" id="page">
+           <option value="" selected disabled>-----Select Page------</option>
+           <option value="table" {{ $menuhasdropdowns->page == 'table' ? 'selected' : ''}}>Table</option>
+           <option value="background" {{ $menuhasdropdowns->page == 'background' ? 'selected' : ''}}>Background</option>
+           <option value="gallery-folder" {{ $menuhasdropdowns->page == 'galary-folder' ? 'selected' : ''}}>Gallery</option>
+           <option value="contactus" {{ $menuhasdropdowns->page == 'contactus' ? 'selected' : ''}}>Contact us</option>
+           <option value="detail" {{ $menuhasdropdowns->page == 'detail' ? 'selected' : ''}}>Detail</option>
+           <option value="view-more" {{ $menuhasdropdowns->page == 'view-more' ? 'selected' : ''}}>View More</option>
+         </select>
+       </div>
       </div>
       <div class="card-footer justify-content-between">
         <button type="submit" class="btn btn-info text-capitalize">Update</button>
