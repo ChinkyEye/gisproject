@@ -38,10 +38,15 @@
           <label for="model">Model<span class="text-danger">*</span></label>
           <select class="form-control" name="model" id="model">
             <option value="">--Select--</option>
+
             <option value="Niti">Niti</option>
-            <option value="About">About</option>
-            <option value="Pratibedan">Pratibedan</option>
             <option value="Notice">Notice</option>
+            <option value="AboutUs">About</option>
+            <option value="Mission">Mission</option>
+            <option value="Vision">Vision</option>
+            <option value="Gallery">Gallery</option>
+            <option value="SangathanSanrachana">Sangathan Sanrachana</option>
+            <option value="Pratibedan">Pratibedan</option>
             <option value="Department">Bivagh/Karyalaya</option>
           </select>
         </div>

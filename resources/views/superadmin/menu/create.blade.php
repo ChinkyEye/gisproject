@@ -54,6 +54,7 @@
             <option value="Gallery">Gallery</option>
             <option value="SangathanSanrachana">Sangathan Sanrachana</option>
             <option value="Pratibedan">Pratibedan</option>
+            <option value="Department">Bivagh/Karyalaya</option>
           </select>
         </div>
         <div class="form-group">
