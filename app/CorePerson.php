@@ -33,7 +33,10 @@ class CorePerson extends Model
     // {
     //     $this->attributes['name'] = ucwords($value);
     // }
-
+    public function getUser()
+    {
+        return $this->belongsTo('App\User','created_by','id');
+    }
     public function getCorepersonType()
     {
         return $this->belongsTo('App\ModelHasType','type','id');

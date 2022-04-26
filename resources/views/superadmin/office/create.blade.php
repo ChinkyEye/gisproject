@@ -32,9 +32,9 @@
             @enderror
           </div>
           <div class="form-group col-md">
-            <label for="address">Address</label>
+            <label for="address">Address<span class="text-danger">*</span></label>
             <input type="text"  class="form-control max" id="address" placeholder="Enter address" name="address" autocomplete="off" autofocus value="{{ old('address') }}">
-            @error('address')address
+            @error('address')
             <span class="text-danger font-italic" role="alert">
               <strong>{{ $message }}</strong>
             </span>
@@ -53,7 +53,7 @@
         </div>
       <div class="row">
         <div class="form-group col-md">
-          <label for="imgInp">Thumbnail<sub class="text-danger">(1074*617 pixel)</sub></label>
+          <label for="imgInp">Thumbnail</label>
           <div class="input-group">
             <img id="blahDoc" src="{{URL::to('/')}}/images/80x80.png" onclick="document.getElementById('imgInpDoc').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
             <input type='file' class="d-none" id="imgInpDoc" name="thumbnail" autofocus value="{{ old('thumbnail') }}" />

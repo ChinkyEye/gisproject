@@ -217,7 +217,7 @@
                         <h4>Get in touch with us.</h4>
                     </div>
                     <div class="cta-btn">
-                        <a href="{{route('web.contactus.index')}}" class="btn credit-btn box-shadow">Contact</a>
+                        <a href="{{route('web.contactus.index')}}" class="btn credit-btn box-shadow">{{ __('language.contact')}}</a>
                     </div>
                 </div>
             </div>

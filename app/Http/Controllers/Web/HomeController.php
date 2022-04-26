@@ -45,7 +45,7 @@ class HomeController extends Controller
         $remote_e_farums = TblRemoteEFarum::orderBy('id','DESC')->take(10)->get();
         $remote_prativedans = TblRemotePrativedan::orderBy('id','DESC')->take(10)->get();
         $remote_publications = TblRemotePublication::orderBy('id','DESC')->take(10)->get();
-        $offices = Office::orderBy('id','DESC')->get();
+        $offices = Office::orderBy('id','DESC')->where('is_active','1')->get();
         $introductions = Introduction::orderBy('id','DESC')->where('is_active','1')->get();
         $sliders = Slider::orderBy('id','DESC')->where('is_active','1')->get();
         $coreperson = CorePerson::orderBy('id','DESC')->where('is_top','1')->where('is_active','1')->get();
