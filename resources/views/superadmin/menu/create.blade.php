@@ -102,6 +102,9 @@
             <option value="table">Table</option>
             <option value="background">Background</option>
             <option value="gallery-folder">Gallery</option>
+            <option value="contactus">Contact us</option>
+            <option value="detail">Detail</option>
+            <option value="view-more">View More</option>
           </select> 
           @error('page')
           <span class="text-danger font-italic" role="alert">
