@@ -168,7 +168,7 @@
         <div class="">
 
             <p>
-                {{$data->description}}
+                {!! $data->description !!}
             </p>
             
         </div>
