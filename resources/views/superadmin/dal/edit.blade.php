@@ -27,7 +27,7 @@
         </div>
       </div>
       <div class="modal-footer justify-content-between">
-        <button type="submit" class="btn btn-info text-capitalize">Edit Dal</button>
+        <button type="submit" class="btn btn-info text-capitalize">Update</button>
       </div>
     </form>
   </div>

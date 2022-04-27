@@ -48,13 +48,13 @@ About |
             </div>
         </div>
         <div class="template-demo text-center text-md-left"> 
-            <a href="{{$data->facebook}}" class="btn btn-social-icon btn-facebook btn-rounded" target="_blank">
+            <a href="//{{$data->facebook}}" class="btn btn-social-icon btn-facebook btn-rounded" target="_blank">
                 <i class="fa fa-facebook"></i>
             </a> 
-            <a href="{{$data->youtube}}" class="btn btn-social-icon btn-youtube btn-rounded" target="_blank">
+            <a href="//{{$data->youtube}}" class="btn btn-social-icon btn-youtube btn-rounded" target="_blank">
                 <i class="fa fa-youtube"></i>
             </a> 
-            <a href="{{$data->twitter}}" class="btn btn-social-icon btn-twitter btn-rounded" target="_blank">
+            <a href="//{{$data->twitter}}" class="btn btn-social-icon btn-twitter btn-rounded" target="_blank">
                 <i class="fa fa-twitter"></i>
             </a> 
         </div>

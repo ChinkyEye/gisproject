@@ -45,7 +45,7 @@
                       <th>Action</th>
                     </tr>
                   </thead>
-               <tbody style="text-align: center">
+                  <tbody style="text-align: center">
                     @foreach($links as $key => $data)
                     <tr class="{{$data->is_active == 1 ? '' : 'table-danger'}}">
                       <td>{{$key + 1}}</td>
@@ -53,7 +53,7 @@
                         {{$data->name}}
                       </td>
                       <td> 
-                        <a href="{{$data->link}}">{{$data->website_link}}</a>
+                        <a href="//{{$data->website_link}}" target="_blank">{{$data->website_link}}</a>
                       </td>
                       <td>
                         <a href="{{ route('superadmin.usefullink.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
