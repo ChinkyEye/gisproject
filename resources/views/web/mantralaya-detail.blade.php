@@ -55,6 +55,9 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 @extends('web.layouts.app')
 @push('tab_title')
 @endpush
+@push('css')
+<script language=javascript src='http://maps.google.com/maps/api/js?sensor=false'></script>
+@endpush
 @section('content')
 <nav class="breadcrumb-main mt-4">
 	<div class="container">
@@ -76,12 +79,42 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 				<div class="line"></div>
 				
 			</div>
-			<div class="col-md-6 ">
-				@if ($datas->document)
+			<div class="col-md-6 " id="map" style="width: 600px; height: 400px;">
+
+				{{-- @if ($datas->document)
 				<img src="{{ asset($datas->path) . '/' . $datas->document}}" class="img-fluid float-left main-img-detail">
-				@endif
+				@endif --}}
+
 			</div>
 		</div>
 	</div>
 </section>
 @endsection
+@push('js')
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1dKX5bl_Y-oEyO07qya3paa3RpdOVzb0"></script>
+{{-- <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script> --}}
+<script type="text/javascript">
+    var locations = <?php echo $datas ?>;
+    let provided_longitude = <?php echo $datas->longitude; ?>;
+    let provided_latitude = <?php echo $datas->latitude; ?>;
+
+    // console.log(locations,provided_longitude, provided_latitude);
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: new google.maps.LatLng(provided_latitude, provided_longitude),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    // var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    // for (i = 0; i < locations.length; i++) {
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(provided_latitude, provided_longitude),
+            map: map
+        });
+    // }
+</script>
+@endpush
