@@ -125,6 +125,7 @@ class HomeController extends Controller
         // $type = Sidemenu::where('link',$link)->value('type');
 
         $modelName = '\\App\\' . $model;
+        // var_dump($modelName); die();
         if($link == 'mantriparishad'){
             $datas = $modelName::where('is_top','1')->get();
         }
@@ -137,6 +138,13 @@ class HomeController extends Controller
         $name = "";
         $level = "";
         return view('web.'.$page, compact(['datas','name','level']));
+    }
+
+    public function sidelinkmore(Request $request, $id)
+    {
+        $datas = MantralayaHasUser::orderBy('id','DESC')->find($id);
+        return view('web.mantralaya-detail', compact(['datas']));
+            
     }
 
     public function list() {

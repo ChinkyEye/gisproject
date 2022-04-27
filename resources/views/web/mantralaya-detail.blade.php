@@ -1,4 +1,4 @@
-@extends('web.layouts.app')
+{{-- @extends('web.layouts.app')
 @php
 $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()))));
 @endphp
@@ -50,4 +50,38 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 </section>
 @endsection
 @push('js')
+@endpush --}}
+
+@extends('web.layouts.app')
+@push('tab_title')
 @endpush
+@section('content')
+<nav class="breadcrumb-main mt-4">
+	<div class="container">
+		<ol class="breadcrumb bg-light align-content-center">
+			<li class="breadcrumb-item my-auto">
+				<a href="{{ route('web.home') }}">
+					<i class="fa fa-home fa-2x"></i>
+				</a>
+			</li>
+		</ol>
+	</div>
+</nav>
+<section class="breadcrumb-main my-4">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<small>{{ Date('j F, Y',strtotime($datas->date)) }}</small>
+				<h2>{{$datas->getUserDetail->name}}</h2>
+				<div class="line"></div>
+				
+			</div>
+			<div class="col-md-6 ">
+				@if ($datas->document)
+				<img src="{{ asset($datas->path) . '/' . $datas->document}}" class="img-fluid float-left main-img-detail">
+				@endif
+			</div>
+		</div>
+	</div>
+</section>
+@endsection

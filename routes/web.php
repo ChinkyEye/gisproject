@@ -214,5 +214,6 @@ Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest','setlocal
     Route::get('/{link}/detail/{id}', 'HomeController@detail')->name('home.detail');
     Route::get('/{link}/{link2}/more/{id}', 'HomeController@more')->name('home.more');
     Route::get('/web/sidelink/{link}', 'HomeController@sidelink')->name('home.sidelink');
+    Route::get('/web/sidelink/moredetail/{id}', 'HomeController@sidelinkmore')->name('home.sidelinkmore');
     
 });

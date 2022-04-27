@@ -11,7 +11,10 @@
   </div>
 </section>
 <section class="content">
-  <div class="card card-info">
+  <div>
+    <button type="button" class="btn btn-xs btn-info rounded-0" onclick="PrintDiv('printTable')">Print me</button>
+  </div>
+  <div class="card card-info" id="printTable">
     <div class="card-header">
       <h4 class="mb-0">{{$survey_users->getSurveyName->title}}</h4>
       <p class="mb-0">{{$survey_users->getSurveyName->description}}<p>
@@ -47,3 +50,17 @@
 
 
 @endsection
+@push('javascript')
+<script type="text/javascript">
+  function PrintDiv(divName) {
+  var printContents = document.getElementById(divName).innerHTML;
+  var originalContents = document.body.innerHTML;
+
+  document.body.innerHTML = printContents;
+
+  window.print();
+
+  document.body.innerHTML = originalContents;
+}
+</script>
+@endpush
