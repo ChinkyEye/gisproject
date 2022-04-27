@@ -15,6 +15,8 @@ class MantralayaHasUser extends Model
         'document',
         'mimes_type',
         'link',
+        'is_main',
+        'is_local_level',
         'prefix',
         'latitude',
         'longitude',

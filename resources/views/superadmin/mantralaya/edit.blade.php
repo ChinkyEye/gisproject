@@ -68,6 +68,50 @@
           @enderror
         </div>
         <div class="form-group">
+          <label for="is_main">Is Main<span class="text-danger">*</span></label>
+          <div class="row col-md-5">
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="radio" name="is_main" id="yes" value="1" {{$datas->getUserMantralaya->is_main == '1' ? 'checked' : ''}} >
+              <label class="form-check-label" for="is_main">
+                Yes
+              </label>
+            </div>
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="radio" name="is_main" id="no" value="0" {{$datas->getUserMantralaya->is_main == '0' ? 'checked' : ''}}>
+              <label class="form-check-label" for="is_main">
+                No
+              </label>
+            </div>
+            @error('is_main')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="is_local_level">Is Local Level<span class="text-danger">*</span></label>
+          <div class="row col-md-5">
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="radio" name="is_local_level" id="yes" value="1" {{$datas->getUserMantralaya->is_local_level == '1' ? 'checked' : ''}} >
+              <label class="form-check-label" for="is_local_level">
+                Yes
+              </label>
+            </div>
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="radio" name="is_local_level" id="no" value="0" {{$datas->getUserMantralaya->is_local_level == '0' ? 'checked' : ''}}>
+              <label class="form-check-label" for="is_local_level">
+                No
+              </label>
+            </div>
+            @error('is_local_level')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+        </div>
+        <div class="form-group">
           <label for="prefix">Prefix</label>
           <input type="text"  class="form-control max" id="prefix" placeholder="Enter the prefix" name="prefix" autocomplete="off" value="{{ $datas->getUserMantralaya->prefix }}">
           @error('prefix')

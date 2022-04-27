@@ -84,6 +84,8 @@ class MantralayaController extends Controller
         ]);
         $datas = MantralayaHasUser::create([
             'user_id' => $users->id,
+            'is_main' => $request['is_main'],
+            'is_local_level' => $request['is_local_level'],
             'link' => $request['link'],
             'prefix' => $request['prefix'],
             'document'=> $fileName,
@@ -167,6 +169,8 @@ class MantralayaController extends Controller
             }
         }
 
+        $mantralayahasuser->is_main = $request->is_main;
+        $mantralayahasuser->is_local_level = $request->is_local_level;
         $mantralayahasuser->link = $request->link;
         $mantralayahasuser->prefix = $request->prefix;
         $mantralayahasuser->latitude = $request->latitude;

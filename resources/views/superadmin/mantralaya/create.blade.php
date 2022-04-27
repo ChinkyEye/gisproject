@@ -87,6 +87,50 @@
             @enderror
           </div>
           <div class="form-group">
+            <label for="scroll">Is Main</label>
+            <div class="row col-md-5">
+              <div class="form-check-inline col-md">
+                <input class="form-check-input" type="radio" name="is_main" id="yes" value="1"  {{ old('is_main') == "1" ? 'checked' : '' }}>
+                <label class="form-check-label" for="is_main">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check-inline col-md">
+                <input class="form-check-input" type="radio" name="is_main" id="no" value="0" {{ old('is_main') == "2" ? 'checked' : '' }}>
+                <label class="form-check-label" for="is_main">
+                  No
+                </label>
+              </div>
+            </div>
+            @error('scroll')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+          <div class="form-group">
+            <label for="scroll">Is Local Level</label>
+            <div class="row col-md-5">
+              <div class="form-check-inline col-md">
+                <input class="form-check-input" type="radio" name="is_local_level" id="yes" value="1"  {{ old('is_local_level') == "1" ? 'checked' : '' }} >
+                <label class="form-check-label" for="is_local_level">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check-inline col-md">
+                <input class="form-check-input" type="radio" name="is_local_level" id="no" value="0" {{ old('is_local_level') == "2" ? 'checked' : '' }}>
+                <label class="form-check-label" for="is_local_level">
+                  No
+                </label>
+              </div>
+            </div>
+            @error('scroll')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+          <div class="form-group">
             <label for="imgInp">Image</label>
             <div class="input-group">
               <img id="blah" src="{{URL::to('/')}}/images/80x80.png" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
