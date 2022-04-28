@@ -2,7 +2,7 @@
 @section('content')
 @include('web.layouts.slider')
 {{-- section 1 --}}
-@if ($offices->count())
+@if ($mantralaya->count())
 <section class="features-area py-5 bg-gray">
     <div class="container-fluid">
         <div class="row">
@@ -39,49 +39,6 @@
                 </div>
             </div>
             @endforeach --}}
-
-            <!-- <div class="col-md-3 col-sm-6">
-                <div class="box">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
-                    <div class="box-content">
-                        <a href="">
-                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
-                            <span class="post">प्रदेश नं. १, विराटनगर</span>
-                        </a>
-                    </div>
-                    <ul class="icon">
-                        <li><a href="#"><img src="{{ url('web/img/nepal-gov-logo.png') }}"></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="box">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
-                    <div class="box-content">
-                        <a href="">
-                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
-                            <span class="post">प्रदेश नं. १, विराटनगर</span>
-                        </a>
-                    </div>
-                    <ul class="icon">
-                        <li><a href="#"><img src="{{ url('web/img/nepal-gov-logo.png') }}"></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="box">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
-                    <div class="box-content">
-                        <a href="">
-                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
-                            <span class="post">प्रदेश नं. १, विराटनगर</span>
-                        </a>
-                    </div>
-                    <ul class="icon">
-                        <li><a href="#"><img src="{{ url('web/img/nepal-gov-logo.png') }}"></a></li>
-                    </ul>
-                </div>
-            </div> -->
         </div>
         {{-- <div class=" text-center">
             <a href="#" class="btn credit-btn box-shadow btn-2">See More</a>
@@ -106,60 +63,6 @@
                 </a>
             </div>
             @endforeach
-          <!--   <div class="item">
-                <a href="" class="card" style="width: 18rem;">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body py-3 main-hover-card-text text-center">
-                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
-                        <small class="post">प्रदेश नं. १, विराटनगर</small>
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="" class="card" style="width: 18rem;">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body py-3 main-hover-card-text text-center">
-                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
-                        <small class="post">प्रदेश नं. १, विराटनगर</small>
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="" class="card" style="width: 18rem;">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body py-3 main-hover-card-text text-center">
-                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
-                        <small class="post">प्रदेश नं. १, विराटनगर</small>
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="" class="card" style="width: 18rem;">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body py-3 main-hover-card-text text-center">
-                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
-                        <small class="post">प्रदेश नं. १, विराटनगर</small>
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="" class="card" style="width: 18rem;">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body py-3 main-hover-card-text text-center">
-                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
-                        <small class="post">प्रदेश नं. १, विराटनगर</small>
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="" class="card" style="width: 18rem;">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body py-3 main-hover-card-text text-center">
-                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
-                        <small class="post">प्रदेश नं. १, विराटनगर</small>
-                    </div>
-                </a>
-            </div> -->
         </div>
         <div class="mt-3 text-center">
             <a href="{{route('web.mantralaya.index')}}" class="btn credit-btn box-shadow btn-2">View All</a>

@@ -20,10 +20,9 @@ class MantralayaController extends Controller
      */
     public function index()
     {
-        $datas = User::orderBy('id','DESC')
-                            ->where('user_type','2')
+        $datas = MantralayaHasUser::orderBy('sort_id','ASC')
                             ->where('created_by',Auth::user()->id)
-                            ->with('getUserMantralaya')
+                            ->with('getUserDetail')
                             ->paginate();
         return view('superadmin.mantralaya.index', compact('datas'));
     }
@@ -121,8 +120,8 @@ class MantralayaController extends Controller
      */
     public function edit($id)
     {
-        $datas = User::find($id);
-        return view('superadmin.mantralaya.edit', compact('datas',));
+        $datas = MantralayaHasUser::find($id);
+        return view('superadmin.mantralaya.edit', compact('datas'));
     }
 
     /**
@@ -140,14 +139,16 @@ class MantralayaController extends Controller
             // 'password' => 'required',
         ]);
 
-        $user = User::find($id);
+        $user_id = MantralayaHasUser::where('id',$id)->value('user_id');
+
+        $user = User::where('id',$user_id)->first();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->address = $request->address;
         $user->phone = $request->phone;
         $user->update();
 
-        $mantralayahasuser = MantralayaHasUser::where('user_id',$id)->first();
+        $mantralayahasuser = MantralayaHasUser::find($id);
         $uppdf = $request->file('image');
         if($uppdf != ""){
             $this->validate($request, [
@@ -193,7 +194,8 @@ class MantralayaController extends Controller
      */
     public function destroy($id)
     {
-        $mantralayahasuser = MantralayaHasUser::where('user_id',$id)->first();
+        $user_id = MantralayaHasUser::where('id',$id)->value('user_id');
+        $mantralayahasuser = MantralayaHasUser::find($id);
 
         $destinationPath = 'images/mantralaya/';
         $oldFilename = $destinationPath.'/'.$mantralayahasuser->document;
@@ -202,7 +204,7 @@ class MantralayaController extends Controller
                 File::delete($oldFilename);
             }
         }
-        $datas = User::find($id);
+        $datas = User::where('id',$user_id)->first();
         $datas->delete();
         return response()->json([
             'success' => 'Record has been deleted successfully!'
@@ -211,8 +213,8 @@ class MantralayaController extends Controller
 
     public function isActive(Request $request,$id)
     {
-        $get_is_active = User::where('id',$id)->value('is_active');
-        $isactive = User::find($id);
+        $get_is_active = MantralayaHasUser::where('id',$id)->value('is_active');
+        $isactive = MantralayaHasUser::find($id);
         if($get_is_active == 0){
             $isactive->is_active = 1;
             // $notification = array(
@@ -264,5 +266,14 @@ class MantralayaController extends Controller
 
         return redirect()->back()->with('alert-success', 'Password changed successfully!!!!'); 
 
+    }
+
+    public function order_directories(Request $request){
+        $datas = MantralayaHasUser::orderBy('sort_id','ASC')->get();
+        $itemID = $request->itemID;
+        $itemIndex = $request->itemIndex;
+        foreach($datas as $value){
+            return MantralayaHasUser::where('id','=',$itemID)->update(array('sort_id'=> $itemIndex));
+        }
     }
 }
