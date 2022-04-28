@@ -6,7 +6,24 @@
 <section class="features-area py-5 bg-gray">
     <div class="container-fluid">
         <div class="row">
-            @foreach($offices as $key => $data)
+            @foreach($mantralaya->where('is_main','1')->take(4) as $key => $data)
+            <div class="col-md-3 col-sm-6">
+                <div class="box">
+                    <img src="{{ $data->document == null ? asset('images/logo.png') : asset('images/mantralaya') . '/' . $data->document  }}">
+                    <div class="box-content">
+                        <a href="">
+                            <h5 class="title">{{$data->getUserDetail->name}}</h5>
+                            <span class="post">{{$data->getUserDetail->address}}</span>
+                        </a>
+                    </div>
+                    <ul class="icon">
+                        <li><a href="{{$data->link}}" target="_blank"><img src="{{ asset('images/logo.png')}}"></a></li>
+                    </ul>
+                </div>
+            </div>
+            @endforeach
+
+            {{-- @foreach($offices as $key => $data)
             <div class="col-md-3 col-sm-6">
                 <div class="box">
                     <img src="{{ $data->thumbnail == null ? asset('images/logo.png') : asset('images/officethumbnail') . '/' . $data->thumbnail  }}">
@@ -21,7 +38,7 @@
                     </ul>
                 </div>
             </div>
-            @endforeach
+            @endforeach --}}
 
             <!-- <div class="col-md-3 col-sm-6">
                 <div class="box">
@@ -77,7 +94,7 @@
 <section class="features-area py-5 {{ $offices->count() ? '' : 'bg-light' }}">
     <div class="container-fluid">
         <div class="owl-carousel owl-carousel2 owl-theme">
-            @foreach($mantralaya as $key => $data)
+            @foreach($mantralaya->where('is_main','0') as $key => $data)
             <div class="item">
                 <a href="{{route('web.mantralaya.detail',$data->id)}}" class="card" style="width: 18rem;">
                     <img src="{{ $data->document == null ? asset('images/noimage.png') : asset('images/mantralaya') . '/' . $data->document }}" class="card-img-top" alt="Images">
