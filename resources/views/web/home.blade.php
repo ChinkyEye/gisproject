@@ -48,7 +48,7 @@
 @endif
 {{-- end section 1 --}}
 {{-- section 2 --}}
-<section class="features-area py-5 {{ $offices->count() ? '' : 'bg-light' }}">
+<section class="features-area py-5 {{ $mantralaya->count() ? '' : 'bg-light' }}">
     <div class="container-fluid">
         <div class="owl-carousel owl-carousel2 owl-theme">
             @foreach($mantralaya->where('is_main','0') as $key => $data)

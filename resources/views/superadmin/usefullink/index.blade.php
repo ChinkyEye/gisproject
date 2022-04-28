@@ -3,7 +3,6 @@
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet"/>
 @endpush
 @section('content')
-<?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('superadmin.','',Route::currentRouteName()), ".")); ?>
 <div>
   <div class="content-header">
     <div class="container-fluid">
@@ -28,9 +27,6 @@
                 <div class="col-md-2">
                   <a href="{{route('superadmin.usefullink.create')}}" class="btn btn-flat btn-danger btn-block text-capitalize" style="color:#fff">Add Link <i class="fas fa-plus fa-fw"></i></a>
                 </div>
-                <div class="col-md-10">
-                  {{-- <input type="text" class="form-control" placeholder="Search by name"> --}}
-                </div>
               </div>
             </div><!-- /.card-header -->
             <div class="card-body">
@@ -49,11 +45,11 @@
                     @foreach($links as $key => $data)
                     <tr class="{{$data->is_active == 1 ? '' : 'table-danger'}}">
                       <td>{{$key + 1}}</td>
-                      <td>
-                        {{$data->name}}
-                      </td>
+                      <td>{{$data->name}}</td>
                       <td> 
-                        <a href="//{{$data->website_link}}" target="_blank">{{$data->website_link}}</a>
+                        <a href="//{{$data->website_link}}" target="_blank">
+                          {{$data->website_link}}
+                        </a>
                       </td>
                       <td>
                         <a href="{{ route('superadmin.usefullink.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
@@ -61,7 +57,9 @@
                         </a>
                       </td>
                       <td>
-                        <a href="{{ route('superadmin.usefullink.edit',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
+                        <a href="{{ route('superadmin.usefullink.edit',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update">
+                          <i class="fas fa-edit"></i>
+                        </a>
 
                         <form action='javascript:void(0)' data_url="{{route('superadmin.usefullink.destroy',$data->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
                           <input type='hidden' name='_token' value='".csrf_token()."'>

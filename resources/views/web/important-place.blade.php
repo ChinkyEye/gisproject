@@ -19,7 +19,7 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 							<img src="{{ url($data->path.'/'.$data->document) }}" class="rounded" width="155"> 
 						</div>
 						<div class="ml-3 w-100">
-							<h4 class="mb-0 mt-0">{{$data->title}}</h4> 
+							<h4 class="mb-0 mt-0"><a href="{{ route('web.home.importantplacedetail', $data->id)}}">{{$data->title}}</a></h4> 
 							{{-- <span>{{$data['getDal']->name}}</span> --}}
 							<div class="p-2 mt-2 bg-primary rounded text-white main-stats">
 								<ul class="list-unstyled">
