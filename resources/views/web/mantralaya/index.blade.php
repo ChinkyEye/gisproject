@@ -26,7 +26,7 @@
 								<td class="text-left">{{$data->getUserDetail->name}}</td>
 								<td class="text-left">{{$data->getUserDetail->address}}</td>
 								<td>
-									<img src="{{$data->getUserDetail->document == null ? asset('images/no-image-user.png') : asset('images/mantralaya') . '/' . $data->getUserDetail->document  }}" alt="" class="responsive" width="50" height="50"class="img-fluid float-left main-img-detail w-25 mr-3">
+									<img src="{{$data->document == null ? asset('images/no-image-user.png') : asset('images/mantralaya') . '/' . $data->document  }}" alt="" class="responsive" width="50" height="50"class="img-fluid float-left main-img-detail w-25 mr-3">
 								</td>
 								<td> <a href="{{$data->link}}" target="_blank">Link</a> </td>
 								<td><a href="{{route('web.mantralaya.detail', $data->id)}}">View</a>

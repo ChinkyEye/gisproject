@@ -36,19 +36,16 @@
                       <th>Action</th>
                     </tr>
                   </thead>
-                  <tbody style="text-align: center">
+                  <tbody style="text-align: center" id="directories" class="sortable">
                     @foreach($datas as $key => $data)
-                    <tr class="{{$data->is_active == 1 ? '' : 'table-danger'}}">
+                    <tr id="{{$data->id}}" class="{{$data->is_active == 1 ? '' : 'table-danger'}}">
                       <td>{{$key + 1}}</td>
-                      <td>{{$data->name}}</td>
-                      <td>{{$data->address}}</td>
-                      <td>{{$data->email}}</td>
-                      <td>{{$data->phone}}</td>
+                      <td>{{$data->getUserDetail->name}}</td>
+                      <td>{{$data->getUserDetail->address}}</td>
+                      <td>{{$data->getUserDetail->email}}</td>
+                      <td>{{$data->getUserDetail->phone}}</td>
                       <td>
-                        @if($data->getUserMantralaya)
-                        <img src="{{ $data->getUserMantralaya->document == null ? asset('images/no-image-user.png') : asset('images/mantralaya') . '/' . $data->getUserMantralaya->document  }}" alt="" class="responsive" width="50" height="50">
-                        @else
-                        @endif
+                        <img src="{{ $data->document == null ? asset('images/no-image-user.png') : asset('images/mantralaya') . '/' . $data->document  }}" alt="" class="responsive" width="50" height="50">
                       </td>
                       <td>
                         <a href="{{ route('superadmin.mantralaya.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
@@ -63,7 +60,7 @@
                           <input name='_method' type='hidden' value='DELETE'>
                           <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
                         </form>
-                        <a href="{{route('superadmin.mantralaya.changepassword',$data->id)}}" class="btn btn-xs btn-outline-info" title="Change Password">
+                        <a href="{{route('superadmin.mantralaya.changepassword',$data->getUserDetail->id)}}" class="btn btn-xs btn-outline-info" title="Change Password">
                           <i class="fas fa-key"></i></a>
 
                       </td>
@@ -140,4 +137,22 @@
     });
   }
 </script>
+<script>
+    $(function(){
+      $("#directories").sortable({
+        stop: function(){
+          $.map($(this).find('tr'), function(el) {
+            var itemID = el.id;
+            var itemIndex = $(el).index();
+            $.ajax({
+              url:"{{route('superadmin.order-directories')}}",
+              type:'GET',
+              dataType:'json',
+              data: {itemID:itemID, itemIndex: itemIndex},
+            });
+          });
+        }
+      });
+    });
+  </script>
 @endpush
