@@ -165,6 +165,7 @@ class SurveyFormController extends Controller
      */
     public function destroy($id)
     {
+        // dd('hey');
         $datas = SurveyForm::find($id);
         $datas->delete();
         return response()->json([

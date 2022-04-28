@@ -1,6 +1,45 @@
 @extends('user.main.app')
 @push('style')
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+</style>
 @endpush
 @section('content')
 <?php $page = substr((Route::currentRouteName()), 11, strpos(str_replace('user.','',Route::currentRouteName()), ".")); ?>
@@ -73,7 +112,25 @@
                             <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
                           </form>
                           
-                         {{--   <a href="{{ route('user.surveyform.edit',$data->slug) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a> --}}
+                          {{--  <a href="{{ route('web.survey.question',$data->slug) }}" id="surveylink" class="btn btn-xs btn-outline-info" title="Update" value="{{ route('web.survey.question',$data->slug) }}"><i class="fa fa-copy"></i></a> --}}
+
+                            <span id="sample" >{{ route('web.survey.question',$data->slug) }}</span>
+                            
+                          {{--  <input id="input-txt"  type="text" value="{{ route('web.survey.question',$data->slug) }}">
+                           <button class="btn" data-clipboard-target="#surveylink">Copy</button>
+
+                           <textarea id="txtarea">clipboard.js is simple.</textarea>
+                           <button class="btn" data-clipboard-target="#txtarea">Copy</button>
+
+                           {{-- <input type="text" value="{{$data->slug}}" id="link">
+                           <button class="btn" data-clipboard-target="#link">Copy</button> --}}
+
+                          {{--  <span id="sample" value="{{$data->slug}}">{{$data->slug}}</span>
+                           <a href="#" onclick="CopyToClipboard({{$data->id}});return false;">Copy Text</a> --}}
+
+
+
+                          
                           
                         </td>
                       </tr>
@@ -145,4 +202,39 @@
       });
   }
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+<script type="text/javascript">
+    var Clipboard = new ClipboardJS('.btn');
+</script>
+
+<script>
+function CopyToClipboard(id) {
+  var copyText = document.getElementById("link");
+  // console.log('hello');
+  // console.log(copyText);
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(copyText.value);
+  
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copied: " + copyText.value;
+}
+
+function outFunc() {
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copy to clipboard";
+}
+</script>
+{{-- <script>
+function CopyToClipboard(id)
+{
+  console.log(id);
+var r = document.createRange();
+r.selectNode(document.getElementById(id));
+window.getSelection().removeAllRanges();
+window.getSelection().addRange(r);
+document.execCommand('copy');
+window.getSelection().removeAllRanges();
+}
+</script> --}}
 @endpush

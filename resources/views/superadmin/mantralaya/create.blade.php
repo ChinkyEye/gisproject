@@ -78,9 +78,18 @@
             @enderror
           </div>
           <div class="form-group">
-            <label for="prefix">Prefix</label>
+            <label for="is_sort">Prefix</label>
             <input type="text"  class="form-control max" id="prefix" placeholder="Enter prefix" name="prefix" autocomplete="off" autofocus value="{{ old('prefix') }}">
             @error('prefix')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+          <div class="form-group">
+            <label for="sort_id">Sort Id</label>
+            <input type="text"  class="form-control max" id="sort_id" placeholder="Enter Sorting Id" name="sort_id" autocomplete="off" autofocus value="{{ old('sort_id') }}">
+            @error('sort_id')
             <span class="text-danger font-italic" role="alert">
               <strong>{{ $message }}</strong>
             </span>
