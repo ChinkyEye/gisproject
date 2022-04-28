@@ -120,6 +120,15 @@
           </span>
           @enderror
         </div>
+          <div class="form-group">
+            <label for="sort_id">Sort Id</label>
+            <input type="text"  class="form-control max" id="sort_id" placeholder="Enter Sorting id" name="sort_id" autocomplete="off" autofocus value="{{$datas->getUserMantralaya->sort_id}}">
+            @error('sort_id')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
         <div class="form-group">
           <label for="imgInp">Photo</label>
           <div class="input-group">

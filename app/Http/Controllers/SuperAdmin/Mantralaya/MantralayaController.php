@@ -88,6 +88,7 @@ class MantralayaController extends Controller
             'is_local_level' => $request['is_local_level'],
             'link' => $request['link'],
             'prefix' => $request['prefix'],
+            'sort_id' => $request['sort_id'],
             'document'=> $fileName,
             'path'=> $destinationPath,
             'mimes_type'=> $mimes,
@@ -121,7 +122,7 @@ class MantralayaController extends Controller
     public function edit($id)
     {
         $datas = User::find($id);
-        return view('superadmin.mantralaya.edit', compact('datas'));
+        return view('superadmin.mantralaya.edit', compact('datas',));
     }
 
     /**
@@ -171,6 +172,7 @@ class MantralayaController extends Controller
 
         $mantralayahasuser->is_main = $request->is_main;
         $mantralayahasuser->is_local_level = $request->is_local_level;
+        $mantralayahasuser->sort_id = $request->sort_id;
         $mantralayahasuser->link = $request->link;
         $mantralayahasuser->prefix = $request->prefix;
         $mantralayahasuser->latitude = $request->latitude;
