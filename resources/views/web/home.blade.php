@@ -68,7 +68,7 @@
             @endforeach
         </div>
         <div class="mt-3 text-center">
-            <a href="{{route('web.mantralaya.index')}}" class="btn credit-btn box-shadow btn-2">View All</a>
+            <a href="{{route('web.mantralaya.index')}}" class="btn credit-btn box-shadow btn-2">{{ __('language.view-all')}}</a>
         </div>
     </div>
 </section>
@@ -125,7 +125,8 @@
                 <p>resource</p>
             </div>
         </div> --}}
-        <a href="#" class="btn credit-btn box-shadow btn-2">Read More</a>
+        {{-- <a href="#" class="btn credit-btn box-shadow btn-2">Read More</a> --}}
+        <a href="#" class="btn credit-btn box-shadow btn-2">{{ __('language.read-more') }}</a>
     </div>
     @endforeach
 </section>

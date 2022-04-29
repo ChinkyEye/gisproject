@@ -36,12 +36,12 @@
 					<table class="table table-bordered table-hover table-striped">
 						<thead class="text-center thead-dark">
 							<tr>
-								<th width="5%">SN</th>
-								<th class="text-left">Title</th>
-								<th width="10%">Date</th>
-								<th width="10%">Created At</th>
-								<th width="10%">File</th>
-								<th width="10%">Read More</th>
+								<th width="5%">{{ __('language.SN')}}</th>
+								<th class="text-left">{{ __('language.title')}}</th>
+								<th width="10%">{{ __('language.date')}}</th>
+								<th width="10%">{{ __('language.created-at')}}</th>
+								<th width="10%">{{ __('language.file')}}</th>
+								<th width="10%">{{ __('language.read-more')}}</th>
 							</tr>
 						</thead>
 						<tbody class="text-center">

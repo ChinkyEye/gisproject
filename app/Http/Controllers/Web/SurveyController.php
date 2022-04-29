@@ -37,12 +37,17 @@ class SurveyController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
         $imagefile = $request->file('image');
         $answers = $request->answer;
         $questions = $request->question;
         $checkbox = $request->checkbox;
         //for normal questions
+        // dd(in_array(null, $answers, true));
+        if(max($answers) == NULL)
+        {
+
+        }else{
+
         $surveyformhasusers = SurveyFormHasUser::create([
                     'ip'=> request()->ip(),
                     'surveyform_id'=> $request->survey_id,
@@ -124,6 +129,8 @@ class SurveyController extends Controller
             }
 
         };
+        // return redirect()->route('web.survey.index')->with('alert-success', 'Data created succesffully!!!!');
+        }
         return redirect()->route('web.survey.index')->with('alert-success', 'Data created succesffully!!!!');
     }
 }
