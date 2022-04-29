@@ -61,7 +61,8 @@
           <select id="nationality" class="form-control" name="page" id="page">
             <option value="" disabled selected>--Select--</option>
             <option value="background">Background</option>
-            <option value="mantralaya-detail">Mantralaya Detail</option>
+            {{-- <option value="mantralaya-detail">Mantralaya Detail</option> --}}
+            <option value="mantralaya">Mantralaya Detail</option>
             <option value="mantriparishad">Mantriparishad</option>
             <option value="block">Block</option>
             <option value="eservice">Eservice</option>
