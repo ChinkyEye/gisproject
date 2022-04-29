@@ -449,7 +449,7 @@ img {
     .header-area .credit-main-menu .classy-navbar {
       height: var(--menu-height-md);
       padding: 0;
-      background-color: var(--site-color-blue); }
+      background-color: var(--menu-color); }
       @media only screen and (max-width: 767px) {
         .header-area .credit-main-menu .classy-navbar {
           height: var(--menu-height-sm); } }
