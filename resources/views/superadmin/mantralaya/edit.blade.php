@@ -24,7 +24,7 @@
       <div class="card-body" >
         <div class="form-group">
           <label for="name">Name<span class="text-danger">*</span></label>
-          <input  type="text"  class="form-control max" id="name" placeholder="Enter name" name="name" autocomplete="off" value="{{ $datas->name }}">
+          <input  type="text"  class="form-control max" id="name" placeholder="Enter name" name="name" autocomplete="off" value="{{ $datas->getUserDetail->name }}">
           @error('name')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
@@ -33,7 +33,7 @@
         </div>
         <div class="form-group">
           <label for="address">Address</label>
-          <input type="text" class="form-control max" id="address" placeholder="Enter address" name="address" autocomplete="off" value="{{$datas->address}}">
+          <input type="text" class="form-control max" id="address" placeholder="Enter address" name="address" autocomplete="off" value="{{$datas->getUserDetail->address}}">
           @error('address')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
@@ -42,7 +42,7 @@
         </div>
         <div class="form-group">
           <label for="phone">Phone</label>
-          <input type="text"  class="form-control max" id="phone" placeholder="Enter phone" name="phone" autocomplete="off" value="{{ $datas->phone }}">
+          <input type="text"  class="form-control max" id="phone" placeholder="Enter phone" name="phone" autocomplete="off" value="{{ $datas->getUserDetail->phone }}">
           @error('phone')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
@@ -51,7 +51,7 @@
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email"  class="form-control max" id="email" placeholder="Enter email" name="email" autocomplete="off" value="{{ $datas->email }}">
+          <input type="email"  class="form-control max" id="email" placeholder="Enter email" name="email" autocomplete="off" value="{{ $datas->getUserDetail->email }}">
           @error('email')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
@@ -60,7 +60,7 @@
         </div>
         <div class="form-group">
           <label for="link">Link</label>
-          <input type="text"  class="form-control max" id="link" placeholder="Enter the link" name="link" autocomplete="off" value="{{ $datas->getUserMantralaya->link }}">
+          <input type="text"  class="form-control max" id="link" placeholder="Enter the link" name="link" autocomplete="off" value="{{ $datas->link }}">
           @error('link')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
@@ -68,18 +68,71 @@
           @enderror
         </div>
         <div class="form-group">
+          <label for="is_main">Is Main<span class="text-danger">*</span></label>
+          <div class="row col-md-5">
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="radio" name="is_main" id="yes" value="1" {{$datas->is_main == '1' ? 'checked' : ''}} >
+              <label class="form-check-label" for="is_main">
+                Yes
+              </label>
+            </div>
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="radio" name="is_main" id="no" value="0" {{$datas->is_main == '0' ? 'checked' : ''}}>
+              <label class="form-check-label" for="is_main">
+                No
+              </label>
+            </div>
+            @error('is_main')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="is_local_level">Is Local Level<span class="text-danger">*</span></label>
+          <div class="row col-md-5">
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="radio" name="is_local_level" id="yes" value="1" {{$datas->is_local_level == '1' ? 'checked' : ''}} >
+              <label class="form-check-label" for="is_local_level">
+                Yes
+              </label>
+            </div>
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="radio" name="is_local_level" id="no" value="0" {{$datas->is_local_level == '0' ? 'checked' : ''}}>
+              <label class="form-check-label" for="is_local_level">
+                No
+              </label>
+            </div>
+            @error('is_local_level')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+        </div>
+        <div class="form-group">
           <label for="prefix">Prefix</label>
-          <input type="text"  class="form-control max" id="prefix" placeholder="Enter the prefix" name="prefix" autocomplete="off" value="{{ $datas->getUserMantralaya->prefix }}">
+          <input type="text"  class="form-control max" id="prefix" placeholder="Enter the prefix" name="prefix" autocomplete="off" value="{{ $datas->prefix }}">
           @error('prefix')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
           </span>
           @enderror
         </div>
+          <div class="form-group">
+            <label for="sort_id">Sort Id</label>
+            <input type="text"  class="form-control max" id="sort_id" placeholder="Enter Sorting id" name="sort_id" autocomplete="off" autofocus value="{{$datas->sort_id}}">
+            @error('sort_id')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
         <div class="form-group">
           <label for="imgInp">Photo</label>
           <div class="input-group">
-            <img id="blah" src="{{URL::to('/')}}/images/mantralaya/{{$datas->getUserMantralaya->document}}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
+            <img id="blah" src="{{URL::to('/')}}/images/mantralaya/{{$datas->document}}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>
             <div class="input-group my-3">
              <input type='file' class="d-none" id="imgInp" name="image" />
            </div>
@@ -97,7 +150,7 @@
         <div class="row">
           <div class="form-group col-md">
             <label for="latitude">Latitude</label>
-            <input type="text"  class="form-control max" id="lat" placeholder="Enter the latitude" name="latitude" autocomplete="off" autofocus value="{{ $datas->getUserMantralaya->latitude }}">
+            <input type="text"  class="form-control max" id="lat" placeholder="Enter the latitude" name="latitude" autocomplete="off" autofocus value="{{ $datas->latitude }}">
             @error('latitude')
             <span class="text-danger font-italic" role="alert">
               <strong>{{ $message }}</strong>
@@ -106,7 +159,7 @@
           </div>
           <div class="form-group col-md">
             <label for="longitude">Longitude</label>
-            <input type="text"  class="form-control max" id="lang" placeholder="Enter the longitude" name="longitude" autocomplete="off" autofocus value="{{ $datas->getUserMantralaya->longitude }}">
+            <input type="text"  class="form-control max" id="lang" placeholder="Enter the longitude" name="longitude" autocomplete="off" autofocus value="{{ $datas->longitude }}">
             @error('longitude')
             <span class="text-danger font-italic" role="alert">
               <strong>{{ $message }}</strong>

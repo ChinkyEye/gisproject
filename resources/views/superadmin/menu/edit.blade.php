@@ -52,10 +52,15 @@
         <div class="form-group">
           <label for="select_model">Model</label>
           <select class="form-control" name="model" id="select_model">
-            <option value="">--Select--</option>
+            <option value="" Selected disabled>--Select--</option>
             <option value="Niti" {{ $menus->model == 'Niti' ? 'selected' : ''}}>Niti</option>
             <option value="Notice" {{ $menus->model == 'Notice' ? 'selected' : ''}}>Notice</option>
             <option value="About" {{ $menus->model == 'About' ? 'selected' : ''}}>About</option>
+            <option value="Mission" {{ $menus->model == 'Mission' ? 'selected' : ''}}>Mission</option>
+            <option value="Vision" {{ $menus->model == 'Vision' ? 'selected' : ''}}>Vision</option>
+            <option value="Gallery" {{ $menus->model == 'Gallery' ? 'selected' : ''}}>Gallery</option>
+            <option value="SangathanSanrachana" {{ $menus->model == 'SangathanSanrachana' ? 'selected' : ''}}>Sangathan Sanrachana</option>
+            <option value="Pratibedan" {{ $menus->model == 'Pratibedan' ? 'selected' : ''}}>Pratibedan</option>
           </select>
         </div>
         <div class="form-group">
@@ -87,15 +92,18 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="page">Page</label>
-          <input type="text"  class="form-control max" id="page" placeholder="Enter page" name="page" autocomplete="off" autofocus value="{{ $menus->page }}">
-          @error('page')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div>
-      </div>
+          <label for="select_model">Page</label>
+          <select class="form-control" name="page" id="page">
+           <option value="" selected disabled>-----Select Page------</option>
+           <option value="table" {{ $menus->page == 'table' ? 'selected' : ''}}>Table</option>
+           <option value="background" {{ $menus->page == 'background' ? 'selected' : ''}}>Background</option>
+           <option value="gallery-folder" {{ $menus->page == 'galary-folder' ? 'selected' : ''}}>Gallery</option>
+           <option value="contactus" {{ $menus->page == 'contactus' ? 'selected' : ''}}>Contact us</option>
+           <option value="detail" {{ $menus->page == 'detail' ? 'selected' : ''}}>Detail</option>
+           <option value="view-more" {{ $menus->page == 'view-more' ? 'selected' : ''}}>View More</option>
+         </select>
+       </div>
+     </div>
 
       </div>
       <div class="card-footer justify-content-between">

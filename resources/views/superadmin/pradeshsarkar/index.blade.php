@@ -28,9 +28,6 @@
                 <div class="col-md-2">
                   <a href="{{route('superadmin.pradeshsarkar.create')}}" class="btn btn-flat btn-danger btn-block text-capitalize" style="color:#fff">Add {{ $page }} <i class="fas fa-plus fa-fw"></i></a>
                 </div>
-                <div class="col-md-10">
-                  {{-- <input type="text" class="form-control" placeholder="Search by name"> --}}
-                </div>
               </div>
             </div><!-- /.card-header -->
             <div class="card-body">

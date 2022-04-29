@@ -44,8 +44,8 @@
         </div>
         <div class="form-group">
          <label for="website_link">Website Link</label>
-         <input type="text"  class="form-control max" id="website_link" placeholder="Enter website" name="website_link" autocomplete="off" autofocus value="{{ old('website_link') }}">
-         {{$offices->website_link}}</textarea>
+         <input type="text" class="form-control max" id="website_link" placeholder="Enter website" name="website_link" autocomplete="off" autofocus value="{{$offices->website_link}}">
+         
          @error('website_link')
          <span class="text-danger font-italic" role="alert">
           <strong>{{ $message }}</strong>
@@ -54,7 +54,7 @@
       </div>
       <div class="row">
         <div class="form-group col-md">
-          <label for="imgInp">Thumbnail<sub class="text-danger">(1074*617 pixel)</sub></label>
+          <label for="imgInp">Thumbnail<sup class="text-danger">  (1074*617 pixel)</sup></label>
           <div class="input-group">
             @if($offices->thumbnail)
             <img id="blah" src="{{URL::to('/')}}/images/officethumbnail/{{$offices->thumbnail}}" onclick="document.getElementById('imgInp').click();" alt="your image" class="img-thumbnail" style="width: 175px;height: 140px"/>

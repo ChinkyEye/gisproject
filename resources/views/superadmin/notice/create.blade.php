@@ -31,7 +31,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="description">Description <span class="text-danger">*</span></label>
+          <label for="description">Description</label>
           <textarea class="form-control" id="description" name="description">{{ old('description') }}</textarea>
           @error('description')
           <span class="text-danger font-italic" role="alert">
@@ -43,79 +43,42 @@
           <label for="scroll">Scroll Notice<span class="text-danger">*</span></label>
           <div class="row col-md-5">
             <div class="form-check-inline col-md">
-              <input class="form-check-input" type="radio" name="scroll" id="yes" value="1"  >
+              <input class="form-check-input" type="radio" name="scroll" id="yes" value="1"  {{ old('scroll') == "1" ? 'checked' : '' }}>
               <label class="form-check-label" for="scroll">
                 Yes
               </label>
             </div>
             <div class="form-check-inline col-md">
-              <input class="form-check-input" type="radio" name="scroll" id="no" value="0" >
+              <input class="form-check-input" type="radio" name="scroll" id="no" value="0" {{ old('scroll') == "2" ? 'checked' : '' }}>
               <label class="form-check-label" for="scroll">
                 No
               </label>
             </div>
           </div>
-            @error('scroll')
-            <span class="text-danger font-italic" role="alert">
-              <strong>{{ $message }}</strong>
-            </span>
-            @enderror
+          @error('scroll')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
         </div>
         <div class="form-group">
           <label for="type">Type <span class="text-danger">*</span></label><br>
           <div class="row col-md-12">
             @foreach ($modelhastypes as $key => $data)
             <div class="form-check-inline col-md">
-              <input class="form-check-inline" type="checkbox" name="type" value="{{$data->id}}" onclick="onlyOne(this)">
+              <input class="form-check-inline" type="checkbox" name="type" value="{{$data->id}}" onclick="onlyOne(this)" {{ old('type') == $data->id ? 'checked' : '' }}>
               <label class="form-check-label" for="type">
                {{$data->type}}
-               {{-- {{$data->id}} --}}
              </label>
            </div>
            @endforeach
-          </div>
-        </div>
-
-        {{-- <div class="form-group">
-          <label for="type">Type:<span class="text-danger">*</span></label>
-          <div class="row col-md-12">
-            <div class="form-check-inline col-md">
-              <input class="form-check-input" type="checkbox" name="type" id="type1" value="1">
-              <label class="form-check-label" for="type1">
-               Type1
-             </label>
-           </div>
-           <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="type2" value="2" >
-            <label class="form-check-label" for="type2">
-              Type2
-            </label>
-          </div>
-          <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="type3" value="3" >
-            <label class="form-check-label" for="type3">
-              type3
-            </label>
-          </div> 
-          <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="type4" value="4">
-            <label class="form-check-label" for="type4">
-              type4
-            </label>
-          </div>
-          <div class="form-check-inline col-md">
-            <input class="form-check-input" type="checkbox" name="type" id="type5" value="5" {>
-            <label class="form-check-label" for="type5">
-              type5
-            </label>
-          </div>
-        </div>
-        @error('type')
-        <span class="text-danger font-italic" role="alert">
+         </div>
+         @error('type')
+         <span class="text-danger font-italic" role="alert">
           <strong>{{ $message }}</strong>
         </span>
         @enderror
-      </div> --}}
+      </div>
       <div class="form-group">
         <label for="document">Document <span class="text-danger">(pdf only)</span></label>
         <div class="input-group">

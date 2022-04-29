@@ -2,11 +2,28 @@
 @section('content')
 @include('web.layouts.slider')
 {{-- section 1 --}}
-@if ($offices->count())
+@if ($mantralaya->count())
 <section class="features-area py-5 bg-gray">
     <div class="container-fluid">
         <div class="row">
-            @foreach($offices as $key => $data)
+            @foreach($mantralaya->where('is_main','1')->take(4) as $key => $data)
+            <div class="col-md-3 col-sm-6">
+                <div class="box">
+                    <img src="{{ $data->document == null ? asset('images/logo.png') : asset('images/mantralaya') . '/' . $data->document  }}">
+                    <div class="box-content">
+                        <a href="">
+                            <h5 class="title">{{$data->getUserDetail->name}}</h5>
+                            <span class="post">{{$data->getUserDetail->address}}</span>
+                        </a>
+                    </div>
+                    <ul class="icon">
+                        <li><a href="{{$data->link}}" target="_blank"><img src="{{ asset('images/logo.png')}}"></a></li>
+                    </ul>
+                </div>
+            </div>
+            @endforeach
+
+            {{-- @foreach($offices as $key => $data)
             <div class="col-md-3 col-sm-6">
                 <div class="box">
                     <img src="{{ $data->thumbnail == null ? asset('images/logo.png') : asset('images/officethumbnail') . '/' . $data->thumbnail  }}">
@@ -21,50 +38,7 @@
                     </ul>
                 </div>
             </div>
-            @endforeach
-
-            <!-- <div class="col-md-3 col-sm-6">
-                <div class="box">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
-                    <div class="box-content">
-                        <a href="">
-                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
-                            <span class="post">प्रदेश नं. १, विराटनगर</span>
-                        </a>
-                    </div>
-                    <ul class="icon">
-                        <li><a href="#"><img src="{{ url('web/img/nepal-gov-logo.png') }}"></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="box">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
-                    <div class="box-content">
-                        <a href="">
-                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
-                            <span class="post">प्रदेश नं. १, विराटनगर</span>
-                        </a>
-                    </div>
-                    <ul class="icon">
-                        <li><a href="#"><img src="{{ url('web/img/nepal-gov-logo.png') }}"></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="box">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg">
-                    <div class="box-content">
-                        <a href="">
-                            <h5 class="title">प्रदेश प्रमुखको कार्यालय</h5>
-                            <span class="post">प्रदेश नं. १, विराटनगर</span>
-                        </a>
-                    </div>
-                    <ul class="icon">
-                        <li><a href="#"><img src="{{ url('web/img/nepal-gov-logo.png') }}"></a></li>
-                    </ul>
-                </div>
-            </div> -->
+            @endforeach --}}
         </div>
         {{-- <div class=" text-center">
             <a href="#" class="btn credit-btn box-shadow btn-2">See More</a>
@@ -74,10 +48,10 @@
 @endif
 {{-- end section 1 --}}
 {{-- section 2 --}}
-<section class="features-area py-5 {{ $offices->count() ? '' : 'bg-light' }}">
+<section class="features-area py-5 {{ $mantralaya->count() ? '' : 'bg-light' }}">
     <div class="container-fluid">
         <div class="owl-carousel owl-carousel2 owl-theme d-flex">
-            @foreach($mantralaya as $key => $data)
+            @foreach($mantralaya->where('is_main','0') as $key => $data)
             <div class="item align-self-stretch">
                 <a href="{{route('web.mantralaya.detail',$data->id)}}" class="card" style="width: 18rem;">
                     <img src="{{ $data->document == null ? asset('images/noimage.png') : asset('images/mantralaya') . '/' . $data->document }}" class="card-img-top" alt="{{$data->getUserDetail->name}}">
@@ -87,11 +61,11 @@
                             <h6 class="card-title mb-0">{{$data->getUserDetail->name}}</h6>
                             <small class="post font-weight-bold">{{$data->getUserDetail->address}}</small>
                         </div>
+
                     </div>
                 </a>
             </div>
             @endforeach
-          
         </div>
         <div class="mt-3 text-center">
             <a href="{{route('web.mantralaya.index')}}" class="btn credit-btn box-shadow btn-2">View All</a>
@@ -119,7 +93,7 @@
         <div class="">
 
             <p>
-                {{$data->description}}
+                {!! $data->description !!}
             </p>
             
         </div>
@@ -168,7 +142,7 @@
                         <h4>Get in touch with us.</h4>
                     </div>
                     <div class="cta-btn">
-                        <a href="{{route('web.contactus.index')}}" class="btn credit-btn box-shadow">Contact</a>
+                        <a href="{{route('web.contactus.index')}}" class="btn credit-btn box-shadow">{{ __('language.contact')}}</a>
                     </div>
                 </div>
             </div>

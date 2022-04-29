@@ -111,6 +111,7 @@ class DalController extends Controller
     public function destroy($id)
     {
         $datas = Dal::find($id);
+        $datas->delete();
         return response()->json([
             'success' => 'Record has been deleted successfully!'
         ]);

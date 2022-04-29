@@ -78,7 +78,6 @@
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="{{ route('superadmin.niti.index')}}" class="nav-link {{ (request()->is('home/menu-page/niti*')) ? 'active' : '' }}">
-                {{-- <i class="nav-icon fas fa-user"></i> --}}
                 <i class="nav-icon fas fa-book"></i>
                 <p>
                   Niti
@@ -87,7 +86,6 @@
             </li>
             <li class="nav-item">
               <a href="{{ route('superadmin.notice.index')}}" class="nav-link {{ (request()->is('home/menu-page/notice*')) ? 'active' : '' }}">
-                {{-- <i class="nav-icon fas fa-user"></i> --}}
                 <i class="nav-icon fas fa-file-alt"></i>
                 <p>
                   Notice
@@ -222,7 +220,6 @@
             <li class="nav-item">
               <a href="{{ route('superadmin.importantplace.index')}}" class="nav-link {{ (request()->is('home/sidebar-part/importantplace*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-user"></i>
-                {{-- <i class="fa-solid fa-location-exclamation"></i> --}}
                 <p>
                   Important Places
                 </p>
@@ -238,26 +235,8 @@
             </li>
           </ul>
         </li>
-        <!-- <li class="nav-item">
-          <a href="{{ route('superadmin.agency.index')}}" class="nav-link {{ (request()->is('home/agency*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-calendar-alt"></i>
-            <p>
-              Agency
-            </p>
-          </a>
-        </li>   -->
-        {{-- <li class="nav-item">
-          <a href="{{ route('superadmin.user.index')}}" class="nav-link {{ (request()->is('home/user*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-user"></i>
-            <p>
-             User
-           </p>
-         </a>
-       </li> --}}
        <li class="nav-item">
           <a href="{{ route('superadmin.fiscalyear.index')}}" class="nav-link {{ (request()->is('home/fiscalyear*')) ? 'active' : '' }}">
-            {{-- <i class="nav-icon fas fa-user"></i> --}}
-            {{-- <i class="nav-icon fas fa-setting"></i> --}}
             <i class="nav-icon fas fa-cog"></i>
             <p>
              Fiscal Year
@@ -265,14 +244,14 @@
          </a>
        </li>
        </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a href="{{ route('superadmin.office.index')}}" class="nav-link {{ (request()->is('home/office*')) ? 'active' : '' }}">
             <i class="nav-icon fas fa-building"></i>
             <p>
              Office
            </p>
          </a>
-       </li>  
+       </li> --}}  
         <li class="nav-item">
           <a href="{{ route('superadmin.usefullink.index')}}" class="nav-link {{ (request()->is('home/usefullink*')) ? 'active' : '' }}">
             <i class="nav-icon fas  fa-link"></i>
@@ -286,14 +265,6 @@
             <i class="nav-icon fas fa-calendar-alt"></i>
             <p>
             Introduction
-           </p>
-         </a>
-       </li>
-        <li class="nav-item">
-          <a href="{{ route('superadmin.surveyform.index')}}" class="nav-link {{ (request()->is('home/surveyform*')) ? 'active' : '' }}">
-            <i class="nav-icon fas fa-calendar-alt"></i>
-            <p>
-            Survey
            </p>
          </a>
        </li>

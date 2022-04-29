@@ -36,10 +36,16 @@
         <div class="form-group">
           <label for="model_data">Model<span class="text-danger">*</span></label>
           <select id="nationality" class="form-control" name="model" id="modal">
-            <option value="">--Select--</option>
-            <option value="Mantralaya" {{ $sidemenus->model == 'Mantralaya' ? 'selected' : ''}}>Mantralaya</option>
+            <option value="" selected disabled>--Select--</option>
+
+            <option value="PradeshSarkar" {{ $sidemenus->model == 'PradeshSarkar' ? 'selected' : ''}}>PradeshSarkar</option>
+            <option value="MantralayaHasUser" {{ $sidemenus->model == 'MantralayaHasUser' ? 'selected' : ''}}>Mantralaya</option>
+            <option value="PradeshSabhaSadasya" {{ $sidemenus->model == 'PradeshSabhaSadasya' ? 'selected' : ''}}>Pradesh Sabha Sadasya</option>
+            <option value="Eservice" {{ $sidemenus->model == 'Eservice' ? 'selected' : ''}}>Eservice</option>
             <option value="HelloCM" {{ $sidemenus->model == 'HelloCM' ? 'selected' : ''}}>HelloCM</option>
-            <option value="PradeshSabhaSanrachana" {{ $sidemenus->model == 'PradeshSabhaSanrachana' ? 'selected' : ''}}>PradeshSabhaSadasya</option>
+            <option value="TblRemoteCorePerson">Api Mantri Parisadh</option>
+            <option value="TblRemoteCorePerson">Api KaryalayaPramukh</option>
+            <option value="ImportantPlace" {{ $sidemenus->model == 'ImportantPlace' ? 'selected' : ''}}>Important Places</option>
           </select>
         </div>
         <div class="form-group">
@@ -51,27 +57,18 @@
           </span>
           @enderror
         </div>
-        {{-- <div class="form-group">
-          <label for="page">Page<span class="text-danger">*</span></label>
-          <input type="text"  class="form-control max" id="page" placeholder="Enter menu name" name="page" autocomplete="off" value="{{ $sidemenus->page }}">
-          @error('page')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div> --}}
         <div class="form-group">
           <label for="page">Page</label>
           <select id="nationality" class="form-control" name="page" id="page">
             <option value="" disabled selected>--Select--</option>
-            <option value="background">Background</option>
-            <option value="mantralaya-detail">Mantralaya Detail</option>
-            <option value="mantriparishad">Mantriparishad</option>
-            <option value="block">Block</option>
-            <option value="eservice">Eservice</option>
-            <option value="table">Table</option>
-            <option value="hellocm">HelloCM</option>
-            <option value="important-place">Important Place</option>
+            <option value="background" {{ $sidemenus->page == 'background' ? 'selected' : ''}}>Background</option>
+            <option value="mantralaya-detail" {{ $sidemenus->page == 'mentralaya-detail' ? 'selected' : ''}}>Mantralaya Detail</option>
+            <option value="mantriparishad" {{ $sidemenus->page == 'mantriparishad' ? 'selected' : ''}}>Mantriparishad</option>
+            <option value="block" {{ $sidemenus->page == 'block' ? 'selected' : ''}}>Block</option>
+            <option value="eservice" {{ $sidemenus->page == 'eservice' ? 'selected' : ''}}>Eservice</option>
+            <option value="table" {{ $sidemenus->page == 'table' ? 'selected' : ''}}>Table</option>
+            <option value="hellocm" {{ $sidemenus->page == 'hellocm' ? 'selected' : ''}}>HelloCM</option>
+            <option value="important-place" {{ $sidemenus->page == 'important-place' ? 'selected' : ''}}>Important Place</option>
           </select>
           @error('page')
           <span class="text-danger font-italic" role="alert">

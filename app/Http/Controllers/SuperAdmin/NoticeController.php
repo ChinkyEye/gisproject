@@ -51,7 +51,6 @@ class NoticeController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'type' => 'required',
-            'description' => 'required',
             'scroll' => 'required',
         ]);
          
@@ -133,7 +132,6 @@ class NoticeController extends Controller
             'title' => 'required',
             'type' => 'required',
             'scroll' => 'required',
-            'description' => 'required',
         ]);
        
         $all_data = $request->all();

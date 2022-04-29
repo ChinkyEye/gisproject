@@ -51,7 +51,13 @@
                         <td>{{$key+1}}</td>
                         <td>{{$data->name}}</td>
                         <td>{{$data->address}}</td>
-                        <td>   <img src="{{ asset('images/officelogo/') . '/' . $data->logo }}" alt="" class="responsive" width="50"></td>
+                        @if($data->logo)
+                        <td>   
+                          <img src="{{ asset('images/officelogo/') . '/' . $data->logo }}" alt="" class="responsive" width="50">
+                        </td>
+                        @else
+                        <td></td>
+                        @endif
                         <td>
                          <a href="{{ route('superadmin.office.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivatenotice' : 'Click to activate' }}">
                           <i class="nav-icon fas {{ $data->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>

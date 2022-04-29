@@ -110,7 +110,8 @@ class IntroductionController extends Controller
      */
     public function update(Request $request, $id)
     {
-            $this->validate($request, [
+        $this->validate($request, [
+            'title' => 'required',
             'description' => 'required',
         ]);
 
@@ -149,7 +150,7 @@ class IntroductionController extends Controller
      */
     public function destroy($id)
     {
-         $datas = Introduction::find($id);
+        $datas = Introduction::find($id);
         $destinationPath = 'images/introduction/';
         $oldFilename = $destinationPath.'/'.$datas->document;
         if($datas->delete()){

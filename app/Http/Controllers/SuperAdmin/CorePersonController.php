@@ -47,12 +47,11 @@ class CorePersonController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $this->validate($request, [
             'name' => 'required',
-            'address' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required|digits_between:6,10',
+            // 'address' => 'required',
+            // 'email' => 'required|email',
+            // 'phone' => 'required|digits_between:6,10',
             'type' => 'required',
             'is_top' => 'required',
         ]);
@@ -113,10 +112,13 @@ class CorePersonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
         $corepersons = CorePerson::find($id);
-        $modelhastypes = ModelHasType::get();
+        $modelhastypes = ModelHasType::orderBy('id','ASC')
+                                    ->where('created_by', Auth::user()->id)
+                                    ->where('model',$request->model)
+                                    ->get();
         return view('superadmin.coreperson.edit', compact('corepersons','modelhastypes'));
     }
 
@@ -131,9 +133,9 @@ class CorePersonController extends Controller
     {
        $this->validate($request, [
             'name' => 'required',
-            'address' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required|digits_between:6,10',
+            // 'address' => 'required',
+            // 'email' => 'required|email',
+            // 'phone' => 'required|digits_between:6,10',
             'type' => 'required',
             'is_top' => 'required',
         ]);

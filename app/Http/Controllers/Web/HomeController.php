@@ -45,13 +45,13 @@ class HomeController extends Controller
         $remote_e_farums = TblRemoteEFarum::orderBy('id','DESC')->take(10)->get();
         $remote_prativedans = TblRemotePrativedan::orderBy('id','DESC')->take(10)->get();
         $remote_publications = TblRemotePublication::orderBy('id','DESC')->take(10)->get();
-        $offices = Office::orderBy('id','DESC')->get();
+        // $offices = Office::orderBy('id','DESC')->where('is_active','1')->get();
         $introductions = Introduction::orderBy('id','DESC')->where('is_active','1')->get();
         $sliders = Slider::orderBy('id','DESC')->where('is_active','1')->get();
         $coreperson = CorePerson::orderBy('id','DESC')->where('is_top','1')->where('is_active','1')->get();
         $mantralaya = MantralayaHasUser::orderBy('id','DESC')->where('is_active','1')->get();
 
-        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','offices','scroll_notice','introductions','sliders','coreperson','mantralaya']));
+        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','scroll_notice','introductions','sliders','coreperson','mantralaya']));
     }
 
     public function link(Request $request, $link,$link2 = Null)
@@ -125,6 +125,7 @@ class HomeController extends Controller
         // $type = Sidemenu::where('link',$link)->value('type');
 
         $modelName = '\\App\\' . $model;
+        // var_dump($modelName); die();
         if($link == 'mantriparishad'){
             $datas = $modelName::where('is_top','1')->get();
         }
@@ -137,6 +138,16 @@ class HomeController extends Controller
         $name = "";
         $level = "";
         return view('web.'.$page, compact(['datas','name','level']));
+    }
+
+    public function sidelinkmore(Request $request, $id)
+    {
+        $datas = MantralayaHasUser::select('id', 'longitude', 'latitude','user_id')->find($id);
+
+        return view('web.mantralaya-detail', [
+            'datas' => $datas
+        ]); 
+            
     }
 
     public function list() {

@@ -141,6 +141,8 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::get('sidebar-part/mantralaya/active/{id}', 'Mantralaya\MantralayaController@isActive')->name('mantralaya.active');
     Route::get('/sidebar-part/mantralaya/changepassword/{id}', 'Mantralaya\MantralayaController@PasswordForm')->name('mantralaya.changepassword');
     Route::post('/sidebar-part/mantralaya/changepassword/store/{id}', 'Mantralaya\MantralayaController@changePassword')->name('mantralaya.storechangepassword');
+    Route::get('/order-directories','Mantralaya\MantralayaController@order_directories')->name('order-directories');
+
 
     Route::resource('sidebar-part/importantplace','ImportantPlace\ImportantPlaceController');
     Route::get('sidebar-part/importantplace/active/{id}', 'ImportantPlace\ImportantPlaceController@isActive')->name('importantplace.active');
@@ -149,8 +151,8 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('fiscalyear','FiscalYearController');
     Route::get('fiscalyear/active/{id}', 'FiscalYearController@isActive')->name('fiscalyear.active');
 
-    Route::resource('office', 'Office\OfficeController');
-    Route::get('office/active/{id}', 'Office\OfficeController@isActive')->name('office.active');
+    // Route::resource('office', 'Office\OfficeController');
+    // Route::get('office/active/{id}', 'Office\OfficeController@isActive')->name('office.active');
 
 
     Route::resource('/usefullink','Usefullink\UsefullinkController');
@@ -180,6 +182,8 @@ Route::namespace('User')->prefix('user')->name('user.')->middleware(['user'])->g
     Route::get('surveyform/get/type', 'SurveyFormAttributeController@getType')->name('survey.getType');
     Route::post('/survey/form/edit', 'SurveyFormController@getSurveyEdit')->name('survey_form.edit');
     Route::delete('/surveyform/surveychoice/destroy/{id}','SurveyFormController@deleteSurveyChoice')->name('surveyformchoice.destroy');
+   //surveyformattributeedit
+    Route::get('surveyform/attribute/update', 'SurveyFormAttributeController@getSurveyAttributeUpdate')->name('survey.getSurveyAttributeUpdate');
     
     //surveychoiceform
     Route::post('/survey/form/choice/edit', 'SurveyFormController@getSurveyChoiceEdit')->name('survey_form_choice.edit');
@@ -214,5 +218,9 @@ Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest','setlocal
     Route::get('/{link}/detail/{id}', 'HomeController@detail')->name('home.detail');
     Route::get('/{link}/{link2}/more/{id}', 'HomeController@more')->name('home.more');
     Route::get('/web/sidelink/{link}', 'HomeController@sidelink')->name('home.sidelink');
+    Route::get('/web/sidelink/moredetail/{id}', 'HomeController@sidelinkmore')->name('home.sidelinkmore');
+    
+    Route::get('importantplace/moredetail/{id}', 'ImportantPlaceController@importantplacedetail')->name('home.importantplacedetail');
+
     
 });

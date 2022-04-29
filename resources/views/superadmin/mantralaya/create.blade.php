@@ -48,15 +48,6 @@
             </span>
             @enderror
           </div>
-          {{-- <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email"  class="form-control max" id="email" placeholder="Enter email" name="email" autocomplete="off" autofocus value="{{ old('email') }}">
-            @error('email')
-            <span class="text-danger font-italic" role="alert">
-              <strong>{{ $message }}</strong>
-            </span>
-            @enderror
-          </div> --}}
           <div class="row">
             <div class="form-group col-md">
               <label for="email">Email<span class="text-danger">*</span></label>
@@ -87,9 +78,62 @@
             @enderror
           </div>
           <div class="form-group">
-            <label for="prefix">Prefix</label>
+            <label for="is_sort">Prefix</label>
             <input type="text"  class="form-control max" id="prefix" placeholder="Enter prefix" name="prefix" autocomplete="off" autofocus value="{{ old('prefix') }}">
             @error('prefix')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+          <div class="form-group">
+            <label for="sort_id">Sort Id</label>
+            <input type="text"  class="form-control max" id="sort_id" placeholder="Enter Sorting Id" name="sort_id" autocomplete="off" autofocus value="{{ old('sort_id') }}">
+            @error('sort_id')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+          <div class="form-group">
+            <label for="scroll">Is Main</label>
+            <div class="row col-md-5">
+              <div class="form-check-inline col-md">
+                <input class="form-check-input" type="radio" name="is_main" id="yes" value="1"  {{ old('is_main') == "1" ? 'checked' : '' }}>
+                <label class="form-check-label" for="is_main">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check-inline col-md">
+                <input class="form-check-input" type="radio" name="is_main" id="no" value="0" {{ old('is_main') == "2" ? 'checked' : '' }}>
+                <label class="form-check-label" for="is_main">
+                  No
+                </label>
+              </div>
+            </div>
+            @error('scroll')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+          <div class="form-group">
+            <label for="scroll">Is Local Level</label>
+            <div class="row col-md-5">
+              <div class="form-check-inline col-md">
+                <input class="form-check-input" type="radio" name="is_local_level" id="yes" value="1"  {{ old('is_local_level') == "1" ? 'checked' : '' }} >
+                <label class="form-check-label" for="is_local_level">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check-inline col-md">
+                <input class="form-check-input" type="radio" name="is_local_level" id="no" value="0" {{ old('is_local_level') == "2" ? 'checked' : '' }}>
+                <label class="form-check-label" for="is_local_level">
+                  No
+                </label>
+              </div>
+            </div>
+            @error('scroll')
             <span class="text-danger font-italic" role="alert">
               <strong>{{ $message }}</strong>
             </span>

@@ -54,6 +54,8 @@
             <option value="Gallery">Gallery</option>
             <option value="SangathanSanrachana">Sangathan Sanrachana</option>
             <option value="Pratibedan">Pratibedan</option>
+            <option value="Department">Bivagh/Karyalaya</option>
+            <option value="ContactUs">Contact Us</option>
           </select>
         </div>
         <div class="form-group">
@@ -97,9 +99,14 @@
         <div class="form-group">
           <label for="page">Page</label>
           <select class="form-control" name="page" id="page">
+            <option value="" selected disabled>-----Select Page------</option>
             <option value="table">Table</option>
             <option value="background">Background</option>
-          <!-- <input type="text"  class="form-control max" id="page" placeholder="Enter page name" name="page" autocomplete="off" autofocus value="{{ old('page') }}"> -->
+            <option value="gallery-folder">Gallery</option>
+            <option value="contactus">Contact us</option>
+            <option value="detail">Detail</option>
+            <option value="view-more">View More</option>
+          </select> 
           @error('page')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>

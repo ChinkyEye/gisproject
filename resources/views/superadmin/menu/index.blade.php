@@ -18,34 +18,6 @@
     </div>
     <!-- /.content-header -->
     <!-- Main content -->
-    {{-- <section class="container-fluid">
-      <div class="box-body table-responsive">
-        @if(isset($menus))
-        @if(count($menus) > 0)
-        <table class="table table-sm table-bordered table-hover table-striped">
-          <tbody id="menu" class="sortable">
-              @foreach($menus as $menu)
-            <tr>
-              <td id="{{$menu->id}}">
-                <a class="">
-                  {{$menu->name}}
-                </a>
-              </td>
-            </tr>
-              @endforeach
-          </tbody>
-        </table>
-        <ul id="menu" class="list-inline sortable">
-          @foreach($menus as $menu)
-          <li class="list-inline-item" id="{{$menu->id}}">
-            <a class="btn btn-sm btn-dark text-white">{{$menu->name}}</a>
-          </li>
-          @endforeach
-        </ul>
-        @endif
-        @endif
-      </div>
-    </section> --}}
     <section class="content">
       <div class="container-fluid">
         <div class="row">
@@ -65,7 +37,7 @@
               </div><!-- /.card-header -->
               <div class="card-body p-0">
                 <div class="table-responsive">
-                  <table class="table {{-- table-sm --}} table-bordered table-hover mb-0">
+                  <table class="table table-sm table-bordered table-hover mb-0">
                     <thead class="thead-dark" style="text-align: center">                  
                       <tr>
                         <th>SN</th>
@@ -138,8 +110,6 @@
   </div>
 @endsection
 @push('javascript')
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.1/jquery-ui.min.js"></script> -->
 <script>
     $(function(){
       $("#menu").sortable({

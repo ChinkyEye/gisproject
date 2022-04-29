@@ -63,17 +63,6 @@
                         <td>{{$coreperson->link}}</td>
                         <td>
                           {{$coreperson->getCorepersonType->type}}
-                          {{-- @if($coreperson->type == 1)
-                          <span>Karyalaya Pramukh</span>
-                          @elseif($coreperson->type == 2)
-                          <span>Prabatdaa</span>
-                          @elseif($coreperson->type == 3)
-                          <span>Suchana Sunne</span>
-                          @elseif($coreperson->type == 2)
-                          <span>Gunaso Sunne</span>
-                          @else
-                          <span>Anya</span>
-                          @endif --}}
                         </td>
                         <td>
                           <a href="{{ route('superadmin.coreperson.active',$coreperson->id) }}" data-placement="top" title="{{ $coreperson->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
@@ -81,7 +70,11 @@
                           </a>
                         </td>
                         <td>
-                          <a href="{{ route('superadmin.coreperson.edit',$coreperson->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
+                         <form action="{{route('superadmin.coreperson.edit',$coreperson->id)}}" method="GET" class="d-inline-block">
+                          <input type="hidden" id="model" name="model" value="{{ Request::segment(3) }} ">
+                          <button type="submit" class="btn btn-xs btn-outline-info"><i class="fas fa-edit"></i></button>
+                        </form>
+
                           <form action='javascript:void(0)' data_url="{{route('superadmin.coreperson.destroy',$coreperson->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
                             <input type='hidden' name='_token' value='".csrf_token()."'>
                             <input name='_method' type='hidden' value='DELETE'>

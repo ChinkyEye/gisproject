@@ -24,7 +24,7 @@
           <thead>
             <tr>
               <th width="20">SN</th>
-              <th>Questions</th>
+              <th>Question</th>
               <th>Type</th>
               <th class="text-center">Status</th>
               <th>Action</th>
@@ -83,7 +83,7 @@
                       <thead>
                         <tr>
                           <th width="20">SN</th>
-                          <th>Questions</th>
+                          <th>Question</th>
                           <th>Type</th>
                         </tr>
                       </thead>
@@ -93,6 +93,9 @@
                         <tr  id="{{$data->id}}" class="{{$data->is_active == 1 ? '' : 'table-danger'}}">
                           <td><a>{{$key + 1}}</a></td>
                           <td><input type="text" class="clickable sort" name="report_id" id="{{$data->id}}" value="{{$data->question}}" readonly="true"> <span>{{($data->is_required == '1') ? '*' : ""}} </span>
+                            {{-- <div class="col-md-12" id="replaceTable">
+                              
+                            </div> --}}
 
                             @if($data->type == 'radio')
 
@@ -177,6 +180,7 @@
                                 <button type="submit" class="btn btn-info text-capitalize">Save</button>
                               </form>
                             </div>
+
                             
                             @elseif($data->type == 'checkbox')
 
@@ -219,15 +223,12 @@
                                 <button type="submit" class="btn btn-info text-capitalize">Save</button>
                               </form>
                             </div>
-                            
                             @endif
-
-                            
 
                           </td>
                         
                           <td>{{$data->type}}
-                            {{-- <select class="form-control max" id="type" name="type">
+                            <select class="form-control max" id="type" name="type">
                               <option value="">--Please choose one--</option>
                               <option value="short">Short Answer</option>
                               <option value="long">Long Answer</option>
@@ -239,7 +240,8 @@
                               <option value="checkbox">Checkbox</option>
                               <option value="date">Date</option>
                               <option value="image">Image</option>
-                            </select> --}}
+                            </select>
+                            <button type="submit" class="btn btn-info text-capitalize">Update {{$data->id}}</button>
                           </td>
                           
 
@@ -437,5 +439,34 @@
             e.preventDefault(); $(this).parent('div').remove(); 
             x--;
         });
+    </script>
+    <script type="text/javascript">
+      $("body").on("click","#updateattribute", function(event){
+        var type = $('#type').val(),
+            id = $('#type').val(),
+            token = $('meta[name="csrf-token"]').attr('content');
+            console.log(type);
+            $.ajax({
+              type:"GET",
+              dataType:"html",
+              url: "{{route('user.survey.getSurveyAttributeUpdate')}}",
+              data: {
+                _token: token,
+                type: type,
+              },
+              success:function(response){
+                // console.log(response,type);
+                // if(type == 'short')
+                $('#replaceTable').html();
+                $('#replaceTable').html(response);
+
+              },
+              error: function (e) {
+                alert('Sorry! we cannot load data this time');
+                return false;
+              }
+            });
+       
+      });
     </script>
 @endpush
