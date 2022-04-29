@@ -76,73 +76,22 @@
 {{-- section 2 --}}
 <section class="features-area py-5 {{ $offices->count() ? '' : 'bg-light' }}">
     <div class="container-fluid">
-        <div class="owl-carousel owl-carousel2 owl-theme">
+        <div class="owl-carousel owl-carousel2 owl-theme d-flex">
             @foreach($mantralaya as $key => $data)
-            <div class="item">
+            <div class="item align-self-stretch">
                 <a href="{{route('web.mantralaya.detail',$data->id)}}" class="card" style="width: 18rem;">
-                    <img src="{{ $data->document == null ? asset('images/noimage.png') : asset('images/mantralaya') . '/' . $data->document }}" class="card-img-top" alt="Images">
+                    <img src="{{ $data->document == null ? asset('images/noimage.png') : asset('images/mantralaya') . '/' . $data->document }}" class="card-img-top" alt="{{$data->getUserDetail->name}}">
                    <!--  <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="..."> -->
-                    <div class="card-body py-3 main-hover-card-text text-center">
-                        <h6 class="card-title mb-0">{{$data->getUserDetail->name}}</h6>
-                        <small class="post">{{$data->getUserDetail->address}}</small>
+                    <div class="card-body py-3 main-hover-card-text text-center position-absolute w-100">
+                        <div>
+                            <h6 class="card-title mb-0">{{$data->getUserDetail->name}}</h6>
+                            <small class="post font-weight-bold">{{$data->getUserDetail->address}}</small>
+                        </div>
                     </div>
                 </a>
             </div>
             @endforeach
-          <!--   <div class="item">
-                <a href="" class="card" style="width: 18rem;">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body py-3 main-hover-card-text text-center">
-                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
-                        <small class="post">प्रदेश नं. १, विराटनगर</small>
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="" class="card" style="width: 18rem;">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body py-3 main-hover-card-text text-center">
-                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
-                        <small class="post">प्रदेश नं. १, विराटनगर</small>
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="" class="card" style="width: 18rem;">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body py-3 main-hover-card-text text-center">
-                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
-                        <small class="post">प्रदेश नं. १, विराटनगर</small>
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="" class="card" style="width: 18rem;">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body py-3 main-hover-card-text text-center">
-                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
-                        <small class="post">प्रदेश नं. १, विराटनगर</small>
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="" class="card" style="width: 18rem;">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body py-3 main-hover-card-text text-center">
-                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
-                        <small class="post">प्रदेश नं. १, विराटनगर</small>
-                    </div>
-                </a>
-            </div>
-            <div class="item">
-                <a href="" class="card" style="width: 18rem;">
-                    <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="...">
-                    <div class="card-body py-3 main-hover-card-text text-center">
-                        <h6 class="card-title mb-0">प्रदेश प्रमुखको कार्यालय</h6>
-                        <small class="post">प्रदेश नं. १, विराटनगर</small>
-                    </div>
-                </a>
-            </div> -->
+          
         </div>
         <div class="mt-3 text-center">
             <a href="{{route('web.mantralaya.index')}}" class="btn credit-btn box-shadow btn-2">View All</a>
@@ -155,7 +104,9 @@
 <section class="cta-area d-flex flex-wrap">
     <!-- Cta Thumbnail -->
     @foreach($introductions as $data)
-    <div class="cta-thumbnail bg-img jarallax" > <img src="{{ $data->document == null ? asset('images/no-image-user.png') : asset('images/introduction') . '/' . $data->document }}"></div>
+    <div class="cta-thumbnail bg-img jarallax" > 
+        <img src="{{ $data->document == null ? asset('images/no-image-user.png') : asset('images/introduction') . '/' . $data->document }}">
+    </div>
     <!-- Cta Content -->
     <div class="cta-content bg-gray">
         <!-- Section Heading -->
@@ -566,6 +517,7 @@
         loop:true,
         margin:10,
         nav:false,
+        autoHeight:true,
         autoplay:true,
         autoplayTimeout:2000,
         autoplayHoverPause:true,

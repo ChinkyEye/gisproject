@@ -1,12 +1,21 @@
 :root{
-    --site-color-red: #bd2921;
-    --site-color-blue: #003679; /*#294d99*/
+    --site-color-red: #dc3545;/*#bd2921*/
+    --site-color-blue: #1b5693; /* #294d99 , #003679 */
     --primary: var(--site-color-blue);
     --site-color-footer-blue: #021c3c; /*#294d99*/
-    --menu-height-md: 4rem;
-    --menu-height-sm: 70px;
+    --site-color-red-trans: #dc3545ad;
+    --site-color-blue-trans: #1b5693ad;
+    
     --slider-height: 61vh;
     --main-slider-right-size: 140px;
+
+    --menu-height-md: 4rem;
+    --menu-height-sm: 70px;
+    --menu-color: #294d99;
+
+    --left-menu-color: #003679;
+
+    --box-bg-color: #1b5693;
 }
 
 .logo-main {
@@ -82,15 +91,43 @@
         font-size: .875rem;
     }
 
-.card:hover > .main-hover-card-text, .card:hover > .main-hover-card-text > .card-title {
-    transition: 1s;
-    color: var(--site-color-blue);
-}
+/*section 2*/
+    .card > .main-hover-card-text {
+        top: 30%;
+        /*height: 100%;*/
+        vertical-align: middle;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        /*bottom: 0;*/
+        /*background-color: var(--site-color-blue);*/
+    }
+    .card > .main-hover-card-text > * {
+        background-color: var(--box-bg-color);
+        padding: 15px 10px;
+        width: 100%;
+        transition: 1s;
+    }
+    .card > .main-hover-card-text, .card > .main-hover-card-text > * > * {
+        color: white;
+        transition: 1s;
+    }
 
-.card:hover > .main-hover-card-text > .post {
-    transition: .4s;
-    color: var(--site-color-red);
-}
+    .card:hover > .main-hover-card-text > * {
+        transition: 1s;
+        border-radius: 15px;
+        border: 1px dotted white;
+        /*background-color: var(--box-bg-color);*/
+        /*padding: 15px 10px;*/
+        /*color: white;*/
+    }
+
+    /*.card:hover > .main-hover-card-text > .post {*/
+        /*transition: padding .4s;*/
+        /*color: white;*/
+    }
+/**/
 
 .table-anchor {
     color: var(--site-color-red);
@@ -293,24 +330,29 @@
     }
 
     .items-body-content {
+        background: linear-gradient(to top, var(--left-menu-color),var(--left-menu-color));
+        /*background: linear-gradient(to top, #cbcbcb,#fff);*/
+        /*background: linear-gradient(to bottom, var(--site-color-red),var(--site-color-blue-trans));*/
         /*background: linear-gradient(to bottom, #00142d, var(--site-color-blue));*/
         /*background: repeating-linear-gradient(to left top, var(--site-color-red), var(--site-color-blue));*/
         /*background: radial-gradient(#00142d 0%, var(--site-color-blue));*/
-        /*color: white !important;*/
-        padding: 10px;
+        /*background: radial-gradient( #cbcbcb 0%,#fff);*/
+        color: white !important;
+        padding: 1vh;
         padding-right: 0px;
         padding-left: 20px;
         display: grid;
         /*grid-template-columns: 10fr 1fr;*/
-        font-size: 12px;
-        font-weight: normal;
-        grid-gap: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        /*grid-gap: 10px;*/
         /*border: 1px solid #e9e9e9;*/
         /*cursor: pointer;*/
-        transition: background 0.4s;
+        transition: color 0.4s;
         /*border-top: 1px solid var(--site-color-blue);*/
         /*border-bottom: 1px solid var(--site-color-blue);*/
-        box-shadow: 0px 1px 0px 0px #dbdbdb;
+        /*box-shadow: 0px 1px 0px 0px #dbdbdb;*/
+        box-shadow: 0px 1px 4px 0px #dbdbdb;
     }
 
     .items-body-content:hover, .items-body-content:focus {
@@ -319,8 +361,8 @@
         /*border-bottom: 1px solid var(--site-color-red);*/
         /*background: radial-gradient(#00142d, var(--site-color-blue));*/
         box-shadow: 0px 0px 0px 1px var(--site-color-blue);
-        font-weight: normal !important;
-        font-size: 12px !important;
+        font-weight: bold !important;
+        font-size: 18px !important;
         color: var(--site-color-red) !important;
     }
 
@@ -375,7 +417,7 @@
     }
     .box:hover:before{
         transform: rotate(55deg);
-        right: -60%;
+        right: -44%;
     }
     .box img{
         width: 100%;
@@ -781,3 +823,8 @@
 
 /* breadcrumb */
 
+/* other */
+    .credit-btn:hover, .credit-btn:focus{
+        background-color: white;
+        color: var(--site-color-red);
+    }
