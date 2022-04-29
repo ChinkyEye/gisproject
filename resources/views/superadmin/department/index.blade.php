@@ -48,7 +48,7 @@
                     @foreach($datas as $key => $data)
                     <tr class="{{$data->is_active == 1 ? '' : 'table-danger'}} text-center">
                       <td>{{$key + 1}}</td>
-                      <td>{{$data->name}}</td>
+                      <td>{{$data->office_name}}</td>
                       <td>{{$data->designation}}</td>
                       <td>{{$data->email}}</td>
                       <td>{{$data->phone}}</td>
