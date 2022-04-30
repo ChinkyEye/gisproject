@@ -1,6 +1,5 @@
-    
 <div class="footer-border"></div>
-<footer class="footer-area section-padding-100-0">
+<footer class="footer-area pt-5">
     <div class="container">
         <div class="row">
 
@@ -11,7 +10,7 @@
                     @foreach($aboutus as $data)
                     <p>{!! $data->description !!} </p>
                     @endforeach
-                    <a href="" class="text-danger hover-icon">Read more <i class="fa fa-arrow-right"></i></a>
+                    <a href="" class="text-footer-danger hover-icon">Read more <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>
             <div class="col-12 col-sm-6 col-lg-3">
@@ -27,30 +26,6 @@
                         </div>
                     </div>
                     @endforeach
-                   <!--  <div class="single-latest-news-area d-flex align-items-center">
-                        <div class="news-content">
-                            <span class="text-light icon-foot">
-                                <i class="fa fa-angle-right"></i>
-                            </span>
-                            <a href="#" class="d-inline-block">List title here</a>
-                        </div>
-                    </div>
-                    <div class="single-latest-news-area d-flex align-items-center">
-                        <div class="news-content">
-                            <span class="text-light icon-foot">
-                                <i class="fa fa-angle-right"></i>
-                            </span>
-                            <a href="#" class="d-inline-block">List title here</a>
-                        </div>
-                    </div>
-                    <div class="single-latest-news-area d-flex align-items-center">
-                        <div class="news-content">
-                            <span class="text-light icon-foot">
-                                <i class="fa fa-angle-right"></i>
-                            </span>
-                            <a href="#" class="d-inline-block">List title here</a>
-                        </div>
-                    </div> -->
                 </div>
             </div>
             <!-- Single Footer Widget -->
@@ -102,21 +77,60 @@
     </div>
 
     <!-- Copywrite Area -->
-    <div class="copywrite-area">
+    {{-- <div class="copywrite-area">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="copywrite-content d-flex flex-wrap justify-content-center justify-content-md-between align-items-center">
-                        <!-- Footer Logo -->
                         <span class="footer-logo">
                             <img src="{{ url('/web') }}/img/core-img/logo.png" alt="" class="img-fluid foot-logo-main mr-2">
                             <img src="{{ url('/web') }}/img/flag.gif" alt="" class="img-fluid foot-logo-main">
                         </span>
 
-                        <!-- Copywrite Text -->
                         <p class="copywrite-text text-white text-center text-md-right">
                             <a href="javascript:void(0)" class="text-white">
                                 सर्वाधिकार सुरक्षित &copy; <script>document.write(new Date().getFullYear());</script>  <a href="https://techware.com.np" target="_blank">मुख्यमन्त्री तथा मन्त्रिपरिषद्को कार्यालय
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+    <div class="copywrite-area py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="copywrite-content">
+                        <ul class="list-inline text-center">
+                            <li class="list-inline-item">
+                                <a href="" class="text-white">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="" class="text-white">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="" class="text-white">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="" class="text-white">
+                                    <i class="fa fa-youtube-play"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <p class="copywrite-text text-white text-center">
+                            <a href="javascript:void(0)" class="text-white">
+                                सर्वाधिकार सुरक्षित 
+                                &copy; 
+                                <script>document.write(new Date().getFullYear());</script>  
+                                |
+                                <a href="https://techware.com.np" target="_blank">मुख्यमन्त्री तथा मन्त्रिपरिषद्को कार्यालय
                             </a>
                         </p>
                     </div>

@@ -21,8 +21,8 @@
                     <div class="classynav">
                         <ul>
                             @foreach($total_menu as $key => $data)
+                            @if($data->parent_id == '0')
                             <li>
-                                @if($data->parent_id == '0')
                                 <a href="{{ $data->is_main == '0' ? route('web.home.link',$data->link) : '#' }}">
                                     @if(app()->getLocale() == 'en')
                                     {{ $data->name }}
@@ -30,7 +30,6 @@
                                     {{ $data->name_np }}
                                     @endif
                                 </a>
-                                @endif
                                 @if($data->parent()->count())
                                 <ul class="dropdown">
                                     @foreach($data->parent()->get() as $d)
@@ -47,6 +46,7 @@
                                 </ul>
                                 @endif
                             </li>
+                            @endif
                             @endforeach
                             <li>
                                 <a href="{{route('web.survey.index')}}">Survey</a>
