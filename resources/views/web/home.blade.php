@@ -151,10 +151,6 @@
                     </div>
                 </div>
             </div>
-            @endforeach
-        </div>
-        <div class="mt-3 text-center">
-            <a href="{{route('web.mantralaya.index')}}" class="btn credit-btn box-shadow btn-2">{{ __('language.view-all')}}</a>
         </div>
     </div>
 </section>
@@ -264,43 +260,6 @@
                 </div>
             </div>
         </div>
-        <div class="">
-
-            <p>
-                {!! $data->description !!}
-            </p>
-            
-        </div>
-        {{-- <div class="d-flex flex-wrap mt-50">
-            <div class="single-skils-area mb-70 mr-5">
-                <div id="circle" class="circle" data-value="0.90">
-                    <div class="skills-text">
-                        <span>90%</span>
-                    </div>
-                </div>
-                <p>Energy</p>
-            </div>
-
-            <div class="single-skils-area mb-70 mr-5">
-                <div id="circle2" class="circle" data-value="0.75">
-                    <div class="skills-text">
-                        <span>75%</span>
-                    </div>
-                </div>
-                <p>power</p>
-            </div>
-
-            <div class="single-skils-area mb-70">
-                <div id="circle3" class="circle" data-value="0.97">
-                    <div class="skills-text">
-                        <span>97%</span>
-                    </div>
-                </div>
-                <p>resource</p>
-            </div>
-        </div> --}}
-        {{-- <a href="#" class="btn credit-btn box-shadow btn-2">Read More</a> --}}
-        <a href="#" class="btn credit-btn box-shadow btn-2">{{ __('language.read-more') }}</a>
     </div>
 </section>
 {{-- end section 3 --}}
