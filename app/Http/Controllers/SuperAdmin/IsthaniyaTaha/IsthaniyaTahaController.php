@@ -5,7 +5,7 @@ namespace App\Http\Controllers\SuperAdmin\IsthaniyaTaha;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class IsthaniyaTaha extends Controller
+class IsthaniyaTahaController extends Controller
 {
     /**
      * Display a listing of the resource.

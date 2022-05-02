@@ -195,6 +195,8 @@ Route::namespace('User')->prefix('user')->name('user.')->middleware(['user'])->g
     Route::get('surveyform/surveyanswer/{id}', 'SurveyFormController@getSurveyanswer')->name('surveyform.surveyanswer');
     Route::get('/survey-question','SurveyFormController@survey_question')->name('survey-question');
 
+    Route::resource('/istaniyataha','IstaniyaTaha\IstaniyaTahaController');
+
 });
 
 Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest','setlocale'])->group(function(){
