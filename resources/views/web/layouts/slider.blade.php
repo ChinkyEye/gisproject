@@ -34,7 +34,16 @@
                     मन्त्रालयहरु 
                 </p>
             </div>
+            @foreach($mantralaya as $key => $data)
             <div class="list-item-body-top">
+                <a href="//{{$data->link}}" target="_blank" class="list-item-body-content-top">
+                    <span class="text-dark">
+                       {{$data->getUserDetail->name}}
+                    </span>
+                </a>
+            </div>
+            @endforeach
+           <!--  <div class="list-item-body-top">
                 <a href="" target="_blank" class="list-item-body-content-top">
                     <span class="text-dark">
                         Something
@@ -117,14 +126,7 @@
                         Something
                     </span>
                 </a>
-            </div>
-            <div class="list-item-body-top">
-                <a href="" target="_blank" class="list-item-body-content-top">
-                    <span class="text-dark">
-                        Something
-                    </span>
-                </a>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
