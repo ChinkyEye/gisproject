@@ -10,7 +10,7 @@
             <div class="col-md-3 col-sm-6">
                 <div class="card rounded-0 border-0">
                     <a href="{{$data->link}}">
-                        <img src="{{ $data->document == null ? asset('images/logo.png') : asset('images/mantralaya') . '/' . $data->document  }}" class="card-img-top  rounded-0">
+                        <img src="{{ $data->document == null ? asset('images/noimage.png') : asset('images/mantralaya') . '/' . $data->document  }}" class="card-img-top  rounded-0">
                         <div class="card-body card-main-body">
                             <h5 class="title">{{$data->getUserDetail->name}}</h5>
                             <span class="post">{{$data->getUserDetail->address}}</span>
@@ -336,6 +336,8 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores distinctio delectus aperiam blanditiis ipsa. Veniam dolorem, laudantium? Harum culpa, provident iure, rerum minima corporis molestias esse voluptatibus cumque. Ipsa, earum.</p>
                 </div>
             </div>
+            <div id="barchart_material" style="width: 100%; height: 500px;"></div>
+            </div>
             <div class="col-md bg-white p-1">
                 <div class="d-flex flex-column p-2">
                     <div class="mb-1">
@@ -583,4 +585,32 @@
       }
     </script>
 
+<script type="text/javascript">
+
+  google.charts.load('current', {'packages':['bar']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+        ['Order Id', 'Price', 'Product Name'],
+
+        @php
+          foreach($isthaniya as $order) {
+              echo "['".$order->id."', ".$order->metropolitan.", ".($order->metropolitan == null ? '0' : $order->metropolitan )."],";
+
+          }
+        @endphp
+    ]);
+
+    var options = {
+      chart: {
+        title: 'Bar Graph | Price',
+        subtitle: 'Price, and Product Name: @php echo $isthaniya[0]->created_at @endphp',
+      },
+      bars: 'vertical'
+    };
+    var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+    chart.draw(data, google.charts.Bar.convertOptions(options));
+  }
+</script>
 @endpush

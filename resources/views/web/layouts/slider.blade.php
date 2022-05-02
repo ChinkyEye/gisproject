@@ -34,7 +34,8 @@
                     मन्त्रालयहरु 
                 </p>
             </div>
-            @foreach($mantralaya as $key => $data)
+            @foreach($mantralaya ->where('is_side','1') as $key => $data)
+          
             <div class="list-item-body-top">
                 <a href="//{{$data->link}}" target="_blank" class="list-item-body-content-top">
                     <span class="text-dark">
@@ -42,6 +43,7 @@
                     </span>
                 </a>
             </div>
+          
             @endforeach
            <!--  <div class="list-item-body-top">
                 <a href="" target="_blank" class="list-item-body-content-top">

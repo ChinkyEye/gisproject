@@ -26,6 +26,7 @@ class CreateMantralayaHasUsersTable extends Migration
             $table->string('longitude')->nullable();
             $table->integer('is_main')->nullable();
             $table->integer('is_local_level')->nullable();
+            $table->integer('is_side')->nullable();
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);

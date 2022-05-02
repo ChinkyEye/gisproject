@@ -33,7 +33,6 @@
         <div class="form-group">
           <label for="address">Address:<span class="text-danger">*</span></label>
           <input type="text"  class="form-control max" id="address" placeholder="Enter address" name="address" autocomplete="off" autofocus value="{{ old('address') }}">
-          <span class="error mt-2" style="color: red; display: none">* Input digits (0 - 9)</span>
           @error('address')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>
@@ -53,7 +52,6 @@
         <div class="form-group">
           <label for="email">Email:</label>
           <input type="email"  class="form-control max" id="email" placeholder="Enter email" name="email" autocomplete="off" autofocus value="{{ old('email') }}">
-          <span class="error mt-2" style="color: red; display: none">* Input digits (0 - 9)</span>
           @error('email')
           <span class="text-danger font-italic" role="alert">
             <strong>{{ $message }}</strong>

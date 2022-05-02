@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ url('/web') }}/css/style.css">
     <link rel="stylesheet" href="{{ url('/web') }}/css/style.main.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     @stack('css')
 </head>
@@ -48,6 +49,7 @@
     <script src="{{ url('/web') }}/js/jquery.marquee-1.4.0.min.js"></script>
     <script src="{{ url('/web') }}/js/plugins/plugins.js"></script>
     <script src="{{ url('/web') }}/js/active.js"></script>
+    
 
     @stack('js')
 </body>

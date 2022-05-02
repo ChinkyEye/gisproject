@@ -102,7 +102,7 @@ class DepartmentController extends Controller
     {
      $data = Department::find($id);
      return view('superadmin.department.edit', compact('data'));
- }
+     }
 
     /**
      * Update the specified resource in storage.

@@ -268,6 +268,14 @@
            </p>
          </a>
        </li>
+       <li class="nav-item">
+          <a href="{{route('superadmin.istaniyataha.index')}}" class="nav-link {{ (request()->is('home/istaniyataha*')) ? 'active' : '' }}">
+            <i class="nav-icon fas fa-calendar-alt"></i>
+            <p>
+            Istaniyataha
+           </p>
+         </a>
+       </li>
       </ul>
     </nav>
   </div>

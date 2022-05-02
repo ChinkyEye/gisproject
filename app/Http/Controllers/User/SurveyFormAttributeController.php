@@ -83,22 +83,21 @@ class SurveyFormAttributeController extends Controller
                     // dd($value);
                     $value->delete();
                 }
-                // $find_surveychoice->delete();
          
             }
-            // $find_surveychoice->delete();
-            // dd($find_surveychoice);
-            // foreach($dropdownoption as $key=>$value){
-            //     $surveychoiceforms = SurveyFormHasChoice::create([
-            //         'surveyform_has_attr_id' => $surveyforms->id,
-            //         'choice' => $dropdownoption[$key],
-            //         'is_active' => '1',
-            //         'date' => date("Y-m-d"),
-            //         'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
-            //         'time' => date("H:i:s"),
-            //         'created_by' => Auth::user()->id,
-            //     ]);
-            // }
+        }
+
+        if($find_id->type == 'radio'){
+            // dd('hey');/
+            $find_surveychoice = SurveyFormHasChoice::where('surveyform_has_attr_id',$id)->get();
+
+            if($find_surveychoice){
+                foreach ($find_surveychoice as $key => $value) {
+                    // dd($value);
+                    $value->delete();
+                }
+         
+            }
         }
 
 
@@ -121,23 +120,23 @@ class SurveyFormAttributeController extends Controller
             $date = $request->date;
         }
         // dd($type);
+        // dd($request);
       
 
-        // if($type == 'radio'){
-        //     $find_values = SurveyFormHasAttribute::find($id);
-        //     // dd($find_values);
-        //     // foreach($radiooption as $key=>$value){
-        //     //     $surveychoiceforms = SurveyFormHasChoice::create([
-        //     //         'surveyform_has_attr_id' => $surveyforms->id,
-        //     //         'choice' => $radiooption[$key],
-        //     //         'is_active' => '1',
-        //     //         'date' => date("Y-m-d"),
-        //     //         'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
-        //     //         'time' => date("H:i:s"),
-        //     //         'created_by' => Auth::user()->id,
-        //     //     ]);
-        //     // }
-        // }
+        if($type == 'radio'){
+           $radiooption = $request->radiooption;
+           foreach($radiooption as $key=>$value){
+               $surveychoiceforms = SurveyFormHasChoice::create([
+                   'surveyform_has_attr_id' => $id,
+                   'choice' => $radiooption[$key],
+                   'is_active' => '1',
+                   'date' => date("Y-m-d"),
+                   'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+                   'time' => date("H:i:s"),
+                   'created_by' => Auth::user()->id,
+               ]);
+           }
+        }
         // dd($request);
 
         $find_id->type = $type;
@@ -145,20 +144,20 @@ class SurveyFormAttributeController extends Controller
         $find_id->max = $request->max;
         $find_id->update();
 
-        if($type == 'dropdown'){
-            $dropdownoption = $request->dropdownoption;
-            foreach($dropdownoption as $key=>$value){
-                $surveychoiceforms = SurveyFormHasChoice::create([
-                    'surveyform_has_attr_id' => $id,
-                    'choice' => $dropdownoption[$key],
-                    'is_active' => '1',
-                    'date' => date("Y-m-d"),
-                    'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
-                    'time' => date("H:i:s"),
-                    'created_by' => Auth::user()->id,
-                ]);
-            }
-        }
+        // if($type == 'dropdown'){
+        //     $dropdownoption = $request->dropdownoption;
+        //     foreach($dropdownoption as $key=>$value){
+        //         $surveychoiceforms = SurveyFormHasChoice::create([
+        //             'surveyform_has_attr_id' => $id,
+        //             'choice' => $dropdownoption[$key],
+        //             'is_active' => '1',
+        //             'date' => date("Y-m-d"),
+        //             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+        //             'time' => date("H:i:s"),
+        //             'created_by' => Auth::user()->id,
+        //         ]);
+        //     }
+        // }
 
         // if($type == 'checkbox'){
         //     foreach($checkboxoption as $key=>$value){
