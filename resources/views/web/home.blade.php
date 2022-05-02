@@ -341,7 +341,8 @@
                     <div class="mb-1">
                         <span class="font-weight-bold">तत्यांक तथा विवरणहरु</span>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores distinctio delectus aperiam blanditiis ipsa. Veniam dolorem, laudantium? Harum culpa, provident iure, rerum minima corporis molestias esse voluptatibus cumque. Ipsa, earum.</p>
+                    <div id="piechart" style="width: 900px; height: 500px;"></div>
+                    {{-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores distinctio delectus aperiam blanditiis ipsa. Veniam dolorem, laudantium? Harum culpa, provident iure, rerum minima corporis molestias esse voluptatibus cumque. Ipsa, earum.</p> --}}
                 </div>
             </div>
         </div>
@@ -541,4 +542,45 @@
         }
     })
 </script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          // ['Task', 'Hours per Day'],
+          // ['Work',     11],
+          // ['Eat',      2],
+          // ['Commute',  2],
+          // ['Watch TV', 2],
+          // ['Sleep',    7]
+
+
+
+          ['Sthaniya', 'Number'],
+
+          @php
+          foreach($isthaniya as $isthaniyas) {
+            echo "['municipalities', ".$isthaniyas->metropolitan."],
+                ['sub municipalities', ".$isthaniyas->sub_metropolitan."], 
+                ['municipalities', ".$isthaniyas->municipalities."], 
+                ['rural_municipalities',".($isthaniyas->rural_municipalities == null ? '0' : $isthaniyas->rural_municipalities)."]";
+        }
+        @endphp
+
+
+        ]);
+
+        var options = {
+          title: 'My Daily Activities'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
 @endpush
