@@ -17,7 +17,7 @@ class CreateIsthaniyaTahasTable extends Migration
             $table->id();            
             $table->string('metropolitan')->nullable();           
             $table->string('sub_metropolitan')->nullable();           
-            $table->string('municipalities ')->nullable();           
+            $table->string('municipalities')->nullable();           
             $table->string('rural_municipalities')->nullable();           
             $table->string('forest_area')->nullable();           
             $table->string('population')->nullable();           
