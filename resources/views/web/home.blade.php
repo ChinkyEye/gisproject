@@ -540,6 +540,33 @@
         }
     })
 </script>
+<script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Municipalities', 'Sub Metropolitan', 'Municipalities'],
+
+            @php
+            foreach($isthaniya as $isthaniyas) {
+                echo "['".$isthaniyas->metropolitan."', ".$isthaniyas->sub_metropolitan.", ".$isthaniyas->municipalities."],";
+            }
+            @endphp
+            ]);
+
+        var options = {
+            title: 'Pie Charts',
+            is3D: false,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+          // console.log(data, options);
+          chart.draw(data, options);
+      }
+</script>
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['corechart']});
@@ -572,7 +599,7 @@
         ]);
 
         var options = {
-          title: 'My Daily Activities'
+          title: 'Pie Charts'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
