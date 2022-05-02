@@ -10,7 +10,7 @@
             <div class="col-md-3 col-sm-6">
                 <div class="card rounded-0 border-0">
                     <a href="{{$data->link}}">
-                        <img src="{{ $data->document == null ? asset('images/logo.png') : asset('images/mantralaya') . '/' . $data->document  }}" class="card-img-top  rounded-0">
+                        <img src="{{ $data->document == null ? asset('images/noimage.png') : asset('images/mantralaya') . '/' . $data->document  }}" class="card-img-top  rounded-0">
                         <div class="card-body card-main-body">
                             <h5 class="title">{{$data->getUserDetail->name}}</h5>
                             <span class="post">{{$data->getUserDetail->address}}</span>

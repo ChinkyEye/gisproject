@@ -138,6 +138,28 @@
               <strong>{{ $message }}</strong>
             </span>
             @enderror
+          </div>    
+          <div class="form-group">
+            <label for="side">Is Side</label>
+            <div class="row col-md-5">
+              <div class="form-check-inline col-md">
+                <input class="form-check-input" type="radio" name="is_side" id="yes" value="1"  {{ old('is_side') == "1" ? 'checked' : '' }} >
+                <label class="form-check-label" for="is_side">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check-inline col-md">
+                <input class="form-check-input" type="radio" name="is_side" id="no" value="0" {{ old('is_side') == "0" ? 'checked' : '' }}>
+                <label class="form-check-label" for="is_side">
+                  No
+                </label>
+              </div>
+            </div>
+            @error('is_side')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
           </div>
           <div class="form-group">
             <label for="imgInp">Image</label>

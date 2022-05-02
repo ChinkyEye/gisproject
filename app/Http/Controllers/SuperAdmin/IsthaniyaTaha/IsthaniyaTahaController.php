@@ -19,7 +19,7 @@ class IsthaniyaTahaController extends Controller
     public function index()
     {
         $datas = IsthaniyaTaha::get();
-       return view('superadmin.istaniyataha.index', compact('datas'));
+        return view('superadmin.istaniyataha.index', compact('datas'));
     }
 
     /**
@@ -40,33 +40,30 @@ class IsthaniyaTahaController extends Controller
      */
     public function store(Request $request)
     {
-      $this->validate($request, [
-            
-          
-        ]);
-         $datas = IsthaniyaTaha::create([
-            'metropolitan' => $request['metropolitan'],
-            'sub_metropolitan' => $request['sub_metropolitan'],
-            'municipalities' => $request['municipalities'],
-            'sub_metropolitan' => $request['sub_metropolitan'],
-            'rural_municipalities' => $request['rural_municipalities'],
-            'forest_area' => $request['forest_area'],
-            'population' => $request['population'],
-            'agricultural_land' => $request['agricultural_land'],
-            'tourists_site' => $request['tourists_site'],
-            'electricity_dev' => $request['electricity_dev'],
-            'district' => $request['district'],
-            'wada' => $request['wada'],
-            'industries' => $request['industries'],
-            'is_active' => '1',
-            'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
-            'date' => date("Y-m-d"),
-            'time' => date("H:i:s"),
-            'created_by' => Auth::user()->id,
-        ]);
       
-        return redirect()->route('superadmin.istaniyataha.index')->with('alert-success', 'Link added successfully');;
-    }
+       $datas = IsthaniyaTaha::create([
+        'metropolitan' => $request['metropolitan'],
+        'sub_metropolitan' => $request['sub_metropolitan'],
+        'municipalities' => $request['municipalities'],
+        'sub_metropolitan' => $request['sub_metropolitan'],
+        'rural_municipalities' => $request['rural_municipalities'],
+        'forest_area' => $request['forest_area'],
+        'population' => $request['population'],
+        'agricultural_land' => $request['agricultural_land'],
+        'tourists_site' => $request['tourists_site'],
+        'electricity_dev' => $request['electricity_dev'],
+        'district' => $request['district'],
+        'wada' => $request['wada'],
+        'industries' => $request['industries'],
+        'is_active' => '1',
+        'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+        'date' => date("Y-m-d"),
+        'time' => date("H:i:s"),
+        'created_by' => Auth::user()->id,
+    ]);
+       
+       return redirect()->route('superadmin.istaniyataha.index')->with('alert-success', 'Link added successfully');;
+   }
 
     /**
      * Display the specified resource.
@@ -100,18 +97,18 @@ class IsthaniyaTahaController extends Controller
      */
     public function update(Request $request, $id)
     {
-       $this->validate($request, [
-            
-        ]);
-        $datas = IsthaniyaTaha::find($id);
-        $all_data = $request->all();
-        $all_data['updated_by'] = Auth::user()->id;
-        if($datas->update($all_data))
-        {
-            return redirect()->route('superadmin.istaniyataha.index')->with('alert-success', 'Data updated succesffully!!!!');;
-        };
+     $this->validate($request, [
+        
+     ]);
+     $datas = IsthaniyaTaha::find($id);
+     $all_data = $request->all();
+     $all_data['updated_by'] = Auth::user()->id;
+     if($datas->update($all_data))
+     {
+        return redirect()->route('superadmin.istaniyataha.index')->with('alert-success', 'Data updated succesffully!!!!');;
+    };
 
-    }
+}
 
     /**
      * Remove the specified resource from storage.
@@ -132,24 +129,24 @@ class IsthaniyaTahaController extends Controller
         $get_is_active = IsthaniyaTaha::where('id',$id)->value('is_active');
         $isactive = IsthaniyaTaha::find($id);
         if($get_is_active == 0){
-        $isactive->is_active = 1;
-        $notification = array(
-          'message' => $isactive->name.' is Active!',
-          'alert-type' => 'success'
-        );
+            $isactive->is_active = 1;
+            $notification = array(
+              'message' => $isactive->name.' is Active!',
+              'alert-type' => 'success'
+          );
         }
         else {
-        $isactive->is_active = 0;
-        $notification = array(
-          'message' => $isactive->name.' is inactive!',
-          'alert-type' => 'error'
-        );
+            $isactive->is_active = 0;
+            $notification = array(
+              'message' => $isactive->name.' is inactive!',
+              'alert-type' => 'error'
+          );
         }
         if(!($isactive->update())){
-        $notification = array(
-          'message' => $isactive->name.' could not be changed!',
-          'alert-type' => 'error'
-        );
+            $notification = array(
+              'message' => $isactive->name.' could not be changed!',
+              'alert-type' => 'error'
+          );
         }
         return back()->with($notification)->withInput();
     }

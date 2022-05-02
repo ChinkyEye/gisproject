@@ -15,18 +15,18 @@ class CreateIsthaniyaTahasTable extends Migration
     {
         Schema::create('isthaniya_tahas', function (Blueprint $table) {
             $table->id();            
-            $table->string('metropolitan')->nullable();           
-            $table->string('sub_metropolitan')->nullable();           
-            $table->string('municipalities')->nullable();           
-            $table->string('rural_municipalities')->nullable();           
-            $table->string('forest_area')->nullable();           
-            $table->string('population')->nullable();           
-            $table->string('agricultural_land')->nullable();           
-            $table->string('tourists_site')->nullable();           
-            $table->string('electricity_dev')->nullable();           
-            $table->string('district')->nullable();           
-            $table->string('wada')->nullable();           
-            $table->string('industries')->nullable();           
+            $table->integer('metropolitan')->nullable();           
+            $table->integer('sub_metropolitan')->nullable();           
+            $table->integer('municipalities')->nullable();           
+            $table->integer('rural_municipalities')->nullable();           
+            $table->integer('forest_area')->nullable();           
+            $table->integer('population')->nullable();           
+            $table->integer('agricultural_land')->nullable();           
+            $table->integer('tourists_site')->nullable();           
+            $table->integer('electricity_dev')->nullable();           
+            $table->integer('district')->nullable();           
+            $table->integer('wada')->nullable();           
+            $table->integer('industries')->nullable();           
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);
             $table->string('date',10);

@@ -17,7 +17,7 @@ class MantralayaHasUser extends Model
         'link',
         'is_main',
         'is_local_level',
-        'prefix',
+        'is_side',
         'latitude',
         'longitude',
         'sort_id',
