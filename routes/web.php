@@ -164,6 +164,8 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
      Route::resource('sidebar-part/pradeshsarkar','PradeshSarkar\PradeshSarkarController');
      Route::get('sidebar-part/pradeshsarkar/active/{id}', 'PradeshSarkar\PradeshSarkarController@isActive')->name('pradeshsarkar.active');
 
+    Route::resource('/istaniyataha','IsthaniyaTaha\IsthaniyaTahaController');
+     Route::get('/istaniyataha/active/{id}', 'IsthaniyaTaha\IsthaniyaTahaController@isActive')->name('istaniyataha.active');
 });
 
 
@@ -195,7 +197,7 @@ Route::namespace('User')->prefix('user')->name('user.')->middleware(['user'])->g
     Route::get('surveyform/surveyanswer/{id}', 'SurveyFormController@getSurveyanswer')->name('surveyform.surveyanswer');
     Route::get('/survey-question','SurveyFormController@survey_question')->name('survey-question');
 
-    Route::resource('/istaniyataha','IstaniyaTaha\IstaniyaTahaController');
+
 
 });
 
