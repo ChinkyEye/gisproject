@@ -66,6 +66,120 @@ class SurveyFormAttributeController extends Controller
 
     }
 
+    public function getSurveyAttributeUpdate(Request $request)
+    {
+        // dd($request->id);
+        $id = $request->id;
+        $find_id = SurveyFormHasAttribute::find($id);
+        $type = $request->type;
+        // dd($find_id->type,$request->type);
+
+        if($find_id->type == 'dropdown'){
+            // dd('hey');/
+            $find_surveychoice = SurveyFormHasChoice::where('surveyform_has_attr_id',$id)->get();
+
+            if($find_surveychoice){
+                foreach ($find_surveychoice as $key => $value) {
+                    // dd($value);
+                    $value->delete();
+                }
+                // $find_surveychoice->delete();
+         
+            }
+            // $find_surveychoice->delete();
+            // dd($find_surveychoice);
+            // foreach($dropdownoption as $key=>$value){
+            //     $surveychoiceforms = SurveyFormHasChoice::create([
+            //         'surveyform_has_attr_id' => $surveyforms->id,
+            //         'choice' => $dropdownoption[$key],
+            //         'is_active' => '1',
+            //         'date' => date("Y-m-d"),
+            //         'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+            //         'time' => date("H:i:s"),
+            //         'created_by' => Auth::user()->id,
+            //     ]);
+            // }
+        }
+
+
+        if($type == 'short'){
+            $type = 'text';
+        }
+
+        if($type == 'long'){
+            $type = 'textarea';
+        }
+
+        if($type == 'image'){
+            $type = 'file';
+            $type_mimes = 'jpg';
+
+        }
+
+        if($type == 'date'){
+            $type = 'date';
+            $date = $request->date;
+        }
+        // dd($type);
+      
+
+        // if($type == 'radio'){
+        //     $find_values = SurveyFormHasAttribute::find($id);
+        //     // dd($find_values);
+        //     // foreach($radiooption as $key=>$value){
+        //     //     $surveychoiceforms = SurveyFormHasChoice::create([
+        //     //         'surveyform_has_attr_id' => $surveyforms->id,
+        //     //         'choice' => $radiooption[$key],
+        //     //         'is_active' => '1',
+        //     //         'date' => date("Y-m-d"),
+        //     //         'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+        //     //         'time' => date("H:i:s"),
+        //     //         'created_by' => Auth::user()->id,
+        //     //     ]);
+        //     // }
+        // }
+        // dd($request);
+
+        $find_id->type = $type;
+        $find_id->min = $request->min;
+        $find_id->max = $request->max;
+        $find_id->update();
+
+        if($type == 'dropdown'){
+            $dropdownoption = $request->dropdownoption;
+            foreach($dropdownoption as $key=>$value){
+                $surveychoiceforms = SurveyFormHasChoice::create([
+                    'surveyform_has_attr_id' => $id,
+                    'choice' => $dropdownoption[$key],
+                    'is_active' => '1',
+                    'date' => date("Y-m-d"),
+                    'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+                    'time' => date("H:i:s"),
+                    'created_by' => Auth::user()->id,
+                ]);
+            }
+        }
+
+        // if($type == 'checkbox'){
+        //     foreach($checkboxoption as $key=>$value){
+        //         $surveychoiceforms = SurveyFormHasChoice::create([
+        //             'surveyform_has_attr_id' => $surveyforms->id,
+        //             'choice' => $checkboxoption[$key],
+        //             'is_active' => '1',
+        //             'date' => date("Y-m-d"),
+        //             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+        //             'time' => date("H:i:s"),
+        //             'created_by' => Auth::user()->id,
+        //         ]);
+        //     }
+        // }
+        
+        return redirect()->back()->with('alert-success', 'Data updated successfully!!');
+
+        
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -93,9 +93,8 @@
                         <tr  id="{{$data->id}}" class="{{$data->is_active == 1 ? '' : 'table-danger'}}">
                           <td><a>{{$key + 1}}</a></td>
                           <td><input type="text" class="clickable sort" name="report_id" id="{{$data->id}}" value="{{$data->question}}" readonly="true"> <span>{{($data->is_required == '1') ? '*' : ""}} </span>
-                            {{-- <div class="col-md-12" id="replaceTable">
-                              
-                            </div> --}}
+                            
+
 
                             @if($data->type == 'radio')
 
@@ -180,6 +179,7 @@
                                 <button type="submit" class="btn btn-info text-capitalize">Save</button>
                               </form>
                             </div>
+                            
 
                             
                             @elseif($data->type == 'checkbox')
@@ -228,20 +228,32 @@
                           </td>
                         
                           <td>{{$data->type}}
-                            <select class="form-control max" id="type" name="type">
-                              <option value="">--Please choose one--</option>
-                              <option value="short">Short Answer</option>
-                              <option value="long">Long Answer</option>
-                              <option value="url">URL</option>
-                              <option value="number">Number</option>
-                              <option value="email">Email</option>
-                              <option value="radio">Radio</option>
-                              <option value="dropdown">Dropdown</option>
-                              <option value="checkbox">Checkbox</option>
-                              <option value="date">Date</option>
-                              <option value="image">Image</option>
-                            </select>
-                            <button type="submit" class="btn btn-info text-capitalize">Update {{$data->id}}</button>
+                            <form role="form" method="POST" action="{{route('user.survey.getSurveyAttributeUpdate')}}" class="signup" id="signup" enctype="multipart/form-data">
+                              @csrf
+                              <input type="text" name="id" value="{{$data->id}}">
+                              <select class="form-control max" id="type" name="type">
+                                <option value="">--Please choose one--</option>
+                                <option value="short" {{$data->type == 'short' ? 'selected' : ''}}>Short Answer</option>
+                                <option value="long" {{$data->type == 'textarea' ? 'selected' : ''}}>Long Answer</option>
+                                <option value="url">URL</option>
+                                <option value="number">Number</option>
+                                <option value="email">Email</option>
+                                <option value="radio">Radio</option>
+                                <option value="dropdown">Dropdown</option>
+                                <option value="checkbox">Checkbox</option>
+                                <option value="date">Date</option>
+                                <option value="image">Image</option>
+                              </select>
+                              <div class="col-md-12" id="replaceTable">
+                                
+                              </div>
+                              <button type="submit" class="btn btn-info text-capitalize" >Update</button>
+
+                              
+                              
+                            </form>
+                            
+                            {{-- <button type="submit" class="btn btn-info text-capitalize" id="updateattribute" ids="{{$data->id}}">Update {{$data->id}}</button> --}}
                           </td>
                           
 
@@ -441,11 +453,123 @@
         });
     </script>
     <script type="text/javascript">
+       
+        function cloningSection() {
+          var clone = $(".radio-entry-table:first").clone();
+          clone.find("input").val("");
+          $("#radio-entry-table").after(clone);
+        }
+
+        function removeSection(e) {
+            e.preventDefault();
+            // $("#radio-entry-table:closest").remove();
+            $(this).parent('#radio-entry-table').remove();
+        }
+
+        function cloningdropdownSection() {
+          var clone = $(".dropdown-entry-table:first").clone();
+          clone.find("input").val("");
+          $("#dropdown-entry-table").after(clone);
+        }
+
+
+        
+    </script>
+    <script type="text/javascript">
+      $("body").on("change","#type", function(event){
+        var type = $('#type').val(),
+            token = $('meta[name="csrf-token"]').attr('content');
+            // console.log('kkkk');
+            $.ajax({
+              type:"GET",
+              dataType:"html",
+              url: "{{route('user.survey.getType')}}",
+              data: {
+                _token: token,
+                type: type,
+              },
+              success:function(response){
+                console.log(response);
+                $('#replaceTable').html();
+                $('#replaceTable').html(response);
+                $("body").on("click", ".radio_more", function(event){
+                  // debugger;
+                  cloningSection();
+                });
+                $("body").on("click", ".radio-entry-table .radio_remove", function(event){
+                // $("#radio-entry-table .radio_remove").click(function(e){
+                  event.preventDefault();
+                  $(this).parent().remove();
+                });
+
+                $("body").on("click", ".dropdown_more", function(event){
+                  // debugger;
+                  cloningdropdownSection();
+                });
+                $("body").on("click", ".dropdown-entry-table .dropdown_remove", function(event){
+                // $("#radio-entry-table .radio_remove").click(function(e){
+                  event.preventDefault();
+                  $(this).parent().remove();
+                });
+
+              },
+              error: function (e) {
+                alert('Sorry! we cannot load data this time');
+                return false;
+              }
+            });
+       
+      });
+    </script><script type="text/javascript">
+  $("body").on("change","#type", function(event){
+    var type = $('#type').val(),
+        token = $('meta[name="csrf-token"]').attr('content');
+        $.ajax({
+          type:"GET",
+          dataType:"html",
+          url: "{{route('user.survey.getType')}}",
+          data: {
+            _token: token,
+            type: type,
+          },
+          success:function(response){
+            // console.log('lll');
+            $('#replaceTable').html();
+            $('#replaceTable').html(response);
+            $("body").on("click", ".radio_more", function(event){
+              // debugger;
+              cloningSection();
+            });
+            $("body").on("click", ".radio-entry-table .radio_remove", function(event){
+            // $("#radio-entry-table .radio_remove").click(function(e){
+              event.preventDefault();
+              $(this).parent().remove();
+            });
+
+            $("body").on("click", ".dropdown_more", function(event){
+              // debugger;
+              cloningdropdownSection();
+            });
+            $("body").on("click", ".dropdown-entry-table .dropdown_remove", function(event){
+            // $("#radio-entry-table .radio_remove").click(function(e){
+              event.preventDefault();
+              $(this).parent().remove();
+            });
+
+          },
+          error: function (e) {
+            alert('Sorry! we cannot load data this time');
+            return false;
+          }
+        });
+   
+  });
+</script>
+    <script type="text/javascript">
       $("body").on("click","#updateattribute", function(event){
         var type = $('#type').val(),
-            id = $('#type').val(),
+            id = $(event.target).attr('ids'),
             token = $('meta[name="csrf-token"]').attr('content');
-            console.log(type);
             $.ajax({
               type:"GET",
               dataType:"html",
@@ -453,6 +577,7 @@
               data: {
                 _token: token,
                 type: type,
+                id: id,
               },
               success:function(response){
                 // console.log(response,type);

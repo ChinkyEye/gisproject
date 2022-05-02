@@ -183,7 +183,7 @@ Route::namespace('User')->prefix('user')->name('user.')->middleware(['user'])->g
     Route::post('/survey/form/edit', 'SurveyFormController@getSurveyEdit')->name('survey_form.edit');
     Route::delete('/surveyform/surveychoice/destroy/{id}','SurveyFormController@deleteSurveyChoice')->name('surveyformchoice.destroy');
    //surveyformattributeedit
-    Route::get('surveyform/attribute/update', 'SurveyFormAttributeController@getSurveyAttributeUpdate')->name('survey.getSurveyAttributeUpdate');
+    Route::post('surveyform/attribute/update/allvalues', 'SurveyFormAttributeController@getSurveyAttributeUpdate')->name('survey.getSurveyAttributeUpdate');
     
     //surveychoiceform
     Route::post('/survey/form/choice/edit', 'SurveyFormController@getSurveyChoiceEdit')->name('survey_form_choice.edit');
