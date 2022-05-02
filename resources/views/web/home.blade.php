@@ -327,23 +327,19 @@
             </div>
             <div class="col-md bg-white px-2 mx-2">
                 <div class=" d-flex flex-column p-2">
-                    <div class="mb-1">
-                        <a href="" class="btn-graph">
-                            नया गुनासोको दर्ता गर्नुहोस 
-                            <i class="fa fa-plus"></i>
-                        </a>
-                    </div>
+                    
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores distinctio delectus aperiam blanditiis ipsa. Veniam dolorem, laudantium? Harum culpa, provident iure, rerum minima corporis molestias esse voluptatibus cumque. Ipsa, earum.</p>
                 </div>
             </div>
-            <div id="barchart_material" style="width: 100%; height: 500px;"></div>
+            <div id="barchart_material" ></div>
             </div>
+            <div id="piechart"></div>
             <div class="col-md bg-white p-1">
                 <div class="d-flex flex-column p-2">
                     <div class="mb-1">
                         <span class="font-weight-bold">तत्यांक तथा विवरणहरु</span>
                     </div>
-                    <div id="piechart" style="width: 900px; height: 500px;"></div>
+                    
                     {{-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores distinctio delectus aperiam blanditiis ipsa. Veniam dolorem, laudantium? Harum culpa, provident iure, rerum minima corporis molestias esse voluptatibus cumque. Ipsa, earum.</p> --}}
                 </div>
             </div>
