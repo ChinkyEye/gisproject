@@ -61,6 +61,8 @@
             <option value="Gallery" {{ $menus->model == 'Gallery' ? 'selected' : ''}}>Gallery</option>
             <option value="SangathanSanrachana" {{ $menus->model == 'SangathanSanrachana' ? 'selected' : ''}}>Sangathan Sanrachana</option>
             <option value="Pratibedan" {{ $menus->model == 'Pratibedan' ? 'selected' : ''}}>Pratibedan</option>
+             <option value="Department" {{ $menus->model == 'Department' ? 'selected' : ''}} >Bivagh/Karyalaya</option>
+            <option value="ContactUs"{{ $menus->model == 'ContactUs' ? 'selected' : ''}}>Contact Us</option>
           </select>
         </div>
         <div class="form-group">

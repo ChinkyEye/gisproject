@@ -4,16 +4,20 @@
     @if($data->link_type == 0)
     <a href="{{ route('web.home.sidelink',$data->link) }}" class="items-body-content">
       <span>
-        @if(app()->getLocale() == 'en')
+        <i class="fa fa-briefcase mr-2"></i>
+        आयोग
+        <i class="float-right fa fa-caret-right mr-2"></i>
+        {{-- @if(app()->getLocale() == 'en')
         {{$data->name}}
         @else
         {{$data->name_np}}
-        @endif
+        @endif --}}
       </span>
     </a>
     @else
     <a href="{{ $data->link }}" class="items-body-content" target="_blank">
       <span>
+        <i class="fa fa-briefcase mr-2"></i>
         @if(app()->getLocale() == 'en')
         {{$data->name}}
         @else

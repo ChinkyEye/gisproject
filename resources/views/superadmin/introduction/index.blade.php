@@ -28,6 +28,7 @@
                     <tr>
                       <th >SN</th>
                       <th>Title</th>
+                      <th>Image</th>
                       <th>Status</th>
                       <th>Action</th>
                     </tr>
@@ -37,16 +38,18 @@
                       <tr class="{{$data->is_active == 1 ? '' : 'table-danger'}}">
                         <td>{{$key + 1}}</td>
                         <td>{{$data->title}}</td>
-                        
+                        <td>
+                          <img src="{{ $data->document ? asset('images/introduction') . '/' . $data->document : ''  }}" alt="your image" class="responsive" width="50" height="50">
+                        </td>
                         <td>
                           <a href="{{ route('superadmin.introduction.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                             <i class="nav-icon fas {{ $data->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
                           </a>
                         </td>
                         <td>
-                           <a href="{{ route('superadmin.introduction.edit',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-edit"></i></a>
-                       
-
+                          <a href="{{ route('superadmin.introduction.edit',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update">
+                            <i class="fas fa-edit"></i>
+                          </a>
                           <form action='javascript:void(0)' data_url="{{route('superadmin.introduction.destroy',$data->id)}}" method='post' class='d-inline-block'  data-placement='top' title='Permanent Delete' onclick='myFunction(this)'>
                             <input type='hidden' name='_token' value='".csrf_token()."'>
                             <input name='_method' type='hidden' value='DELETE'>

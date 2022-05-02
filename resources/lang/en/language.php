@@ -44,6 +44,13 @@ return [
      'read-more' => 'Read more',
      'created-at' => 'Created at',
      'read_more' => 'Read More',
+     'view-all' => 'View All',
+     'title' => 'Title',
+     'SN' => 'SN',
+     'date' => 'Date',
+     'created-at' => 'Created At',
+     'file' => 'File',
+     'action' => 'Action',
 
 
 

@@ -151,8 +151,8 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('fiscalyear','FiscalYearController');
     Route::get('fiscalyear/active/{id}', 'FiscalYearController@isActive')->name('fiscalyear.active');
 
-    Route::resource('office', 'Office\OfficeController');
-    Route::get('office/active/{id}', 'Office\OfficeController@isActive')->name('office.active');
+    // Route::resource('office', 'Office\OfficeController');
+    // Route::get('office/active/{id}', 'Office\OfficeController@isActive')->name('office.active');
 
 
     Route::resource('/usefullink','Usefullink\UsefullinkController');
@@ -219,5 +219,8 @@ Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest','setlocal
     Route::get('/{link}/{link2}/more/{id}', 'HomeController@more')->name('home.more');
     Route::get('/web/sidelink/{link}', 'HomeController@sidelink')->name('home.sidelink');
     Route::get('/web/sidelink/moredetail/{id}', 'HomeController@sidelinkmore')->name('home.sidelinkmore');
+    
+    Route::get('importantplace/moredetail/{id}', 'ImportantPlaceController@importantplacedetail')->name('home.importantplacedetail');
+
     
 });
