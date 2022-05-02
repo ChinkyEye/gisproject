@@ -336,6 +336,8 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores distinctio delectus aperiam blanditiis ipsa. Veniam dolorem, laudantium? Harum culpa, provident iure, rerum minima corporis molestias esse voluptatibus cumque. Ipsa, earum.</p>
                 </div>
             </div>
+            <div id="barchart_material" style="width: 100%; height: 500px;"></div>
+            </div>
             <div class="col-md bg-white p-1">
                 <div class="d-flex flex-column p-2">
                     <div class="mb-1">
@@ -540,5 +542,33 @@
             }
         }
     })
+</script>
+<script type="text/javascript">
+
+  google.charts.load('current', {'packages':['bar']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+        ['Order Id', 'Price', 'Product Name'],
+
+        @php
+          foreach($orders as $order) {
+              echo "['".$order->id."', ".$order->metropolitan.", ".($order->metropolitan == null ? '0' : $order->metropolitan )."],";
+
+          }
+        @endphp
+    ]);
+
+    var options = {
+      chart: {
+        title: 'Bar Graph | Price',
+        subtitle: 'Price, and Product Name: @php echo $orders[0]->created_at @endphp',
+      },
+      bars: 'vertical'
+    };
+    var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+    chart.draw(data, google.charts.Bar.convertOptions(options));
+  }
 </script>
 @endpush

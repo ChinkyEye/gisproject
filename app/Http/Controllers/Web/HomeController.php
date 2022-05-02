@@ -28,6 +28,7 @@ use App\CorePerson;
 use App\MantralayaHasUser;
 use App\Gallery;
 use App\GalleryHasImage;
+use App\IsthaniyaTaha;
 
 
 
@@ -50,8 +51,10 @@ class HomeController extends Controller
         $sliders = Slider::orderBy('id','DESC')->where('is_active','1')->get();
         $coreperson = CorePerson::orderBy('id','DESC')->where('is_top','1')->where('is_active','1')->get();
         $mantralaya = MantralayaHasUser::orderBy('id','DESC')->where('is_active','1')->get();
+        $orders = IsthaniyaTaha::get();
+        // dd($orders);
 
-        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','scroll_notice','introductions','sliders','coreperson','mantralaya']));
+        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','scroll_notice','introductions','sliders','coreperson','mantralaya','orders']));
     }
 
     public function link(Request $request, $link,$link2 = Null)

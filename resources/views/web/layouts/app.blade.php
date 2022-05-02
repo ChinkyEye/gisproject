@@ -14,6 +14,7 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="{{ url('/web') }}/css/style.css">
     <link rel="stylesheet" href="{{ url('/web') }}/css/style.main.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     @stack('css')
 </head>
@@ -47,6 +48,7 @@
     <script src="{{ url('/web') }}/js/jquery.marquee-1.4.0.min.js"></script>
     <script src="{{ url('/web') }}/js/plugins/plugins.js"></script>
     <script src="{{ url('/web') }}/js/active.js"></script>
+    
 
     @stack('js')
 </body>
