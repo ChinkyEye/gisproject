@@ -615,20 +615,22 @@
 
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
-        ['Order Id', 'Price', 'Product Name'],
+        ['Bar', 'Metropolitan', 'Submetropolitan','Sub Municipalities','Rural Municipalities','Forest Area','Population','Agricultural Land','Tourists site'],
 
         @php
           foreach($isthaniya as $order) {
-              echo "['".$order->id."', ".$order->metropolitan.", ".($order->metropolitan == null ? '0' : $order->metropolitan )."],";
+              echo "['".$order->id."', ".$order->metropolitan.", ".($order->sub_metropolitan == null ? '0' : $order->sub_metropolitan ).", ".($order->municipalities == null ? '0' : $order->municipalities ).",".($order->rural_municipalities == null ? '0' : $order->rural_municipalities ).",".($order->forest_area == null ? '0' : $order->forest_area ).",".($order->municipalities == null ? '0' : $order->municipalities ).",".($order->municipalities == null ? '0' : $order->municipalities ).", ".($order->rural_municipalities == null ? '0' : $order->rural_municipalities )."],";
 
           }
         @endphp
+
+
     ]);
 
     var options = {
       chart: {
-        title: 'Bar Graph | Price',
-        subtitle: 'Price, and Product Name: @php echo $isthaniya[0]->created_at @endphp',
+        title: 'Bar Graph ',
+        subtitle: 'Municipalities, and Sub Municipalities',
       },
       bars: 'vertical'
     };
