@@ -487,7 +487,7 @@
                 <span class="fa fa-university"></span>
                 प्रदेश नं. १ सरकारको आधिकारिक पोर्टल
             </div>
-            <a href="" class="float-right btn-title-stlye d-flex">
+            <a href="{{route('web.mantralaya.index')}}" class="float-right btn-title-stlye d-flex">
                 <i class="fa fa-play"></i>
                 अझ धेरै
             </a>
@@ -512,9 +512,9 @@
             </div>
             @endforeach
         </div>
-        <div class="mt-3 text-center">
+        {{-- <div class="mt-3 text-center">
             <a href="{{route('web.mantralaya.index')}}" class="btn credit-btn box-shadow btn-2">View All</a>
-        </div>
+        </div> --}}
     </div>
 </section>
 {{-- section 6 end --}}

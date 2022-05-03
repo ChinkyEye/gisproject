@@ -61,5 +61,10 @@ return [
     'district' => 'जिल्ला',
     'wada' => 'वडा',
     'industry' =>  'ठुलो/मझौला उध्योग',
+    'mantralaya' =>  'मन्त्रालय',
+    'address' =>  'ठेगाना',
+    'image' =>  'तस्बिर',
+    'website' =>  'वेबसाइट',
+    'view-detail' =>  'विवरण हेर्नुहोस्',
 
 ];

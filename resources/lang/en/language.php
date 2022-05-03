@@ -63,6 +63,11 @@ return [
      'district' => 'District',
      'wada' => 'Wada',
      'industry' =>  'Large Scale industry',
+     'mantralaya' =>  'Mantralaya',
+     'address' =>  'Address',
+     'image' =>  'Image',
+     'website' =>  'Website',
+     'view-detail' =>  'View Detail',
 
 
 

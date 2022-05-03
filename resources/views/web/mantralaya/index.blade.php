@@ -15,12 +15,12 @@
 					<table class="table table-bordered table-hover table-striped display nowrap" id="example" style="width:100%">
 						<thead class="text-center thead-dark">
 							<tr>
-								<th width="5%">SN</th>
-								<th class="text-left">Mantralaya</th>
-								<th width="10%">Address</th>
-								<th width="10%">Image</th>
-								<th width="10%">Website</th>
-								<th width="10%">View detail</th>
+								<th width="5%">{{ __('language.SN')}}</th>
+								<th class="text-left">{{ __('language.mantralaya')}}</th>
+								<th width="10%">{{ __('language.address')}}</th>
+								<th width="10%">{{ __('language.image')}}</th>
+								<th width="10%">{{ __('language.website')}}</th>
+								<th width="10%">{{ __('language.view-detail')}}</th>
 							</tr>
 						</thead>
 						<tbody class="text-center">

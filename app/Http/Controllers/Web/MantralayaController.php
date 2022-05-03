@@ -13,7 +13,7 @@ use App\MantralayaHasUser;
 class MantralayaController extends Controller
 {
     public function index(Request $request){
-        $datas = MantralayaHasUser::get();
+        $datas = MantralayaHasUser::where('is_main','0')->get();
         return view('web.mantralaya.index', compact('datas'));
     }
 
