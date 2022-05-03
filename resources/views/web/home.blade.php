@@ -592,9 +592,9 @@
 
           @php
           foreach($isthaniya as $isthaniyas) {
-            echo "['municipalities', ".$isthaniyas->metropolitan."],
-                ['sub municipalities', ".$isthaniyas->sub_metropolitan."], 
-                ['municipalities', ".$isthaniyas->municipalities."], 
+            echo "['metropolitan', ".($isthaniyas->metropolitan == null ? '0' : $isthaniyas->metropolitan)."],
+                ['sub metropolitan', ".($isthaniyas->sub_metropolitan == null ? '0' : $isthaniyas->sub_metropolitan)."], 
+                ['municipalities', ".($isthaniyas->municipalities == null ? '0' : $isthaniyas->municipalities)."], 
                 ['rural_municipalities',".($isthaniyas->rural_municipalities == null ? '0' : $isthaniyas->rural_municipalities)."]";
         }
         @endphp
