@@ -19,16 +19,16 @@
                 </div>
                 {{-- <div class="box">
                     <a href="{{$data->link}}">
-                    <img src="{{ $data->document == null ? asset('images/logo.png') : asset('images/mantralaya') . '/' . $data->document  }}">
-                    <div class="box-content">
-                        <a href="{{$data->link}}">
-                            <h5 class="title">{{$data->getUserDetail->name}}</h5>
-                            <span class="post">{{$data->getUserDetail->address}}</span>
-                        </a>
-                    </div>
-                    <ul class="icon">
-                        <li><a href="{{$data->link}}" target="_blank"><img src="{{ asset('images/logo.png')}}"></a></li>
-                    </ul>
+                        <img src="{{ $data->document == null ? asset('images/logo.png') : asset('images/mantralaya') . '/' . $data->document  }}">
+                        <div class="box-content">
+                            <a href="{{$data->link}}">
+                                <h5 class="title">{{$data->getUserDetail->name}}</h5>
+                                <span class="post">{{$data->getUserDetail->address}}</span>
+                            </a>
+                        </div>
+                        <ul class="icon">
+                            <li><a href="{{$data->link}}" target="_blank"><img src="{{ asset('images/logo.png')}}"></a></li>
+                        </ul>
                     </a>
                 </div> --}}
             </div>
@@ -173,90 +173,92 @@
             </div>
             <div class="col-md">
                 <div class="row">
+                    @foreach( $isthaniya as $data)
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main blue">
                             <i class="fa fa-building"></i>
-                            <h4 class="text-white m-0">१</h4>
+                            <h4 class="text-white m-0">{{$data->metropolitan == null ? '0' : $data->metropolitan }}</h4>
                             <small>म.न.पा</small>
                         </div>
-                    </div>
+                    </div>  
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main green">
                             <i class="fa fa-building"></i>
-                            <h4 class="text-white m-0">२</h4>
-                            <small>म.न.पा</small>
+                            <h4 class="text-white m-0">{{$data->sub_metropolitan == null ? '0' : $data->sub_metropolitan }}</h4>
+                            <small>उप.म.न.पा</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main cadetblue">
                             <i class="fa fa-building"></i>
-                            <h4 class="text-white m-0">२</h4>
-                            <small>म.न.पा</small>
+                            <h4 class="text-white m-0">{{$data->municipalities == null ? '0' : $data->municipalities }}</h4>
+                            <small>नगरपालिका</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main blue">
                             <i class="fa fa-building"></i>
-                            <h4 class="text-white m-0">२</h4>
-                            <small>म.न.पा</small>
+                            <h4 class="text-white m-0">{{$data->forest_area == null ? '0' : $data->forest_area }}</h4>
+                            <small>वनले ढाकिएको क्षेत्र</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main green">
                             <i class="fa fa-building"></i>
-                            <h4 class="text-white m-0">२</h4>
-                            <small>म.न.पा</small>
+                            <h4 class="text-white m-0">{{$data->population == null ? '0' : $data->population }}</h4>
+                            <small>जनसंख्या</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main cadetblue">
                             <i class="fa fa-building"></i>
-                            <h4 class="text-white m-0">२</h4>
-                            <small>म.न.पा</small>
+                            <h4 class="text-white m-0">{{$data->electricity_dev == null ? '0' : $data->electricity_dev }}</h4>
+                            <small>जल बिधुत उत्पादन </small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main yellow">
                             <i class="fa fa-building"></i>
-                            <h4 class="text-white m-0">२</h4>
-                            <small>म.न.पा</small>
+                            <h4 class="text-white m-0">{{$data->agricultural_land == null ? '0' : $data->agricultural_land }}</h4>
+                            <small>कृषी योग्य जामिन </small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main green">
                             <i class="fa fa-building"></i>
-                            <h4 class="text-white m-0">२</h4>
-                            <small>म.न.पा</small>
+                            <h4 class="text-white m-0">{{$data->tourists_site == null ? '0' : $data->tourists_site }}</h4>
+                            <small>पर्यटक स्थल</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main yellow">
                             <i class="fa fa-building"></i>
-                            <h4 class="text-white m-0">२</h4>
-                            <small>म.न.पा</small>
+                            <h4 class="text-white m-0">{{$data->rural_municipalities == null ? '0' : $data->rural_municipalities }}</h4>
+                            <small>गाउँपालिका</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main silver">
                             <i class="fa fa-building"></i>
-                            <h4 class="text-white m-0">२</h4>
-                            <small>म.न.पा</small>
+                            <h4 class="text-white m-0">{{$data->district == null ? '0' : $data->district }}</h4>
+                            <small>जिल्ला</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main green">
                             <i class="fa fa-building"></i>
-                            <h4 class="text-white m-0">२</h4>
-                            <small>म.न.पा</small>
+                            <h4 class="text-white m-0">{{$data->wada  == null ? '0' : $data->wada }}</h4>
+                            <small>वडा </small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main silver">
                             <i class="fa fa-building"></i>
-                            <h4 class="text-white m-0">२</h4>
-                            <small>म.न.पा</small>
+                            <h4 class="text-white m-0">{{$data->industry == null ? '0' : $data->industry  }}</h4>
+                            <small>ठुलो मझौला उध्योग </small>
                         </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>

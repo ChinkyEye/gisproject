@@ -49,5 +49,6 @@ return [
     'created-at' => 'सिर्जना गरेको',
     'file' => 'फाइल',
     'action' => 'कार्य',
+    'metropolitan' => 'म.न.पा',
 
 ];
