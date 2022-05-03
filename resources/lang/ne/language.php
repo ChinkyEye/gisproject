@@ -50,5 +50,16 @@ return [
     'file' => 'फाइल',
     'action' => 'कार्य',
     'metropolitan' => 'म.न.पा',
+    'sub_metropolitan' => 'उप.म.न.पा',
+    'municipalities' => 'नगरपालिका',
+    'forest_area' => 'वनले ढाकिएको क्षेत्र',
+    'population' => 'जनसंख्या',
+    'agricultural_land' =>  'कृषी योग्य जामिन',
+    'electricity_dev' => 'जल बिधुत उत्पादन',
+    'tourists_site' => 'पर्यटक स्थल',
+    'rural_municipalities' => 'गाउँपालिका',
+    'district' => 'जिल्ला',
+    'wada' => 'वडा',
+    'industry' =>  'ठुलो/मझौला उध्योग',
 
 ];
