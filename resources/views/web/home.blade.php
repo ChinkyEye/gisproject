@@ -277,7 +277,8 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row align-items-stretch">
+        <!-- <div class="row align-items-stretch"> -->
+        <div class="row">
             <div class="col-md-5">
                 <div class="container-fluid">
                     <h5>Title here</h5>
@@ -327,14 +328,15 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 bg-white px-2 mx-2">
+            <div class="col-md" id="barchart_material"></div>
+            <div class="col-md" id="piechart"></div>
+            <!-- <div class="col-md-4 bg-white px-2 mx-2">
                 <div class="d-flex flex-column p-2">
                     <div class="mb-1">
                         <span class="font-weight-bold">तत्यांक तथा विवरणहरु</span>
                     </div>
                     
                     <p id="barchart_material" ></p>
-                    {{-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores distinctio delectus aperiam blanditiis ipsa. Veniam dolorem, laudantium? Harum culpa, provident iure, rerum minima corporis molestias esse voluptatibus cumque. Ipsa, earum.</p> --}}
                 </div>
             </div>
             <div class="col-md bg-white p-1">
@@ -342,13 +344,9 @@
                     <div class="mb-1">
                         <span class="font-weight-bold">तत्यांक तथा विवरणहरु</span>
                     </div>
-                    {{-- <div id="piechart"></div> --}}
                     <p id="piechart"></p>
-
-                    
-                    {{-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores distinctio delectus aperiam blanditiis ipsa. Veniam dolorem, laudantium? Harum culpa, provident iure, rerum minima corporis molestias esse voluptatibus cumque. Ipsa, earum.</p> --}}
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>
