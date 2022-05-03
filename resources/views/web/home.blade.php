@@ -328,7 +328,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md" id="barchart_material"></div>
+            <div class="col-md-4" id="barchart_material"></div>
             <div class="col-md" id="piechart"></div>
             <!-- <div class="col-md-4 bg-white px-2 mx-2">
                 <div class="d-flex flex-column p-2">
