@@ -611,33 +611,38 @@
         chart.draw(data, options);
       }
     </script>
+    <script type="text/javascript">
 
-<script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
 
-  google.charts.load('current', {'packages':['bar']});
-  google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Bar', 'Metropolitan', 'Submetropolitan','Sub Municipalities','Rural Municipalities'],
 
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-        ['Order Id', 'Price', 'Product Name'],
+            @php
+              foreach($isthaniya as $order) {
+                  echo "['".''."', ".$order->metropolitan.", ".($order->sub_metropolitan == null ? '0' : $order->sub_metropolitan ).", ".($order->municipalities == null ? '0' : $order->municipalities ).", ".($order->rural_municipalities == null ? '0' : $order->rural_municipalities )."],";
 
-        @php
-          foreach($isthaniya as $order) {
-              echo "['".$order->id."', ".$order->metropolitan.", ".($order->metropolitan == null ? '0' : $order->metropolitan )."],";
 
-          }
-        @endphp
-    ]);
 
-    var options = {
-      chart: {
-        title: 'Bar Graph | Price',
-        subtitle: 'Price, and Product Name: @php  @endphp',
-      },
-      bars: 'vertical'
-    };
-    var chart = new google.charts.Bar(document.getElementById('barchart_material'));
-    chart.draw(data, google.charts.Bar.convertOptions(options));
-  }
-</script>
+              }
+            @endphp
+
+
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Bar Graph ',
+            subtitle: 'Municipalities, and Sub Municipalities',
+          },
+          bars: 'vertical'
+        };
+        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    </script>
+
+
 @endpush
