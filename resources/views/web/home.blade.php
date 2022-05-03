@@ -622,7 +622,7 @@
 
             @php
               foreach($isthaniya as $order) {
-                  echo "['".''."', ".$order->metropolitan.", ".($order->sub_metropolitan == null ? '0' : $order->sub_metropolitan ).", ".($order->municipalities == null ? '0' : $order->municipalities ).", ".($order->rural_municipalities == null ? '0' : $order->rural_municipalities )."],";
+                  echo "['".'0'."', ".$order->metropolitan.", ".($order->sub_metropolitan == null ? '0' : $order->sub_metropolitan ).", ".($order->municipalities == null ? '0' : $order->municipalities ).", ".($order->rural_municipalities == null ? '0' : $order->rural_municipalities )."],";
 
 
 
