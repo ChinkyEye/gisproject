@@ -178,84 +178,84 @@
                         <div class="text-center gis-block-main blue">
                             <i class="fa fa-building"></i>
                             <h4 class="text-white m-0">{{$data->metropolitan == null ? '0' : $data->metropolitan }}</h4>
-                            <small>म.न.पा</small>
+                            <small>{{ __('language.metropolitan')}}</small>
                         </div>
                     </div>  
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main green">
                             <i class="fa fa-building"></i>
                             <h4 class="text-white m-0">{{$data->sub_metropolitan == null ? '0' : $data->sub_metropolitan }}</h4>
-                            <small>उप.म.न.पा</small>
+                            <small>{{ __('language.sub_metropolitan')}}</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main cadetblue">
                             <i class="fa fa-building"></i>
                             <h4 class="text-white m-0">{{$data->municipalities == null ? '0' : $data->municipalities }}</h4>
-                            <small>नगरपालिका</small>
+                            <small>{{ __('language.municipalities')}}</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main blue">
                             <i class="fa fa-building"></i>
                             <h4 class="text-white m-0">{{$data->forest_area == null ? '0' : $data->forest_area }}</h4>
-                            <small>वनले ढाकिएको क्षेत्र</small>
+                            <small>{{ __('language.forest_area')}}</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main green">
                             <i class="fa fa-building"></i>
                             <h4 class="text-white m-0">{{$data->population == null ? '0' : $data->population }}</h4>
-                            <small>जनसंख्या</small>
+                            <small>{{ __('language.population')}}</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main cadetblue">
                             <i class="fa fa-building"></i>
                             <h4 class="text-white m-0">{{$data->electricity_dev == null ? '0' : $data->electricity_dev }}</h4>
-                            <small>जल बिधुत उत्पादन </small>
+                            <small>{{ __('language.electricity_dev')}}</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main yellow">
                             <i class="fa fa-building"></i>
                             <h4 class="text-white m-0">{{$data->agricultural_land == null ? '0' : $data->agricultural_land }}</h4>
-                            <small>कृषी योग्य जामिन </small>
+                            <small>{{ __('language.agricultural_land')}} </small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main green">
                             <i class="fa fa-building"></i>
                             <h4 class="text-white m-0">{{$data->tourists_site == null ? '0' : $data->tourists_site }}</h4>
-                            <small>पर्यटक स्थल</small>
+                            <small>{{ __('language.tourists_site')}}</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main yellow">
                             <i class="fa fa-building"></i>
                             <h4 class="text-white m-0">{{$data->rural_municipalities == null ? '0' : $data->rural_municipalities }}</h4>
-                            <small>गाउँपालिका</small>
+                            <small>{{ __('language.rural_municipalities')}}</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main silver">
                             <i class="fa fa-building"></i>
                             <h4 class="text-white m-0">{{$data->district == null ? '0' : $data->district }}</h4>
-                            <small>जिल्ला</small>
+                            <small>{{ __('language.district')}}</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main green">
                             <i class="fa fa-building"></i>
                             <h4 class="text-white m-0">{{$data->wada  == null ? '0' : $data->wada }}</h4>
-                            <small>वडा </small>
+                            <small>{{ __('language.wada')}} </small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main silver">
                             <i class="fa fa-building"></i>
                             <h4 class="text-white m-0">{{$data->industry == null ? '0' : $data->industry  }}</h4>
-                            <small>ठुलो मझौला उध्योग </small>
+                            <small>{{ __('language.industry')}} </small>
                         </div>
                     </div>
                     @endforeach
@@ -328,8 +328,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4" id="barchart_material"></div>
-            <div class="col-md" id="piechart"></div>
+            <div class="col-md bg-white px-2 mx-2" id="barchart_material"></div>
+            <div class="col-md bg-white p-1" id="piechart"></div>
             <!-- <div class="col-md-4 bg-white px-2 mx-2">
                 <div class="d-flex flex-column p-2">
                     <div class="mb-1">

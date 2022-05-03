@@ -51,6 +51,18 @@ return [
      'created-at' => 'Created At',
      'file' => 'File',
      'action' => 'Action',
+     'metropolitan' => 'Metropolitan',
+     'sub_metropolitan' => 'Sub Metropolitan',
+     'municipalities' => 'Municipalities',
+     'forest_area' => 'Forest Covered Area',
+     'population' => 'Population',
+     'agricultural_land' =>  'Agricultural Land',
+     'electricity_dev' => 'Electricity Development',
+     'tourists_site' => 'Tourists Sites',
+     'rural_municipalities' => 'Rural Municipalitiy',
+     'district' => 'District',
+     'wada' => 'Wada',
+     'industry' =>  'Large Scale industry',
 
 
 
