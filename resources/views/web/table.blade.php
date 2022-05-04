@@ -82,17 +82,17 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 								<td>
 									@if($level == '1')
 									<a class="effect1" href="{{ route('web.home.detail', [$link, $data->id ]) }}">
-                              {{ __('language.read_more')}}
+                              {{ __('language.read-more')}}
                               <span class="bg"></span>
                             </a>
                             @elseif($level == '2')
                             <a class="effect1" href="{{ route('web.home.more', [$link,$link2, $data->id ]) }}">
-                              {{ __('language.read_more')}}
+                              {{ __('language.read-more')}}
                               <span class="bg"></span>
                             </a>
                             @else
                             <a class="effect1" href="{{ route('web.home.more', [$link, $data->id ]) }}">
-                              {{ __('language.read_more')}}
+                              {{ __('language.read-more')}}
                               <span class="bg"></span>
                             </a>
                             @endif

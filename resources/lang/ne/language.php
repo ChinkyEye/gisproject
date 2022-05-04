@@ -75,7 +75,7 @@ return [
     'Pradesh-sarkar' => 'प्रदेश सरकार',
     'eservice' => 'ई-सेवाहरू',
     'Pradeshsabhasadasya' => 'प्रदेश सभा सदस्य',
-    'contact_us' => 'हाम्रो सम्पर्क',
+    'Contact-us' => 'हाम्रो सम्पर्क',
     'gallary_folder' => 'ग्यालरी फोल्डर',
     'gallary' => 'ग्यालरी',
     'Gallery Name' => 'ग्यालरी नाम',
@@ -83,6 +83,8 @@ return [
     'Nirdesika' => 'निर्देसिका',
     'Saadaran-suchana' => 'साधारण सूचना',
     'Kharid-suchana' => 'खरिद सूचना',
+    'Barshikh' => 'वार्षिक प्रतिवेदन',
+    'Taemasikh' => 'त्रैमासिक प्रगति प्रतिवेदन',
 
 
 
