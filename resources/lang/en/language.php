@@ -87,6 +87,8 @@ return [
     'Kharid-suchana' => 'Kharid Suchana',
     'Barshikh' => 'Yearly Report',
     'Taemasikh' => 'Quarterly Report',
+     'Bivagh-karyalaya' => 'Bivagh Karyalaya',
+     'survey' => 'Survey',
 
 
 

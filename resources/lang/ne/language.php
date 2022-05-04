@@ -85,6 +85,8 @@ return [
     'Kharid-suchana' => 'खरिद सूचना',
     'Barshikh' => 'वार्षिक प्रतिवेदन',
     'Taemasikh' => 'त्रैमासिक प्रगति प्रतिवेदन',
+    'Bivagh-karyalaya' => 'विभाग/कार्यालय',
+    'survey' => 'सर्वेक्षण',
 
 
 
