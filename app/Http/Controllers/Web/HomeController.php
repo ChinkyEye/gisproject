@@ -145,7 +145,6 @@ class HomeController extends Controller
     public function sidelinkmore(Request $request, $id)
     {
         $datas = MantralayaHasUser::select('id', 'longitude', 'latitude','user_id')->find($id);
-
         return view('web.mantralaya-detail', [
             'datas' => $datas
         ]); 
