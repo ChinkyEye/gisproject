@@ -39,7 +39,7 @@
 								<th width="5%">{{ __('language.SN')}}</th>
 								<th class="text-left">{{ __('language.title')}}</th>
 								<th width="10%">{{ __('language.date')}}</th>
-								<th width="10%">{{ __('language.created-at')}}</th>
+								<th width="15%">{{ __('language.created-at')}}</th>
 								<th width="10%">{{ __('language.file')}}</th>
 								<th width="10%">{{ __('language.read-more')}}</th>
 							</tr>
