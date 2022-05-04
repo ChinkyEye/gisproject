@@ -80,6 +80,13 @@ return [
      'contact_us' => 'Contact Us',
     'gallary_folder' => 'Gallery Folder',
     'gallary' => 'Gallery',
+    'Gallery Name' => 'Gallery',
+    'Ayan' => 'Ayan',
+    'Nirdesika' => 'Nirdesika',
+    'Saadaran-suchana' => 'Saadaran Suchana',
+    'Kharid-suchana' => 'Kharid Suchana',
+
+
 
 
 

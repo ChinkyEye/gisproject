@@ -19,7 +19,7 @@
 			</li>
 			<li class="breadcrumb-item my-auto active">
 				<a href="javascript:void(0);" class="font-weight-normal">
-					{{ $pages }}
+					{{ __('language.'.$pages)}}
 				</a>
 			</li>
 		</ol>

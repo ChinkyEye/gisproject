@@ -77,7 +77,14 @@ return [
     'Pradeshsabhasadasya' => 'प्रदेश सभा सदस्य',
     'contact_us' => 'हाम्रो सम्पर्क',
     'gallary_folder' => 'ग्यालरी फोल्डर',
-    'gallary' => 'Gallery',
+    'gallary' => 'ग्यालरी',
+    'Gallery Name' => 'ग्यालरी नाम',
+    'Ayan' => 'ऐन',
+    'Nirdesika' => 'निर्देसिका',
+    'Saadaran-suchana' => 'साधारण सूचना',
+    'Kharid-suchana' => 'खरिद सूचना',
+
+
 
 
 
