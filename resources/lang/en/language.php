@@ -69,6 +69,8 @@ return [
      'website' =>  'Website',
      'view-detail' =>  'View Detail',
      'quick_menu' => 'Quick Menu',
+     'hellocm' =>  'HelloCM',
+     'click-here' =>  'Click Here',
 
 
 

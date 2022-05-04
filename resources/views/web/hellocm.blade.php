@@ -6,6 +6,22 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 {!! $page_name !!} | 
 @endpush
 @section('content')
+<nav class="breadcrumb-main mt-4">
+	<div class="container">
+		<ol class="breadcrumb bg-light align-content-center">
+			<li class="breadcrumb-item my-auto">
+				<a href="{{ route('web.home') }}">
+					<i class="fa fa-home fa-2x"></i>
+				</a>
+			</li>
+			<li class="breadcrumb-item my-auto">
+				<a href="#">
+					{{ __('language.hellocm')}}
+				</a>
+			</li>
+		</ol>
+	</div>
+</nav>
 <section class="my-4">
 	<div class="container">
 		<div class="row">
@@ -18,7 +34,7 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 				<p>{{$data->description}}</p>
 				<p>Email : {{$data->email}}<p> 
 				<div class="mt-2">
-					<a href="{{$data->link}}" target="_blank" class="bg-danger px-3 py-1 text-white">Click Here</a>
+					<a href="{{$data->link}}" target="_blank" class="bg-danger px-3 py-1 text-white">{{ __('language.click-here')}}</a>
 				</div>
 			</div>
 			@endforeach
