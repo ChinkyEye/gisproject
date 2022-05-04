@@ -5,7 +5,12 @@
     <a href="{{ route('web.home.sidelink',$data->link) }}" class="items-body-content">
       <span>
         <i class="fa fa-briefcase mr-2"></i>
-        आयोग
+        {{-- आयोग --}}
+        @if(app()->getLocale() == 'en')
+        {{$data->name}}
+        @else
+        {{$data->name_np}}
+        @endif
         <i class="float-right fa fa-caret-right mr-2"></i>
         {{-- @if(app()->getLocale() == 'en')
         {{$data->name}}
