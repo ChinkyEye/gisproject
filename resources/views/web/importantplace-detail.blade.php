@@ -20,7 +20,7 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 			<li class="breadcrumb-item my-auto">
 				<a href="#">
 					<!-- {{ __('language.karyalaya-pramukh')}} -->
-					{{ __('language.important-place')}}
+					{{ __('language.important_place')}}
 				</a>
 			</li>
 		</ol>
