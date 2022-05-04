@@ -59,12 +59,12 @@ About |
 					<table class="table table-bordered table-hover table-striped">
 						<thead class="text-center thead-dark">
 							<tr>
-								<th width="5%">SN</th>
-								<th class="text-left">Name</th>
-								<th width="10%">Date</th>
-								<th width="10%">Created At</th>
-								<th width="20%">Mantralaya</th>
-								<th width="10%">Link</th>
+								<th width="5%">{{ __('language.SN')}}</th>
+								<th class="text-left">{{ __('language.name')}}</th>
+								<th width="10%">{{ __('language.date')}}</th>
+								<th width="20%">{{ __('language.created-at')}}</th>
+								<th width="20%">{{ __('language.mantralaya')}}</th>
+								<th width="10%">{{ __('language.link')}}</th>
 							</tr>
 						</thead>
 						<tbody class="text-center {{-- vertical-align-middle --}}">

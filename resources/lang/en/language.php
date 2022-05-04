@@ -68,6 +68,8 @@ return [
      'image' =>  'Image',
      'website' =>  'Website',
      'view-detail' =>  'View Detail',
+     'hellocm' =>  'HelloCM',
+     'click-here' =>  'Click Here',
 
 
 
