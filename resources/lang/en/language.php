@@ -78,6 +78,9 @@ return [
      'Pradesh-sarkar' => 'State Government',
      'eservice' => 'E Services',
      'contact_us' => 'Contact Us',
+    'gallary_folder' => 'Gallery Folder',
+    'gallary' => 'Gallery',
+
 
 
 

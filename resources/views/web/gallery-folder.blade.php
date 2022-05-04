@@ -17,7 +17,7 @@
 				</a>
 			</li>
 			<li class="breadcrumb-item my-auto active">
-				<a href="#" class="">Gallery</a>
+				<a href="#" class="">{{ __('language.gallary_folder')}}</a>
 			</li>
 			<!-- <li class="breadcrumb-item my-auto active">
 				<a href="javascript:void(0);" class="font-weight-normal">
