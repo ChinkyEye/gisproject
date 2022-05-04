@@ -71,12 +71,10 @@ return [
     'click-here' =>  'यहाँ क्लिक गर्नुहोस्',
     'important_place' => 'महत्त्वपूर्ण स्थान',
     'Karyalaya-pramukh' => 'कार्यालय प्रमुख',
-    'Pradeshsabhasadasya' => '',
-    'Pradeshsabhasadasya' => '',
-    'Mantriparishad' => 'मन्तिपारिसाद',
+    'Mantriparishad' => 'मन्त्री परिषद',
     'Pradesh-sarkar' => 'प्रदेश सरकार',
     'eservice' => 'ई-सेवाहरू',
-     'Pradeshsabhasadasya' => 'प्रदेश सभा सदस्य',
+    'Pradeshsabhasadasya' => 'प्रदेश सभा सदस्य',
 
 
 ];

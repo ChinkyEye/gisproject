@@ -17,6 +17,12 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 					<i class="fa fa-home fa-2x"></i>
 				</a>
 			</li>
+			<li class="breadcrumb-item my-auto">
+				<a href="#">
+					<!-- {{ __('language.karyalaya-pramukh')}} -->
+					{{ __('language.important-place')}}
+				</a>
+			</li>
 		</ol>
 	</div>
 </nav>

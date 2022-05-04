@@ -74,10 +74,10 @@ return [
      'important_place' => 'Important Place',
      'Karyalaya-pramukh' => 'Karyalaya Pramukh',
      'Pradeshsabhasadasya' => 'Pradesh Sabha Sadasya',
-     'Mantriparishad' => 'Mantriparisad',
+     'Mantriparishad' => 'Mantri Parisad',
      'Pradesh-sarkar' => 'State Government',
      'eservice' => 'E Services',
-     'Pradeshsabhasadasya' => 'Pradesh Sabhasadasya',
+
 
 
 
