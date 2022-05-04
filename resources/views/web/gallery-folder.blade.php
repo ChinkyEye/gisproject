@@ -11,7 +11,9 @@
 		<ol class="breadcrumb bg-light align-content-center">
 			<li class="breadcrumb-item my-auto">
 				<a href="{{ route('web.home') }}">
-					<i class="fa fa-home fa-2x"></i>
+					<i class="fa fa-home fa-2x">
+						
+					</i>
 				</a>
 			</li>
 			<li class="breadcrumb-item my-auto active">

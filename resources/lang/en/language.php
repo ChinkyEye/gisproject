@@ -77,6 +77,7 @@ return [
      'Mantriparishad' => 'Mantri Parisad',
      'Pradesh-sarkar' => 'State Government',
      'eservice' => 'E Services',
+     'contact_us' => 'Contact Us',
 
 
 

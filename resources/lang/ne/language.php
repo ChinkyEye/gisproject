@@ -75,6 +75,8 @@ return [
     'Pradesh-sarkar' => 'प्रदेश सरकार',
     'eservice' => 'ई-सेवाहरू',
     'Pradeshsabhasadasya' => 'प्रदेश सभा सदस्य',
+    'contact_us' => 'हाम्रो सम्पर्क',
+
 
 
 ];
