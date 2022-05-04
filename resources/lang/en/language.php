@@ -89,6 +89,8 @@ return [
     'Taemasikh' => 'Quarterly Report',
      'Bivagh-karyalaya' => 'Bivagh Karyalaya',
      'survey' => 'Survey',
+     'go-to' => 'Go To',
+
 
 
 
