@@ -66,7 +66,7 @@ return [
     'image' =>  'तस्बिर',
     'website' =>  'वेबसाइट',
     'view-detail' =>  'विवरण हेर्नुहोस्',
-    'quick_menu' => 'छिटो मेनु'
+    'quick_menu' => 'छिटो मेनु',
     'hellocm' =>  'हेलो सियम',
     'click-here' =>  'यहाँ क्लिक गर्नुहोस्',
 
