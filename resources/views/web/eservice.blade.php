@@ -6,6 +6,23 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 {!! $page_name !!} |
 @endpush
 @section('content')
+<nav class="breadcrumb-main mt-4">
+	<div class="container">
+		<ol class="breadcrumb bg-light align-content-center">
+			<li class="breadcrumb-item my-auto">
+				<a href="{{ route('web.home') }}">
+					<i class="fa fa-home fa-2x"></i>
+				</a>
+			</li>
+			<li class="breadcrumb-item my-auto">
+				<a href="#">
+					<!-- {{ __('language.karyalaya-pramukh')}} -->
+					{{ __('language.eservice')}}
+				</a>
+			</li>
+		</ol>
+	</div>
+</nav>
 <section class="my-4">
 	<div class="container">
 		<div class="row">
@@ -14,12 +31,12 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 					<table class="table table-bordered table-hover table-striped">
 						<thead class="text-center thead-dark">
 							<tr>
-								<th width="5%">SN</th>
-								<th class="text-left">Title</th>
-								<th width="10%">Date</th>
-								<th width="10%">Created At</th>
-								<th width="10%">File</th>
-								<th width="10%">Read More</th>
+								<th width="5%">{{ __('language.sn')}}</th>
+								<th class="text-left">{{ __('language.title')}}</th>
+								<th width="10%">{{ __('language.date')}}</th>
+								<th width="10%">{{ __('language.created-at')}}</th>
+								<th width="10%">{{ __('language.file')}}</th>
+								<th width="10%">{{ __('language.read-more')}}</th>
 							</tr>
 						</thead>
 						<tbody class="text-center">
@@ -36,7 +53,7 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 								</td>
 								<td>
 									<a class="effect1" href="">
-										{{ __('language.read_more')}}
+										{{ __('language.read-more')}}
 										<span class="bg"></span>
 									</a>
 								</td>

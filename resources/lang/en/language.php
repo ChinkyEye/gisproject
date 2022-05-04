@@ -71,6 +71,14 @@ return [
      'quick_menu' => 'Quick Menu',
      'hellocm' =>  'HelloCM',
      'click-here' =>  'Click Here',
+     'important_place' => 'Important Place',
+     'Karyalaya-pramukh' => 'Karyalaya Pramukh',
+     'Pradeshsabhasadasya' => 'Pradesh Sabha Sadasya',
+     'Mantriparishad' => 'Mantriparisad',
+     'Pradesh-sarkar' => 'State Government',
+     'eservice' => 'E Services',
+     'Pradeshsabhasadasya' => 'Pradesh Sabhasadasya',
+
 
 
 

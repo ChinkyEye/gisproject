@@ -8,12 +8,29 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 @push('css')
 @endpush
 @section('content')
+<!-- <nav class="breadcrumb-main mt-4">
+	<div class="container">
+		<ol class="breadcrumb bg-light align-content-center">
+			<li class="breadcrumb-item my-auto">
+				<a href="{{ route('web.home') }}">
+					<i class="fa fa-home fa-2x"></i>
+				</a>
+			</li>
+		</ol>
+	</div>
+</nav> -->
 <nav class="breadcrumb-main mt-4">
 	<div class="container">
 		<ol class="breadcrumb bg-light align-content-center">
 			<li class="breadcrumb-item my-auto">
 				<a href="{{ route('web.home') }}">
 					<i class="fa fa-home fa-2x"></i>
+				</a>
+			</li>
+			<li class="breadcrumb-item my-auto">
+				<a href="#">
+					<!-- {{ __('language.karyalaya-pramukh')}} -->
+					{{ __('language.'.$page_name)}}
 				</a>
 			</li>
 		</ol>

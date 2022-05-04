@@ -3,6 +3,22 @@
 @include('web.layouts.slider')
 {{-- section 1 --}}
 @if ($mantralaya->count())
+<nav class="breadcrumb-main mt-4">
+    <div class="container">
+        <ol class="breadcrumb bg-light align-content-center">
+            <li class="breadcrumb-item my-auto">
+                <a href="{{ route('web.home') }}">
+                    <i class="fa fa-home fa-2x"></i>
+                </a>
+            </li>
+            <li class="breadcrumb-item my-auto">
+                <a href="#">
+                    Tisi
+                </a>
+            </li>
+        </ol>
+    </div>
+</nav>
 <section class="features-area py-5 bg-gray">
     <div class="container-fluid">
         <div class="row">
