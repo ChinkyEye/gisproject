@@ -46,7 +46,7 @@
 								<td>{{$data->date_np}}</td>
 								<td><span class="badge badge-info">{{$data->created_at->diffForHumans()}}</span></td>
 								<td>
-									<a href="{{route('web.survey.question',$data->slug)}}">{{ __('language.go_to')}}</a>
+									<a href="{{route('web.survey.question',$data->slug)}}">{{ __('language.go-to')}}</a>
 								</td>
 							</tr>
 							@endforeach
