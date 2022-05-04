@@ -25,6 +25,6 @@ class ContactUs extends Model
         'updated_by',
     ];
     public static function totalcontact(Request $request){
-        return ContactUs::orderBy('id','DESC')->where('is_active','1')->get();
+        return ContactUs::orderBy('id','DESC')->where('is_active','1')->take(1)->get();
     }
 }

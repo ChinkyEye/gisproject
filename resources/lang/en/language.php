@@ -68,6 +68,7 @@ return [
      'image' =>  'Image',
      'website' =>  'Website',
      'view-detail' =>  'View Detail',
+     'quick_menu' => 'Quick Menu',
 
 
 

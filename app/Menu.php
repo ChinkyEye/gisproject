@@ -33,6 +33,9 @@ class Menu extends Model
 
     public static function totalMenu(Request $request){
         return Menu::orderBy('sort_id','ASC')->with('parent')->where('is_active', '1')->get();
+
+    } public static function quickMenu(Request $request){
+        return Menu::orderBy('sort_id','ASC')->with('parent')->where('is_active', '1')->get();
     }
 
     public function getModelType()

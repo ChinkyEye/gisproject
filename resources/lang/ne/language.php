@@ -66,5 +66,6 @@ return [
     'image' =>  'तस्बिर',
     'website' =>  'वेबसाइट',
     'view-detail' =>  'विवरण हेर्नुहोस्',
+     'quick_menu' => 'छिटो मेनु'
 
 ];

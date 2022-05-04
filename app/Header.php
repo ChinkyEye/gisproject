@@ -27,5 +27,8 @@ class Header extends Model
     }
      public static function totalheader(Request $request){
         return Header::orderBy('id','DESC')->where('is_active','1')->get();
+
+    }  public static function totalfooter(Request $request){
+        return Header::orderBy('id','DESC')->where('is_active','1')->take(1)->get();
     }
 }

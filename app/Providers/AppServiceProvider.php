@@ -52,13 +52,14 @@ class AppServiceProvider extends ServiceProvider
         }); 
         view()->composer('web.layouts.footer', function ($view) use ($request){
             $view->with('aboutus', AboutUs::totalaboutus($request));
-        });  
-        view()->composer('web.layouts.footer', function ($view) use ($request){
+            $view->with('quick_menu', Menu::quickMenu($request));
             $view->with('contact', ContactUs::totalcontact($request));
-        });  
+            $view->with('footer', Header::totalfooter($request));
+        });   
         view()->composer('web.layouts.header', function ($view) use ($request){
             $view->with('header', Header::totalheader($request));
-        }); 
+        });
+      
        
     }
 }

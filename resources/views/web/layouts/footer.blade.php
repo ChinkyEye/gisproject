@@ -4,7 +4,7 @@
         <div class="row">
 
             <!-- Single Footer Widget -->
-            <div class="col-12 col-sm-6 col-lg-5">
+   {{--        <div class="col-12 col-sm-6 col-lg-5">
                 <div class="single-footer-widget mb-70 text-white">
                     <h5 class="widget-title font-weight-bold">{{ __('language.about-us')}}</h5>
                     @foreach($aboutus as $data)
@@ -12,9 +12,9 @@
                     @endforeach
                     <a href="" class="text-footer-danger hover-icon">Read more <i class="fa fa-arrow-right"></i></a>
                 </div>
-            </div>
-            <div class="col-12 col-sm-6 col-lg-3">
-                <div class="single-footer-widget mb-70">
+            </div>  --}}
+            <div class="col-12 col-sm-6 col-lg-5">
+                <div class="single-footer-widget mb-70 text-white">
                     <h5 class="widget-title font-weight-bold">{{ __('language.useful-link')}}</h5>
                     @foreach($usefullink as $key => $data)
                     <div class="single-latest-news-area d-flex align-items-center">
@@ -27,7 +27,31 @@
                     </div>
                     @endforeach
                 </div>
-            </div>
+            </div>  
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-footer-widget mb-70">
+                    <h5 class="widget-title font-weight-bold">{{ __('language.quick_menu')}}</h5>
+                    @foreach($quick_menu as $key => $data)
+                    <div class="single-latest-news-area d-flex align-items-center">
+                        <div class="news-content">
+                            <span class="text-light icon-foot">
+                                <i class="fa fa-angle-right"></i>
+                            </span>
+                          <!--   <a href="//{{$data->website_link}}" target="_blank" class="d-inline-block">
+                           {{$data->name}}</a> -->
+                           <a href="{{ $data->is_main == '0' ? route('web.home.link',$data->link) : '#' }}" target="_blank" class="d-inline-block">
+                               @if(app()->getLocale() == 'en')
+                                    {{ $data->name }}
+                                    @else
+                                    {{ $data->name_np }}
+                                    @endif
+                                </a> 
+
+                           </div>
+                       </div>
+                       @endforeach
+                   </div>
+               </div>
             <!-- Single Footer Widget -->
             <div class="col-12 col-sm-6 col-lg-4">
                 <div class="single-footer-widget mb-70">
@@ -129,9 +153,10 @@
                                 सर्वाधिकार सुरक्षित 
                                 &copy; 
                                 <script>document.write(new Date().getFullYear());</script>  
-                                |
-                                <a href="https://techware.com.np" target="_blank">मुख्यमन्त्री तथा मन्त्रिपरिषद्को कार्यालय
+                                |@foreach($footer as $data)
+                                <a href="{{ route('web.home') }}" target="_blank">{{$data->name}}
                             </a>
+                            @endforeach
                         </p>
                     </div>
                 </div>
