@@ -31,22 +31,19 @@
             <div class="col-12 col-sm-6 col-lg-3">
                 <div class="single-footer-widget mb-70">
                     <h5 class="widget-title font-weight-bold">{{ __('language.quick_menu')}}</h5>
-                    @foreach($quick_menu as $key => $data)
+                    @foreach($quick_menu->where('is_main','0')->where('parent_id','0') as $key => $data)
                     <div class="single-latest-news-area d-flex align-items-center">
                         <div class="news-content">
                             <span class="text-light icon-foot">
                                 <i class="fa fa-angle-right"></i>
                             </span>
-                          <!--   <a href="//{{$data->website_link}}" target="_blank" class="d-inline-block">
-                           {{$data->name}}</a> -->
-                           <a href="{{ $data->is_main == '0' ? route('web.home.link',$data->link) : '#' }}" target="_blank" class="d-inline-block">
-                               @if(app()->getLocale() == 'en')
-                                    {{ $data->name }}
-                                    @else
-                                    {{ $data->name_np }}
-                                    @endif
-                                </a> 
-
+                            <a href="{{ $data->is_main == '0' ? route('web.home.link',$data->link) : '#' }}" target="_blank" class="d-inline-block">
+                                @if(app()->getLocale() == 'en')
+                                {{ $data->name }}
+                                @else
+                                {{ $data->name_np }}
+                                @endif
+                            </a> 
                            </div>
                        </div>
                        @endforeach
