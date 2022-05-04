@@ -12,7 +12,7 @@
 				</a>
 			</li>
 			<li class="breadcrumb-item my-auto">
-				<a href="#" class="">Surevey</a>
+				<a href="#" class="">{{ __('language.survey')}}</a>
 			</li>
 		</ol>
 	</div>

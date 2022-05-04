@@ -12,7 +12,7 @@
 				</a>
 			</li>
 			<li class="breadcrumb-item my-auto">
-				<a href="#" class="">Surevey</a>
+				<a href="#" class="">{{ __('language.survey')}}</a>
 			</li>
 		</ol>
 	</div>
@@ -46,7 +46,7 @@
 								<td>{{$data->date_np}}</td>
 								<td><span class="badge badge-info">{{$data->created_at->diffForHumans()}}</span></td>
 								<td>
-									<a href="{{route('web.survey.question',$data->slug)}}">Go to</a>
+									<a href="{{route('web.survey.question',$data->slug)}}">{{ __('language.go_to')}}</a>
 								</td>
 							</tr>
 							@endforeach
