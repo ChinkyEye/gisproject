@@ -41,7 +41,7 @@ class HomeController extends Controller
         $remote_notices = TblRemoteNotice::orderBy('id','DESC')->take(10)->get();
         $remote_yearly_budgets = TblRemoteYearlyBudget::orderBy('id','DESC')->take(10)->get();
         $remote_kharid_bolpatras = TblRemoteKharidBolpatra::orderBy('id','DESC')->take(10)->get();
-        $remote_ain_kanuns = TblRemoteYearlyBudget::orderBy('id','DESC')->take(10)->get();
+        $remote_ain_kanuns = TblRemoteAainKanun::orderBy('id','DESC')->take(10)->get();
         $remote_sewa_pravas = TblRemoteSewaPrava::orderBy('id','DESC')->take(10)->get();
         $remote_e_farums = TblRemoteEFarum::orderBy('id','DESC')->take(10)->get();
         $remote_prativedans = TblRemotePrativedan::orderBy('id','DESC')->take(10)->get();
