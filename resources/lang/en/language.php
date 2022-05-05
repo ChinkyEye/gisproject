@@ -99,15 +99,4 @@ return [
     'prativedan' => 'Prativedan',
     'publication' => 'Publication',
 
-
-
-
-
-
-
-
-
-
-
-
 ];
