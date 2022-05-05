@@ -13,7 +13,7 @@
                     <a href="" class="text-footer-danger hover-icon">Read more <i class="fa fa-arrow-right"></i></a>
                 </div>
             </div>  --}}
-            <div class="col-12 col-sm-6 col-lg-5">
+            <div class="col-md-4">
                 <div class="single-footer-widget mb-70 text-white">
                     <h5 class="widget-title font-weight-bold">{{ __('language.useful-link')}}</h5>
                     @foreach($usefullink as $key => $data)
@@ -28,7 +28,7 @@
                     @endforeach
                 </div>
             </div>  
-            <div class="col-12 col-sm-6 col-lg-3">
+            <div class="col-md-4">
                 <div class="single-footer-widget mb-70">
                     <h5 class="widget-title font-weight-bold">{{ __('language.quick_menu')}}</h5>
                     @foreach($quick_menu->where('is_main','0')->where('parent_id','0') as $key => $data)
@@ -50,7 +50,7 @@
                    </div>
                </div>
             <!-- Single Footer Widget -->
-            <div class="col-12 col-sm-6 col-lg-4">
+            <div class="col-md-4">
                 <div class="single-footer-widget mb-70">
                     <h5 class="widget-title font-weight-bold">{{ __('language.contact')}}</h5>
                     @foreach($contact as $data)

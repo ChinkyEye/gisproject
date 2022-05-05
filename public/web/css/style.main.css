@@ -7,8 +7,11 @@
     --site-color-footer-blue: #021c3c; /*#294d99*/
     --site-color-red-trans: #dc3545ad;
     --site-color-blue-trans: #1b5693ad;
+
+    /*section 2*/
+    --mantralaya-height: 200px;
     
-    --slider-height: 62vh;
+    --slider-height: 418px;
     --main-slider-right-size: 140px;
 
     --menu-height-md: 4rem;
@@ -554,7 +557,7 @@
         position: relative;
         top: 0;
         left: 0;
-        height: 146px;
+        height: 165px;
         background-color: var(--footer-bg-color);
         -webkit-mask-image: url('../img/foot2.png');
         -webkit-mask-size: 100%;
@@ -776,7 +779,7 @@
         padding-right: 5px;
         padding-left: 25px;
         display: grid;
-        grid-template-columns: 1fr 10fr;
+        /*grid-template-columns: 1fr 10fr;*/
         font-size: 13px;
         font-weight: 600;
         grid-gap: 0px;
@@ -1052,4 +1055,10 @@
     .credit-btn:hover, .credit-btn:focus{
         background-color: white;
         color: var(--site-color-red);
+    }
+
+    .section-main-2{
+        height: var(--mantralaya-height);
+        object-fit: cover;
+        object-position: center center;
     }
