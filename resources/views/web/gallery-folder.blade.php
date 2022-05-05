@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 @push('tab_title')
-| 
+Gallery | 
 @endpush
 @push('css')
 <link rel="stylesheet" type="text/css" href="{{ url('/') }}/web/css/gallery.main.css">
@@ -42,7 +42,7 @@
 				      </div>
 				      <div class='photo-count'>
 				        <div class='content'>
-				          <div class='number'>120</div>
+				          <div class='number'>{{$data->imagecount->count()}}</div>
 				          <div class='label'>PHOTOS</div>
 				        </div>
 				      </div>

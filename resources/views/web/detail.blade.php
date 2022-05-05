@@ -8,6 +8,22 @@ About |
 <link href="{{URL::to('/')}}/web/nepali.datepicker.v3.6/css/nepali.datepicker.v3.6.min.css" rel="stylesheet" type="text/css">
 @endpush
 @section('content')
+<nav class="breadcrumb-main mt-4">
+  <div class="container">
+    <ol class="breadcrumb bg-light align-content-center">
+      <li class="breadcrumb-item my-auto">
+        <a href="{{ route('web.home') }}">
+          <i class="fa fa-home fa-2x"></i>
+        </a>
+      </li>
+      <li class="breadcrumb-item my-auto">
+        <a href="#">
+        	{{ __('language.'.$type)}}
+        </a>
+      </li>
+    </ol>
+  </div>
+</nav>
 <section class="breadcrumb-main my-4">
 	<div class="container">
 		<form method="GET" action="{{route('web.detail.search',['type' => $type])}}">
@@ -64,7 +80,7 @@ About |
 								<th width="10%">{{ __('language.date')}}</th>
 								<th width="20%">{{ __('language.created-at')}}</th>
 								<th width="20%">{{ __('language.mantralaya')}}</th>
-								<th width="10%">{{ __('language.link')}}</th>
+								<th width="15%">{{ __('language.link')}}</th>
 							</tr>
 						</thead>
 						<tbody class="text-center {{-- vertical-align-middle --}}">
@@ -76,7 +92,7 @@ About |
 								<td><span class="badge badge-info">{{$data->created_at->diffForHumans()}}</span></td>
 								<td>{{$data->ministry}}</td>
 								<td>
-									<a href="{{$data->url}}" target="_blank" class="table-anchor">View Detail</a>
+									<a href="{{$data->url}}" target="_blank" class="table-anchor">{{ __('language.view-detail')}}</a>
 								</td>
 								<!-- <td>
 									<a href="" target="_blank" class="text-danger">

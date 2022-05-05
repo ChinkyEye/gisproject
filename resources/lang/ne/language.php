@@ -81,13 +81,21 @@ return [
     'Gallery Name' => 'ग्यालरी नाम',
     'Ayan' => 'ऐन',
     'Nirdesika' => 'निर्देसिका',
-    'Saadaran-suchana' => 'साधारण सूचना',
+    'Sadaran-suchana' => 'साधारण सूचना',
     'Kharid-suchana' => 'खरिद सूचना',
-    'Barshikh' => 'वार्षिक प्रतिवेदन',
+    'Barsikh-pratibedan' => 'वार्षिक प्रतिवेदन',
     'Taemasikh' => 'त्रैमासिक प्रगति प्रतिवेदन',
     'Bivagh-karyalaya' => 'विभाग/कार्यालय',
     'survey' => 'सर्वेक्षण',
     'go-to' => 'जानुहोस्',
+    'suchana' => 'सूचना',
+    'yearly-budget' => 'बार्षिक बजेट',
+    'kharid-bolpatra' => 'खरिद बोलपत्र',
+    'ain-kanoon' => 'ऐन कानून',
+    'sewa-prava' => 'सेवा प्रवाह',
+    'e-farum' => 'इ-फारम',
+    'prativedan' => 'प्रतिवेदन',
+    'publication' => 'प्रकाशन',
 
 
 
