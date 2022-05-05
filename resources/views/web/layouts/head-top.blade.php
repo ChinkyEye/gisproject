@@ -13,7 +13,7 @@
                     @foreach($notice as $notices)
                     <li class="list-inline-item mr-4">
                       <small><i class="fa fa-bullhorn mr-2 text-warning"></i></small>
-                      <a class="text-light" href="#">
+                      <a class="text-light" href="{{ route('web.noticescroll',$notices->id)}}">
                        {{$notices->title}} :: {{$notices->description}}
                      </a>
                    </li>

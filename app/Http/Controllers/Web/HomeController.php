@@ -58,13 +58,13 @@ class HomeController extends Controller
 
     public function link(Request $request, $link,$link2 = Null)
     {
+        // var_dump($link,$link2); die();
         if($link == '/'){
            $page = 'home';
            $datas = array();
            return view('web.'.$page, compact(['datas']));
         }
         else{
-            // var_dump($link,$link2); die();
             if($link2 == Null){
                 $linkf = $link;
             }
@@ -77,7 +77,6 @@ class HomeController extends Controller
             $name = Menu::where('link',$linkf)->value('name');
             $level = Menu::where('link',$linkf)->value('level');
             
-        // var_dump($type); die();
             $modelName = '\\App\\' . $model;
             if($type == '1'){
                 $datas = $modelName::orderBy('id','DESC');
@@ -173,5 +172,16 @@ class HomeController extends Controller
         // dd(session(['APP_LOCALE' => $request->lang]));
         session(['APP_LOCALE' => $request->lang]);
         return back();
+    }
+    public function noticescroll(Request $request,$id)
+    {
+        // $linkf = $link.'/'.$link2;
+        $name = "Notice";
+        $level = '2';
+        $link = 'notice';
+        $link2 = Notice::where('id',$id)->value('title');
+        $datas = Notice::orderBy('id','DESC')->find($id);
+        return view('web.view-more', compact(['datas','link','link2','name','level']));
+    
     }
 }

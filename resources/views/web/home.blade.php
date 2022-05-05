@@ -6,7 +6,7 @@
 <section class="features-area py-4 bg-gray">
     <div class="container-fluid">
         <div class="row">
-            @foreach($mantralaya->take(4) as $key => $data)
+            @foreach($mantralaya->where('is_main','1')->take(4) as $key => $data)
             <div class="col-md-3 col-sm-6">
                 <div class="card rounded-0 border-0">
                     <a href="{{$data->link}}">
