@@ -71,14 +71,14 @@
           <label for="is_main">Is Main</label>
           <div class="row col-md-5">
             <div class="form-check-inline col-md">
-              <input class="form-check-input" type="radio" name="is_main" id="yes" value="1" {{$datas->is_main == '1' ? 'checked' : ''}} >
-              <label class="form-check-label" for="is_main">
+              <input class="form-check-input" type="radio" name="is_main" id="mainyes" value="1" {{$datas->is_main == '1' ? 'checked' : ''}} >
+              <label class="form-check-label" for="mainyes">
                 Yes
               </label>
             </div>
             <div class="form-check-inline col-md">
-              <input class="form-check-input" type="radio" name="is_main" id="no" value="0" {{$datas->is_main == '0' ? 'checked' : ''}}>
-              <label class="form-check-label" for="is_main">
+              <input class="form-check-input" type="radio" name="is_main" id="mainno" value="0" {{$datas->is_main == '0' ? 'checked' : ''}}>
+              <label class="form-check-label" for="mainno">
                 No
               </label>
             </div>
@@ -93,14 +93,14 @@
           <label for="is_local_level">Is Local Level</label>
           <div class="row col-md-5">
             <div class="form-check-inline col-md">
-              <input class="form-check-input" type="radio" name="is_local_level" id="yes" value="1" {{$datas->is_local_level == '1' ? 'checked' : ''}} >
-              <label class="form-check-label" for="is_local_level">
+              <input class="form-check-input" type="radio" name="is_local_level" id="localyes" value="1" {{$datas->is_local_level == '1' ? 'checked' : ''}} >
+              <label class="form-check-label" for="localyes">
                 Yes
               </label>
             </div>
             <div class="form-check-inline col-md">
-              <input class="form-check-input" type="radio" name="is_local_level" id="no" value="0" {{$datas->is_local_level == '0' ? 'checked' : ''}}>
-              <label class="form-check-label" for="is_local_level">
+              <input class="form-check-input" type="radio" name="is_local_level" id="localno" value="0" {{$datas->is_local_level == '0' ? 'checked' : ''}}>
+              <label class="form-check-label" for="localno">
                 No
               </label>
             </div>
@@ -115,14 +115,14 @@
           <label for="side">Is Side</label>
           <div class="row col-md-5">
             <div class="form-check-inline col-md">
-              <input class="form-check-input" type="radio" name="is_side" id="yes" value="1"  {{ $datas->is_side == "1" ? 'checked' : '' }} >
-              <label class="form-check-label" for="is_side">
+              <input class="form-check-input" type="radio" name="is_side" id="sideyes" value="1"  {{ $datas->is_side == "1" ? 'checked' : '' }} >
+              <label class="form-check-label" for="sideyes">
                 Yes
               </label>
             </div>
             <div class="form-check-inline col-md">
-              <input class="form-check-input" type="radio" name="is_side" id="no" value="0" {{ $datas->is_side == "0" ? 'checked' : '' }}>
-              <label class="form-check-label" for="is_side">
+              <input class="form-check-input" type="radio" name="is_side" id="sideno" value="0" {{ $datas->is_side == "0" ? 'checked' : '' }}>
+              <label class="form-check-label" for="sideno">
                 No
               </label>
             </div>

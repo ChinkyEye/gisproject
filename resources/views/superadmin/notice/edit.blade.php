@@ -45,13 +45,13 @@
           <div class="row col-md-5">
             <div class="form-check-inline col-md">
               <input class="form-check-input" type="radio" name="scroll" id="yes" value="1" {{$notices->scroll == '1' ? 'checked' : ''}} >
-              <label class="form-check-label" for="scroll">
+              <label class="form-check-label" for="yes">
                 Yes
               </label>
             </div>
             <div class="form-check-inline col-md">
               <input class="form-check-input" type="radio" name="scroll" id="no" value="0" {{$notices->scroll == '0' ? 'checked' : ''}}>
-              <label class="form-check-label" for="scroll">
+              <label class="form-check-label" for="no">
                 No
               </label>
             </div>
@@ -68,8 +68,8 @@
           <div class="row col-md-12">
             @foreach ($modelhastypes as $key => $data)
             <div class="form-check-inline col-md">
-              <input class="form-check-inline" type="radio" name="type" id="type" value="{{$data->id}}" {{ $notices->type == $data->id ? 'checked' : ''}}>
-              <label class="form-check-label" for="type">
+              <input class="form-check-inline" type="radio" name="type" id="type{{$key}}" value="{{$data->id}}" {{ $notices->type == $data->id ? 'checked' : ''}}>
+              <label class="form-check-label" for="type{{$key}}">
                {{$data->type}}
              </label>
            </div>

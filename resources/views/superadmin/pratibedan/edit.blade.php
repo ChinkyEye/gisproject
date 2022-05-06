@@ -45,8 +45,8 @@
         <div class="row col-md-12">
           @foreach ($modelhastypes as $key => $data)
           <div class="form-check-inline col-md">
-            <input class="form-check-inline" type="radio" name="type" id="type" value="{{$data->id}}" {{ $pratibedans->type == $data->id ? 'checked' : ''}}>
-            <label class="form-check-label" for="type">
+            <input class="form-check-inline" type="radio" name="type" id="type{{$key}}" value="{{$data->id}}" {{ $pratibedans->type == $data->id ? 'checked' : ''}}>
+            <label class="form-check-label" for="type{{$key}}">
              {{$data->type}}
            </label>
          </div>
