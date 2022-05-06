@@ -45,6 +45,7 @@ class HomeController extends Controller
             $remotehellocm = $hello;
         }
         // dd($remotehellocm);
+        // dd($remotehellocm[1][0]);
         // var_dump($remotehellocm['table_datas']); die();
 
         $scroll_notice = Notice::orderBy('id','DESC')->where('scroll','1')->where('is_active','1')->take(10)->get();
@@ -62,6 +63,7 @@ class HomeController extends Controller
         $coreperson = CorePerson::orderBy('id','DESC')->where('is_top','1')->where('is_active','1')->get();
         $mantralaya = MantralayaHasUser::orderBy('id','DESC')->where('is_active','1')->get();
         $isthaniya = IsthaniyaTaha::orderBy('id','DESC')->get();
+        // dd($remote_e_farums);
 
         return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','scroll_notice','introductions','sliders','coreperson','mantralaya','isthaniya','remotehellocm']));
     }

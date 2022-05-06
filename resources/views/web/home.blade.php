@@ -636,29 +636,25 @@
       function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
-          // ['Task', 'Hours per Day'],
-          // ['Work',     11],
-          // ['Eat',      2],
-          // ['Commute',  2],
-          // ['Watch TV', 2],
-          // ['Sleep',    7]
+            // ['Task', 'Hours per Day'],
+            // ['Work',     11],
+            // ['Eat',      2],
+            // ['Commute',  2],
+            // ['Watch TV', 2],
+            // ['Sleep',    7]
 
 
 
-          ['Sthaniya', 'Number'],
+            ['Sthaniya', 'Number'],
+            @php
+            foreach($remotehellocm as $remotehello ) {
+                echo "['.$remotehello[0].', ".$remotehello[1]."],";
+                // echo "['.$remotehello[0].',  ".($remotehello[1] == 0 ? '2' : $remotehello[1] )."],";
 
-          @php
-          // foreach($remotehellocm['table_datas'] as $isthaniyas) {
-            // echo "['metropolitan', ".($isthaniyas->metropolitan == null ? '0' : $isthaniyas->metropolitan)."]";
-            // echo "['metropolitan', ".($isthaniyas->metropolitan == null ? '0' : $isthaniyas->metropolitan)."],
-            //     ['sub metropolitan', ".($isthaniyas->sub_metropolitan == null ? '0' : $isthaniyas->sub_metropolitan)."], 
-            //     ['municipalities', ".($isthaniyas->municipalities == null ? '0' : $isthaniyas->municipalities)."], 
-            //     ['rural_municipalities',".($isthaniyas->rural_municipalities == null ? '0' : $isthaniyas->rural_municipalities)."]";
-        // }
-        @endphp
+            }
+            @endphp
 
-
-        ]);
+            ]);
 
         var options = {
           title: ''
