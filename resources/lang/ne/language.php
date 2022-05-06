@@ -96,6 +96,7 @@ return [
     'e-farum' => 'इ-फारम',
     'prativedan' => 'प्रतिवेदन',
     'publication' => 'प्रकाशन',
+    'gunaso-sunne' => 'गुनासोको विवरण',
 
 
 

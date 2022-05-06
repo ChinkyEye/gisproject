@@ -88,7 +88,7 @@ class NoticeController extends Controller
             'time' => date("H:i:s"),
             'created_by' => Auth::user()->id,
         ]);
-        return redirect()->route('superadmin.notice.index')->with('alert-success', 'Notice created successfully!!!!');
+        return redirect()->route('superadmin.notice.index')->with('alert-success', 'Notice created sucessfully!!!!');
     }
 
     /**

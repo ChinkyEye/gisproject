@@ -98,5 +98,6 @@ return [
     'e-farum' => 'E Farum',
     'prativedan' => 'Prativedan',
     'publication' => 'Publication',
+    'gunaso-sunne' => 'Grievances Information',
 
 ];

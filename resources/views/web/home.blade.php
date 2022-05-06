@@ -284,9 +284,63 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="container-fluid">
-                    <h5>Title here</h5>
+                    {{-- <h5>Title here</h5> --}}
+                    <h5>{{ __('language.gunaso-sunne')}}</h5>
                     <div class="row">
+                        @foreach($remotehellocm as $key=>$hellocm)
+                        {{-- <?php var_dump($hellocm);?> --}}
+                        {{-- @foreach($hellocm as $hello) --}}
+                        @if($key==0)
                         <div class="col-md-4 p-1">
+                            <div class="text-center quest-block-main blue">
+                                <i class="fa fa-check"></i>
+                                <h5 class="text-white m-0">{{$hellocm[1]}}</h5>
+                                <small>{{$hellocm[0]}}</small>
+                            </div>
+                        </div>
+                        @elseif($key==1)
+                        <div class="col-md-4 p-1">
+                            <div class="text-center quest-block-main red">
+                                <i class="fa fa-spinner"></i>
+                                <h5 class="text-white m-0">{{$hellocm[1]}}</h5>
+                                <small>{{$hellocm[0]}}</small>
+                            </div>
+                        </div>
+                        @elseif($key==2)
+                        <div class="col-md-4 p-1">
+                            <div class="text-center quest-block-main green">
+                                <i class="fa fa-eye"></i>
+                                <h5 class="text-white m-0">{{$hellocm[1]}}</h5>
+                                <small>{{$hellocm[0]}}</small>
+                            </div>
+                        </div>
+                        @elseif($key==3)
+                        <div class="col-md-4 p-1">
+                            <div class="text-center quest-block-main yellow">
+                                <i class="fa fa-eye-slash"></i>
+                                <h5 class="text-white m-0">{{$hellocm[1]}}</h5>
+                                <small>{{$hellocm[0]}}</small>
+                            </div>
+                        </div>
+                        @elseif($key==4)
+                        <div class="col-md-4 p-1">
+                            <div class="text-center quest-block-main blue">
+                                <i class="fa fa-pencil"></i>
+                                <h5 class="text-white m-0">{{$hellocm[1]}}</h5>
+                                <small>{{$hellocm[0]}}</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4 p-1">
+                            <div class="text-center quest-block-main purple">
+                                <i class="fa fa-info"></i>
+                                <h5 class="text-white m-0">{{$hellocm[1]}}</h5>
+                                <small>कुल दर्ता गुनासो</small>
+                            </div>
+                        </div>
+                        @endif
+                        {{-- @endforeach --}}
+                        @endforeach
+                        {{-- <div class="col-md-4 p-1">
                             <div class="text-center quest-block-main blue">
                                 <i class="fa fa-pencil"></i>
                                 <h5 class="text-white m-0">१</h5>
@@ -327,7 +381,7 @@
                                 <h4 class="text-white m-0">२</h4>
                                 <small>म.न.पा</small>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -594,12 +648,13 @@
           ['Sthaniya', 'Number'],
 
           @php
-          foreach($isthaniya as $isthaniyas) {
-            echo "['metropolitan', ".($isthaniyas->metropolitan == null ? '0' : $isthaniyas->metropolitan)."],
-                ['sub metropolitan', ".($isthaniyas->sub_metropolitan == null ? '0' : $isthaniyas->sub_metropolitan)."], 
-                ['municipalities', ".($isthaniyas->municipalities == null ? '0' : $isthaniyas->municipalities)."], 
-                ['rural_municipalities',".($isthaniyas->rural_municipalities == null ? '0' : $isthaniyas->rural_municipalities)."]";
-        }
+          // foreach($remotehellocm['table_datas'] as $isthaniyas) {
+            // echo "['metropolitan', ".($isthaniyas->metropolitan == null ? '0' : $isthaniyas->metropolitan)."]";
+            // echo "['metropolitan', ".($isthaniyas->metropolitan == null ? '0' : $isthaniyas->metropolitan)."],
+            //     ['sub metropolitan', ".($isthaniyas->sub_metropolitan == null ? '0' : $isthaniyas->sub_metropolitan)."], 
+            //     ['municipalities', ".($isthaniyas->municipalities == null ? '0' : $isthaniyas->municipalities)."], 
+            //     ['rural_municipalities',".($isthaniyas->rural_municipalities == null ? '0' : $isthaniyas->rural_municipalities)."]";
+        // }
         @endphp
 
 

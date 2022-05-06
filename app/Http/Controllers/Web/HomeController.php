@@ -37,6 +37,16 @@ class HomeController extends Controller
     public function index()
     {
         $page_name = "Welcome";
+
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('GET', 'http://hellocm.p1.gov.np/api/get_grievance_chart_table');
+        $remotehello = json_decode($res->getBody()->getContents(), true);
+        foreach($remotehello as $hello){
+            $remotehellocm = $hello;
+        }
+        // dd($remotehellocm);
+        // var_dump($remotehellocm['table_datas']); die();
+
         $scroll_notice = Notice::orderBy('id','DESC')->where('scroll','1')->where('is_active','1')->take(10)->get();
         $remote_notices = TblRemoteNotice::orderBy('id','DESC')->take(10)->get();
         $remote_yearly_budgets = TblRemoteYearlyBudget::orderBy('id','DESC')->take(10)->get();
@@ -53,7 +63,7 @@ class HomeController extends Controller
         $mantralaya = MantralayaHasUser::orderBy('id','DESC')->where('is_active','1')->get();
         $isthaniya = IsthaniyaTaha::orderBy('id','DESC')->get();
 
-        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','scroll_notice','introductions','sliders','coreperson','mantralaya','isthaniya']));
+        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','scroll_notice','introductions','sliders','coreperson','mantralaya','isthaniya','remotehellocm']));
     }
 
     public function link(Request $request, $link,$link2 = Null)
