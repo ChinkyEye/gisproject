@@ -1,7 +1,7 @@
 <div class="header-holder p-0">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-10 notice-block">
+      <div class="col-md-10 col-sm-10 notice-block">
         <div class="position-relative">
             <div class="row">
               <div class="col-md-1 flash-box">
@@ -24,7 +24,7 @@
             </div>
         </div>
       </div>
-      <div class="col-sm-2 d-flex main-d-sm-none top-header p-0">
+      <div class="col-md-2 col-sm-2 d-flex main-d-sm-none top-header p-0">
         <ul class="list-unstyled pl-2">
           <li class="list-inline-item">
             <a href="{{ route('web.LangChange','en') }}" class="text-light lang" id="en">
@@ -46,10 +46,10 @@
             </a> 
             <a href="" class="btn btn-sm btn-social-icon btn-twitter rounded-0 ">
                 <i class="fa fa-twitter"></i>
-            </a> 
+            </a> {{-- 
             <a href="" class="btn btn-sm btn-social-icon btn-linkedin rounded-0 ">
                 <i class="fa fa-linkedin"></i>
-            </a> 
+            </a>  --}}
             <a href="" class="btn btn-sm btn-social-icon btn-instagram rounded-0 ">
                 <i class="fa fa-instagram"></i>
             </a> 

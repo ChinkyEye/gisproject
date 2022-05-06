@@ -172,30 +172,30 @@
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114311.47785866004!2d87.20176636713276!3d26.448195378359042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef744704331cc5%3A0x6d9a85e45c54b3fc!2sBiratnagar%2056613!5e0!3m2!1sen!2snp!4v1651335343227!5m2!1sen!2snp" width="100%" height="330" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div class="col-md">
-                <div class="row">
+                <div class="row align-items-stretch">
                     @foreach( $isthaniya as $data)
-                    <div class="col-md-3 p-0">
+                    <div class="col-md-3 align-self-stretch p-0">
                         <div class="text-center gis-block-main blue">
                             <i class="fa fa-building"></i>
                             <h4 class="text-white m-0">{{$data->metropolitan == null ? '0' : $data->metropolitan }}</h4>
                             <small>{{ __('language.metropolitan')}}</small>
                         </div>
                     </div>  
-                    <div class="col-md-3 p-0">
+                    <div class="col-md-3 align-self-stretch p-0">
                         <div class="text-center gis-block-main green">
                             <i class="fa fa-building"></i>
                             <h4 class="text-white m-0">{{$data->sub_metropolitan == null ? '0' : $data->sub_metropolitan }}</h4>
                             <small>{{ __('language.sub_metropolitan')}}</small>
                         </div>
                     </div>
-                    <div class="col-md-3 p-0">
+                    <div class="col-md-3 align-self-stretch p-0">
                         <div class="text-center gis-block-main cadetblue">
                             <i class="fa fa-building"></i>
                             <h4 class="text-white m-0">{{$data->municipalities == null ? '0' : $data->municipalities }}</h4>
                             <small>{{ __('language.municipalities')}}</small>
                         </div>
                     </div>
-                    <div class="col-md-3 p-0">
+                    <div class="col-md-3 align-self-stretch p-0">
                         <div class="text-center gis-block-main blue">
                             <!-- <i class="fa fa-building"></i> -->
                             <i class="fa fa-tree"></i>
@@ -203,7 +203,7 @@
                             <small>{{ __('language.forest_area')}}</small>
                         </div>
                     </div>
-                    <div class="col-md-3 p-0">
+                    <div class="col-md-3 align-self-stretch p-0">
                         <div class="text-center gis-block-main green">
                             <!-- <i class="fa fa-building"></i> -->
                             <i class="fa fa-users"></i>
@@ -211,14 +211,14 @@
                             <small>{{ __('language.population')}}</small>
                         </div>
                     </div>
-                    <div class="col-md-3 p-0">
+                    <div class="col-md-3 align-self-stretch p-0">
                         <div class="text-center gis-block-main cadetblue">
                            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
                             <h4 class="text-white m-0">{{$data->electricity_dev == null ? '0' : $data->electricity_dev }}</h4>
-                            <small>{{ __('language.electricity_dev')}}</small>
+                            <small style="font-size:12px;">{{ __('language.electricity_dev')}}</small>
                         </div>
                     </div>
-                    <div class="col-md-3 p-0">
+                    <div class="col-md-3 align-self-stretch p-0">
                         <div class="text-center gis-block-main yellow">
                            <!--  <i class="fa fa-building"></i> -->
                            <i class="fa fa-pagelines"></i>
@@ -226,35 +226,35 @@
                             <small>{{ __('language.agricultural_land')}} </small>
                         </div>
                     </div>
-                    <div class="col-md-3 p-0">
+                    <div class="col-md-3 align-self-stretch p-0">
                         <div class="text-center gis-block-main green">
                             <i class="fa fa-camera"></i>
                             <h4 class="text-white m-0">{{$data->tourists_site == null ? '0' : $data->tourists_site }}</h4>
                             <small>{{ __('language.tourists_site')}}</small>
                         </div>
                     </div>
-                    <div class="col-md-3 p-0">
+                    <div class="col-md-3 align-self-stretch p-0">
                         <div class="text-center gis-block-main yellow">
                             <i class="fa fa-building-o" aria-hidden="true"></i>
                             <h4 class="text-white m-0">{{$data->rural_municipalities == null ? '0' : $data->rural_municipalities }}</h4>
                             <small>{{ __('language.rural_municipalities')}}</small>
                         </div>
                     </div>
-                    <div class="col-md-3 p-0">
+                    <div class="col-md-3 align-self-stretch p-0">
                         <div class="text-center gis-block-main silver">
                             <i class="fa fa-university" aria-hidden="true"></i>
                             <h4 class="text-white m-0">{{$data->district == null ? '0' : $data->district }}</h4>
                             <small>{{ __('language.district')}}</small>
                         </div>
                     </div>
-                    <div class="col-md-3 p-0">
+                    <div class="col-md-3 align-self-stretch p-0">
                         <div class="text-center gis-block-main green">
                             <i class="fa fa-home" aria-hidden="true"></i>
                             <h4 class="text-white m-0">{{$data->wada  == null ? '0' : $data->wada }}</h4>
                             <small>{{ __('language.wada')}} </small>
                         </div>
                     </div>
-                    <div class="col-md-3 p-0">
+                    <div class="col-md-3 align-self-stretch p-0">
                         <div class="text-center gis-block-main silver">
                             <i class="fa fa-industry" aria-hidden="true"></i>
                             <h4 class="text-white m-0">{{$data->industry == null ? '0' : $data->industry  }}</h4>

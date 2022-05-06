@@ -27,108 +27,26 @@
         </div>
     </div>
     <div class="col-md p-0 pl-2">
-        <div class="list-item-top">
-            <div class="list-item-head-top">
-                <p class="px-3">
-                    <i class="fa fa-building"></i> 
-                    मन्त्रालयहरु 
-                </p>
-            </div>
-            @foreach($mantralaya ->where('is_side','1') as $key => $data)
-          
-            <div class="list-item-body-top">
-                <a href="//{{$data->link}}" target="_blank" class="list-item-body-content-top w-100">
-                    <span class="text-dark">
-                       {{$data->getUserDetail->name}}
-                    </span>
-                </a>
-            </div>
-          
-            @endforeach
-           <!--  <div class="list-item-body-top">
-                <a href="" target="_blank" class="list-item-body-content-top">
-                    <span class="text-dark">
-                        Something
-                    </span>
-                </a>
-            </div>
-            <div class="list-item-body-top">
-                <a href="" target="_blank" class="list-item-body-content-top">
-                    <span class="text-dark">
-                        Something
-                    </span>
-                </a>
-            </div>
-            <div class="list-item-body-top">
-                <a href="" target="_blank" class="list-item-body-content-top">
-                    <span class="text-dark">
-                        Something
-                    </span>
-                </a>
-            </div>
-            <div class="list-item-body-top">
-                <a href="" target="_blank" class="list-item-body-content-top">
-                    <span class="text-dark">
-                        Something
-                    </span>
-                </a>
-            </div>
-            <div class="list-item-body-top">
-                <a href="" target="_blank" class="list-item-body-content-top">
-                    <span class="text-dark">
-                        Something
-                    </span>
-                </a>
-            </div>
-            <div class="list-item-body-top">
-                <a href="" target="_blank" class="list-item-body-content-top">
-                    <span class="text-dark">
-                        Something
-                    </span>
-                </a>
-            </div>
-            <div class="list-item-body-top">
-                <a href="" target="_blank" class="list-item-body-content-top">
-                    <span class="text-dark">
-                        Something
-                    </span>
-                </a>
-            </div>
-            <div class="list-item-body-top">
-                <a href="" target="_blank" class="list-item-body-content-top">
-                    <span class="text-dark">
-                        Something
-                    </span>
-                </a>
-            </div>
-            <div class="list-item-body-top">
-                <a href="" target="_blank" class="list-item-body-content-top">
-                    <span class="text-dark">
-                        Something
-                    </span>
-                </a>
-            </div>
-            <div class="list-item-body-top">
-                <a href="" target="_blank" class="list-item-body-content-top">
-                    <span class="text-dark">
-                        Something
-                    </span>
-                </a>
-            </div>
-            <div class="list-item-body-top">
-                <a href="" target="_blank" class="list-item-body-content-top">
-                    <span class="text-dark">
-                        Something
-                    </span>
-                </a>
-            </div>
-            <div class="list-item-body-top">
-                <a href="" target="_blank" class="list-item-body-content-top">
-                    <span class="text-dark">
-                        Something
-                    </span>
-                </a>
-            </div> -->
-        </div>
+        <div class="list-item-parent">
+            <div class="list-item-top">
+                <div class="list-item-head-top">
+                    <p class="px-3">
+                        <i class="fa fa-building"></i> 
+                        मन्त्रालयहरु 
+                    </p>
+                </div>
+                @foreach($mantralaya ->where('is_side','1') as $key => $data)
+
+                <div class="list-item-body-top">
+                    <a href="//{{$data->link}}" target="_blank" class="list-item-body-content-top w-100">
+                        <span class="text-dark">
+                           {{$data->getUserDetail->name}}
+                       </span>
+                   </a>
+               </div>
+
+               @endforeach
+           </div>
+       </div>
     </div>
 </div>
