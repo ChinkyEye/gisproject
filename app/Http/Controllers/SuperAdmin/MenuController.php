@@ -77,6 +77,7 @@ class MenuController extends Controller
             'model' => $request['model'],
             'link' => $request['link'],
             'is_main' => $is_main?'1':'0',
+            'is_quickmenu' => $request['is_quickmenu'],
             'type' => $request['type'] == null ? '1' : $request['type'],
             'page' => $request['page'],
             'is_active' => '1',

@@ -68,7 +68,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="is_main">Is Main<span class="text-danger">*</span></label>
+          <label for="is_main">Is Main</label>
           <div class="row col-md-5">
             <div class="form-check-inline col-md">
               <input class="form-check-input" type="radio" name="is_main" id="yes" value="1" {{$datas->is_main == '1' ? 'checked' : ''}} >
@@ -90,7 +90,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="is_local_level">Is Local Level<span class="text-danger">*</span></label>
+          <label for="is_local_level">Is Local Level</label>
           <div class="row col-md-5">
             <div class="form-check-inline col-md">
               <input class="form-check-input" type="radio" name="is_local_level" id="yes" value="1" {{$datas->is_local_level == '1' ? 'checked' : ''}} >

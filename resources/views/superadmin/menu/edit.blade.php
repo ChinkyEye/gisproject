@@ -105,6 +105,28 @@
            <option value="view-more" {{ $menus->page == 'view-more' ? 'selected' : ''}}>View More</option>
          </select>
        </div>
+        <div class="form-group">
+          <label for="quickmenu">Is Quick Menu</label>
+          <div class="row col-md-5">
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="radio" name="is_quickmenu" id="yes" value="1"  {{ $menus->is_quickmenu == "1" ? 'checked' : '' }} >
+              <label class="form-check-label" for="is_quickmenu">
+                Yes
+              </label>
+            </div>
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="radio" name="is_quickmenu" id="no" value="0" {{ $menus->is_quickmenu == "0" ? 'checked' : '' }}>
+              <label class="form-check-label" for="is_quickmenu">
+                No
+              </label>
+            </div>
+          </div>
+          @error('is_quickmenu')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
      </div>
 
       </div>

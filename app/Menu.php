@@ -15,6 +15,7 @@ class Menu extends Model
         'link',
         'level',
         'is_main',
+        'is_quickmenu',
         'type',
         'page',
         'parent_id',

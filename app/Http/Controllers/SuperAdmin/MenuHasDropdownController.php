@@ -74,6 +74,7 @@ class MenuHasDropdownController extends Controller
             'name_np' => $request['name_np'],
             'model' => $request['model'],
             'link' => $parent_link.'/'.$request['link'],
+            'is_quickmenu' => $request['is_quickmenu'],
             'is_main' => $is_main?'1':'0',
             'type' => $request['type'] == null ? '1' : $request['type'],
             'page' => $request['page'],
