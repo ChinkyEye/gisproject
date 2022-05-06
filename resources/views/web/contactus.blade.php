@@ -1,6 +1,6 @@
 @extends('web.layouts.app')
 @push('tab_title')
-About | 
+Contact-Us | 
 @endpush
 @push('css')
 <style type="text/css">
@@ -20,8 +20,7 @@ About |
       </li>
       <li class="breadcrumb-item my-auto">
         <a href="#">
-          <!-- {{ __('language.karyalaya-pramukh')}} -->
-          {{ __('language.contact_us')}}
+          {{ __('language.Contact-us')}}
         </a>
       </li>
     </ol>
@@ -36,7 +35,7 @@ About |
       </div>
       <div class="col-md-6">
         <div class="section-heading wow fadeInUp" data-wow-delay="100ms">
-          <h2>Contact Us</h2>
+          <h2> {{ __('language.Contact-us')}}</h2>
           <div class="line"></div>
         </div>
         <div class="single-contact-content d-flex align-items-center mb-4">

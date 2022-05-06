@@ -117,6 +117,7 @@ class SidemenuController extends Controller
         }
         $sidemenus = Sidemenu::find($id);
         $all_data = $request->all();
+        $all_data['link_type'] = strpos($request->link, "http") === 0 ? 1 : 0;
         $all_data['updated_by'] = Auth::user()->id;
         $sidemenus->update($all_data);
         return redirect()->route('superadmin.sidemenu.index')->with('alert-success', 'Data updated successfully');;

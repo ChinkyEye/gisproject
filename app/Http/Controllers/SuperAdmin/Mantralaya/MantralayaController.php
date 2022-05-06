@@ -53,7 +53,7 @@ class MantralayaController extends Controller
         $uppdf = $request->file('image');
         if($uppdf != ""){
             $this->validate($request, [
-                'image' => 'required|mimes:jpg,jpeg',
+                'image' => 'required|mimes:jpg,jpeg,png',
             ]);
             $destinationPath = 'images/mantralaya/';
             $extension = $uppdf->getClientOriginalExtension();
@@ -153,7 +153,7 @@ class MantralayaController extends Controller
         $uppdf = $request->file('image');
         if($uppdf != ""){
             $this->validate($request, [
-                'image' => 'required|mimes:jpg,jpeg',
+                'image' => 'required|mimes:jpg,jpeg,png',
             ]);
             $destinationPath = 'images/mantralaya/';
             $oldFilename = $destinationPath.'/'.$mantralayahasuser->document;
