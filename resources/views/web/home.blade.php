@@ -657,7 +657,7 @@
             ]);
 
         var options = {
-          title: ''
+          title: 'Pie chart'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -673,7 +673,7 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
 
-            ['','फर्छ्यौट भएको', 'अनुसन्धान गरिदै','हेरिएको','नहेरिएको','जम्मा'],
+            // ['','फर्छ्यौट भएको', 'अनुसन्धान गरिदै','हेरिएको','नहेरिएको','जम्मा'],
             @php
               // foreach($isthaniya as $order) {
               //   dd($isthaniya);
@@ -686,15 +686,18 @@
             $arraybarname = [];
             foreach($remotehellocm as $key => $remotehello) {
                 $arraybar[] = $remotehello[1];
+                $arraybarname[] = $remotehello[0];
               }
-              echo "['bar',".$arraybar[0].",".$arraybar[1].", ".'10'.",".$arraybar[3].",".$arraybar[4]."],";
+              // dd($arraybar);
+              echo "['','$arraybarname[0]','$arraybarname[1]', '$arraybarname[2]','$arraybarname[3]','$arraybarname[4]'],";
+              echo "['bar',".$arraybar[0].",".$arraybar[1].", ".$arraybar[2].",".$arraybar[3].",".$arraybar[4]."],";
             @endphp
         ]);
 
         var options = {
           chart: {
             title: 'Bar Graph',
-            subtitle: 'Municipalities, and Sub Municipalities',
+            // subtitle: 'Municipalities, and Sub Municipalities',
           },
           bars: 'vertical'
         };
