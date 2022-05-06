@@ -308,7 +308,7 @@
                         </div>
                         @elseif($key==2)
                         <div class="col-md-4 p-1">
-                            <div class="text-center quest-block-main green">
+                            <div class="text-center quest-block-main yellow">
                                 <i class="fa fa-eye"></i>
                                 <h5 class="text-white m-0">{{$hellocm[1]}}</h5>
                                 <small>{{$hellocm[0]}}</small>
@@ -316,7 +316,7 @@
                         </div>
                         @elseif($key==3)
                         <div class="col-md-4 p-1">
-                            <div class="text-center quest-block-main yellow">
+                            <div class="text-center quest-block-main green">
                                 <i class="fa fa-eye-slash"></i>
                                 <h5 class="text-white m-0">{{$hellocm[1]}}</h5>
                                 <small>{{$hellocm[0]}}</small>
@@ -672,23 +672,28 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-            ['Bar', 'Metropolitan', 'Submetropolitan','Sub Municipalities','Rural Municipalities'],
 
+            ['','फर्छ्यौट भएको', 'अनुसन्धान गरिदै','हेरिएको','नहेरिएको','जम्मा'],
             @php
-              foreach($isthaniya as $order) {
-                  echo "['".'0'."', ".$order->metropolitan.", ".($order->sub_metropolitan == null ? '0' : $order->sub_metropolitan ).", ".($order->municipalities == null ? '0' : $order->municipalities ).", ".($order->rural_municipalities == null ? '0' : $order->rural_municipalities )."],";
+              // foreach($isthaniya as $order) {
+              //   dd($isthaniya);
+              //     echo "['".'0'."','".'0'."',".$order->metropolitan.",".$order->municipalities.", ".$order->rural_municipalities.",".$order->rural_municipalities."],";
 
 
 
+              // }
+            $arraybar = [];
+            $arraybarname = [];
+            foreach($remotehellocm as $key => $remotehello) {
+                $arraybar[] = $remotehello[1];
               }
+              echo "['bar',".$arraybar[0].",".$arraybar[1].", ".'10'.",".$arraybar[3].",".$arraybar[4]."],";
             @endphp
-
-
         ]);
 
         var options = {
           chart: {
-            title: 'Bar Graph ',
+            title: 'Bar Graph',
             subtitle: 'Municipalities, and Sub Municipalities',
           },
           bars: 'vertical'
