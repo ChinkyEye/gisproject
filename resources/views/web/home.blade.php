@@ -197,63 +197,66 @@
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main blue">
-                            <i class="fa fa-building"></i>
+                            <!-- <i class="fa fa-building"></i> -->
+                            <i class="fa fa-tree"></i>
                             <h4 class="text-white m-0">{{$data->forest_area == null ? '0' : $data->forest_area }}</h4>
                             <small>{{ __('language.forest_area')}}</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main green">
-                            <i class="fa fa-building"></i>
+                            <!-- <i class="fa fa-building"></i> -->
+                            <i class="fa fa-users"></i>
                             <h4 class="text-white m-0">{{$data->population == null ? '0' : $data->population }}</h4>
                             <small>{{ __('language.population')}}</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main cadetblue">
-                            <i class="fa fa-building"></i>
+                           <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
                             <h4 class="text-white m-0">{{$data->electricity_dev == null ? '0' : $data->electricity_dev }}</h4>
                             <small>{{ __('language.electricity_dev')}}</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main yellow">
-                            <i class="fa fa-building"></i>
+                           <!--  <i class="fa fa-building"></i> -->
+                           <i class="fa fa-pagelines"></i>
                             <h4 class="text-white m-0">{{$data->agricultural_land == null ? '0' : $data->agricultural_land }}</h4>
                             <small>{{ __('language.agricultural_land')}} </small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main green">
-                            <i class="fa fa-building"></i>
+                            <i class="fa fa-camera"></i>
                             <h4 class="text-white m-0">{{$data->tourists_site == null ? '0' : $data->tourists_site }}</h4>
                             <small>{{ __('language.tourists_site')}}</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main yellow">
-                            <i class="fa fa-building"></i>
+                            <i class="fa fa-building-o" aria-hidden="true"></i>
                             <h4 class="text-white m-0">{{$data->rural_municipalities == null ? '0' : $data->rural_municipalities }}</h4>
                             <small>{{ __('language.rural_municipalities')}}</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main silver">
-                            <i class="fa fa-building"></i>
+                            <i class="fa fa-university" aria-hidden="true"></i>
                             <h4 class="text-white m-0">{{$data->district == null ? '0' : $data->district }}</h4>
                             <small>{{ __('language.district')}}</small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main green">
-                            <i class="fa fa-building"></i>
+                            <i class="fa fa-home" aria-hidden="true"></i>
                             <h4 class="text-white m-0">{{$data->wada  == null ? '0' : $data->wada }}</h4>
                             <small>{{ __('language.wada')}} </small>
                         </div>
                     </div>
                     <div class="col-md-3 p-0">
                         <div class="text-center gis-block-main silver">
-                            <i class="fa fa-building"></i>
+                            <i class="fa fa-industry" aria-hidden="true"></i>
                             <h4 class="text-white m-0">{{$data->industry == null ? '0' : $data->industry  }}</h4>
                             <small>{{ __('language.industry')}} </small>
                         </div>
@@ -292,35 +295,35 @@
                         </div>
                         <div class="col-md-4 p-1">
                             <div class="text-center quest-block-main red">
-                                <i class="fa fa-building"></i>
+                                <i class="fa fa-info"></i>
                                 <h4 class="text-white m-0">२</h4>
                                 <small>म.न.पा</small>
                             </div>
                         </div>
                         <div class="col-md-4 p-1">
                             <div class="text-center quest-block-main green">
-                                <i class="fa fa-building"></i>
+                                <i class="fa fa-check"></i>
                                 <h4 class="text-white m-0">२</h4>
                                 <small>म.न.पा</small>
                             </div>
                         </div>
                         <div class="col-md-4 p-1">
                             <div class="text-center quest-block-main yellow">
-                                <i class="fa fa-building"></i>
+                                <i class="fa fa-spinner"></i>
                                 <h4 class="text-white m-0">२</h4>
                                 <small>म.न.पा</small>
                             </div>
                         </div>
                         <div class="col-md-4 p-1">
                             <div class="text-center quest-block-main blue">
-                                <i class="fa fa-building"></i>
+                                <i class="fa fa-eye"></i>
                                 <h4 class="text-white m-0">२</h4>
                                 <small>म.न.पा</small>
                             </div>
                         </div>
                         <div class="col-md-4 p-1">
                             <div class="text-center quest-block-main purple">
-                                <i class="fa fa-building"></i>
+                                <i class="fa fa-eye-slash"></i>
                                 <h4 class="text-white m-0">२</h4>
                                 <small>म.न.पा</small>
                             </div>
