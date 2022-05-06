@@ -31,7 +31,7 @@
             <div class="col-md-4">
                 <div class="single-footer-widget mb-70">
                     <h5 class="widget-title font-weight-bold">{{ __('language.quick_menu')}}</h5>
-                    @foreach($quick_menu->where('is_main','0')->where('parent_id','0') as $key => $data)
+                    @foreach($quick_menu->where('is_quickmenu','1') as $key => $data)
                     <div class="single-latest-news-area d-flex align-items-center">
                         <div class="news-content">
                             <span class="text-light icon-foot">

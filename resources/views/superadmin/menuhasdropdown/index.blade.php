@@ -47,6 +47,7 @@
                       <th>Link</th>
                       <th>Type</th>
                       <th>Page</th>
+                      <th>Quick Menu</th>
                       <th>Status</th>
                       <th>Action</th>
                     </tr>
@@ -62,6 +63,13 @@
                       <td>{{$menuhasdropdown->link}}</td>
                       <td>{{$menuhasdropdown->getModelType->type}}</td>
                       <td>{{$menuhasdropdown->page}}</td>
+                       <td>
+                          @if($menuhasdropdown->is_quickmenu)
+                          Yes
+                          @else
+                          No
+                          @endif
+                        </td>
                       <td>
                         <a href="{{ route('superadmin.menuhasdropdown.active',$menuhasdropdown->id) }}" data-placement="top" title="{{ $menuhasdropdown->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                           <i class="nav-icon fas {{ $menuhasdropdown->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
