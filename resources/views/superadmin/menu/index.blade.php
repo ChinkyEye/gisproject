@@ -48,6 +48,7 @@
                         <th>Link</th>
                         <th>Page</th>
                         <th>Sub menu</th>
+                        <th>Quick menu</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
@@ -68,6 +69,13 @@
                         @endif
                         <td>
                           @if($menu->is_main)
+                          Yes
+                          @else
+                          No
+                          @endif
+                        </td>
+                        <td>
+                          @if($menu->is_quickmenu)
                           Yes
                           @else
                           No
