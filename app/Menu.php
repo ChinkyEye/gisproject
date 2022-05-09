@@ -36,7 +36,7 @@ class Menu extends Model
         return Menu::orderBy('sort_id','ASC')->with('parent')->where('is_active', '1')->get();
 
     } public static function quickMenu(Request $request){
-        return Menu::orderBy('sort_id','ASC')->with('parent')->where('is_active', '1')->get();
+        return Menu::orderBy('views','DESC')->with('parent')->where('is_active', '1')->get();
     }
 
     public function getModelType()
