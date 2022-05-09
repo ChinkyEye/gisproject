@@ -98,10 +98,14 @@ class DetailController extends Controller
             {            
                 $model = $model->where('date_np','LIKE', "%{$request->year}%");
             }
+            // dd($model->get());
         if($request->has('ministry') && $request->get('ministry')!="")
             {    
+                // dd($ministry);
                 $model = $model->where('server', $ministry);
+                // dd($model->get());
             }
+            // dd($model->get());
         if(($request->has('date_np_start')) || ($request->has('date_np_end')))
             {
                 $model = $model->whereBetween('date_np', [$request->date_np_start, $request->date_np_end]);
