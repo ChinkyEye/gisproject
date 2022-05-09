@@ -88,6 +88,10 @@ class HomeController extends Controller
             $type = Menu::where('link',$linkf)->value('type');
             $name = Menu::where('link',$linkf)->value('name');
             $level = Menu::where('link',$linkf)->value('level');
+
+            $menu_id = Menu::where('link',$linkf)->value('id');
+            Menu::find($menu_id)->increment('views');
+
             
             $modelName = '\\App\\' . $model;
             if($type == '1'){
