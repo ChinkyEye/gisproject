@@ -282,7 +282,7 @@
     <div class="container-fluid">
         <!-- <div class="row align-items-stretch"> -->
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md">
                 <div class="container-fluid">
                     {{-- <h5>Title here</h5> --}}
                     <h5>{{ __('language.gunaso-sunne')}}</h5>
