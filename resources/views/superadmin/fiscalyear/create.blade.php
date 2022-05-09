@@ -30,6 +30,15 @@
           </span>
           @enderror
         </div>
+        <div class="form-group">
+          <label for="value">Value<span class="text-danger">*</span></label>
+          <input type="text"  class="form-control max" id="value" placeholder="Enter fiscal year" name="value" autocomplete="off" autofocus value="{{ old('value') }}">
+          @error('value')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
       </div>
       <div class="card-footer justify-content-between">
         <button type="submit" class="btn btn-info text-capitalize">Save</button>

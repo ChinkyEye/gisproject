@@ -52,12 +52,14 @@ class DetailController extends Controller
                 break;
         }
         $datas = $model->get();
+        // dd($datas);
         $years = FiscalYear::where('is_active',1)->get();
         $mantralayas = MantralayaHasUser::where('is_active',1)->get();
         return view('web.detail', compact(['datas','type','years','mantralayas']));
     }
 
     public function search(Request $request, $type){
+        // dd($request,$type);
         $year = $request->year;
         $ministry = $request->ministry;
         $date_np_start = $request->date_np_start;
@@ -91,6 +93,7 @@ class DetailController extends Controller
                 # code...
                 break;
         }
+        // dd($model->get());
         if($request->has('year') && $request->get('year')!="")
             {            
                 $model = $model->where('date_np','LIKE', "%{$request->year}%");
@@ -104,6 +107,7 @@ class DetailController extends Controller
                 $model = $model->whereBetween('date_np', [$request->date_np_start, $request->date_np_end]);
             }
         $datas = $model->where('is_active','1')->get();
+        // dd($datas);
         // var_dump($datas); die();
         $years = FiscalYear::where('is_active',1)->get();
         $mantralayas = MantralayaHasUser::where('is_active',1)->get();

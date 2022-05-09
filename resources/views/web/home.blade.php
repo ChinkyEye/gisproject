@@ -17,7 +17,7 @@
                         </div>
                     </a>
                 </div>
-                {{-- <div class="box">
+                <div class="box">
                     <a href="{{$data->link}}">
                         <img src="{{ $data->document == null ? asset('images/logo.png') : asset('images/mantralaya') . '/' . $data->document  }}">
                         <div class="box-content">
@@ -30,7 +30,7 @@
                             <li><a href="{{$data->link}}" target="_blank"><img src="{{ asset('images/logo.png')}}"></a></li>
                         </ul>
                     </a>
-                </div> --}}
+                </div>
             </div>
             @endforeach
         </div>
