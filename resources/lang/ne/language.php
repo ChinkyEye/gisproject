@@ -97,7 +97,7 @@ return [
     'prativedan' => 'प्रतिवेदन',
     'publication' => 'प्रकाशन',
     'gunaso-sunne' => 'गुनासोको विवरण',
-
+    'most_view' => 'धेरै हेरिएको'
 
 
 

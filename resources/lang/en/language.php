@@ -99,5 +99,7 @@ return [
     'prativedan' => 'Prativedan',
     'publication' => 'Publication',
     'gunaso-sunne' => 'Grievances Information',
+    'most_view' => 'Most Viewed',
+ 
 
 ];
