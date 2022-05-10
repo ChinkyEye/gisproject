@@ -1044,11 +1044,11 @@
     
     .quest-block-main {
         color: white;
-        border-radius: .5rem;
+        border-radius: .8rem;
         padding-top: 1rem;
         padding-bottom: 1rem;
         /*margin: .06rem;*/
-        border: .06rem solid #f8f9fa;
+        border: .30rem solid #f8f9fa;
     }
     .quest-block-main i {
         font-size: 1.6rem;

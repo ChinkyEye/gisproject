@@ -61,7 +61,8 @@ class HomeController extends Controller
         $introductions = Introduction::orderBy('id','DESC')->where('is_active','1')->get();
         $sliders = Slider::orderBy('id','DESC')->where('is_active','1')->get();
         $coreperson = CorePerson::orderBy('id','DESC')->where('is_top','1')->where('is_active','1')->get();
-        $mantralaya = MantralayaHasUser::orderBy('id','DESC')->where('is_active','1')->get();
+        // $mantralaya = MantralayaHasUser::orderBy('id','DESC')->where('is_active','1')->get();
+        $mantralaya = MantralayaHasUser::orderBy('sort_id','DESC')->where('is_active','1')->get();
         $isthaniya = IsthaniyaTaha::orderBy('id','DESC')->get();
         // dd($remote_e_farums);
 

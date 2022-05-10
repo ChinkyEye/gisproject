@@ -161,7 +161,9 @@ class MantralayaController extends Controller
             $extension = $uppdf->getClientOriginalExtension();
             $name = $uppdf->getClientOriginalName();
             $mimes = $uppdf->getMimeType();
-            $fileName = $name.'.'.$extension;
+            $fileName = md5(mt_rand()).'.'.$extension;
+            
+            // $fileName = $name.'.'.$extension;
             $uppdf->move($destinationPath, $fileName);
             $file_path = $destinationPath.'/'.$fileName;
             $mantralayahasuser->document = $fileName;
