@@ -556,7 +556,7 @@
             @foreach($mantralaya->where('is_main','0') as $key => $data)
             <div class="item align-self-stretch">
                 <a href="{{route('web.mantralaya.detail',$data->id)}}" class="card">
-                    <img src="{{ $data->document == null ? asset('images/noimage.png') : asset('images/mantralaya') . '/' . $data->document }}" class="img-fluid card-img-top" alt="{{$data->getUserDetail->name}}">
+                    <img src="{{ $data->document == null ? asset('images/noimage.png') : asset('images/mantralaya') . '/' . $data->document }}" class="img-fluid card-img-top section-main-2" alt="{{$data->getUserDetail->name}}">
                    <!--  <img src="{{ url('/web') }}/img/bg-img/1.jpg" class="card-img-top" alt="..."> -->
                     <div class="card-body py-3 main-hover-card-text text-center position-absolute w-100">
                         <div>
