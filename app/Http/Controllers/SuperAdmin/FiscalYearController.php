@@ -42,9 +42,11 @@ class FiscalYearController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'value' => 'required|integer',
         ]);
         $fiscalyear = FiscalYear::create([
             'name' => $request['name'],
+            'value' => $request['value'],
             'is_active' => '1',
             'date' => date("Y-m-d"),
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
@@ -88,6 +90,7 @@ class FiscalYearController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'value' => 'required|integer',
         ]);
         $all_data = $request->all();
         $all_data['updated_by'] = Auth::user()->id;

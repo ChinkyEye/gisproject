@@ -8,6 +8,7 @@ class FiscalYear extends Model
 {
     protected $fillable = [
       'name',
+      'value',
       'is_active',
       'date_np',
       'date',

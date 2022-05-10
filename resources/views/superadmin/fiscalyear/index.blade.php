@@ -40,6 +40,7 @@
                       <tr>
                         <th width="10">SN</th>
                         <th>Name</th>
+                        <th>Value</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
@@ -49,6 +50,7 @@
                       <tr class="{{$data->is_active == 1 ? '' : 'table-danger'}}">
                         <td>{{$key + 1}}</td>
                         <td>{{$data->name}}</td>
+                        <td>{{$data->value}}</td>
                         <td>
                           <a href="{{ route('superadmin.fiscalyear.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                             <i class="nav-icon fas {{ $data->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>
