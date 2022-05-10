@@ -781,6 +781,19 @@
         /*grid-gap: 5px;*/
     }
 
+    .list-item-top > .list-item-body-top > .list-item-body-content-top {
+        border: 1px solid #dadada;
+        border-bottom: 1px solid transparent;
+    }
+    .list-item-top > .list-item-body-top > .list-item-body-content-top:hover {
+        border: 1px solid var(--site-color-red);
+    }
+    .list-item-top > .list-item-body-top:last-child > .list-item-body-content-top {
+        border-bottom: 1px solid #dadada;
+    }
+    .list-item-top > .list-item-body-top:last-child > .list-item-body-content-top:hover {
+        border: 1px solid var(--site-color-red);
+    }
     .list-item-body-content-top {
         padding: var(--right-menu-padding);
         padding-right: 5px;
@@ -790,13 +803,12 @@
         font-size: 13px;
         font-weight: 600;
         grid-gap: 0px;
-        border: 1px solid #dadada;
         cursor: pointer;
     }
 
     .list-item-body-content-top:hover,
     .list-item-body-content-top:focus {
-        border: 1px solid var(--site-color-red);
+        /*border: 1px solid var(--site-color-red);*/
         font-weight: 600; 
         font-size: 13px;
     }
@@ -1001,7 +1013,8 @@
         border-radius: 1.3rem;
         padding-top: .5rem;
         padding-bottom: .5rem;
-        margin: .06rem;
+        /*margin: .06rem;*/
+        border: .06rem solid #f8f9fa;
     }
     .gis-block-main i {
         font-size: 2.5rem;
@@ -1034,7 +1047,8 @@
         border-radius: .5rem;
         padding-top: 1rem;
         padding-bottom: 1rem;
-        margin: .06rem;
+        /*margin: .06rem;*/
+        border: .06rem solid #f8f9fa;
     }
     .quest-block-main i {
         font-size: 1.6rem;
@@ -1070,3 +1084,33 @@
         object-fit: cover;
         object-position: center center;
     }
+
+/*slider*/
+    .owl-carousel .nav-btn{
+      height: 47px;
+      position: absolute;
+      width: 26px;
+      cursor: pointer;
+      top: 100px !important;
+    }
+
+    .owl-carousel .owl-prev.disabled,
+    .owl-carousel .owl-next.disabled{
+    pointer-events: none;
+    opacity: 0.2;
+    }
+
+    .owl-carousel .prev-slide{
+      background: url(nav-icon.png) no-repeat scroll 0 0;
+      left: -33px;
+    }
+    .owl-carousel .next-slide{
+      background: url(nav-icon.png) no-repeat scroll -24px 0px;
+      right: -33px;
+    }
+    .owl-carousel .prev-slide:hover{
+     background-position: 0px -53px;
+    }
+    .owl-carousel .next-slide:hover{
+    background-position: -24px -53px;
+    } 

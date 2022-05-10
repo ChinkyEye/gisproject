@@ -11,8 +11,8 @@
                 <div class="card rounded-0 border-0">
                     <a href="//{{$data->link}}" target="_blank">
                         <img src="{{ $data->document == null ? asset('images/noimage.png') : asset('images/mantralaya') . '/' . $data->document  }}" class="card-img-top  rounded-0 section-main-2">
-                        <div class="card-body card-main-body">
-                            <h5 class="title">{{$data->getUserDetail->name}}</h5>
+                        <div class="card-body card-main-body py-2">
+                            <h5 class="title m-0">{{$data->getUserDetail->name}}</h5>
                             <span class="post">{{$data->getUserDetail->address}}</span>
                         </div>
                     </a>
@@ -172,90 +172,90 @@
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114311.47785866004!2d87.20176636713276!3d26.448195378359042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef744704331cc5%3A0x6d9a85e45c54b3fc!2sBiratnagar%2056613!5e0!3m2!1sen!2snp!4v1651335343227!5m2!1sen!2snp" width="100%" height="330" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div class="col-md">
-                <div class="row align-items-stretch">
+                <div class="row align-content-stretch">
                     @foreach( $isthaniya as $data)
-                    <div class="col-md-3 align-self-stretch p-0">
-                        <div class="text-center gis-block-main blue">
+                    <div class="col-md-3 p-0 gis-block-main blue">
+                        <div class="text-center py-1">
                             <i class="fa fa-building"></i>
                             <h4 class="text-white m-0">{{$data->metropolitan == null ? '0' : $data->metropolitan }}</h4>
                             <small>{{ __('language.metropolitan')}}</small>
                         </div>
                     </div>  
-                    <div class="col-md-3 align-self-stretch p-0">
-                        <div class="text-center gis-block-main green">
+                    <div class="col-md-3 p-0 gis-block-main green">
+                        <div class="text-center py-1">
                             <i class="fa fa-building"></i>
                             <h4 class="text-white m-0">{{$data->sub_metropolitan == null ? '0' : $data->sub_metropolitan }}</h4>
                             <small>{{ __('language.sub_metropolitan')}}</small>
                         </div>
                     </div>
-                    <div class="col-md-3 align-self-stretch p-0">
-                        <div class="text-center gis-block-main cadetblue">
+                    <div class="col-md-3 p-0 gis-block-main cadetblue">
+                        <div class="text-center py-1">
                             <i class="fa fa-building"></i>
                             <h4 class="text-white m-0">{{$data->municipalities == null ? '0' : $data->municipalities }}</h4>
                             <small>{{ __('language.municipalities')}}</small>
                         </div>
                     </div>
-                    <div class="col-md-3 align-self-stretch p-0">
-                        <div class="text-center gis-block-main blue">
+                    <div class="col-md-3 p-0 gis-block-main blue">
+                        <div class="text-center py-1">
                             <!-- <i class="fa fa-building"></i> -->
                             <i class="fa fa-tree"></i>
                             <h4 class="text-white m-0">{{$data->forest_area == null ? '0' : $data->forest_area }}</h4>
                             <small>{{ __('language.forest_area')}}</small>
                         </div>
                     </div>
-                    <div class="col-md-3 align-self-stretch p-0">
-                        <div class="text-center gis-block-main green">
+                    <div class="col-md-3 p-0 gis-block-main green">
+                        <div class="text-center py-1">
                             <!-- <i class="fa fa-building"></i> -->
                             <i class="fa fa-users"></i>
                             <h4 class="text-white m-0">{{$data->population == null ? '0' : $data->population }}</h4>
                             <small>{{ __('language.population')}}</small>
                         </div>
                     </div>
-                    <div class="col-md-3 align-self-stretch p-0">
-                        <div class="text-center gis-block-main cadetblue">
+                    <div class="col-md-3 p-0 gis-block-main cadetblue">
+                        <div class="text-center py-1">
                            <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
                             <h4 class="text-white m-0">{{$data->electricity_dev == null ? '0' : $data->electricity_dev }}</h4>
                             <small style="font-size:12px;">{{ __('language.electricity_dev')}}</small>
                         </div>
                     </div>
-                    <div class="col-md-3 align-self-stretch p-0">
-                        <div class="text-center gis-block-main yellow">
+                    <div class="col-md-3 p-0 gis-block-main yellow">
+                        <div class="text-center py-1">
                            <!--  <i class="fa fa-building"></i> -->
                            <i class="fa fa-pagelines"></i>
                             <h4 class="text-white m-0">{{$data->agricultural_land == null ? '0' : $data->agricultural_land }}</h4>
                             <small>{{ __('language.agricultural_land')}} </small>
                         </div>
                     </div>
-                    <div class="col-md-3 align-self-stretch p-0">
-                        <div class="text-center gis-block-main green">
+                    <div class="col-md-3 p-0 gis-block-main green">
+                        <div class="text-center py-1">
                             <i class="fa fa-camera"></i>
                             <h4 class="text-white m-0">{{$data->tourists_site == null ? '0' : $data->tourists_site }}</h4>
                             <small>{{ __('language.tourists_site')}}</small>
                         </div>
                     </div>
-                    <div class="col-md-3 align-self-stretch p-0">
-                        <div class="text-center gis-block-main yellow">
+                    <div class="col-md-3 p-0 gis-block-main yellow">
+                        <div class="text-center py-1">
                             <i class="fa fa-building-o" aria-hidden="true"></i>
                             <h4 class="text-white m-0">{{$data->rural_municipalities == null ? '0' : $data->rural_municipalities }}</h4>
                             <small>{{ __('language.rural_municipalities')}}</small>
                         </div>
                     </div>
-                    <div class="col-md-3 align-self-stretch p-0">
-                        <div class="text-center gis-block-main silver">
+                    <div class="col-md-3 p-0 gis-block-main silver">
+                        <div class="text-center py-1">
                             <i class="fa fa-university" aria-hidden="true"></i>
                             <h4 class="text-white m-0">{{$data->district == null ? '0' : $data->district }}</h4>
                             <small>{{ __('language.district')}}</small>
                         </div>
                     </div>
-                    <div class="col-md-3 align-self-stretch p-0">
-                        <div class="text-center gis-block-main green">
+                    <div class="col-md-3 p-0 gis-block-main green">
+                        <div class="text-center py-1">
                             <i class="fa fa-home" aria-hidden="true"></i>
                             <h4 class="text-white m-0">{{$data->wada  == null ? '0' : $data->wada }}</h4>
                             <small>{{ __('language.wada')}} </small>
                         </div>
                     </div>
-                    <div class="col-md-3 align-self-stretch p-0">
-                        <div class="text-center gis-block-main silver">
+                    <div class="col-md-3 p-0 gis-block-main silver">
+                        <div class="text-center py-1">
                             <i class="fa fa-industry" aria-hidden="true"></i>
                             <h4 class="text-white m-0">{{$data->industry == null ? '0' : $data->industry  }}</h4>
                             <small>{{ __('language.industry')}} </small>
@@ -282,56 +282,56 @@
     <div class="container-fluid">
         <!-- <div class="row align-items-stretch"> -->
         <div class="row">
-            <div class="col-md">
+            <div class="col-md-5">
                 <div class="container-fluid">
                     {{-- <h5>Title here</h5> --}}
                     <h5>{{ __('language.gunaso-sunne')}}</h5>
-                    <div class="row">
+                    <div class="row align-content-stretch">
                         @foreach($remotehellocm as $key=>$hellocm)
                         {{-- <?php var_dump($hellocm);?> --}}
                         {{-- @foreach($hellocm as $hello) --}}
                         @if($key==0)
-                        <div class="col-md-4 p-1">
-                            <div class="text-center quest-block-main blue">
+                        <div class="col-md-4 p-1  quest-block-main blue ">
+                            <div class="text-center">
                                 <i class="fa fa-check"></i>
                                 <h5 class="text-white m-0">{{$hellocm[1]}}</h5>
                                 <small>{{$hellocm[0]}}</small>
                             </div>
                         </div>
                         @elseif($key==1)
-                        <div class="col-md-4 p-1">
-                            <div class="text-center quest-block-main red">
+                        <div class="col-md-4 p-1  quest-block-main red ">
+                            <div class="text-center">
                                 <i class="fa fa-spinner"></i>
                                 <h5 class="text-white m-0">{{$hellocm[1]}}</h5>
                                 <small>{{$hellocm[0]}}</small>
                             </div>
                         </div>
                         @elseif($key==2)
-                        <div class="col-md-4 p-1">
-                            <div class="text-center quest-block-main yellow">
+                        <div class="col-md-4 p-1  quest-block-main yellow ">
+                            <div class="text-center">
                                 <i class="fa fa-eye"></i>
                                 <h5 class="text-white m-0">{{$hellocm[1]}}</h5>
                                 <small>{{$hellocm[0]}}</small>
                             </div>
                         </div>
                         @elseif($key==3)
-                        <div class="col-md-4 p-1">
-                            <div class="text-center quest-block-main green">
+                        <div class="col-md-4 p-1  quest-block-main green ">
+                            <div class="text-center">
                                 <i class="fa fa-eye-slash"></i>
                                 <h5 class="text-white m-0">{{$hellocm[1]}}</h5>
                                 <small>{{$hellocm[0]}}</small>
                             </div>
                         </div>
                         @elseif($key==4)
-                        <div class="col-md-4 p-1">
-                            <div class="text-center quest-block-main blue">
+                        <div class="col-md-4 p-1  quest-block-main blue ">
+                            <div class="text-center">
                                 <i class="fa fa-pencil"></i>
                                 <h5 class="text-white m-0">{{$hellocm[1]}}</h5>
                                 <small>{{$hellocm[0]}}</small>
                             </div>
                         </div>
-                        <div class="col-md-4 p-1">
-                            <div class="text-center quest-block-main purple">
+                        <div class="col-md-4 p-1  quest-block-main purple ">
+                            <div class="text-center">
                                 <i class="fa fa-info"></i>
                                 <h5 class="text-white m-0">{{$hellocm[1]}}</h5>
                                 <small>कुल दर्ता गुनासो</small>
@@ -583,11 +583,12 @@
     $('.owl-carousel2').owlCarousel({
         loop:true,
         margin:30,
-        nav:false,
+        nav:true,
         autoHeight:true,
         autoplay:true,
         autoplayTimeout:2000,
         autoplayHoverPause:true,
+        // navText:["<div class='nav-btn prev-slide'></div>","<div class='nav-btn next-slide'></div>"],
         responsive:{
             0:{
                 items:1
@@ -599,7 +600,8 @@
                 items:4
             }
         }
-    })
+    });
+    // $(".owl-carousel2>.owl-nav.disabled").removeClass("disabled");
 </script>
 {{-- <script type="text/javascript">
     google.charts.load('current', {'packages':['corechart']});
@@ -705,6 +707,7 @@
         chart.draw(data, google.charts.Bar.convertOptions(options));
       }
     </script>
+
 
 
 @endpush
