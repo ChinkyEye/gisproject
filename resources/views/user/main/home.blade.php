@@ -16,10 +16,10 @@
       <div class="col-md-3">
         <div class="card card-primary card-outline">
           <div class="card-body box-profile">
-            <div class="text-center">
+            {{-- <div class="text-center">
               <img class="profile-user-img img-fluid img-circle"
               alt="User profile picture" src="{{$datas->getUserMantralaya->document == null ?asset('images/no-image-user.png') : asset('images/mantralaya').'/'.$datas->getUserMantralaya->document}}">
-            </div>
+            </div> --}}
 
             <h3 class="profile-username text-center text-capitalize">{{$datas->name}}</h3>
             <div class="d-block text-center text-muted">

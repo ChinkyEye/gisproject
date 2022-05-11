@@ -228,7 +228,7 @@
                           </td>
                         
                           <td>{{$data->type}}
-                            <form role="form" method="POST" action="{{route('user.survey.getSurveyAttributeUpdate')}}" class="signup" id="signup" enctype="multipart/form-data">
+                            {{-- <form role="form" method="POST" action="{{route('user.survey.getSurveyAttributeUpdate')}}" class="signup" id="signup" enctype="multipart/form-data">
                               @csrf
                               <input type="text" name="id" value="{{$data->id}}">
                               <select class="form-control max" id="type" name="type">
@@ -251,7 +251,7 @@
 
                               
                               
-                            </form>
+                            </form> --}}
                             
                             {{-- <button type="submit" class="btn btn-info text-capitalize" id="updateattribute" ids="{{$data->id}}">Update {{$data->id}}</button> --}}
                           </td>
