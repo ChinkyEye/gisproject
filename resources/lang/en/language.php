@@ -100,6 +100,8 @@ return [
     'publication' => 'Publication',
     'gunaso-sunne' => 'Grievances Information',
     'most_view' => 'Most Viewed',
+    'email' => 'Email',
+    'phone' => 'Phone No.',
  
 
 ];

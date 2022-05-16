@@ -257,7 +257,7 @@
                     <div class="col-md-3 p-0 gis-block-main silver">
                         <div class="text-center py-1">
                             <i class="fa fa-industry" aria-hidden="true"></i>
-                            <h4 class="text-white m-0">{{$data->industry == null ? '0' : $data->industry  }}</h4>
+                            <h4 class="text-white m-0">{{$data->industries == null ? '0' : $data->industries  }}</h4>
                             <small>{{ __('language.industry')}} </small>
                         </div>
                     </div>

@@ -34,7 +34,7 @@
           @enderror
         </div>
         <div class="form-group">
-          <label for="model_data">Model<span class="text-danger">*</span></label>
+          <label for="model_data">Model</label>
           <select id="nationality" class="form-control" name="model" id="modal">
             <option value="" selected disabled>--Select--</option>
 

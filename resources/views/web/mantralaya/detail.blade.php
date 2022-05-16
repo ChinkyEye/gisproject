@@ -1,6 +1,5 @@
 @extends('web.layouts.app')
 @push('tab_title')
-| 
 @endpush
 @section('content')
 <nav class="breadcrumb-main mt-4">
@@ -18,7 +17,6 @@
 <section class="breadcrumb-main my-4">
 	<div class="container">
 		<div class="section-heading ">
-			<small>{{$data->getUserDetail->address}}</small>
 		    <h2>{{$data->getUserDetail->name}}</h2>
 		    <div class="line"></div>
 		</div>
@@ -27,7 +25,36 @@
 				{{--  w-25 -> for 25% area , w-100 : for 100% area --}}
 				<img src="{{ url($data->path.'/'.$data->document) }}" class="img-fluid main-img-detail w-25 mr-3"><br>
 				<div class="col-12 mt-4">
-					<a href="{{$data->link}}" class="btn bg-main-blue" target="_blank"><i class="fa fa-download"></i> Link</a>
+					<ul class="list-unstyled">
+						@if($data->getUserDetail->address !="")
+						<li>
+							<i class="fa fa-map"></i>
+							<b>{{ __('language.address')}} :</b>
+							<span>{{$data->getUserDetail->address}}</span>
+						</li>
+						@endif
+						@if($data->getUserDetail->phone !="")
+						<li>
+							<i class="fa fa-phone"></i>
+							<b>{{ __('language.phone')}} :</b>
+							<span>{{$data->getUserDetail->phone}}</span>
+						</li>
+						@endif
+						@if($data->getUserDetail->email !="")
+						<li>
+							<i class="fa fa-envelope"></i>
+							<b>{{ __('language.email')}} :</b>
+							<span>{{$data->getUserDetail->email}}</span>
+						</li>
+						@endif
+						@if($data->link !=="")
+						<li>
+							<i class="fa fa-globe"></i>
+							<b>{{ __('language.website')}} :</b>
+							<a href="//{{$data->link}}" target="_blank">{{$data->link}}</a>
+						</li>
+						@endif
+					</ul>
 				</div>
 
 			</div>
@@ -37,8 +64,7 @@
 				<img src="{{ asset($datas->path) . '/' . $datas->document}}" class="img-fluid float-left main-img-detail">
 				@endif --}}
 
-			</div>
-			
+			</div>		
 		</div>
 	</div>
 </section>

@@ -44,16 +44,10 @@ class SidemenuController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'name_np' => 'required',
+            'link' => 'required|unique:sidemenus',
+
         ]);
-        $link = $request['link'];
-        if($link != ""){
-            $this->validate($request, [
-                'link' => 'required|unique:sidemenus',
-            ]); 
-        }
-        else{
-            Null;
-        }
+    
         $sidemenu = Sidemenu::create([
             'name' => $request['name'],
             'name_np' => $request['name_np'],

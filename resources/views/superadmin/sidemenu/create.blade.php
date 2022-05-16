@@ -48,7 +48,7 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="link">Link</label>
+          <label for="link">Link<span class="text-danger">*</span></label>
           <input type="text"  class="form-control max" id="link" placeholder="Enter link" name="link" autocomplete="off" autofocus value="{{ old('link') }}">
           @error('link')
           <span class="text-danger font-italic" role="alert">

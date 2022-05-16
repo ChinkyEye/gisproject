@@ -54,7 +54,7 @@
                         <td>{{$sidemenu->name}}</td>
                         <td>{{$sidemenu->name_np}}</td>
                         <td>{{$sidemenu->model}}</td>
-                        <td>{{$sidemenu->page}}</td>
+                        <td>{{$sidemenu->link}}</td>
                         <td>
                           <a href="{{ route('superadmin.sidemenu.active',$sidemenu->id) }}" data-placement="top" title="{{ $sidemenu->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
                             <i class="nav-icon fas {{ $sidemenu->is_active == '1' ? 'fa-check-circle':'fa-times-circle text-danger'}}"></i>

@@ -97,7 +97,10 @@ return [
     'prativedan' => 'प्रतिवेदन',
     'publication' => 'प्रकाशन',
     'gunaso-sunne' => 'गुनासोको विवरण',
-    'most_view' => 'धेरै हेरिएको'
+    'most_view' => 'धेरै हेरिएको',
+    'email' => 'ईमेल',
+    'phone' => 'सम्पर्क नम्बर',
+
 
 
 
