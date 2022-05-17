@@ -6,6 +6,14 @@
       <span>
         @if($key == 0)
         <i class="fa fa-briefcase mr-2"></i>
+        @elseif($key == 1)
+        <i class="fa fa-users mr-2"></i>    
+        @elseif($key == 2)
+        <i class="fa fa-building-columns mr-2"></i>
+        @elseif($key == 3)
+        <i class="fa fa-building mr-2"></i>
+        @elseif($key == 4)
+        <i class="fa fa-user-circle mr-2"></i>
         @elseif($key == 6)
         <i class="fa fa-cog mr-2"></i> 
         @elseif($key == 7)
