@@ -18,9 +18,7 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 			</li>
 			<li class="breadcrumb-item my-auto">
 				<a href="#">
-					Sthaniya Taha
-					{{-- {{ __('language.mantralaya')}} --}}
-					<!-- <i class="fa fa-home fa-2x"></i> -->
+					{{ __('language.sthaniya-taha')}}
 				</a>
 			</li>
 		</ol>
@@ -37,7 +35,7 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 							<img src="{{ url($data->path.'/'.$data->document) }}" class="rounded" width="155"> 
 						</div>
 						<div class="ml-3 w-100">
-							<h4 class="mb-0 mt-0"><a href="{{ route('web.home.sidelinkmore', [$data->id ]) }}">{{$data->getUserDetail->name}}</a></h4> 
+							<h4 class="mb-0 mt-0"><a href="{{ route('web.home.sthaniyatahamore', [$data->id ]) }}">{{$data->getUserDetail->name}}</a></h4> 
 							<div class="p-2 mt-2 bg-primary rounded text-white main-stats">
 								<ul class="list-unstyled">
 									<li>

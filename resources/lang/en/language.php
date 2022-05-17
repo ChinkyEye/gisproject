@@ -102,6 +102,7 @@ return [
     'most_view' => 'Most Viewed',
     'email' => 'Email',
     'phone' => 'Phone No.',
+    'sthaniya-taha' => 'Sthaniya Taha',
  
 
 ];

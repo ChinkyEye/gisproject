@@ -166,6 +166,14 @@ class HomeController extends Controller
         ]); 
             
     }
+    public function sthaniyatahamore(Request $request, $id)
+    {
+        $datas = MantralayaHasUser::select('id', 'longitude', 'latitude','user_id')->find($id);
+        return view('web.sthaniyataha-detail', [
+            'datas' => $datas
+        ]); 
+            
+    }
 
     public function list() {
         return view('web.list');
