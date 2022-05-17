@@ -40,6 +40,7 @@
 
             <option value="PradeshSarkar" {{ $sidemenus->model == 'PradeshSarkar' ? 'selected' : ''}}>PradeshSarkar</option>
             <option value="MantralayaHasUser" {{ $sidemenus->model == 'MantralayaHasUser' ? 'selected' : ''}}>Mantralaya</option>
+            <option value="MantralayaHasUser" {{ $sidemenus->model == 'MantralayaHasUser' && $sidemenus->page == 'sthaniya-taha'? 'selected' : ''}}>Sthaniya Taha</option>
             <option value="PradeshSabhaSadasya" {{ $sidemenus->model == 'PradeshSabhaSadasya' ? 'selected' : ''}}>Pradesh Sabha Sadasya</option>
             <option value="Eservice" {{ $sidemenus->model == 'Eservice' ? 'selected' : ''}}>Eservice</option>
             <option value="HelloCM" {{ $sidemenus->model == 'HelloCM' ? 'selected' : ''}}>HelloCM</option>
@@ -62,7 +63,8 @@
           <select id="nationality" class="form-control" name="page" id="page">
             <option value="" disabled selected>--Select--</option>
             <option value="background" {{ $sidemenus->page == 'background' ? 'selected' : ''}}>Background</option>
-            <option value="mantralaya-detail" {{ $sidemenus->page == 'mentralaya-detail' ? 'selected' : ''}}>Mantralaya Detail</option>
+            <option value="mantralaya" {{ $sidemenus->page == 'mentralaya' ? 'selected' : ''}}>Mantralaya Detail</option>
+            <option value="sthaniya-taha" {{ $sidemenus->page == 'sthaniya-taha' ? 'selected' : ''}}>Sthaniya Taha</option>
             <option value="mantriparishad" {{ $sidemenus->page == 'mantriparishad' ? 'selected' : ''}}>Mantriparishad</option>
             <option value="block" {{ $sidemenus->page == 'block' ? 'selected' : ''}}>Block</option>
             <option value="eservice" {{ $sidemenus->page == 'eservice' ? 'selected' : ''}}>Eservice</option>

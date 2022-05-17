@@ -18,8 +18,8 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 			</li>
 			<li class="breadcrumb-item my-auto">
 				<a href="#">
-					{{-- Mantralaya --}}
-					{{ __('language.mantralaya')}}
+					Sthaniya Taha
+					{{-- {{ __('language.mantralaya')}} --}}
 					<!-- <i class="fa fa-home fa-2x"></i> -->
 				</a>
 			</li>
@@ -29,7 +29,7 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 <section class="breadcrumb-main my-4">
 	<div class="container">
 		<div class="row">
-			@foreach($datas->where('is_side','=','1') as $data)
+			@foreach($datas->where('is_local_level','=','1') as $data)
 			<div class="col-md-6">
 				<div class="card main-card p-3 shadow-sm">
 					<div class="d-flex align-items-center">

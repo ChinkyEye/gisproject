@@ -39,6 +39,7 @@
             <option value="">--Select--</option>
             <option value="PradeshSarkar">PradeshSarkar</option>
             <option value="MantralayaHasUser">Mantralaya</option>
+            <option value="MantralayaHasUser">Sthaniya Taha</option>
             <option value="PradeshSabhaSadasya">Pradesh Sabha Sadasya</option>
             <option value="Eservice">Eservice</option>
             <option value="HelloCM">HelloCM</option>
@@ -63,6 +64,7 @@
             <option value="background">Background</option>
             {{-- <option value="mantralaya-detail">Mantralaya Detail</option> --}}
             <option value="mantralaya">Mantralaya Detail</option>
+            <option value="sthaniya-taha">Sthaniya Taha</option>
             <option value="mantriparishad">Mantriparishad</option>
             <option value="block">Block</option>
             <option value="eservice">Eservice</option>
