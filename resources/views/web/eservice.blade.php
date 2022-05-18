@@ -35,28 +35,34 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 								<th class="text-left">{{ __('language.title')}}</th>
 								<th width="10%">{{ __('language.date')}}</th>
 								<th width="15%">{{ __('language.created-at')}}</th>
-								<th width="10%">{{ __('language.file')}}</th>
-								<th width="10%">{{ __('language.read-more')}}</th>
+								<th width="10%">{{ __('language.link')}}</th>
+								{{-- <th width="10%">{{ __('language.file')}}</th> --}}
+								{{-- <th width="10%">{{ __('language.read-more')}}</th> --}}
 							</tr>
 						</thead>
 						<tbody class="text-center">
 							@foreach($datas as $data)
 							<tr>
 								<td>{{$loop->iteration}}</td>
-								<td class="text-left">{{$data->title}}</td>
+								<td class="text-left">{{$data->name}}</td>
 								<td>{{$data->date_np}}</td>
 								<td><span class="badge badge-info">{{$data->created_at->diffForHumans()}}</span></td>
 								<td>
+									<a href="{{$data->website_link}}" target="_blank" class="text-danger text-center">
+										<i class="fa fa-link"></i>
+									</a>
+								</td>
+								{{-- <td>
 									<a href="{{URL::to('/')}}/{{$data->path}}{{$data->document}}" target="_blank" class="text-danger text-center">
 										<i class="fa fa-file-pdf-o fa-2x"></i>
 									</a>
-								</td>
-								<td>
+								</td> --}}
+								{{-- <td>
 									<a class="effect1" href="">
 										{{ __('language.read-more')}}
 										<span class="bg"></span>
 									</a>
-								</td>
+								</td> --}}
 							</tr>
 							@endforeach
 						</tbody>
