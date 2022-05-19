@@ -38,6 +38,7 @@ return [
     'name' => 'नाम',
     'date' => 'मिति',
     'mantralaya' =>'मन्त्रालय',
+    'mantralayaharu' =>'मन्त्रालयहरु',
     'link' => 'लिङ्क',
     'useful-link' => 'आवश्यक लिङ्क',
     'read-more' => 'थप पढ्नुहोस्',

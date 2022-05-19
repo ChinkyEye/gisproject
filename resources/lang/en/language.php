@@ -39,6 +39,7 @@ return [
     'name' => 'Name',
     'date' => 'Date',
     'mantralaya' => 'Mantralaya',
+    'mantralayaharu' => 'Mantralayas',
     'link' => 'Link',
     'useful-link' => 'Useful link',
     'read-more' => 'Read more',

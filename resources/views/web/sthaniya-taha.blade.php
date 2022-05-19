@@ -31,8 +31,12 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 			<div class="col-md-6">
 				<div class="card main-card p-3 shadow-sm">
 					<div class="d-flex align-items-center">
-						<div class="image"> 
-							<img src="{{ url($data->path.'/'.$data->document) }}" class="rounded" width="155"> 
+						<div class="image">
+						@if($data->document) 
+							<img src="{{ url($data->path.'/'.$data->document) }}" class="rounded" width="155">
+						@else
+						<img src="{{ url('images/noimage.png') }}" class="rounded" width="155">
+						@endif 
 						</div>
 						<div class="ml-3 w-100">
 							<h4 class="mb-0 mt-0"><a href="{{ route('web.home.sthaniyatahamore', [$data->id ]) }}">{{$data->getUserDetail->name}}</a></h4> 

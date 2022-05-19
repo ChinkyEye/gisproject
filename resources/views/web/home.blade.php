@@ -9,7 +9,7 @@
             @foreach($mantralaya->where('is_main','1')->take(4) as $key => $data)
             <div class="col-md-3 col-sm-6">
                 <div class="card rounded-0 border-0">
-                    <a href="//{{$data->link}}" target="_blank">
+                    <a href="{{$data->link}}" target="_blank">
                         <img src="{{ $data->document == null ? asset('images/noimage.png') : asset('images/mantralaya') . '/' . $data->document  }}" class="card-img-top  rounded-0 section-main-2">
                         <div class="card-body card-main-body py-2">
                             <h5 class="title m-0">{{$data->getUserDetail->name}}</h5>
@@ -17,20 +17,6 @@
                         </div>
                     </a>
                 </div>
-                {{-- <div class="box">
-                    <a href="{{$data->link}}">
-                        <img src="{{ $data->document == null ? asset('images/logo.png') : asset('images/mantralaya') . '/' . $data->document  }}">
-                        <div class="box-content">
-                            <a href="{{$data->link}}">
-                                <h5 class="title">{{$data->getUserDetail->name}}</h5>
-                                <span class="post">{{$data->getUserDetail->address}}</span>
-                            </a>
-                        </div>
-                        <ul class="icon">
-                            <li><a href="{{$data->link}}" target="_blank"><img src="{{ asset('images/logo.png')}}"></a></li>
-                        </ul>
-                    </a>
-                </div> --}}
             </div>
             @endforeach
         </div>
@@ -169,7 +155,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114311.47785866004!2d87.20176636713276!3d26.448195378359042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef744704331cc5%3A0x6d9a85e45c54b3fc!2sBiratnagar%2056613!5e0!3m2!1sen!2snp!4v1651335343227!5m2!1sen!2snp" width="100%" height="330" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="http://139.5.73.147:8085/iframe" width="100%" height="330" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
             <div class="col-md">
                 <div class="row align-content-stretch">

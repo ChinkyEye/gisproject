@@ -145,10 +145,10 @@ class HomeController extends Controller
         $modelName = '\\App\\' . $model;
         // var_dump($modelName); die();
         if($link == 'mantriparishad'){
-            $datas = $modelName::where('is_top','1')->get();
+            $datas = $modelName::where('is_start','0')->where('is_top','1')->get();
         }
-        elseif ($link == 'karyala-pramuk') {
-             $datas = $modelName::where('is_start','1')->get();
+        elseif ($link == 'karyalaya-pramukh') {
+             $datas = $modelName::where('is_top','0')->where('is_start','1')->get();
         }
         else{
             $datas = $modelName::get();

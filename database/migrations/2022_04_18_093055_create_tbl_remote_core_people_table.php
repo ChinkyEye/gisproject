@@ -25,7 +25,7 @@ class CreateTblRemoteCorePeopleTable extends Migration
             $table->string('phone')->nullable(); 
             $table->integer('is_top'); 
             $table->integer('is_start'); 
-            $table->integer('date_np')->nullable(); 
+            $table->string('date_np')->nullable(); 
             $table->boolean('is_active')->default(true); // 1 active, 0 non active
             $table->timestamps();
         });
