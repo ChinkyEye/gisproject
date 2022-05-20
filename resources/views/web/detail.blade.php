@@ -134,7 +134,7 @@ About |
 						</tbody>
 					</table>
 				</div>
-				{{ $datas->links() }}
+				{{ $datas->links('pagination::bootstrap-4') }}
 			</div>
 		</div>
 	</div>
