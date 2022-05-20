@@ -133,8 +133,8 @@ About |
 							</tr> -->
 						</tbody>
 					</table>
-						{{-- {{ $datas->links() }} --}}
 				</div>
+				{{ $datas->links() }}
 			</div>
 		</div>
 	</div>

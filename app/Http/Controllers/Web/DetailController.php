@@ -51,8 +51,7 @@ class DetailController extends Controller
                 # code...
                 break;
         }
-        $datas = $model->get();
-        // dd($datas);
+        $datas = $model->paginate(5);
         $years = FiscalYear::where('is_active',1)->get();
         $mantralayas = MantralayaHasUser::where('is_active',1)->where('is_main','2')->get();
         return view('web.detail', compact(['datas','type','years','mantralayas']));
