@@ -18,7 +18,7 @@ class GalleryHasImageController extends Controller
     public function index($id)
     {
         $gallery_id = $id;
-        $galleryhasimages = GalleryHasImage::where('gallery_id',$id)->get();
+        $galleryhasimages = GalleryHasImage::where('gallery_id',$id)->paginate(50);
         return view('superadmin.galleryhasimage.index', compact('gallery_id','galleryhasimages'));
     }
 
