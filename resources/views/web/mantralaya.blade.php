@@ -41,16 +41,16 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 							<div class="p-2 mt-2 bg-primary rounded text-white main-stats">
 								<ul class="list-unstyled">
 									<li>
-										<b>Phone : </b>
+										<b>{{ __('language.phone')}} : </b>
 										<span>{{$data->getUserDetail->phone}}</span>
 									</li>
 									<li>
-										<b>Email : </b>
+										<b>{{ __('language.email')}}  : </b>
 										<span>{{$data->getUserDetail->email}}</span>
 									</li>
 									<li>
-										<b>Link : </b>
-										<span><a href="{{$data->link}}" target="_blank">Click Here</a></span>
+										<b>{{ __('language.website')}} : </b>
+										<span><a href="{{$data->link}}" target="_blank">{{ __('language.click_here')}} e</a></span>
 									</li>
 									<!-- <li>
 										<b>Nirvachit kshetra no : </b>
