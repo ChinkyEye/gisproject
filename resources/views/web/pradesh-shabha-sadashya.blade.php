@@ -39,18 +39,18 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 	<div class="container">
 		<div class="row">
 			@foreach($datas as $data)
-			<div class="col-md-4 mb-2">
-				<div class="card main-card p-3 shadow-sm">
+			<div class="col-md-4 mb-3">
+				<div class="card main-card p-1 shadow-sm">
 					<div class="d-flex">
 						<div class="image"> 
 							<img src="{{ url($data->path.'/'.$data->document) }}" class="rounded mt-2" width="155"> 
 						</div>
-						<div class="ml-3 w-100">
+						<div class="ml-2 w-100">
 							<p class="font-weight-bold text-dark mb-0 mt-0">{{$data->name}}</p> 
-							<span>{{$data['getDal']->name}}</span>
 							<div class="p-2 mt-2 bg-primary rounded text-white main-stats">
 								<ul class="list-unstyled">
 									<li>
+										<p class="text-redish m-0">{{$data['getDal']->name}}</p>
 										<b>{{ __('language.phone')}} : </b>
 										<span>{{$data->phone}}</span>
 									</li>
