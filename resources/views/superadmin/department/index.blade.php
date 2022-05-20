@@ -70,6 +70,7 @@
                   </tbody>
                 </table>
               </div>
+              {{ $datas->links() }}
             </div>
           </div>
           <!-- /.card -->

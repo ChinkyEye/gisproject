@@ -18,7 +18,9 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $datas = Department::orderBy('id', 'DESC')->get();
+        $datas = Department::orderBy('id','DESC')
+                            ->where('created_by', Auth::user()->id)
+                            ->paginate('50');
         return view('superadmin.department.index',compact('datas'));
     }
 
