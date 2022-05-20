@@ -31,7 +31,7 @@ About |
 				<div class="col-md">
 					<div class="form-group">
 						<select class="form-control select2bs4 w-100" name="year">
-							<option value="">Choose</option>
+							<option value="">Choose Year</option>
 							@foreach($years as $key=>$year)
 							<option value="{{$year->value}}">{{$year->value}}</option>
 							@endforeach
@@ -42,7 +42,7 @@ About |
 				<div class="col-md">
 					<div class="form-group">
 						<select class="form-control select2bs4 w-100" name="ministry">
-							<option value="">Choose One</option>
+							<option value="">Choose Mantralaya</option>
 							@foreach($mantralayas as $mantralaya)
 							<option value="{{$mantralaya->prefix}}">{{$mantralaya->getUserDetail->name}}/{{$mantralaya->prefix}}</option>
 							@endforeach

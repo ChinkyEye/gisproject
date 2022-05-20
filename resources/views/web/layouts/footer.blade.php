@@ -22,7 +22,7 @@
                             <span class="text-light icon-foot">
                                 <i class="fa fa-angle-right"></i>
                             </span>
-                            <a href="//{{$data->website_link}}" target="_blank" class="d-inline-block">{{$data->name}}</a>
+                            <a href="{{$data->website_link}}" target="_blank" class="d-inline-block">{{$data->name}}</a>
                         </div>
                     </div>
                     @endforeach

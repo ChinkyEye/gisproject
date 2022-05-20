@@ -47,7 +47,7 @@
                       <td>{{$key + 1}}</td>
                       <td>{{$data->name}}</td>
                       <td> 
-                        <a href="//{{$data->website_link}}" target="_blank">
+                        <a href="{{$data->website_link}}" target="_blank">
                           {{$data->website_link}}
                         </a>
                       </td>

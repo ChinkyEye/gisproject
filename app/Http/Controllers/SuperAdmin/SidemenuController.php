@@ -8,7 +8,7 @@ use App\Sidemenu;
 use Auth;
 use Response;
 
-class SidemenuController extends Controller
+class SideMenuController extends Controller
 {
     /**
      * Display a listing of the resource.

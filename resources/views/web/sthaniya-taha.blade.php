@@ -18,9 +18,7 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 			</li>
 			<li class="breadcrumb-item my-auto">
 				<a href="#">
-					{{-- Mantralaya --}}
-					{{ __('language.mantralaya')}}
-					<!-- <i class="fa fa-home fa-2x"></i> -->
+					{{ __('language.sthaniya-taha')}}
 				</a>
 			</li>
 		</ol>
@@ -29,28 +27,32 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 <section class="breadcrumb-main my-4">
 	<div class="container">
 		<div class="row">
-			@foreach($datas->where('is_side','=','1') as $data)
+			@foreach($datas->where('is_local_level','=','1') as $data)
 			<div class="col-md-6">
 				<div class="card main-card p-3 shadow-sm">
 					<div class="d-flex align-items-center">
-						<div class="image"> 
-							<img src="{{ url($data->path.'/'.$data->document) }}" class="rounded" width="155"> 
+						<div class="image">
+						@if($data->document) 
+							<img src="{{ url($data->path.'/'.$data->document) }}" class="rounded" width="155">
+						@else
+						<img src="{{ url('images/noimage.png') }}" class="rounded" width="155">
+						@endif 
 						</div>
 						<div class="ml-3 w-100">
-							<h4 class="mb-0 mt-0"><a href="{{ route('web.home.sidelinkmore', [$data->id ]) }}">{{$data->getUserDetail->name}}</a></h4> 
+							<h4 class="mb-0 mt-0"><a href="{{ route('web.home.sthaniyatahamore', [$data->id ]) }}">{{$data->getUserDetail->name}}</a></h4> 
 							<div class="p-2 mt-2 bg-primary rounded text-white main-stats">
 								<ul class="list-unstyled">
 									<li>
-										<b>{{ __('language.phone')}} : </b>
+										<b>Phone : </b>
 										<span>{{$data->getUserDetail->phone}}</span>
 									</li>
 									<li>
-										<b>{{ __('language.email')}}  : </b>
+										<b>Email : </b>
 										<span>{{$data->getUserDetail->email}}</span>
 									</li>
 									<li>
-										<b>{{ __('language.website')}} : </b>
-										<span><a href="{{$data->link}}" target="_blank">{{ __('language.click_here')}} e</a></span>
+										<b>Link : </b>
+										<span><a href="{{$data->link}}" target="_blank">Click Here</a></span>
 									</li>
 									<!-- <li>
 										<b>Nirvachit kshetra no : </b>

@@ -223,6 +223,7 @@ Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest','setlocal
     Route::get('/{link}/{link2}/more/{id}', 'HomeController@more')->name('home.more');
     Route::get('/web/sidelink/{link}', 'HomeController@sidelink')->name('home.sidelink');
     Route::get('/web/sidelink/moredetail/{id}', 'HomeController@sidelinkmore')->name('home.sidelinkmore');
+    Route::get('/web/sidelink/sthaniyatahamore/{id}', 'HomeController@sthaniyatahamore')->name('home.sthaniyatahamore');
     
     Route::get('importantplace/moredetail/{id}', 'ImportantPlaceController@importantplacedetail')->name('home.importantplacedetail');
     Route::get('notice/scroll/{id}', 'HomeController@noticescroll')->name('noticescroll');

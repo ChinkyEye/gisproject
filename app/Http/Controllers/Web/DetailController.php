@@ -24,16 +24,16 @@ class DetailController extends Controller
     {
         switch ($type) {
             case 'suchana':
-            $model = TblRemoteNotice::orderBy('id','DESC');
+            $model = TblRemoteNotice::orderBy('id','DESC')->whereIn('page',[1,3,6]);
                 break;
             case 'yearly-budget':
-            $model = TblRemoteYearlyBudget::orderBy('id','DESC');
+            $model = TblRemoteYearlyBudget::orderBy('id','DESC')->where('page','7');
                 break;
             case 'kharid-bolpatra':
-            $model = TblRemoteKharidBolpatra::orderBy('id','DESC');
+            $model = TblRemoteNotice::orderBy('id','DESC')->where('page','2');
                 break;
             case 'ain-kanoon':
-            $model = TblRemoteAainKanun::orderBy('id','DESC');
+            $model = TblRemoteYearlyBudget::orderBy('id','DESC')->whereIn('page',[1,2,3,4]);
                 break; 
             case 'sewa-prava':
             $model = TblRemoteSewaPrava::orderBy('id','DESC');
@@ -54,7 +54,7 @@ class DetailController extends Controller
         $datas = $model->get();
         // dd($datas);
         $years = FiscalYear::where('is_active',1)->get();
-        $mantralayas = MantralayaHasUser::where('is_active',1)->get();
+        $mantralayas = MantralayaHasUser::where('is_active',1)->where('is_main','2')->get();
         return view('web.detail', compact(['datas','type','years','mantralayas']));
     }
 

@@ -51,7 +51,7 @@
 						<li>
 							<i class="fa fa-globe"></i>
 							<b>{{ __('language.website')}} :</b>
-							<a href="//{{$data->link}}" target="_blank">{{$data->link}}</a>
+							<a href="{{$data->link}}" target="_blank">{{$data->link}}</a>
 						</li>
 						@endif
 					</ul>

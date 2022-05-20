@@ -9,11 +9,13 @@
         @elseif($key == 1)
         <i class="fa fa-users mr-2"></i>    
         @elseif($key == 2)
-        <i class="fa fa-building-columns mr-2"></i>
+        <i class="fa fa-building mr-2"></i>
         @elseif($key == 3)
         <i class="fa fa-building mr-2"></i>
         @elseif($key == 4)
         <i class="fa fa-user-circle mr-2"></i>
+        @elseif($key == 5)
+        <i class="fa fa-university mr-2"></i>
         @elseif($key == 6)
         <i class="fa fa-cog mr-2"></i> 
         @elseif($key == 7)
@@ -42,10 +44,9 @@
       <span>
         @if($key == 8)
         <i class="fa fa-map-marker mr-2"></i>
-        @elseif($key == 5)
-        <i class="fa fa-university mr-2"></i>
+        @else
+        <i class="fa fa-briefcase mr-2"></i>
         @endif
-        {{-- <i class="fa fa-briefcase mr-2"></i> --}}
         @if(app()->getLocale() == 'en')
         {{$data->name}}
         @else
