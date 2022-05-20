@@ -21,7 +21,7 @@ class PradeshSabhaSadasyaController extends Controller
         $datas = PradeshSabhaSadasya::orderBy('id','DESC')
                                     ->where('created_by', Auth::user()->id)
                                     ->with('getDal')
-                                    ->paginate(20);
+                                    ->paginate(50);
         return view('superadmin.pradeshsabhasadasya.index', compact('datas'));
     }
 
