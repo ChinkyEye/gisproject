@@ -50,7 +50,7 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 									</li>
 									<li>
 										<b>{{ __('language.website')}} : </b>
-										<span><a href="{{$data->link}}" target="_blank">{{ __('language.click_here')}} e</a></span>
+										<span><a href="{{$data->link}}" target="_blank">{{ __('language.click-here')}}</a></span>
 									</li>
 									<!-- <li>
 										<b>Nirvachit kshetra no : </b>
