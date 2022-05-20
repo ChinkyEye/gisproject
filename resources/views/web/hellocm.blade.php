@@ -32,7 +32,7 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 			</div>
 			<div class="col-md">
 				<p>{{$data->description}}</p>
-				<p>Email : {{$data->email}}<p> 
+				<p>{{ __('language.email')}} : {{$data->email}}<p> 
 				<div class="mt-2">
 					<a href="{{$data->link}}" target="_blank" class="bg-danger px-3 py-1 text-white">{{ __('language.click-here')}}</a>
 				</div>

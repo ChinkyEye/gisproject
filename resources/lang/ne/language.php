@@ -85,6 +85,7 @@ return [
     'Sadaran-suchana' => 'साधारण सूचना',
     'Kharid-suchana' => 'खरिद सूचना',
     'Barsikh-pratibedan' => 'वार्षिक प्रतिवेदन',
+    'Barshikh' => 'वार्षिक प्रतिवेदन',
     'Taemasikh' => 'त्रैमासिक प्रगति प्रतिवेदन',
     'Bivagh-karyalaya' => 'विभाग/कार्यालय',
     'survey' => 'सर्वेक्षण',
@@ -107,6 +108,8 @@ return [
     'gis_title' => 'प्रदेश १ को GIS',
     'post' => 'पद',
     'ministry' => 'मन्त्रालय',
+    'gender' => 'लिङ्ग',
+    'nirvachit-no' => 'निर्वाचित क्षेत्र नं',
 
 
 

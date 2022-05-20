@@ -109,6 +109,9 @@ return [
     'gis_title' => 'GIS of Province No. 1',
     'post' => 'Post',
     'ministry' => 'Ministry',
+    'gender' => 'Gender',
+    'nirvachit-no' => 'Nirvachit kshetra no ',
+
  
 
 ];

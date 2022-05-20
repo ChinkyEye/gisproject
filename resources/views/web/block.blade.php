@@ -51,19 +51,19 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 							<div class="p-2 mt-2 bg-primary rounded text-white main-stats">
 								<ul class="list-unstyled">
 									<li>
-										<b>Phone : </b>
+										<b>{{ __('language.phone')}} : </b>
 										<span>{{$data->phone}}</span>
 									</li>
 									<li>
-										<b>Gender : </b>
+										<b>{{ __('language.gender')}} : </b>
 										<span>{{$data->gender}}</span>
 									</li>
 									<li>
-										<b>District : </b>
+										<b>{{ __('language.district')}} : </b>
 										<span>{{$data->district}}</span>
 									</li>
 									<li>
-										<b>Nirvachit kshetra no : </b>
+										<b> {{ __('language.nirvachit-no')}}</b>
 										<span>{{$data->nirvachit_kshetra_no}}</span>
 									</li>
 								</ul>

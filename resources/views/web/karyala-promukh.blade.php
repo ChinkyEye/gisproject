@@ -36,16 +36,16 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 							<div class="p-2 mt-2 bg-primary rounded text-white main-stats">
 								<ul class="list-unstyled">
 									<li>
-										<b>Post : </b>
+										<b>{{ __('language.post')}} : </b>
 										<span>{{$data->post}}</span>
 									</li>
 									<li>
-										<b>Ministry : </b>
+										<b>{{ __('language.ministry')}} : </b>
 										<span>{{$data->ministry}}</span>
 									</li>
 									@if($data->phone != Null)
 									<li>
-										<b>Phone : </b>
+										<b>{{ __('language.phone')}} : </b>
 										<span>{{$data->phone}}</span>
 									</li>
 									@endif
