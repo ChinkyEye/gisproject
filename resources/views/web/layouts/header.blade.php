@@ -10,11 +10,10 @@
                     </a>
                     <a href="{{ route('web.home') }}">
                         <div class="text-center ml-2">
-                            <h5 class="logo-color m-0">
+                            <h4 class="logo-color">{{$data->slogan}}</h4>
+                            <h6 class="logo-color m-0">
                                 {{$data->name}}
-                               {{--  प्रदेश नं. १ सरकारको आधिकारिक पोर्टल --}}
-                            </h5>
-                            <h5 class="logo-color">{{$data->slogan}}</h5>
+                            </h6>
                         </div>
                     </a>
                     {{-- </div> --}}

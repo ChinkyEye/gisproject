@@ -15,7 +15,7 @@
                             <div class="col-12">
                                 <div class="welcome-text text-center">
                                     {{-- <h2 data-animation="fadeInUp" data-delay="300ms">{{$slider->name}}</h2> --}}
-                                    <p class="bg-light py-1 mx-3">{{$slider->name}}</p>
+                                    <p class="bg-main-trans-light py-1 mx-3">{{$slider->name}}</p>
                                     {{-- <p class="bg-light py-1 mx-3">प्रदेश नं. १ सरकारको आधिकारिक पोर्टल</p> --}}
                                 </div>
                             </div>
