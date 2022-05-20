@@ -39,14 +39,14 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 	<div class="container">
 		<div class="row">
 			@foreach($datas as $data)
-			<div class="col-md-4">
+			<div class="col-md-4 mb-2">
 				<div class="card main-card p-3 shadow-sm">
 					<div class="d-flex align-items-center">
 						<div class="image"> 
 							<img src="{{ url($data->path.'/'.$data->document) }}" class="rounded" width="155"> 
 						</div>
 						<div class="ml-3 w-100">
-							<h4 class="mb-0 mt-0">{{$data->name}}</h4> 
+							<p class="font-weight-bold text-dark mb-0 mt-0">{{$data->name}}</p> 
 							<span>{{$data['getDal']->name}}</span>
 							<div class="p-2 mt-2 bg-primary rounded text-white main-stats">
 								<ul class="list-unstyled">
