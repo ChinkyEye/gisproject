@@ -514,7 +514,7 @@
             </div>
             <a href="{{route('web.mantralaya.index')}}" class="float-right btn-title-stlye d-flex">
                 <i class="fa fa-play"></i>
-                अझ धेरै
+                {{ __('language.see-more')}}
             </a>
         </div>
     </div>
