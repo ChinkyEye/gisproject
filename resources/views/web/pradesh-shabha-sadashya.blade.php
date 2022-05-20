@@ -41,9 +41,9 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 			@foreach($datas as $data)
 			<div class="col-md-4 mb-2">
 				<div class="card main-card p-3 shadow-sm">
-					<div class="d-flex align-items-center">
+					<div class="d-flex">
 						<div class="image"> 
-							<img src="{{ url($data->path.'/'.$data->document) }}" class="rounded" width="155"> 
+							<img src="{{ url($data->path.'/'.$data->document) }}" class="rounded mt-2" width="155"> 
 						</div>
 						<div class="ml-3 w-100">
 							<p class="font-weight-bold text-dark mb-0 mt-0">{{$data->name}}</p> 
