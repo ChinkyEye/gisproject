@@ -61,6 +61,32 @@
         <div class="form-group">
           <div class="row col-md-5">
             <div class="form-check-inline col-md">
+              <input class="form-check-input" type="checkbox" name="is_api" id="is_api" value="1" onchange="ApiCheck(this)" >
+              <label class="form-check-label" for="is_api">
+                Is Api
+              </label>
+            </div>
+          </div>
+            @error('is_api')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+        <div id="api_check" style="display:none">
+          <div class="form-group">
+            <label for="api_key">Api Key</label>
+            <input type="text"  class="form-control max" id="api_key" placeholder="Enter Api Key" name="api_key" autocomplete="off" autofocus value="{{ old('api_key') }}">
+            @error('api_key')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row col-md-5">
+            <div class="form-check-inline col-md">
               <input class="form-check-input" type="checkbox" name="is_main" id="is_main" value="1" onchange="Check(this)" >
               <label class="form-check-label" for="is_main">
                 Is Dropdown
@@ -73,70 +99,60 @@
             </span>
             @enderror
         </div>
-      <div id="Myid">
-        {{-- <div class="form-group">
-          <label for="type" class="control-label">Type</label>
-          <select class="form-control" name="type" id="type">
-            <option value="">Select Type</option>
-            @foreach ($modelhastypes as $key => $data)
-            <option value="{{ $data->id }}" {{ old('type') == $data->id ? 'selected' : ''}}>
-              {{$data->type}}
-            </option>
-            @endforeach
-          </select>
-        </div> --}}
-        <div class="form-group">
-          <label for="type_data" class="control-label">Type</label>
-          <select class="form-control" name="type" id="type_data">
-            <option value="">Select Type</option>
-          </select>
-          @error('type')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div>
-        <div class="form-group">
-          <label for="page">Page</label>
-          <select class="form-control" name="page" id="page">
-            <option value="" selected disabled>-----Select Page------</option>
-            <option value="table">Table</option>
-            <option value="background">Background</option>
-            <option value="gallery-folder">Gallery</option>
-            <option value="contactus">Contact us</option>
-            <option value="detail">Detail</option>
-            <option value="view-more">View More</option>
-          </select> 
-          @error('page')
-          <span class="text-danger font-italic" role="alert">
-            <strong>{{ $message }}</strong>
-          </span>
-          @enderror
-        </div>
-        {{-- <p id="verdict" style="display: block;">hehehehe</p> --}}
-      </div>
-       <div class="form-group">
-            <label for="quickmenu">Is Quick Menu</label>
-            <div class="row col-md-5">
-              <div class="form-check-inline col-md">
-                <input class="form-check-input" type="radio" name="is_quickmenu" id="yes" value="1"  {{ old('is_quickmenu') == "1" ? 'checked' : '' }} >
-                <label class="form-check-label" for="is_quickmenu">
-                  Yes
-                </label>
-              </div>
-              <div class="form-check-inline col-md">
-                <input class="form-check-input" type="radio" name="is_quickmenu" id="no" value="0" {{ old('is_quickmenu') == "0" ? 'checked' : '' }}>
-                <label class="form-check-label" for="is_quickmenu">
-                  No
-                </label>
-              </div>
-            </div>
-            @error('is_quickmenu')
+
+        <div id="Myid">
+          <div class="form-group">
+            <label for="type_data" class="control-label">Type</label>
+            <select class="form-control" name="type" id="type_data">
+              <option value="">Select Type</option>
+            </select>
+            @error('type')
             <span class="text-danger font-italic" role="alert">
               <strong>{{ $message }}</strong>
             </span>
             @enderror
           </div>
+          <div class="form-group">
+            <label for="page">Page</label>
+            <select class="form-control" name="page" id="page">
+              <option value="" selected disabled>-----Select Page------</option>
+              <option value="table">Table</option>
+              <option value="background">Background</option>
+              <option value="gallery-folder">Gallery</option>
+              <option value="contactus">Contact us</option>
+              <option value="detail">Detail</option>
+              <option value="view-more">View More</option>
+            </select> 
+            @error('page')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+          {{-- <p id="verdict" style="display: block;">hehehehe</p> --}}
+        </div>
+        <div class="form-group">
+          <label for="quickmenu">Is Quick Menu</label>
+          <div class="row col-md-5">
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="radio" name="is_quickmenu" id="yes" value="1"  {{ old('is_quickmenu') == "1" ? 'checked' : '' }} >
+              <label class="form-check-label" for="is_quickmenu">
+                Yes
+              </label>
+            </div>
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="radio" name="is_quickmenu" id="no" value="0" {{ old('is_quickmenu') == "0" ? 'checked' : '' }}>
+              <label class="form-check-label" for="is_quickmenu">
+                No
+              </label>
+            </div>
+          </div>
+          @error('is_quickmenu')
+          <span class="text-danger font-italic" role="alert">
+            <strong>{{ $message }}</strong>
+          </span>
+          @enderror
+        </div>
 
       </div>
       <div class="card-footer justify-content-between">
@@ -188,6 +204,21 @@ function toggleText(id){
 }
 </script> --}}
 <script>
+  function ApiCheck(value) {
+    var y = value.checked;
+    var x = document.getElementById("api_check");
+    // console.log(y);
+    if(y == true){
+      x.style.display = "block";
+    }
+    else{
+      x.style.display = "none";
+
+    }
+
+  };
+</script>
+<script>
     function Check(value) {
       var y = value.checked;
       var x = document.getElementById("Myid");
@@ -200,5 +231,6 @@ function toggleText(id){
       }
 
     };
-  </script>
+</script>
+
 @endpush

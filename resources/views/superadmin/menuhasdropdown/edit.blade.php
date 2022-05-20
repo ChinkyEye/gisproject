@@ -79,6 +79,32 @@
          </select>
        </div>
         <div class="form-group">
+          <div class="row col-md-5">
+            <div class="form-check-inline col-md">
+              <input class="form-check-input" type="checkbox" name="is_api" id="is_api" value="1" onchange="ApiCheck(this)" {{ $menuhasdropdowns->is_api == '1' ? 'checked' : ''}}>
+              <label class="form-check-label" for="is_api">
+                Is Api
+              </label>
+            </div>
+          </div>
+            @error('is_api')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+        </div>
+        <div id="api_check" style="display:none">
+          <div class="form-group">
+            <label for="api_key">Api Key</label>
+            <input type="text"  class="form-control max" id="api_key" placeholder="Enter Api Key" name="api_key" autocomplete="off" autofocus value="{{ $menuhasdropdowns->api_key }}">
+            @error('api_key')
+            <span class="text-danger font-italic" role="alert">
+              <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+          </div>
+        </div>
+        <div class="form-group">
           <label for="quickmenu">Is Quick Menu</label>
           <div class="row col-md-5">
             <div class="form-check-inline col-md">
@@ -108,3 +134,34 @@
   </div>
 </section>
 @endsection
+@push('javascript')
+<script type="text/javascript">
+  $( document ).ready(function() {
+    var x = document.getElementById("api_check");
+
+    if(document.getElementById("is_api").checked)
+    {
+        x.style.display = "block";
+    }
+    else
+    {
+        x.style.display = "none";
+    }
+
+  });
+</script>
+<script>
+  function ApiCheck(value) {
+    var y = value.checked;
+    var x = document.getElementById("api_check");
+    if(y == true){
+      x.style.display = "block";
+    }
+    else{
+      x.style.display = "none";
+
+    }
+
+  };
+</script>
+@endpush
