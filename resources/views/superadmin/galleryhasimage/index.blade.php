@@ -62,7 +62,7 @@
                     </tbody>
                   </table>
                 </div>
-                {{-- {!! $menus->links() !!} --}}
+                {!! $galleryhasimages->links() !!}
               </div>
             </div>
             <!-- /.card -->
