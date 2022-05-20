@@ -261,7 +261,7 @@
         <div class="title-head-main px-3 py-2 d-flex justify-content-between">
             <div>
                 <span class="fa fa-comments-o"></span>
-                प्रदेश नं. १ सरकारको आधिकारिक पोर्टल
+                {{ __('language.gunaso-title')}}
             </div>
         </div>
     </div>
@@ -270,7 +270,6 @@
         <div class="row">
             <div class="col-md">
                 <div class="container-fluid">
-                    {{-- <h5>Title here</h5> --}}
                     <h5>{{ __('language.gunaso-sunne')}}</h5>
                     <div class="row align-content-stretch">
                         @foreach($remotehellocm as $key=>$hellocm)
@@ -373,23 +372,6 @@
             </div>
             <div class="col-md bg-white px-2 mx-2" id="barchart_material"></div>
             <div class="col-md bg-white p-1" id="piechart"></div>
-            <!-- <div class="col-md-4 bg-white px-2 mx-2">
-                <div class="d-flex flex-column p-2">
-                    <div class="mb-1">
-                        <span class="font-weight-bold">तत्यांक तथा विवरणहरु</span>
-                    </div>
-                    
-                    <p id="barchart_material" ></p>
-                </div>
-            </div>
-            <div class="col-md bg-white p-1">
-                <div class="d-flex flex-column p-2">
-                    <div class="mb-1">
-                        <span class="font-weight-bold">तत्यांक तथा विवरणहरु</span>
-                    </div>
-                    <p id="piechart"></p>
-                </div>
-            </div> -->
         </div>
     </div>
 </section>
@@ -528,7 +510,7 @@
         <div class="title-head-main px-3 py-2 d-flex justify-content-between">
             <div>
                 <span class="fa fa-university"></span>
-                प्रदेश नं. १ सरकारको आधिकारिक पोर्टल
+                {{ __('language.mantralya_scroll_title')}}
             </div>
             <a href="{{route('web.mantralaya.index')}}" class="float-right btn-title-stlye d-flex">
                 <i class="fa fa-play"></i>
