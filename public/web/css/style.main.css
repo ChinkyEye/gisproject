@@ -862,7 +862,7 @@
         padding: 3px;
         padding-right: 5px;
         display: grid;
-        grid-template-columns: 0.6fr 10fr;
+        grid-template-columns: 0.5fr 10fr;
         font-size: 13px;
         font-weight: normal;
         grid-gap: 0px;
