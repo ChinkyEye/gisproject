@@ -68,6 +68,8 @@ class MenuHasDropdownController extends Controller
             Null;
         }
         $is_main = $request->has('is_main');
+        $is_api = $request->has('is_api');
+
         $parent_link = Menu::where('id',$request->menu_id)->value('link');
         $menu = Menu::create([
             'name' => $request['name'],
@@ -75,6 +77,8 @@ class MenuHasDropdownController extends Controller
             'model' => $request['model'],
             'link' => $parent_link.'/'.$request['link'],
             'is_quickmenu' => $request['is_quickmenu'],
+            'is_api' => $is_api?'1':'0',
+            'api_key' => $request['api_key'],
             'is_main' => $is_main?'1':'0',
             'type' => $request['type'] == null ? '1' : $request['type'],
             'page' => $request['page'],
@@ -140,7 +144,10 @@ class MenuHasDropdownController extends Controller
             Null;
         }
         $menuhasdropdowns = Menu::find($id);
+        $is_api = $request->has('is_api');
+
         $all_data = $request->all();
+        $all_data['is_api'] = $is_api?'1':'0';
         $all_data['updated_by'] = Auth::user()->id;
         $menuhasdropdowns->update($all_data);
         return redirect()->route('superadmin.menuhasdropdown.index',$request->menu_id);

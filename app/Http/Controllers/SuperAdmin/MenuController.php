@@ -57,6 +57,7 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $this->validate($request, [
             'name' => 'required',
             'name_np' => 'required',
@@ -71,11 +72,14 @@ class MenuController extends Controller
             Null;
         }
         $is_main = $request->has('is_main');
+        $is_api = $request->has('is_api');
         $menu = Menu::create([
             'name' => $request['name'],
             'name_np' => $request['name_np'],
             'model' => $request['model'],
             'link' => $request['link'],
+            'is_api' => $is_api?'1':'0',
+            'api_key' => $request['api_key'],
             'is_main' => $is_main?'1':'0',
             'is_quickmenu' => $request['is_quickmenu'],
             'type' => $request['type'] == null ? '1' : $request['type'],
@@ -140,9 +144,11 @@ class MenuController extends Controller
         $menus = Menu::find($id);
         
         $is_main = $request->has('is_main');
+        $is_api = $request->has('is_api');
 
         $all_data = $request->all();
         $all_data['type'] = $request['type'] == null ? '1' : $request['type'];
+        $all_data['is_api'] = $is_api?'1':'0';
         $all_data['is_main'] = $is_main?'1':'0';
         $all_data['updated_by'] = Auth::user()->id;
         $menus->update($all_data);
