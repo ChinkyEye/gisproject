@@ -106,6 +106,7 @@ return [
     'sthaniya-taha' => 'Sthaniya Taha',
     'gunaso-title' => 'गुनासो व्यवस्थापन प्रणाली',
     'mantralya_scroll_title' => 'प्रदेश मन्त्रालय/आयोग/प्राधिकरण/बिभाग/कार्यालय/निकायहरुको विवरण',
+    'gis_title' => 'GIS of Province No. 1',
  
 
 ];

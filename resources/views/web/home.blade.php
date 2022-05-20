@@ -148,7 +148,7 @@
         <div class="title-head-main px-3 py-2 d-flex justify-content-between">
             <div>
                 <span class="fa fa-map-o"></span>
-                GIS of Province No. 1
+                {{ __('language.gis_title')}}
             </div>
         </div>
     </div>
@@ -521,7 +521,7 @@
 
     <div class="container-fluid">
         <div class="owl-carousel owl-carousel2 owl-theme d-flex">
-            @foreach($mantralaya->where('is_main','0') as $key => $data)
+            @foreach($mantralaya->where('is_main','2') as $key => $data)
             <div class="item align-self-stretch">
                 <a href="{{route('web.mantralaya.detail',$data->id)}}" class="card">
                     <img src="{{ $data->document == null ? asset('images/noimage.png') : asset('images/mantralaya') . '/' . $data->document }}" class="img-fluid card-img-top section-main-2" alt="{{$data->getUserDetail->name}}">
