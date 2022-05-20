@@ -42,7 +42,13 @@
             <option value="Niti" {{ $menuhasdropdowns->model == 'Niti' ? 'selected' : ''}}>Niti</option>
             <option value="About" {{ $menuhasdropdowns->model == 'About' ? 'selected' : ''}}>About</option>
             <option value="Pratibedan" {{ $menuhasdropdowns->model == 'Pratibedan' ? 'selected' : '' }}>Pratibedan</option>
-            <option value="Notice" {{ $menuhasdropdowns->model == 'Notice' ? 'selected' : '' }}>Notice</option>  <option value="Mission" {{ $menuhasdropdowns->model == 'Mission' ? 'selected' : '' }}>Mission</option>  <option value="Vision" {{ $menuhasdropdowns->model == 'Vision' ? 'selected' : '' }}>Vision</option>  <option value="Gallery" {{ $menuhasdropdowns->model == 'Gallery' ? 'selected' : '' }}>Gallery</option>  <option value="SangathanSanrachana" {{ $menuhasdropdowns->model == 'SangathanSanrachana' ? 'selected' : '' }}>Sangathan Sanrachana</option>  
+            <option value="TblRemoteNotice" {{ $menuhasdropdowns->model == 'TblRemoteNotice' ? 'selected' : ''}}>Notice</option>
+            <option value="TblRemoteYearlyBudget" {{ $menuhasdropdowns->model == 'TblRemoteYearlyBudget' ? 'selected' : ''}}>Yearly Budget</option>
+            {{-- <option value="Notice" {{ $menuhasdropdowns->model == 'Notice' ? 'selected' : '' }}>Notice</option>  --}}
+            <option value="Mission" {{ $menuhasdropdowns->model == 'Mission' ? 'selected' : '' }}>Mission</option>  
+            <option value="Vision" {{ $menuhasdropdowns->model == 'Vision' ? 'selected' : '' }}>Vision</option> 
+            <option value="Gallery" {{ $menuhasdropdowns->model == 'Gallery' ? 'selected' : '' }}>Gallery</option>  
+            <option value="SangathanSanrachana" {{ $menuhasdropdowns->model == 'SangathanSanrachana' ? 'selected' : '' }}>Sangathan Sanrachana</option>  
             <option value="Department" {{ $menuhasdropdowns->model == 'Department' ? 'selected' : '' }}>Bivagh/Karyalaya</option>
           </select>
         </div>

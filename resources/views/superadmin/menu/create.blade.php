@@ -47,7 +47,9 @@
           <select class="form-control" name="model" id="select_model">
             <option value="">--Select--</option>
             <option value="Niti">Niti</option>
-            <option value="Notice">Notice</option>
+            {{-- <option value="Notice">Notice</option> --}}
+            <option value="TblRemoteNotice">Notice</option>
+            <option value="TblRemoteYearlyBudget">Yearly Budget</option>
             <option value="AboutUs">About</option>
             <option value="Mission">Mission</option>
             <option value="Vision">Vision</option>

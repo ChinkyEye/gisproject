@@ -54,7 +54,9 @@
           <select class="form-control" name="model" id="select_model">
             <option value="" Selected disabled>--Select--</option>
             <option value="Niti" {{ $menus->model == 'Niti' ? 'selected' : ''}}>Niti</option>
-            <option value="Notice" {{ $menus->model == 'Notice' ? 'selected' : ''}}>Notice</option>
+            {{-- <option value="Notice" {{ $menus->model == 'Notice' ? 'selected' : ''}}>Notice</option> --}}
+            <option value="TblRemoteNotice" {{ $menus->model == 'TblRemoteNotice' ? 'selected' : ''}}>Notice</option>
+            <option value="TblRemoteYearlyBudget" {{ $menus->model == 'TblRemoteYearlyBudget' ? 'selected' : ''}}>Yearly Budget</option>
             <option value="About" {{ $menus->model == 'About' ? 'selected' : ''}}>About</option>
             <option value="Mission" {{ $menus->model == 'Mission' ? 'selected' : ''}}>Mission</option>
             <option value="Vision" {{ $menus->model == 'Vision' ? 'selected' : ''}}>Vision</option>
