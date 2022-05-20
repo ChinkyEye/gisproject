@@ -25,6 +25,8 @@ class CreateMenusTable extends Migration
             $table->integer('is_main')->default(0);
             $table->string('page')->nullable();
             $table->integer('is_quickmenu')->nullable();
+            $table->integer('is_api')->default(0);
+            $table->string('api_key')->nullable();
             $table->integer('parent_id')->default('0');
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(true); // 1 active, 0 non active
