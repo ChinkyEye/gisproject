@@ -47,7 +47,7 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 						</div>
 						<div class="ml-2 w-100">
 							<p class="font-weight-bold text-dark mb-0 mt-0">{{$data->name}}</p> 
-							<div class="p-2 mt-2 bg-primary rounded text-white main-stats">
+							<div class="p-2 bg-primary rounded text-white main-stats">
 								<ul class="list-unstyled">
 									<li>
 										<p class="text-redish m-0">{{$data['getDal']->name}}</p>
