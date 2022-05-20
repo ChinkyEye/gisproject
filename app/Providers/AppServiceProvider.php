@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Menu;
@@ -14,6 +14,7 @@ use App\Notice;
 use App\AboutUs;
 use App\ContactUs;
 use App\Header;
+
 
 
 
@@ -36,6 +37,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Request $request)
     {
+        Paginator::useBootstrap();
         Schema::defaultStringLength(191);
 
         view()->composer('web.layouts.navbar', function ($view) use ($request){

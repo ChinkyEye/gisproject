@@ -23,7 +23,7 @@ class MantralayaController extends Controller
         $datas = MantralayaHasUser::orderBy('sort_id','ASC')
                             ->where('created_by',Auth::user()->id)
                             ->with('getUserDetail')
-                            ->paginate();
+                            ->paginate(50);
         return view('superadmin.mantralaya.index', compact('datas'));
     }
 
