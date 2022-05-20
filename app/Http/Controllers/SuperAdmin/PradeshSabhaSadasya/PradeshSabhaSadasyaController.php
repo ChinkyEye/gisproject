@@ -55,8 +55,9 @@ class PradeshSabhaSadasyaController extends Controller
         $number = $request['phone'];
         if($number != ""){
             $this->validate($request, [
-                'phone' => 'required|digits_between:6,10',
-                'image' => 'required|mimes:jpg,jpeg',
+                // 'phone' => 'required|digits_between:6,10',
+                'image' => 'required',
+                // 'image' => 'required|mimes:jpg,jpeg,png',
             ]); 
          }
             else{
