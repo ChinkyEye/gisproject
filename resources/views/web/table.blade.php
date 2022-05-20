@@ -46,6 +46,7 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 			</li>
 			<li class="breadcrumb-item my-auto active">
 				<a href="#" class="">{{ __('language.'.$page_name)}}</a>
+				
 			</li>
 		</ol>
 	</div>

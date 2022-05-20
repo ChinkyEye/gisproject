@@ -19,6 +19,7 @@ About |
       <li class="breadcrumb-item my-auto">
         <a href="#">
         	{{ __('language.'.$type)}}
+        	
         </a>
       </li>
     </ol>

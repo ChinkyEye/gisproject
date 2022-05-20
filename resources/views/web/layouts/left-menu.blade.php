@@ -31,7 +31,6 @@
         @else
         {{$data->name_np}}
         @endif
-        <i class="float-right fa fa-caret-right mr-2"></i>
         {{-- @if(app()->getLocale() == 'en')
         {{$data->name}}
         @else
