@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Title -->
-    <title>@stack('tab_title') Pradesh</title>
+    <title>@stack('tab_title') प्रदेश नं. १ सरकारको आधिकारिक पोर्टल</title>
     <!-- Favicon -->
     <link rel="icon" href="{{ url('/web') }}/img/core-img/favicon.ico">
 

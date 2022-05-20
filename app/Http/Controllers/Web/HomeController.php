@@ -29,6 +29,7 @@ use App\MantralayaHasUser;
 use App\Gallery;
 use App\GalleryHasImage;
 use App\IsthaniyaTaha;
+use App\FiscalYear;
 
 
 
@@ -37,7 +38,6 @@ class HomeController extends Controller
     public function index()
     {
         $page_name = "Welcome";
-
         $client = new \GuzzleHttp\Client();
         $res = $client->request('GET', 'http://hellocm.p1.gov.np/api/get_grievance_chart_table');
         $remotehello = json_decode($res->getBody()->getContents(), true);
@@ -49,10 +49,10 @@ class HomeController extends Controller
         // var_dump($remotehellocm['table_datas']); die();
 
         $scroll_notice = Notice::orderBy('id','DESC')->where('scroll','1')->where('is_active','1')->take(10)->get();
-        $remote_notices = TblRemoteNotice::orderBy('id','DESC')->take(10)->get();
-        $remote_yearly_budgets = TblRemoteYearlyBudget::orderBy('id','DESC')->take(10)->get();
-        $remote_kharid_bolpatras = TblRemoteKharidBolpatra::orderBy('id','DESC')->take(10)->get();
-        $remote_ain_kanuns = TblRemoteYearlyBudget::orderBy('id','DESC')->take(10)->get();
+        $remote_notices = TblRemoteNotice::orderBy('id','DESC')->whereIn('page',[1,3,6])->take(10)->get();
+        $remote_yearly_budgets = TblRemoteYearlyBudget::orderBy('id','DESC')->where('page','7')->take(10)->get();
+        $remote_kharid_bolpatras = TblRemoteNotice::orderBy('id','DESC')->where('page','2')->take(10)->get();
+        $remote_ain_kanuns = TblRemoteYearlyBudget::orderBy('id','DESC')->whereIn('page',[1,2,3,4])->take(10)->get();
         $remote_sewa_pravas = TblRemoteSewaPrava::orderBy('id','DESC')->take(10)->get();
         $remote_e_farums = TblRemoteEFarum::orderBy('id','DESC')->take(10)->get();
         $remote_prativedans = TblRemotePrativedan::orderBy('id','DESC')->take(10)->get();
@@ -89,7 +89,10 @@ class HomeController extends Controller
             $type = Menu::where('link',$linkf)->value('type');
             $name = Menu::where('link',$linkf)->value('name');
             $level = Menu::where('link',$linkf)->value('level');
+            $is_api = Menu::where('link',$linkf)->value('is_api');
+            $api_key = Menu::where('link',$linkf)->value('api_key');
 
+            // var_dump($is_api,$api_key); die();
             $menu_id = Menu::where('link',$linkf)->value('id');
             Menu::find($menu_id)->increment('views');
 
@@ -99,10 +102,18 @@ class HomeController extends Controller
                 $datas = $modelName::orderBy('id','DESC');
             }
             else{
-                $datas = $modelName::orderBy('id','DESC')->where('type',$type);
+                if($is_api == '1'){
+                    $datas = $modelName::orderBy('id','DESC')->where('api_key',$api_key);
+                }
+                else{
+                    $datas = $modelName::orderBy('id','DESC')->where('type',$type);
+                }
             }
             $datas = $datas->get();
-            return view('web.'.$page, compact(['datas','link','link2','name','level']));
+            $type = $name;
+            $years = FiscalYear::where('is_active',1)->get();
+        $mantralayas = MantralayaHasUser::where('is_active',1)->where('is_main','2')->get();
+            return view('web.'.$page, compact(['datas','link','link2','name','level','type','years','mantralayas']));
             
         }
     }

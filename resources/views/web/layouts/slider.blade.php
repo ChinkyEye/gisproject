@@ -38,7 +38,6 @@
                     </p>
                 </div>
                 @foreach($mantralaya ->where('is_side','1')->take(13) as $key => $data)
-
                 <div class="list-item-body-top">
                     <a href="{{$data->link}}" target="_blank" class="list-item-body-content-top w-100">
                         <span class="text-dark">
