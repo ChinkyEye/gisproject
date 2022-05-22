@@ -26,7 +26,7 @@
 {{-- end section 1 --}}
 
 {{-- section 2 --}}
-<section class="services-area bg-gray pb-4">
+<section class="services-area bg-gray">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
