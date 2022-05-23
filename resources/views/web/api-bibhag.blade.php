@@ -6,9 +6,9 @@
 <link rel="stylesheet" href="{{URL::to('/')}}/web/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 <link href="{{URL::to('/')}}/web/nepali.datepicker.v3.6/css/nepali.datepicker.v3.6.min.css" rel="stylesheet" type="text/css">
 
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
- <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
- @endpush
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.0/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
+@endpush
 @section('content')
 <nav class="breadcrumb-main mt-4">
   <div class="container">
@@ -77,14 +77,14 @@
 						<thead class="text-center thead-dark">
 							<tr>
 								<th width="5%">{{ __('language.SN')}}</th>
-								<th width="20%">{{ __('language.karyalaya')}}</th>
-								<th width="20%">{{ __('language.mantralaya')}}</th>
+								<th width="18%">{{ __('language.karyalaya')}}</th>
+								<th width="18%">{{ __('language.mantralaya')}}</th>
 								<th class="text-left">{{ __('language.name')}}</th>
 								<th>{{ __('language.address')}}</th>
 								<th width="10%">{{ __('language.post')}}</th>
 								<th width="10%">{{ __('language.contact')}}</th>
-								<th width="10%">{{ __('language.created-at')}}</th>
-								<th width="15%">{{ __('language.link')}}</th>
+								<th width="12%">{{ __('language.created-at')}}</th>
+								<th width="12%">{{ __('language.link')}}</th>
 							</tr>
 						</thead>
 						<tbody class="text-center {{-- vertical-align-middle --}}">
@@ -113,22 +113,26 @@
 </section>
 @endsection
 @push('js')
-<script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/1.12.0/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#example').DataTable( {
-			dom: 'Bfrtip',
+			dom: 'Blfrtip',
 			buttons: [
 			'excel', 'print'
-			// 'copy', 'csv', 'excel', 'pdf', 'print'
 			]
 		} );
 	} );
 </script>
+
 <script src="{{URL::to('/')}}/web/select2/js/select2.full.min.js"></script>
 {{-- <script src="{{ url('/') }}/web/nepali.datepicker.v3.6/js/nepali.datepicker.v3.6.min.js" type="text/javascript"></script> --}}
 {{-- <script type="text/javascript">
