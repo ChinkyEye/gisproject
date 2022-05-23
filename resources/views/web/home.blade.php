@@ -40,8 +40,8 @@
                         <a href="{{$remote_notice->url}}" target="_blank" class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
                             <span>
-                                <span class="text-bluish">
-                                    {{$remote_notice->title}}
+                                <span class="text-bluish" title="{{$remote_notice->title}}">
+                                    {{ Str::limit($remote_notice->title,50)}}
                                 </span>
                                 <small class="d-block w-100">
                                     {{ $remote_notice->date_np ? '- '.$remote_notice->date_np : '' }} 
@@ -67,8 +67,8 @@
                         <a href="{{$budget->url}}" target="_blank" class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
                             <span>
-                                <span class="text-bluish">
-                                    {{$budget->title}}
+                                <span class="text-bluish" title="{{$budget->title}}">
+                                    {{Str::limit($budget->title,50)}}
                                 </span>
                                 <small class="d-block w-100">
                                     {{ $budget->date_np ? '- '.$budget->date_np : '' }} 
@@ -94,8 +94,8 @@
                         <a href="{{$bolpatra->url}}" target="_blank" class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
                             <span>
-                                <span class="text-bluish">
-                                    {{$bolpatra->title}}
+                                <span class="text-bluish" title="{{$bolpatra->title}}">
+                                    {{Str::limit($bolpatra->title,50)}}
                                 </span>
                                 <small class="d-block w-100">
                                     {{ $bolpatra->date_np ? '- '.$bolpatra->date_np : '' }} 
@@ -121,8 +121,8 @@
                         <a href="{{$ainkanun->url}}" target="_blank" class="list-item-body-content">
                             <i class="fa fa-angle-right"></i>
                             <span>
-                                <span class="text-bluish">
-                                    {{$ainkanun->title}}
+                                <span class="text-bluish" title="{{$ainkanun->title}}">
+                                    {{Str::limit($ainkanun->title,50)}}
                                 </span>
                                 <small class="d-block w-100">
                                     {{ $ainkanun->date_np ? '- '.$ainkanun->date_np : '' }} 
@@ -323,50 +323,7 @@
                             </div>
                         </div>
                         @endif
-                        {{-- @endforeach --}}
                         @endforeach
-                        {{-- <div class="col-md-4 p-1">
-                            <div class="text-center quest-block-main blue">
-                                <i class="fa fa-pencil"></i>
-                                <h5 class="text-white m-0">१</h5>
-                                <small>म.न.पा</small>
-                            </div>
-                        </div>
-                        <div class="col-md-4 p-1">
-                            <div class="text-center quest-block-main red">
-                                <i class="fa fa-info"></i>
-                                <h4 class="text-white m-0">२</h4>
-                                <small>म.न.पा</small>
-                            </div>
-                        </div>
-                        <div class="col-md-4 p-1">
-                            <div class="text-center quest-block-main green">
-                                <i class="fa fa-check"></i>
-                                <h4 class="text-white m-0">२</h4>
-                                <small>म.न.पा</small>
-                            </div>
-                        </div>
-                        <div class="col-md-4 p-1">
-                            <div class="text-center quest-block-main yellow">
-                                <i class="fa fa-spinner"></i>
-                                <h4 class="text-white m-0">२</h4>
-                                <small>म.न.पा</small>
-                            </div>
-                        </div>
-                        <div class="col-md-4 p-1">
-                            <div class="text-center quest-block-main blue">
-                                <i class="fa fa-eye"></i>
-                                <h4 class="text-white m-0">२</h4>
-                                <small>म.न.पा</small>
-                            </div>
-                        </div>
-                        <div class="col-md-4 p-1">
-                            <div class="text-center quest-block-main purple">
-                                <i class="fa fa-eye-slash"></i>
-                                <h4 class="text-white m-0">२</h4>
-                                <small>म.न.पा</small>
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -392,8 +349,8 @@
                     <a href="{{$sewaprava->url}}" target="_blank" class="list-item-body-content">
                         <i class="fa fa-angle-right"></i>
                         <span>
-                            <span class="text-bluish">
-                                {{$sewaprava->title}}
+                            <span class="text-bluish" title="{{$sewaprava->title}}">
+                                {{Str::limit($sewaprava->title,50)}}
                             </span>
                             <small class="d-block w-100">
                                 {{ $sewaprava->date_np ? '- '.$sewaprava->date_np : '' }} 
@@ -422,8 +379,8 @@
                     <a href="{{$farum->url}}" target="_blank" class="list-item-body-content">
                         <i class="fa fa-angle-right"></i>
                         <span>
-                            <span class="text-bluish">
-                                {{$farum->title}}
+                            <span class="text-bluish" title="{{$farum->title}}">
+                                {{Str::limit($farum->title,50)}}
                             </span>
                             <small class="d-block w-100">
                                 {{ $farum->date_np ? '- '.$farum->date_np : '' }} 
@@ -450,8 +407,8 @@
                     <a href="{{$prativedan->url}}" target="_blank" class="list-item-body-content">
                         <i class="fa fa-angle-right"></i>
                         <span>
-                            <span class="text-bluish">
-                                {{$prativedan->title}}
+                            <span class="text-bluish" title="{{$prativedan->title}}">
+                                {{Str::limit($prativedan->title,50)}}
                             </span>
                             <small class="d-block w-100">
                                 {{ $prativedan->date_np ? '- '.$prativedan->date_np : '' }} 
@@ -480,8 +437,8 @@
                     <a href="{{$publication->url}}" target="_blank" class="list-item-body-content">
                         <i class="fa fa-angle-right"></i>
                         <span>
-                            <span class="text-bluish">
-                                {{$publication->title}}
+                            <span class="text-bluish" title="{{$publication->title}}">
+                                {{Str::limit($publication->title,50)}}
                             </span>
                             <small class="d-block w-100">
                                 {{ $publication->date_np ? '- '.$publication->date_np : '' }} 

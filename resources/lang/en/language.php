@@ -106,13 +106,14 @@ return [
     'email' => 'Email',
     'phone' => 'Phone No.',
     'sthaniya-taha' => 'Sthaniya Taha',
-    'gunaso-title' => 'गुनासो व्यवस्थापन प्रणाली',
-    'mantralya_scroll_title' => 'प्रदेश मन्त्रालय/आयोग/प्राधिकरण/बिभाग/कार्यालय/निकायहरुको विवरण',
+    'gunaso-title' => 'Grievance Handling System',
+    'mantralya_scroll_title' => 'Province Ministry/Commission/Authority/Department/Office/Assembly Detail',
     'gis_title' => 'GIS of Province No. 1',
     'post' => 'Post',
     'ministry' => 'Ministry',
     'gender' => 'Gender',
     'nirvachit-no' => 'Nirvachit kshetra no ',
+    'survey' => 'Survey',
 
  
 

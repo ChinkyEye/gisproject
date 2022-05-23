@@ -25,7 +25,7 @@ return [
     'vision' => ' दुरदृष्टि',
     'our-objective' => 'हाम्रो उद्देश्य',
     'staff-list' => 'कर्मचारी विवरण',
-    'report' => 'पप्रतिवेदन / रिपोर्ट ',
+    'report' => 'प्रतिवेदन / रिपोर्ट ',
     'quarterly-progresss-report' => 'त्रैमासिक प्रगति प्रतिवेदन',
     'yearly-reports' => 'वार्षिक प्रतिवेदन',
     'yearly-budget-program' => 'बार्षिक बजेट / कार्यक्रम',
@@ -112,9 +112,5 @@ return [
     'ministry' => 'मन्त्रालय',
     'gender' => 'लिङ्ग',
     'nirvachit-no' => 'निर्वाचित क्षेत्र नं',
-
-
-
-
-
+    'survey' => 'सर्वे',
 ];

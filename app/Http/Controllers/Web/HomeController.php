@@ -48,20 +48,20 @@ class HomeController extends Controller
         // dd($remotehellocm[1][0]);
         // var_dump($remotehellocm['table_datas']); die();
 
-        $scroll_notice = Notice::orderBy('id','DESC')->where('scroll','1')->where('is_active','1')->take(10)->get();
-        $remote_notices = TblRemoteNotice::orderBy('id','DESC')->whereIn('page',[1,3,6])->take(10)->get();
-        $remote_yearly_budgets = TblRemoteYearlyBudget::orderBy('id','DESC')->where('page','7')->take(10)->get();
-        $remote_kharid_bolpatras = TblRemoteNotice::orderBy('id','DESC')->where('page','2')->take(10)->get();
-        $remote_ain_kanuns = TblRemoteYearlyBudget::orderBy('id','DESC')->whereIn('page',[1,2,3,4])->take(10)->get();
-        $remote_sewa_pravas = TblRemoteSewaPrava::orderBy('id','DESC')->take(10)->get();
-        $remote_e_farums = TblRemoteEFarum::orderBy('id','DESC')->take(10)->get();
-        $remote_prativedans = TblRemotePrativedan::orderBy('id','DESC')->take(10)->get();
-        $remote_publications = TblRemotePublication::orderBy('id','DESC')->take(10)->get();
-        // $offices = Office::orderBy('id','DESC')->where('is_active','1')->get();
-        $introductions = Introduction::orderBy('id','DESC')->where('is_active','1')->get();
-        $sliders = Slider::orderBy('id','DESC')->where('is_active','1')->get();
-        $coreperson = CorePerson::orderBy('id','DESC')->where('is_top','1')->where('is_active','1')->get();
-        // $mantralaya = MantralayaHasUser::orderBy('id','DESC')->where('is_active','1')->get();
+        $scroll_notice = TblRemoteNotice::orderBy('id','DESC')->where('is_scroll','1')->where('is_active','1')->take(10)->get();
+        $remote_notices = TblRemoteNotice::orderBy('date_np','DESC')->whereIn('page',[1,3,6])->take(5)->get();
+        $remote_yearly_budgets = TblRemoteYearlyBudget::orderBy('date_np','DESC')->where('page','7')->take(5)->get();
+        $remote_kharid_bolpatras = TblRemoteNotice::orderBy('date_np','DESC')->where('page','2')->take(5)->get();
+        $remote_ain_kanuns = TblRemoteYearlyBudget::orderBy('date_np','DESC')->whereIn('page',[1,2,3,4])->take(5)->get();
+        $remote_sewa_pravas = TblRemoteSewaPrava::orderBy('date_np','DESC')->take(5)->get();
+        $remote_e_farums = TblRemoteEFarum::orderBy('date_np','DESC')->take(5)->get();
+        $remote_prativedans = TblRemotePrativedan::orderBy('date_np','DESC')->take(5)->get();
+        $remote_publications = TblRemotePublication::orderBy('date_np','DESC')->take(5)->get();
+        // $offices = Office::orderBy('date_np','DESC')->where('is_active','1')->get();
+        $introductions = Introduction::orderBy('date_np','DESC')->where('is_active','1')->get();
+        $sliders = Slider::orderBy('date_np','DESC')->where('is_active','1')->get();
+        $coreperson = CorePerson::orderBy('date_np','DESC')->where('is_top','1')->where('is_active','1')->get();
+        // $mantralaya = MantralayaHasUser::orderBy('date_np','DESC')->where('is_active','1')->get();
         $mantralaya = MantralayaHasUser::orderBy('sort_id','DESC')->where('is_active','1')->get();
         $isthaniya = IsthaniyaTaha::orderBy('id','DESC')->get();
         // dd($remote_e_farums);
@@ -91,30 +91,42 @@ class HomeController extends Controller
             $level = Menu::where('link',$linkf)->value('level');
             $is_api = Menu::where('link',$linkf)->value('is_api');
             $api_key = Menu::where('link',$linkf)->value('api_key');
-
-            // var_dump($is_api,$api_key); die();
             $menu_id = Menu::where('link',$linkf)->value('id');
             Menu::find($menu_id)->increment('views');
 
-            
             $modelName = '\\App\\' . $model;
-            if($type == '1'){
+            if($is_api == '1'){
+                    $datas = $modelName::orderBy('id','DESC')->where('api_key',$api_key);
+                }
+            else{
+                if($type == '1'){
                 $datas = $modelName::orderBy('id','DESC');
             }
             else{
-                if($is_api == '1'){
-                    $datas = $modelName::orderBy('id','DESC')->where('api_key',$api_key);
-                }
-                else{
                     $datas = $modelName::orderBy('id','DESC')->where('type',$type);
                 }
             }
-            $datas = $datas->get();
+            
+            $datas = $datas->paginate(50);
+            $search_val = $api_key;
             $type = $name;
+            // var_dump($search_val); die();
             $years = FiscalYear::where('is_active',1)->get();
         $mantralayas = MantralayaHasUser::where('is_active',1)->where('is_main','2')->get();
+        if($is_api){
+            $lang = App::getLocale();
+            if($lang == 'en'){
+                $breadcum = Menu::where('api_key',$api_key)->value('name');
+            }
+            else{
+                $breadcum = Menu::where('api_key',$api_key)->value('name_np');
+            }
+            return view('web.'.$page, compact(['datas','link','link2','name','level','type','years','mantralayas','search_val','breadcum']));
+        }
+        else{
             return view('web.'.$page, compact(['datas','link','link2','name','level','type','years','mantralayas']));
-            
+
+        }
         }
     }
 

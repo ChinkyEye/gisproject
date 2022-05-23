@@ -49,7 +49,7 @@
                             @endif
                             @endforeach
                             <li>
-                                <a href="{{route('web.survey.index')}}">Survey</a>
+                                <a href="{{route('web.survey.index')}}">{{ __('language.survey')}}</a>
                             </li>
                         </ul>
                     </div>

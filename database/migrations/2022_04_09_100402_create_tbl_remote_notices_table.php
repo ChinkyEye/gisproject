@@ -21,6 +21,7 @@ class CreateTblRemoteNoticesTable extends Migration
             $table->string('url'); // redirects which url it follow
             $table->string('date_np'); // to get nepali date
             $table->string('ministry')->nullable(); // to get nepali date
+            $table->integer('is_scroll')->nullable(0); // to get nepali date
             $table->boolean('is_active')->default(true); // 1 active, 0 non active
             $table->timestamps();
         });

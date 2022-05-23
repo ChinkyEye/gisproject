@@ -218,6 +218,7 @@ Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest','setlocal
     Route::get('/province-gallery/{slug}', 'HomeController@gallerySlug')->name('gallerySlug');
     Route::get('/detail/{type}', 'DetailController@index')->name('detail.index');
     Route::get('/detail/{type}/search', 'DetailController@search')->name('detail.search');
+    Route::get('/api/{type}/search', 'DetailController@apisearch')->name('api.search');
     Route::get('/{link}/{links?}', 'HomeController@link')->name('home.link');
     Route::get('/{link}/detail/{id}', 'HomeController@detail')->name('home.detail');
     Route::get('/{link}/{link2}/more/{id}', 'HomeController@more')->name('home.more');

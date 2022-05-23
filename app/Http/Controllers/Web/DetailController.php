@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\App;
 use Illuminate\Http\Request;
 use App\Menu;
 use App\MenuHasDropdown;
@@ -24,34 +25,34 @@ class DetailController extends Controller
     {
         switch ($type) {
             case 'suchana':
-            $model = TblRemoteNotice::orderBy('id','DESC')->whereIn('page',[1,3,6]);
+            $model = TblRemoteNotice::orderBy('date_np','DESC')->whereIn('page',[1,3,6]);
                 break;
             case 'yearly-budget':
-            $model = TblRemoteYearlyBudget::orderBy('id','DESC')->where('page','7');
+            $model = TblRemoteYearlyBudget::orderBy('date_np','DESC')->where('page','7');
                 break;
             case 'kharid-bolpatra':
-            $model = TblRemoteNotice::orderBy('id','DESC')->where('page','2');
+            $model = TblRemoteNotice::orderBy('date_np','DESC')->where('page','2');
                 break;
             case 'ain-kanoon':
-            $model = TblRemoteYearlyBudget::orderBy('id','DESC')->whereIn('page',[1,2,3,4]);
+            $model = TblRemoteYearlyBudget::orderBy('date_np','DESC')->whereIn('page',[1,2,3,4]);
                 break; 
             case 'sewa-prava':
-            $model = TblRemoteSewaPrava::orderBy('id','DESC');
+            $model = TblRemoteSewaPrava::orderBy('date_np','DESC');
                 break;   
             case 'e-farum':
-            $model = TblRemoteEFarum::orderBy('id','DESC');
+            $model = TblRemoteEFarum::orderBy('date_np','DESC');
                 break;  
             case 'prativedan':
-            $model = TblRemotePrativedan::orderBy('id','DESC');
+            $model = TblRemotePrativedan::orderBy('date_np','DESC');
                 break;  
             case 'publication':
-            $model = TblRemotePublication::orderBy('id','DESC');
+            $model = TblRemotePublication::orderBy('date_np','DESC');
                 break;                    
             default:
                 # code...
                 break;
         }
-        $datas = $model->paginate(5);
+        $datas = $model->paginate(50);
         $years = FiscalYear::where('is_active',1)->get();
         $mantralayas = MantralayaHasUser::where('is_active',1)->where('is_main','2')->get();
         return view('web.detail', compact(['datas','type','years','mantralayas']));
@@ -65,28 +66,28 @@ class DetailController extends Controller
         $date_np_end = $request->date_np_end;
         switch ($type) {
             case 'suchana':
-            $model = TblRemoteNotice::orderBy('id','DESC');
+            $model = TblRemoteNotice::orderBy('date_np','DESC')->whereIn('page',[1,3,6]);
                 break;
             case 'yearly-budget':
-            $model = TblRemoteYearlyBudget::orderBy('id','DESC');
+            $model = TblRemoteYearlyBudget::orderBy('date_np','DESC')->where('page','7');
                 break;
             case 'kharid-bolpatra':
-            $model = TblRemoteKharidBolpatra::orderBy('id','DESC');
+            $model = TblRemoteNotice::orderBy('date_np','DESC')->where('page','2');
                 break;
             case 'ain-kanoon':
-            $model = TblRemoteAainKanun::orderBy('id','DESC');
+            $model = TblRemoteYearlyBudget::orderBy('date_np','DESC')->whereIn('page',[1,2,3,4]);
                 break; 
             case 'sewa-prava':
-            $model = TblRemoteSewaPrava::orderBy('id','DESC');
+            $model = TblRemoteSewaPrava::orderBy('date_np','DESC');
                 break;   
             case 'e-farum':
-            $model = TblRemoteEFarum::orderBy('id','DESC');
+            $model = TblRemoteEFarum::orderBy('date_np','DESC');
                 break;  
             case 'prativedan':
-            $model = TblRemotePrativedan::orderBy('id','DESC');
+            $model = TblRemotePrativedan::orderBy('date_np','DESC');
                 break;  
             case 'publication':
-            $model = TblRemotePublication::orderBy('id','DESC');
+            $model = TblRemotePublication::orderBy('date_np','DESC');
                 break;                    
             default:
                 # code...
@@ -109,7 +110,7 @@ class DetailController extends Controller
             {
                 $model = $model->whereBetween('date_np', [$request->date_np_start, $request->date_np_end]);
             }
-        $datas = $model->where('is_active','1')->get();
+        $datas = $model->where('is_active','1')->paginate(50);
         // dd($datas);
         // var_dump($datas); die();
         $years = FiscalYear::where('is_active',1)->get();
@@ -135,4 +136,47 @@ class DetailController extends Controller
         $datas = $modelName::where('type',$type)->get();
         return view('web.'.$page, compact(['datas']));
     }
+
+    public function apisearch(Request $request, $type){
+        // dd($request,$type);
+        $year = $request->year;
+        $ministry = $request->ministry;
+        $date_np_start = $request->date_np_start;
+        $date_np_end = $request->date_np_end;
+
+            $model = Menu::where('api_key',$type)->value('model');
+            $modelName = '\\App\\' . $model;
+            // var_dump($modelName); die();
+            $modelName = $modelName::orderBy('date_np','DESC');
+        if($request->has('year') && $request->get('year')!="")
+            {            
+                $datas = $modelName->where('date_np','LIKE', "%{$request->year}%");
+            }
+        if($request->has('ministry') && $request->get('ministry')!="")
+            {    
+                // dd($ministry);
+                $datas = $modelName->where('server', $ministry);
+                // dd($datas->get());
+            }
+            // dd($datas->get());
+        if(($request->has('date_np_start')) || ($request->has('date_np_end')))
+            {
+                $datas = $modelName->whereBetween('date_np', [$request->date_np_start, $request->date_np_end]);
+            }
+        $datas = $modelName->where('is_active','1')->where('api_key',$type)->paginate(50);
+        // dd($datas);
+        // var_dump($datas); die();
+        $search_val = $type;
+        $years = FiscalYear::where('is_active',1)->get();
+        $mantralayas = MantralayaHasUser::where('is_active',1)->where('is_main','2')->get();
+        $lang = App::getLocale();
+            if($lang == 'en'){
+                $breadcum = Menu::where('api_key',$type)->value('name');
+            }
+            else{
+                $breadcum = Menu::where('api_key',$type)->value('name_np');
+            }
+        return view('web.api-detail', compact(['datas','type','year','ministry','date_np_start','date_np_end','years','mantralayas','search_val','breadcum']));
+    }
+
 }

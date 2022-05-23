@@ -13,8 +13,8 @@
                     @foreach($notice as $notices)
                     <li class="list-inline-item mr-4">
                       <small><i class="fa fa-bullhorn mr-2 text-warning"></i></small>
-                      <a class="text-light font-weight-normal" href="{{ route('web.noticescroll',$notices->id)}}">
-                        {{$notices->title}} :: {{$notices->description}}
+                      <a class="text-light font-weight-normal" target="_blank" href="{{$notices->url}}">
+                        {{$notices->title}}
                       </a>
                    </li>
                    @endforeach

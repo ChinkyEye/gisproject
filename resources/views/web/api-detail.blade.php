@@ -17,8 +17,7 @@
       </li>
       <li class="breadcrumb-item my-auto">
         <a href="#">
-        	{{ __('language.'.$type)}}
-        	
+        	{{ $breadcum}}
         </a>
       </li>
     </ol>
@@ -26,7 +25,7 @@
 </nav>
 <section class="breadcrumb-main my-4">
 	<div class="container">
-		<form method="GET" action="{{route('web.detail.search',['type' => $type])}}">
+		<form method="GET" action="{{route('web.api.search',['type' => $search_val])}}">
 			<div class="row">
 				<div class="col-md">
 					<div class="form-group">
@@ -35,7 +34,6 @@
 							@foreach($years as $key=>$year)
 							<option value="{{$year->value}}">{{$year->value}}</option>
 							@endforeach
-							
 						</select>
 					</div>
 				</div>
@@ -94,42 +92,8 @@
 								<td>
 									<a href="{{$data->url}}" target="_blank" class="table-anchor">{{ __('language.view-detail')}}</a>
 								</td>
-								<!-- <td>
-									<a href="" target="_blank" class="text-danger">
-										<i class="fa fa-file-pdf-o fa-2x"></i>
-									</a>
-								</td> -->
-								<!-- <td>
-									<img src="{{ url('web/img/mantri.jpg') }}" class="img-fluid">
-								</td> -->
 							</tr>
 							@endforeach
-							<!-- <tr>
-								<td>2</td>
-								<td class="text-left">Sumit Pradhan</td>
-								<td>2020-02-02</td>
-								<td>
-									<a href="" target="_blank" class="text-danger">
-										<i class="fa fa-file-pdf-o fa-2x"></i>
-									</a>
-								</td>
-								<td>
-									<img src="{{ url('web/img/mantri.jpg') }}" class="img-fluid">
-								</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td class="text-left">Sumit Pradhan</td>
-								<td>2020-02-02</td>
-								<td>
-									<a href="" target="_blank" class="text-danger">
-										<i class="fa fa-file-pdf-o fa-2x"></i>
-									</a>
-								</td>
-								<td>
-									<img src="{{ url('web/img/mantri.jpg') }}" class="img-fluid">
-								</td>
-							</tr> -->
 						</tbody>
 					</table>
 				</div>

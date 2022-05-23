@@ -23,6 +23,7 @@ class ApiController extends Controller
           $notice->server = $request->server_id;
           $notice->title = $request->title;
           $notice->url = $request->route_url;
+          $notice->is_scroll = $request->is_scroll;
           $notice->api_key = $request->api_key;
           $notice->page = $request->page;
           $notice->date_np = $request->date_np;
@@ -62,6 +63,7 @@ class ApiController extends Controller
                'url' => $request->route_url,
                'page' => $request->page,
                'api_key' => $request->api_key,
+               'is_scroll' => $request->is_scroll,
             ]);
           return response()->json(true);
       }  

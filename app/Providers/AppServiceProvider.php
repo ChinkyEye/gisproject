@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\View;
 use App\Menu;
 use App\Sidemenu;
 use App\Usefullink;
-use App\Notice;
+use App\TblRemoteNotice;
 use App\AboutUs;
 use App\ContactUs;
 use App\Header;
@@ -50,7 +50,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('usefullink', Usefullink::totalusefullink($request));
         });
         view()->composer('web.layouts.head-top', function ($view) use ($request){
-            $view->with('notice', Notice::totalnotice($request));
+            $view->with('notice', TblRemoteNotice::totalnotice($request));
         }); 
         view()->composer('web.layouts.footer', function ($view) use ($request){
             $view->with('aboutus', AboutUs::totalaboutus($request));
