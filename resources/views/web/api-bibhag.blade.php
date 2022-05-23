@@ -5,7 +5,10 @@
 <link rel="stylesheet" href="{{URL::to('/')}}/web/select2/css/select2.min.css">
 <link rel="stylesheet" href="{{URL::to('/')}}/web/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 <link href="{{URL::to('/')}}/web/nepali.datepicker.v3.6/css/nepali.datepicker.v3.6.min.css" rel="stylesheet" type="text/css">
-@endpush
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+ <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+ @endpush
 @section('content')
 <nav class="breadcrumb-main mt-4">
   <div class="container">
@@ -23,7 +26,7 @@
     </ol>
   </div>
 </nav>
-<section class="breadcrumb-main my-4">
+{{-- <section class="breadcrumb-main my-4">
 	<div class="container">
 		<form method="GET" action="{{route('web.api.search',['type' => $search_val])}}">
 			<div class="row">
@@ -63,21 +66,24 @@
 			</div>
 		</form>
 	</div>
-</section>
+</section> --}}
 
 <section class="breadcrumb-main my-4">
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
 				<div class="table-responsive">
-					<table class="table table-bordered table-hover table-striped">
+					<table class="table table-bordered table-hover table-striped" id="example">
 						<thead class="text-center thead-dark">
 							<tr>
 								<th width="5%">{{ __('language.SN')}}</th>
-								<th class="text-left">{{ __('language.name')}}</th>
-								<th width="10%">{{ __('language.date')}}</th>
-								<th width="20%">{{ __('language.created-at')}}</th>
+								<th width="20%">{{ __('language.karyalaya')}}</th>
 								<th width="20%">{{ __('language.mantralaya')}}</th>
+								<th class="text-left">{{ __('language.name')}}</th>
+								<th>{{ __('language.address')}}</th>
+								<th width="10%">{{ __('language.post')}}</th>
+								<th width="10%">{{ __('language.contact')}}</th>
+								<th width="10%">{{ __('language.created-at')}}</th>
 								<th width="15%">{{ __('language.link')}}</th>
 							</tr>
 						</thead>
@@ -85,10 +91,13 @@
 							@foreach($datas as $data)
 							<tr>
 								<td>{{$loop->iteration}}</td>
-								<td class="text-left">{{$data->title}}</td>
-								<td>{{$data->date_np}}</td>
-								<td><span class="badge badge-info">{{$data->created_at->diffForHumans()}}</span></td>
+								<td>{{$data->bibhag}}</td>
 								<td>{{$data->ministry}}</td>
+								<td class="text-left">{{$data->title}}</td>
+								<td>{{$data->address}}</td>
+								<td>{{$data->designation}}</td>
+								<td>{{$data->contact}}</td>
+								<td><span class="badge badge-info">{{$data->created_at->diffForHumans()}}</span></td>
 								<td>
 									<a href="{{$data->url}}" target="_blank" class="table-anchor">{{ __('language.view-detail')}}</a>
 								</td>
@@ -104,9 +113,25 @@
 </section>
 @endsection
 @push('js')
-<script src="{{URL::to('/')}}/web/select2/js/select2.full.min.js"></script>
-<script src="{{ url('/') }}/web/nepali.datepicker.v3.6/js/nepali.datepicker.v3.6.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
 <script type="text/javascript">
+	$(document).ready(function() {
+		$('#example').DataTable( {
+			dom: 'Bfrtip',
+			buttons: [
+			'excel', 'print'
+			// 'copy', 'csv', 'excel', 'pdf', 'print'
+			]
+		} );
+	} );
+</script>
+<script src="{{URL::to('/')}}/web/select2/js/select2.full.min.js"></script>
+{{-- <script src="{{ url('/') }}/web/nepali.datepicker.v3.6/js/nepali.datepicker.v3.6.min.js" type="text/javascript"></script> --}}
+{{-- <script type="text/javascript">
 	$(function () {
 	  $('.select2bs4').select2({
 	    theme: 'bootstrap4'
@@ -128,5 +153,5 @@
 			dateFormat: "YYYY-MM-DD"
 		});
 	});
-</script>
+</script> --}}
 @endpush

@@ -39,9 +39,10 @@
           <select class="form-control" name="model" id="model">
             <option value="">--Select--</option>
             <option value="Niti">Niti</option>
-            {{-- <option value="Notice">Notice</option> --}}
-            <option value="TblRemoteNotice">Notice</option>
-            <option value="TblRemoteYearlyBudget">Yearly Budget</option>
+            <option value="TblRemoteNotice">Api Notice</option>
+            <option value="TblRemoteYearlyBudget">Api YearlyBudget</option>
+            <option value="TblRemotePrativedan">Api Report</option>
+            <option value="TblRemoteBibhag">Api Bibhag</option>
             <option value="AboutUs">About</option>
             <option value="Mission">Mission</option>
             <option value="Vision">Vision</option>
@@ -81,6 +82,8 @@
             <option value="contactus">Contact us</option>
             <option value="detail">Detail</option>
             <option value="view-more">View More</option>
+            <option value="api-detail">Api Detail</option>
+            <option value="api-bibhag">Api Bibhag</option>
           </select> 
           @error('page')
           <span class="text-danger font-italic" role="alert">

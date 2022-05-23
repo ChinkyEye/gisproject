@@ -114,6 +114,7 @@ return [
     'gender' => 'Gender',
     'nirvachit-no' => 'Nirvachit kshetra no ',
     'survey' => 'Survey',
+    'karyalaya' => 'Karyalaya',
 
  
 

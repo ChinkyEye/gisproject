@@ -113,4 +113,5 @@ return [
     'gender' => 'लिङ्ग',
     'nirvachit-no' => 'निर्वाचित क्षेत्र नं',
     'survey' => 'सर्वे',
+    'karyalaya' => 'कार्यालय',
 ];

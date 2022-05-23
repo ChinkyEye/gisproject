@@ -48,7 +48,7 @@
                         <th>Link</th>
                         <th>Page</th>
                         <th>Sub menu</th>
-                        <th>Quick menu</th>
+                        <th>Is Api</th>
                         <th>Status</th>
                         <th>Action</th>
                       </tr>
@@ -75,7 +75,7 @@
                           @endif
                         </td>
                         <td>
-                          @if($menu->is_quickmenu)
+                          @if($menu->is_api)
                           Yes
                           @else
                           No

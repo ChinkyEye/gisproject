@@ -47,7 +47,7 @@
                       <th>Link</th>
                       <th>Type</th>
                       <th>Page</th>
-                      <th>Quick Menu</th>
+                      <th>Is Api</th>
                       <th>Status</th>
                       <th>Action</th>
                     </tr>
@@ -64,7 +64,7 @@
                       <td>{{$menuhasdropdown->getModelType->type}}</td>
                       <td>{{$menuhasdropdown->page}}</td>
                        <td>
-                          @if($menuhasdropdown->is_quickmenu)
+                          @if($menuhasdropdown->is_api)
                           Yes
                           @else
                           No

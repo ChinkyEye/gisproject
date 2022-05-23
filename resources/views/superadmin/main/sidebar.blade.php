@@ -76,22 +76,22 @@
             </p>
           </a>
           <ul class="nav nav-treeview">
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a href="{{ route('superadmin.niti.index')}}" class="nav-link {{ (request()->is('home/menu-page/niti*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
                   Niti
                 </p>
               </a>
-            </li>
-            <li class="nav-item">
+            </li> --}}
+            {{-- <li class="nav-item">
               <a href="{{ route('superadmin.notice.index')}}" class="nav-link {{ (request()->is('home/menu-page/notice*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-file-alt"></i>
                 <p>
                   Notice
                 </p>
               </a>
-            </li>
+            </li> --}}
             <li class="nav-item">
               <a href="{{ route('superadmin.mission.index')}}" class="nav-link {{ (request()->is('home/menu-page/mission*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-bars"></i>
@@ -110,38 +110,36 @@
                 </p>
               </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a href="{{ route('superadmin.coreperson.index')}}" class="nav-link {{ (request()->is('home/menu-page/coreperson*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-user"></i>
                 <p>
                  Core Person
                </p>
              </a>
-           </li>
-           <li class="nav-item">
+           </li> --}}
+           {{-- <li class="nav-item">
               <a href="{{ route('superadmin.department.index')}}" class="nav-link {{ (request()->is('home/menu-page/department*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-user"></i>
                 <p>
                  Department
                </p>
              </a>
-           </li>
-           <li class="nav-item">
+           </li> --}}
+           {{-- <li class="nav-item">
               <a href="{{ route('superadmin.pratibedan.index')}}" class="nav-link {{ (request()->is('home/menu-page/pratibedan*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-file"></i>
                 <p>
                  Pratibedan
                </p>
              </a>
-           </li>
-           <li class="nav-item">
+           </li> --}}
+           {{-- <li class="nav-item">
               <a href="{{ route('superadmin.sangathansanrachana.index')}}" class="nav-link {{ (request()->is('home/menu-page/sangathansanrachana*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-user"></i>
-                {{-- <p> --}}
                  Sangathan Sanrachana
-               {{-- </p> --}}
              </a>
-           </li>
+           </li> --}}
            <li class="nav-item">
               <a href="{{ route('superadmin.contactus.index')}}" class="nav-link {{ (request()->is('home/menu-page/contactus*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-address-card"></i>
@@ -150,22 +148,22 @@
                </p>
              </a>
            </li>
-           <li class="nav-item">
+           {{-- <li class="nav-item">
               <a href="{{ route('superadmin.aboutus.index')}}" class="nav-link {{ (request()->is('home/menu-page/aboutus*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-info"></i>
                 <p>
                  About Us
                </p>
              </a>
-           </li>
-           <li class="nav-item">
+           </li> --}}
+           {{-- <li class="nav-item">
               <a href="{{ route('superadmin.gallery.index')}}" class="nav-link {{ (request()->is('home/menu-page/gallery*')) ? 'active' : '' }}">
                 <i class="nav-icon fas fa-images"></i>
                 <p>
                  Gallery
                </p>
              </a>
-           </li>
+           </li> --}}
           </ul>
         </li>
         <li class="nav-item has-treeview {{ (request()->is('home/sidebar-part/*')) ? 'menu-open' : '' }}">
@@ -260,19 +258,19 @@
            </p>
          </a>
        </li> 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a href="{{ route('superadmin.introduction.index')}}" class="nav-link {{ (request()->is('home/introduction*')) ? 'active' : '' }}">
             <i class="nav-icon fas fa-calendar-alt"></i>
             <p>
             Introduction
            </p>
          </a>
-       </li>
+       </li> --}}
        <li class="nav-item">
           <a href="{{route('superadmin.istaniyataha.index')}}" class="nav-link {{ (request()->is('home/istaniyataha*')) ? 'active' : '' }}">
             <i class="nav-icon fas fa-calendar-alt"></i>
             <p>
-            Istaniyataha
+            GIS Info 
            </p>
          </a>
        </li>

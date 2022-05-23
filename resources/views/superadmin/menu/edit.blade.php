@@ -55,8 +55,8 @@
             <option value="" Selected disabled>--Select--</option>
             <option value="Niti" {{ $menus->model == 'Niti' ? 'selected' : ''}}>Niti</option>
             {{-- <option value="Notice" {{ $menus->model == 'Notice' ? 'selected' : ''}}>Notice</option> --}}
-            <option value="TblRemoteNotice" {{ $menus->model == 'TblRemoteNotice' ? 'selected' : ''}}>Notice</option>
-            <option value="TblRemoteYearlyBudget" {{ $menus->model == 'TblRemoteYearlyBudget' ? 'selected' : ''}}>Yearly Budget</option>
+            {{-- <option value="TblRemoteNotice" {{ $menus->model == 'TblRemoteNotice' ? 'selected' : ''}}>Notice</option> --}}
+            {{-- <option value="TblRemoteYearlyBudget" {{ $menus->model == 'TblRemoteYearlyBudget' ? 'selected' : ''}}>Yearly Budget</option> --}}
             <option value="About" {{ $menus->model == 'About' ? 'selected' : ''}}>About</option>
             <option value="Mission" {{ $menus->model == 'Mission' ? 'selected' : ''}}>Mission</option>
             <option value="Vision" {{ $menus->model == 'Vision' ? 'selected' : ''}}>Vision</option>
@@ -65,6 +65,10 @@
             <option value="Pratibedan" {{ $menus->model == 'Pratibedan' ? 'selected' : ''}}>Pratibedan</option>
              <option value="Department" {{ $menus->model == 'Department' ? 'selected' : ''}} >Bivagh/Karyalaya</option>
             <option value="ContactUs"{{ $menus->model == 'ContactUs' ? 'selected' : ''}}>Contact Us</option>
+             <option value="TblRemoteNotice" {{ $menus->model == 'TblRemoteNotice' ? 'selected' : ''}}>Api Notice</option>
+            <option value="TblRemotePrativedan" {{ $menus->model == 'TblRemotePrativedan' ? 'selected' : ''}}>Api Report</option>
+            <option value="TblRemoteYearlyBudget" {{ $menus->model == 'TblRemoteYearlyBudget' ? 'selected' : ''}}>Api YearlyBudget</option>
+            <option value="TblRemoteBibhag" {{ $menus->model == 'TblRemoteBibhag' ? 'selected' : ''}}>Api Bibhag</option>
           </select>
         </div>
         <div class="form-group">
@@ -131,9 +135,12 @@
            <option value="contactus" {{ $menus->page == 'contactus' ? 'selected' : ''}}>Contact us</option>
            <option value="detail" {{ $menus->page == 'detail' ? 'selected' : ''}}>Detail</option>
            <option value="view-more" {{ $menus->page == 'view-more' ? 'selected' : ''}}>View More</option>
+           <option value="view-more" {{ $menus->page == 'view-more' ? 'selected' : ''}}>View More</option>
+           <option value="api-detail" {{ $menus->page == 'api-detail' ? 'selected' : ''}}>Api Detail</option>
+           <option value="api-bibhag" {{ $menus->page == 'api-bibhag' ? 'selected' : ''}}>Api Bibhag</option>
          </select>
        </div>
-        <div class="form-group">
+        {{-- <div class="form-group">
           <label for="quickmenu">Is Quick Menu</label>
           <div class="row col-md-5">
             <div class="form-check-inline col-md">
@@ -154,7 +161,7 @@
             <strong>{{ $message }}</strong>
           </span>
           @enderror
-        </div>
+        </div> --}}
      </div>
 
       </div>
