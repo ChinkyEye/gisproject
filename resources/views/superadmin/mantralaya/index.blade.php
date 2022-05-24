@@ -89,7 +89,7 @@
                     @csrf
 
                     <div class="modal-body">
-                        <input type="text" name="mantralaya_id" id="mantralaya_id" value="" />
+                        <input type="hidden" name="mantralaya_id" id="mantralaya_id" value="" />
                         <div class="form-group">
                           <label for="new_password" class="col-md-4 control-label">New Password</label>
                           <div class="col-md-12">
