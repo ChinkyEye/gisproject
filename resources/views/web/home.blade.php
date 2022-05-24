@@ -504,7 +504,7 @@
 
     <div class="container-fluid">
         <div class="owl-carousel owl-carousel2 owl-theme d-flex">
-            @foreach($mantralaya->where('is_main','2') as $key => $data)
+            @foreach($except_locallevel as $key => $data)
             <div class="item align-self-stretch">
                 <a href="{{route('web.mantralaya.detail',$data->id)}}" class="card">
                     <img src="{{ $data->document == null ? asset('images/noimage.png') : asset('images/mantralaya') . '/' . $data->document }}" class="img-fluid card-img-top section-main-2" alt="{{$data->getUserDetail->name}}">

@@ -44,9 +44,6 @@ class HomeController extends Controller
         foreach($remotehello as $hello){
             $remotehellocm = $hello;
         }
-        // dd($remotehellocm);
-        // dd($remotehellocm[1][0]);
-        // var_dump($remotehellocm['table_datas']); die();
 
         $scroll_notice = TblRemoteNotice::orderBy('id','DESC')->where('is_scroll','1')->where('is_active','1')->take(10)->get();
         $remote_notices = TblRemoteNotice::orderBy('date_np','DESC')->whereIn('page',[1,3,6])->take(5)->get();
@@ -58,16 +55,19 @@ class HomeController extends Controller
         $remote_e_farums = TblRemoteEFarum::orderBy('date_np','DESC')->take(5)->get();
         $remote_prativedans = TblRemotePrativedan::orderBy('date_np','DESC')->take(5)->get();
         $remote_publications = TblRemotePublication::orderBy('date_np','DESC')->take(5)->get();
-        // $offices = Office::orderBy('date_np','DESC')->where('is_active','1')->get();
         $introductions = Introduction::orderBy('date_np','DESC')->where('is_active','1')->get();
         $sliders = Slider::orderBy('date_np','DESC')->where('is_active','1')->get();
         $coreperson = CorePerson::orderBy('date_np','DESC')->where('is_top','1')->where('is_active','1')->get();
-        // $mantralaya = MantralayaHasUser::orderBy('date_np','DESC')->where('is_active','1')->get();
         $mantralaya = MantralayaHasUser::orderBy('sort_id','DESC')->where('is_active','1')->get();
+        $except_locallevel = MantralayaHasUser::orderBy('sort_id','DESC')
+                                                ->where('is_active','1')
+                                                ->where('is_local_level','!=','1')
+                                                ->orWhereNull('is_local_level')
+                                                ->get();
+        // dd($except_locallevel);
         $isthaniya = IsthaniyaTaha::orderBy('id','DESC')->get();
-        // dd($remote_e_farums);
 
-        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','scroll_notice','introductions','sliders','coreperson','mantralaya','isthaniya','remotehellocm','procedures']));
+        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','scroll_notice','introductions','sliders','coreperson','mantralaya','isthaniya','remotehellocm','procedures','except_locallevel']));
     }
 
     public function link(Request $request, $link,$link2 = Null)

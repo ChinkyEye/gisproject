@@ -56,6 +56,7 @@ $page_name = ucfirst(strtolower(str_replace(' ', '-', last(request()->segments()
 				</div>
 							</a>
 			</div>
+			
 			@endforeach
 		</div>
 	</div>
