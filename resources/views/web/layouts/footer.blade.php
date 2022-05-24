@@ -31,13 +31,13 @@
             <div class="col-md-4">
                 <div class="single-footer-widget mb-70">
                     <h5 class="widget-title font-weight-bold">{{ __('language.most_view')}}</h5>
-                    @foreach($quick_menu->where('views','!=','0')->take(4) as $key => $data)
+                    @foreach($quick_menu->where('views','!=','0')->take(5) as $key => $data)
                     <div class="single-latest-news-area d-flex align-items-center">
                         <div class="news-content">
                             <span class="text-light icon-foot">
                                 <i class="fa fa-angle-right"></i>
                             </span>
-                            <a href="{{ $data->is_main == '0' ? route('web.home.link',$data->link) : '#' }}" target="_blank" class="d-inline-block">
+                            <a href="{{ $data->is_main == '0' ? route('web.home.link',$data->link) : '#' }}" class="d-inline-block">
                                 @if(app()->getLocale() == 'en')
                                 {{ $data->name }}
                                 @else

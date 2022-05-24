@@ -114,4 +114,5 @@ return [
     'nirvachit-no' => 'निर्वाचित क्षेत्र नं',
     'survey' => 'सर्वे',
     'karyalaya' => 'कार्यालय',
+    'procedure-directory' => 'कार्यविधि, निर्देशिका',
 ];

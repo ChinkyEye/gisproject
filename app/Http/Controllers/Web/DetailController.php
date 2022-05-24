@@ -30,11 +30,14 @@ class DetailController extends Controller
             case 'yearly-budget':
             $model = TblRemoteYearlyBudget::orderBy('date_np','DESC')->where('page','7');
                 break;
+            case 'procedure':
+            $model = TblRemoteYearlyBudget::orderBy('date_np','DESC')->whereIn('page',[3,4]);
+                break;
             case 'kharid-bolpatra':
             $model = TblRemoteNotice::orderBy('date_np','DESC')->where('page','2');
                 break;
             case 'ain-kanoon':
-            $model = TblRemoteYearlyBudget::orderBy('date_np','DESC')->whereIn('page',[1,2,3,4]);
+            $model = TblRemoteYearlyBudget::orderBy('date_np','DESC')->whereIn('page',[1,2]);
                 break; 
             case 'sewa-prava':
             $model = TblRemoteSewaPrava::orderBy('date_np','DESC');
