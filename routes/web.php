@@ -140,8 +140,10 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('sidebar-part/mantralaya','Mantralaya\MantralayaController');
     Route::get('sidebar-part/mantralaya/active/{id}', 'Mantralaya\MantralayaController@isActive')->name('mantralaya.active');
     Route::get('/sidebar-part/mantralaya/changepassword/{id}', 'Mantralaya\MantralayaController@PasswordForm')->name('mantralaya.changepassword');
-    Route::post('/sidebar-part/mantralaya/changepassword/store/{id}', 'Mantralaya\MantralayaController@changePassword')->name('mantralaya.storechangepassword');
+    // Route::post('/sidebar-part/mantralaya/changepassword/store/{id}', 'Mantralaya\MantralayaController@changePassword')->name('mantralaya.storechangepassword');
     Route::get('/order-directories','Mantralaya\MantralayaController@order_directories')->name('order-directories');
+    Route::post('/resetpassword', 'Mantralaya\MantralayaController@resetpassword')->name('resetpassword');
+
 
 
     Route::resource('sidebar-part/importantplace','ImportantPlace\ImportantPlaceController');

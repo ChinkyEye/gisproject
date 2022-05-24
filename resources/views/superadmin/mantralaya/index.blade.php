@@ -60,8 +60,12 @@
                           <input name='_method' type='hidden' value='DELETE'>
                           <button class='btn btn-xs btn-outline-danger' type='submit' ><i class='fa fa-trash'></i></button>
                         </form>
-                        <a href="{{route('superadmin.mantralaya.changepassword',$data->getUserDetail->id)}}" class="btn btn-xs btn-outline-info" title="Change Password">
-                          <i class="fas fa-key"></i></a>
+                       {{--  <a href="{{route('superadmin.mantralaya.changepassword',$data->getUserDetail->id)}}" class="btn btn-xs btn-outline-info" title="Change Password">
+                          <i class="fas fa-key"></i>
+                        </a> --}}
+                        <button type="button" class="btn btn-xs btn-outline-info identifyingClass" data-toggle="modal" data-target="#exampleModal" data-id="{{$data->id}}" title="reset password">
+                             <i class="fas fa-key"></i>
+                        </button>
 
                       </td>
                     </tr>
@@ -71,6 +75,43 @@
               </div>
               {{ $datas->links() }}
             </div>
+             {{-- model --}}
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <form method="POST" action="{{ route('superadmin.resetpassword') }}">
+                    @csrf
+
+                    <div class="modal-body">
+                        <input type="text" name="mantralaya_id" id="mantralaya_id" value="" />
+                        <div class="form-group">
+                          <label for="new_password" class="col-md-4 control-label">New Password</label>
+                          <div class="col-md-12">
+                            <input id="new_password" type="password" class="form-control" name="new_password" required>
+                           {{--  @if ($errors->has('new_password'))
+                            <span class="help-block">
+                              <strong>{{ $errors->first('new_password') }}</strong>
+                            </span>
+                            @endif --}}
+                          </div>
+                        </div>  
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            {{-- end of model --}}
+           
           </div>
           <!-- /.card -->
         </section>
@@ -138,21 +179,29 @@
   }
 </script>
 <script>
-    $(function(){
-      $("#directories").sortable({
-        stop: function(){
-          $.map($(this).find('tr'), function(el) {
-            var itemID = el.id;
-            var itemIndex = $(el).index();
-            $.ajax({
-              url:"{{route('superadmin.order-directories')}}",
-              type:'GET',
-              dataType:'json',
-              data: {itemID:itemID, itemIndex: itemIndex},
-            });
+  $(function(){
+    $("#directories").sortable({
+      stop: function(){
+        $.map($(this).find('tr'), function(el) {
+          var itemID = el.id;
+          var itemIndex = $(el).index();
+          $.ajax({
+            url:"{{route('superadmin.order-directories')}}",
+            type:'GET',
+            dataType:'json',
+            data: {itemID:itemID, itemIndex: itemIndex},
           });
-        }
-      });
+        });
+      }
     });
-  </script>
+  });
+</script>
+<script type="text/javascript">
+  $(function () {
+    $(".identifyingClass").click(function () {
+      var my_id_value = $(this).attr("data-id");
+      $(".modal-body #mantralaya_id").val(my_id_value);
+    })
+  });
+</script>
 @endpush

@@ -280,4 +280,15 @@ class MantralayaController extends Controller
             return MantralayaHasUser::where('id','=',$itemID)->update(array('sort_id'=> $itemIndex));
         }
     }
+    public function resetpassword(Request $request)
+    {
+        $mantralaya_id = $request->mantralaya_id;
+        $new_password = $request->new_password;
+        $user_id = MantralayaHasUser::where('id',$mantralaya_id)->value('user_id');
+        $user = User::find($user_id);
+        $user->password = bcrypt($new_password);
+        $user->save();
+        return redirect()->back()->with('alert-success', 'Password changed successfully!!!!'); 
+
+    }
 }

@@ -4,6 +4,9 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Header;
+use App\Menu;
+use App\Sidemenu;
 
 class HomeController extends Controller
 {
@@ -14,7 +17,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('superadmin.main.home');
+        $header_count = Header::where('is_active','1')->count();
+        $menu_count = Menu::where('is_active','1')->count();
+        $sidemenu_count = Sidemenu::where('is_active','1')->count();
+        return view('superadmin.main.home', compact('header_count','menu_count','sidemenu_count'));
     }
 
     /**
