@@ -51,8 +51,9 @@ class HomeController extends Controller
         $scroll_notice = TblRemoteNotice::orderBy('id','DESC')->where('is_scroll','1')->where('is_active','1')->take(10)->get();
         $remote_notices = TblRemoteNotice::orderBy('date_np','DESC')->whereIn('page',[1,3,6])->take(5)->get();
         $remote_yearly_budgets = TblRemoteYearlyBudget::orderBy('date_np','DESC')->where('page','7')->take(5)->get();
+        $procedures = TblRemoteYearlyBudget::orderBy('date_np','DESC')->whereIn('page',[3,4])->take(5)->get();
         $remote_kharid_bolpatras = TblRemoteNotice::orderBy('date_np','DESC')->where('page','2')->take(5)->get();
-        $remote_ain_kanuns = TblRemoteYearlyBudget::orderBy('date_np','DESC')->whereIn('page',[1,2,3,4])->take(5)->get();
+        $remote_ain_kanuns = TblRemoteYearlyBudget::orderBy('date_np','DESC')->whereIn('page',[1,2])->take(5)->get();
         $remote_sewa_pravas = TblRemoteSewaPrava::orderBy('date_np','DESC')->take(5)->get();
         $remote_e_farums = TblRemoteEFarum::orderBy('date_np','DESC')->take(5)->get();
         $remote_prativedans = TblRemotePrativedan::orderBy('date_np','DESC')->take(5)->get();
@@ -66,7 +67,7 @@ class HomeController extends Controller
         $isthaniya = IsthaniyaTaha::orderBy('id','DESC')->get();
         // dd($remote_e_farums);
 
-        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','scroll_notice','introductions','sliders','coreperson','mantralaya','isthaniya','remotehellocm']));
+        return view('web.home', compact(['page_name','remote_notices','remote_yearly_budgets','remote_kharid_bolpatras','remote_ain_kanuns','remote_sewa_pravas','remote_e_farums','remote_prativedans','remote_publications','scroll_notice','introductions','sliders','coreperson','mantralaya','isthaniya','remotehellocm','procedures']));
     }
 
     public function link(Request $request, $link,$link2 = Null)

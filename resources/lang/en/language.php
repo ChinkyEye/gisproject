@@ -115,6 +115,7 @@ return [
     'nirvachit-no' => 'Nirvachit kshetra no ',
     'survey' => 'Survey',
     'karyalaya' => 'Karyalaya',
+    'procedure-directory' => 'Procedure, Directory',
 
  
 

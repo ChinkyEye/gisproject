@@ -56,7 +56,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <!-- <div class="col-md-3">
                 <div class="list-item">
                     <div class="list-item-head">
                         <p>{{ __('language.yearly-budget-program')}}</p>
@@ -83,7 +83,7 @@
                         <a href="{{route('web.detail.index',['type' => 'yearly-budget'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="col-md-3">
                 <div class="list-item">
                     <div class="list-item-head">
@@ -137,6 +137,32 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-3">
+                <div class="list-item">
+                    <div class="list-item-head">
+                        <p>{{ __('language.procedure-directory')}}</p>
+                    </div>
+                    <div class="list-item-body">
+                        @foreach($procedures as $procedure)
+                        <a href="{{$procedure->url}}" target="_blank" class="list-item-body-content">
+                            <i class="fa fa-angle-right"></i>
+                            <span>
+                                <span class="text-bluish" title="{{$procedure->title}}">
+                                    {{Str::limit($procedure->title,50)}}
+                                </span>
+                                <small class="d-block w-100">
+                                    {{ $procedure->date_np ? '- '.$procedure->date_np : '' }} 
+                                    <span class="text-redish float-right">
+                                        {{ $procedure->ministry ? '- '.$procedure->ministry : '' }}
+                                    </span>
+                                </small>
+                            </span>
+                        </a>
+                        @endforeach
+                        <a href="{{route('web.detail.index',['type' => 'procedure'])}}" class="btn btn-sm bg-main-blue btn-hover-main float-right rounded-0">{{ __('language.see-more')}}</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -159,7 +185,7 @@
             </div>
             <div class="col-md">
                 <div class="row align-content-stretch">
-                    @foreach( $isthaniya as $data)
+                    @foreach($isthaniya as $data)
                     <div class="col-md-3 p-0 gis-block-main blue">
                         <div class="text-center py-1">
                             <i class="fa fa-building"></i>
