@@ -201,7 +201,7 @@
             </li>
             <li class="nav-item">
               <a href="{{ route('superadmin.eservice.index')}}" class="nav-link {{ (request()->is('home/sidebar-part/eservice*')) ? 'active' : '' }}">
-                <i class="nav-icon fas fa-user"></i>
+                <i class="nav-icon fas fa-cog"></i>
                 <p>
                   Eservice
                 </p>
@@ -217,7 +217,7 @@
             </li>
             <li class="nav-item">
               <a href="{{ route('superadmin.importantplace.index')}}" class="nav-link {{ (request()->is('home/sidebar-part/importantplace*')) ? 'active' : '' }}">
-                <i class="nav-icon fas fa-user"></i>
+                <i class="nav-icon fas fa-map-marker-alt"></i>
                 <p>
                   Important Places
                 </p>
@@ -228,6 +228,14 @@
                 <i class="nav-icon fas fa-user"></i>
                 <p>
                   Pradesh Sarkar
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('superadmin.apimantri.index')}}" class="nav-link {{ (request()->is('home/sidebar-part/apimantri*')) ? 'active' : '' }}">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                  Api Mantri 
                 </p>
               </a>
             </li>

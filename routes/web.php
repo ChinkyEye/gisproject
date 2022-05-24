@@ -147,6 +147,9 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
     Route::resource('sidebar-part/importantplace','ImportantPlace\ImportantPlaceController');
     Route::get('sidebar-part/importantplace/active/{id}', 'ImportantPlace\ImportantPlaceController@isActive')->name('importantplace.active');
 
+    Route::resource('sidebar-part/apimantri','ApiMantri\ApiMantriController');
+    Route::get('/apimantri-sort','ApiMantri\ApiMantriController@apimantri_sort')->name('apimantri-sort');
+
 
     Route::resource('fiscalyear','FiscalYearController');
     Route::get('fiscalyear/active/{id}', 'FiscalYearController@isActive')->name('fiscalyear.active');
