@@ -31,7 +31,7 @@
           @enderror
           </div>
           <div class="form-group">
-            <label for="image">Choose Image</label>
+            <label for="image">Choose Image<span class="text-danger">(800*537)</span></label>
             <input type="hidden" value="{{$sliders->image}}">
             <div class="input-group">
               <input type="file" class="form-control d-none" id="image" name="image"  value="{{$sliders->image}}" >
