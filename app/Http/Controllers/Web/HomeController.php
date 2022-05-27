@@ -58,7 +58,7 @@ class HomeController extends Controller
         $introductions = Introduction::orderBy('date_np','DESC')->where('is_active','1')->get();
         $sliders = Slider::orderBy('date_np','DESC')->where('is_active','1')->get();
         $coreperson = CorePerson::orderBy('date_np','DESC')->where('is_top','1')->where('is_active','1')->get();
-        $mantralaya = MantralayaHasUser::orderBy('sort_id','DESC')->where('is_active','1')->get();
+        $mantralaya = MantralayaHasUser::orderBy('sort_id','ASC')->where('is_active','1')->get();
         $except_locallevel = MantralayaHasUser::orderBy('sort_id','DESC')
                                                 ->where('is_active','1')
                                                 ->where('is_local_level','!=','1')
@@ -175,7 +175,7 @@ class HomeController extends Controller
              $datas = $modelName::where('is_top','0')->where('is_start','1')->get();
         }
         else{
-            $datas = $modelName::get();
+            $datas = $modelName::orderBy('sort_id','ASC')->get();
         }
         $name = "";
         $level = "";
