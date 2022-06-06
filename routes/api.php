@@ -37,3 +37,8 @@ Route::put('/coreperson','SuperAdmin\ApiController@corepersionapi');
 Route::get('/coreperson','SuperAdmin\ApiController@corepersionapidelete');
 Route::get('/coreperson/active','SuperAdmin\ApiController@corepersionapiActive');
 Route::put('/coreperson/update','SuperAdmin\ApiController@corepersionapiUpdate');
+// division
+Route::put('/division','SuperAdmin\ApiController@divisionapi');
+Route::get('/division','SuperAdmin\ApiController@divisionapidelete');
+Route::get('/division/active','SuperAdmin\ApiController@divisionapiActive');
+Route::put('/division/update','SuperAdmin\ApiController@divisionapiUpdate');

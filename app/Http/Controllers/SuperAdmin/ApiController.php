@@ -13,6 +13,7 @@ use App\TblRemoteNotice;
 use App\TblRemoteYearlyBudget;
 use App\TblRemotePrativedan;
 use App\TblRemoteCorePerson;
+use App\TblRemoteBibhag;
 
 class ApiController extends Controller
 {
@@ -227,6 +228,70 @@ class ApiController extends Controller
                 'is_top' => $request->is_top,
                 'is_start' => $request->is_start,
                 'url' => $request->route_url,
+            ]);
+          return response()->json(true);
+      }  
+      return response()->json(false);
+  }
+
+  public function divisionapi(Request $request){
+      if($request->has('token_id') && $request->has('server_id') && sha1($request->server_id.'p1govnp') == $request->token_id){
+          $notice = new TblRemoteBibhag();
+          $notice->remote_id = $request->id;
+          $notice->server = $request->server_id;
+          $notice->bibhag = $request->office;
+          $notice->address = $request->address;
+          $notice->designation = $request->designation;
+          $notice->title = $request->name;
+          $notice->contact = $request->contact_no;
+          $notice->email = $request->email;
+          $notice->url = $request->route_url;
+          $notice->date_np = $request->date_np;
+          $notice->ministry = $request->ministry;
+          $notice->api_key = $request->api_key;
+          $notice->is_active = '1';
+          $notice->save();
+          return response()->json(true);
+      }  
+      return response()->json(false);
+  }
+  
+  public function divisionapidelete(Request $request){
+        $id = $request->id;
+        $server_id = $request->server_id;
+        $data_delete = TblRemoteBibhag::where('remote_id',$id)->where('server', $server_id)->delete();
+        $data_delete->delete();
+        return response()->json(true);
+  }
+  
+  public function divisionapiActive(Request $request){
+      $id = $request->id;
+      $avi = $request->avi;
+      $server_id = $request->server_id;
+      TblRemoteBibhag::where('remote_id', $id)->where('server', $server_id)
+       ->update([
+           'is_active' => !$avi,
+        ]);
+    return response()->json(true);
+  }
+  
+  public function divisionapiUpdate(Request $request){
+      $id = $request->id;
+      $server_id = $request->server_id;
+      if($request->has('token_id') && $request->has('server_id') && sha1($request->server_id.'p1govnp') == $request->token_id){
+          TblRemoteBibhag::where('remote_id', $id)->where('server', $server_id)
+           ->update([
+              'bibhag' => $request->office,
+              'address' => $request->address,
+              'designation' => $request->designation,
+              'title' => $request->name,
+              'contact' => $request->contact_no,
+              'email' => $request->email,
+              'url' => $request->route_url,
+              'date_np' => $request->date_np,
+              'ministry' => $request->ministry,
+              'api_key' => $request->api_key,
+              'is_active' => '1',
             ]);
           return response()->json(true);
       }  
