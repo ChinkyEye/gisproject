@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\PradeshSarkar;
 use App\TblRemoteCorePerson;
+use App\MantralayaHasUser;
+use Auth;
 
 class ApiMantriController extends Controller
 {
@@ -39,7 +41,10 @@ class ApiMantriController extends Controller
      */
     public function create()
     {
-        //
+        $mantralayas = MantralayaHasUser::orderBy('sort_id','ASC')
+                                        ->where('is_side','=','1')
+                                        ->get();
+        return view('superadmin.apimantri.create', compact('mantralayas'));
     }
 
     /**
@@ -50,7 +55,33 @@ class ApiMantriController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $mantralayahasuser = MantralayaHasUser::find($request->mantralaya_id);
+        $ministry_name = $mantralayahasuser->getUserDetail->name;
+        $uppdf = $request->file('image');
+        if($uppdf != ""){
+            $destinationPath = 'images/mantri/';
+            $extension = $uppdf->getClientOriginalExtension();
+            $fileName = md5(mt_rand()).'.'.$extension;
+            $uppdf->move($destinationPath, $fileName);
+            $file_path = $destinationPath.'/'.$fileName;
+
+        }else{
+            $fileName = Null;
+        }
+        $datas = TblRemoteCorePerson::create([
+            'mantralaya_id' => '0',
+            'server' => $mantralayahasuser->prefix == null ? '' : $mantralayahasuser->prefix ,
+            'name' => $request['name'],
+            'post' => $request['post'],
+            'url' => $request['link'] == null ? '' : $request['link'] ,
+            'ministry' => $ministry_name,
+            'phone' => $request['phone'],
+            'image'=> $fileName,
+            'is_top' => '1',
+            'is_start' => '0',
+            'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
+        ]);
+        return redirect()->route('superadmin.apimantri.index')->with('alert-success', 'Data created succesffully!!!!');
     }
 
     /**
