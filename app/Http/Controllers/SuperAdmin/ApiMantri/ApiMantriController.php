@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\PradeshSarkar;
 use App\TblRemoteCorePerson;
 use App\MantralayaHasUser;
-use Auth;
+use Response;
+use File;
+
 
 class ApiMantriController extends Controller
 {
@@ -126,6 +128,24 @@ class ApiMantriController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $datas = TblRemoteCorePerson::find($id);
+        $destinationPath = 'images/mantri/';
+        $oldFilename = $destinationPath.'/'.$datas->image;
+
+        if($datas->delete()){
+            if(File::exists($oldFilename)) {
+                File::delete($oldFilename);
+            }
+            $notification = array(
+              'message' => 'Data is deleted successfully!',
+              'status' => 'success'
+          );
+        }else{
+            $notification = array(
+              'message' => 'Data could not be deleted!',
+              'status' => 'error'
+          );
+        }
+        return Response::json($notification);
     }
 }
