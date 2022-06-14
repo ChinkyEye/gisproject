@@ -29,6 +29,10 @@ Route::namespace('SuperAdmin')->prefix('home')->name('superadmin.')->middleware(
 
     Route::get('/', 'HomeController@index')->name('home');
 
+    // password
+    Route::get('/changepassword','HomeController@showChangePasswordForm')->name('password.index');
+    Route::post('change/password/','HomeController@changePassword')->name('change.password');
+
     Route::resource('surveyform','Survey\SurveyFormController');
     Route::get('surveyform/attribute/{id}', 'Survey\SurveyFormAttributeController@createSurveyFormAttribute')->name('surveyform.attribute');
     Route::resource('surveyformattribute', 'Survey\SurveyFormAttributeController');
