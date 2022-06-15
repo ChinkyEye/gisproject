@@ -209,6 +209,10 @@ Route::namespace('User')->prefix('user')->name('user.')->middleware(['user'])->g
 
 
 });
+Route::namespace('SurveyUser')->name('surveyuser.')->middleware(['surveyuser'])->group(function(){
+    Route::get('/surrvey', 'SurveyController@index')->name('home');
+
+});
 
 Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest','setlocale'])->group(function(){
     Route::get('language/{lang}', 'HomeController@switchLang')->name('LangChange');
@@ -241,3 +245,4 @@ Route::namespace('Web')->prefix('')->name('web.')->middleware(['guest','setlocal
 
     
 });
+

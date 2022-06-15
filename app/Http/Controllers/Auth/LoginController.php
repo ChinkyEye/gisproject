@@ -55,11 +55,14 @@ class LoginController extends Controller
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password, 'is_active' => 1], true)) {
             if(Auth::user()->user_type == '1'){
                 return Redirect::route('superadmin.home');
-                // return Redirect::route('superadmin.home')->with('alert-success', 'Login success! Please enjoy!!');
             }
             elseif(Auth::user()->user_type == '2')
             {
                 return Redirect::route('user.home')->with('alert-success', 'Login success! Please enjoy!!');
+            }
+            elseif(Auth::user()->user_type == '4')
+            {
+                return Redirect::route('surveyuser.home')->with('alert-success', 'Login success! Please enjoy!!');
             }
             else{
                 return Redirect::route('login')->with('alert-success', 'Login success! Please enjoy!!');

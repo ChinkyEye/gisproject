@@ -14,6 +14,26 @@
 			<li class="breadcrumb-item my-auto">
 				<a href="#" class="">{{ __('language.survey')}}</a>
 			</li>
+			@if(Auth::check())
+			{{-- <li class="ml-auto my-auto text-capitalize">
+				{{Auth::user()->name}} {{Auth::user()->middle_name}} {{Auth::user()->last_name}}
+			</li> --}}
+			<li class="ml-auto my-auto text-capitalize dropdown">
+				<a id="dropdownMenuButton" class="font-weight-normal dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+					{{ Auth::user()->name }}
+				</a>
+				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item font-weight-normal" href="{{ route('logout') }}"
+						onclick="event.preventDefault();
+						document.getElementById('logout-form').submit();">
+						{{ __('Logout') }}
+					</a>
+					<form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+						@csrf
+					</form>
+				</div>
+			</li>
+			@endif
 		</ol>
 	</div>
 </nav>

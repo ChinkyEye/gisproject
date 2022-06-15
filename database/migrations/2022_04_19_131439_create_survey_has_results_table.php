@@ -21,6 +21,8 @@ class CreateSurveyHasResultsTable extends Migration
             $table->foreign('surveyform_has_attr_id')->references('id')->on('survey_form_has_attributes');
             $table->text('result');
             $table->string('type')->nullable();
+            $table->unsignedBigInteger('answered_by');
+            $table->foreign('answered_by')->references('id')->on('users')
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);

@@ -14,6 +14,7 @@ class SurveyHasResult extends Model
         'surveyform_has_attr_id',
         'result',
         'type',
+        'answered_by',
         'sort_id',
         'is_active',
         'date_np',

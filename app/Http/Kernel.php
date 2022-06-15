@@ -65,5 +65,7 @@ class Kernel extends HttpKernel
         'superadmin' => \App\Http\Middleware\SuperAdminMiddleware::class,
         'user' => \App\Http\Middleware\UserMiddleware::class,
         'setlocale' => \App\Http\Middleware\LocallyMiddleware::class,
+        'surveyuser' => \App\Http\Middleware\SurveyUserMiddleware::class,
+
     ];
 }

@@ -74,6 +74,9 @@ class RegisterController extends Controller
             'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
             'date' => date("Y-m-d"),
             'time' => date("H:i:s"),
+            'user_type' => '4',
+            'is_active' => '1',
+
         ]);
     }
 }

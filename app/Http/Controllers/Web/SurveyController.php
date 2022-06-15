@@ -11,6 +11,7 @@ use App\SurveyFormHasAttribute;
 use App\SurveyHasResult;
 use App\SurveyFormHasUser;
 use Auth;
+use Redirect;
 
 
 
@@ -26,17 +27,24 @@ class SurveyController extends Controller
 
     public function getQuestion(Request $request, $slug)
     {
-        $survey_id = SurveyForm::where('slug',$slug)->value('id');
-        $survey_datas = SurveyForm::where('slug',$slug)->first();
-        $datas = SurveyFormHasAttribute::where('form_id',$survey_id)
-                                        ->where('is_active',true)
-                                        ->orderBy('sort_id')
-                                        ->get();
-        return view ('web.survey.question',compact('datas','survey_id','survey_datas'));
+        if(Auth::check() && Auth::user()->user_type == '4'){
+            $survey_id = SurveyForm::where('slug',$slug)->value('id');
+            $survey_datas = SurveyForm::where('slug',$slug)->first();
+            $datas = SurveyFormHasAttribute::where('form_id',$survey_id)
+                                            ->where('is_active',true)
+                                            ->orderBy('sort_id')
+                                            ->get();
+            return view ('web.survey.question',compact('datas','survey_id','survey_datas'));
+        }
+        else{
+            return Redirect::route('login')->with('alert-success', 'Login success! Please enjoy!!');
+        }
+        
     }
 
     public function store(Request $request)
     {
+        // dd(Auth::user()->id);
         $imagefile = $request->file('image');
         $answers = $request->answer;
         $questions = $request->question;
@@ -64,6 +72,7 @@ class SurveyController extends Controller
                     'surveyform_has_attr_id'=> $key,
                     'result'=> $data,
                     'type' =>$type,
+                    'answered_by' => Auth::user()->id,
                     'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
                     'date' => date("Y-m-d"),
                     'time' => date("H:i:s"),
@@ -90,6 +99,7 @@ class SurveyController extends Controller
                         'surveyform_has_attr_id'=> $key,
                         'result'=> $fileName,
                         'type'=> $type,
+                        'answered_by' => Auth::user()->id,
                         'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
                         'date' => date("Y-m-d"),
                         'time' => date("H:i:s"),
@@ -121,6 +131,7 @@ class SurveyController extends Controller
                         'surveyform_has_attr_id'=> $id,
                         'result'=> $dat,
                         'type'=> $type,
+                        'answered_by' => Auth::user()->id,
                         'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
                         'date' => date("Y-m-d"),
                         'time' => date("H:i:s"),
