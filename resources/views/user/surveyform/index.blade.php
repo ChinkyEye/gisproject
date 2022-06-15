@@ -92,11 +92,12 @@
                         <td>{{ $data->title }}</td>
                         <td>{{ $data->description }}</td>
                         <td>
-                          {{ $data->getSurveyQuestion->count()}}
                           <a href="{{ route('user.surveyform.show',$data->id) }}" title="View question"><i class="fas fa-eye "></i></a>
+                          {{ $data->getSurveyQuestion->count()}}
                         </td>
                         <td>
                           <a href="{{ route('user.surveyform.getsurveyuser',$data->slug) }}" title="View Answer"><i class="fas fa-eye"></i></a>
+                          {{ $data->getSurveyAnswer->count()}}
                         </td>
                         <td>
                           <a href="{{ route('user.surveyform.active',$data->id) }}" data-placement="top" title="{{ $data->is_active == '1' ? 'Click to deactivate' : 'Click to activate' }}">
@@ -113,8 +114,13 @@
                           </form>
                           
                           {{--  <a href="{{ route('web.survey.question',$data->slug) }}" id="surveylink" class="btn btn-xs btn-outline-info" title="Update" value="{{ route('web.survey.question',$data->slug) }}"><i class="fa fa-copy"></i></a> --}}
+                          <div class="border border-dark d-inline-block">
+                            <span id="pwd_spn" class="password-span">{{ route('web.survey.question',$data->slug) }}</span>
+                            <button class="btn btn-sm btn-outline-info" onclick="copyToClipboard({{ $data->id }})" title="copy link to clipboard"><i class="fas fa-copy"></i></button>
+                          </div>
 
-                            <span id="sample" >{{ route('web.survey.question',$data->slug) }}</span>
+                           {{--  <input type="text" id="copy_{{ $data->id }}" value="{{ route('web.survey.question',$data->slug) }}">
+                            <button value="copy" class="btn btn-sm btn-outline-info" onclick="copyToClipboards('copy_{{ $data->id }}')" title="copy link to clipboard"><i class="fas fa-copy"></i></button> --}}
                             
                           {{--  <input id="input-txt"  type="text" value="{{ route('web.survey.question',$data->slug) }}">
                            <button class="btn" data-clipboard-target="#surveylink">Copy</button>
@@ -237,4 +243,24 @@ document.execCommand('copy');
 window.getSelection().removeAllRanges();
 }
 </script> --}}
+
+{{-- <script>
+    function copyToClipboards(id) {
+        document.getElementById(id).select();
+        console.log(document.getElementById(id));
+        document.execCommand('copy');
+    }
+</script> --}}
+
+<script type="text/javascript">
+   function copyToClipboard(id) {
+    var copyText = document.getElementById("pwd_spn");
+    var textArea = document.createElement("textarea");
+    textArea.value = copyText.textContent;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("Copy");
+    textArea.remove();
+    }
+</script>
 @endpush

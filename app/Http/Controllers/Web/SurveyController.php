@@ -59,6 +59,7 @@ class SurveyController extends Controller
         $surveyformhasusers = SurveyFormHasUser::create([
                     'ip'=> request()->ip(),
                     'surveyform_id'=> $request->survey_id,
+                    'answered_by' => Auth::user()->id,
                     'date_np' => $this->helper->date_np_con_parm(date("Y-m-d")),
                     'date' => date("Y-m-d"),
                     'time' => date("H:i:s"),

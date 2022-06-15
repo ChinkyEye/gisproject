@@ -16,6 +16,8 @@ class CreateSurveyFormHasUsersTable extends Migration
         Schema::create('survey_form_has_users', function (Blueprint $table) {
             $table->id();
             $table->string('ip')->nullable();
+            $table->unsignedBigInteger('answered_by');
+            $table->foreign('answered_by')->references('id')->on('users')
             $table->integer('sort_id')->nullable();
             $table->boolean('is_active')->default(True); // 1 active, 0 non active
             $table->string('date_np',10);

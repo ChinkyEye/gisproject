@@ -12,6 +12,7 @@ class SurveyFormHasUser extends Model
     protected $fillable = [
         'ip',
         'surveyform_id',
+        'answered_by',
         'sort_id',
         'is_active',
         'date_np',
@@ -23,5 +24,10 @@ class SurveyFormHasUser extends Model
     public function getSurveyName()
     {
         return $this->belongsTo('App\SurveyForm','surveyform_id','id');
+    }
+
+    public function getUserName()
+    {
+        return $this->belongsTo('App\User','answered_by','id');
     }
 }

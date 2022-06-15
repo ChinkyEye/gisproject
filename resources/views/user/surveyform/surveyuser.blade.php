@@ -27,6 +27,7 @@
               <th>Created_at</th>
               <th class="text-center">Status</th>
               <th>Response</th>
+              <th>Answered By</th>
             </tr>
           </thead>
           <tbody>
@@ -45,6 +46,7 @@
                 <a href="{{ route('user.surveyform.surveyanswer',$data->id) }}" class="btn btn-xs btn-outline-info" title="Update"><i class="fas fa-eye"></i>
                 </a>
               </td>
+              <td>{{$data->getUserName->name}}</td>
             </tr>
             @endforeach
           </tbody>

@@ -26,4 +26,9 @@ class SurveyForm extends Model
     {
         return $this->hasMany('App\SurveyFormHasAttribute','form_id','id');
     }
+
+    public function getSurveyAnswer()
+    {
+        return $this->hasMany('App\SurveyFormHasUser','surveyform_id','id');
+    }
 }

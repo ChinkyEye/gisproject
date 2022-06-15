@@ -23,6 +23,7 @@
       <div class="card-header d-flex">
         <span>IP: <small>{{$survey_users->ip}}</small></span> 
         <span class="ml-2">Date: <small>{{$survey_users->date_np}}</small></span>
+        <span class="ml-2">Answered By: <small>{{$survey_users->getUserName->name}}</small></span>
       </div>
       <div class="card-body bg-light card-comments">
         @foreach($datas as $key => $data)
