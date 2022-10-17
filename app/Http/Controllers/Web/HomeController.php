@@ -60,9 +60,9 @@ class HomeController extends Controller
         $coreperson = CorePerson::orderBy('date_np','DESC')->where('is_top','1')->where('is_active','1')->get();
         $mantralaya = MantralayaHasUser::orderBy('sort_id','ASC')->where('is_active','1')->get();
         $except_locallevel = MantralayaHasUser::orderBy('sort_id','DESC')
-                                                ->where('is_active','1')
                                                 ->where('is_local_level','!=','1')
                                                 ->orWhereNull('is_local_level')
+                                                ->where('is_active','1')
                                                 ->get();
         // dd($except_locallevel);
         $isthaniya = IsthaniyaTaha::orderBy('id','DESC')->get();
